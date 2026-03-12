@@ -888,9 +888,16 @@
 <script>
 let DATA=null;
 
+(function(){
+  const saved=localStorage.getItem('tk-theme');
+  if(saved){document.documentElement.dataset.theme=saved}
+  const b=document.querySelector('.toggle-btn');
+  if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';
+})();
 function toggleTheme(){
   const h=document.documentElement,b=document.querySelector('.toggle-btn');
   h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';
+  localStorage.setItem('tk-theme',h.dataset.theme);
   b.textContent=h.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';
   initCharts();
 }
