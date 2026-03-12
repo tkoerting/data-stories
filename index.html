@@ -158,8 +158,9 @@
 
 <script>
 (function(){
-  const saved=localStorage.getItem('tk-theme');
-  if(saved){document.documentElement.dataset.theme=saved}
+  const url=new URLSearchParams(window.location.search).get('theme');
+  const saved=url||localStorage.getItem('tk-theme');
+  if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}
   const b=document.querySelector('.toggle-btn');
   if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';
 })();
