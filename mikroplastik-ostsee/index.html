@@ -157,7 +157,6 @@
   .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
   .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
   .back-link:hover{color:var(--accent)}
-  .preview-badge{position:fixed;top:1rem;right:1rem;background:var(--accent-2);color:#1E293B;padding:0.4rem 1rem;border-radius:100px;font-size:0.7rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;z-index:200}
 
   @media(max-width:768px){
     html{font-size:16px}
@@ -173,11 +172,10 @@
 </head>
 <body>
 
-<div class="preview-badge">Prototyp v3</div>
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="site-name">Der <span>Körting</span></div>
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
     <div class="header-right">
       <span class="badge-da">Datenstücke</span>
       <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>

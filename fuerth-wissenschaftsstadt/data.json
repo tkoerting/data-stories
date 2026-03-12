@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "title": "Wie man seine Stadt schön träumt",
+    "version": "1.0",
+    "snapshot": "März 2026",
+    "author": "Thomas Körting",
+    "blog_post": "https://der-koerting.de/2024/08/15/wie-man-seine-stadt-schoen-traeumt-fuerth-2-0/"
+  },
+
+  "stadt": {
+    "source": "Stadt Fürth / Bayerisches Landesamt für Statistik",
+    "einwohner": 132600,
+    "flaeche_km2": 63.4,
+    "gruendung": 1007,
+    "wissenschaftsstadt_seit": 2007,
+    "haushalt_mio": 684,
+    "hochschulen": 2,
+    "studierende": 5000,
+    "unternehmen": 9000,
+    "arbeitsplaetze": 63000,
+    "arbeitslosenquote": 5.8
+  },
+
+  "pendler": {
+    "source": "Bundesagentur für Arbeit / IHK Nürnberg",
+    "label": "Pendlerströme Fürth ↔ Nürnberg",
+    "auspendler_nach_nbg": 25872,
+    "einpendler_aus_nbg": 16000,
+    "pendler_gesamt_achse": 41872,
+    "auspendlerquote": 65.1,
+    "einpendlerquote": 58.3,
+    "entfernung_km": 7,
+    "timeline": [
+      { "year": 2010, "auspendler": 22000, "einpendler": 13500 },
+      { "year": 2013, "auspendler": 23200, "einpendler": 14200 },
+      { "year": 2016, "auspendler": 24500, "einpendler": 15100 },
+      { "year": 2019, "auspendler": 25800, "einpendler": 15800 },
+      { "year": 2022, "auspendler": 25500, "einpendler": 15600 },
+      { "year": 2024, "auspendler": 25872, "einpendler": 16000 }
+    ]
+  },
+
+  "schulden": {
+    "source": "Stadt Fürth / Bayerischer Rechnungshof",
+    "label": "Pro-Kopf-Verschuldung Fürth (€)",
+    "data": [
+      { "year": 2005, "value": 2800 },
+      { "year": 2008, "value": 2500 },
+      { "year": 2010, "value": 2200 },
+      { "year": 2013, "value": 1900 },
+      { "year": 2016, "value": 1650 },
+      { "year": 2019, "value": 1400 },
+      { "year": 2022, "value": 1250 },
+      { "year": 2024, "value": 1174 }
+    ],
+    "bayern_durchschnitt": 1050,
+    "abbau_seit_2005_prozent": 58
+  },
+
+  "open_data": {
+    "source": "GovData.de / Open Data Portal (jeweilige Stadt) / CKAN",
+    "label": "Open Data Datensätze nach Stadt",
+    "staedte": [
+      { "name": "Fürth", "einwohner": 132600, "datasets": 0, "portal": false, "note": "Kein Portal, keine Strategie" },
+      { "name": "Moers", "einwohner": 103000, "datasets": 800, "portal": true, "note": "Vorreiter seit 2013" },
+      { "name": "Bonn", "einwohner": 336000, "datasets": 1200, "portal": true, "note": "Open.NRW Partner" },
+      { "name": "Köln", "einwohner": 1084000, "datasets": 2100, "portal": true, "note": "Offene Daten Köln" },
+      { "name": "München", "einwohner": 1512000, "datasets": 1100, "portal": true, "note": "opendata.muenchen.de" },
+      { "name": "Berlin", "einwohner": 3755000, "datasets": 3170, "portal": true, "note": "daten.berlin.de" },
+      { "name": "Hamburg", "einwohner": 1945000, "datasets": 4500, "portal": true, "note": "Transparenzportal" },
+      { "name": "Wien", "einwohner": 2000000, "datasets": 500, "portal": true, "note": "data.wien.gv.at" }
+    ],
+    "datasets_pro_100k": [
+      { "name": "Fürth", "value": 0 },
+      { "name": "München", "value": 73 },
+      { "name": "Berlin", "value": 84 },
+      { "name": "Köln", "value": 194 },
+      { "name": "Wien", "value": 250 },
+      { "name": "Hamburg", "value": 231 },
+      { "name": "Bonn", "value": 357 },
+      { "name": "Moers", "value": 777 }
+    ]
+  },
+
+  "benchmark_international": {
+    "source": "IMD Smart City Index 2024 / EU Open Data Maturity Report 2024 / Bitkom Smart City Index 2024",
+    "smart_city_ranking": [
+      { "name": "Zürich", "rank": 1, "score": 87, "source": "IMD 2024" },
+      { "name": "Oslo", "rank": 2, "score": 85, "source": "IMD 2024" },
+      { "name": "Tallinn", "rank": 7, "score": 80, "source": "IMD 2024" },
+      { "name": "Helsinki", "rank": 9, "score": 78, "source": "IMD 2024" },
+      { "name": "Wien", "rank": 14, "score": 73, "source": "IMD 2024" },
+      { "name": "Berlin", "rank": 25, "score": 65, "source": "IMD 2024" },
+      { "name": "München", "rank": 28, "score": 63, "source": "IMD 2024" },
+      { "name": "Hamburg", "rank": 31, "score": 61, "source": "IMD 2024" }
+    ],
+    "bitkom_top5": [
+      { "name": "Hamburg", "score": 86.1 },
+      { "name": "München", "score": 84.5 },
+      { "name": "Köln", "score": 79.2 },
+      { "name": "Dresden", "score": 78.6 },
+      { "name": "Nürnberg", "score": 74.3 }
+    ],
+    "fuerth_bitkom": {
+      "rank_range": "100+",
+      "note": "Nicht in den Top 100 gelistet"
+    },
+    "eu_open_data_maturity": {
+      "leaders": ["Frankreich", "Irland", "Polen", "Estland"],
+      "deutschland_score": 72,
+      "eu_durchschnitt": 79,
+      "note": "Deutschland unter EU-Durchschnitt"
+    }
+  },
+
+  "readiness_score": {
+    "label": "Open Data Readiness Score",
+    "max_score": 100,
+    "dimensions": [
+      { "name": "Datensätze (Anzahl)", "max": 20, "fuerth": 0, "best_practice": 18, "best_city": "Moers" },
+      { "name": "Maschinenlesbarkeit", "max": 15, "fuerth": 2, "best_practice": 14, "best_city": "Hamburg" },
+      { "name": "Echtzeit-APIs", "max": 15, "fuerth": 3, "best_practice": 14, "best_city": "Helsinki" },
+      { "name": "Bürgerbeteiligung", "max": 20, "fuerth": 8, "best_practice": 18, "best_city": "Tallinn" },
+      { "name": "Verwaltung digital", "max": 15, "fuerth": 7, "best_practice": 14, "best_city": "Tallinn" },
+      { "name": "Strategie & Governance", "max": 15, "fuerth": 5, "best_practice": 14, "best_city": "Wien" }
+    ],
+    "fuerth_total": 25,
+    "best_practice_total": 92
+  },
+
+  "wissenschaftsstadt": {
+    "source": "Stadt Fürth / Uferstadt Fürth GmbH",
+    "titel_seit": 2007,
+    "anlass": "Eröffnung Uferstadt-Campus, Ansiedlung Fraunhofer IIS & Rundfunkmuseum",
+    "hochschulen": [
+      { "name": "TH Nürnberg (Standort Fürth)", "studierende": 3000, "schwerpunkt": "Design, Sozialwissenschaften" },
+      { "name": "FAU (Standort Fürth)", "studierende": 2000, "schwerpunkt": "Wirtschaftswissenschaften" }
+    ],
+    "forschung": [
+      { "name": "Fraunhofer IIS", "bereich": "Audio & Medientechnologien, MP3-Nachfolger" },
+      { "name": "Ludwig Erhard Zentrum", "bereich": "Wirtschaftsgeschichte, seit 2018" }
+    ],
+    "open_data_strategie": false,
+    "open_data_beauftragte": false,
+    "digitalisierungsstrategie": "Digitale Agenda 2030 (in Arbeit)",
+    "smart_city_foerderung": false
+  },
+
+  "vergleich_moers": {
+    "source": "OKNRW / Reedu / GovData",
+    "moers": {
+      "einwohner": 103000,
+      "datasets": 800,
+      "portal_seit": 2013,
+      "highlight": "LoRaWAN-Sensoren für Pegelstände, Baummonitoring, Luftqualität",
+      "mitarbeiter_open_data": 2,
+      "budget_open_data_jahr": 100000,
+      "auszeichnungen": ["Open Government Vorreiter 2019", "Bitkom Best Practice"]
+    },
+    "fuerth": {
+      "einwohner": 132600,
+      "datasets": 0,
+      "portal_seit": null,
+      "highlight": null,
+      "mitarbeiter_open_data": 0,
+      "budget_open_data_jahr": 0,
+      "auszeichnungen": []
+    }
+  }
+}

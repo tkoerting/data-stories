@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wie man seine Stadt schön träumt — Datenstück | Der Körting</title>
+<meta name="description" content="Fürth nennt sich Wissenschaftsstadt — hat aber null offene Datensätze. Moers (103.000 EW) hat 800. Ein Datenstück über Anspruch und Wirklichkeit.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:var(--max-width);margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:0.75rem}
+  .badge-da{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(20,184,166,0.2)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+  .nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
+  .compare-card.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+  .compare-card.dim{opacity:0.7}
+  .compare-city{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+  .compare-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;line-height:1.2}
+  .compare-number.zero{color:var(--danger)}
+  .compare-number.good{color:var(--accent)}
+  .compare-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.25rem}
+
+  .radar-legend{display:flex;flex-wrap:wrap;gap:1rem;margin:1rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .radar-legend span{display:inline-flex;align-items:center;gap:0.35rem}
+  .radar-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+  .perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+  .perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+  .perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+
+  .score-bar{margin:1.5rem 0}
+  .score-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem}
+  .score-label{font-size:0.8rem;min-width:140px;color:var(--text-secondary)}
+  .score-track{flex:1;height:24px;background:var(--tag-bg);border-radius:6px;position:relative;overflow:hidden}
+  .score-fill{height:100%;border-radius:6px;transition:width 1s ease}
+  .score-fill.fuerth{background:var(--danger)}
+  .score-fill.best{background:var(--accent);opacity:0.3;position:absolute;top:0;left:0}
+  .score-val{font-family:var(--font-mono);font-size:0.75rem;min-width:35px;text-align:right;color:var(--text-tertiary)}
+
+  .spin-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .spin-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;color:var(--accent);text-align:center;margin-bottom:1rem;line-height:1.2}
+  .spin-number span{display:block;font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);font-weight:400;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+  .spin-sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .spin-side{padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.6}
+  .spin-side.positive{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.2)}
+  .spin-side.negative{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)}
+  .spin-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-weight:600}
+  .spin-side.positive .spin-label{color:var(--accent)}
+  .spin-side.negative .spin-label{color:var(--danger)}
+  .spin-side p{margin:0;font-size:0.85rem}
+
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .spin-sides{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+    .score-label{min-width:100px;font-size:0.7rem}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+    <div class="header-right">
+      <span class="badge-da">Datenstück #2</span>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="../" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Laut gedacht</span>
+    <span class="snapshot-tag" id="snapshot">März 2026</span>
+    <span>zum <a href="https://der-koerting.de/2024/08/15/wie-man-seine-stadt-schoen-traeumt-fuerth-2-0/">Blogpost</a></span>
+  </div>
+
+  <h1>Wie man seine Stadt schön träumt</h1>
+  <div class="subtitle">Fürth nennt sich Wissenschaftsstadt. Aber wenn man nach Daten sucht, findet man: nichts.</div>
+
+  <p class="lead">Fürth hat vieles richtig gemacht. Schulden abgebaut, Hochschulen angesiedelt, sich als Wissenschaftsstadt positioniert. Aber beim Thema Open Data ist die Stadt unsichtbar — null Datensätze, kein Portal, keine Strategie. Dieses Datenstück zeigt, wie weit Fürth von dem entfernt ist, was eine Wissenschaftsstadt im Jahr 2026 sein könnte.</p>
+
+  <nav class="section-nav">
+    <a href="#zahlen" class="nav-pill">Fürth in Zahlen</a>
+    <a href="#pendler" class="nav-pill">Pendlerstadt</a>
+    <a href="#schulden" class="nav-pill">Schuldenabbau</a>
+    <span class="nav-sep">|</span>
+    <a href="#wissenschaft" class="nav-pill">Wissenschaftsstadt</a>
+    <a href="#opendata" class="nav-pill">Open Data</a>
+    <a href="#benchmark" class="nav-pill">Benchmark</a>
+    <span class="nav-sep">|</span>
+    <a href="#score" class="nav-pill">Readiness Score</a>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- PERSPEKTIVE 1: Fürth — Die Erfolgsgeschichte -->
+  <!-- ============================================ -->
+
+  <h2 id="zahlen">Fürth in Zahlen</h2>
+  <p>Eine Stadt mit 132.600 Einwohnern, 1.007 Jahre Geschichte und einem bemerkenswerten Comeback. Die Zahlen erzählen die Geschichte einer Stadt, die sich neu erfunden hat.</p>
+
+  <div class="kpi-grid" id="kpi-stadt"></div>
+
+  <h2 id="pendler">Pendlerstadt</h2>
+  <p>Fürth und Nürnberg sind so eng verflochten, dass man manchmal vergisst, wo die eine Stadt aufhört und die andere anfängt. 41.872 Menschen pendeln täglich auf der Achse — 7 Kilometer, zwei Städte, ein Arbeitsmarkt.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value accent2" id="kpi-auspendler">—</div>
+      <div class="kpi-label">Auspendler nach Nbg</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" id="kpi-einpendler">—</div>
+      <div class="kpi-label">Einpendler aus Nbg</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning" id="kpi-auspendlerquote">—</div>
+      <div class="kpi-label">Auspendlerquote</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Pendlerströme Fürth ↔ Nürnberg</div>
+    <div class="chart-subtitle">Bundesagentur für Arbeit / IHK Nürnberg</div>
+    <div id="chart-pendler" class="chart"></div>
+  </div>
+
+  <p class="text-small">65% der sozialversicherungspflichtig Beschäftigten aus Fürth arbeiten woanders. Die Verflechtung ist Stärke und Abhängigkeit zugleich — Fürth funktioniert nicht ohne Nürnberg. Die Frage ist: Muss das so bleiben?</p>
+
+  <h2 id="schulden">Die Erfolgsgeschichte: Schuldenabbau</h2>
+  <p>Was Fürth in den letzten 20 Jahren beim Haushalt geleistet hat, verdient Respekt. Von 2.800 € Pro-Kopf-Verschuldung auf 1.174 € — ein Rückgang um 58 Prozent. Das muss man erstmal hinkriegen.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Pro-Kopf-Verschuldung Fürth (€)</div>
+    <div class="chart-subtitle">Stadt Fürth / Bayerischer Rechnungshof</div>
+    <div id="chart-schulden" class="chart"></div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok" id="kpi-schulden-aktuell">—</div>
+      <div class="kpi-label">Pro Kopf 2024</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2" id="kpi-schulden-abbau">—</div>
+      <div class="kpi-label">Abbau seit 2005</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" id="kpi-bayern-schnitt">—</div>
+      <div class="kpi-label">Bayern-Schnitt</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PERSPEKTIVE 2: Der Anspruch vs. die Realität -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Wissenschaftsstadt?</h2>
+    <p>Anspruch trifft auf Wirklichkeit</p>
+  </div>
+
+  <h2 id="wissenschaft">Der Titel und was dahinter steckt</h2>
+  <p>Seit 2007 nennt sich Fürth offiziell „Wissenschaftsstadt". Der Anlass: die Eröffnung des Uferstadt-Campus, die Ansiedlung des Fraunhofer IIS und des Rundfunkmuseums. Das klingt gut. Aber was bedeutet Wissenschaftsstadt im Jahr 2026?</p>
+
+  <div class="kpi-grid" id="kpi-wissenschaft"></div>
+
+  <p>In einer Wissenschaftsstadt, die den Namen verdient, wären Daten das Fundament. Forschungsdaten, Verwaltungsdaten, Umweltdaten — offen, maschinenlesbar, für jeden zugänglich. Fürth hat: nichts davon.</p>
+
+  <h2 id="opendata">Open Data: Fürth vs. der Rest</h2>
+  <p>Open Data ist kein Luxus für Großstädte. Moers — 103.000 Einwohner, kleiner als Fürth — stellt seit 2013 Daten bereit. 800 Datensätze. LoRaWAN-Sensoren für Pegelstände. Baummonitoring. Luftqualität in Echtzeit. Budget: 100.000 € pro Jahr. Zwei Mitarbeiter.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card dim">
+      <div class="compare-city">Fürth</div>
+      <div class="compare-number zero" id="comp-fuerth">0</div>
+      <div class="compare-detail">Datensätze · 132.600 EW</div>
+      <div class="compare-detail">Kein Portal, keine Strategie</div>
+    </div>
+    <div class="compare-card highlight">
+      <div class="compare-city">Moers</div>
+      <div class="compare-number good">800</div>
+      <div class="compare-detail">Datensätze · 103.000 EW</div>
+      <div class="compare-detail">Vorreiter seit 2013</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Open Data Datensätze pro 100.000 Einwohner</div>
+    <div class="chart-subtitle">GovData.de / Offene Daten Portale der Städte</div>
+    <div id="chart-opendata" class="chart chart-tall"></div>
+  </div>
+
+  <p>Fürth ist nicht einfach nur hinten. Fürth ist unsichtbar. Der Balken ist nicht klein — er existiert nicht.</p>
+
+  <h2 id="benchmark">Internationaler Benchmark</h2>
+  <p>Wenn man den Blick weitet, wird es noch deutlicher. Städte wie Tallinn, Helsinki oder Zürich zeigen, was möglich ist. Deutschland insgesamt liegt beim EU Open Data Maturity Report unter dem Durchschnitt.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">IMD Smart City Index 2024 — Score</div>
+    <div class="chart-subtitle">IMD World Competitiveness Center</div>
+    <div id="chart-smartcity" class="chart chart-tall"></div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger" id="kpi-de-score">—</div>
+      <div class="kpi-label">Deutschland Score</div>
+      <div class="kpi-sub">EU Open Data Maturity</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" id="kpi-eu-schnitt">—</div>
+      <div class="kpi-label">EU-Durchschnitt</div>
+      <div class="kpi-sub">Open Data Maturity</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning" id="kpi-fuerth-bitkom">—</div>
+      <div class="kpi-label">Fürth Bitkom-Ranking</div>
+      <div class="kpi-sub">Smart City Index</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Bitkom Smart City Index 2024 — Top 5 + Nürnberg</div>
+    <div class="chart-subtitle">Bitkom e.V.</div>
+    <div id="chart-bitkom" class="chart"></div>
+  </div>
+
+  <p class="text-small">Nürnberg schafft es immerhin auf Platz ~20 im Bitkom-Ranking. Fürth taucht nicht auf — nicht in den Top 100.</p>
+
+  <!-- ============================================ -->
+  <!-- PERSPEKTIVE 3: Der Readiness Score           -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Wie weit ist der Weg?</h2>
+    <p>Ein Score, sechs Dimensionen, eine ehrliche Standortbestimmung</p>
+  </div>
+
+  <h2 id="score">Open Data Readiness Score</h2>
+  <p>Wie misst man, wie weit eine Stadt von Open Data entfernt ist? Wir haben sechs Dimensionen definiert und Fürth gegen Best Practice bewertet. Das Ergebnis ist ernüchternd — aber auch: ein klarer Fahrplan.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger" id="kpi-score-fuerth">—</div>
+      <div class="kpi-label">Fürth</div>
+      <div class="kpi-sub">von 100 Punkten</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok" id="kpi-score-best">—</div>
+      <div class="kpi-label">Best Practice</div>
+      <div class="kpi-sub">von 100 Punkten</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2" id="kpi-score-gap">—</div>
+      <div class="kpi-label">Gap</div>
+      <div class="kpi-sub">Punkte Rückstand</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Open Data Readiness — Fürth vs. Best Practice</div>
+    <div class="chart-subtitle">6 Dimensionen, max. 100 Punkte</div>
+    <div id="chart-radar" class="chart chart-tall"></div>
+    <div class="radar-legend">
+      <span><span class="radar-dot" style="background:var(--danger)"></span> Fürth (25/100)</span>
+      <span><span class="radar-dot" style="background:var(--accent)"></span> Best Practice (92/100)</span>
+    </div>
+  </div>
+
+  <h3>Die sechs Dimensionen im Detail</h3>
+  <div class="score-bar" id="score-bars"></div>
+
+  <p>Der größte Hebel: <strong>Datensätze</strong>. Null ist nicht "wenig" — es ist die Abwesenheit von allem. Moers zeigt, dass schon 100.000 € Jahresbudget und zwei engagierte Mitarbeiter reichen, um eine Stadt auf die Open-Data-Landkarte zu setzen.</p>
+
+  <hr class="divider">
+
+  <!-- Spin: Wissenschaftsstadt -->
+  <h3>Dieselbe Zahl, zwei Geschichten</h3>
+
+  <div class="spin-card">
+    <div class="spin-number">2007<span>Wissenschaftsstadt seit</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Pressemitteilung</div>
+        <p>„Fürth ist seit fast 20 Jahren Wissenschaftsstadt — ein Bekenntnis zu Innovation, Forschung und Zukunft."</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Was die Zahl verschweigt</div>
+        <p>In 19 Jahren als „Wissenschaftsstadt" hat Fürth keinen einzigen offenen Datensatz veröffentlicht. Null. Das ist kein Rückstand — das ist Stillstand.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">1.174 €<span>Pro-Kopf-Verschuldung</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Erfolgsgeschichte</div>
+        <p>„Von 2.800 € auf 1.174 € — Fürth hat die Verschuldung um 58% gesenkt. Solider Haushalt, verantwortungsvolle Politik."</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Die andere Seite</div>
+        <p>Schuldenabbau ist defensiv. Moers investiert 100.000 € pro Jahr in Open Data und hat damit 800 Datensätze geschaffen. Fürths Haushalt: 684 Mio. €. Das wären 0,015%.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="tk-closer">Wissenschaftsstadt ist kein Ortsschild. Es ist ein Versprechen. Und Versprechen, die man 19 Jahre nicht einlöst, werden irgendwann zu Etikettenschwindel.</p>
+
+  <p>Fürth hat das Potenzial. Die Hochschulen, das Fraunhofer IIS, die Nähe zu Nürnberg. Was fehlt, ist nicht Geld — es ist Wille. Und vielleicht ein Blick nach Moers.</p>
+
+  <!-- Sources -->
+  <div class="source-card">
+    <h3>Quellen & Daten</h3>
+    <ul>
+      <li>Stadt Fürth — Haushaltsdaten, Statistik</li>
+      <li>Bayerisches Landesamt für Statistik</li>
+      <li>Bundesagentur für Arbeit — Pendlerdaten</li>
+      <li>IHK Nürnberg — Arbeitsmarktdaten</li>
+      <li>GovData.de — Open Data Datensätze Bund/Länder/Kommunen</li>
+      <li>IMD Smart City Index 2024</li>
+      <li>Bitkom Smart City Index 2024</li>
+      <li>EU Open Data Maturity Report 2024</li>
+      <li>OKNRW / Reedu — Open Data Moers</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/tkoerting/data-stories" class="github-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      tkoerting/data-stories — Code, Daten, Methodik
+    </a>
+  </p>
+
+  <div class="article-footer">
+    <p>Der Körting — Datenstück #2 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const charts = {};
+
+function initCharts() {
+  // Dispose existing charts
+  Object.values(charts).forEach(ch => { try { ch.dispose() } catch(e) {} });
+
+  fetch('data.json').then(r => r.json()).then(D => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const c = {
+      accent: isDark ? '#14B8A6' : '#0D9488',
+      accent2: isDark ? '#FACC15' : '#EAB308',
+      danger: isDark ? '#EF4444' : '#DC2626',
+      warning: isDark ? '#F59E0B' : '#D97706',
+      purple: isDark ? '#8B5CF6' : '#7C3AED',
+      text: isDark ? '#E5E7EB' : '#1E293B',
+      textSec: isDark ? '#9CA3AF' : '#64748B',
+      textTert: isDark ? '#6B7280' : '#94A3B8',
+      grid: isDark ? '#2D3139' : '#E2E5E9',
+      bg: isDark ? '#1E2028' : '#FFFFFF'
+    };
+
+    const base = {
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+      grid: { left: 50, right: 20, top: 30, bottom: 30 },
+      tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } }
+    };
+
+    // === KPI Stadt ===
+    const s = D.stadt;
+    document.getElementById('kpi-stadt').innerHTML = `
+      <div class="kpi-card"><div class="kpi-value">${(s.einwohner/1000).toFixed(1)}k</div><div class="kpi-label">Einwohner</div></div>
+      <div class="kpi-card"><div class="kpi-value accent2">${s.wissenschaftsstadt_seit}</div><div class="kpi-label">Wissenschaftsstadt seit</div></div>
+      <div class="kpi-card"><div class="kpi-value">${s.haushalt_mio} Mio €</div><div class="kpi-label">Haushalt</div></div>
+      <div class="kpi-card"><div class="kpi-value purple">${(s.studierende/1000).toFixed(0)}k</div><div class="kpi-label">Studierende</div></div>
+      <div class="kpi-card"><div class="kpi-value">${(s.arbeitsplaetze/1000).toFixed(0)}k</div><div class="kpi-label">Arbeitsplätze</div></div>
+      <div class="kpi-card"><div class="kpi-value accent2">${s.gruendung}</div><div class="kpi-label">Gegründet</div></div>
+    `;
+
+    // === Pendler KPIs ===
+    const p = D.pendler;
+    document.getElementById('kpi-auspendler').textContent = p.auspendler_nach_nbg.toLocaleString('de-DE');
+    document.getElementById('kpi-einpendler').textContent = p.einpendler_aus_nbg.toLocaleString('de-DE');
+    document.getElementById('kpi-auspendlerquote').textContent = p.auspendlerquote + '%';
+
+    // === Pendler Chart ===
+    charts.pendler = echarts.init(document.getElementById('chart-pendler'));
+    charts.pendler.setOption({...base,
+      legend: { data: ['Auspendler nach Nbg', 'Einpendler aus Nbg'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      grid: {...base.grid, top: 35},
+      xAxis: { type: 'category', data: p.timeline.map(d => d.year), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => (v/1000)+'k' } },
+      series: [
+        { name: 'Auspendler nach Nbg', type: 'line', data: p.timeline.map(d => d.auspendler), smooth: true, lineStyle: { width: 2.5 }, itemStyle: { color: c.accent2 }, areaStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:c.accent2+'33'},{offset:1,color:'transparent'}]) } },
+        { name: 'Einpendler aus Nbg', type: 'line', data: p.timeline.map(d => d.einpendler), smooth: true, lineStyle: { width: 2.5 }, itemStyle: { color: c.accent }, areaStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:c.accent+'33'},{offset:1,color:'transparent'}]) } }
+      ]
+    });
+
+    // === Schulden Chart ===
+    const sch = D.schulden;
+    charts.schulden = echarts.init(document.getElementById('chart-schulden'));
+    charts.schulden.setOption({...base,
+      xAxis: { type: 'category', data: sch.data.map(d => d.year), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'value', min: 0, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v+'€' } },
+      series: [
+        { type: 'bar', data: sch.data.map(d => ({ value: d.value, itemStyle: { color: d.year === 2024 ? c.accent : c.accent+'88', borderRadius: [4,4,0,0] } })) },
+        { type: 'line', data: sch.data.map(() => sch.bayern_durchschnitt), lineStyle: { color: c.warning, type: 'dashed', width: 1.5 }, symbol: 'none', tooltip: { show: false }, markLine: { silent: true, data: [{ yAxis: sch.bayern_durchschnitt, label: { formatter: 'Bayern Ø', color: c.warning, fontSize: 10 }, lineStyle: { color: c.warning, type: 'dashed' } }] } }
+      ]
+    });
+
+    document.getElementById('kpi-schulden-aktuell').textContent = sch.data[sch.data.length-1].value.toLocaleString('de-DE') + ' €';
+    document.getElementById('kpi-schulden-abbau').textContent = '-' + sch.abbau_seit_2005_prozent + '%';
+    document.getElementById('kpi-bayern-schnitt').textContent = sch.bayern_durchschnitt.toLocaleString('de-DE') + ' €';
+
+    // === Wissenschaft KPIs ===
+    const w = D.wissenschaftsstadt;
+    document.getElementById('kpi-wissenschaft').innerHTML = `
+      <div class="kpi-card"><div class="kpi-value accent2">${w.titel_seit}</div><div class="kpi-label">Titel seit</div><div class="kpi-sub">${2026 - w.titel_seit} Jahre</div></div>
+      <div class="kpi-card"><div class="kpi-value">${w.hochschulen.length}</div><div class="kpi-label">Hochschulen</div><div class="kpi-sub">${w.hochschulen.reduce((a,h)=>a+h.studierende,0).toLocaleString('de-DE')} Studierende</div></div>
+      <div class="kpi-card"><div class="kpi-value danger">0</div><div class="kpi-label">Offene Datensätze</div><div class="kpi-sub">Null. Keine.</div></div>
+    `;
+
+    // === Open Data Bar Chart ===
+    const od = D.open_data.datasets_pro_100k.sort((a,b) => a.value - b.value);
+    charts.opendata = echarts.init(document.getElementById('chart-opendata'));
+    charts.opendata.setOption({...base,
+      grid: { left: 80, right: 30, top: 10, bottom: 30 },
+      xAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'category', data: od.map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: od.map(d => ({
+          value: d.value,
+          itemStyle: {
+            color: d.name === 'Fürth' ? c.danger : d.name === 'Moers' ? c.accent : c.accent + '77',
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: { show: true, position: d.value === 0 ? 'right' : 'right', formatter: d.value === 0 ? '0 — kein Portal' : d.value.toString(), color: d.value === 0 ? c.danger : c.textTert, fontSize: 11, fontFamily: 'JetBrains Mono' }
+        })),
+        barWidth: 20
+      }]
+    });
+
+    // === Smart City Chart ===
+    const sc = D.benchmark_international.smart_city_ranking;
+    charts.smartcity = echarts.init(document.getElementById('chart-smartcity'));
+    charts.smartcity.setOption({...base,
+      grid: { left: 80, right: 30, top: 10, bottom: 30 },
+      xAxis: { type: 'value', min: 50, max: 95, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'category', data: [...sc].reverse().map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: [...sc].reverse().map(d => ({
+          value: d.score,
+          itemStyle: {
+            color: d.rank <= 3 ? c.accent : d.name === 'Berlin' || d.name === 'München' || d.name === 'Hamburg' ? c.accent2 : c.purple,
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: { show: true, position: 'right', formatter: '#' + d.rank, color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono' }
+        })),
+        barWidth: 22
+      }]
+    });
+
+    // === Bitkom Chart ===
+    const bk = D.benchmark_international.bitkom_top5;
+    charts.bitkom = echarts.init(document.getElementById('chart-bitkom'));
+    charts.bitkom.setOption({...base,
+      grid: { left: 80, right: 30, top: 10, bottom: 30 },
+      xAxis: { type: 'value', min: 60, max: 95, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'category', data: [...bk].reverse().map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: [...bk].reverse().map(d => ({
+          value: d.score,
+          itemStyle: { color: d.name === 'Nürnberg' ? c.accent2 : c.accent + '88', borderRadius: [0, 4, 4, 0] },
+          label: { show: true, position: 'right', formatter: d.score.toFixed(1), color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono' }
+        })),
+        barWidth: 22
+      }]
+    });
+
+    // === Benchmark KPIs ===
+    const eu = D.benchmark_international.eu_open_data_maturity;
+    document.getElementById('kpi-de-score').textContent = eu.deutschland_score + '/100';
+    document.getElementById('kpi-eu-schnitt').textContent = eu.eu_durchschnitt + '/100';
+    document.getElementById('kpi-fuerth-bitkom').textContent = D.benchmark_international.fuerth_bitkom.rank_range;
+
+    // === Readiness Score ===
+    const rs = D.readiness_score;
+    document.getElementById('kpi-score-fuerth').textContent = rs.fuerth_total + '/100';
+    document.getElementById('kpi-score-best').textContent = rs.best_practice_total + '/100';
+    document.getElementById('kpi-score-gap').textContent = (rs.best_practice_total - rs.fuerth_total) + ' Pkt';
+
+    // Radar Chart
+    charts.radar = echarts.init(document.getElementById('chart-radar'));
+    charts.radar.setOption({
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Space Grotesk, system-ui' },
+      tooltip: {},
+      radar: {
+        indicator: rs.dimensions.map(d => ({ name: d.name, max: d.max })),
+        shape: 'polygon',
+        splitNumber: 4,
+        axisName: { color: c.textSec, fontSize: 11 },
+        splitLine: { lineStyle: { color: c.grid } },
+        splitArea: { areaStyle: { color: ['transparent'] } },
+        axisLine: { lineStyle: { color: c.grid } }
+      },
+      series: [{
+        type: 'radar',
+        data: [
+          {
+            value: rs.dimensions.map(d => d.fuerth),
+            name: 'Fürth',
+            lineStyle: { color: c.danger, width: 2 },
+            itemStyle: { color: c.danger },
+            areaStyle: { color: c.danger + '22' }
+          },
+          {
+            value: rs.dimensions.map(d => d.best_practice),
+            name: 'Best Practice',
+            lineStyle: { color: c.accent, width: 2 },
+            itemStyle: { color: c.accent },
+            areaStyle: { color: c.accent + '22' }
+          }
+        ]
+      }]
+    });
+
+    // Score Bars
+    const barsEl = document.getElementById('score-bars');
+    barsEl.innerHTML = rs.dimensions.map(d => {
+      const fPct = (d.fuerth / d.max * 100).toFixed(0);
+      const bPct = (d.best_practice / d.max * 100).toFixed(0);
+      return `<div class="score-row">
+        <div class="score-label">${d.name}</div>
+        <div class="score-track">
+          <div class="score-fill best" style="width:${bPct}%"></div>
+          <div class="score-fill fuerth" style="width:${fPct}%"></div>
+        </div>
+        <div class="score-val">${d.fuerth}/${d.max}</div>
+      </div>`;
+    }).join('');
+
+    // Resize
+    window.addEventListener('resize', () => Object.values(charts).forEach(ch => { try { ch.resize() } catch(e) {} }));
+  });
+}
+
+function toggleTheme() {
+  const h = document.documentElement, b = document.querySelector('.toggle-btn');
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  b.textContent = h.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  initCharts();
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+</script>
+</body>
+</html>
