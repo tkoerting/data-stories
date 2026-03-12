@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Es ist ein Tauschgeschäft — Datenstück | Der Körting</title>
+<meta name="description" content="Was jede Generation gibt — und was sie dafür bekommt. Vermögen, Bildung, mentale Gesundheit, Werte: Die Daten hinter dem Generationenvertrag.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+  .nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
+  .compare-card.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+  .compare-card.dim{opacity:0.7}
+  .compare-city{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+  .compare-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;line-height:1.2}
+  .compare-number.zero{color:var(--danger)}
+  .compare-number.good{color:var(--accent)}
+  .compare-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.25rem}
+
+  .radar-legend{display:flex;flex-wrap:wrap;gap:1rem;margin:1rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .radar-legend span{display:inline-flex;align-items:center;gap:0.35rem}
+  .radar-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+  .perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+  .perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+  .perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+
+  .spin-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .spin-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;color:var(--accent);text-align:center;margin-bottom:1rem;line-height:1.2}
+  .spin-number span{display:block;font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);font-weight:400;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+  .spin-sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .spin-side{padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.6}
+  .spin-side.positive{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.2)}
+  .spin-side.negative{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)}
+  .spin-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-weight:600}
+  .spin-side.positive .spin-label{color:var(--accent)}
+  .spin-side.negative .spin-label{color:var(--danger)}
+  .spin-side p{margin:0;font-size:0.85rem}
+
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .spin-sides{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+        <a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+        <a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="../" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="../" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Laut gedacht</span>
+    <span class="snapshot-tag">März 2026</span>
+    <span>zum <a href="https://der-koerting.de/?p=533">Blogpost</a></span>
+  </div>
+
+  <h1>Es ist ein Tauschgeschäft</h1>
+  <div class="subtitle">Was jede Generation gibt — und was sie dafür bekommt. Die Daten hinter dem Generationenvertrag.</div>
+
+  <p class="lead">Jede Generation macht einen Deal. Die Boomer tauschten Zeit gegen Sicherheit. Die Millennials tauschten Sicherheit gegen Freiheit. Und Gen Z? Die tauschen Gehalt gegen Sinn. Klingt nach Fortschritt. Aber die Daten erzählen eine kompliziertere Geschichte.</p>
+
+  <nav class="section-nav">
+    <a href="#boomer" class="nav-pill">Der Deal der Boomer</a>
+    <a href="#preis" class="nav-pill">Der Preis der Jungen</a>
+    <a href="#bildung" class="nav-pill">Bildungsinflation</a>
+    <span class="nav-sep">|</span>
+    <a href="#werte" class="nav-pill">Was Gen Z will</a>
+    <a href="#seele" class="nav-pill">Der Preis der Seele</a>
+    <span class="nav-sep">|</span>
+    <a href="#information" class="nav-pill">Die Information</a>
+    <a href="#hoffnung" class="nav-pill">Hoffnung</a>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- SEKTION 1: Der Deal der Boomer               -->
+  <!-- ============================================ -->
+
+  <h2 id="boomer">Der Deal der Boomer</h2>
+  <p>Die Boomer haben einen einfachen Deal gemacht: Arbeiten. Lange. Hart. Dafür gab es etwas, das heute wie ein Märchen klingt — ein Haus. Eine Rente. Und das Gefühl, dass es jedes Jahr ein bisschen besser wird.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">54,2%</div>
+      <div class="kpi-label">Eigentum Ü45</div>
+      <div class="kpi-sub">Wohneigentumsquote</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2">241.100 &euro;</div>
+      <div class="kpi-label">Median 55–64</div>
+      <div class="kpi-sub">Nettovermögen</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">+60,7%</div>
+      <div class="kpi-label">Nominallohn</div>
+      <div class="kpi-sub">1991–2019</div>
+    </div>
+  </div>
+
+  <p>60,7 Prozent mehr Lohn seit 1991. Klingt gut, oder? Aber: Real — also nach Inflation — waren es nur 12,3 Prozent. In 28 Jahren. Das ist weniger als ein halbes Prozent pro Jahr. Aber wer schon auf der Leiter stand, konnte sich halten.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">+12,3%</div>
+      <div class="kpi-label">Reallohn</div>
+      <div class="kpi-sub">1991–2019 (28 Jahre)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">47,3%</div>
+      <div class="kpi-label">Eigentum gesamt</div>
+      <div class="kpi-sub">Deutschland 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">0,63</div>
+      <div class="kpi-label">Gini 55–64</div>
+      <div class="kpi-sub">Niedrigster aller Gruppen</div>
+    </div>
+  </div>
+
+  <p class="text-small">Der Gini-Koeffizient zeigt die Vermögensungleichheit innerhalb einer Altersgruppe. 0 = alle gleich, 1 = einer hat alles. Bei den 55- bis 64-Jährigen: 0,63. Ungleich, ja — aber weit gleichmäßiger verteilt als bei den Jungen.</p>
+
+  <!-- ============================================ -->
+  <!-- SEKTION 2: Der Preis der Jungen              -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Der Preis der Jungen</h2>
+    <p>Die Leiter wurde hochgezogen</p>
+  </div>
+
+  <h2 id="preis">Vermögen nach Altersgruppe</h2>
+  <p>Wenn Du unter 35 bist, hast Du im Median 17.300 Euro. Wenn Du zwischen 55 und 64 bist: 241.100 Euro. Das ist Faktor 14. Nicht weil die Jungen faul sind. Sondern weil sich die Spielregeln geändert haben.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Median-Nettovermögen nach Altersgruppe</div>
+    <div class="chart-subtitle">Bundesbank PHF / Destatis 2023 — in Euro</div>
+    <div id="chart-vermoegen" class="chart"></div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card dim">
+      <div class="compare-city">Unter 35</div>
+      <div class="compare-number zero" id="comp-jung">17.300 &euro;</div>
+      <div class="compare-detail">Median Nettovermögen</div>
+      <div class="compare-detail">Gini: 0,83 — extreme Ungleichheit</div>
+    </div>
+    <div class="compare-card highlight">
+      <div class="compare-city">55–64 Jahre</div>
+      <div class="compare-number good">241.100 &euro;</div>
+      <div class="compare-detail">Median Nettovermögen</div>
+      <div class="compare-detail">Gini: 0,63 — gleichmäßiger verteilt</div>
+    </div>
+  </div>
+
+  <h3>Wohneigentum: Die verschlossene Tür</h3>
+  <p>Unter 45? Nur noch 25,2 Prozent besitzen Eigentum. Im Jahr 2000 waren es 31 Prozent. Und der Anteil junger Eigentümer an allen Eigentümern? Von 31 auf 15 Prozent halbiert.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Wohneigentum: Unter 45 vs. Über 45</div>
+    <div class="chart-subtitle">Destatis / SOEP 2023 — Eigentumsquote in %</div>
+    <div id="chart-eigentum" class="chart"></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SEKTION 3: Bildungsinflation                 -->
+  <!-- ============================================ -->
+
+  <h2 id="bildung">Die Bildungsinflation</h2>
+  <p>1990 hatten 25,5 Prozent eines Jahrgangs Hochschulreife. Heute sind es 45 Prozent. Klingt nach Fortschritt. Ist es auch — teilweise. Aber gleichzeitig ist etwas anderes passiert: Die Ausbildung wurde entwertet.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">45%</div>
+      <div class="kpi-label">Studienberechtigte</div>
+      <div class="kpi-sub">aktuell (1990: 25,5%)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">4,3</div>
+      <div class="kpi-label">Azubis pro 10 Studis</div>
+      <div class="kpi-sub">2021 (1950: 75,5)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">9,1%</div>
+      <div class="kpi-label">Betriebe bilden aus</div>
+      <div class="kpi-sub">2024 (2010: 12%)</div>
+    </div>
+  </div>
+
+  <p>1950 kamen auf 10 Studierende 75 Auszubildende. 2021: 4,3. Die Ausbildungsquote sinkt, immer weniger Betriebe bilden aus. Mehr Abschlüsse, gleiche Löhne. Das ist Credential Inflation — mehr Papier, weniger Wert.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Zwei Linien, eine Geschichte</div>
+    <div class="chart-subtitle">Studienberechtigte (%) vs. Azubi-Ratio (pro 10 Studierende)</div>
+    <div id="chart-bildung" class="chart chart-tall"></div>
+    <div class="radar-legend">
+      <span><span class="radar-dot" style="background:var(--accent)"></span> Hochschulreife (%)</span>
+      <span><span class="radar-dot" style="background:var(--danger)"></span> Azubis pro 10 Studierende</span>
+    </div>
+  </div>
+
+  <p class="text-small">Die Schere geht seit den 70ern auf. Mehr Menschen studieren — aber die duale Ausbildung, das deutsche Erfolgsmodell, verliert an Boden. Nicht weil sie schlecht wäre. Sondern weil ein Bachelor inzwischen die Eintrittskarte ist, die früher ein Gesellenbrief war.</p>
+
+  <!-- ============================================ -->
+  <!-- SEKTION 4: Was Gen Z wirklich will           -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Was Gen Z wirklich will</h2>
+    <p>Nicht faul. Anders.</p>
+  </div>
+
+  <h2 id="werte">Prioritäten im Vergleich</h2>
+  <p>Gen Z will weniger Gehalt als Millennials (56 vs. 70 Prozent). Dafür mehr Diversity, mehr soziale Verantwortung. 40 Prozent würden weniger Geld akzeptieren, wenn der Job einen gesellschaftlichen Beitrag leistet. Das ist kein Werteverfall. Das ist ein anderer Deal.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Prioritäten bei der Jobwahl: Gen Z vs. Millennials</div>
+    <div class="chart-subtitle">Deloitte Gen Z & Millennial Survey 2025 (Deutschland) — in %</div>
+    <div id="chart-priorities" class="chart chart-tall"></div>
+    <div class="radar-legend">
+      <span><span class="radar-dot" style="background:var(--accent)"></span> Gen Z</span>
+      <span><span class="radar-dot" style="background:var(--accent-2)"></span> Millennials</span>
+    </div>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">56% vs. 70%<span>Gehalt als Top-Priorität</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Die eine Lesart</div>
+        <p>Gen Z hat verstanden, dass Geld allein nicht glücklich macht. Sie suchen Sinn, Diversität, Verantwortung. Eine Generation, die mehr will als Konsum.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Die andere Lesart</div>
+        <p>Wer weniger Gehalt priorisiert, kann es sich entweder leisten — oder hat aufgegeben, damit jemals ein Haus zu kaufen. Bei 25,2% Eigentumsquote unter 45: vermutlich Letzteres.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">48%</div>
+      <div class="kpi-label">Finanzielle Unsicherheit</div>
+      <div class="kpi-sub">Gen Z Deutschland</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">80%</div>
+      <div class="kpi-label">Langfrist-Stress</div>
+      <div class="kpi-sub">Finanzen belasten stark</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">65%</div>
+      <div class="kpi-label">Klima-Angst</div>
+      <div class="kpi-sub">Gen Z Umweltsorgen</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SEKTION 5: Der Preis der Seele               -->
+  <!-- ============================================ -->
+
+  <h2 id="seele">Der Preis der Seele</h2>
+  <p>Und jetzt wird es ernst. Depression-bedingte Fehltage: 183 Tage pro 100 Versicherte (2024). Im Vorjahr: 122. Das ist ein Plus von 50 Prozent. In einem Jahr.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">+50%</div>
+      <div class="kpi-label">Depressions-Fehltage</div>
+      <div class="kpi-sub">2023 → 2024</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">40%</div>
+      <div class="kpi-label">Gen Z gestresst</div>
+      <div class="kpi-sub">"immer / meistens"</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">7%</div>
+      <div class="kpi-label">Psychisch krankgeschrieben</div>
+      <div class="kpi-sub">aller Beschäftigten 2024</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Depressions-Fehltage pro 100 Versicherte</div>
+    <div class="chart-subtitle">DAK Gesundheitsreport 2025 — nach Geschlecht</div>
+    <div id="chart-depression" class="chart"></div>
+    <div class="radar-legend">
+      <span><span class="radar-dot" style="background:var(--danger)"></span> Frauen</span>
+      <span><span class="radar-dot" style="background:var(--accent-2)"></span> Männer</span>
+      <span><span class="radar-dot" style="background:var(--accent)"></span> Gesamt</span>
+    </div>
+  </div>
+
+  <p>Frauen trifft es härter: 233 Depressionstage vs. 140 bei Männern. Junge Frauen zwischen 25 und 29: plus 24 Prozent Fehltage gegenüber dem Vorjahr. Bei den Männern derselben Altersgruppe: plus 29 Prozent. Die Klinikeinweisungen weiblicher Jugendlicher wegen Depression: plus 24 Prozent seit 2019. Wegen Angststörungen: plus 35 Prozent.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">233</div>
+      <div class="kpi-label">Frauen</div>
+      <div class="kpi-sub">Depressionstage / 100</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2">140</div>
+      <div class="kpi-label">Männer</div>
+      <div class="kpi-sub">Depressionstage / 100</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">52%</div>
+      <div class="kpi-label">Gen Z Wellbeing</div>
+      <div class="kpi-sub">"gut / sehr gut"</div>
+    </div>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">19,7 Tage<span>Durchschnittliche Fehltage pro Beschäftigtem</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Das Narrativ</div>
+        <p>Gen Z ist häufiger krank — 4,7% Ausfallquote. Faul? Nein: Die durchschnittliche Krankheitsdauer liegt bei 5,9 Tagen vs. 9,7 insgesamt. Sie gehen früher zum Arzt. Und kommen schneller zurück.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Die Realität</div>
+        <p>Mehr Awareness ist gut. Aber wenn 40% einer Generation sagen, sie seien "immer oder meistens gestresst" — dann ist das kein Trend. Das ist eine Krise. Und Krisen löst man nicht mit Achtsamkeits-Apps.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SEKTION 6: Die Information                   -->
+  <!-- ============================================ -->
+
+  <h2 id="information">Die Information</h2>
+  <p>Verschiedene Generationen leben in verschiedenen Informationsrealitäten. 50 Prozent der Unter-35-Jährigen beziehen ihre Nachrichten wöchentlich über Social Media. Insgesamt sind es 34 Prozent. Die Tagesschau? 60 Prozent schauen noch klassisches TV.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Nachrichtenquellen: Jung vs. Gesamt</div>
+    <div class="chart-subtitle">Reuters Digital News Report 2024 Deutschland — in %</div>
+    <div id="chart-nachrichten" class="chart"></div>
+    <div class="radar-legend">
+      <span><span class="radar-dot" style="background:var(--accent)"></span> Unter 35</span>
+      <span><span class="radar-dot" style="background:var(--accent-2)"></span> Gesamt</span>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">50%</div>
+      <div class="kpi-label">Social Media U35</div>
+      <div class="kpi-sub">wöchentliche Nachrichtenquelle</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">42%</div>
+      <div class="kpi-label">Fake-News-Sorge</div>
+      <div class="kpi-sub">in Social Media</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2">60%</div>
+      <div class="kpi-label">TV-Nachrichten</div>
+      <div class="kpi-sub">Gesamtbevölkerung</div>
+    </div>
+  </div>
+
+  <p class="text-small">42 Prozent machen sich Sorgen über Fake News in Social Media. Die Ironie: Genau dort informieren sich die Jungen. Nicht weil sie naiv sind — sondern weil die Institutionen dort nicht stattfinden.</p>
+
+  <!-- ============================================ -->
+  <!-- SEKTION 7: Die Hoffnung                      -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Die Hoffnung</h2>
+    <p>Es bewegt sich etwas</p>
+  </div>
+
+  <h2 id="hoffnung">Die Jungen zeigen auf</h2>
+  <p>Bundestagswahl 2025. Die Wahlbeteiligung bei den 21- bis 44-Jährigen ist um 7 bis 8 Prozentpunkte gestiegen. Die höchste Gesamtbeteiligung seit 1987. Gen Z ist nicht apathisch. Sie haben verstanden, dass Nichtwählen kein Protest ist.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Anstieg der Wahlbeteiligung nach Altersgruppe (BTW 2025 vs. 2021)</div>
+    <div class="chart-subtitle">Bundeswahlleiter — Veränderung in Prozentpunkten</div>
+    <div id="chart-wahl" class="chart"></div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">+8,3 pp</div>
+      <div class="kpi-label">21–24 Jahre</div>
+      <div class="kpi-sub">höchster Anstieg</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">+7,5 pp</div>
+      <div class="kpi-label">25–34 Jahre</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">+7,1 pp</div>
+      <div class="kpi-label">35–44 Jahre</div>
+    </div>
+  </div>
+
+  <p>Und noch eine Zahl: Reallöhne 2024 — plus 3,1 Prozent. Der stärkste Anstieg seit 2008. Nach dem Einbruch von minus 3 Prozent in 2022 ein Hoffnungszeichen. Die Dinge können sich bewegen. Wenn man sie bewegt.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">+3,1%</div>
+      <div class="kpi-label">Reallohn 2024</div>
+      <div class="kpi-sub">stärkster Anstieg seit 2008</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">-3,0%</div>
+      <div class="kpi-label">Reallohn 2022</div>
+      <div class="kpi-sub">Inflationsschock</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2">39%</div>
+      <div class="kpi-label">Anteil 60+</div>
+      <div class="kpi-sub">aller Wählenden</div>
+    </div>
+  </div>
+
+  <p class="text-small">39 Prozent aller Wählenden waren 60 oder älter. Die Demografie ist ein Tanker — aber die Jungen drehen am Ruder. Nicht laut. Nicht schnell. Aber sie drehen.</p>
+
+  <hr class="divider">
+
+  <!-- ============================================ -->
+  <!-- FAZIT                                        -->
+  <!-- ============================================ -->
+
+  <h2>Der Deal</h2>
+  <p>Die Boomer tauschten Zeit gegen Eigentum. Es hat funktioniert — für die, die dabei waren. Aber der Deal ist nicht mehr verfügbar. Die Millennials tauschten Sicherheit gegen Flexibilität. Und merkten, dass Flexibilität auch bedeuten kann: Du trägst das Risiko allein.</p>
+  <p>Gen Z tauscht Gehalt gegen Sinn. Nicht weil sie sich das leisten können — sondern weil ihnen nichts anderes übrig bleibt. Wenn Du weißt, dass Du Dir kein Haus kaufen wirst, suchst Du Dir wenigstens einen Job, der sich richtig anfühlt.</p>
+  <p>Und der Preis? Der zeigt sich in den Seelen. Plus 50 Prozent Depressionstage. In einem Jahr. Das ist der Preis dafür, mehr zu wissen, mehr zu fühlen und weniger zu haben.</p>
+
+  <p class="tk-closer">Jede Generation macht einen Deal. Die Frage ist nicht, ob der Deal fair ist. Die Frage ist, ob wir ehrlich darüber reden.</p>
+
+  <!-- Sources -->
+  <div class="source-card">
+    <h3>Quellen & Daten</h3>
+    <ul>
+      <li>DAK Gesundheitsreport 2025 — Krankenstand, Depression, psychische Erkrankungen</li>
+      <li>Deloitte Gen Z & Millennial Survey 2025 — Deutschland-Auswertung</li>
+      <li>Deutsche Bundesbank — Panel on Household Finances (PHF) 2023</li>
+      <li>Destatis — Wohneigentum, Reallöhne, Bildungsstatistik</li>
+      <li>BIBB — Berufsbildungsbericht, Ausbildungsquoten</li>
+      <li>Reuters Digital News Report 2024 — Deutschland</li>
+      <li>Bundeswahlleiter — Wahlbeteiligung BTW 2025</li>
+      <li>WSI — Reallohnentwicklung</li>
+      <li>SOEP — Sozio-oekonomisches Panel, Vermögensverteilung</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/tkoerting/data-stories" class="github-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      tkoerting/data-stories — Code, Daten, Methodik
+    </a>
+  </p>
+
+  <div class="article-footer">
+    <p>Der Körting — Datenstück #4 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const charts = {};
+
+function initCharts() {
+  Object.values(charts).forEach(ch => { try { ch.dispose() } catch(e) {} });
+
+  fetch('data.json').then(r => r.json()).then(D => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const c = {
+      accent: isDark ? '#14B8A6' : '#0D9488',
+      accent2: isDark ? '#FACC15' : '#EAB308',
+      danger: isDark ? '#EF4444' : '#DC2626',
+      warning: isDark ? '#F59E0B' : '#D97706',
+      purple: isDark ? '#8B5CF6' : '#7C3AED',
+      text: isDark ? '#E5E7EB' : '#1E293B',
+      textSec: isDark ? '#9CA3AF' : '#64748B',
+      textTert: isDark ? '#6B7280' : '#94A3B8',
+      grid: isDark ? '#2D3139' : '#E2E5E9',
+      bg: isDark ? '#1E2028' : '#FFFFFF'
+    };
+
+    const base = {
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+      grid: { left: 50, right: 20, top: 30, bottom: 30 },
+      tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } }
+    };
+
+    // === CHART 1: Vermögen nach Altersgruppe ===
+    const verm = D.vermoegen.by_age;
+    charts.vermoegen = echarts.init(document.getElementById('chart-vermoegen'));
+    charts.vermoegen.setOption({...base,
+      grid: { left: 60, right: 30, top: 20, bottom: 30 },
+      xAxis: { type: 'category', data: verm.map(d => d.group), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v >= 1000 ? (v/1000) + 'k' : v } },
+      series: [{
+        type: 'bar',
+        data: verm.map((d, i) => ({
+          value: d.median,
+          itemStyle: {
+            color: i === 0 ? c.danger : i === verm.length - 1 ? c.accent : c.accent + '77',
+            borderRadius: [4, 4, 0, 0]
+          },
+          label: { show: true, position: 'top', formatter: d.median >= 1000 ? (d.median/1000).toFixed(1) + 'k €' : d.median + ' €', color: c.textSec, fontSize: 11, fontFamily: 'JetBrains Mono' }
+        })),
+        barWidth: 50
+      }]
+    });
+
+    // === CHART 2: Wohneigentum ===
+    charts.eigentum = echarts.init(document.getElementById('chart-eigentum'));
+    const we = D.wohneigentum;
+    charts.eigentum.setOption({...base,
+      grid: { left: 50, right: 30, top: 30, bottom: 30 },
+      legend: { data: ['2000', '2024'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      xAxis: { type: 'category', data: ['Unter 45', 'Über 45'], axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      yAxis: { type: 'value', max: 60, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      series: [
+        {
+          name: '2000',
+          type: 'bar',
+          data: [
+            { value: we.unter_45.jahr_2000, itemStyle: { color: c.accent2 + 'AA', borderRadius: [4, 4, 0, 0] } },
+            { value: 50, itemStyle: { color: c.accent2 + 'AA', borderRadius: [4, 4, 0, 0] } }
+          ],
+          barGap: '20%',
+          label: { show: true, position: 'top', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono', formatter: '{c}%' }
+        },
+        {
+          name: '2024',
+          type: 'bar',
+          data: [
+            { value: we.unter_45.aktuell, itemStyle: { color: c.danger, borderRadius: [4, 4, 0, 0] } },
+            { value: we.ueber_45, itemStyle: { color: c.accent, borderRadius: [4, 4, 0, 0] } }
+          ],
+          label: { show: true, position: 'top', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono', formatter: '{c}%' }
+        }
+      ]
+    });
+
+    // === CHART 3: Bildungsinflation (Dual Axis) ===
+    const bild = D.bildung.timeline;
+    charts.bildung = echarts.init(document.getElementById('chart-bildung'));
+    charts.bildung.setOption({...base,
+      grid: { left: 50, right: 55, top: 20, bottom: 30 },
+      xAxis: { type: 'category', data: bild.map(d => d.year), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert } },
+      yAxis: [
+        {
+          type: 'value', name: 'Hochschulreife %', nameTextStyle: { color: c.accent, fontSize: 10 },
+          axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } },
+          axisLabel: { color: c.accent, formatter: v => v + '%' }, max: 80
+        },
+        {
+          type: 'value', name: 'Azubi-Ratio', nameTextStyle: { color: c.danger, fontSize: 10 },
+          axisLine: { show: false }, splitLine: { show: false },
+          axisLabel: { color: c.danger }, max: 80
+        }
+      ],
+      series: [
+        {
+          name: 'Hochschulreife', type: 'line', yAxisIndex: 0,
+          data: bild.map(d => d.hochschulreife_pct), smooth: true,
+          lineStyle: { width: 2.5, color: c.accent }, itemStyle: { color: c.accent },
+          areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: c.accent + '33' }, { offset: 1, color: 'transparent' }]) }
+        },
+        {
+          name: 'Azubis/10 Studis', type: 'line', yAxisIndex: 1,
+          data: bild.map(d => d.azubi_ratio), smooth: true,
+          lineStyle: { width: 2.5, color: c.danger }, itemStyle: { color: c.danger },
+          areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: c.danger + '22' }, { offset: 1, color: 'transparent' }]) }
+        }
+      ]
+    });
+
+    // === CHART 4: Gen Z Priorities (Grouped Horizontal Bar) ===
+    const prio = D.genz_priorities;
+    charts.priorities = echarts.init(document.getElementById('chart-priorities'));
+    charts.priorities.setOption({...base,
+      grid: { left: 130, right: 30, top: 30, bottom: 30 },
+      legend: { data: ['Gen Z', 'Millennials'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      xAxis: { type: 'value', max: 80, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: [...prio.categories].reverse(), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      series: [
+        {
+          name: 'Gen Z', type: 'bar',
+          data: [...prio.genz].reverse().map(v => ({ value: v, itemStyle: { color: c.accent, borderRadius: [0, 4, 4, 0] } })),
+          barGap: '20%',
+          label: { show: true, position: 'right', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono', formatter: '{c}%' }
+        },
+        {
+          name: 'Millennials', type: 'bar',
+          data: [...prio.millennials].reverse().map(v => ({ value: v, itemStyle: { color: c.accent2, borderRadius: [0, 4, 4, 0] } })),
+          label: { show: true, position: 'right', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono', formatter: '{c}%' }
+        }
+      ]
+    });
+
+    // === CHART 5: Depression / Mental Health ===
+    const mh = D.mental_health;
+    charts.depression = echarts.init(document.getElementById('chart-depression'));
+    charts.depression.setOption({...base,
+      grid: { left: 50, right: 30, top: 30, bottom: 30 },
+      legend: { data: ['Frauen', 'Männer', 'Gesamt'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      xAxis: { type: 'category', data: ['2023', '2024'], axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert } },
+      series: [
+        {
+          name: 'Frauen', type: 'bar',
+          data: [
+            { value: 155, itemStyle: { color: c.danger + 'AA', borderRadius: [4, 4, 0, 0] } },
+            { value: mh.depression_by_gender.frauen, itemStyle: { color: c.danger, borderRadius: [4, 4, 0, 0] } }
+          ],
+          label: { show: true, position: 'top', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono' }
+        },
+        {
+          name: 'Männer', type: 'bar',
+          data: [
+            { value: 93, itemStyle: { color: c.accent2 + 'AA', borderRadius: [4, 4, 0, 0] } },
+            { value: mh.depression_by_gender.maenner, itemStyle: { color: c.accent2, borderRadius: [4, 4, 0, 0] } }
+          ],
+          label: { show: true, position: 'top', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono' }
+        },
+        {
+          name: 'Gesamt', type: 'bar',
+          data: [
+            { value: mh.depression_tage_pro_100['2023'], itemStyle: { color: c.accent + 'AA', borderRadius: [4, 4, 0, 0] } },
+            { value: mh.depression_tage_pro_100['2024'], itemStyle: { color: c.accent, borderRadius: [4, 4, 0, 0] } }
+          ],
+          label: { show: true, position: 'top', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono' }
+        }
+      ]
+    });
+
+    // === CHART 6: Nachrichtenquellen ===
+    charts.nachrichten = echarts.init(document.getElementById('chart-nachrichten'));
+    const nn = D.nachrichten;
+    charts.nachrichten.setOption({...base,
+      grid: { left: 100, right: 30, top: 30, bottom: 30 },
+      legend: { data: ['Unter 35', 'Gesamt'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      xAxis: { type: 'value', max: 70, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: ['TV-Nachrichten', 'Social Media'].reverse(), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [
+        {
+          name: 'Unter 35', type: 'bar',
+          data: [
+            { value: nn.social_media_unter_35, itemStyle: { color: c.accent, borderRadius: [0, 4, 4, 0] } },
+            { value: 35, itemStyle: { color: c.accent, borderRadius: [0, 4, 4, 0] } }
+          ],
+          barGap: '20%',
+          label: { show: true, position: 'right', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono', formatter: '{c}%' }
+        },
+        {
+          name: 'Gesamt', type: 'bar',
+          data: [
+            { value: nn.social_media_gesamt, itemStyle: { color: c.accent2, borderRadius: [0, 4, 4, 0] } },
+            { value: nn.tv_nachrichten, itemStyle: { color: c.accent2, borderRadius: [0, 4, 4, 0] } }
+          ],
+          label: { show: true, position: 'right', color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono', formatter: '{c}%' }
+        }
+      ]
+    });
+
+    // === CHART 7: Wahlbeteiligung ===
+    const wahl = D.wahlbeteiligung.btw_2025.anstieg_21_44;
+    charts.wahl = echarts.init(document.getElementById('chart-wahl'));
+    charts.wahl.setOption({...base,
+      grid: { left: 60, right: 30, top: 20, bottom: 30 },
+      xAxis: { type: 'category', data: wahl.map(d => d.group), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => '+' + v + ' pp' }, max: 10 },
+      series: [{
+        type: 'bar',
+        data: wahl.map((d, i) => ({
+          value: d.change_pp,
+          itemStyle: {
+            color: i === 0 ? c.accent : c.accent + (i === 1 ? 'BB' : '88'),
+            borderRadius: [4, 4, 0, 0]
+          },
+          label: { show: true, position: 'top', formatter: '+' + d.change_pp + ' pp', color: c.accent, fontSize: 12, fontFamily: 'JetBrains Mono', fontWeight: 500 }
+        })),
+        barWidth: 50
+      }]
+    });
+
+    // Resize handler
+    window.addEventListener('resize', () => Object.values(charts).forEach(ch => { try { ch.resize() } catch(e) {} }));
+  });
+}
+
+(function(){
+  const url = new URLSearchParams(window.location.search).get('theme');
+  const saved = url || localStorage.getItem('tk-theme');
+  if(saved){ document.documentElement.dataset.theme = saved; localStorage.setItem('tk-theme', saved) }
+  const b = document.querySelector('.toggle-btn');
+  if(b) b.textContent = document.documentElement.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+})();
+
+function toggleTheme() {
+  const h = document.documentElement, b = document.querySelector('.toggle-btn');
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('tk-theme', h.dataset.theme);
+  b.textContent = h.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  initCharts();
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+</script>
+</body>
+</html>

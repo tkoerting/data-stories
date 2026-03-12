@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicht fauler. Führungsloser. — Datenstück | Der Körting</title>
+<meta name="description" content="Deutschland hat kein Faulheits-Problem. Es hat ein Führungs-Problem. Die Daten sind eindeutig: 12% Engagement, -0,9% Produktivität, 167 Mrd. € Schaden. Ein Datenstück.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+  .nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
+  .compare-card.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+  .compare-card.dim{opacity:0.7}
+  .compare-card.alert{border-color:var(--danger);background:var(--danger-subtle)}
+  .compare-city{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+  .compare-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;line-height:1.2}
+  .compare-number.zero{color:var(--danger)}
+  .compare-number.good{color:var(--accent)}
+  .compare-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.25rem}
+
+  .perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+  .perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+  .perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+
+  .spin-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .spin-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;color:var(--accent);text-align:center;margin-bottom:1rem;line-height:1.2}
+  .spin-number span{display:block;font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);font-weight:400;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+  .spin-sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .spin-side{padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.6}
+  .spin-side.positive{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.2)}
+  .spin-side.negative{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)}
+  .spin-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-weight:600}
+  .spin-side.positive .spin-label{color:var(--accent)}
+  .spin-side.negative .spin-label{color:var(--danger)}
+  .spin-side p{margin:0;font-size:0.85rem}
+
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .spin-sides{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+        <a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+        <a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="../" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="../" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Laut gedacht</span>
+    <span class="snapshot-tag">März 2026</span>
+    <span>zum <a href="https://der-koerting.de/2026/03/11/nicht-fauler-fuehrungsloser/">Blogpost</a></span>
+  </div>
+
+  <h1>Nicht fauler. Führungsloser.</h1>
+  <div class="subtitle">Warum Deutschland kein Motivationsproblem hat — sondern ein Führungsproblem.</div>
+
+  <p class="lead">Lanz und Precht reden über Deutschlands Burnout. Die Stammtische sagen: Die Leute sind faul geworden. Die Daten sagen etwas anderes. Deutschland arbeitet nicht zu wenig. Deutschland wird schlecht geführt. Und das lässt sich belegen.</p>
+
+  <nav class="section-nav">
+    <a href="#mythos" class="nav-pill">Der Mythos</a>
+    <a href="#grenze" class="nav-pill">Die Grenze</a>
+    <a href="#absturz" class="nav-pill">Der Absturz</a>
+    <span class="nav-sep">|</span>
+    <a href="#krankmeldung" class="nav-pill">Krankmeldung</a>
+    <a href="#problem" class="nav-pill">Das Problem</a>
+    <a href="#ausweg" class="nav-pill">Der Ausweg</a>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: Der Mythos                        -->
+  <!-- ============================================ -->
+
+  <h2 id="mythos">Der Mythos</h2>
+  <p>Das Narrativ kennt jeder: Die Deutschen arbeiten zu wenig. Stimmt das? Ja — rein rechnerisch. Deutschland hat mit 1.344 Stunden pro Jahr die niedrigsten Arbeitszeiten unter den großen OECD-Ländern. Aber schau Dir an, wer noch weniger oder ähnlich viel arbeitet — und was dabei rauskommt.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value accent2">1.344 h</div>
+      <div class="kpi-label">Deutschland</div>
+      <div class="kpi-sub">$68,30/h Produktivität</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">1.415 h</div>
+      <div class="kpi-label">Dänemark</div>
+      <div class="kpi-sub">$104,10/h Produktivität</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">1.872 h</div>
+      <div class="kpi-label">Südkorea</div>
+      <div class="kpi-sub">$43,40/h Produktivität</div>
+    </div>
+  </div>
+
+  <p>Dänemark arbeitet 71 Stunden mehr als Deutschland — und ist 52% produktiver pro Stunde. Südkorea arbeitet 528 Stunden mehr — und schafft pro Stunde deutlich weniger. Die Anzahl der Stunden ist nicht das Problem.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Arbeitsstunden vs. Produktivität pro Stunde</div>
+    <div class="chart-subtitle">OECD Employment Outlook 2024 / 7 Länder</div>
+    <div id="chart-oecd" class="chart chart-tall"></div>
+  </div>
+
+  <p class="text-small">Sortiert nach Arbeitsstunden. Die Balken zeigen die Stunden, die Linie zeigt die Produktivität pro Stunde. Dänemark sticht heraus: ähnliche Stunden wie Deutschland, aber eine komplett andere Output-Klasse.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: Die Grenze                        -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Mehr ist nicht mehr.</h2>
+    <p>Ab einem bestimmten Punkt arbeitest Du — aber schaffst nichts mehr.</p>
+  </div>
+
+  <h2 id="grenze">Die Grenze</h2>
+  <p>Der Stanford-Ökonom John Pencavel hat 2014 nachgemessen, was jeder ahnt, aber niemand aussprechen will: Produktivität hat eine Obergrenze. Und die liegt nicht bei 60 Stunden. Sie liegt bei 48.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">48 h</div>
+      <div class="kpi-label">Peak</div>
+      <div class="kpi-sub">Maximale Produktivität</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">55 h</div>
+      <div class="kpi-label">Klippe</div>
+      <div class="kpi-sub">Output wird wertlos</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">70 = 56</div>
+      <div class="kpi-label">Irrsinn</div>
+      <div class="kpi-sub">70h Output = 56h Output</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Die Pencavel-Kurve: Produktivität nach Wochenstunden</div>
+    <div class="chart-subtitle">Stanford University / Pencavel (2014) / IZA DP No. 8129</div>
+    <div id="chart-pencavel" class="chart chart-tall"></div>
+  </div>
+
+  <p>Wer 70 Stunden arbeitet, produziert dasselbe wie jemand, der 56 Stunden arbeitet. Die 14 Extra-Stunden sind verschwendet. Komplett. Nicht „weniger effizient" — verschwendet. Die nächste Führungskraft, die „mehr Einsatz" fordert, sollte diese Kurve an die Wand hängen.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: Der Absturz                       -->
+  <!-- ============================================ -->
+
+  <h2 id="absturz">Der Absturz</h2>
+  <p>Wenn Stunden nicht das Problem sind — was dann? Die Produktivität pro Stunde. Und die bricht in Deutschland ein. Nicht ein bisschen. Dramatisch.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">-0,9%</div>
+      <div class="kpi-label">Produktivität 2023</div>
+      <div class="kpi-sub">Veränderung zum Vorjahr</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">-0,3%</div>
+      <div class="kpi-label">BIP 2023</div>
+      <div class="kpi-sub">Wirtschaftsleistung</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">-0,2%</div>
+      <div class="kpi-label">Produktivität 2024</div>
+      <div class="kpi-sub">Keine Erholung</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Stundenproduktivität Deutschland (Veränderung zum Vorjahr)</div>
+    <div class="chart-subtitle">Destatis / OECD / ifo Institut</div>
+    <div id="chart-productivity" class="chart"></div>
+  </div>
+
+  <p>Deutschland schafft pro Stunde weniger als im Vorjahr. Seit 2022. Das ist nicht konjunkturell — das ist strukturell. Die Leute arbeiten. Aber es kommt weniger dabei raus. Die spannende Frage ist: Warum?</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: Die Krankmeldung                  -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Alle krank?</h2>
+    <p>Nicht ganz. Die Wahrheit ist komplizierter — und ehrlicher.</p>
+  </div>
+
+  <h2 id="krankmeldung">Die Krankmeldung</h2>
+  <p>23,9 Krankheitstage pro Arbeitnehmer. 82 Milliarden Euro Lohnfortzahlung. Das klingt nach einem Land, das kollektiv im Bett liegt. Aber bevor Du das glaubst: 2023 wurde die elektronische Arbeitsunfähigkeitsbescheinigung (eAU) eingeführt.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value warning">23,9</div>
+      <div class="kpi-label">Krankheitstage 2024</div>
+      <div class="kpi-sub">Durchschnitt pro Arbeitnehmer</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">82 Mrd &euro;</div>
+      <div class="kpi-label">Lohnfortzahlung</div>
+      <div class="kpi-sub">Gesamtkosten 2024</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">eAU</div>
+      <div class="kpi-label">Seit 2023</div>
+      <div class="kpi-sub">Statistischer Artefakt</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Krankheitstage pro Arbeitnehmer — mit eAU-Effekt</div>
+    <div class="chart-subtitle">DAK / TK Gesundheitsreport / Destatis</div>
+    <div id="chart-sickdays" class="chart"></div>
+  </div>
+
+  <p>Vorher: Dein Arzt hat Dir einen gelben Zettel gegeben. Den musstest Du per Post an die Krankenkasse schicken. Viele haben das bei ein, zwei Tagen einfach nicht gemacht. Seit 2023 geht die Meldung automatisch digital raus. Jeder einzelne Tag wird erfasst.</p>
+
+  <p>Das heißt nicht, dass niemand krank ist. Es heißt, dass wir vorher gar nicht wussten, wie krank. Ein Teil des Anstiegs ist real — aber ein erheblicher Teil ist ein Erfassungseffekt. Wer das ignoriert, argumentiert mit einer Zahl, die er nicht versteht.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: Das eigentliche Problem           -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Und jetzt der eigentliche Punkt.</h2>
+    <p>12 Prozent. Mehr muss man eigentlich nicht sagen.</p>
+  </div>
+
+  <h2 id="problem">Das eigentliche Problem</h2>
+  <p>Gallup misst seit über 20 Jahren, wie engagiert Mitarbeiter bei der Arbeit sind. Der Wert für Deutschland 2024: 12 Prozent. Der niedrigste, den Gallup jemals für Deutschland gemessen hat.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card alert">
+      <div class="compare-city">Deutschland</div>
+      <div class="compare-number zero">12%</div>
+      <div class="compare-detail">Engaged — historischer Tiefstand</div>
+      <div class="compare-detail">45% suchen aktiv neuen Job</div>
+    </div>
+    <div class="compare-card highlight">
+      <div class="compare-city">Weltweit</div>
+      <div class="compare-number good">23%</div>
+      <div class="compare-detail">Engaged — globaler Durchschnitt</div>
+      <div class="compare-detail">Fast doppelt so hoch</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">167 Mrd &euro;</div>
+      <div class="kpi-label">Geschätzte Kosten</div>
+      <div class="kpi-sub">Gallup Schadensberechnung</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">45%</div>
+      <div class="kpi-label">Suchen neuen Job</div>
+      <div class="kpi-sub">Aktiv oder offen</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">88%</div>
+      <div class="kpi-label">Nicht engagiert</div>
+      <div class="kpi-sub">Dienst nach Vorschrift oder weniger</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Mitarbeiter-Engagement im Vergleich</div>
+    <div class="chart-subtitle">Gallup State of the Global Workplace 2024</div>
+    <div id="chart-engagement" class="chart"></div>
+  </div>
+
+  <p>88 Prozent der deutschen Arbeitnehmer machen Dienst nach Vorschrift — oder weniger. Fast die Hälfte sucht aktiv nach einem anderen Job. Das ist kein Motivationsproblem. Das ist ein Führungsproblem. Menschen kündigen nicht Unternehmen. Sie kündigen Chefs.</p>
+
+  <p>167 Milliarden Euro. Das ist der geschätzte wirtschaftliche Schaden durch mangelndes Engagement. Nicht durch zu wenig Arbeitsstunden. Nicht durch zu viel Krankmeldung. Durch schlechte Führung.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 6: Der Ausweg                        -->
+  <!-- ============================================ -->
+
+  <h2 id="ausweg">Der Ausweg</h2>
+  <p>Die gute Nachricht: Es gibt Signale, die Hoffnung machen. Drei davon sind messbar.</p>
+
+  <h3>1. KI als Produktivitätshebel</h3>
+  <p>Harvard und BCG haben untersucht, was passiert, wenn Consultants mit GPT-4 arbeiten. Die Ergebnisse sind eindeutig:</p>
+
+  <div class="chart-container">
+    <div class="chart-title">KI-Produktivitätseffekte (Harvard/BCG-Studie)</div>
+    <div class="chart-subtitle">Harvard Business School / Boston Consulting Group (2023)</div>
+    <div id="chart-ai" class="chart"></div>
+  </div>
+
+  <p>+43% Verbesserung bei unterdurchschnittlichen Performern. Das ist der entscheidende Punkt. KI ist kein Werkzeug für die Besten — es ist ein Equalizer. Es hebt die an, die am meisten Unterstützung brauchen. In einem Land mit 88% Nicht-Engagement ist das ein gewaltiger Hebel.</p>
+
+  <h3>2. Der erzwungene Wandel</h3>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value accent2">12,9 Mio</div>
+      <div class="kpi-label">Boomer in Rente</div>
+      <div class="kpi-sub">bis 2036</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">630.000</div>
+      <div class="kpi-label">Offene Stellen</div>
+      <div class="kpi-sub">DIHK Fachkräftereport</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">Gen Z</div>
+      <div class="kpi-label">Andere Erwartungen</div>
+      <div class="kpi-sub">Purpose > Präsenz</div>
+    </div>
+  </div>
+
+  <p>12,9 Millionen Babyboomer gehen bis 2036 in Rente. 630.000 Stellen sind heute schon unbesetzt. Unternehmen, die weiter führen wie 2005, werden kein Personal mehr finden. Der Arbeitsmarkt erzwingt, was die Führungsetagen nicht freiwillig ändern.</p>
+
+  <h3>3. Das dänische Modell</h3>
+
+  <div class="spin-card">
+    <div class="spin-number">$104,10<span>Produktivität pro Stunde — Dänemark</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Was Dänemark anders macht</div>
+        <p>Flexicurity: Einfach kündbar, aber starkes Sozialnetz. Hohe Vertrauenskultur, wenig Bürokratie. 4-Tage-Woche-Piloten zeigen: Produktivität bleibt gleich oder steigt.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Was Deutschland noch macht</div>
+        <p>Misstrauen als Managementstrategie. Präsenzkultur. Berichtslinien statt Eigenverantwortung. 12% Engagement als akzeptierter Normalzustand. Statt Führung: Verwaltung.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Spin Card: Engagement -->
+  <h3>Dieselbe Zahl, zwei Geschichten</h3>
+
+  <div class="spin-card">
+    <div class="spin-number">12%<span>Engagement-Rate Deutschland</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Die Ausrede</div>
+        <p>„Das ist ein europäisches Phänomen. Westeuropa liegt generell niedrig. Die Leute wollen einfach nicht mehr."</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Was die Zahl wirklich sagt</div>
+        <p>USA und Kanada: 33%. Weltweit: 23%. Das ist kein Kulturphänomen. Das ist ein Führungsversagen. 167 Mrd. Euro pro Jahr, die durch schlechtes Management verbrannt werden.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">23,9<span>Krankheitstage pro Jahr</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Die Schlagzeile</div>
+        <p>„Deutschland ist kränker als je zuvor! 82 Milliarden Euro Lohnfortzahlung! Das System kollabiert!"</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Die Realität</div>
+        <p>Die eAU erfasst seit 2023 erstmals alle Krankmeldungen automatisch. Vorher wurden Kurzzeit-Krankmeldungen oft nicht gemeldet. Ein Teil des Anstiegs ist eine Zahl, die endlich stimmt.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="tk-closer">Deutschland hat kein Faulheits-Problem. Deutschland hat ein Führungs-Problem. Und wer das nicht sieht, ist Teil davon.</p>
+
+  <p>Die Daten sind da. Die Stunden stimmen. Die Produktivität pro Stunde sinkt. Das Engagement ist auf einem historischen Tiefstand. 167 Milliarden Euro gehen verloren — nicht weil Menschen nicht arbeiten wollen, sondern weil sie nicht geführt werden. Nicht inspiriert. Nicht befähigt.</p>
+
+  <p>Der Wandel kommt. Ob die Führungsetagen das wollen oder nicht. 12,9 Millionen Boomer gehen. KI verschiebt die Regeln. Und eine Generation rückt nach, die sich nicht mehr mit „Das war schon immer so" abspeisen lässt.</p>
+
+  <p>Die Frage ist nicht, ob sich etwas ändert. Die Frage ist, ob Du dabei vorne mitgehst — oder zusehen musst.</p>
+
+  <!-- Sources -->
+  <div class="source-card">
+    <h3>Quellen & Daten</h3>
+    <ul>
+      <li>OECD Employment Outlook 2024 — Arbeitsstunden & Produktivität</li>
+      <li>Stanford University / Pencavel (2014) — IZA Discussion Paper No. 8129</li>
+      <li>Destatis / ifo Institut — Stundenproduktivität Deutschland</li>
+      <li>DAK Gesundheitsreport / TK Gesundheitsreport 2024 — Krankheitstage</li>
+      <li>Gallup State of the Global Workplace 2024 — Engagement</li>
+      <li>Harvard Business School / BCG (2023) — KI-Produktivitätsstudie</li>
+      <li>DIHK Fachkräftereport 2024 — Offene Stellen</li>
+      <li>Danmarks Statistik / Eurofound — Flexicurity & 4-Tage-Woche</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/tkoerting/data-stories" class="github-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      tkoerting/data-stories — Code, Daten, Methodik
+    </a>
+  </p>
+
+  <div class="article-footer">
+    <p>Der Körting — Datenstück #3 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const charts = {};
+
+function initCharts() {
+  // Dispose existing charts
+  Object.values(charts).forEach(ch => { try { ch.dispose() } catch(e) {} });
+
+  fetch('data.json').then(r => r.json()).then(D => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const c = {
+      accent: isDark ? '#14B8A6' : '#0D9488',
+      accent2: isDark ? '#FACC15' : '#EAB308',
+      danger: isDark ? '#EF4444' : '#DC2626',
+      warning: isDark ? '#F59E0B' : '#D97706',
+      purple: isDark ? '#8B5CF6' : '#7C3AED',
+      text: isDark ? '#E5E7EB' : '#1E293B',
+      textSec: isDark ? '#9CA3AF' : '#64748B',
+      textTert: isDark ? '#6B7280' : '#94A3B8',
+      grid: isDark ? '#2D3139' : '#E2E5E9',
+      bg: isDark ? '#1E2028' : '#FFFFFF'
+    };
+
+    const base = {
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+      grid: { left: 50, right: 20, top: 30, bottom: 30 },
+      tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } }
+    };
+
+    // === CHART 1: OECD Hours vs Productivity ===
+    const oecd = D.oecd_hours.countries.sort((a, b) => a.hours - b.hours);
+    charts.oecd = echarts.init(document.getElementById('chart-oecd'));
+    charts.oecd.setOption({...base,
+      legend: { data: ['Arbeitsstunden/Jahr', 'Produktivität $/h'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      grid: {...base.grid, top: 40, bottom: 40 },
+      xAxis: { type: 'category', data: oecd.map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11, rotate: 20 } },
+      yAxis: [
+        { type: 'value', name: 'Stunden', nameTextStyle: { color: c.textTert, fontSize: 10 }, min: 1200, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v.toLocaleString() } },
+        { type: 'value', name: '$/h', nameTextStyle: { color: c.textTert, fontSize: 10 }, axisLine: { show: false }, splitLine: { show: false }, axisLabel: { color: c.textTert, formatter: v => '$' + v } }
+      ],
+      series: [
+        {
+          name: 'Arbeitsstunden/Jahr', type: 'bar', yAxisIndex: 0,
+          data: oecd.map(d => ({
+            value: d.hours,
+            itemStyle: {
+              color: d.name === 'Deutschland' ? c.accent2 : d.name === 'Dänemark' ? c.accent : c.accent + '55',
+              borderRadius: [4, 4, 0, 0]
+            }
+          })),
+          barWidth: 28
+        },
+        {
+          name: 'Produktivität $/h', type: 'line', yAxisIndex: 1, smooth: true,
+          data: oecd.map(d => d.productivity),
+          lineStyle: { width: 2.5, color: c.danger },
+          itemStyle: { color: c.danger },
+          symbol: 'circle', symbolSize: 8,
+          label: { show: true, position: 'top', formatter: p => '$' + p.value, color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono' }
+        }
+      ]
+    });
+
+    // === CHART 2: Pencavel Curve ===
+    const pcv = D.pencavel_curve.data;
+    charts.pencavel = echarts.init(document.getElementById('chart-pencavel'));
+    charts.pencavel.setOption({...base,
+      grid: {...base.grid, top: 20, right: 30 },
+      xAxis: { type: 'category', data: pcv.map(d => d.hours + 'h'), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert, fontSize: 11 }, name: 'Wochenstunden', nameLocation: 'center', nameGap: 30, nameTextStyle: { color: c.textTert, fontSize: 11 } },
+      yAxis: { type: 'value', name: 'Output-Index', nameTextStyle: { color: c.textTert, fontSize: 10 }, min: 30, max: 110, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert } },
+      series: [
+        {
+          type: 'line', smooth: true,
+          data: pcv.map(d => d.output_index),
+          lineStyle: { width: 3, color: c.accent },
+          itemStyle: { color: c.accent },
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: c.accent + '33' },
+              { offset: 1, color: 'transparent' }
+            ])
+          },
+          markPoint: {
+            data: [
+              { name: 'Peak', coord: ['48h', 100], symbol: 'circle', symbolSize: 14, itemStyle: { color: c.accent }, label: { show: true, formatter: 'Peak\n48h', position: 'top', color: c.accent, fontSize: 11, fontWeight: 600, fontFamily: 'JetBrains Mono' } },
+              { name: 'Klippe', coord: ['55h', 82], symbol: 'triangle', symbolSize: 14, itemStyle: { color: c.danger }, label: { show: true, formatter: 'Klippe\n55h', position: 'right', color: c.danger, fontSize: 11, fontWeight: 600, fontFamily: 'JetBrains Mono' } }
+            ]
+          },
+          markLine: {
+            silent: true,
+            data: [
+              { xAxis: '48h', lineStyle: { color: c.accent, type: 'dashed', width: 1.5 }, label: { show: false } },
+              { xAxis: '55h', lineStyle: { color: c.danger, type: 'dashed', width: 1.5 }, label: { show: false } }
+            ]
+          }
+        }
+      ]
+    });
+
+    // === CHART 3: Productivity Crisis ===
+    const prod = D.productivity_crisis.data;
+    charts.productivity = echarts.init(document.getElementById('chart-productivity'));
+    charts.productivity.setOption({...base,
+      xAxis: { type: 'category', data: prod.map(d => d.year), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      series: [{
+        type: 'bar',
+        data: prod.map(d => ({
+          value: d.change_pct,
+          itemStyle: {
+            color: d.change_pct < 0 ? c.danger : c.accent,
+            borderRadius: d.change_pct >= 0 ? [4, 4, 0, 0] : [0, 0, 4, 4]
+          }
+        })),
+        barWidth: 32,
+        label: { show: true, position: d => d.value >= 0 ? 'top' : 'bottom', formatter: p => p.value > 0 ? '+' + p.value + '%' : p.value + '%', color: c.textTert, fontSize: 11, fontFamily: 'JetBrains Mono' },
+        markLine: {
+          silent: true,
+          data: [{ yAxis: 0, lineStyle: { color: c.textTert, width: 1 }, label: { show: false } }]
+        }
+      }]
+    });
+
+    // === CHART 4: Sick Days ===
+    const sick = D.sick_days.data;
+    charts.sickdays = echarts.init(document.getElementById('chart-sickdays'));
+    charts.sickdays.setOption({...base,
+      xAxis: { type: 'category', data: sick.map(d => d.year), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'value', min: 10, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + ' Tage' } },
+      series: [{
+        type: 'bar',
+        data: sick.map(d => ({
+          value: d.days,
+          itemStyle: {
+            color: d.year >= 2023 ? c.warning : c.accent + '88',
+            borderRadius: [4, 4, 0, 0]
+          }
+        })),
+        barWidth: 32,
+        label: { show: true, position: 'top', formatter: p => p.value, color: c.textTert, fontSize: 11, fontFamily: 'JetBrains Mono' },
+        markLine: {
+          silent: true,
+          data: [{
+            xAxis: '2023',
+            lineStyle: { color: c.purple, type: 'dashed', width: 2 },
+            label: {
+              formatter: 'eAU',
+              position: 'start',
+              color: c.purple,
+              fontSize: 11,
+              fontWeight: 600,
+              fontFamily: 'JetBrains Mono'
+            }
+          }]
+        }
+      }]
+    });
+
+    // === CHART 5: Engagement Comparison ===
+    const eng = D.gallup_engagement.comparison.sort((a, b) => a.engaged - b.engaged);
+    charts.engagement = echarts.init(document.getElementById('chart-engagement'));
+    charts.engagement.setOption({...base,
+      grid: { left: 100, right: 40, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 40, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: eng.map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: eng.map(d => ({
+          value: d.engaged,
+          itemStyle: {
+            color: d.name === 'Deutschland' ? c.danger : d.name === 'USA & Kanada' ? c.accent : d.name === 'Weltweit' ? c.accent2 : c.warning,
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: d.engaged + '% engaged',
+            color: d.name === 'Deutschland' ? c.danger : c.textTert,
+            fontSize: 11, fontFamily: 'JetBrains Mono',
+            fontWeight: d.name === 'Deutschland' ? 600 : 400
+          }
+        })),
+        barWidth: 24
+      }]
+    });
+
+    // === CHART 6: AI Productivity ===
+    const ai = D.ai_study.effects;
+    charts.ai = echarts.init(document.getElementById('chart-ai'));
+    charts.ai.setOption({...base,
+      grid: { left: 160, right: 40, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 50, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => '+' + v + '%' } },
+      yAxis: { type: 'category', data: ai.map(d => d.metric), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: ai.map(d => ({
+          value: d.value_pct,
+          itemStyle: {
+            color: d.value_pct >= 40 ? c.accent : d.value_pct >= 25 ? c.accent2 : c.accent + '88',
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: d.label,
+            color: c.accent, fontSize: 12, fontWeight: 600, fontFamily: 'JetBrains Mono'
+          }
+        })),
+        barWidth: 24
+      }]
+    });
+
+    // Resize handler
+    window.addEventListener('resize', () => Object.values(charts).forEach(ch => { try { ch.resize() } catch(e) {} }));
+  });
+}
+
+(function(){
+  const url = new URLSearchParams(window.location.search).get('theme');
+  const saved = url || localStorage.getItem('tk-theme');
+  if (saved) { document.documentElement.dataset.theme = saved; localStorage.setItem('tk-theme', saved) }
+  const b = document.querySelector('.toggle-btn');
+  if (b) b.textContent = document.documentElement.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+})();
+function toggleTheme() {
+  const h = document.documentElement, b = document.querySelector('.toggle-btn');
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('tk-theme', h.dataset.theme);
+  b.textContent = h.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  initCharts();
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+</script>
+</body>
+</html>

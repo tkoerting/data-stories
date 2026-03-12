@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Es ist ein Tauschgeschäft",
+    "subtitle": "Was jede Generation gibt — und was sie dafür bekommt. Die Daten hinter dem Generationenvertrag.",
+    "datenstueck": 4,
+    "kategorie": "Laut gedacht",
+    "datum": "März 2026",
+    "blogpost_url": "https://der-koerting.de/?p=533"
+  },
+
+  "vermoegen": {
+    "by_age": [
+      { "group": "Unter 35", "median": 17300, "gini": 0.83 },
+      { "group": "35–44", "median": 72500, "gini": 0.80 },
+      { "group": "45–54", "median": 148000, "gini": 0.73 },
+      { "group": "55–64", "median": 241100, "gini": 0.63 }
+    ],
+    "gap_factor": 14,
+    "note": "Bundesbank / PHF 2023"
+  },
+
+  "wohneigentum": {
+    "gesamt": 47.3,
+    "unter_45": {
+      "aktuell": 25.2,
+      "jahr_2000": 31.0
+    },
+    "ueber_45": 54.2,
+    "junge_anteil_am_eigentum": {
+      "aktuell": 15,
+      "jahr_2000": 31
+    },
+    "note": "Destatis / SOEP 2023"
+  },
+
+  "bildung": {
+    "timeline": [
+      { "year": 1950, "hochschulreife_pct": 5.0, "azubi_ratio": 75.5 },
+      { "year": 1960, "hochschulreife_pct": 7.0, "azubi_ratio": 60.0 },
+      { "year": 1970, "hochschulreife_pct": 11.0, "azubi_ratio": 45.0 },
+      { "year": 1980, "hochschulreife_pct": 16.0, "azubi_ratio": 35.0 },
+      { "year": 1990, "hochschulreife_pct": 25.5, "azubi_ratio": 22.0 },
+      { "year": 2000, "hochschulreife_pct": 33.0, "azubi_ratio": 14.0 },
+      { "year": 2010, "hochschulreife_pct": 40.0, "azubi_ratio": 8.0 },
+      { "year": 2021, "hochschulreife_pct": 45.0, "azubi_ratio": 4.3 }
+    ],
+    "ausbildungsquote": {
+      "2007": 6.5,
+      "2023": 4.5
+    },
+    "betriebe_mit_ausbildung": {
+      "2010_2018": 12.0,
+      "2024": 9.1
+    },
+    "note": "Destatis / BIBB / Autorengruppe Bildungsberichterstattung"
+  },
+
+  "genz_priorities": {
+    "categories": ["Gehalt", "Jobsicherheit", "D&I", "Soziale Verantwortung", "Weniger Gehalt für Sinn"],
+    "genz": [56, 60, 41, 39, 40],
+    "millennials": [70, 66, 35, 34, 28],
+    "note": "Deloitte Gen Z & Millennial Survey 2025 (Deutschland)"
+  },
+
+  "mental_health": {
+    "depression_tage_pro_100": {
+      "2023": 122,
+      "2024": 183,
+      "change_pct": 50
+    },
+    "depression_by_gender": {
+      "frauen": 233,
+      "maenner": 140
+    },
+    "psychisch_by_gender_total": {
+      "frauen": 431,
+      "maenner": 266
+    },
+    "genz_stress": {
+      "always_mostly": 40,
+      "millennials_always_mostly": 34
+    },
+    "genz_wellbeing_good": 52,
+    "financial_insecurity": {
+      "genz": 48,
+      "millennials": 46,
+      "long_term_stress": 80
+    },
+    "environmental_anxiety_genz": 65,
+    "absences_yoy_25_29": {
+      "frauen": 24,
+      "maenner": 29
+    },
+    "krankenstand": {
+      "durchschnitt_tage": 19.7,
+      "genz_quote": 4.7,
+      "gesamt_quote": 5.4,
+      "genz_avg_dauer": 5.9,
+      "gesamt_avg_dauer": 9.7
+    },
+    "hospitalisierung_weiblich_2019_2022": {
+      "depression": 24,
+      "angst": 35
+    },
+    "anteil_psychisch_krankgeschrieben_2024": 7,
+    "note": "DAK Gesundheitsreport 2025 / Deloitte 2025"
+  },
+
+  "nachrichten": {
+    "social_media_unter_35": 50,
+    "social_media_gesamt": 34,
+    "tv_nachrichten": 60,
+    "fake_news_sorge": 42,
+    "note": "Reuters Digital News Report 2024 Deutschland"
+  },
+
+  "reallohn": {
+    "1991_2019_real": 12.3,
+    "1991_2019_nominal": 60.7,
+    "2022_real": -3.0,
+    "2024_real": 3.1,
+    "note": "Destatis / WSI"
+  },
+
+  "wahlbeteiligung": {
+    "btw_2025": {
+      "anstieg_21_44": [
+        { "group": "21–24", "change_pp": 8.3 },
+        { "group": "25–34", "change_pp": 7.5 },
+        { "group": "35–44", "change_pp": 7.1 }
+      ],
+      "anteil_60plus": 39,
+      "hoechste_seit": 1987
+    },
+    "note": "Bundeswahlleiter 2025"
+  }
+}

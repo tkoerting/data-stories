@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "title": "Nicht fauler. Führungsloser.",
+    "version": "1.0",
+    "snapshot": "März 2026",
+    "author": "Thomas Körting",
+    "blog_post": "https://der-koerting.de/2026/03/11/nicht-fauler-fuehrungsloser/"
+  },
+
+  "oecd_hours": {
+    "source": "OECD Employment Outlook 2024",
+    "label": "Arbeitsstunden vs. Produktivität pro Stunde",
+    "countries": [
+      { "name": "Niederlande", "hours": 1420, "productivity": 72.40, "flag": "🇳🇱" },
+      { "name": "Deutschland", "hours": 1344, "productivity": 68.30, "flag": "🇩🇪" },
+      { "name": "Dänemark", "hours": 1415, "productivity": 104.10, "flag": "🇩🇰" },
+      { "name": "Frankreich", "hours": 1500, "productivity": 72.70, "flag": "🇫🇷" },
+      { "name": "Japan", "hours": 1607, "productivity": 50.30, "flag": "🇯🇵" },
+      { "name": "USA", "hours": 1811, "productivity": 74.70, "flag": "🇺🇸" },
+      { "name": "Südkorea", "hours": 1872, "productivity": 43.40, "flag": "🇰🇷" }
+    ]
+  },
+
+  "pencavel_curve": {
+    "source": "Stanford University / John Pencavel (2014), IZA Discussion Paper No. 8129",
+    "label": "Produktivität nach Wochenstunden (indexiert)",
+    "data": [
+      { "hours": 20, "output_index": 40 },
+      { "hours": 25, "output_index": 50 },
+      { "hours": 30, "output_index": 60 },
+      { "hours": 35, "output_index": 70 },
+      { "hours": 40, "output_index": 82 },
+      { "hours": 44, "output_index": 91 },
+      { "hours": 48, "output_index": 100 },
+      { "hours": 50, "output_index": 98 },
+      { "hours": 52, "output_index": 93 },
+      { "hours": 55, "output_index": 82 },
+      { "hours": 58, "output_index": 72 },
+      { "hours": 60, "output_index": 65 },
+      { "hours": 65, "output_index": 55 },
+      { "hours": 70, "output_index": 50 }
+    ],
+    "peak_hours": 48,
+    "diminishing_after": 50,
+    "worthless_after": 55,
+    "seventy_equals": 56,
+    "note": "Workers at 70h produce same output as workers at 56h"
+  },
+
+  "productivity_crisis": {
+    "source": "Destatis / OECD / ifo Institut",
+    "label": "Produktivität pro Stunde — Deutschland (Veränderung zum Vorjahr %)",
+    "data": [
+      { "year": 2017, "change_pct": 1.1 },
+      { "year": 2018, "change_pct": 0.6 },
+      { "year": 2019, "change_pct": 0.1 },
+      { "year": 2020, "change_pct": 0.8 },
+      { "year": 2021, "change_pct": 1.2 },
+      { "year": 2022, "change_pct": -0.1 },
+      { "year": 2023, "change_pct": -0.9 },
+      { "year": 2024, "change_pct": -0.2 }
+    ],
+    "gdp_2023": -0.3,
+    "highlight_year": 2023,
+    "highlight_value": -0.9
+  },
+
+  "sick_days": {
+    "source": "DAK Gesundheitsreport / TK Gesundheitsreport / Destatis",
+    "label": "Krankheitstage pro Arbeitnehmer (Durchschnitt)",
+    "data": [
+      { "year": 2017, "days": 17.4 },
+      { "year": 2018, "days": 17.3 },
+      { "year": 2019, "days": 17.1 },
+      { "year": 2020, "days": 14.6 },
+      { "year": 2021, "days": 15.2 },
+      { "year": 2022, "days": 19.4 },
+      { "year": 2023, "days": 22.1 },
+      { "year": 2024, "days": 23.9 }
+    ],
+    "eau_year": 2023,
+    "eau_note": "Einführung elektronische Arbeitsunfähigkeitsbescheinigung — zuvor wurden viele Kurzzeit-Krankmeldungen nicht erfasst",
+    "lohnfortzahlung_mrd": 82,
+    "avg_2024": 23.9
+  },
+
+  "gallup_engagement": {
+    "source": "Gallup State of the Global Workplace 2024",
+    "label": "Mitarbeiter-Engagement",
+    "germany": {
+      "engaged_pct": 12,
+      "not_engaged_pct": 43,
+      "actively_disengaged_pct": 45,
+      "job_seeking_pct": 45,
+      "cost_disengagement_mrd": 167,
+      "note": "Niedrigster jemals gemessener Wert für Deutschland"
+    },
+    "global_avg_engaged": 23,
+    "comparison": [
+      { "name": "USA & Kanada", "engaged": 33 },
+      { "name": "Weltweit", "engaged": 23 },
+      { "name": "Westeuropa", "engaged": 13 },
+      { "name": "Deutschland", "engaged": 12 }
+    ]
+  },
+
+  "ai_study": {
+    "source": "Harvard Business School / Boston Consulting Group (2023)",
+    "label": "KI-Produktivitätseffekte (GPT-4 Studie mit BCG-Consultants)",
+    "effects": [
+      { "metric": "Mehr Aufgaben erledigt", "value_pct": 12, "label": "+12%" },
+      { "metric": "Schneller fertig", "value_pct": 25, "label": "+25%" },
+      { "metric": "Höhere Qualität", "value_pct": 40, "label": "+40%" },
+      { "metric": "Verbesserung Schwächere", "value_pct": 43, "label": "+43%" }
+    ],
+    "note": "Besonders starker Effekt bei unterdurchschnittlichen Performern"
+  },
+
+  "generational_shift": {
+    "source": "Destatis / DIHK Fachkräftereport / Institut der deutschen Wirtschaft",
+    "boomers_retiring_by_2036": 12900000,
+    "fachkraeftemangel_open_positions": 630000,
+    "source_fachkraeftemangel": "DIHK 2024"
+  },
+
+  "denmark_model": {
+    "source": "OECD / Danmarks Statistik / Eurofound",
+    "hours": 1415,
+    "productivity_per_hour": 104.10,
+    "system": "Flexicurity",
+    "trust_index_rank": "Top 3 weltweit",
+    "four_day_week_trials": "Produktivität gehalten oder gestiegen"
+  }
+}
