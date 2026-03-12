@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "title": "Was unter der klaren Ostsee liegt",
+    "version": "1.0",
+    "snapshot": "März 2026",
+    "author": "Thomas Körting",
+    "blog_post": "https://der-koerting.de/2026/03/16/klares-wasser/"
+  },
+  "kpis": {
+    "mikroplastik_partikel_jahr": 67000000000000,
+    "partikel_pro_meter_kueste": 1000000,
+    "munition_konventionell_t": 300000,
+    "munition_chemisch_t": 40000,
+    "bergungsziel_pilot_t": 80,
+    "flaeche_km2": 415000,
+    "wasseraustausch_jahre": 30,
+    "schweinswal_population": 491,
+    "stickstoff_faktor": 4,
+    "phosphor_faktor": 8
+  },
+  "dorsch": {
+    "label": "Östlicher Dorsch — Fangmenge (Tonnen)",
+    "source": "ICES / Thünen-Institut",
+    "data": [
+      { "year": 1980, "value": 390000 },
+      { "year": 1984, "value": 440000 },
+      { "year": 1990, "value": 280000 },
+      { "year": 1995, "value": 150000 },
+      { "year": 2000, "value": 100000 },
+      { "year": 2005, "value": 70000 },
+      { "year": 2010, "value": 55000 },
+      { "year": 2015, "value": 30000 },
+      { "year": 2018, "value": 12000 },
+      { "year": 2020, "value": 4000 },
+      { "year": 2022, "value": 489, "note": "Nur Beifang" },
+      { "year": 2024, "value": 340, "note": "Nur Beifang" },
+      { "year": 2025, "value": 266, "note": "Nur Beifang" }
+    ]
+  },
+  "hering": {
+    "label": "Westlicher Hering — Deutsche Fangquote (Tonnen)",
+    "source": "BMEL / ICES",
+    "data": [
+      { "year": 2010, "value": 20000 },
+      { "year": 2013, "value": 18000 },
+      { "year": 2015, "value": 17000 },
+      { "year": 2017, "value": 15670 },
+      { "year": 2019, "value": 6500 },
+      { "year": 2020, "value": 3900 },
+      { "year": 2021, "value": 1600 },
+      { "year": 2022, "value": 788 },
+      { "year": 2023, "value": 500 },
+      { "year": 2024, "value": 470, "note": "Erste Erholungszeichen" }
+    ]
+  },
+  "deadzones": {
+    "label": "Sauerstoffarme Gebiete (km²)",
+    "source": "HELCOM / EEA",
+    "data": [
+      { "year": 1960, "value": 12000 },
+      { "year": 1970, "value": 25000 },
+      { "year": 1980, "value": 40000 },
+      { "year": 1990, "value": 48000 },
+      { "year": 2000, "value": 60000 },
+      { "year": 2010, "value": 65000 },
+      { "year": 2020, "value": 70000 },
+      { "year": 2024, "value": 70000 }
+    ]
+  },
+  "mikroplastik_quellen": {
+    "source": "IOW / FanpLESStic-sea / Frontiers in Marine Science",
+    "data": [
+      { "name": "Reifenabrieb", "value": 35 },
+      { "name": "Textilien (Waschen)", "value": 25 },
+      { "name": "Kosmetik / Pellets", "value": 15 },
+      { "name": "Farben / Beschichtungen", "value": 12 },
+      { "name": "Landwirtschaft (Folien)", "value": 8 },
+      { "name": "Sonstiges", "value": 5 }
+    ]
+  },
+  "biodiversitaet": {
+    "source": "HELCOM State of the Baltic Sea 2023",
+    "arten": [
+      { "name": "Schweinswal (Ostsee)", "population": "~491", "trend": "critically_endangered", "note": "IUCN: Vom Aussterben bedroht" },
+      { "name": "Kegelrobbe", "population": "~28.000", "trend": "increasing", "note": "Bestand wächst" },
+      { "name": "Seehund (Kalmarsund)", "population": "~2.000", "trend": "increasing", "note": "+9% pro Jahr seit 1975" },
+      { "name": "Ringelrobbe (Bottn. Bucht)", "population": "~10.000", "trend": "slowing", "note": "Wachstum verlangsamt" },
+      { "name": "Ringelrobbe (andere)", "population": "niedrig", "trend": "declining", "note": "Rückläufig oder stabil" }
+    ]
+  },
+  "wasseraustausch": {
+    "source": "IOW / HELCOM",
+    "data": [
+      { "name": "Nordsee", "years": 2 },
+      { "name": "Ostsee", "years": 30 },
+      { "name": "Mittelmeer", "years": 80 },
+      { "name": "Schwarzes Meer", "years": 150 }
+    ]
+  },
+  "forschung": {
+    "institutionen": [
+      { "name": "HELCOM", "role": "Baltic Marine Environment Protection Commission", "data": "200+ Kartenlayer, Open Data Portal" },
+      { "name": "IOW Warnemünde", "role": "Leibniz-Institut für Ostseeforschung", "data": "Mikroplastik, Meereschemie, Ökosysteme" },
+      { "name": "ICES", "role": "International Council for the Exploration of the Sea", "data": "Jährliche Fischbestandsbewertung" },
+      { "name": "Thünen-Institut", "role": "Bundesforschungsinstitut", "data": "Deutsche Fangempfehlungen, Fischereiforschung" },
+      { "name": "WWF Baltic", "role": "Naturschutz & Advocacy", "data": "Monitoring, Politikberatung" }
+    ],
+    "funding": [
+      { "name": "BONUS Programme", "amount": "100 Mio. €", "scope": "8 EU-Ostsee-Staaten", "period": "abgeschlossen" },
+      { "name": "Interreg Baltic Sea", "amount": "152 Mio. €", "scope": "EU Cross-Border", "period": "2021–2027" },
+      { "name": "Horizon Europe Mission Ocean", "amount": "81 Projekte", "scope": "EU-weit", "period": "seit 2021" },
+      { "name": "Munitionsbergung Pilot", "amount": "n/a", "scope": "50–80t von 300.000t", "period": "seit 2024" }
+    ]
+  },
+  "saisonalitaet": {
+    "source": "HELCOM / WWF Baltic / IOW",
+    "events": [
+      { "month": "Jan–Mär", "event": "Eisbedeckung (abnehmend)", "detail": "Ringelrobben brauchen Eis zur Aufzucht" },
+      { "month": "Apr–Mai", "event": "Frühjahrsblüte Phytoplankton", "detail": "Natürlich, Basis der Nahrungskette" },
+      { "month": "Jun–Aug", "event": "Blaualgenblüte", "detail": "Durch Nährstoffe + Wärme — wird jedes Jahr intensiver" },
+      { "month": "Jul–Sep", "event": "Dorsch-Sommerzange", "detail": "Oberfläche zu warm, Tiefe zu sauerstoffarm" },
+      { "month": "Sep–Nov", "event": "Herbststürme, Durchmischung", "detail": "Bringt Sauerstoff in tiefere Schichten" },
+      { "month": "Ganzjährig", "event": "Mikroplastik-Eintrag", "detail": "Kein saisonales Muster — kontinuierlich" }
+    ]
+  },
+
+  "tourismus": {
+    "source": "Tourismusverband MV / Statistisches Amt MV / Nordkurier",
+    "usedom": {
+      "uebernachtungen": 6000000,
+      "ankuenfte": 1180000,
+      "aufenthaltstage_gesamt": 11800000,
+      "aufenthaltsdauer_tage": 5.1,
+      "umsatz_mrd": 1.0,
+      "einwohner": 31000,
+      "tourismus_arbeitsplaetze": 20000,
+      "gaestebetten_heringsdorf": 21348
+    },
+    "mv_gesamt": {
+      "uebernachtungen_2024": 32900000
+    }
+  },
+
+  "anreise": {
+    "source": "RPV Vorpommern / UBA / ADAC",
+    "verkehrsmittel": [
+      { "name": "PKW", "anteil": 84 },
+      { "name": "Bahn", "anteil": 7 },
+      { "name": "Bus", "anteil": 3 },
+      { "name": "Flugzeug", "anteil": 3 },
+      { "name": "Sonstige", "anteil": 3 }
+    ],
+    "quellmaerkte": [
+      { "name": "Berlin", "km_einfach": 250, "km_gesamt": 500 },
+      { "name": "Hamburg", "km_einfach": 380, "km_gesamt": 760 },
+      { "name": "Sachsen (Dresden)", "km_einfach": 450, "km_gesamt": 900 },
+      { "name": "NRW (Dortmund)", "km_einfach": 650, "km_gesamt": 1300 },
+      { "name": "München", "km_einfach": 815, "km_gesamt": 1630 }
+    ],
+    "co2_pro_km": {
+      "verbrenner_g": 170,
+      "eauto_g": 55,
+      "bahn_g": 29,
+      "source": "UBA / ADAC / Deutsche Bahn"
+    },
+    "reifenabrieb_mg_pro_km": 25
+  },
+
+  "fischbroetchen": {
+    "source": "FIZ / Thünen-Institut / LALLF MV / KATAPULT MV",
+    "fischkonsum_de_kg_pro_kopf": 12.8,
+    "selbstversorgungsgrad_prozent": 20,
+    "import_anteil_prozent": 80,
+    "herkunft_broetchen": [
+      { "name": "Alaska-Seelachs", "herkunft": "Nordpazifik", "note": "Kein Lachs, kein Ostsee-Fisch" },
+      { "name": "Pangasius", "herkunft": "Vietnam (Mekong)", "note": "Tiefgefroren importiert" },
+      { "name": "Lachs", "herkunft": "Norwegen", "note": "Aquakultur" },
+      { "name": "Matjes", "herkunft": "Nordsee", "note": "Nicht Ostsee — Nordsee-Hering" }
+    ],
+    "fischer_mv": [
+      { "year": 1991, "value": 950 },
+      { "year": 2000, "value": 600 },
+      { "year": 2010, "value": 350 },
+      { "year": 2020, "value": 220 },
+      { "year": 2023, "value": 154 }
+    ],
+    "fischer_ahlbeck_nachkrieg": 350,
+    "azubis_kuestenfischerei_2023": 0
+  },
+
+  "sonnencreme": {
+    "source": "IOW Warnemünde / BfS / Smithsonian",
+    "abwasch_prozent_20min": 25,
+    "kg_pro_1000_badegaeste_tag": 35,
+    "uv_filter_ostsee_ng_pro_l": 30,
+    "uv_filter_zufluesse_ng_pro_l": 836,
+    "problematische_stoffe": [
+      { "name": "Oxybenzon", "wirkung": "Korallenbleiche, DNA-Schäden" },
+      { "name": "Octinoxat", "wirkung": "Hormonell wirksam, schädigt Larven" },
+      { "name": "Octocrylen", "wirkung": "Reichert sich in Organismen an" }
+    ],
+    "verbote": [
+      { "land": "Hawaii", "seit": 2021, "stoffe": "Oxybenzon, Octinoxat" },
+      { "land": "Palau", "seit": 2020, "stoffe": "10 riff-toxische UV-Filter" }
+    ]
+  },
+
+  "strandmuell": {
+    "source": "NABU Spülsaummonitoring / OSPAR",
+    "teile_pro_100m": {
+      "fehmarn": 82,
+      "ruegen": 114
+    },
+    "coastal_cleanup_2023": {
+      "teilnehmer": 1570,
+      "tonnen": 11.5,
+      "plastik_anteil_prozent": 47,
+      "zigaretten_anteil_prozent": 29
+    }
+  }
+}

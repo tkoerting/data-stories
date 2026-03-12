@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Was unter der klaren Ostsee liegt — Data Story | Der Körting</title>
+<meta name="description" content="Mikroplastik, Munition, Dorsch-Kollaps und Schweinswal-Sterben — die Daten hinter dem Blogpost Klares Wasser. Open Data, interaktiv visualisiert.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(17,19,24,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="light"] .site-header{background:rgba(244,246,247,0.85)}
+  .header-inner{max-width:var(--max-width);margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:0.75rem}
+  .badge-da{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(20,184,166,0.2)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  /* Nav Pills */
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+
+  /* KPI */
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  /* Charts */
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  /* Species Cards */
+  .species-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .species-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;flex-direction:column;gap:0.3rem}
+  .species-name{font-weight:600;font-size:0.9rem}
+  .species-pop{font-family:var(--font-mono);font-size:1.2rem;font-weight:500}
+  .species-pop.crit{color:var(--danger)} .species-pop.warn{color:var(--warning)} .species-pop.ok{color:var(--accent)}
+  .species-note{font-size:0.75rem;color:var(--text-tertiary)}
+  .species-trend{font-size:0.7rem;padding:0.15rem 0.5rem;border-radius:100px;display:inline-block;width:fit-content}
+  .trend-crit{background:var(--danger-subtle);color:var(--danger)}
+  .trend-warn{background:var(--warning-subtle);color:var(--warning)}
+  .trend-ok{background:var(--accent-subtle);color:var(--accent)}
+
+  /* Timeline */
+  .timeline{margin:1.5rem 0}
+  .timeline-item{display:flex;gap:1rem;padding:0.75rem 0;border-bottom:1px solid var(--border)}
+  .timeline-item:last-child{border-bottom:none}
+  .timeline-month{font-family:var(--font-mono);font-size:0.8rem;color:var(--accent);min-width:80px;font-weight:500}
+  .timeline-event{font-weight:500;font-size:0.9rem}
+  .timeline-detail{font-size:0.8rem;color:var(--text-secondary);margin-top:0.15rem}
+
+  /* Research Table */
+  .research-grid{display:grid;gap:0.75rem;margin:1.5rem 0}
+  .research-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .research-name{font-weight:600;font-size:0.9rem}
+  .research-role{font-size:0.8rem;color:var(--text-secondary)}
+  .research-badge{font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);background:var(--accent-subtle);padding:0.2rem 0.6rem;border-radius:6px;white-space:nowrap}
+
+  /* Funding */
+  .funding-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .funding-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem}
+  .funding-amount{font-family:var(--font-mono);font-size:1.1rem;font-weight:500;color:var(--accent-2)}
+  .funding-name{font-weight:500;font-size:0.85rem;margin-top:0.25rem}
+  .funding-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.15rem}
+
+  /* Source Card */
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+  .perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+  .perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+  .herkunft-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .herkunft-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;align-items:center;gap:0.75rem}
+  .herkunft-flag{font-size:1.5rem;flex-shrink:0}
+  .herkunft-name{font-weight:600;font-size:0.85rem}
+  .herkunft-detail{font-size:0.75rem;color:var(--text-tertiary)}
+  .herkunft-note{font-size:0.7rem;color:var(--danger);font-style:italic}
+
+  .spin-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .spin-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;color:var(--accent);text-align:center;margin-bottom:1rem;line-height:1.2}
+  .spin-number span{display:block;font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);font-weight:400;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+  .spin-sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .spin-side{padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.6}
+  .spin-side.positive{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.2)}
+  .spin-side.negative{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)}
+  .spin-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-weight:600}
+  .spin-side.positive .spin-label{color:var(--accent)}
+  .spin-side.negative .spin-label{color:var(--danger)}
+  .spin-side p{margin:0;font-size:0.85rem}
+  @media(max-width:768px){.spin-sides{grid-template-columns:1fr} .herkunft-grid{grid-template-columns:1fr}}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+  .preview-badge{position:fixed;top:1rem;right:1rem;background:var(--accent-2);color:#1E293B;padding:0.4rem 1rem;border-radius:100px;font-size:0.7rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;z-index:200}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .species-grid,.funding-grid{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+    .research-card{flex-direction:column;align-items:flex-start}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div class="preview-badge">Prototyp v3</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="site-name">Der <span>Körting</span></div>
+    <div class="header-right">
+      <span class="badge-da">Datenstücke</span>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#127769;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="https://der-koerting.de" class="back-link">&larr; Zurück zum Blog</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Data Story #1</span>
+    <span class="snapshot-tag">Snapshot März 2026</span>
+    <span>Open Data</span>
+    <span>&middot;</span>
+    <span>HELCOM &bull; ICES &bull; IOW &bull; Thünen</span>
+  </div>
+
+  <h1>Was unter der klaren Ostsee liegt</h1>
+  <div class="subtitle">Mikroplastik, Munition, Dorsch-Kollaps und 491 Schweinswale — die Daten hinter dem Blogpost <a href="https://der-koerting.de/2026/03/16/klares-wasser/">Klares Wasser</a></div>
+
+  <p class="lead">Das Wasser in Koserow ist klar. EU-geprüft, Blaue Flagge. Aber wer unter die Oberfläche schaut, findet ein Ökosystem unter Druck: vergiftete Bestände, kollabierte Fischpopulationen, Munition aus zwei Weltkriegen und ein Meer, das sich kaum selbst reinigen kann.</p>
+
+  <nav class="section-nav">
+    <a href="#ueberblick" class="nav-pill active">Überblick</a>
+    <a href="#leben" class="nav-pill">Leben</a>
+    <a href="#verschmutzung" class="nav-pill">Verschmutzung</a>
+    <a href="#jahreszeiten" class="nav-pill">Jahreszeiten</a>
+    <a href="#munition" class="nav-pill">Munition</a>
+    <a href="#forschung" class="nav-pill">Wer forscht &amp; zahlt</a>
+    <span style="color:var(--border)">|</span>
+    <a href="#tourismus" class="nav-pill">Wir &amp; die Ostsee</a>
+    <a href="#anreise" class="nav-pill">Anreise</a>
+    <a href="#fischbroetchen" class="nav-pill">Fischbrötchen</a>
+    <a href="#sonnencreme" class="nav-pill">Sonnencreme</a>
+    <span style="color:var(--border)">|</span>
+    <a href="#spin" class="nav-pill">Dieselbe Zahl</a>
+    <a href="#quellen" class="nav-pill">Quellen</a>
+  </nav>
+
+  <!-- ===================== ÜBERBLICK ===================== -->
+  <section id="ueberblick">
+    <h2>Die Ostsee in Zahlen</h2>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">415.000</div>
+        <div class="kpi-label">km² Fläche</div>
+        <div class="kpi-sub">Zweitgrößtes Brackwassermeer</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">30 Jahre</div>
+        <div class="kpi-label">Wasseraustausch</div>
+        <div class="kpi-sub">Fast geschlossenes System</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">9 Staaten</div>
+        <div class="kpi-label">Anrainer</div>
+        <div class="kpi-sub">~85 Mio. Einwohner</div>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">67 Bio.</div>
+        <div class="kpi-label">Mikroplastik / Jahr</div>
+        <div class="kpi-sub">Partikel</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value danger">300.000 t</div>
+        <div class="kpi-label">Munition</div>
+        <div class="kpi-sub">Am Meeresgrund</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value danger">491</div>
+        <div class="kpi-label">Schweinswale</div>
+        <div class="kpi-sub">Vom Aussterben bedroht</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Wie schnell reinigt sich ein Meer?</div>
+      <div class="chart-subtitle">Wasseraustauschzeit im Vergleich (Jahre) — Quelle: IOW / HELCOM</div>
+      <div id="chart-exchange" class="chart"></div>
+    </div>
+
+    <p class="text-small">Die Ostsee braucht rund 30 Jahre für einen kompletten Wasseraustausch. Was reinkommt, bleibt lange drin. Das macht sie verletzlicher als jedes andere europäische Meer.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== LEBEN ===================== -->
+  <section id="leben">
+    <h2>Das Leben darunter</h2>
+
+    <p>Die Ostsee ist nicht nur Wasser — sie ist Lebensraum. Für Fische, Robben, Schweinswale, Seevögel. Und dieser Lebensraum kollabiert. Leise, unter der Oberfläche, unsichtbar für Strandspaziergänger.</p>
+
+    <h3>Dorsch — der stille Kollaps</h3>
+    <p>1984 wurden 440.000 Tonnen östlicher Dorsch gefangen. 2025 sind es 266 Tonnen — als Beifang. Die gerichtete Fischerei ist geschlossen. Trotzdem erholt sich der Bestand nicht.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Östlicher Dorsch — Fangmenge</div>
+      <div class="chart-subtitle">In Tonnen pro Jahr — Quelle: ICES / Thünen-Institut</div>
+      <div id="chart-dorsch" class="chart chart-tall"></div>
+    </div>
+
+    <h3>Hering — 97% weniger in sieben Jahren</h3>
+    <p>Die deutsche Fangquote für westlichen Hering ist von 15.670 Tonnen (2017) auf unter 500 Tonnen gefallen. Erste Erholungszeichen, aber der Weg ist weit.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Westlicher Hering — Deutsche Fangquote</div>
+      <div class="chart-subtitle">In Tonnen pro Jahr — Quelle: BMEL / ICES</div>
+      <div id="chart-hering" class="chart"></div>
+    </div>
+
+    <h3>Wer lebt noch in der Ostsee?</h3>
+
+    <div class="species-grid">
+      <div class="species-card">
+        <div class="species-name">Schweinswal</div>
+        <div class="species-pop crit">~491 Tiere</div>
+        <span class="species-trend trend-crit">Vom Aussterben bedroht</span>
+        <div class="species-note">IUCN: Critically Endangered. Zentrale Ostsee.</div>
+      </div>
+      <div class="species-card">
+        <div class="species-name">Kegelrobbe</div>
+        <div class="species-pop ok">~28.000</div>
+        <span class="species-trend trend-ok">Bestand wächst</span>
+        <div class="species-note">Größte Robbenpopulation der Ostsee</div>
+      </div>
+      <div class="species-card">
+        <div class="species-name">Seehund (Kalmarsund)</div>
+        <div class="species-pop ok">~2.000</div>
+        <span class="species-trend trend-ok">+9% / Jahr seit 1975</span>
+        <div class="species-note">Lokale Population, wachsend</div>
+      </div>
+      <div class="species-card">
+        <div class="species-name">Ringelrobbe</div>
+        <div class="species-pop warn">~10.000</div>
+        <span class="species-trend trend-warn">Wachstum verlangsamt</span>
+        <div class="species-note">Braucht Eis zur Aufzucht — Eis schwindet</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== VERSCHMUTZUNG ===================== -->
+  <section id="verschmutzung">
+    <h2>Verschmutzung</h2>
+
+    <p>67 Billionen Mikroplastik-Partikel pro Jahr. Nicht Millionen. Nicht Milliarden. <strong>Billionen.</strong> Das hat das Leibniz-Institut für Ostseeforschung berechnet. Und Plastiktüten sind dabei das kleinste Problem.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Woher kommt das Mikroplastik?</div>
+      <div class="chart-subtitle">Geschätzte Anteile — Quelle: IOW / FanpLESStic-sea</div>
+      <div id="chart-sources" class="chart chart-tall"></div>
+    </div>
+
+    <h3>Tote Zonen — zehnmal größer als vor 100 Jahren</h3>
+    <p>Stickstoff hat sich vervierfacht, Phosphor verachtfacht. Das Ergebnis: riesige sauerstofffreie Gebiete, in denen nichts überlebt. Die Fläche hat sich in den letzten Jahrzehnten verzehnfacht.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Sauerstoffarme Gebiete in der Ostsee</div>
+      <div class="chart-subtitle">Fläche in km² — Quelle: HELCOM / EEA</div>
+      <div id="chart-deadzones" class="chart"></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">4x</div>
+        <div class="kpi-label">Stickstoff erhöht</div>
+        <div class="kpi-sub">vs. natürliches Niveau</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value danger">8x</div>
+        <div class="kpi-label">Phosphor erhöht</div>
+        <div class="kpi-sub">vs. natürliches Niveau</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">1 Mio.</div>
+        <div class="kpi-label">Partikel / Meter</div>
+        <div class="kpi-sub">Küstenlinie / Jahr</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== JAHRESZEITEN ===================== -->
+  <section id="jahreszeiten">
+    <h2>Was wann passiert</h2>
+
+    <p>Die Ostsee hat einen Jahresrhythmus — und der verschiebt sich. Algenblüten kommen früher, dauern länger. Der Dorsch steckt im Sommer in einer tödlichen Zange: oben zu warm, unten kein Sauerstoff.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-month">Jan – Mär</div>
+        <div>
+          <div class="timeline-event">Eisbedeckung (abnehmend)</div>
+          <div class="timeline-detail">Ringelrobben brauchen Eis zur Aufzucht der Jungen. Weniger Eis = weniger Nachwuchs.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Apr – Mai</div>
+        <div>
+          <div class="timeline-event">Frühjahrsblüte Phytoplankton</div>
+          <div class="timeline-detail">Natürlicher Prozess, Basis der Nahrungskette. Wichtig für Heringslarven.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Jun – Aug</div>
+        <div>
+          <div class="timeline-event" style="color:var(--danger)">Blaualgenblüte</div>
+          <div class="timeline-detail">Durch Überdüngung + Wärme. Wird jedes Jahr intensiver und großflächiger. Gesundheitsgefahr beim Baden.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Jul – Sep</div>
+        <div>
+          <div class="timeline-event" style="color:var(--warning)">Dorsch-Sommerzange</div>
+          <div class="timeline-detail">Oberflächenwasser zu warm (>20°C), Tiefenwasser zu sauerstoffarm. Dorsch hat keinen Lebensraum mehr.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Sep – Nov</div>
+        <div>
+          <div class="timeline-event">Herbststürme &amp; Durchmischung</div>
+          <div class="timeline-detail">Bringt Sauerstoff in tiefere Schichten. Kurze Erholung für den Meeresgrund.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Ganzjährig</div>
+        <div>
+          <div class="timeline-event">Mikroplastik-Eintrag</div>
+          <div class="timeline-detail">Kein saisonales Muster. Reifenabrieb, Textilien, Abwasser — 365 Tage im Jahr.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== MUNITION ===================== -->
+  <section id="munition">
+    <h2>Das Erbe am Meeresgrund</h2>
+
+    <p>Nach dem Zweiten Weltkrieg versenkten die Alliierten hunderttausende Tonnen Munition in der Ostsee. Die Hüllen korrodieren. Der Inhalt sickert. Seit 2024 läuft ein Pilotprojekt zur Bergung — mit einem ernüchternden Mengenverhältnis.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Munitionsaltlasten vs. Bergungskapazität</div>
+      <div class="chart-subtitle">Tonnage — Quelle: HELCOM / OSPAR</div>
+      <div id="chart-munitions" class="chart chart-tall"></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">300.000 t</div>
+        <div class="kpi-label">Konventionelle Munition</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">40.000 t</div>
+        <div class="kpi-label">Chemische Kampfstoffe</div>
+        <div class="kpi-sub">~15.000t Kampfstoff-Füllung</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value purple">50–80 t</div>
+        <div class="kpi-label">Bergungsziel Pilot</div>
+        <div class="kpi-sub">= 0,02% der Gesamtmenge</div>
+      </div>
+    </div>
+
+    <p class="text-small">Weißer Phosphor — ein Kampfstoff-Bestandteil — sieht aus wie Bernstein und wird regelmäßig an Stränden gefunden. Bei Kontakt mit warmer Haut kann er sich selbst entzünden. HELCOM erfasst jährlich die gemeldeten Vorfälle.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== FORSCHUNG ===================== -->
+  <section id="forschung">
+    <h2>Wer forscht, wer zahlt</h2>
+
+    <h3>Forschungsinstitutionen</h3>
+    <div class="research-grid">
+      <div class="research-card">
+        <div><div class="research-name">HELCOM</div><div class="research-role">Baltic Marine Environment Protection Commission</div></div>
+        <div class="research-badge">200+ Datenlayer</div>
+      </div>
+      <div class="research-card">
+        <div><div class="research-name">IOW Warnemünde</div><div class="research-role">Leibniz-Institut für Ostseeforschung</div></div>
+        <div class="research-badge">Mikroplastik</div>
+      </div>
+      <div class="research-card">
+        <div><div class="research-name">ICES</div><div class="research-role">International Council for the Exploration of the Sea</div></div>
+        <div class="research-badge">Fischbestände</div>
+      </div>
+      <div class="research-card">
+        <div><div class="research-name">Thünen-Institut</div><div class="research-role">Bundesforschungsinstitut (BMEL)</div></div>
+        <div class="research-badge">Fangempfehlungen</div>
+      </div>
+      <div class="research-card">
+        <div><div class="research-name">WWF Baltic</div><div class="research-role">Naturschutz &amp; Politikberatung</div></div>
+        <div class="research-badge">Monitoring</div>
+      </div>
+    </div>
+
+    <h3>Finanzierung</h3>
+    <div class="funding-grid">
+      <div class="funding-card">
+        <div class="funding-amount">100 Mio. €</div>
+        <div class="funding-name">BONUS Programme</div>
+        <div class="funding-detail">8 EU-Ostsee-Staaten &middot; abgeschlossen</div>
+      </div>
+      <div class="funding-card">
+        <div class="funding-amount">152 Mio. €</div>
+        <div class="funding-name">Interreg Baltic Sea</div>
+        <div class="funding-detail">EU Cross-Border &middot; 2021–2027</div>
+      </div>
+      <div class="funding-card">
+        <div class="funding-amount">81 Projekte</div>
+        <div class="funding-name">Horizon Europe</div>
+        <div class="funding-detail">Mission Ocean &middot; seit 2021</div>
+      </div>
+      <div class="funding-card">
+        <div class="funding-amount">???</div>
+        <div class="funding-name">Munitionsbergung</div>
+        <div class="funding-detail">Pilotprojekt seit 2024 &middot; keine Kosten publiziert</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PERSPEKTIVE WECHSEL ===================== -->
+  <div class="perspective-break">
+    <h2>Perspektivwechsel</h2>
+    <p>Das war die Ostsee. Jetzt kommen wir.</p>
+  </div>
+
+  <!-- ===================== TOURISMUS ===================== -->
+  <section id="tourismus">
+    <h2>Wir und die Ostsee</h2>
+
+    <p>1,18 Millionen Ankünfte pro Jahr. Allein auf Usedom. 6 Millionen Übernachtungen. Über eine Milliarde Euro Umsatz. Auf einer Insel mit 31.000 Einwohnern. Tourismus ist kein Nebenjob — Tourismus ist alles, was diese Insel hat.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">6 Mio.</div>
+        <div class="kpi-label">Übernachtungen / Jahr</div>
+        <div class="kpi-sub">Usedom 2024</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">1,18 Mio.</div>
+        <div class="kpi-label">Ankünfte</div>
+        <div class="kpi-sub">+8,6% zu 2023</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value accent2">1 Mrd. €</div>
+        <div class="kpi-label">Umsatz</div>
+        <div class="kpi-sub">Rekord 2024</div>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">31.000</div>
+        <div class="kpi-label">Einwohner</div>
+        <div class="kpi-sub">Deutscher Teil</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">20.000</div>
+        <div class="kpi-label">Leben vom Tourismus</div>
+        <div class="kpi-sub">= 65% der Bevölkerung</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">5,1 Tage</div>
+        <div class="kpi-label">Ø Aufenthalt</div>
+        <div class="kpi-sub">11,8 Mio. Aufenthaltstage</div>
+      </div>
+    </div>
+
+    <p class="text-small">Sachsen ist der wichtigste Quellmarkt (13,4%), gefolgt von Berlin/Brandenburg und NRW. Heringsdorf (mit Ahlbeck und Bansin) hat allein 21.348 Gästebetten — mehr als jede andere Gemeinde in ganz Mecklenburg-Vorpommern.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== ANREISE ===================== -->
+  <section id="anreise">
+    <h2>Die Anreise</h2>
+
+    <p>84% kommen mit dem Auto. Zehn Prozentpunkte über dem Bundesdurchschnitt. Bahn: 7%. Der Rest verteilt sich auf Bus, Flugzeug und Sonstiges. Die Insel ist schlecht angebunden — und gut asphaltiert.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Wie kommen die Touristen nach Usedom?</div>
+      <div class="chart-subtitle">Verkehrsmittel-Anteile — Quelle: RPV Vorpommern</div>
+      <div id="chart-verkehr" class="chart"></div>
+    </div>
+
+    <h3>Was die Anreise kostet — dem Klima</h3>
+
+    <div class="chart-container">
+      <div class="chart-title">CO₂ pro Anreise: Verbrenner vs. E-Auto vs. Bahn</div>
+      <div class="chart-subtitle">kg CO₂ hin und zurück — Quelle: UBA / ADAC / Deutsche Bahn</div>
+      <div id="chart-co2" class="chart chart-tall"></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">170 g</div>
+        <div class="kpi-label">CO₂/km Verbrenner</div>
+        <div class="kpi-sub">Ø Bestandsflotte</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value accent2">55 g</div>
+        <div class="kpi-label">CO₂/km E-Auto</div>
+        <div class="kpi-sub">Dt. Strommix 2024</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value ok">29 g</div>
+        <div class="kpi-label">CO₂/km Bahn</div>
+        <div class="kpi-sub">DB Fernverkehr</div>
+      </div>
+    </div>
+
+    <h3>Und dann der Reifenabrieb</h3>
+    <p>Jeder Kilometer produziert 25 mg Reifenabrieb. Klingt nach nichts. Aber: 100.000 Tonnen pro Jahr in Deutschland, davon 20.000 Tonnen in die Gewässer. Reifenabrieb ist die größte Einzelquelle für Mikroplastik — größer als Textilien, größer als Kosmetik.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">25 mg/km</div>
+        <div class="kpi-label">Reifenabrieb / PKW</div>
+        <div class="kpi-sub">Fraunhofer UMSICHT</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">12,5 g</div>
+        <div class="kpi-label">Berlin → Usedom</div>
+        <div class="kpi-sub">500 km hin/zurück</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">40,8 g</div>
+        <div class="kpi-label">München → Usedom</div>
+        <div class="kpi-sub">1.630 km hin/zurück</div>
+      </div>
+    </div>
+
+    <p class="text-small">Reifenpartikel enthalten toxische Additive wie 6PPD-Quinon, die für Wasserorganismen giftig sind. Der Abrieb gelangt über Regenwasser und Wind in die Gewässer — und damit in die Ostsee.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== FISCHBRÖTCHEN ===================== -->
+  <section id="fischbroetchen">
+    <h2>Die Fischbrötchen-Lüge</h2>
+
+    <p>Du stehst an der Seebrücke in Ahlbeck. Matjesbrötchen, frischer Wind, Möwen. Ostsee-Idylle. Aber der Fisch auf deinem Brötchen? Der war noch nie in der Ostsee.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">80%</div>
+        <div class="kpi-label">Import-Anteil</div>
+        <div class="kpi-sub">Deutscher Fischbedarf</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">12,8 kg</div>
+        <div class="kpi-label">Pro-Kopf-Verbrauch</div>
+        <div class="kpi-sub">Deutschland 2024</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value danger">0</div>
+        <div class="kpi-label">Azubis 2023</div>
+        <div class="kpi-sub">Küstenfischerei MV</div>
+      </div>
+    </div>
+
+    <h3>Woher kommt der Fisch wirklich?</h3>
+
+    <div class="herkunft-grid">
+      <div class="herkunft-card">
+        <div class="herkunft-flag">🐟</div>
+        <div>
+          <div class="herkunft-name">Alaska-Seelachs</div>
+          <div class="herkunft-detail">Nordpazifik → China (Filet) → Deutschland</div>
+          <div class="herkunft-note">Kein Lachs. Kein Ostsee-Fisch.</div>
+        </div>
+      </div>
+      <div class="herkunft-card">
+        <div class="herkunft-flag">🇻🇳</div>
+        <div>
+          <div class="herkunft-name">Pangasius</div>
+          <div class="herkunft-detail">Mekong-Delta, Vietnam</div>
+          <div class="herkunft-note">Tiefgefroren importiert</div>
+        </div>
+      </div>
+      <div class="herkunft-card">
+        <div class="herkunft-flag">🇳🇴</div>
+        <div>
+          <div class="herkunft-name">Lachs</div>
+          <div class="herkunft-detail">Norwegen, Aquakultur</div>
+        </div>
+      </div>
+      <div class="herkunft-card">
+        <div class="herkunft-flag">🌊</div>
+        <div>
+          <div class="herkunft-name">Matjes</div>
+          <div class="herkunft-detail">Nordsee-Hering, nicht Ostsee</div>
+          <div class="herkunft-note">Junger Hering vor der Fortpflanzung</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Das Sterben eines Berufsstands</h3>
+    <p>Nach dem Krieg gab es allein in Ahlbeck über 350 Fischer. Heute sind es in ganz Mecklenburg-Vorpommern noch 154 im Haupterwerb. Tendenz: weiter fallend. Die Fischerei in der Ostsee stirbt — nicht wegen der Fischer, sondern weil es nichts mehr zu fischen gibt.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Haupterwerbsfischer in MV</div>
+      <div class="chart-subtitle">Anzahl — Quelle: LALLF MV / KATAPULT MV</div>
+      <div id="chart-fischer" class="chart"></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== SONNENCREME ===================== -->
+  <section id="sonnencreme">
+    <h2>Was wir im Wasser lassen</h2>
+
+    <p>Ein Bad in der Ostsee. 20 Minuten. Danach sind 25% der Sonnencreme im Wasser. Bei 1.000 Badegästen an einem Strand: über 35 Kilogramm Sonnencreme. Pro Tag.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">25%</div>
+        <div class="kpi-label">abgewaschen</div>
+        <div class="kpi-sub">nach 20 Min. im Wasser</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">35 kg / Tag</div>
+        <div class="kpi-label">pro 1.000 Badegäste</div>
+        <div class="kpi-sub">Sonnencreme ins Meer</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">30 ng/L</div>
+        <div class="kpi-label">UV-Filter gemessen</div>
+        <div class="kpi-sub">Ostsee — IOW 2016</div>
+      </div>
+    </div>
+
+    <h3>Problematische Inhaltsstoffe</h3>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div><div class="research-name">Oxybenzon</div><div class="research-role">Korallenbleiche, DNA-Schäden — wirkt bei 1 Tropfen auf 50m-Becken</div></div>
+        <div class="research-badge" style="background:var(--danger-subtle);color:var(--danger)">verboten (Hawaii)</div>
+      </div>
+      <div class="research-card">
+        <div><div class="research-name">Octinoxat</div><div class="research-role">Hormonell wirksam, schädigt Larven</div></div>
+        <div class="research-badge" style="background:var(--danger-subtle);color:var(--danger)">verboten (Hawaii)</div>
+      </div>
+      <div class="research-card">
+        <div><div class="research-name">Octocrylen</div><div class="research-role">Reichert sich in Organismen an</div></div>
+        <div class="research-badge" style="background:var(--warning-subtle);color:var(--warning)">unter Beobachtung</div>
+      </div>
+    </div>
+
+    <p>Hawaii und Palau haben UV-Filter verboten. Deutschland? Kein Monitoring, keine Obergrenzen. In den Zuflüssen der Ostsee wurden bis zu <strong>836 ng/L</strong> gemessen — fast 28-mal so viel wie im offenen Meer.</p>
+
+    <h3>Strandmüll</h3>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value warning">82–114</div>
+        <div class="kpi-label">Müllteile / 100m</div>
+        <div class="kpi-sub">Fehmarn – Rügen</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">47%</div>
+        <div class="kpi-label">davon Plastik</div>
+        <div class="kpi-sub">Coastal Cleanup 2023</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">11,5 t</div>
+        <div class="kpi-label">gesammelt</div>
+        <div class="kpi-sub">1.570 Freiwillige</div>
+      </div>
+    </div>
+
+    <p class="text-small">NABU führt seit 2011 ein wissenschaftliches Spülsaummonitoring nach OSPAR-Standard durch: 100-Meter-Abschnitte, 4x jährlich, 120 Kategorien. Der Großteil des Strandmülls ist tourismusbezogen.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== SPIN ===================== -->
+  <div class="perspective-break">
+    <h2>Noch ein Perspektivwechsel</h2>
+    <p>Dieselbe Zahl. Zwei Geschichten.</p>
+  </div>
+
+  <section id="spin">
+    <h2>Was Daten erzählen — und was man sie erzählen lässt</h2>
+
+    <p>Zahlen lügen nicht. Aber sie schweigen gern. Dieselbe Zahl kann eine Erfolgsgeschichte sein oder ein Alarmsignal — je nachdem, wer sie vorstellt und was er weglässt. Drei Beispiele aus dieser Story.</p>
+
+    <div class="spin-card">
+      <div class="spin-number">6 Mio. Übernachtungen<span>Usedom 2024</span></div>
+      <div class="spin-sides">
+        <div class="spin-side positive">
+          <div class="spin-label">Pressemitteilung Tourismusverband</div>
+          <p>Rekordergebnis! +4,2% zum Vorjahr. Usedom festigt Position als Topdestination. Über 1 Mrd. € Bruttoumsatz sichern 20.000 Arbeitsplätze.</p>
+        </div>
+        <div class="spin-side negative">
+          <div class="spin-label">Was die Zahl verschweigt</div>
+          <p>1,18 Mio. Autos auf einer Insel mit 31.000 Einwohnern. 12,5 g Reifenabrieb pro Anreise. 35 kg Sonnencreme pro Strandtag. Infrastruktur am Limit, Ökosystem unter Druck.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spin-card">
+      <div class="spin-number">12,8 kg Fischkonsum<span>pro Kopf, Deutschland 2024</span></div>
+      <div class="spin-sides">
+        <div class="spin-side positive">
+          <div class="spin-label">Pressemitteilung FIZ</div>
+          <p>Stabiler Konsum, gesunde Ernährung. 51% der Verbraucher achten auf Herkunft. Preisindex unter dem Lebensmittel-Durchschnitt.</p>
+        </div>
+        <div class="spin-side negative">
+          <div class="spin-label">Was die Zahl verschweigt</div>
+          <p>80% importiert. Alaska, Vietnam, Norwegen. Vor der eigenen Küste: Dorsch verboten, Hering fast verboten, 154 Fischer übrig, null Azubis. Der stabile Konsum existiert nur durch globale Lieferketten.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spin-card">
+      <div class="spin-number">Blaue Flagge, EU-Badegewässer<span>Koserow, Usedom — „ausgezeichnete Qualität"</span></div>
+      <div class="spin-sides">
+        <div class="spin-side positive">
+          <div class="spin-label">Tourismusmarketing</div>
+          <p>Kristallklares Wasser. EU-geprüft. Blaue Flagge. Familienfreundlich. Eines der saubersten Badegewässer Europas.</p>
+        </div>
+        <div class="spin-side negative">
+          <div class="spin-label">Was die Zahl verschweigt</div>
+          <p>EU-Badegewässertests prüfen Bakterien — nicht Mikroplastik, nicht UV-Filter, nicht Munitionsrückstände. 67 Billionen Partikel pro Jahr. 300.000 Tonnen Munition am Grund. 30 ng/L Sonnencreme-Chemie. Aber die Blaue Flagge weht.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="tk-closer" style="margin-top:2rem">Daten sind nie neutral. Wer sie zeigt, entscheidet, was du siehst. Auch ich. Deshalb liegen alle Quellen offen.</p>
+
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== QUELLEN ===================== -->
+  <section id="quellen">
+    <h2>Quellen &amp; Methodik</h2>
+
+    <p class="text-small">Alle Daten stammen aus öffentlich zugänglichen Quellen. Wo exakte Jahreswerte fehlen, wurde auf Basis der verfügbaren Studien interpoliert (gekennzeichnet). Die Mikroplastik-Quellen zeigen geschätzte Anteile aus mehreren Studien — exakte Aufschlüsselungen variieren je nach Methodik.</p>
+
+    <div class="source-card">
+      <h3>Datenquellen</h3>
+      <ul>
+        <li><a href="https://helcom.fi/baltic-sea-trends/data/">HELCOM Data Portal</a> — Umweltdaten, Kartendienste, Monitoring</li>
+        <li><a href="https://indicators.helcom.fi/">HELCOM Indicators</a> — Fischbestände, Säugetiere, Eutrophierung</li>
+        <li><a href="https://stateofthebalticsea.helcom.fi/">State of the Baltic Sea</a> — Dritter HELCOM Holistic Assessment (2016–2021)</li>
+        <li><a href="https://helcom.fi/wp-content/uploads/2019/08/Dumped-chemical-munitions-in-the-Baltic-Sea.pdf">HELCOM Report</a> — Chemical Munitions Dumped in the Baltic Sea</li>
+        <li><a href="https://standardgraphs.ices.dk/stockList.aspx">ICES Stock Assessment</a> — Fischbestandsbewertungen</li>
+        <li><a href="https://www.thuenen.de/de/themenfelder/fischerei">Thünen-Institut</a> — Fischereiforschung, ICES-Fangempfehlungen</li>
+        <li><a href="https://www.bmel.de/SharedDocs/Pressemitteilungen/DE/2023/126-fangquoten-ostsee.html">BMEL</a> — Fangquoten Ostsee</li>
+        <li><a href="https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2021.594415/full">Frontiers in Marine Science</a> — Urban Microplastics Emissions Baltic Sea</li>
+        <li><a href="https://interreg-baltic.eu/project-posts/baltiplast/">FanpLESStic-sea / BALTIPLAST</a> — EU Interreg Mikroplastik-Forschung</li>
+        <li><a href="https://www.eea.europa.eu/en/analysis/maps-and-charts/long-term-trends-in-eutrophication">EEA</a> — Long-term Trends in Eutrophication</li>
+        <li><a href="https://www.rpv-vorpommern.de">RPV Vorpommern</a> — Zustandsanalyse Verkehr Usedom, Anreise-Verkehrsmittel</li>
+        <li><a href="https://www.umweltbundesamt.de">Umweltbundesamt</a> — CO₂-Emissionen pro kWh, PKW-Emissionsfaktoren</li>
+        <li><a href="https://www.umsicht.fraunhofer.de">Fraunhofer UMSICHT</a> — Konsortialstudie Mikroplastik, Reifenabrieb</li>
+        <li><a href="https://www.fischinfo.de">FIZ</a> — Fisch-Informationszentrum, Fischkonsum Deutschland</li>
+        <li><a href="https://www.lallf.de/fischerei/statistik/">LALLF MV</a> — Fischer und Fahrzeuge Statistik</li>
+        <li><a href="https://katapult-mv.de">KATAPULT MV</a> — Zukunft der Küstenfischerei</li>
+        <li><a href="https://www.leibniz-magazin.de">Leibniz-Magazin / IOW</a> — UV-Filter in der Ostsee (Kathrin Fisch, 2016)</li>
+        <li><a href="https://www.nabu.de/natur-und-landschaft/aktionen-und-projekte/meere-ohne-plastik/14984.html">NABU</a> — Spülsaummonitoring, Coastal Cleanup</li>
+        <li><a href="https://tourismus.mv">Tourismusverband MV</a> — Übernachtungsstatistik, Wirtschaftsdaten</li>
+      </ul>
+    </div>
+
+    <p>
+      <a href="https://github.com/tkoerting/data-stories" class="github-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        tkoerting/data-stories — Code, Daten, Methodik
+      </a>
+    </p>
+  </section>
+
+  <hr class="divider">
+
+  <p class="tk-closer">Das Meer erzählt keine Geschichte. Es liefert Daten. Wir entscheiden, ob wir hinhören — und was wir hören wollen.</p>
+
+  <div class="article-footer">
+    <p>Der Körting — Datenstücke — Neugierig. Technisch. Vernetzt.</p>
+  </div>
+
+</div>
+
+<script>
+let DATA=null;
+
+function toggleTheme(){
+  const h=document.documentElement,b=document.querySelector('.toggle-btn');
+  h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';
+  b.textContent=h.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';
+  initCharts();
+}
+
+function C(){
+  const d=document.documentElement.dataset.theme==='dark';
+  return{bg:d?'#1E2028':'#FFFFFF',text:d?'#E5E7EB':'#1E293B',sub:d?'#6B7280':'#94A3B8',
+    border:d?'#2D3139':'#E2E5E9',accent:d?'#14B8A6':'#0D9488',danger:d?'#EF4444':'#DC2626',
+    warning:d?'#F59E0B':'#D97706',accent2:d?'#FACC15':'#EAB308',purple:d?'#8B5CF6':'#7C3AED',
+    gridBg:d?'#111318':'#F4F6F7'};
+}
+
+const charts={};
+const donutColors=['danger','warning','accent','accent2','purple','sub'];
+
+function initCharts(){
+  if(!DATA) return;
+  const c=C();
+  const base={tooltip:{backgroundColor:c.bg,borderColor:c.border,textStyle:{color:c.text,fontFamily:'Space Grotesk',fontSize:13}},
+    grid:{left:65,right:20,top:30,bottom:35}};
+  const axisBase={axisLabel:{color:c.sub,fontFamily:'Space Grotesk',fontSize:11},axisLine:{lineStyle:{color:c.border}},splitLine:{lineStyle:{color:c.border,type:'dashed'}}};
+
+  // Exchange — aus data.json: wasseraustausch
+  const exData=DATA.wasseraustausch.data;
+  const exColors=[c.accent,c.danger,c.warning,c.warning];
+  charts.exchange=echarts.init(document.getElementById('chart-exchange'),null,{renderer:'canvas'});
+  charts.exchange.setOption({...base,
+    xAxis:{type:'category',data:exData.map(d=>d.name),...axisBase},
+    yAxis:{type:'value',...axisBase,name:'Jahre',nameTextStyle:{color:c.sub,fontFamily:'Space Grotesk'}},
+    series:[{type:'bar',data:exData.map((d,i)=>({value:d.years,itemStyle:{color:exColors[i]||c.sub}})),
+      barWidth:'45%',itemStyle:{borderRadius:[4,4,0,0]},
+      label:{show:true,position:'top',fontFamily:'JetBrains Mono',fontSize:12,color:c.text,formatter:'~{c}'}}]});
+
+  // Dorsch — aus data.json: dorsch
+  const dorschData=DATA.dorsch.data;
+  const dorschBeifangStart=dorschData.findIndex(d=>d.note);
+  charts.dorsch=echarts.init(document.getElementById('chart-dorsch'),null,{renderer:'canvas'});
+  charts.dorsch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis',formatter:function(p){
+    const v=p[0];const t=v.value>=1000?(v.value/1000).toFixed(0)+'k':v.value;
+    return v.axisValue+': <b>'+t+' t</b>'+(v.value<1000?' (nur Beifang)':'')}},
+    xAxis:{type:'category',data:dorschData.map(d=>String(d.year)),...axisBase},
+    yAxis:{type:'value',...axisBase,name:'Tonnen',nameTextStyle:{color:c.sub}},
+    series:[{type:'line',smooth:true,symbol:'circle',symbolSize:6,
+      data:dorschData.map(d=>d.value),
+      lineStyle:{color:c.danger,width:3},itemStyle:{color:c.danger},
+      areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(239,68,68,0.25)'},{offset:1,color:'rgba(239,68,68,0)'}])},
+      markArea:dorschBeifangStart>=0?{silent:true,
+        data:[[{xAxis:String(dorschData[dorschBeifangStart].year),itemStyle:{color:'rgba(239,68,68,0.08)'}},{xAxis:String(dorschData[dorschData.length-1].year)}]],
+        label:{show:true,position:'inside',color:c.danger,fontFamily:'Space Grotesk',fontSize:10,formatter:'Fischerei\ngeschlossen'}}:undefined}]});
+
+  // Hering — aus data.json: hering
+  const heringData=DATA.hering.data;
+  const heringRecovery=heringData.findIndex(d=>d.note);
+  charts.hering=echarts.init(document.getElementById('chart-hering'),null,{renderer:'canvas'});
+  charts.hering.setOption({...base,tooltip:{...base.tooltip,trigger:'axis',formatter:function(p){return p[0].axisValue+': <b>'+p[0].value.toLocaleString('de')+' t</b>'}},
+    xAxis:{type:'category',data:heringData.map(d=>String(d.year)),...axisBase},
+    yAxis:{type:'value',...axisBase,name:'Tonnen',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:heringData.map(d=>d.value),
+      itemStyle:{color:function(p){return p.dataIndex>=heringRecovery&&heringRecovery>=0?c.accent:c.warning},borderRadius:[4,4,0,0]},barWidth:'55%',
+      label:{show:true,position:'top',fontFamily:'JetBrains Mono',fontSize:9,color:c.sub,
+        formatter:function(p){return p.value>=1000?(p.value/1000).toFixed(p.value>=10000?0:1)+'k':p.value}}}]});
+
+  // Sources Donut — aus data.json: mikroplastik_quellen
+  const srcData=DATA.mikroplastik_quellen.data;
+  charts.sources=echarts.init(document.getElementById('chart-sources'),null,{renderer:'canvas'});
+  charts.sources.setOption({tooltip:{trigger:'item',formatter:'{b}: {d}%',backgroundColor:c.bg,borderColor:c.border,textStyle:{color:c.text,fontFamily:'Space Grotesk'}},
+    series:[{type:'pie',radius:['42%','70%'],center:['50%','50%'],
+      label:{color:c.text,fontFamily:'Space Grotesk',fontSize:12,formatter:'{b}\n{d}%'},
+      labelLine:{lineStyle:{color:c.sub}},
+      data:srcData.map((d,i)=>({value:d.value,name:d.name,itemStyle:{color:c[donutColors[i]]||c.sub}})),
+      emphasis:{itemStyle:{shadowBlur:10,shadowColor:'rgba(0,0,0,0.3)'}}}]});
+
+  // Dead Zones — aus data.json: deadzones
+  const dzData=DATA.deadzones.data;
+  charts.deadzones=echarts.init(document.getElementById('chart-deadzones'),null,{renderer:'canvas'});
+  charts.deadzones.setOption({...base,tooltip:{...base.tooltip,trigger:'axis',formatter:'{b}: {c} km²'},
+    xAxis:{type:'category',data:dzData.map(d=>String(d.year)),...axisBase},
+    yAxis:{type:'value',...axisBase,name:'km²',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:dzData.map(d=>d.value),
+      itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:c.danger},{offset:1,color:'rgba(239,68,68,0.3)'}]),borderRadius:[4,4,0,0]},barWidth:'50%'}]});
+
+  // Munitions Treemap — aus data.json: kpis
+  const k=DATA.kpis;
+  charts.munitions=echarts.init(document.getElementById('chart-munitions'),null,{renderer:'canvas'});
+  charts.munitions.setOption({tooltip:{backgroundColor:c.bg,borderColor:c.border,textStyle:{color:c.text,fontFamily:'Space Grotesk'}},
+    series:[{type:'treemap',roam:false,nodeClick:false,breadcrumb:{show:false},
+      label:{fontFamily:'Space Grotesk',fontSize:13,color:'#fff',formatter:function(p){return p.name}},
+      levels:[{itemStyle:{borderColor:c.gridBg,borderWidth:4,gapWidth:4}}],
+      data:[{name:'Konventionelle\nMunition\n'+(k.munition_konventionell_t/1000).toFixed(0)+'.000 t',value:k.munition_konventionell_t,itemStyle:{color:c.danger}},
+        {name:'Chemische\nKampfstoffe\n'+(k.munition_chemisch_t/1000).toFixed(0)+'.000 t',value:k.munition_chemisch_t,itemStyle:{color:c.warning}},
+        {name:'Bergungsziel\nPilot\n50–'+k.bergungsziel_pilot_t+' t',value:k.bergungsziel_pilot_t,itemStyle:{color:c.accent}}]}]});
+
+  // Verkehrsmittel Donut — aus data.json: anreise.verkehrsmittel
+  const vmData=DATA.anreise.verkehrsmittel;
+  const vmColors=[c.danger,c.accent,c.warning,c.purple,c.sub];
+  charts.verkehr=echarts.init(document.getElementById('chart-verkehr'),null,{renderer:'canvas'});
+  charts.verkehr.setOption({tooltip:{trigger:'item',formatter:'{b}: {d}%',backgroundColor:c.bg,borderColor:c.border,textStyle:{color:c.text,fontFamily:'Space Grotesk'}},
+    series:[{type:'pie',radius:['42%','70%'],center:['50%','50%'],
+      label:{color:c.text,fontFamily:'Space Grotesk',fontSize:12,formatter:'{b}\n{d}%'},
+      labelLine:{lineStyle:{color:c.sub}},
+      data:vmData.map((d,i)=>({value:d.anteil,name:d.name,itemStyle:{color:vmColors[i]||c.sub}})),
+      emphasis:{itemStyle:{shadowBlur:10,shadowColor:'rgba(0,0,0,0.3)'}}}]});
+
+  // CO2 Vergleich — aus data.json: anreise.quellmaerkte + co2_pro_km
+  const qm=DATA.anreise.quellmaerkte;
+  const co2=DATA.anreise.co2_pro_km;
+  charts.co2=echarts.init(document.getElementById('chart-co2'),null,{renderer:'canvas'});
+  charts.co2.setOption({...base,grid:{...base.grid,bottom:50},
+    legend:{data:['Verbrenner','E-Auto','Bahn'],textStyle:{color:c.sub,fontFamily:'Space Grotesk',fontSize:11},bottom:5},
+    tooltip:{...base.tooltip,trigger:'axis',formatter:function(p){return p[0].axisValue+'<br>'+p.map(s=>s.marker+' '+s.seriesName+': <b>'+s.value+' kg</b>').join('<br>')}},
+    xAxis:{type:'category',data:qm.map(d=>d.name),...axisBase},
+    yAxis:{type:'value',...axisBase,name:'kg CO₂',nameTextStyle:{color:c.sub}},
+    series:[
+      {name:'Verbrenner',type:'bar',data:qm.map(d=>Math.round(d.km_gesamt*co2.verbrenner_g/1000)),
+        itemStyle:{color:c.danger,borderRadius:[4,4,0,0]},barGap:'15%',
+        label:{show:true,position:'top',fontFamily:'JetBrains Mono',fontSize:9,color:c.danger}},
+      {name:'E-Auto',type:'bar',data:qm.map(d=>Math.round(d.km_gesamt*co2.eauto_g/1000)),
+        itemStyle:{color:c.accent2,borderRadius:[4,4,0,0]},
+        label:{show:true,position:'top',fontFamily:'JetBrains Mono',fontSize:9,color:c.accent2}},
+      {name:'Bahn',type:'bar',data:qm.map(d=>Math.round(d.km_gesamt*co2.bahn_g/1000)),
+        itemStyle:{color:c.accent,borderRadius:[4,4,0,0]},
+        label:{show:true,position:'top',fontFamily:'JetBrains Mono',fontSize:9,color:c.accent}}
+    ]});
+
+  // Fischer MV — aus data.json: fischbroetchen.fischer_mv
+  const fData=DATA.fischbroetchen.fischer_mv;
+  charts.fischer=echarts.init(document.getElementById('chart-fischer'),null,{renderer:'canvas'});
+  charts.fischer.setOption({...base,tooltip:{...base.tooltip,trigger:'axis',formatter:function(p){return p[0].axisValue+': <b>'+p[0].value+' Fischer</b>'}},
+    xAxis:{type:'category',data:fData.map(d=>String(d.year)),...axisBase},
+    yAxis:{type:'value',...axisBase,name:'Anzahl',nameTextStyle:{color:c.sub},min:0},
+    series:[{type:'line',smooth:true,symbol:'circle',symbolSize:8,
+      data:fData.map(d=>d.value),
+      lineStyle:{color:c.warning,width:3},itemStyle:{color:c.warning},
+      areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(245,158,11,0.25)'},{offset:1,color:'rgba(245,158,11,0)'}])},
+      label:{show:true,position:'top',fontFamily:'JetBrains Mono',fontSize:11,color:c.text}}]});
+
+  window.onresize=()=>Object.values(charts).forEach(ch=>ch.resize());
+}
+
+// Nav pills
+document.querySelectorAll('.nav-pill').forEach(pill=>{
+  pill.addEventListener('click',e=>{
+    document.querySelectorAll('.nav-pill').forEach(p=>p.classList.remove('active'));
+    e.target.classList.add('active');
+  });
+});
+
+// Daten laden, dann Charts rendern
+fetch('data.json').then(r=>r.json()).then(d=>{DATA=d;initCharts();});
+</script>
+</body>
+</html>
