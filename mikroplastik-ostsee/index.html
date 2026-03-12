@@ -19,7 +19,7 @@
     --max-width: 760px;
     --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  [data-theme="light"] {
+  [data-theme="dark"] {
     --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
     --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
     --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
@@ -43,8 +43,8 @@
   ::selection{background:var(--accent);color:white}
   a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
 
-  .site-header{position:sticky;top:0;z-index:100;background:rgba(17,19,24,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  [data-theme="light"] .site-header{background:rgba(244,246,247,0.85)}
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
   .header-inner{max-width:var(--max-width);margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
   .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
   .site-name span{color:var(--accent)}
@@ -897,6 +897,7 @@ const donutColors=['danger','warning','accent','accent2','purple','sub'];
 
 function initCharts(){
   if(!DATA) return;
+  Object.values(charts).forEach(ch=>{try{ch.dispose()}catch(e){}});
   const c=C();
   const base={tooltip:{backgroundColor:c.bg,borderColor:c.border,textStyle:{color:c.text,fontFamily:'Space Grotesk',fontSize:13}},
     grid:{left:65,right:20,top:30,bottom:35}};
