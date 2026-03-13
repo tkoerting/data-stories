@@ -10,7 +10,7 @@ Von [Thomas Körting](https://der-koerting.de) — Der Nerd. Der Spinner. Der, d
 
 Datenstücke nehmen ein Thema aus dem [Blog](https://der-koerting.de) und gehen tiefer — mit offenen Daten, interaktiven Charts und allen Quellen. Kein akademisches Paper, kein Dashboard. Eher: Was passiert, wenn jemand Zahlen nimmt, sie dreht, wendet, hinterfragt — und dann eine Geschichte erzählt, die man sonst nicht sieht.
 
-**Live:** [tkoerting.github.io/data-stories](https://tkoerting.github.io/data-stories/)
+**Live:** [opendataminded.de](https://opendataminded.de/)
 
 ---
 
@@ -18,10 +18,10 @@ Datenstücke nehmen ein Thema aus dem [Blog](https://der-koerting.de) und gehen 
 
 | # | Titel | Thema | Charts | Quellen |
 |---|-------|-------|--------|---------|
-| 4 | [Es ist ein Tauschgeschäft](https://tkoerting.github.io/data-stories/tauschgeschaeft/) | Generationenvertrag, Vermögen, Bildungsinflation, Mental Health | 7 | 12 |
-| 3 | [Nicht fauler. Führungsloser.](https://tkoerting.github.io/data-stories/nicht-fauler-fuehrungsloser/) | OECD-Produktivität, Gallup-Engagement, Pencavel-Kurve | 6 | 8 |
-| 2 | [Wie man seine Stadt schön träumt](https://tkoerting.github.io/data-stories/fuerth-wissenschaftsstadt/) | Fürth als Wissenschaftsstadt, Open Data, Pendlerströme | 6 | 9 |
-| 1 | [Was unter der klaren Ostsee liegt](https://tkoerting.github.io/data-stories/mikroplastik-ostsee/) | Mikroplastik, Munition, Dorsch-Kollaps, Schweinswale | 9 | 19 |
+| 4 | [Es ist ein Tauschgeschäft](https://opendataminded.de/tauschgeschaeft/) | Generationenvertrag, Vermögen, Bildungsinflation, Mental Health | 7 | 12 |
+| 3 | [Nicht fauler. Führungsloser.](https://opendataminded.de/nicht-fauler-fuehrungsloser/) | OECD-Produktivität, Gallup-Engagement, Pencavel-Kurve | 6 | 8 |
+| 2 | [Wie man seine Stadt schön träumt](https://opendataminded.de/fuerth-wissenschaftsstadt/) | Fürth als Wissenschaftsstadt, Open Data, Pendlerströme | 6 | 9 |
+| 1 | [Was unter der klaren Ostsee liegt](https://opendataminded.de/mikroplastik-ostsee/) | Mikroplastik, Munition, Dorsch-Kollaps, Schweinswale | 9 | 19 |
 
 ---
 
