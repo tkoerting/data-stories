@@ -18,6 +18,7 @@ Datenstücke nehmen ein Thema aus dem [Blog](https://der-koerting.de) und gehen 
 
 | # | Titel | Thema | Charts | Quellen |
 |---|-------|-------|--------|---------|
+| 5 | [Ich hab Corona.](https://opendataminded.de/ich-hab-corona/) | COVID-Normalisierung, ICU, Medien, Müllberge, Ländervergleich | 5 | 25 |
 | 4 | [Es ist ein Tauschgeschäft](https://opendataminded.de/tauschgeschaeft/) | Generationenvertrag, Vermögen, Bildungsinflation, Mental Health | 7 | 12 |
 | 3 | [Nicht fauler. Führungsloser.](https://opendataminded.de/nicht-fauler-fuehrungsloser/) | OECD-Produktivität, Gallup-Engagement, Pencavel-Kurve | 6 | 8 |
 | 2 | [Wie man seine Stadt schön träumt](https://opendataminded.de/fuerth-wissenschaftsstadt/) | Fürth als Wissenschaftsstadt, Open Data, Pendlerströme | 6 | 9 |
@@ -50,8 +51,12 @@ data-stories/
 │   ├── index.html                      # Datenstück #3
 │   ├── data.json
 │   └── METHODIK.md
-└── tauschgeschaeft/
-    ├── index.html                      # Datenstück #4
+├── tauschgeschaeft/
+│   ├── index.html                      # Datenstück #4
+│   ├── data.json
+│   └── METHODIK.md
+└── ich-hab-corona/
+    ├── index.html                      # Datenstück #5 (Standalone)
     ├── data.json
     └── METHODIK.md
 ```

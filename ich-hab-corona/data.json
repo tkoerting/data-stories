@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "title": "Ich hab Corona.",
+    "subtitle": "Vier Worte, die 2026 noch immer anders klingen als 'Ich hab Grippe.' Die Daten sagen: Sollten sie nicht.",
+    "datenstueck": 5,
+    "datum": "März 2026",
+    "standalone": true,
+    "autor": "Thomas Körting"
+  },
+
+  "sections": {
+
+    "intensivstation": {
+      "title": "Die Intensivstation",
+      "source": "DIVI Intensivregister / RKI",
+      "peak_icu": 5700,
+      "peak_icu_date": "2021-01",
+      "timeline": [
+        { "date": "2020-04", "icu_covid": 2800 },
+        { "date": "2020-12", "icu_covid": 5100 },
+        { "date": "2021-01", "icu_covid": 5700 },
+        { "date": "2021-04", "icu_covid": 5100 },
+        { "date": "2021-12", "icu_covid": 4900 },
+        { "date": "2022-03", "icu_covid": 2300 },
+        { "date": "2022-07", "icu_covid": 1100 },
+        { "date": "2022-12", "icu_covid": 1000 },
+        { "date": "2023-03", "icu_covid": 600 },
+        { "date": "2023-12", "icu_covid": 350 },
+        { "date": "2024-06", "icu_covid": 150 },
+        { "date": "2024-12", "icu_covid": 80 },
+        { "date": "2025-12", "icu_covid": 50, "note": "unter 50" },
+        { "date": "2026-03", "icu_covid": 30, "note": "unter 30" }
+      ],
+      "sari_kw10_2026": {
+        "rsv_pct": 21,
+        "influenza_pct": 14,
+        "covid_pct": 1,
+        "covid_note": "unter 1%"
+      }
+    },
+
+    "die_kurve": {
+      "title": "Die Kurve",
+      "source": "Destatis / RKI / DAK",
+      "deaths": [
+        { "year": 2020, "deaths": 33071 },
+        { "year": 2021, "deaths": 71331 },
+        { "year": 2022, "deaths": 52357 },
+        { "year": 2023, "deaths": 25768 },
+        { "year": 2024, "deaths": 12000, "note": "Schätzung" },
+        { "year": 2025, "deaths": 5000, "note": "Schätzung" }
+      ],
+      "sick_leave_ranking": [
+        { "year": 2022, "rank": 2 },
+        { "year": 2023, "rank": 8 },
+        { "year": 2024, "rank": 14 }
+      ],
+      "sick_days_per_100_insured": [
+        { "year": 2022, "days": 120 },
+        { "year": 2023, "days": 45 },
+        { "year": 2024, "days": 18 }
+      ]
+    },
+
+    "die_welt": {
+      "title": "Die Welt",
+      "source": "ECDC / Länderspezifische Gesundheitsbehörden",
+      "countries": [
+        {
+          "name": "Dänemark",
+          "ended": "2022-02-01",
+          "flag": "\ud83c\udde9\ud83c\uddf0",
+          "covid_vs_flu_hospital": "COVID 2x Flu (sinkend)",
+          "meldepflicht": false,
+          "impfempfehlung": "65+ und Risikogruppen"
+        },
+        {
+          "name": "Schweden",
+          "ended": "2022-02-09",
+          "flag": "\ud83c\uddf8\ud83c\uddea",
+          "covid_vs_flu_hospital": "nicht separat berichtet",
+          "meldepflicht": false,
+          "impfempfehlung": "Nur Risikogruppen, 1x/Herbst"
+        },
+        {
+          "name": "UK",
+          "ended": "2022-04-01",
+          "flag": "\ud83c\uddec\ud83c\udde7",
+          "covid_vs_flu_hospital": "Grippe dominiert Winter 25/26",
+          "meldepflicht": false,
+          "impfempfehlung": "Risikogruppen"
+        },
+        {
+          "name": "Niederlande",
+          "ended": "2022-09-17",
+          "flag": "\ud83c\uddf3\ud83c\uddf1",
+          "covid_vs_flu_hospital": "COVID < Grippe",
+          "meldepflicht": false,
+          "impfempfehlung": "Risikogruppen"
+        },
+        {
+          "name": "Japan",
+          "ended": "2023-05-08",
+          "flag": "\ud83c\uddef\ud83c\uddf5",
+          "covid_vs_flu_hospital": "Gleiche Kategorie",
+          "meldepflicht": false,
+          "impfempfehlung": "Risikogruppen"
+        },
+        {
+          "name": "USA",
+          "ended": "2023-05-11",
+          "flag": "\ud83c\uddfa\ud83c\uddf8",
+          "covid_vs_flu_hospital": "Grippe 3x COVID (Peak)",
+          "meldepflicht": false,
+          "impfempfehlung": "Risikogruppen (CDC)"
+        },
+        {
+          "name": "Deutschland",
+          "ended": "2023-04-07",
+          "flag": "\ud83c\udde9\ud83c\uddea",
+          "covid_vs_flu_hospital": "COVID < 1% SARI",
+          "meldepflicht": true,
+          "impfempfehlung": "Basis alle 18+, Booster Risikogruppen"
+        },
+        {
+          "name": "Südkorea",
+          "ended": "2024-05-01",
+          "flag": "\ud83c\uddf0\ud83c\uddf7",
+          "covid_vs_flu_hospital": "nicht verfügbar",
+          "meldepflicht": false,
+          "impfempfehlung": "Risikogruppen"
+        }
+      ],
+      "usa_winter_2425": {
+        "flu_peak": 13.5,
+        "covid_peak": 4.2,
+        "rsv_peak": 3.8,
+        "unit": "per 100k/week"
+      },
+      "denmark_hospital_decline_pct": 46
+    },
+
+    "die_schlagzeile": {
+      "title": "Die Schlagzeile",
+      "source": "PMG Presse-Monitor / ARD/ZDF / COSMO / Uni Mainz",
+      "media_peak_articles_per_week": 221000,
+      "tv_news_share_peak_pct": 41,
+      "tagesschau_peak_pct": 75,
+      "tagesschau_peak_period": "März/April 2020",
+      "article_per_second_at_peak": 2.7,
+      "media_timeline": [
+        { "period": "2020-03", "articles_per_week": 221000 },
+        { "period": "2021-01", "articles_per_week": 115000 },
+        { "period": "2022-01", "articles_per_week": 80000 },
+        { "period": "2022-06", "articles_per_week": 25000 },
+        { "period": "2023-01", "articles_per_week": 12000 },
+        { "period": "2024-01", "articles_per_week": 3000 },
+        { "period": "2025-01", "articles_per_week": 800 }
+      ],
+      "excess_mortality_2022": 74000,
+      "excess_mortality_note": "Höchstes Jahr, aber Medienberichterstattung bereits rückläufig",
+      "drosten_podcast": {
+        "start": "2020-02-26",
+        "end_regular": "2022-03-29",
+        "episodes": 113,
+        "quote_date": "2022-12-27",
+        "quote": "Die Pandemie ist für mich vorbei"
+      },
+      "lauterbach": {
+        "talkshows_2020": 14,
+        "talkshows_2021": 40,
+        "approval_jan_2022": 66,
+        "approval_apr_2022": 50,
+        "rki_dramatization": true
+      },
+      "media_trust": {
+        "before_pandemic": 63,
+        "during_pandemic": 43,
+        "source": "Uni Mainz"
+      }
+    },
+
+    "der_muellberg": {
+      "title": "Der Müllberg",
+      "source": "PNAS / WHO / Statista / Bundesrechnungshof / OceansAsia",
+      "masks": {
+        "total": 17000000000,
+        "weight_g": 4,
+        "waste_tonnes": 68000,
+        "around_earth": 72,
+        "around_earth_note": "17 Mrd. × 17 cm / 40.075 km",
+        "eiffel_towers": 6.7,
+        "eiffel_towers_note": "68.000 t / 10.100 t",
+        "olympic_pools": 102,
+        "olympic_pools_note": "255.000 m³ / 2.500 m³",
+        "decomposition_years": 450
+      },
+      "pcr_tests": {
+        "total": 149000000,
+        "waste_per_test_g": 37.27,
+        "waste_tonnes": 5553,
+        "peak_per_week": 2270000
+      },
+      "schnelltests": {
+        "total": 756000000,
+        "waste_per_test_g": 10,
+        "waste_tonnes": 7560
+      },
+      "vaccines": {
+        "doses": 192000000,
+        "waste_per_dose_g": 18,
+        "waste_tonnes": 3456
+      },
+      "total_plastic_waste_tonnes": 85000,
+      "spahn_masks": {
+        "ordered": 5800000000,
+        "incinerated": 3000000000,
+        "cost_eur": 5900000000,
+        "destruction_cost_eur": 500000000
+      },
+      "ocean_masks_2020": 1560000000,
+      "corona_warn_app_deactivated": "2023-05-01",
+      "test_cost_total_eur": 10700000000,
+      "braungart_annual_waste_tonnes": 1100000
+    },
+
+    "der_ehrliche_teil": {
+      "title": "Der ehrliche Teil",
+      "source": "DAK / IW Köln",
+      "long_covid": {
+        "affected": 1500000,
+        "cost_eur": 250000000000,
+        "period": "2020-2024"
+      }
+    },
+
+    "fazit": {
+      "title": "Fazit",
+      "closer": "Ich hab Corona sollte klingen wie Ich hab Grippe. Nicht weil Corona harmlos ist. Sondern weil Grippe nie harmlos war — wir haben es nur nie so genannt."
+    }
+  }
+}

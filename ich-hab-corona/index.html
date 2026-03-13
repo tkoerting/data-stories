@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ich hab Corona. — Datenstück | Open Data Minded</title>
+<meta name="description" content="Vier Worte, die 2026 noch immer anders klingen als 'Ich hab Grippe.' Die Daten sagen: Sollten sie nicht. Intensivstationen, Todesfälle, Medien, Müllberge — ein Datenstück.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+  .standalone-tag{background:var(--warning-subtle);color:var(--warning);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+  .nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
+  .compare-card.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+  .compare-card.dim{opacity:0.7}
+  .compare-card.alert{border-color:var(--danger);background:var(--danger-subtle)}
+  .compare-city{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+  .compare-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;line-height:1.2}
+  .compare-number.zero{color:var(--danger)}
+  .compare-number.good{color:var(--accent)}
+  .compare-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.25rem}
+
+  .perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+  .perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+  .perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+
+  .spin-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .spin-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;color:var(--accent);text-align:center;margin-bottom:1rem;line-height:1.2}
+  .spin-number span{display:block;font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);font-weight:400;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+  .spin-sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .spin-side{padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.6}
+  .spin-side.positive{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.2)}
+  .spin-side.negative{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)}
+  .spin-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-weight:600}
+  .spin-side.positive .spin-label{color:var(--accent)}
+  .spin-side.negative .spin-label{color:var(--danger)}
+  .spin-side p{margin:0;font-size:0.85rem}
+
+  /* Datenbilder — visual highlight cards */
+  .datenbilder-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+  .datenbild-card{background:var(--bg-card);border:2px solid var(--accent);border-radius:12px;padding:1.75rem 1.25rem;text-align:center;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
+  .datenbild-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+  .datenbild-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+  [data-theme="dark"] .datenbild-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+  .datenbild-number{font-family:var(--font-mono);font-size:2.2rem;font-weight:500;color:var(--accent);line-height:1.1;margin-bottom:0.5rem}
+  .datenbild-label{font-family:var(--font-body);font-size:0.85rem;color:var(--text-secondary);line-height:1.4}
+  .datenbild-context{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-tertiary);margin-top:0.5rem;text-transform:uppercase;letter-spacing:0.05em}
+
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card h4{font-size:0.7rem;font-weight:600;color:var(--text-secondary);margin:0.75rem 0 0.35rem;text-transform:uppercase;letter-spacing:0.03em}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .spin-sides{grid-template-columns:1fr}
+    .datenbilder-grid{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+    .datenbild-number{font-size:1.8rem}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+        <a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+        <a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Datenstücke</span>
+    <span class="snapshot-tag">März 2026</span>
+    <span class="standalone-tag">Nur Daten</span>
+  </div>
+
+  <h1>Ich hab Corona.</h1>
+  <div class="subtitle">Vier Worte, die 2026 noch immer anders klingen als „Ich hab Grippe." Die Daten sagen: Sollten sie nicht.</div>
+
+  <p class="lead">Es gibt Sätze, die funktionieren wie ein Trigger. „Ich hab Corona" ist einer davon. 2020 bedeutete er: Quarantäne. Kontaktverfolgung. Angst. 2026 bedeutet er medizinisch etwas völlig anderes. Aber emotional? Da hängt er noch fest. Dieses Datenstück lässt nur die Zahlen sprechen.</p>
+
+  <nav class="section-nav">
+    <a href="#intensivstation" class="nav-pill">Intensivstation</a>
+    <a href="#kurve" class="nav-pill">Die Kurve</a>
+    <a href="#welt" class="nav-pill">Die Welt</a>
+    <span class="nav-sep">|</span>
+    <a href="#schlagzeile" class="nav-pill">Die Schlagzeile</a>
+    <a href="#muellberg" class="nav-pill">Der Müllberg</a>
+    <span class="nav-sep">|</span>
+    <a href="#ehrlich" class="nav-pill">Der ehrliche Teil</a>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: Die Intensivstation               -->
+  <!-- ============================================ -->
+
+  <h2 id="intensivstation">Die Intensivstation</h2>
+  <h3>Von 5.700 auf unter 1%.</h3>
+
+  <div class="kpi-grid" id="kpi-icu"></div>
+
+  <div class="chart-container">
+    <div class="chart-title">COVID-Patienten auf Intensivstationen</div>
+    <div class="chart-subtitle">DIVI-Intensivregister / RKI SARI-Surveillance</div>
+    <div id="chart-icu" class="chart chart-tall"></div>
+  </div>
+
+  <p>5.700 Menschen gleichzeitig auf Intensiv — das waren drei voll belegte Krankenhäuser, nur mit COVID. Heute? Weniger als einer von hundert Atemwegspatienten hat COVID. RSV und Grippe sind relevanter. Die Intensivstation hat die Pandemie hinter sich gelassen.</p>
+
+  <div class="perspective-break">
+    <h2>Die Daten haben die Intensivstation verlassen.</h2>
+    <p>Wir nicht.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: Die Kurve                         -->
+  <!-- ============================================ -->
+
+  <h2 id="kurve">Die Kurve</h2>
+  <h3>Drei Linien, eine Richtung.</h3>
+
+  <div class="kpi-grid" id="kpi-kurve"></div>
+
+  <div class="chart-container">
+    <div class="chart-title">COVID-Todesfälle Deutschland pro Jahr</div>
+    <div class="chart-subtitle">RKI / Destatis</div>
+    <div id="chart-deaths" class="chart"></div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">COVID bei Krankmeldungen — Rangplatz unter Diagnosen</div>
+    <div class="chart-subtitle">DAK Gesundheitsreport / TK</div>
+    <div id="chart-sickrank" class="chart"></div>
+  </div>
+
+  <p>71.331 Todesfälle in 2021. 25.768 in 2023. Minus 64 Prozent in zwei Jahren. Bei den Krankmeldungen: von Rang 2 auf Rang 14. Nicht verschwunden. Normalisiert.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: Die Welt                          -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Alle sind weitergegangen.</h2>
+    <p>Fast alle.</p>
+  </div>
+
+  <h2 id="welt">Die Welt</h2>
+
+  <div class="chart-container">
+    <div class="chart-title">Ende aller COVID-Maßnahmen nach Land</div>
+    <div class="chart-subtitle">WHO / nationale Gesundheitsbehörden</div>
+    <div id="chart-measures" class="chart chart-tall"></div>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">Feb 2022<span>Dänemark beendet alle Maßnahmen</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Was passiert ist</div>
+        <p>Hospitalisierungen sanken danach um 46%. Keine Explosion. Keine Katastrophe. Normalität.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Was erwartet wurde</div>
+        <p>„Unverantwortlich." „Durchseuchung." „Die Intensivstationen werden überlaufen." Nichts davon ist eingetreten.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card highlight">
+      <div class="compare-city">USA Winter 24/25 — Grippe</div>
+      <div class="compare-number good">13,5</div>
+      <div class="compare-detail">Hospitalisierungen pro 100.000</div>
+    </div>
+    <div class="compare-card dim">
+      <div class="compare-city">USA Winter 24/25 — COVID</div>
+      <div class="compare-number">4,2</div>
+      <div class="compare-detail">Hospitalisierungen pro 100.000</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value warning">DE</div>
+      <div class="kpi-label">Meldepflicht</div>
+      <div class="kpi-sub">Eines der letzten Länder</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">DK</div>
+      <div class="kpi-label">Feb 2022</div>
+      <div class="kpi-sub">Alle Maßnahmen beendet</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">UK</div>
+      <div class="kpi-label">Apr 2022</div>
+      <div class="kpi-sub">Living with COVID</div>
+    </div>
+  </div>
+
+  <p>Dänemark: Februar 2022. Schweden: Februar 2022. UK: April 2022. Deutschland: April 2023 — und noch immer Meldepflicht.</p>
+
+  <div class="perspective-break">
+    <h2>Dänemark hat vor vier Jahren aufgehört.</h2>
+    <p>Ihre Intensivstationen sind nicht explodiert.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: Die Schlagzeile                   -->
+  <!-- ============================================ -->
+
+  <h2 id="schlagzeile">Die Schlagzeile</h2>
+  <h3>221.000 Artikel in einer Woche.</h3>
+
+  <div class="kpi-grid" id="kpi-media"></div>
+
+  <div class="chart-container">
+    <div class="chart-title">Medienberichte pro Woche vs. COVID-Todesfälle</div>
+    <div class="chart-subtitle">Media Tenor / RKI / Destatis</div>
+    <div id="chart-media" class="chart chart-tall"></div>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">113<span>Drosten-Podcast Folgen — 26.02.2020 bis 29.03.2022</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Verdienst</div>
+        <p>Hat Wissenschaft verständlich gemacht. Hat Millionen informiert. Hat Orientierung gegeben, als niemand Antworten hatte.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Nebeneffekt</div>
+        <p>Wurde zur Institution. Jede Folge war Nachricht. Hat ungewollt die Dauerpräsenz befeuert, die er selbst als problematisch erkannte.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">40<span>Talkshow-Auftritte Lauterbach 2021</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Wahrnehmung</div>
+        <p>„Der Mann, der immer warnt." Wurde zum Synonym für Vorsicht. Hohe Bekanntheit, später Gesundheitsminister.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Was die Zahl zeigt</div>
+        <p>40 Auftritte in einem Jahr. Fast jede Woche. Die Grenze zwischen Information und Omnipräsenz war fließend.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">63% &rarr; 43%</div>
+      <div class="kpi-label">Medienvertrauen</div>
+      <div class="kpi-sub">2020 &rarr; 2024</div>
+    </div>
+  </div>
+
+  <p>221.000 Artikel in einer Woche — alle 2,7 Sekunden einer. Im März 2020 war Corona 41 Prozent der TV-Nachrichten. Die Tagesschau widmete 75% ihrer Sendezeit dem Thema. 2022 hatte die höchste Übersterblichkeit (74.000) — aber die Kameras waren schon in der Ukraine. Drosten erklärte am 27. Dezember 2022: <em>„Die Pandemie ist für mich vorbei."</em></p>
+
+  <div class="perspective-break">
+    <h2>Die Daten und die Schlagzeilen erzählen verschiedene Geschichten.</h2>
+    <p>Beide sind wahr.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: Der Müllberg                      -->
+  <!-- ============================================ -->
+
+  <h2 id="muellberg">Der Müllberg</h2>
+  <h3>Was bleibt, wenn man aufhört zu messen.</h3>
+
+  <div class="kpi-grid" id="kpi-waste"></div>
+
+  <div class="chart-container">
+    <div class="chart-title">Pandemie-Abfall nach Kategorie (Tonnen)</div>
+    <div class="chart-subtitle">BMG / UBA / Schätzungen auf Basis offizieller Beschaffungsdaten</div>
+    <div id="chart-waste" class="chart chart-tall"></div>
+  </div>
+
+  <p>17 Milliarden Masken. Aneinandergelegt wären das 72 Erdumrundungen. Das Gewicht: 68.000 Tonnen — fast 7 Eiffeltürme aus Vliesstoff und Plastik. Dazu 756 Millionen Schnelltests, 149 Millionen PCR-Tests, 192 Millionen Impfdosen. Zusammen: rund 85.000 Tonnen medizinischer Plastikabfall. Die Corona-Warn-App? Abgeschaltet am 1. Mai 2023.</p>
+
+  <!-- Datenbilder — the visual highlight -->
+  <h3>Datenbilder</h3>
+
+  <div class="datenbilder-grid">
+    <div class="datenbild-card">
+      <div class="datenbild-number">72&times;</div>
+      <div class="datenbild-label">um die Erde</div>
+      <div class="datenbild-context">17 Mrd. Masken aneinandergelegt</div>
+    </div>
+    <div class="datenbild-card">
+      <div class="datenbild-number">6,7</div>
+      <div class="datenbild-label">Eiffeltürme</div>
+      <div class="datenbild-context">68.000 Tonnen Masken-Müll</div>
+    </div>
+    <div class="datenbild-card">
+      <div class="datenbild-number">102</div>
+      <div class="datenbild-label">Olympische Schwimmbecken</div>
+      <div class="datenbild-context">Volumen aller Masken</div>
+    </div>
+    <div class="datenbild-card">
+      <div class="datenbild-number">450</div>
+      <div class="datenbild-label">Jahre</div>
+      <div class="datenbild-context">Zersetzungszeit einer Maske im Meer</div>
+    </div>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">3 Mrd.<span>Masken bestellt — unbenutzt verbrannt (Spahn)</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Die Begründung</div>
+        <p>Vorsorge in einer Krise. Lieferketten waren unsicher. Besser zu viel als zu wenig. Die Masken waren da, als man sie brauchte.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Was übrig blieb</div>
+        <p>3 Milliarden Masken unbenutzt verbrannt. Entsorgungskosten: 500 Millionen Euro. Aus Steuergeldern.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="perspective-break">
+    <h2>72 Mal um die Erde.</h2>
+    <p>Nicht mit Glasfaser. Nicht mit Schienen. Mit Einwegmasken.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 6: Der ehrliche Teil                 -->
+  <!-- ============================================ -->
+
+  <h2 id="ehrlich">Der ehrliche Teil</h2>
+  <h3>1,5 Millionen.</h3>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">1,5 Mio.</div>
+      <div class="kpi-label">Long COVID Betroffene</div>
+      <div class="kpi-sub">Deutschland, Stand 2025</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">250 Mrd. &euro;</div>
+      <div class="kpi-label">Gesamtkosten</div>
+      <div class="kpi-sub">2020&ndash;2024</div>
+    </div>
+  </div>
+
+  <p>1,5 Millionen Menschen in Deutschland leben mit Long COVID. 250 Milliarden Euro Kosten. Das ist kein Fußnoten-Thema.</p>
+
+  <p>Die Krankheit ist normal geworden. Für manche nicht. Das muss man aushalten können — beides gleichzeitig.</p>
+
+  <hr class="divider">
+
+  <!-- ============================================ -->
+  <!-- SECTION 7: Quellen & Fazit                   -->
+  <!-- ============================================ -->
+
+  <p class="tk-closer">Ich hab Corona sollte klingen wie Ich hab Grippe. Nicht weil Corona harmlos ist. Sondern weil Grippe nie harmlos war — wir haben es nur nie so genannt.</p>
+
+  <div class="source-card">
+    <h3>Quellen & Daten</h3>
+
+    <h4>Intensivstation</h4>
+    <ul>
+      <li>DIVI-Intensivregister — Tagesbericht & Zeitreihen</li>
+      <li>RKI SARI-Surveillance / GrippeWeb</li>
+    </ul>
+
+    <h4>Todesfälle & Krankmeldungen</h4>
+    <ul>
+      <li>RKI Lagebericht — COVID-19-Todesfälle pro Jahr</li>
+      <li>DAK Gesundheitsreport 2024 — Krankmeldungs-Ranking</li>
+      <li>TK Gesundheitsreport — AU-Tage nach Diagnose</li>
+    </ul>
+
+    <h4>Internationale Maßnahmen</h4>
+    <ul>
+      <li>WHO COVID-19 Dashboard — Policy Tracker</li>
+      <li>Our World in Data — Policy responses</li>
+      <li>Statens Serum Institut (Dänemark) — Surveillance nach Aufhebung</li>
+      <li>CDC FluView / COVID-NET — US Hospitalisierungsdaten</li>
+    </ul>
+
+    <h4>Medien</h4>
+    <ul>
+      <li>Media Tenor International — Medienberichterstattung Analyse</li>
+      <li>Infratest dimap / Mainzer Langzeitstudie — Medienvertrauen</li>
+      <li>NDR / Coronavirus-Update Podcast — Folgenarchiv</li>
+    </ul>
+
+    <h4>Müllberg & Kosten</h4>
+    <ul>
+      <li>BMG — Beschaffungsdaten Masken & Tests</li>
+      <li>Umweltbundesamt — Pandemie-Abfallschätzungen</li>
+      <li>Bundesrechnungshof — Sonderbericht Maskenbeschaffung</li>
+      <li>Environmental Science & Technology (2021) — COVID-19 Plastic Waste</li>
+    </ul>
+
+    <h4>Long COVID & Kosten</h4>
+    <ul>
+      <li>BMG / BMAS — Long-COVID-Versorgung</li>
+      <li>ifo Institut — Gesamtkostenrechnung Pandemie</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/tkoerting/data-stories" class="github-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      tkoerting/data-stories — Code, Daten, Methodik
+    </a>
+  </p>
+
+  <div class="article-footer">
+    <p>Open Data Minded — ein Projekt von <a href="https://der-koerting.de">Der Körting</a> · Datenstück #5 · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const charts = {};
+
+function initCharts() {
+  // Dispose existing charts
+  Object.values(charts).forEach(ch => { try { ch.dispose() } catch(e) {} });
+
+  fetch('data.json').then(r => r.json()).then(D => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const c = {
+      accent: isDark ? '#14B8A6' : '#0D9488',
+      accent2: isDark ? '#FACC15' : '#EAB308',
+      danger: isDark ? '#EF4444' : '#DC2626',
+      warning: isDark ? '#F59E0B' : '#D97706',
+      purple: isDark ? '#8B5CF6' : '#7C3AED',
+      text: isDark ? '#E5E7EB' : '#1E293B',
+      textSec: isDark ? '#9CA3AF' : '#64748B',
+      textTert: isDark ? '#6B7280' : '#94A3B8',
+      grid: isDark ? '#2D3139' : '#E2E5E9',
+      bg: isDark ? '#1E2028' : '#FFFFFF'
+    };
+
+    const base = {
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+      grid: { left: 50, right: 20, top: 30, bottom: 30 },
+      tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } }
+    };
+
+    // Access sections
+    const S = D.sections;
+
+    // =========================================
+    // SECTION 1: Die Intensivstation
+    // =========================================
+    const icu = S.intensivstation;
+    const sari = icu.sari_kw10_2026;
+
+    // KPI cards
+    document.getElementById('kpi-icu').innerHTML = `
+      <div class="kpi-card">
+        <div class="kpi-value danger">${icu.peak_icu.toLocaleString('de-DE')}</div>
+        <div class="kpi-label">Peak ICU</div>
+        <div class="kpi-sub">Jan 2021</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value ok">&lt;${sari.covid_pct}%</div>
+        <div class="kpi-label">COVID Anteil SARI</div>
+        <div class="kpi-sub">Heute</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">RSV ${sari.rsv_pct}%</div>
+        <div class="kpi-label">relevanter als COVID</div>
+        <div class="kpi-sub">Grippe ${sari.influenza_pct}%</div>
+      </div>
+    `;
+
+    // ICU Area Chart
+    charts.icu = echarts.init(document.getElementById('chart-icu'));
+    const icuData = icu.timeline;
+    // Format dates for display
+    const monthNames = {1:'Jan',2:'Feb',3:'Mrz',4:'Apr',5:'Mai',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Okt',11:'Nov',12:'Dez'};
+    const icuLabels = icuData.map(function(d) {
+      var parts = d.date.split('-');
+      return monthNames[parseInt(parts[1])] + ' ' + parts[0].slice(2);
+    });
+    charts.icu.setOption({...base,
+      grid: {...base.grid, top: 20, right: 30},
+      xAxis: { type: 'category', data: icuLabels, axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert, fontSize: 10, interval: 'auto', rotate: 30 } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v) { return v >= 1000 ? (v/1000).toFixed(1) + 'k' : v } } },
+      series: [{
+        type: 'line', smooth: true,
+        data: icuData.map(d => d.icu_covid),
+        lineStyle: { width: 2.5, color: c.danger },
+        itemStyle: { color: c.danger },
+        showSymbol: false,
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: c.danger + '44' },
+            { offset: 1, color: 'transparent' }
+          ])
+        },
+        markPoint: {
+          data: [
+            { name: 'Peak', type: 'max', symbol: 'circle', symbolSize: 14, itemStyle: { color: c.danger }, label: { show: true, formatter: '5.700\nJan 2021', position: 'top', color: c.danger, fontSize: 10, fontWeight: 600, fontFamily: 'JetBrains Mono' } }
+          ]
+        }
+      }]
+    });
+
+    // =========================================
+    // SECTION 2: Die Kurve
+    // =========================================
+    const kurve = S.die_kurve;
+    // Compute decline percentage
+    var deaths2021 = kurve.deaths.find(d => d.year === 2021).deaths;
+    var deaths2023 = kurve.deaths.find(d => d.year === 2023).deaths;
+    var declinePct = Math.round((1 - deaths2023 / deaths2021) * 100);
+    // Get sick leave data
+    var rankPeak = Math.min.apply(null, kurve.sick_leave_ranking.map(d => d.rank));
+    var rank2024 = kurve.sick_leave_ranking.find(d => d.year === 2024).rank;
+    var auDays2024 = kurve.sick_days_per_100_insured.find(d => d.year === 2024).days;
+    var auDaysPeak = Math.max.apply(null, kurve.sick_days_per_100_insured.map(d => d.days));
+
+    document.getElementById('kpi-kurve').innerHTML = `
+      <div class="kpi-card">
+        <div class="kpi-value ok">-${declinePct}%</div>
+        <div class="kpi-label">Todesfälle</div>
+        <div class="kpi-sub">2021 &rarr; 2023</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value accent2">Rang ${rank2024}</div>
+        <div class="kpi-label">Krankmeldung 2024</div>
+        <div class="kpi-sub">war Rang ${rankPeak}</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">~${auDays2024}</div>
+        <div class="kpi-label">AU-Tage/100 Versicherte</div>
+        <div class="kpi-sub">COVID-spezifisch, von ~${auDaysPeak}</div>
+      </div>
+    `;
+
+    // Deaths bar chart
+    charts.deaths = echarts.init(document.getElementById('chart-deaths'));
+    const deathData = kurve.deaths;
+    charts.deaths.setOption({...base,
+      xAxis: { type: 'category', data: deathData.map(d => d.year), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v) { return (v/1000).toFixed(0) + 'k' } } },
+      series: [{
+        type: 'bar',
+        data: deathData.map(d => ({
+          value: d.deaths,
+          itemStyle: { color: d.year <= 2021 ? c.danger : d.year <= 2022 ? c.warning : c.accent + '88', borderRadius: [4, 4, 0, 0] }
+        })),
+        barWidth: 36,
+        label: { show: true, position: 'top', formatter: function(p) { return p.value.toLocaleString('de-DE') }, color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono' }
+      }]
+    });
+
+    // Sick leave ranking
+    charts.sickrank = echarts.init(document.getElementById('chart-sickrank'));
+    const rankData = kurve.sick_leave_ranking;
+    charts.sickrank.setOption({...base,
+      xAxis: { type: 'category', data: rankData.map(d => d.year), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'value', inverse: true, min: 1, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v) { return 'Rang ' + v } } },
+      series: [{
+        type: 'line', smooth: true,
+        data: rankData.map(d => d.rank),
+        lineStyle: { width: 3, color: c.accent2 },
+        itemStyle: { color: c.accent2 },
+        symbolSize: 10,
+        label: { show: true, position: 'bottom', formatter: function(p) { return '#' + p.value }, color: c.accent2, fontSize: 11, fontWeight: 600, fontFamily: 'JetBrains Mono' }
+      }]
+    });
+
+    // =========================================
+    // SECTION 3: Die Welt
+    // =========================================
+    const welt = S.die_welt;
+    const countries = welt.countries.slice().sort(function(a, b) { return new Date(a.ended) - new Date(b.ended) });
+
+    charts.measures = echarts.init(document.getElementById('chart-measures'));
+    charts.measures.setOption({...base,
+      grid: { left: 100, right: 60, top: 10, bottom: 30 },
+      xAxis: { type: 'value', min: 2021.5, max: 2024.5, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v) { return Math.floor(v) } } },
+      yAxis: { type: 'category', data: countries.map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: countries.map(function(d) {
+          var parts = d.ended.split('-');
+          var val = parseInt(parts[0]) + (parseInt(parts[1]) - 1) / 12;
+          var shortMonth = monthNames[parseInt(parts[1])];
+          var label = shortMonth + ' ' + parts[0];
+          return {
+            value: val,
+            itemStyle: {
+              color: d.name === 'Deutschland' ? c.warning : d.name === 'Dänemark' || d.name === 'Schweden' ? c.accent : c.accent + '77',
+              borderRadius: [0, 4, 4, 0]
+            },
+            label: { show: true, position: 'right', formatter: label, color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono' }
+          };
+        }),
+        barWidth: 22
+      }]
+    });
+
+    // =========================================
+    // SECTION 4: Die Schlagzeile
+    // =========================================
+    const media = S.die_schlagzeile;
+
+    document.getElementById('kpi-media').innerHTML = `
+      <div class="kpi-card">
+        <div class="kpi-value danger">${media.media_peak_articles_per_week.toLocaleString('de-DE')}</div>
+        <div class="kpi-label">Artikel/Woche Peak</div>
+        <div class="kpi-sub">März 2020</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">${media.tv_news_share_peak_pct}%</div>
+        <div class="kpi-label">TV-Nachrichtenanteil</div>
+        <div class="kpi-sub">Peak</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value accent2">${media.article_per_second_at_peak}s</div>
+        <div class="kpi-label">ein Artikel alle...</div>
+        <div class="kpi-sub">Sekunden</div>
+      </div>
+    `;
+
+    // Media vs Deaths dual-axis chart
+    // Build a combined timeline from media + deaths data
+    charts.media = echarts.init(document.getElementById('chart-media'));
+    const mediaTimeline = media.media_timeline;
+    // Use deaths data to build a parallel series (approximate weekly deaths from annual)
+    var deathsByYear = {};
+    kurve.deaths.forEach(function(d) { deathsByYear[d.year] = d.deaths; });
+    var mediaLabels = mediaTimeline.map(function(d) {
+      var parts = d.period.split('-');
+      return monthNames[parseInt(parts[1])] + ' ' + parts[0].slice(2);
+    });
+    var mediaDeaths = mediaTimeline.map(function(d) {
+      var yr = parseInt(d.period.split('-')[0]);
+      var annual = deathsByYear[yr] || 0;
+      return Math.round(annual / 52);
+    });
+    charts.media.setOption({...base,
+      legend: { data: ['Medienberichte/Woche', 'COVID-Todesfälle/Woche (geschätzt)'], textStyle: { color: c.textSec, fontSize: 10 }, top: 0 },
+      grid: {...base.grid, top: 35, bottom: 40},
+      xAxis: { type: 'category', data: mediaLabels, axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert, fontSize: 10, rotate: 25 } },
+      yAxis: [
+        { type: 'value', name: 'Artikel', nameTextStyle: { color: c.textTert, fontSize: 10 }, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v) { return v >= 1000 ? (v/1000).toFixed(0) + 'k' : v } } },
+        { type: 'value', name: 'Todesfälle', nameTextStyle: { color: c.textTert, fontSize: 10 }, axisLine: { show: false }, splitLine: { show: false }, axisLabel: { color: c.textTert, formatter: function(v) { return v >= 1000 ? (v/1000).toFixed(0) + 'k' : v } } }
+      ],
+      series: [
+        {
+          name: 'Medienberichte/Woche', type: 'bar', yAxisIndex: 0,
+          data: mediaTimeline.map(d => ({
+            value: d.articles_per_week,
+            itemStyle: { color: c.accent2 + '88', borderRadius: [4, 4, 0, 0] }
+          })),
+          barWidth: 20
+        },
+        {
+          name: 'COVID-Todesfälle/Woche (geschätzt)', type: 'line', yAxisIndex: 1, smooth: true,
+          data: mediaDeaths,
+          lineStyle: { width: 2.5, color: c.danger },
+          itemStyle: { color: c.danger },
+          symbol: 'circle', symbolSize: 6
+        }
+      ]
+    });
+
+    // =========================================
+    // SECTION 5: Der Müllberg
+    // =========================================
+    const waste = S.der_muellberg;
+    var maskenMrd = Math.round(waste.masks.total / 1000000000);
+    var testKostenMrd = (waste.test_cost_total_eur / 1000000000).toFixed(1);
+
+    document.getElementById('kpi-waste').innerHTML = `
+      <div class="kpi-card">
+        <div class="kpi-value danger">${maskenMrd} Mrd.</div>
+        <div class="kpi-label">Masken Deutschland</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">${waste.total_plastic_waste_tonnes.toLocaleString('de-DE')}+ t</div>
+        <div class="kpi-label">Pandemie-Plastik</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value accent2">${testKostenMrd} Mrd. &euro;</div>
+        <div class="kpi-label">Testkosten</div>
+      </div>
+    `;
+
+    // Waste horizontal bar chart
+    charts.waste = echarts.init(document.getElementById('chart-waste'));
+    const wasteData = [
+      { name: 'Masken', tonnen: waste.masks.waste_tonnes },
+      { name: 'Schnelltests', tonnen: waste.schnelltests.waste_tonnes },
+      { name: 'PCR-Testmaterial', tonnen: waste.pcr_tests.waste_tonnes },
+      { name: 'Impfmaterial', tonnen: waste.vaccines.waste_tonnes }
+    ];
+    charts.waste.setOption({...base,
+      grid: { left: 120, right: 40, top: 10, bottom: 30 },
+      xAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v) { return v >= 1000 ? (v/1000).toFixed(0) + 'k t' : v + ' t' } } },
+      yAxis: { type: 'category', data: wasteData.map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: wasteData.map(function(d, i) {
+          var colors = [c.danger, c.warning, c.accent2, c.accent];
+          return {
+            value: d.tonnen,
+            itemStyle: { color: colors[i % colors.length], borderRadius: [0, 4, 4, 0] },
+            label: { show: true, position: 'right', formatter: d.tonnen.toLocaleString('de-DE') + ' t', color: c.textTert, fontSize: 11, fontFamily: 'JetBrains Mono' }
+          };
+        }),
+        barWidth: 28
+      }]
+    });
+
+    // Resize handler
+    window.addEventListener('resize', function() { Object.values(charts).forEach(function(ch) { try { ch.resize() } catch(e) {} }) });
+  });
+}
+
+(function(){
+  var url = new URLSearchParams(window.location.search).get('theme');
+  var saved = url || localStorage.getItem('tk-theme');
+  if (saved) { document.documentElement.dataset.theme = saved; localStorage.setItem('tk-theme', saved) }
+  var b = document.querySelector('.toggle-btn');
+  if (b) b.textContent = document.documentElement.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+})();
+function toggleTheme() {
+  var h = document.documentElement, b = document.querySelector('.toggle-btn');
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('tk-theme', h.dataset.theme);
+  b.textContent = h.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  initCharts();
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+</script>
+</body>
+</html>
