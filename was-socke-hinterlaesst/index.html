@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1 Gramm, 23 Millionen — Datenstück | Open Data Minded</title>
+<meta name="description" content="Was Socke hinterlässt — die Zahlen hinter dem Hundekot. 346.000 Tonnen, 23 Millionen Bakterien pro Gramm, DNA-Tracking und die Plastik-Paradoxie. Ein Datenstück.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  /* Nav Pills */
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+
+  /* KPI */
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  /* Charts */
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  /* Compare Cards (for DNA section) */
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;flex-direction:column;gap:0.3rem}
+  .compare-card:hover{border-color:var(--accent)}
+  .compare-name{font-weight:600;font-size:0.9rem}
+  .compare-value{font-family:var(--font-mono);font-size:1.2rem;font-weight:500}
+  .compare-value.crit{color:var(--danger)} .compare-value.warn{color:var(--warning)} .compare-value.ok{color:var(--accent)} .compare-value.purple{color:var(--purple)}
+  .compare-note{font-size:0.75rem;color:var(--text-tertiary)}
+  .compare-method{font-size:0.7rem;padding:0.15rem 0.5rem;border-radius:100px;display:inline-block;width:fit-content}
+  .method-tech{background:var(--accent-subtle);color:var(--accent)}
+  .method-social{background:rgba(245,158,11,0.1);color:var(--warning)}
+  .method-creative{background:rgba(139,92,246,0.1);color:var(--purple)}
+
+  /* Datenbild */
+  .datenbild{background:var(--bg-card);border:2px solid var(--accent);border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center}
+  .datenbild-value{font-family:var(--font-mono);font-size:2.2rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .datenbild-label{font-size:0.8rem;color:var(--text-secondary);margin-top:0.35rem}
+  .datenbild-context{font-family:var(--font-headline);font-style:italic;font-size:1rem;color:var(--text-tertiary);margin-top:0.5rem}
+
+  /* Killer Stat */
+  .killer-stat{background:var(--danger-subtle);border:2px solid var(--danger);border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center}
+  .killer-stat .datenbild-value{color:var(--danger)}
+  .killer-stat .datenbild-label{color:var(--text-primary)}
+
+  /* Source Card */
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+  .blog-link{display:inline-block;background:var(--accent-subtle);color:var(--accent);padding:0.5rem 1.25rem;border-radius:8px;font-size:0.9rem;font-weight:500;border:1px solid rgba(20,184,166,0.3);transition:all var(--transition);margin:1rem 0}
+  .blog-link:hover{background:var(--accent);color:white}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://opendataminded.de/" class="site-name" style="color:var(--text-primary)">Open Data <span>Minded</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de">Blog</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Datenstück #6</span>
+    <span class="snapshot-tag">März 2026</span>
+  </div>
+
+  <h1>1 Gramm, 23 Millionen</h1>
+  <div class="subtitle">Was Socke hinterlässt — die Zahlen hinter dem Hundekot</div>
+
+  <p class="lead">Socke ist ein Borderdackel. Klein, schnell, stur. Und wie 10,5 Millionen andere Hunde in Deutschland hinterlässt sie jeden Tag etwas, worüber niemand gern spricht. Dieses Datenstück macht genau das: die Zahlen aufmachen. Zum Blogpost <a href="https://der-koerting.de/was-socke-hinterlaesst/">Was Socke hinterlässt</a>.</p>
+
+  <nav class="section-nav">
+    <a href="#haufen" class="nav-pill active">Die Haufen</a>
+    <a href="#bakterien" class="nav-pill">Die Bakterien</a>
+    <a href="#bussgeld" class="nav-pill">Das Bußgeld</a>
+    <a href="#beutel" class="nav-pill">Der Beutel</a>
+    <a href="#dna" class="nav-pill">Die DNA</a>
+    <a href="#steuer" class="nav-pill">Die Steuer</a>
+  </nav>
+
+  <!-- ===================== DIE HAUFEN ===================== -->
+  <section id="haufen">
+    <h2>Die Haufen</h2>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">346.000 t</div>
+        <div class="kpi-label">Hundekot pro Jahr</div>
+        <div class="kpi-sub">Deutschland</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">10,5 Mio.</div>
+        <div class="kpi-label">Hunde</div>
+        <div class="kpi-sub">In Deutschland</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">5,8 Mrd.</div>
+        <div class="kpi-label">Haufen pro Jahr</div>
+        <div class="kpi-sub">= 15,9 Mio. pro Tag</div>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">340 g</div>
+        <div class="kpi-label">Kot pro Hund/Tag</div>
+        <div class="kpi-sub">Durchschnitt</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value ok">40%</div>
+        <div class="kpi-label">räumen immer auf</div>
+        <div class="kpi-sub">PETBOOK-Umfrage</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value danger">13%</div>
+        <div class="kpi-label">räumen nie auf</div>
+        <div class="kpi-sub">33.300 Teilnehmer</div>
+      </div>
+    </div>
+
+    <p>346.000 Tonnen. Das Gewicht von 35 Eiffeltürmen. Jedes Jahr. Allein in Deutschland. Und fast die Hälfte davon bleibt liegen, weil nur 40 Prozent der Hundehalter angeben, konsequent aufzuräumen.</p>
+
+    <div class="datenbild">
+      <div class="datenbild-value">184</div>
+      <div class="datenbild-label">Hundehaufen pro Sekunde in Deutschland</div>
+      <div class="datenbild-context">Während du diesen Satz liest, sind es schon wieder drei.</div>
+    </div>
+
+    <p>Berlin: 126.000 Hunde, 252.000 Haufen pro Tag, 55 Tonnen. Aufgereiht ergäbe das eine Kette von 38 Kilometern — jeden einzelnen Tag. Kiel verteilt 4,1 Millionen Beutel im Jahr, Dresden 1,2 Millionen. Die Infrastruktur für Hundekot ist längst eine eigene kommunale Aufgabe.</p>
+
+    <p class="text-small">Quellen: ighid.de, Berlin-Mitte-Zeitung, PETBOOK-Umfrage (33.300 Teilnehmer)</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DIE BAKTERIEN ===================== -->
+  <section id="bakterien">
+    <h2>Die Bakterien</h2>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value danger">23 Mio.</div>
+        <div class="kpi-label">Fäkalkolibakterien</div>
+        <div class="kpi-sub">Pro Gramm Hundekot</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">2×</div>
+        <div class="kpi-label">mehr als Mensch</div>
+        <div class="kpi-sub">Fäkale Coliforme</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">10×</div>
+        <div class="kpi-label">mehr als Kuh</div>
+        <div class="kpi-sub">Fäkale Coliforme</div>
+      </div>
+    </div>
+
+    <p>23 Millionen Fäkalkolibakterien in einem einzigen Gramm. Doppelt so viel wie im menschlichen Stuhl, zehnmal so viel wie bei einer Kuh. Aber Bakterien sind nur der Anfang. Hundekot enthält ein ganzes Ökosystem an Erregern: <em>E.coli</em>, <em>Giardia</em>, <em>Salmonellen</em>, <em>Toxocara</em>, <em>Cryptosporidium</em>, <em>Campylobacter</em>.</p>
+
+    <p>Die US-Umweltbehörde EPA klassifiziert Hundekot seit 1991 als <strong>Umweltschadstoff</strong> — in derselben Kategorie wie Herbizide und Ölteppiche. Nicht weil ein einzelner Haufen die Welt vergiftet. Sondern weil 5,8 Milliarden Haufen pro Jahr ein systemisches Problem sind.</p>
+
+    <div class="datenbild">
+      <div class="datenbild-value">165 Mio.</div>
+      <div class="datenbild-label">Spulwurmeier pro Tag allein in Berlin</div>
+      <div class="datenbild-context">Toxocara canis — bis zu 7 Jahre überlebensfähig im Boden</div>
+    </div>
+
+    <h3>Spielplätze</h3>
+    <p>Internationale Studien finden Toxocara-Kontamination auf 3 bis 87 Prozent aller untersuchten Spielplätze. Die Spannweite ist riesig, aber der Befund ist eindeutig: Hundekot auf Spielplätzen ist keine Seltenheit, sondern ein dokumentiertes Gesundheitsrisiko.</p>
+
+    <h3>Gewässerbelastung</h3>
+    <p>Eine Studie der Universität Gent (2022) berechnete die Nährstoffbelastung durch Hundekot in städtischen Grünflächen: 11 Kilogramm Stickstoff und 5 Kilogramm Phosphor pro Hektar und Jahr. Das überdüngt Böden und Gewässer — genau wie in der industriellen Landwirtschaft, nur dass hier niemand einen Düngeplan einreicht.</p>
+
+    <p class="text-small">Quellen: DoodyCalls, EPA, ESCCAP, Universität Gent (2022)</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DAS BUSSGELD ===================== -->
+  <section id="bussgeld">
+    <h2>Das Bußgeld</h2>
+
+    <p>Deutschland hat ein Bußgeld-Problem. Nicht weil es keines gibt — sondern weil die Spanne von 5 Euro bis 2.500 Euro reicht und kaum jemand kontrolliert.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Bußgelder nach Stadt — Deutschland</div>
+      <div class="chart-subtitle">In Euro — Quelle: bussgeldkatalog.org / hundemagazin.com</div>
+      <div id="chart-bussgeld-de" class="chart chart-tall"></div>
+    </div>
+
+    <p>Leipzig: 5 Euro. Das ist der Preis eines Lattes. In Franken kann dieselbe Ordnungswidrigkeit 2.500 Euro kosten — das Fünfhundertfache. Der bundesdeutsche Durchschnitt liegt bei 66 Euro. Zum Vergleich: Falschparken kostet mindestens 55 Euro.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Bußgelder international</div>
+      <div class="chart-subtitle">In Euro (umgerechnet) — verschiedene Quellen</div>
+      <div id="chart-bussgeld-intl" class="chart"></div>
+    </div>
+
+    <p>Barcelona: 1.500 Euro. Singapur: 700 Euro. Selbst London, wo man Hunde wirklich gern hat, liegt bei 93 Euro — immer noch über dem deutschen Durchschnitt.</p>
+
+    <p>Und die Durchsetzung? Der Täter muss auf frischer Tat ertappt werden, Ordnungsämter haben andere Prioritäten — und belastbare Zahlen darüber, wie oft tatsächlich kontrolliert wird, gibt es schlicht nicht. Das Bußgeld existiert auf dem Papier.</p>
+
+    <p class="text-small">Quellen: bussgeldkatalog.org, hundemagazin.com, Berlin-Mitte-Zeitung</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DER BEUTEL ===================== -->
+  <section id="beutel">
+    <h2>Der Beutel</h2>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value warning">500 Mio.</div>
+        <div class="kpi-label">Kotbeutel pro Jahr</div>
+        <div class="kpi-sub">Deutschland</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">25 Min.</div>
+        <div class="kpi-label">Einsatzdauer</div>
+        <div class="kpi-sub">Durchschnitt</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value danger">1.000 Jahre</div>
+        <div class="kpi-label">Zersetzung PE</div>
+        <div class="kpi-sub">Plastikbeutel</div>
+      </div>
+    </div>
+
+    <p>25 Minuten. So lange wird ein Hundekotbeutel im Schnitt benutzt. Dann wandert er in den Müll — wenn es gut läuft. Die Zersetzung des Plastiks, aus dem er besteht, dauert bis zu 1.000 Jahre. Das Verhältnis von Nutzung zu Nachhaltigkeit ist absurd.</p>
+
+    <div class="datenbild">
+      <div class="datenbild-value">75.000 km</div>
+      <div class="datenbild-label">Plastikbeutel pro Jahr, aufgereiht</div>
+      <div class="datenbild-context">Fast 2x um die Erde.</div>
+    </div>
+
+    <h3>Zersetzungszeiten im Vergleich</h3>
+
+    <div class="chart-container">
+      <div class="chart-title">Wie lange bleibt es in der Umwelt?</div>
+      <div class="chart-subtitle">Zersetzungszeit — Quelle: ighid.de / University of Plymouth / UBA</div>
+      <div id="chart-zersetzung" class="chart chart-tall"></div>
+    </div>
+
+    <p>Hundekot ohne Beutel zersetzt sich in 8 bis 9 Wochen (bei Wärme) oder bis zu einem Jahr (bei Kälte). Ein Bio-Beutel aus Maisstärke braucht in der industriellen Kompostierung 12 Wochen — aber nur bei 58°C. In der Natur? Über drei Jahre. Das ist die Bio-Beutel-Paradoxie: Sie kosten achtmal so viel wie Standard-PE und landen am Ende am selben Ort — in der Verbrennung.</p>
+
+    <h3>Was ein Beutel kostet</h3>
+
+    <div class="chart-container">
+      <div class="chart-title">Preis pro Kotbeutel</div>
+      <div class="chart-subtitle">In Cent — Quelle: ighid.de / DUH</div>
+      <div id="chart-preise" class="chart"></div>
+    </div>
+
+    <p>0,8 Cent für einen Standard-Beutel aus Polyethylen. 23 Cent für Karton. Das ist der 29-fache Preis — für ein Produkt, das 25 Minuten benutzt wird. Kein Wunder, dass 97 Prozent aller Kotbeutel aus Plastik bestehen.</p>
+
+    <p class="text-small">Quellen: ighid.de, University of Plymouth, DUH, UBA</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DIE DNA ===================== -->
+  <section id="dna">
+    <h2>Die DNA</h2>
+
+    <p>Wenn Bußgelder nicht wirken und Appelle ignoriert werden — was dann? Vier Städte und ein Unternehmen haben Antworten gefunden. Nicht alle elegant. Aber alle effektiv.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-name">PooPrints (USA)</div>
+        <div class="compare-value ok">96%</div>
+        <span class="compare-method method-tech">DNA-Abgleich</span>
+        <div class="compare-note">1 Mio. registrierte Hunde, 9.000 Communities, 7 Länder. Probe wird eingeschickt, DNA abgeglichen, Halter bekommt die Rechnung.</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Brunete, Spanien</div>
+        <div class="compare-value ok">70%</div>
+        <span class="compare-method method-creative">Post zurück</span>
+        <div class="compare-note">10.100 Einwohner. 147 Pakete mit Hundekot per Post an die Halter zurückgeschickt. Reduktion innerhalb weniger Wochen.</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Barking &amp; Dagenham (UK)</div>
+        <div class="compare-value ok">60%</div>
+        <span class="compare-method method-tech">DNA-Datenbank</span>
+        <div class="compare-note">30 GBP pro DNA-Test. 99,9% Genauigkeit. Kommunales Pilotprojekt.</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Taiwan (Landesweit)</div>
+        <div class="compare-value purple">4.000</div>
+        <span class="compare-method method-social">Gold-Lotterie</span>
+        <div class="compare-note">14.000 Beutel gesammelt. Wer Hundekot einsammelt, bekommt ein Lotterie-Los. Hauptgewinn: Gold im Wert von 2.000 USD.</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Reduktion durch verschiedene Ansätze</div>
+      <div class="chart-subtitle">In Prozent — Quelle: PooPrints / CNBC / HuffPost</div>
+      <div id="chart-dna" class="chart"></div>
+    </div>
+
+    <h3>Und Deutschland?</h3>
+    <p>In Rödelsee (Franken) gibt es 50 Prozent Hundesteuer-Rabatt für die freiwillige DNA-Registrierung. In Bozen (Südtirol) sollen 40.000 Hunde ihre DNA abgeben. Aber flächendeckend? Fehlanzeige. Deutschland setzt weiter auf Beutelspender und Appelle — und wundert sich über 55 Tonnen pro Tag allein in Berlin.</p>
+
+    <p class="text-small">Quellen: PooPrints, CNBC, Barking &amp; Dagenham Council, HuffPost</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DIE STEUER ===================== -->
+  <section id="steuer">
+    <h2>Die Steuer</h2>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value accent2">430 Mio. &euro;</div>
+        <div class="kpi-label">Hundesteuer 2024</div>
+        <div class="kpi-sub">Deutschland gesamt</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">+39%</div>
+        <div class="kpi-label">Wachstum</div>
+        <div class="kpi-sub">In 10 Jahren</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">36</div>
+        <div class="kpi-label">Erhöhungen 2025</div>
+        <div class="kpi-sub">= 9% aller Kommunen</div>
+      </div>
+    </div>
+
+    <p>430 Millionen Euro nehmen deutsche Kommunen pro Jahr durch die Hundesteuer ein. Eine Steuer, die nicht zweckgebunden ist — kein Cent muss für Beutelspender, Grünflächenpflege oder Ordnungsamt ausgegeben werden. Das Geld fließt in den allgemeinen Haushalt.</p>
+
+    <div class="chart-container">
+      <div class="chart-title">Hundesteuer im Vergleich</div>
+      <div class="chart-subtitle">Erster Hund, Euro pro Jahr — Quelle: Destatis / KOMMUNAL / dogco.de</div>
+      <div id="chart-steuer" class="chart"></div>
+    </div>
+
+    <p>Die Spanne reicht von 25 Euro in Winsen/Luhe bis 186 Euro in Mainz. Fürth liegt bei 132 Euro. Wer einen als gefährlich eingestuften Hund ohne Negativzeugnis hält, zahlt in Fürth 796 Euro — das Sechsfache.</p>
+
+    <div class="datenbild">
+      <div class="datenbild-value">7,4 Cent</div>
+      <div class="datenbild-label">Hundesteuer pro Haufen</div>
+      <div class="datenbild-context">430 Mio. Euro geteilt durch 5,8 Milliarden Haufen.</div>
+    </div>
+
+    <p>7,4 Cent pro Haufen. So viel ist dem Staat jeder einzelne Hundehaufen wert — statistisch gesehen. Die Reinigungskosten liegen um ein Vielfaches höher. Allein Berlin gibt schätzungsweise 15 Millionen Euro pro Jahr für Straßenreinigung aus, die durch Hundekot verursacht wird.</p>
+
+    <p class="text-small">Quellen: Destatis, KOMMUNAL, dogco.de</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== QUELLEN ===================== -->
+  <section id="quellen">
+    <h2>Quellen &amp; Methodik</h2>
+
+    <p class="text-small">Alle Daten stammen aus öffentlich zugänglichen Quellen. Die Berechnung der Datenbilder (Haufen pro Sekunde, Beutel gestapelt, Steuer pro Haufen) basiert auf den angegebenen Jahreswerten und ist im Methodik-Dokument dokumentiert.</p>
+
+    <div class="source-card">
+      <h3>Datenquellen</h3>
+      <ul>
+        <li><a href="https://www.ighid.de">ighid.de</a> — Interessengemeinschaft Hundekot in Deutschland, Statistiken</li>
+        <li><a href="https://www.petbook.de">PETBOOK</a> — Umfrage Aufräumverhalten (33.300 Teilnehmer)</li>
+        <li><a href="https://www.epa.gov">EPA</a> — Klassifizierung Hundekot als Umweltschadstoff (1991)</li>
+        <li><a href="https://www.esccap.de">ESCCAP</a> — Parasitenforschung, Toxocara-Kontamination</li>
+        <li>Universität Gent (2022) — Nährstoffbelastung durch Hundekot in Grünflächen</li>
+        <li><a href="https://www.doodycalls.com">DoodyCalls</a> — Bakterienforschung Hundekot</li>
+        <li><a href="https://www.bussgeldkatalog.org">bussgeldkatalog.org</a> — Bußgeldübersicht deutsche Städte</li>
+        <li><a href="https://www.pooprints.com">PooPrints / BioPet Laboratories</a> — DNA-Tracking-System</li>
+        <li><a href="https://www.cnbc.com">CNBC</a> — PooPrints Unternehmensberichterstattung</li>
+        <li>Barking &amp; Dagenham Council — DNA-Pilotprojekt UK</li>
+        <li><a href="https://www.huffpost.com">HuffPost</a> — Brunete Spanien, Taiwan Gold-Lotterie</li>
+        <li><a href="https://www.destatis.de">Destatis</a> — Hundesteuer-Einnahmen</li>
+        <li><a href="https://kommunal.de">KOMMUNAL</a> — Hundesteuer-Vergleich Kommunen</li>
+        <li><a href="https://www.dogco.de">dogco.de</a> — Hundesteuer-Datenbank</li>
+        <li><a href="https://www.duh.de">Deutsche Umwelthilfe</a> — Kotbeutel-Materialvergleich</li>
+        <li>University of Plymouth — Zersetzungsdauer Biokunststoffe</li>
+        <li><a href="https://www.umweltbundesamt.de">UBA</a> — Kunststoff-Zersetzungszeiten</li>
+      </ul>
+    </div>
+
+    <p>
+      <a href="https://der-koerting.de/was-socke-hinterlaesst/" class="blog-link">Zum Blogpost: Was Socke hinterlässt &rarr;</a>
+    </p>
+
+    <p>
+      <a href="https://github.com/tkoerting/data-stories" class="github-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        tkoerting/data-stories — Code, Daten, Methodik
+      </a>
+    </p>
+  </section>
+
+  <hr class="divider">
+
+  <p class="tk-closer">Jeder Haufen ist eine Entscheidung. Die Daten zeigen nur, was passiert, wenn 13 Prozent sich anders entscheiden als der Rest.</p>
+
+  <div class="article-footer">
+    <p>Open Data Minded — Ein Projekt von Thomas Körting · Datenstück #6 · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const charts={};
+
+(function(){
+  const url=new URLSearchParams(window.location.search).get('theme');
+  const saved=url||localStorage.getItem('tk-theme');
+  if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}
+  const b=document.querySelector('.toggle-btn');
+  if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';
+})();
+function toggleTheme(){
+  const h=document.documentElement,b=document.querySelector('.toggle-btn');
+  h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';
+  localStorage.setItem('tk-theme',h.dataset.theme);
+  b.textContent=h.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';
+  initCharts();
+}
+
+function C(){
+  const d=document.documentElement.dataset.theme==='dark';
+  return{bg:d?'#1E2028':'#FFFFFF',text:d?'#E5E7EB':'#1E293B',sub:d?'#6B7280':'#94A3B8',
+    border:d?'#2D3139':'#E2E5E9',accent:d?'#14B8A6':'#0D9488',danger:d?'#EF4444':'#DC2626',
+    warning:d?'#F59E0B':'#D97706',accent2:d?'#FACC15':'#EAB308',purple:d?'#8B5CF6':'#7C3AED',
+    gridBg:d?'#111318':'#F4F6F7'};
+}
+
+function initCharts(){
+  Object.values(charts).forEach(ch=>{try{ch.dispose()}catch(e){}});
+  const c=C();
+  const base={tooltip:{backgroundColor:c.bg,borderColor:c.border,textStyle:{color:c.text,fontFamily:'Space Grotesk',fontSize:13}},
+    grid:{left:110,right:30,top:20,bottom:30}};
+  const axisBase={axisLabel:{color:c.sub,fontFamily:'Space Grotesk',fontSize:11},axisLine:{lineStyle:{color:c.border}},splitLine:{lineStyle:{color:c.border,type:'dashed'}}};
+
+  // ==================== Bußgelder Deutschland ====================
+  const bussDE=[
+    {name:'Leipzig',value:5},
+    {name:'Hamburg',value:35},
+    {name:'Berlin',value:75},
+    {name:'München',value:75},
+    {name:'Offenbach',value:150},
+    {name:'Franken (Gemeinde)',value:2500}
+  ];
+  charts.bussgeldDE=echarts.init(document.getElementById('chart-bussgeld-de'),null,{renderer:'canvas'});
+  charts.bussgeldDE.setOption({...base,grid:{...base.grid,top:10},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value.toLocaleString('de')+' \u20AC</b>'}},
+    yAxis:{type:'category',data:bussDE.map(d=>d.name),inverse:true,...axisBase,axisLabel:{...axisBase.axisLabel,width:100,overflow:'truncate'}},
+    xAxis:{type:'value',...axisBase,name:'\u20AC',nameTextStyle:{color:c.sub},axisLabel:{...axisBase.axisLabel,formatter:function(v){return v>=1000?(v/1000)+'k':v}}},
+    series:[{type:'bar',data:bussDE.map(d=>({value:d.value,itemStyle:{color:d.value>=150?c.danger:d.value>=35?c.warning:c.sub}})),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:11,color:c.text,formatter:function(p){return p.value.toLocaleString('de')+' \u20AC'}}}]});
+
+  // ==================== Bußgelder International ====================
+  const bussIntl=[
+    {name:'London',value:93},
+    {name:'New York',value:250},
+    {name:'Paris',value:450},
+    {name:'Singapur',value:700},
+    {name:'Barcelona',value:1500}
+  ];
+  charts.bussgeldIntl=echarts.init(document.getElementById('chart-bussgeld-intl'),null,{renderer:'canvas'});
+  charts.bussgeldIntl.setOption({...base,grid:{...base.grid,top:10},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value.toLocaleString('de')+' \u20AC</b>'}},
+    yAxis:{type:'category',data:bussIntl.map(d=>d.name),inverse:true,...axisBase},
+    xAxis:{type:'value',...axisBase,name:'\u20AC',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:bussIntl.map(d=>({value:d.value,itemStyle:{color:d.value>=1000?c.danger:d.value>=400?c.warning:c.accent}})),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:11,color:c.text,formatter:function(p){return p.value.toLocaleString('de')+' \u20AC'}}}]});
+
+  // ==================== Zersetzungszeiten ====================
+  const zerData=[
+    {name:'Hundekot (warm)',value:9,unit:'Wochen',raw:63},
+    {name:'Hundekot (kalt)',value:365,unit:'bis 1 Jahr',raw:365},
+    {name:'Bio-Beutel (Fabrik)',value:84,unit:'12 Wochen',raw:84},
+    {name:'Bio-Beutel (Natur)',value:1095,unit:'3+ Jahre',raw:1095},
+    {name:'Plastikbeutel (PE)',value:365000,unit:'bis 1.000 Jahre',raw:365000}
+  ];
+  charts.zersetzung=echarts.init(document.getElementById('chart-zersetzung'),null,{renderer:'canvas'});
+  charts.zersetzung.setOption({...base,grid:{left:140,right:50,top:10,bottom:30},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){var d=zerData[p[0].dataIndex];return d.name+': <b>'+d.unit+'</b>'}},
+    yAxis:{type:'category',data:zerData.map(d=>d.name),inverse:true,...axisBase,axisLabel:{...axisBase.axisLabel,width:130,overflow:'truncate'}},
+    xAxis:{type:'log',min:10,...axisBase,name:'Tage (log)',nameTextStyle:{color:c.sub},axisLabel:{...axisBase.axisLabel,formatter:function(v){if(v>=365000)return '1000 J';if(v>=1095)return '3 J';if(v>=365)return '1 J';if(v>=84)return '12 W';return v+'T'}}},
+    series:[{type:'bar',data:zerData.map(function(d,i){
+      var colors=[c.accent,c.accent,c.warning,c.danger,c.danger];
+      return{value:d.raw,itemStyle:{color:colors[i]}}
+    }),
+      barWidth:'50%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:10,color:c.text,formatter:function(p){return zerData[p.dataIndex].unit}}}]});
+
+  // ==================== Preisvergleich Beutel ====================
+  const preisData=[
+    {name:'Standard PE',value:0.8},
+    {name:'Bio (Maisstärke)',value:6.7},
+    {name:'Papier',value:12},
+    {name:'Karton',value:23}
+  ];
+  charts.preise=echarts.init(document.getElementById('chart-preise'),null,{renderer:'canvas'});
+  charts.preise.setOption({...base,grid:{...base.grid,top:10},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+' Cent</b>'}},
+    yAxis:{type:'category',data:preisData.map(d=>d.name),inverse:true,...axisBase},
+    xAxis:{type:'value',...axisBase,name:'Cent',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:preisData.map(function(d,i){
+      var colors=[c.accent,c.warning,c.warning,c.danger];
+      return{value:d.value,itemStyle:{color:colors[i]}}
+    }),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:11,color:c.text,formatter:function(p){return p.value+' Ct'}}}]});
+
+  // ==================== DNA-Programme Reduktion ====================
+  const dnaData=[
+    {name:'PooPrints (USA)',value:96},
+    {name:'Brunete (Spanien)',value:70},
+    {name:'Barking (UK)',value:60}
+  ];
+  charts.dna=echarts.init(document.getElementById('chart-dna'),null,{renderer:'canvas'});
+  charts.dna.setOption({...base,grid:{...base.grid,left:140,top:10},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+'% Reduktion</b>'}},
+    yAxis:{type:'category',data:dnaData.map(d=>d.name),inverse:true,...axisBase,axisLabel:{...axisBase.axisLabel,width:130}},
+    xAxis:{type:'value',max:100,...axisBase,name:'% Reduktion',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:dnaData.map(function(d){return{value:d.value,itemStyle:{color:d.value>=90?c.accent:d.value>=65?c.warning:c.accent2}}}),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:12,color:c.text,formatter:'{c}%'}}]});
+
+  // ==================== Hundesteuer Vergleich ====================
+  const steuerData=[
+    {name:'Winsen/Luhe',value:25},
+    {name:'Fürth',value:132},
+    {name:'Mainz',value:186},
+    {name:'Fürth (Kampfhund)',value:796}
+  ];
+  charts.steuer=echarts.init(document.getElementById('chart-steuer'),null,{renderer:'canvas'});
+  charts.steuer.setOption({...base,grid:{...base.grid,left:140,top:10},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+' \u20AC/Jahr</b>'}},
+    yAxis:{type:'category',data:steuerData.map(d=>d.name),inverse:true,...axisBase,axisLabel:{...axisBase.axisLabel,width:130}},
+    xAxis:{type:'value',...axisBase,name:'\u20AC / Jahr',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:steuerData.map(function(d){
+      var col=c.accent;
+      if(d.value>=500)col=c.danger;else if(d.value>=150)col=c.warning;else if(d.value>=100)col=c.accent2;
+      return{value:d.value,itemStyle:{color:col}}
+    }),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:11,color:c.text,formatter:function(p){return p.value+' \u20AC'}}}]});
+
+  window.onresize=()=>Object.values(charts).forEach(ch=>ch.resize());
+}
+
+// Nav pills
+document.querySelectorAll('.nav-pill').forEach(pill=>{
+  pill.addEventListener('click',e=>{
+    document.querySelectorAll('.nav-pill').forEach(p=>p.classList.remove('active'));
+    e.target.classList.add('active');
+  });
+});
+
+// Init charts on load
+initCharts();
+</script>
+</body>
+</html>

@@ -18,6 +18,7 @@ Datenstücke nehmen ein Thema aus dem [Blog](https://der-koerting.de) und gehen 
 
 | # | Titel | Thema | Charts | Quellen |
 |---|-------|-------|--------|---------|
+| 6 | [1 Gramm, 23 Millionen](https://opendataminded.de/was-socke-hinterlaesst/) | Hundekot, Bakterien, Bußgelder, Plastik-Paradox, DNA-Tracking, Hundesteuer | 6 | 16 |
 | 5 | [Ich hab Corona.](https://opendataminded.de/ich-hab-corona/) | COVID-Normalisierung, ICU, Medien, Müllberge, Ländervergleich | 5 | 25 |
 | 4 | [Es ist ein Tauschgeschäft](https://opendataminded.de/tauschgeschaeft/) | Generationenvertrag, Vermögen, Bildungsinflation, Mental Health | 7 | 12 |
 | 3 | [Nicht fauler. Führungsloser.](https://opendataminded.de/nicht-fauler-fuehrungsloser/) | OECD-Produktivität, Gallup-Engagement, Pencavel-Kurve | 6 | 8 |
@@ -55,8 +56,12 @@ data-stories/
 │   ├── index.html                      # Datenstück #4
 │   ├── data.json
 │   └── METHODIK.md
-└── ich-hab-corona/
-    ├── index.html                      # Datenstück #5 (Standalone)
+├── ich-hab-corona/
+│   ├── index.html                      # Datenstück #5 (Standalone)
+│   ├── data.json
+│   └── METHODIK.md
+└── was-socke-hinterlaesst/
+    ├── index.html                      # Datenstück #6
     ├── data.json
     └── METHODIK.md
 ```

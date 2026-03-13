@@ -1,0 +1,161 @@
+{
+  "meta": {
+    "title": "1 Gramm, 23 Millionen",
+    "subtitle": "Was Socke hinterlässt — in Zahlen",
+    "version": "1.0",
+    "snapshot": "März 2026",
+    "author": "Thomas Körting",
+    "blog_post": "https://der-koerting.de/was-socke-hinterlaesst/",
+    "standalone": false
+  },
+
+  "die_haufen": {
+    "label": "Die Haufen",
+    "hunde_deutschland": 10500000,
+    "hundekot_tonnen_jahr": 346000,
+    "haufen_pro_jahr": 5800000000,
+    "kot_pro_hund_gramm_tag": 340,
+    "berlin_tonnen_tag": 55,
+    "berlin_hunde": 126000,
+    "berlin_haufen_tag": 252000,
+    "kiel_beutel_jahr": 4100000,
+    "dresden_beutel_jahr": 1200000,
+    "aufraeum_immer_prozent": 40,
+    "aufraeum_nie_prozent": 13,
+    "source": "ighid.de / Berlin-Mitte-Zeitung / PETBOOK-Umfrage (33.300 Teilnehmer)"
+  },
+
+  "die_bakterien": {
+    "label": "Die Bakterien",
+    "faekalkolibakterien_pro_gramm": 23000000,
+    "faktor_vs_mensch": 2,
+    "faktor_vs_kuh": 10,
+    "berlin_spulwurmeier_tag": 165000000,
+    "spielplatz_toxocara_min_prozent": 3,
+    "spielplatz_toxocara_max_prozent": 87,
+    "epa_klassifizierung": "Umweltschadstoff (seit 1991)",
+    "stickstoff_kg_pro_hektar_jahr": 11,
+    "phosphor_kg_pro_hektar_jahr": 5,
+    "erreger": ["E.coli", "Giardia", "Salmonellen", "Toxocara", "Cryptosporidium", "Campylobacter"],
+    "source": "DoodyCalls / EPA / ESCCAP / Universität Gent (2022)"
+  },
+
+  "das_bussgeld": {
+    "label": "Das Bußgeld",
+    "durchschnitt_de_eur": 66,
+    "source": "bussgeldkatalog.org / hundemagazin.com",
+    "staedte": [
+      { "name": "Leipzig", "betrag": 5, "note": "Niedrigstes" },
+      { "name": "Hamburg", "betrag": 35 },
+      { "name": "München", "betrag": 75, "note": "bis 150 €" },
+      { "name": "Berlin", "betrag": 75, "note": "bis 100 €" },
+      { "name": "Offenbach", "betrag": 150 },
+      { "name": "Franken (Gemeinde)", "betrag": 2500, "note": "Höchstes in DE" }
+    ],
+    "international": [
+      { "name": "Barcelona", "betrag": 1500, "waehrung": "EUR" },
+      { "name": "Singapur", "betrag": 700, "waehrung": "EUR" },
+      { "name": "Paris", "betrag": 450, "waehrung": "EUR" },
+      { "name": "New York", "betrag": 250, "waehrung": "USD" },
+      { "name": "London", "betrag": 93, "waehrung": "EUR" }
+    ],
+    "durchsetzung": {
+      "berlin_tonnen_tag": 55,
+      "berlin_hunde": 126000,
+      "note": "Täter muss auf frischer Tat ertappt werden — de facto kaum Durchsetzung"
+    }
+  },
+
+  "der_beutel": {
+    "label": "Der Beutel",
+    "beutel_pro_jahr": 500000000,
+    "einsatzdauer_minuten": 25,
+    "source": "ighid.de / University of Plymouth / DUH / UBA",
+    "zersetzung": [
+      { "material": "Hundekot (warm)", "zeit": "8–9 Wochen" },
+      { "material": "Hundekot (kalt)", "zeit": "bis 1 Jahr" },
+      { "material": "Bio-Beutel (Fabrik, 58°C)", "zeit": "12 Wochen" },
+      { "material": "Bio-Beutel (Natur)", "zeit": "3+ Jahre" },
+      { "material": "Plastikbeutel (PE)", "zeit": "bis 1.000 Jahre" }
+    ],
+    "preisvergleich": [
+      { "typ": "Standard PE", "cent_pro_stueck": 0.8 },
+      { "typ": "Bio (Maisstärke)", "cent_pro_stueck": 6.7 },
+      { "typ": "Papier", "cent_pro_stueck": 12 },
+      { "typ": "Karton", "cent_pro_stueck": 23 }
+    ],
+    "paradox": "Bio-Beutel kosten 8× so viel — und landen am selben Ort: in der Verbrennung."
+  },
+
+  "die_dna": {
+    "label": "Die DNA",
+    "source": "PooPrints / CNBC / Barking & Dagenham / HuffPost",
+    "pooprints": {
+      "registrierte_hunde": 1000000,
+      "communities": 9000,
+      "laender": 7,
+      "umsatz_usd": 7000000,
+      "reduktion_prozent": 96
+    },
+    "barking_dagenham": {
+      "kosten_gbp": 30,
+      "genauigkeit_prozent": 99.9,
+      "reduktion_prozent": 60
+    },
+    "brunete_spanien": {
+      "einwohner": 10100,
+      "pakete_verschickt": 147,
+      "reduktion_prozent": 70,
+      "methode": "Kot per Post an Besitzer zurückgeschickt"
+    },
+    "taiwan": {
+      "teilnehmer": 4000,
+      "beutel_gesammelt": 14000,
+      "hauptgewinn_gold_usd": 2000,
+      "methode": "Hundekot einsammeln = Lotterie-Los"
+    },
+    "deutschland": {
+      "roedelsee": "50% Hundesteuer-Rabatt für DNA-Registrierung",
+      "bolzano": "40.000 Hunde sollen DNA abgeben"
+    }
+  },
+
+  "die_steuer": {
+    "label": "Die Steuer",
+    "einnahmen_2024_mio_eur": 430,
+    "wachstum_10_jahre_prozent": 39,
+    "source": "Destatis / KOMMUNAL / dogco.de",
+    "spanne": [
+      { "name": "Winsen/Luhe", "betrag": 25, "note": "Günstigste" },
+      { "name": "Fürth", "betrag": 132 },
+      { "name": "Mainz", "betrag": 186, "note": "Teuerste" },
+      { "name": "Fürth (Kampfhund)", "betrag": 796, "note": "Ohne Negativzeugnis" }
+    ],
+    "erhoehungen_2025": 36,
+    "erhoehungen_prozent": 9
+  },
+
+  "datenbilder": {
+    "haufen_pro_sekunde": {
+      "value": 184,
+      "label": "Hundehaufen pro Sekunde in Deutschland",
+      "rechnung": "5,8 Mrd. ÷ 365 ÷ 24 ÷ 3600"
+    },
+    "beutel_gestapelt_km": {
+      "value": 75000,
+      "label": "km Plastikbeutel pro Jahr, gestapelt",
+      "context": "Fast 2× um die Erde",
+      "rechnung": "500 Mio. × 15 cm ÷ 1.000.000"
+    },
+    "berliner_haufen_reihe_km": {
+      "value": 38,
+      "label": "km Hundehaufen pro Tag in Berlin, aufgereiht",
+      "rechnung": "252.000 × 15 cm ÷ 100.000"
+    },
+    "steuer_pro_haufen_cent": {
+      "value": 7.4,
+      "label": "Cent Hundesteuer pro Haufen",
+      "rechnung": "430 Mio. € ÷ 5,8 Mrd. Haufen"
+    }
+  }
+}
