@@ -171,6 +171,24 @@
   .laut-gedacht{position:relative;border-left:3px solid var(--warning);padding:1rem 1.25rem 1rem 1.25rem;margin:1.5rem 0;background:var(--bg-card);border-radius:0 8px 8px 0;font-family:var(--font-headline);font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--text-secondary)}
   .laut-gedacht::before{content:'Laut gedacht';display:block;font-family:var(--font-mono);font-style:normal;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--warning);margin-bottom:0.4rem}
 
+  /* Podcast player */
+  .podcast-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .podcast-label{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-2);margin-bottom:0.5rem}
+  .podcast-title{font-family:var(--font-headline);font-size:1.15rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .podcast-story{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;margin-bottom:1rem;font-style:italic}
+  .podcast-box audio{width:100%;border-radius:6px;margin-bottom:0.5rem}
+
+  /* Feedback */
+  .feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0;text-align:center}
+  .feedback-question{font-family:var(--font-body);font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.75rem}
+  .feedback-buttons{display:flex;gap:0.75rem;justify-content:center}
+  .feedback-btn{font-family:var(--font-mono);font-size:0.85rem;padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text-primary);cursor:pointer;transition:all var(--transition)}
+  .feedback-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .feedback-btn.voted{background:var(--accent);color:white;border-color:var(--accent);pointer-events:none}
+  .feedback-btn.not-voted{opacity:0.4;pointer-events:none}
+  .feedback-thanks{font-size:0.85rem;color:var(--accent);margin-top:0.5rem;opacity:0;transition:opacity 0.3s}
+  .feedback-thanks.show{opacity:1}
+
   /* Interactive elements */
   .quiz-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center}
   .quiz-question{font-family:var(--font-headline);font-size:1.15rem;color:var(--text-primary);margin-bottom:1rem}
@@ -599,6 +617,46 @@
 
   <hr class="divider">
 
+  <!-- ===================== PODCAST ===================== -->
+  <section id="podcast">
+    <h2>Jetzt auch zum Hören</h2>
+
+    <p class="podcast-story">Ich wollte schon immer einen Podcast machen. Wirklich. Jedes Mal, wenn jemand eine Folge gehört hat, kam: &bdquo;Geil, ich bin dabei!&ldquo; Und jedes Mal, wenn es ernst wurde, zogen sie den Schwanz ein. Also hab ich mir einen Co-Host geholt, der nicht absagen kann.</p>
+
+    <div class="podcast-box">
+      <div class="podcast-label">Podcast</div>
+      <div class="podcast-title">Du dumme Gans. — Das Datenstück zum Hören</div>
+      <audio controls preload="none" id="podcast-player">
+        <source src="podcast.mp3" type="audio/mpeg">
+        Dein Browser unterstützt kein Audio.
+      </audio>
+      <p class="text-small" style="margin:0">Generiert mit Google NotebookLM. Zwei KI-Stimmen, null Absagen.</p>
+    </div>
+
+    <div class="feedback-box" id="feedback-podcast">
+      <div class="feedback-question">Mehr davon?</div>
+      <div class="feedback-buttons">
+        <button class="feedback-btn" onclick="sendFeedback('podcast','ja',this)">👍 Ja, bitte</button>
+        <button class="feedback-btn" onclick="sendFeedback('podcast','nein',this)">👎 Nee, lass mal</button>
+      </div>
+      <div class="feedback-thanks" id="thanks-podcast"></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DATENSTÜCK FEEDBACK ===================== -->
+  <div class="feedback-box" id="feedback-datenstueck">
+    <div class="feedback-question">War dieses Datenstück hilfreich?</div>
+    <div class="feedback-buttons">
+      <button class="feedback-btn" onclick="sendFeedback('datenstueck','ja',this)">👍 Ja</button>
+      <button class="feedback-btn" onclick="sendFeedback('datenstueck','nein',this)">👎 Nein</button>
+    </div>
+    <div class="feedback-thanks" id="thanks-datenstueck"></div>
+  </div>
+
+  <hr class="divider">
+
   <!-- ===================== QUELLEN ===================== -->
   <section id="quellen">
     <h2>Quellen &amp; Methodik</h2>
@@ -834,6 +892,39 @@ document.querySelectorAll('.nav-pill').forEach(function(pill){
 
 // Init charts on load
 initCharts();
+
+// ==================== Feedback API ====================
+var FEEDBACK_URL='https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec';
+var DATENSTUECK_ID='du-dumme-gans';
+
+function sendFeedback(typ,wert,btn){
+  var key='feedback_'+DATENSTUECK_ID+'_'+typ;
+  if(localStorage.getItem(key))return;
+  localStorage.setItem(key,wert);
+  var box=btn.parentElement;
+  box.querySelectorAll('.feedback-btn').forEach(function(b){
+    if(b===btn)b.classList.add('voted');
+    else b.classList.add('not-voted');
+  });
+  var thanks=document.getElementById('thanks-'+typ);
+  thanks.textContent=wert==='ja'?'Danke! Wird notiert.':'Danke für die Ehrlichkeit.';
+  thanks.classList.add('show');
+  fetch(FEEDBACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({datenstueck:DATENSTUECK_ID,typ:typ,wert:wert})}).catch(function(){});
+}
+
+// Restore previous feedback state
+['podcast','datenstueck'].forEach(function(typ){
+  var key='feedback_'+DATENSTUECK_ID+'_'+typ;
+  var prev=localStorage.getItem(key);
+  if(prev){
+    var box=document.getElementById('feedback-'+typ);
+    if(box){box.querySelectorAll('.feedback-btn').forEach(function(b){
+      if(b.textContent.toLowerCase().indexOf(prev)!==-1)b.classList.add('voted');
+      else b.classList.add('not-voted');
+    })}
+  }
+});
 
 // ==================== Interactive: Quiz ====================
 var quizAnswers={
