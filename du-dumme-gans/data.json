@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "title": "Du dumme Gans.",
+    "subtitle": "370 Tier-Schimpfwörter. Null wissenschaftliche Grundlage.",
+    "version": "1.0",
+    "snapshot": "März 2026",
+    "author": "Thomas Körting",
+    "blog_post": "https://der-koerting.de/2026/03/17/du-dumme-gans/",
+    "standalone": false
+  },
+
+  "das_spatzenhirn": {
+    "label": "Das Spatzenhirn",
+    "neuronen_pro_gramm": [
+      { "tier": "Goldhähnchen", "wert": 459, "gehirn_g": 0.357, "neuronen_mio": 164 },
+      { "tier": "Zebrafink", "wert": 275, "gehirn_g": 0.494, "neuronen_mio": 136 },
+      { "tier": "Star", "wert": 260, "gehirn_g": 1.855, "neuronen_mio": 483 },
+      { "tier": "Wellensittich", "wert": 244, "gehirn_g": 1.317, "neuronen_mio": 322 },
+      { "tier": "Eichelhäher", "wert": 236, "gehirn_g": 4.597, "neuronen_mio": 1085 },
+      { "tier": "Saatkrähe", "wert": 181, "gehirn_g": 8.357, "neuronen_mio": 1509 },
+      { "tier": "Graupapagei", "wert": 177, "gehirn_g": 8.827, "neuronen_mio": 1566 },
+      { "tier": "Kolkrabe", "wert": 154, "gehirn_g": 14.135, "neuronen_mio": 2171 },
+      { "tier": "Taube", "wert": 148, "gehirn_g": 2.095, "neuronen_mio": 310 },
+      { "tier": "Ratte", "wert": 111, "gehirn_g": 1.7, "neuronen_mio": 189 },
+      { "tier": "Huhn", "wert": 78, "gehirn_g": 2.819, "neuronen_mio": 221 },
+      { "tier": "Mensch", "wert": 57, "gehirn_g": 1508, "neuronen_mio": 86000 },
+      { "tier": "Katze", "wert": 25, "gehirn_g": 30, "neuronen_mio": 760 },
+      { "tier": "Hund", "wert": 34, "gehirn_g": 64, "neuronen_mio": 2200 }
+    ],
+    "kueken_rechnen_bis": 5,
+    "affen_rechnen_spontan_bis": 4,
+    "kueken_zahlenstrahl": true,
+    "kueken_alter_tage": 3,
+    "source": "Olkowicz, Herculano-Houzel et al., PNAS 2016 (PMC4932926) / Rugani et al., Science 2015 / Rugani et al., Proc Royal Society B 2009"
+  },
+
+  "der_feige_hase": {
+    "label": "Der feige Hase",
+    "geschwindigkeiten_kmh": [
+      { "name": "Feldhase", "wert": 80, "typ": "tier", "note": "Sprint mit Haken" },
+      { "name": "Tüpfelhyäne", "wert": 60, "typ": "tier", "note": "Ausdauerjäger, km-lang" },
+      { "name": "Usain Bolt", "wert": 44.72, "typ": "mensch", "note": "WM Berlin 2009, Meter 60-80" },
+      { "name": "Huhn (Sprint)", "wert": 28, "typ": "tier", "note": "24-32 km/h je nach Rasse" },
+      { "name": "Durchschnittl. Jogger", "wert": 9, "typ": "mensch", "note": "8-10 km/h" },
+      { "name": "Durchschnittl. Fußgänger", "wert": 5, "typ": "mensch", "note": "4.5-5 km/h" }
+    ],
+    "hase_vs_bolt_faktor": 1.79,
+    "huhn_vs_jogger_faktor": 3,
+    "erstbeleg_angsthase": "17. Jahrhundert",
+    "source": "Swedish National Encyclopedia / Britannica (Bolt) / Healthline (Jogging)"
+  },
+
+  "die_dumme_gans": {
+    "label": "Die dumme Gans",
+    "kognitive_faehigkeiten": [
+      {
+        "tier": "Küken (3 Tage)",
+        "faehigkeit": "Rechnen bis 5",
+        "vergleich": "Affen schaffen spontan nur bis 4",
+        "source": "Rugani et al., Science 2015"
+      },
+      {
+        "tier": "Schafe",
+        "faehigkeit": "50 Gesichter, 2 Jahre",
+        "vergleich": "80% Trefferquote bei Prominenten-Fotos",
+        "source": "Morton, Royal Society Open Science 2017"
+      },
+      {
+        "tier": "Schweine",
+        "faehigkeit": "Videospiele mit Joystick",
+        "vergleich": "Signifikant über Zufallsniveau",
+        "source": "Croney et al., Frontiers in Psychology 2021"
+      },
+      {
+        "tier": "Gänse",
+        "faehigkeit": "100 Individuen erkennen",
+        "vergleich": "Sozialkompetenz auf Primaten-Niveau",
+        "source": "Konrad-Lorenz-Forschungsstelle, Grünau"
+      },
+      {
+        "tier": "Esel",
+        "faehigkeit": "Flexibler als Pferde",
+        "vergleich": "Weniger Perseveration in A-not-B-Tests",
+        "source": "Osthaus et al., Animal Cognition 2013"
+      },
+      {
+        "tier": "Kühe",
+        "faehigkeit": "Individuelle Stimmen + Freundschaften",
+        "vergleich": "Empathie bei gestressten Herdenmitgliedern",
+        "source": "University of Sydney"
+      }
+    ],
+    "schafe_gesichter": 50,
+    "schafe_prominente_trefferquote": 80,
+    "schweine_spiegel_sekunden": 23,
+    "gans_erstbeleg": "Parzival, ca. 1210",
+    "source": "Diverse (siehe Einzeleinträge)"
+  },
+
+  "die_hinterlistige_ratte": {
+    "label": "Die hinterlistige Ratte",
+    "schokolade_teilen_prozent": 52,
+    "schokolade_teilen_tag6_prozent": 61,
+    "chips_selbst": 3.5,
+    "chips_freund": 1.5,
+    "spiegelneuronen": true,
+    "spiegelneuronen_region": "Anteriorer cingulärer Cortex (ACC)",
+    "bartal_ratten_n": 30,
+    "befreiung_nur_artgenossen": true,
+    "source": "Bartal, Decety & Mason, Science 334(6061) 2011 / Carrillo et al., Current Biology 29(8) 2019 / Engelhardt et al., iScience 2024 (Uni Bern)"
+  },
+
+  "die_feige_hyaene": {
+    "label": "Die feige Hyäne",
+    "jagderfolg_prozent": [
+      { "tier": "Afrikanischer Wildhund", "wert": 60 },
+      { "tier": "Schwarzfußkatze", "wert": 60 },
+      { "tier": "Gepard", "wert": 58 },
+      { "tier": "Tüpfelhyäne", "wert": 33 },
+      { "tier": "Löwe", "wert": 26 },
+      { "tier": "Wolf", "wert": 14 }
+    ],
+    "kruuk_kleptoparasitismus": {
+      "hyaene_selbst_erlegt_prozent": 53,
+      "beschreibung": "Bei gemeinsamen Kadavern hatten Hyänen in 53% der Fälle das Tier selbst erlegt"
+    },
+    "hai_populationsrueckgang_prozent": 71,
+    "hai_populationsrueckgang_seit": 1970,
+    "spielberg_reue": true,
+    "benchley_reue": true,
+    "disney_hyaenen_entschaerft_2019": true,
+    "source": "Kruuk 1972 (Serengeti) / National Geographic / Pacoureau et al., Nature 2021 / Smithsonian (Spielberg 2022)"
+  },
+
+  "der_boese_wolf": {
+    "label": "Der böse Wolf",
+    "alpha_mythos": {
+      "gepraegt": 1970,
+      "widerrufen": 1999,
+      "buch_aus_druck": 2022,
+      "forscher": "L. David Mech"
+    },
+    "wolfsangriffe_europa_toedlich_40_jahre": 0,
+    "woelfe_europa": 15000,
+    "rudelgroesse_durchschnitt_europa": 5.5,
+    "rudelgroesse_durchschnitt_nordamerika": 8,
+    "rudel_zusammensetzung": "Elternpaar + Nachwuchs 2-3 Jahre",
+    "aesop_jahrhundert_v_chr": 6,
+    "source": "Mech 1999 / WWF-Report Wolf attacks 2002-2020 / International Wolf Center"
+  },
+
+  "timeline": {
+    "label": "2.600 Jahre Unrecht",
+    "erstbelege": [
+      { "jahr": -600, "label": "6. Jh. v. Chr.", "begriff": "Böser Wolf", "kontext": "Äsop, Der Wolf und das Lamm", "ort": "Griechenland" },
+      { "jahr": -500, "label": "5. Jh. v. Chr.", "begriff": "Schwein = unrein", "kontext": "Levitikus 11:7", "ort": "Israel" },
+      { "jahr": -195, "label": "195 v. Chr.", "begriff": "Homo homini lupus", "kontext": "Plautus, Asinaria", "ort": "Rom" },
+      { "jahr": 80, "label": "1. Jh. n. Chr.", "begriff": "Wolf im Schafspelz", "kontext": "Matthäus 7:15", "ort": "Palästina" },
+      { "jahr": 1120, "label": "ca. 1120", "begriff": "Sturer Esel", "kontext": "Mhd. Bibelparaphrase", "ort": "Deutschland" },
+      { "jahr": 1210, "label": "ca. 1210", "begriff": "Dumme Gans", "kontext": "Wolfram v. Eschenbach, Parzival", "ort": "Deutschland" },
+      { "jahr": 1534, "label": "1534", "begriff": "Sündenbock / Falsche Schlange", "kontext": "Luther-Bibel", "ort": "Deutschland" },
+      { "jahr": 1600, "label": "16./17. Jh.", "begriff": "Angsthase / Hasenfuß", "kontext": "Jagdkultur", "ort": "Deutschland" },
+      { "jahr": 1700, "label": "17. Jh.", "begriff": "Schwein (Schimpfwort)", "kontext": "Deutsche Alltagssprache", "ort": "Deutschland" },
+      { "jahr": 1812, "label": "1812", "begriff": "Böser Wolf (Grimm)", "kontext": "Kinder- und Hausmärchen", "ort": "Deutschland" },
+      { "jahr": 1975, "label": "1975", "begriff": "Der Weiße Hai", "kontext": "Spielberg / Benchley", "ort": "Hollywood" },
+      { "jahr": 1994, "label": "1994", "begriff": "Feige Hyäne (Disney)", "kontext": "Der König der Löwen", "ort": "Hollywood" }
+    ],
+    "schimpfwoerter_gesamt": 373,
+    "redewendungen_gesamt": 500,
+    "source": "Uni Bukarest (RJAS) / DWDS / Grimmsches Wörterbuch / Wolfram v. Eschenbach / Luther-Bibel / Äsop"
+  },
+
+  "global": {
+    "label": "Kein deutsches Phänomen",
+    "chinesisch_anteil_tierbasiert_prozent": 33,
+    "arabisch_haeufigste_beleidigungsform": "Tiervergleiche",
+    "hindi_eule": "ullu = Idiot",
+    "deutsch_eule": "weise (Athene)",
+    "persisch_esel": "Khar = produktivstes Schimpfwort",
+    "animistische_kulturen": "kaum Tier-Schimpfwörter",
+    "gegensaetze": [
+      { "tier": "Eule", "kultur_a": "Deutsch: weise", "kultur_b": "Hindi: Idiot" },
+      { "tier": "Hund", "kultur_a": "Westlich: treu", "kultur_b": "Arabisch: unrein" },
+      { "tier": "Fuchs", "kultur_a": "Englisch: hinterlistig", "kultur_b": "Persisch: schlau (positiv)" },
+      { "tier": "Schlange", "kultur_a": "Christlich: böse", "kultur_b": "Hinduistisch: göttlich (Naga)" },
+      { "tier": "Schwein", "kultur_a": "Deutsch: Beleidigung", "kultur_b": "Deutsch: Glückssymbol" }
+    ],
+    "source": "Talebinejad & Dastjerdi, Metaphor and Symbol 2005 / Chamizo Dominguez & Nerlich / Lakoff & Johnson 1980"
+  },
+
+  "datenbilder": {
+    "spatzenhirn_vs_mensch_faktor": 8,
+    "hase_vs_bolt_faktor": 1.79,
+    "ratte_schokolade_prozent": 52,
+    "hyaene_besser_als_loewe_prozent": 27,
+    "wolf_null_tote_40_jahre": true,
+    "kueken_besser_als_affen": true,
+    "schafe_80_prozent_obama": true,
+    "schweine_joystick": true,
+    "disney_artenschutz_geschaedigt": true,
+    "spielberg_bereut": true,
+    "hai_71_prozent_rueckgang": true,
+    "unrecht_jahre": 2600
+  }
+}

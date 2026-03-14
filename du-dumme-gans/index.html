@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Du dumme Gans. — Datenstück | Open Data Minded</title>
+<meta name="description" content="370 Tier-Schimpfwörter im Deutschen — und bei fast jedem liegt die Wissenschaft falsch. Neuronen pro Gramm, Jagderfolgsquoten, Ratten-Empathie. Interaktiv und mit allen Quellen.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Du dumme Gans. — Datenstück | Open Data Minded">
+<meta property="og:description" content="370 Tier-Schimpfwörter im Deutschen — und bei fast jedem liegt die Wissenschaft falsch. Neuronen pro Gramm, Jagderfolgsquoten, Ratten-Empathie. Interaktiv und mit allen Quellen.">
+<meta property="og:url" content="https://opendataminded.de/du-dumme-gans/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Du dumme Gans. — Datenstück | Open Data Minded">
+<meta name="twitter:description" content="370 Tier-Schimpfwörter im Deutschen — und bei fast jedem liegt die Wissenschaft falsch. Neuronen pro Gramm, Jagderfolgsquoten, Ratten-Empathie. Interaktiv und mit allen Quellen.">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/du-dumme-gans/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Du dumme Gans.",
+  "description": "370 Tier-Schimpfwörter im Deutschen — und bei fast jedem liegt die Wissenschaft falsch. Neuronen pro Gramm, Jagderfolgsquoten, Ratten-Empathie. Interaktiv und mit allen Quellen.",
+  "author": {"@type": "Person", "name": "Thomas Körting", "url": "https://der-koerting.de/ueber-mich/"},
+  "publisher": {"@type": "Person", "name": "Thomas Körting"},
+  "url": "https://opendataminded.de/du-dumme-gans/",
+  "inLanguage": "de",
+  "datePublished": "2026-03-17",
+  "dateModified": "2026-03-17",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://opendataminded.de/du-dumme-gans/"}
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  /* Nav Pills */
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+
+  /* KPI */
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  /* Charts */
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+  .chart-xtall{height:480px}
+
+  /* Compare Cards */
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-grid.three-col{grid-template-columns:repeat(3,1fr)}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;flex-direction:column;gap:0.3rem}
+  .compare-card:hover{border-color:var(--accent)}
+  .compare-name{font-weight:600;font-size:0.9rem}
+  .compare-value{font-family:var(--font-mono);font-size:1.2rem;font-weight:500}
+  .compare-value.crit{color:var(--danger)} .compare-value.warn{color:var(--warning)} .compare-value.ok{color:var(--accent)} .compare-value.purple{color:var(--purple)}
+  .compare-note{font-size:0.75rem;color:var(--text-tertiary)}
+  .compare-method{font-size:0.7rem;padding:0.15rem 0.5rem;border-radius:100px;display:inline-block;width:fit-content}
+  .method-tech{background:var(--accent-subtle);color:var(--accent)}
+  .method-social{background:rgba(245,158,11,0.1);color:var(--warning)}
+  .method-creative{background:rgba(139,92,246,0.1);color:var(--purple)}
+
+  /* Datenbild */
+  .datenbild{background:var(--bg-card);border:2px solid var(--accent);border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center}
+  .datenbild-value{font-family:var(--font-mono);font-size:2.2rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .datenbild-label{font-size:0.8rem;color:var(--text-secondary);margin-top:0.35rem}
+  .datenbild-context{font-family:var(--font-headline);font-style:italic;font-size:1rem;color:var(--text-tertiary);margin-top:0.5rem}
+
+  /* Killer Stat */
+  .killer-stat{background:var(--danger-subtle);border:2px solid var(--danger);border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center}
+  .killer-stat .datenbild-value{color:var(--danger)}
+  .killer-stat .datenbild-label{color:var(--text-primary)}
+
+  /* Source Card */
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+  .blog-link{display:inline-block;background:var(--accent-subtle);color:var(--accent);padding:0.5rem 1.25rem;border-radius:8px;font-size:0.9rem;font-weight:500;border:1px solid rgba(20,184,166,0.3);transition:all var(--transition);margin:1rem 0}
+  .blog-link:hover{background:var(--accent);color:white}
+
+  /* Blockquote for Spielberg */
+  blockquote{border-left:3px solid var(--accent);padding:0.75rem 1.25rem;margin:1.5rem 0;background:var(--bg-card);border-radius:0 8px 8px 0;font-family:var(--font-headline);font-style:italic;font-size:1rem;color:var(--text-secondary)}
+  blockquote cite{display:block;font-family:var(--font-body);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem}
+
+  /* Laut gedacht — persönlicher Einschub */
+  .laut-gedacht{position:relative;border-left:3px solid var(--warning);padding:1rem 1.25rem 1rem 1.25rem;margin:1.5rem 0;background:var(--bg-card);border-radius:0 8px 8px 0;font-family:var(--font-headline);font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--text-secondary)}
+  .laut-gedacht::before{content:'Laut gedacht';display:block;font-family:var(--font-mono);font-style:normal;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--warning);margin-bottom:0.4rem}
+
+  /* Interactive elements */
+  .quiz-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center}
+  .quiz-question{font-family:var(--font-headline);font-size:1.15rem;color:var(--text-primary);margin-bottom:1rem}
+  .quiz-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+  .quiz-btn{font-family:var(--font-body);font-size:0.9rem;padding:0.6rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text-primary);cursor:pointer;transition:all var(--transition)}
+  .quiz-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .quiz-btn.correct{background:var(--accent);color:white;border-color:var(--accent)}
+  .quiz-btn.wrong{background:var(--danger);color:white;border-color:var(--danger);opacity:0.7}
+  .quiz-btn.disabled{pointer-events:none}
+  .quiz-result{margin-top:1rem;font-size:0.9rem;line-height:1.5;color:var(--text-secondary);opacity:0;max-height:0;overflow:hidden;transition:all 0.4s ease}
+  .quiz-result.show{opacity:1;max-height:200px}
+  .quiz-label{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem}
+
+  /* Speed race */
+  .race-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .race-label{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;text-align:center}
+  .race-track{margin:0.5rem 0;display:flex;align-items:center;gap:0.75rem}
+  .race-name{font-family:var(--font-body);font-size:0.8rem;color:var(--text-secondary);width:90px;text-align:right;flex-shrink:0}
+  .race-bar-bg{flex:1;height:28px;background:var(--bg);border-radius:6px;overflow:hidden;position:relative}
+  .race-bar{height:100%;border-radius:6px;width:0;transition:width 1.5s cubic-bezier(0.22,1,0.36,1);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-family:var(--font-mono);font-size:0.75rem;color:white;font-weight:500}
+  .race-bar.tier{background:var(--accent)}
+  .race-bar.mensch{background:var(--warning)}
+  .race-start-btn{display:block;margin:1rem auto 0;font-family:var(--font-mono);font-size:0.8rem;padding:0.5rem 1.5rem;border-radius:8px;border:1px solid var(--accent);background:var(--accent-subtle);color:var(--accent);cursor:pointer;transition:all var(--transition)}
+  .race-start-btn:hover{background:var(--accent);color:white}
+
+  /* Dilemma */
+  .dilemma-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center}
+  .dilemma-scenario{font-family:var(--font-body);font-size:0.9rem;color:var(--text-secondary);margin-bottom:1rem;line-height:1.5}
+  .dilemma-or{font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary);margin:0 0.25rem}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .compare-grid.three-col{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px} .chart-xtall{height:400px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://opendataminded.de/" class="site-name" style="color:var(--text-primary)">Open Data <span>Minded</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de">Blog</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Datenstück #7</span>
+    <span class="snapshot-tag">März 2026</span>
+  </div>
+
+  <h1>Du dumme Gans.</h1>
+  <div class="subtitle">370 Tier-Schimpfwörter. Null wissenschaftliche Grundlage.</div>
+
+  <p class="lead">Wir nennen Menschen Spatzenhirn, feiger Hase, dumme Gans. 373 Schimpfwörter im Deutschen basieren auf Tiernamen. Bei fast jedem liegt die Wissenschaft falsch. Dieses Datenstück macht die Daten auf. Zum Blogpost <a href="https://der-koerting.de/2026/03/17/du-dumme-gans/">Du dumme Gans.</a></p>
+
+  <nav class="section-nav">
+    <a href="#spatzenhirn" class="nav-pill active">Das Spatzenhirn</a>
+    <a href="#hase" class="nav-pill">Der feige Hase</a>
+    <a href="#gans" class="nav-pill">Die dumme Gans</a>
+    <a href="#ratte" class="nav-pill">Die hinterlistige Ratte</a>
+    <a href="#hyaene" class="nav-pill">Die feige Hyäne</a>
+    <a href="#wolf" class="nav-pill">Der böse Wolf</a>
+    <a href="#schimpfwoerter" class="nav-pill">2.600 Jahre Unrecht</a>
+  </nav>
+
+  <!-- ===================== DAS SPATZENHIRN ===================== -->
+  <section id="spatzenhirn">
+    <h2>Das Spatzenhirn</h2>
+
+    <p>Vogelgehirne haben pro Gramm doppelt so viele Neuronen wie Säugetiergehirne. Ein Goldhähnchen: 459 Millionen Neuronen pro Gramm. Ein Mensch: 57 Millionen. &bdquo;Spatzenhirn&ldquo; müsste ein Kompliment sein.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">459 Mio./g</div>
+        <div class="kpi-label">Goldhähnchen</div>
+        <div class="kpi-sub">Neuronen pro Gramm</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">57 Mio./g</div>
+        <div class="kpi-label">Mensch</div>
+        <div class="kpi-sub">Neuronen pro Gramm</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">8x</div>
+        <div class="kpi-label">Faktor Vogel vs. Mensch</div>
+        <div class="kpi-sub">Pro Gramm Gehirnmasse</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Neuronen pro Gramm Gehirnmasse</div>
+      <div class="chart-subtitle">Millionen — Quelle: Herculano-Houzel et al., PNAS 2016</div>
+      <div id="chart-neuronen" class="chart chart-xtall"></div>
+    </div>
+
+    <div class="datenbild">
+      <div class="datenbild-value">bis 5</div>
+      <div class="datenbild-label">3 Tage alte Küken rechnen bis 5</div>
+      <div class="datenbild-context">Affen schaffen spontan nur bis 4. Küken haben einen mentalen Zahlenstrahl.</div>
+    </div>
+
+    <div class="quiz-box" id="quiz-neuronen">
+      <div class="quiz-label">Teste dein Wissen</div>
+      <div class="quiz-question">Wer hat mehr Neuronen pro Gramm Gehirn?</div>
+      <div class="quiz-buttons">
+        <button class="quiz-btn" onclick="quizAnswer('neuronen','mensch',this)">Mensch</button>
+        <button class="quiz-btn" onclick="quizAnswer('neuronen','katze',this)">Katze</button>
+        <button class="quiz-btn" onclick="quizAnswer('neuronen','goldhaehnchen',this)">Goldhähnchen</button>
+        <button class="quiz-btn" onclick="quizAnswer('neuronen','hund',this)">Hund</button>
+      </div>
+      <div class="quiz-result" id="result-neuronen"></div>
+    </div>
+
+    <p class="text-small">Quellen: Herculano-Houzel et al., PNAS 2016; Rugani et al., Science 2015</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DER FEIGE HASE ===================== -->
+  <section id="hase">
+    <h2>Der feige Hase</h2>
+
+    <p>Der Hase rennt um sein Leben — mit 80 km/h. Usain Bolt schafft 44,7. Ein Huhn im Sprint: 28 km/h. Der durchschnittliche Jogger: 9 km/h. Feigheit? Das ist Biomechanik auf Weltklasse-Niveau.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">80 km/h</div>
+        <div class="kpi-label">Feldhase</div>
+        <div class="kpi-sub">Spitzengeschwindigkeit</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">44,7 km/h</div>
+        <div class="kpi-label">Usain Bolt</div>
+        <div class="kpi-sub">Weltrekord</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">1,8x</div>
+        <div class="kpi-label">Hase vs. Bolt</div>
+        <div class="kpi-sub">Faktor</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Geschwindigkeitsvergleich</div>
+      <div class="chart-subtitle">km/h — Quelle: Swedish National Encyclopedia / Britannica</div>
+      <div id="chart-speed" class="chart"></div>
+    </div>
+
+    <div class="race-box" id="speed-race">
+      <div class="race-label">Wer ist schneller? Drück Start.</div>
+      <div class="race-track"><span class="race-name">Feldhase</span><div class="race-bar-bg"><div class="race-bar tier" data-speed="80" id="bar-hase"></div></div></div>
+      <div class="race-track"><span class="race-name">Tüpfelhyäne</span><div class="race-bar-bg"><div class="race-bar tier" data-speed="60" id="bar-hyaene"></div></div></div>
+      <div class="race-track"><span class="race-name">Usain Bolt</span><div class="race-bar-bg"><div class="race-bar mensch" data-speed="44.7" id="bar-bolt"></div></div></div>
+      <div class="race-track"><span class="race-name">Huhn</span><div class="race-bar-bg"><div class="race-bar tier" data-speed="28" id="bar-huhn"></div></div></div>
+      <div class="race-track"><span class="race-name">Jogger</span><div class="race-bar-bg"><div class="race-bar mensch" data-speed="9" id="bar-jogger"></div></div></div>
+      <button class="race-start-btn" onclick="startRace()">&#9654; Start</button>
+    </div>
+
+    <p class="text-small">Quellen: Swedish National Encyclopedia, Encyclopaedia Britannica</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DIE DUMME GANS ===================== -->
+  <section id="gans">
+    <h2>Die dumme Gans</h2>
+
+    <p>Küken rechnen besser als Affen. Schafe erkennen Obama auf Fotos. Schweine spielen Videospiele. Gänse kennen 100 Individuen. Esel sind flexibler als Pferde. Das ist keine Anekdote — das ist peer-reviewed Science.</p>
+
+    <div class="compare-grid three-col">
+      <div class="compare-card">
+        <div class="compare-name">Küken</div>
+        <div class="compare-value ok">Rechnen bis 5</div>
+        <span class="compare-method method-tech">Affen: nur bis 4</span>
+        <div class="compare-note">3 Tage alt, mentaler Zahlenstrahl. Rugani et al., Science 2015</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Schafe</div>
+        <div class="compare-value ok">50 Gesichter, 2 Jahre</div>
+        <span class="compare-method method-tech">80% Prominente erkannt</span>
+        <div class="compare-note">Erkennen Obama auf Fotos. Knolle et al., Royal Society 2017</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Schweine</div>
+        <div class="compare-value ok">Joystick-Videospiele</div>
+        <span class="compare-method method-tech">Über Zufallsniveau</span>
+        <div class="compare-note">Steuern Cursor mit der Schnauze. Croney &amp; Boysen, Purdue 2021</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Gänse</div>
+        <div class="compare-value ok">100 Individuen</div>
+        <span class="compare-method method-tech">Primaten-Niveau</span>
+        <div class="compare-note">Erkennung über Stimme und Gesicht. Lorenz, versch. Studien</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Esel</div>
+        <div class="compare-value ok">Flexibler als Pferde</div>
+        <span class="compare-method method-tech">A-not-B-Test</span>
+        <div class="compare-note">Passen Strategie schneller an als Pferde. Osthaus et al., 2013</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Kühe</div>
+        <div class="compare-value ok">Individuelle Stimmen</div>
+        <span class="compare-method method-tech">Freundschaften + Empathie</span>
+        <div class="compare-note">Erkennen Herdenmitglieder an der Stimme. Green et al., Scientific Reports 2019</div>
+      </div>
+    </div>
+
+    <p class="text-small">Quellen: Rugani et al. (Science 2015), Knolle et al. (Royal Society 2017), Croney &amp; Boysen (Purdue 2021), Osthaus et al. (2013), Green et al. (Scientific Reports 2019)</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DIE HINTERLISTIGE RATTE ===================== -->
+  <section id="ratte">
+    <h2>Die hinterlistige Ratte</h2>
+
+    <p>Ratten befreien eingesperrte Artgenossen — freiwillig, ohne Training, ohne Belohnung. Und dann teilen sie die Schokolade. 52 Prozent teilen. Ab Tag 6 sind es 61 Prozent. Die Tiere haben emotionale Spiegelneuronen — im anterioren cingulären Cortex, derselben Region wie beim Menschen.</p>
+
+    <div class="dilemma-box" id="dilemma-ratte">
+      <div class="quiz-label">Das Ratten-Dilemma</div>
+      <div class="dilemma-scenario">Du bist eine Ratte. Vor dir: ein eingesperrter Artgenosse. Daneben: Schokolade. Du kannst beides haben — aber nicht gleichzeitig.</div>
+      <div class="quiz-question">Was tust du?</div>
+      <div class="quiz-buttons">
+        <button class="quiz-btn" onclick="dilemmaAnswer('schoko',this)">🍫 Schokolade fressen</button>
+        <span class="dilemma-or">oder</span>
+        <button class="quiz-btn" onclick="dilemmaAnswer('befreien',this)">🔓 Artgenossen befreien</button>
+      </div>
+      <div class="quiz-result" id="result-dilemma"></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">52%</div>
+        <div class="kpi-label">Teilen Schokolade</div>
+        <div class="kpi-sub">Tag 1–5</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">61%</div>
+        <div class="kpi-label">Teilen ab Tag 6</div>
+        <div class="kpi-sub">Lerneffekt</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value purple" style="font-size:1.1rem">ACC</div>
+        <div class="kpi-label">Anteriorer cingulärer Cortex</div>
+        <div class="kpi-sub">Spiegelneuronen — wie beim Menschen</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Ratten-Empathie: Schokolade teilen</div>
+      <div class="chart-subtitle">Anteil der Ratten, die teilen — Quelle: Bartal et al., Science 2011</div>
+      <div id="chart-ratten" class="chart"></div>
+    </div>
+
+    <p>Die Studie von Inbal Ben-Ami Bartal (University of Chicago, 2011) war bahnbrechend: Die Ratten öffneten die Käfigtür ihres Artgenossen, obwohl sie nichts davon hatten. Lag daneben Schokolade, teilten sie — obwohl sie die auch allein hätten fressen können. Das ist kein Instinkt. Das ist eine Entscheidung.</p>
+
+    <p class="text-small">Quellen: Bartal et al., Science 2011; Carrillo et al., eLife 2019</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DIE FEIGE HYÄNE ===================== -->
+  <section id="hyaene">
+    <h2>Die feige Hyäne</h2>
+
+    <p>Die Hyäne jagt erfolgreicher als der Löwe. Hans Kruuk zeigte 1972: In 53 Prozent der Fälle, in denen Löwen und Hyänen an einem Kadaver standen, hatte die Hyäne selbst erlegt — und der Löwe stahl. Hollywood schreibt Todesurteile. Spielberg bereut Jaws. Die Hai-Populationen sind um 71 Prozent eingebrochen.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">33%</div>
+        <div class="kpi-label">Hyäne Jagderfolg</div>
+        <div class="kpi-sub">Erfolgsquote</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">26%</div>
+        <div class="kpi-label">Löwe Jagderfolg</div>
+        <div class="kpi-sub">Erfolgsquote</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">53%</div>
+        <div class="kpi-label">Hyäne selbst erlegt</div>
+        <div class="kpi-sub">Bei gem. Kadavern</div>
+      </div>
+    </div>
+
+    <div class="quiz-box" id="quiz-jagd">
+      <div class="quiz-label">Teste dein Wissen</div>
+      <div class="quiz-question">Welches Raubtier hat die höchste Jagderfolgsquote?</div>
+      <div class="quiz-buttons">
+        <button class="quiz-btn" onclick="quizAnswer('jagd','loewe',this)">Löwe</button>
+        <button class="quiz-btn" onclick="quizAnswer('jagd','hyaene',this)">Hyäne</button>
+        <button class="quiz-btn" onclick="quizAnswer('jagd','wildhund',this)">Afrik. Wildhund</button>
+        <button class="quiz-btn" onclick="quizAnswer('jagd','gepard',this)">Gepard</button>
+      </div>
+      <div class="quiz-result" id="result-jagd"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Jagderfolgsquoten im Vergleich</div>
+      <div class="chart-subtitle">In Prozent — Quelle: Kruuk 1972 / National Geographic</div>
+      <div id="chart-jagd" class="chart"></div>
+    </div>
+
+    <div class="killer-stat">
+      <div class="datenbild-value">−71%</div>
+      <div class="datenbild-label">Rückgang der Hai-Populationen seit 1970</div>
+    </div>
+
+    <blockquote>
+      &bdquo;I truly, and to this day, regret the decimation of the shark population because of the book and the film.&ldquo;
+      <cite>— Steven Spielberg, 2022</cite>
+    </blockquote>
+
+    <p class="text-small">Quellen: Kruuk, The Spotted Hyena (1972); Pacoureau et al., Nature 2021; Spielberg Interview BBC 2022</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== DER BÖSE WOLF ===================== -->
+  <section id="wolf">
+    <h2>Der böse Wolf</h2>
+
+    <p>Der Alpha-Wolf-Mythos. L. David Mech prägte 1970 den Begriff — basierend auf Beobachtungen in Gefangenschaft. 1999 widerrief er seine eigene Theorie: Wolfsrudel sind Familien, keine Hierarchien. 2022 bat er den Verlag, das Buch aus dem Druck zu nehmen. In Europa gab es in 40 Jahren null tödliche Wolfsangriffe auf Menschen — bei 15.000 Wölfen.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">0</div>
+        <div class="kpi-label">Tödliche Angriffe</div>
+        <div class="kpi-sub">Europa, 40 Jahre</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">15.000</div>
+        <div class="kpi-label">Wölfe in Europa</div>
+        <div class="kpi-sub">Aktueller Bestand</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value warning">1999</div>
+        <div class="kpi-label">Widerruf durch Mech</div>
+        <div class="kpi-sub">Nach 29 Jahren</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Der Alpha-Mythos — Eine Timeline</div>
+      <div class="chart-subtitle">Quelle: Mech 1970, 1999, 2022</div>
+      <div id="chart-wolf" class="chart"></div>
+    </div>
+
+    <p>Rudel = Familie. Der &bdquo;Alpha&ldquo; ist schlicht der Vater. Die &bdquo;Alpha-Wölfin&ldquo; ist die Mutter. Die &bdquo;Untergebenen&ldquo; sind die Kinder. Mech selbst schrieb 1999: &bdquo;Calling a wolf an alpha is like calling a human father the alpha of the family.&ldquo;</p>
+
+    <div class="laut-gedacht">Und trotzdem. Wir haben uns gefreut, als der Wolf zurückkam. Willkommen, Wildnis! Bis das erste Schaf gerissen wurde. Bis der erste Hund draufging. Nie ohne Grund — ein Wolf tut, was ein Wolf tut. Aber wir? Wir geben ihn zum Abschuss frei. Wir holen ihn zurück, feiern uns für unsere Naturverbundenheit, und sobald er sich wie ein Wolf verhält, ist er wieder der Böse. 2.600 Jahre Doppelmoral.</div>
+
+    <p class="text-small">Quellen: Mech, The Wolf (1970); Mech, Canadian Journal of Zoology (1999); LCIE / Large Carnivore Initiative for Europe</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== 2.600 JAHRE UNRECHT ===================== -->
+  <section id="schimpfwoerter">
+    <h2>Tier-Schimpfwörter: 2.600 Jahre Unrecht</h2>
+
+    <p>Von Äsop über Luther bis Disney. 373 Schimpfwörter im Deutschen basieren auf Tiernamen. Das ist kein deutsches Phänomen — es ist global, aber kulturspezifisch. Die Eule ist in Deutschland weise und in Hindi ein Idiot.</p>
+
+    <div class="datenbild">
+      <div class="datenbild-value">373</div>
+      <div class="datenbild-label">Schimpfwörter aus Tiernamen im Deutschen</div>
+      <div class="datenbild-context">Von Aal (aalglatt) bis Zicke.</div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Timeline der Erstbelege</div>
+      <div class="chart-subtitle">Wann Tiere zu Schimpfwörtern wurden</div>
+      <div id="chart-timeline" class="chart chart-tall"></div>
+    </div>
+
+    <h3>Kulturelle Gegensätze</h3>
+    <p>Dasselbe Tier, komplett andere Bedeutung — je nach Kulturkreis:</p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-name">Eule</div>
+        <div class="compare-value ok">DE: weise</div>
+        <span class="compare-method method-social">Hindi: Idiot (ullu)</span>
+        <div class="compare-note">In Griechenland Symbol der Athene, in Indien Dummheit</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Hund</div>
+        <div class="compare-value ok">Westlich: treu</div>
+        <span class="compare-method method-social">Arabisch: unrein</span>
+        <div class="compare-note">Best Friend vs. rituell unrein — selbes Tier, andere Wertung</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Schlange</div>
+        <div class="compare-value warn">Christlich: böse</div>
+        <span class="compare-method method-creative">Hinduistisch: göttlich</span>
+        <div class="compare-note">Sündenfall vs. Naga-Verehrung — kulturelle Inversion</div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-name">Fuchs</div>
+        <div class="compare-value warn">Englisch: hinterlistig</div>
+        <span class="compare-method method-creative">Persisch: schlau</span>
+        <div class="compare-note">Foxy = unehrlich (EN) vs. klug und bewundernswert (FA)</div>
+      </div>
+    </div>
+
+    <p class="text-small">Quellen: Schimpfwörter-Lexikon / Duden; Wanzeck, Zur Etymologie lexikalisierter Farbwortverbindungen (2003); versch. kulturwiss. Arbeiten</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== QUELLEN ===================== -->
+  <section id="quellen">
+    <h2>Quellen &amp; Methodik</h2>
+
+    <p class="text-small">Alle Daten stammen aus öffentlich zugänglichen, wissenschaftlichen Quellen. Die Zusammenstellung erhebt keinen Anspruch auf Vollständigkeit, sondern zeigt exemplarisch, wo Alltagssprache und Wissenschaft auseinanderklaffen.</p>
+
+    <div class="source-card">
+      <h3>Datenquellen</h3>
+      <ul>
+        <li>Herculano-Houzel et al., PNAS 2016 — Neuronendichte Vögel vs. Säugetiere</li>
+        <li>Rugani et al., Science 2015 — Küken und mentaler Zahlenstrahl</li>
+        <li>Knolle et al., Royal Society Open Science 2017 — Gesichtserkennung bei Schafen</li>
+        <li>Croney &amp; Boysen, Purdue University 2021 — Schweine und Videospiele</li>
+        <li>Osthaus et al., Applied Animal Behaviour Science 2013 — Kognitive Flexibilität Esel</li>
+        <li>Green et al., Scientific Reports 2019 — Stimmerkennung bei Kühen</li>
+        <li>Bartal et al., Science 2011 — Empathie und prosoziales Verhalten bei Ratten</li>
+        <li>Carrillo et al., eLife 2019 — Spiegelneuronen ACC bei Ratten</li>
+        <li>Kruuk, The Spotted Hyena, University of Chicago Press 1972</li>
+        <li>Pacoureau et al., Nature 2021 — Rückgang Hai-Populationen</li>
+        <li>Mech, The Wolf, Doubleday 1970 / Canadian Journal of Zoology 1999</li>
+        <li>LCIE — Large Carnivore Initiative for Europe, Wolfsstatistik</li>
+        <li>Swedish National Encyclopedia / Encyclopaedia Britannica — Geschwindigkeitsdaten</li>
+        <li>Duden / Schimpfwörter-Lexikon — Tier-Schimpfwörter im Deutschen</li>
+      </ul>
+    </div>
+
+    <p>
+      <a href="https://der-koerting.de/2026/03/17/du-dumme-gans/" class="blog-link">Zum Blogpost: Du dumme Gans. &rarr;</a>
+    </p>
+
+    <p>
+      <a href="https://github.com/tkoerting/data-stories" class="github-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        tkoerting/data-stories — Code, Daten, Methodik
+      </a>
+    </p>
+  </section>
+
+  <hr class="divider">
+
+  <p class="tk-closer">373 Schimpfwörter. Null wissenschaftliche Grundlage. Vielleicht sollten wir öfter nachschlagen, bevor wir Tiere beleidigen.</p>
+
+  <p class="text-small" style="margin-top:2rem;">Die Beschaffung und Analyse der Daten in diesem Datenstück erfolgte nach bestem Wissen und Gewissen. Sollte dir ein Fehler auffallen oder eine Quelle nicht mehr aktuell sein, freue ich mich über eine Nachricht an <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a>.</p>
+
+  <div class="article-footer">
+    <p>Thomas Körting &middot; März 2026 &middot; Alle Daten und Quellen auf GitHub &middot; <a href="https://der-koerting.de/impressum/">Impressum</a> &middot; <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const charts={};
+
+(function(){
+  const url=new URLSearchParams(window.location.search).get('theme');
+  const saved=url||localStorage.getItem('tk-theme');
+  if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}
+  const b=document.querySelector('.toggle-btn');
+  if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';
+})();
+function toggleTheme(){
+  const h=document.documentElement,b=document.querySelector('.toggle-btn');
+  h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';
+  localStorage.setItem('tk-theme',h.dataset.theme);
+  b.textContent=h.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';
+  initCharts();
+}
+
+function C(){
+  const d=document.documentElement.dataset.theme==='dark';
+  return{bg:d?'#1E2028':'#FFFFFF',text:d?'#E5E7EB':'#1E293B',sub:d?'#6B7280':'#94A3B8',
+    border:d?'#2D3139':'#E2E5E9',accent:d?'#14B8A6':'#0D9488',danger:d?'#EF4444':'#DC2626',
+    warning:d?'#F59E0B':'#D97706',accent2:d?'#FACC15':'#EAB308',purple:d?'#8B5CF6':'#7C3AED',
+    gridBg:d?'#111318':'#F4F6F7',human:d?'#60A5FA':'#3B82F6'};
+}
+
+function initCharts(){
+  Object.values(charts).forEach(ch=>{try{ch.dispose()}catch(e){}});
+  const c=C();
+  const base={tooltip:{backgroundColor:c.bg,borderColor:c.border,textStyle:{color:c.text,fontFamily:'Space Grotesk',fontSize:13}},
+    grid:{left:110,right:30,top:20,bottom:30}};
+  const axisBase={axisLabel:{color:c.sub,fontFamily:'Space Grotesk',fontSize:11},axisLine:{lineStyle:{color:c.border}},splitLine:{lineStyle:{color:c.border,type:'dashed'}}};
+
+  // ==================== Chart 1: Neuronen pro Gramm ====================
+  var neuronenData=[
+    {name:'Goldhähnchen',value:459,type:'bird'},
+    {name:'Zebrafink',value:275,type:'bird'},
+    {name:'Star',value:260,type:'bird'},
+    {name:'Wellensittich',value:244,type:'bird'},
+    {name:'Eichelhäher',value:236,type:'bird'},
+    {name:'Saatkrähe',value:181,type:'bird'},
+    {name:'Graupapagei',value:177,type:'bird'},
+    {name:'Kolkrabe',value:154,type:'bird'},
+    {name:'Taube',value:148,type:'bird'},
+    {name:'Ratte',value:111,type:'mammal'},
+    {name:'Huhn',value:78,type:'bird'},
+    {name:'Mensch',value:57,type:'human'},
+    {name:'Hund',value:34,type:'mammal'},
+    {name:'Katze',value:25,type:'mammal'}
+  ];
+  charts.neuronen=echarts.init(document.getElementById('chart-neuronen'),null,{renderer:'canvas'});
+  charts.neuronen.setOption({...base,grid:{left:110,right:60,top:10,bottom:30},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+' Mio./g</b>'}},
+    yAxis:{type:'category',data:neuronenData.map(function(d){return d.name}),inverse:true,...axisBase,axisLabel:{...axisBase.axisLabel,width:100,overflow:'truncate'}},
+    xAxis:{type:'value',...axisBase,name:'Mio./g',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:neuronenData.map(function(d){
+      var col=c.accent;
+      if(d.type==='mammal')col=c.warning;
+      if(d.type==='human')col=c.human;
+      return{value:d.value,itemStyle:{color:col}}
+    }),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:10,color:c.text,formatter:function(p){return p.value+' Mio.'}}}]});
+
+  // ==================== Chart 2: Geschwindigkeitsvergleich ====================
+  var speedData=[
+    {name:'Feldhase',value:80,type:'animal'},
+    {name:'Tüpfelhyäne',value:60,type:'animal'},
+    {name:'Usain Bolt',value:44.72,type:'human'},
+    {name:'Huhn (Sprint)',value:28,type:'animal'},
+    {name:'Jogger',value:9,type:'human'},
+    {name:'Fußgänger',value:5,type:'human'}
+  ];
+  charts.speed=echarts.init(document.getElementById('chart-speed'),null,{renderer:'canvas'});
+  charts.speed.setOption({...base,grid:{...base.grid,top:10},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+' km/h</b>'}},
+    yAxis:{type:'category',data:speedData.map(function(d){return d.name}),inverse:true,...axisBase},
+    xAxis:{type:'value',...axisBase,name:'km/h',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:speedData.map(function(d){
+      var col=d.type==='human'?c.warning:c.accent;
+      return{value:d.value,itemStyle:{color:col}}
+    }),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:11,color:c.text,formatter:function(p){return p.value+' km/h'}}}]});
+
+  // ==================== Chart 3: Ratten-Empathie ====================
+  charts.ratten=echarts.init(document.getElementById('chart-ratten'),null,{renderer:'canvas'});
+  charts.ratten.setOption({...base,grid:{left:120,right:50,top:30,bottom:30},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'}},
+    legend:{data:['Teilen Schokolade','Teilen nicht'],textStyle:{color:c.sub,fontFamily:'Space Grotesk',fontSize:11},top:0},
+    yAxis:{type:'category',data:['Tag 1–5','Tag 6–12'],inverse:true,...axisBase},
+    xAxis:{type:'value',max:100,...axisBase,name:'%',nameTextStyle:{color:c.sub}},
+    series:[
+      {name:'Teilen Schokolade',type:'bar',stack:'total',data:[52,61],itemStyle:{color:c.accent,borderRadius:[0,0,0,0]},
+        label:{show:true,position:'inside',fontFamily:'JetBrains Mono',fontSize:12,color:'#fff',formatter:'{c}%'}},
+      {name:'Teilen nicht',type:'bar',stack:'total',data:[48,39],itemStyle:{color:c.border,borderRadius:[0,4,4,0]},
+        label:{show:true,position:'inside',fontFamily:'JetBrains Mono',fontSize:12,color:c.sub,formatter:'{c}%'}}
+    ]});
+
+  // ==================== Chart 4: Jagderfolgsquoten ====================
+  var jagdData=[
+    {name:'Afrik. Wildhund',value:60,highlight:false},
+    {name:'Schwarzfußkatze',value:60,highlight:false},
+    {name:'Gepard',value:58,highlight:false},
+    {name:'Tüpfelhyäne',value:33,highlight:'accent'},
+    {name:'Löwe',value:26,highlight:'warning'},
+    {name:'Wolf',value:14,highlight:false}
+  ];
+  charts.jagd=echarts.init(document.getElementById('chart-jagd'),null,{renderer:'canvas'});
+  charts.jagd.setOption({...base,grid:{left:130,right:50,top:10,bottom:30},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+'% Erfolgsquote</b>'}},
+    yAxis:{type:'category',data:jagdData.map(function(d){return d.name}),inverse:true,...axisBase,axisLabel:{...axisBase.axisLabel,width:120,overflow:'truncate'}},
+    xAxis:{type:'value',max:70,...axisBase,name:'%',nameTextStyle:{color:c.sub}},
+    series:[{type:'bar',data:jagdData.map(function(d){
+      var col=c.sub;
+      if(d.highlight==='accent')col=c.accent;
+      else if(d.highlight==='warning')col=c.warning;
+      else col=c.accent;
+      return{value:d.value,itemStyle:{color:col}}
+    }),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:11,color:c.text,formatter:'{c}%'}}]});
+
+  // ==================== Chart 5: Alpha-Mythos Timeline ====================
+  var wolfData=[
+    {name:'Alpha-Wolf geprägt',value:1970},
+    {name:'Widerruf durch Mech',value:1999},
+    {name:'Buch aus dem Druck',value:2022}
+  ];
+  charts.wolf=echarts.init(document.getElementById('chart-wolf'),null,{renderer:'canvas'});
+  charts.wolf.setOption({...base,grid:{left:160,right:50,top:10,bottom:30},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+'</b>'}},
+    yAxis:{type:'category',data:wolfData.map(function(d){return d.name}),inverse:true,...axisBase,axisLabel:{...axisBase.axisLabel,width:150,overflow:'truncate'}},
+    xAxis:{type:'value',min:1960,max:2030,...axisBase,axisLabel:{...axisBase.axisLabel,formatter:function(v){return v.toString()}}},
+    series:[{type:'bar',data:wolfData.map(function(d,i){
+      var colors=[c.danger,c.warning,c.accent];
+      return{value:d.value,itemStyle:{color:colors[i]}}
+    }),
+      barWidth:'55%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:12,color:c.text,formatter:function(p){return p.value}}}]});
+
+  // ==================== Chart 6: Timeline der Erstbelege ====================
+  var timelineData=[
+    {name:'Böser Wolf (Äsop)',value:600,label:'6. Jh. v. Chr.'},
+    {name:'Schwein unrein (Levitikus)',value:500,label:'5. Jh. v. Chr.'},
+    {name:'Dumme Gans (Parzival)',value:1210,label:'ca. 1210'},
+    {name:'Sündenbock (Luther)',value:1534,label:'1534'},
+    {name:'Grimm-Märchen',value:1812,label:'1812'},
+    {name:'Der Weiße Hai',value:1975,label:'1975'},
+    {name:'König der Löwen',value:1994,label:'1994'}
+  ];
+  // Use a normalized scale: map BCE to negative, CE to positive
+  var tlNorm=timelineData.map(function(d){
+    // For display: negative = BCE
+    var v=d.value;
+    if(d.label.indexOf('v. Chr')!==-1) v=-d.value;
+    return{name:d.name,value:v,label:d.label};
+  });
+  charts.timeline=echarts.init(document.getElementById('chart-timeline'),null,{renderer:'canvas'});
+  charts.timeline.setOption({...base,grid:{left:180,right:70,top:10,bottom:30},
+    tooltip:{...base.tooltip,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){var d=tlNorm[p[0].dataIndex];return d.name+': <b>'+d.label+'</b>'}},
+    yAxis:{type:'category',data:tlNorm.map(function(d){return d.name}),inverse:true,...axisBase,axisLabel:{...axisBase.axisLabel,width:170,overflow:'truncate'}},
+    xAxis:{type:'value',min:-700,max:2100,...axisBase,
+      axisLabel:{...axisBase.axisLabel,formatter:function(v){if(v<0)return Math.abs(v)+' v.Chr.';if(v===0)return '0';return v}},
+      splitLine:{show:false}},
+    series:[{type:'bar',data:tlNorm.map(function(d,i){
+      var colors=[c.accent,c.warning,c.accent,c.purple,c.warning,c.danger,c.warning];
+      return{value:d.value,itemStyle:{color:colors[i]}}
+    }),
+      barWidth:'50%',itemStyle:{borderRadius:[0,4,4,0]},
+      label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:10,color:c.text,formatter:function(p){return tlNorm[p.dataIndex].label}}}]});
+
+  window.onresize=function(){Object.values(charts).forEach(function(ch){ch.resize()})};
+}
+
+// Nav pills
+document.querySelectorAll('.nav-pill').forEach(function(pill){
+  pill.addEventListener('click',function(e){
+    document.querySelectorAll('.nav-pill').forEach(function(p){p.classList.remove('active')});
+    e.target.classList.add('active');
+  });
+});
+
+// Init charts on load
+initCharts();
+
+// ==================== Interactive: Quiz ====================
+var quizAnswers={
+  neuronen:{correct:'goldhaehnchen',text:'<strong>Goldhähnchen: 459 Mio. Neuronen pro Gramm.</strong> Achtmal mehr als der Mensch (57 Mio.). Vogelgehirne packen Neuronen dichter als jedes Säugetiergehirn. „Spatzenhirn" wäre ein Kompliment.'},
+  jagd:{correct:'wildhund',text:'<strong>Der Afrikanische Wildhund: 60% Erfolgsquote.</strong> Gefolgt vom Gepard (58%) und der Hyäne (33%). Der Löwe? Nur 26%. Und in 53% der Fälle klaut er der Hyäne die Beute — nicht umgekehrt.'}
+};
+
+function quizAnswer(quiz,answer,btn){
+  var q=quizAnswers[quiz];
+  var box=document.getElementById('quiz-'+quiz);
+  var result=document.getElementById('result-'+quiz);
+  var btns=box.querySelectorAll('.quiz-btn');
+  btns.forEach(function(b){b.classList.add('disabled')});
+  if(answer===q.correct){btn.classList.add('correct')}
+  else{btn.classList.add('wrong');btns.forEach(function(b){if(b.textContent.toLowerCase().indexOf(q.correct.replace('ae','ä').replace('oe','ö'))!==-1||b.getAttribute('onclick').indexOf(q.correct)!==-1)b.classList.add('correct')})}
+  result.innerHTML=q.text;
+  result.classList.add('show');
+}
+
+// ==================== Interactive: Speed Race ====================
+function startRace(){
+  var bars=document.querySelectorAll('.race-bar');
+  // Reset
+  bars.forEach(function(b){b.style.width='0';b.textContent=''});
+  var btn=document.querySelector('.race-start-btn');
+  btn.textContent='Läuft...';
+  btn.style.pointerEvents='none';
+  setTimeout(function(){
+    bars.forEach(function(b){
+      var speed=parseFloat(b.dataset.speed);
+      var pct=(speed/80*100).toFixed(0);
+      b.style.width=pct+'%';
+      b.textContent=speed+' km/h';
+    });
+    setTimeout(function(){btn.textContent='\u25B6 Nochmal';btn.style.pointerEvents='auto'},1600);
+  },100);
+}
+
+// ==================== Interactive: Ratten-Dilemma ====================
+function dilemmaAnswer(choice,btn){
+  var box=document.getElementById('dilemma-ratte');
+  var result=document.getElementById('result-dilemma');
+  var btns=box.querySelectorAll('.quiz-btn');
+  btns.forEach(function(b){b.classList.add('disabled')});
+  if(choice==='befreien'){
+    btn.classList.add('correct');
+    result.innerHTML='<strong>Du denkst wie eine Ratte.</strong> 52% der Ratten befreien zuerst den Artgenossen — und teilen dann die Schokolade. Ab Tag 6 sind es 61%. Empathie ist kein menschliches Privileg.';
+  }else{
+    btn.classList.add('wrong');
+    btns[1].classList.add('correct');
+    result.innerHTML='<strong>Die Ratten sind sozialer als du.</strong> 52% befreien zuerst den Artgenossen. Und dann teilen sie die Schokolade — obwohl sie sie auch allein hätten fressen können. Bartal et al. schrieben: „Helping is on a par with chocolate."';
+  }
+  result.classList.add('show');
+}
+</script>
+</body>
+</html>
