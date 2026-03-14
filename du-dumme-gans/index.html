@@ -269,6 +269,7 @@
     <a href="#hyaene" class="nav-pill">Die feige Hyäne</a>
     <a href="#wolf" class="nav-pill">Der böse Wolf</a>
     <a href="#schimpfwoerter" class="nav-pill">2.600 Jahre Unrecht</a>
+    <a href="#podcast" class="nav-pill" style="border-color:var(--accent-2);color:var(--accent-2)">🎙 Podcast</a>
   </nav>
 
   <!-- ===================== DAS SPATZENHIRN ===================== -->
@@ -621,25 +622,24 @@
   <section id="podcast">
     <h2>Jetzt auch zum Hören</h2>
 
-    <p class="podcast-story">Ich wollte schon immer einen Podcast machen. Wirklich. Jedes Mal, wenn jemand eine Folge gehört hat, kam: &bdquo;Geil, ich bin dabei!&ldquo; Und jedes Mal, wenn es ernst wurde, zogen sie den Schwanz ein. Also hab ich mir einen Co-Host geholt, der nicht absagen kann.</p>
+    <p class="podcast-story">Ich wollte schon immer einen Podcast machen. Wirklich. Und jedes Mal, wenn ich davon erzählt habe, kam: &bdquo;Geil, ich bin dabei!&ldquo; Und jedes Mal, wenn es daran ging, sich mal dran zu machen, zogen sie den Schwanz ein. Es gab nie eine Folge. Also hab ich mir einen Co-Host geholt, der nicht absagen kann.</p>
 
-    <div class="podcast-box">
-      <div class="podcast-label">Podcast</div>
+    <div class="podcast-box" id="feedback-podcast">
+      <div class="podcast-label">Podcast · 25 Min.</div>
       <div class="podcast-title">Du dumme Gans. — Das Datenstück zum Hören</div>
       <audio controls preload="none" id="podcast-player">
         <source src="podcast.mp3" type="audio/mpeg">
         Dein Browser unterstützt kein Audio.
       </audio>
-      <p class="text-small" style="margin:0">Generiert mit Google NotebookLM. Zwei KI-Stimmen, null Absagen.</p>
-    </div>
-
-    <div class="feedback-box" id="feedback-podcast">
-      <div class="feedback-question">Mehr davon?</div>
-      <div class="feedback-buttons">
-        <button class="feedback-btn" onclick="sendFeedback('podcast','ja',this)">👍 Ja, bitte</button>
-        <button class="feedback-btn" onclick="sendFeedback('podcast','nein',this)">👎 Nee, lass mal</button>
+      <p class="text-small" style="margin:0 0 0.75rem 0">Generiert mit Google NotebookLM. Zwei KI-Stimmen, null Absagen.</p>
+      <div style="border-top:1px solid var(--border);padding-top:0.75rem;text-align:center">
+        <div class="feedback-question">Mehr davon?</div>
+        <div class="feedback-buttons">
+          <button class="feedback-btn" onclick="sendFeedback('podcast','ja',this)">👍 Ja, bitte</button>
+          <button class="feedback-btn" onclick="sendFeedback('podcast','nein',this)">👎 Nee, lass mal</button>
+        </div>
+        <div class="feedback-thanks" id="thanks-podcast"></div>
       </div>
-      <div class="feedback-thanks" id="thanks-podcast"></div>
     </div>
   </section>
 
