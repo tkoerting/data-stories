@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<!-- GA4 — nur nach Cookie-Consent -->
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithmus trifft KI. — Datenstück | Der Körting</title>
+<meta name="description" content="81% der Deutschen kennen 'Algorithmus'. Nur 10% wissen, wie einer funktioniert. Und die meisten verwechseln ihn mit KI. Ein Datenstück über die Grenze zwischen Sortieren und Denken.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithmus trifft KI. — Datenstück | Open Data Minded">
+<meta property="og:description" content="81% der Deutschen kennen 'Algorithmus'. Nur 10% wissen, wie einer funktioniert. Und die meisten verwechseln ihn mit KI. Ein Datenstück über die Grenze zwischen Sortieren und Denken.">
+<meta property="og:url" content="https://opendataminded.de/algorithmus-trifft-ki/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithmus trifft KI. — Datenstück | Open Data Minded">
+<meta name="twitter:description" content="81% der Deutschen kennen 'Algorithmus'. Nur 10% wissen, wie einer funktioniert. Und die meisten verwechseln ihn mit KI. Ein Datenstück über die Grenze zwischen Sortieren und Denken.">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/algorithmus-trifft-ki/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Algorithmus trifft KI.",
+  "description": "81% der Deutschen kennen 'Algorithmus'. Nur 10% wissen, wie einer funktioniert. Und die meisten verwechseln ihn mit KI. Ein Datenstück über die Grenze zwischen Sortieren und Denken.",
+  "author": {"@type": "Person", "name": "Thomas Körting", "url": "https://der-koerting.de/ueber-mich/"},
+  "publisher": {"@type": "Person", "name": "Thomas Körting"},
+  "url": "https://opendataminded.de/algorithmus-trifft-ki/",
+  "inLanguage": "de",
+  "datePublished": "2026-03-16",
+  "dateModified": "2026-03-16",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://opendataminded.de/algorithmus-trifft-ki/"}
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+  .nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
+  .compare-card.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+  .compare-card.dim{opacity:0.7}
+  .compare-card.alert{border-color:var(--danger);background:var(--danger-subtle)}
+  .compare-city{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+  .compare-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;line-height:1.2}
+  .compare-number.zero{color:var(--danger)}
+  .compare-number.good{color:var(--accent)}
+  .compare-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.25rem}
+
+  .perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+  .perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+  .perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+
+  .spin-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .spin-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;color:var(--accent);text-align:center;margin-bottom:1rem;line-height:1.2}
+  .spin-number span{display:block;font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);font-weight:400;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+  .spin-sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .spin-side{padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.6}
+  .spin-side.positive{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.2)}
+  .spin-side.negative{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)}
+  .spin-side.neutral{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15)}
+  .spin-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-weight:600}
+  .spin-side.positive .spin-label{color:var(--accent)}
+  .spin-side.negative .spin-label{color:var(--danger)}
+  .spin-side.neutral .spin-label{color:var(--warning)}
+  .spin-side p{margin:0;font-size:0.85rem}
+
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+
+  /* Spectrum visualization */
+  .spectrum-track{position:relative;margin:2rem 0;padding:1rem 0}
+  .spectrum-line{height:4px;background:linear-gradient(to right,var(--accent),var(--accent-2),var(--danger));border-radius:2px;margin:0.5rem 0 1.5rem}
+  .spectrum-items{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:1rem}
+  .spectrum-item{padding:0.4rem 0.8rem;border-radius:8px;font-size:0.78rem;font-weight:500;border:1px solid var(--border);transition:all var(--transition);cursor:default;text-align:center}
+  .spectrum-item.algo{background:rgba(13,148,136,0.08);border-color:rgba(13,148,136,0.3);color:var(--accent)}
+  .spectrum-item.grau{background:rgba(245,158,11,0.06);border-color:rgba(245,158,11,0.3);color:var(--warning)}
+  .spectrum-item.ki{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);color:var(--danger)}
+  .spectrum-item:hover{transform:translateY(-2px)}
+  .spectrum-legend{display:flex;gap:1.5rem;justify-content:center;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.75rem}
+  .spectrum-legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:0.3rem;vertical-align:middle}
+  .spectrum-divider{position:relative;display:flex;align-items:center;justify-content:center;margin:1rem 0;font-family:var(--font-mono);font-size:0.7rem;color:var(--purple);letter-spacing:0.05em}
+  .spectrum-divider::before,.spectrum-divider::after{content:'';flex:1;height:2px;border-top:2px dashed var(--purple)}
+  .spectrum-divider::before{margin-right:0.75rem}
+  .spectrum-divider::after{margin-left:0.75rem}
+
+  /* KI-Effekt flip cards */
+  .effect-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .effect-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;transition:all var(--transition);cursor:default}
+  .effect-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .effect-icon{font-size:2rem;margin-bottom:0.5rem}
+  .effect-name{font-weight:600;font-size:0.9rem;margin-bottom:0.25rem}
+  .effect-year{font-family:var(--font-mono);font-size:0.7rem;color:var(--text-tertiary);margin-bottom:0.5rem}
+  .effect-reaction{font-family:var(--font-mono);font-size:0.85rem;color:var(--danger);font-weight:500}
+  .effect-note{font-size:0.72rem;color:var(--text-tertiary);margin-top:0.35rem}
+
+  /* Quote block */
+  .quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+  .quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+  .quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+
+  /* Compare table */
+  .compare-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.85rem}
+  .compare-table th{background:var(--tag-bg);padding:0.6rem 0.8rem;text-align:left;font-weight:600;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-tertiary);border-bottom:2px solid var(--border)}
+  .compare-table td{padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);vertical-align:top}
+  .compare-table tr:last-child td{border-bottom:none}
+  .compare-table .col-algo{color:var(--accent)}
+  .compare-table .col-ki{color:var(--danger)}
+  .compare-table .col-ml{color:var(--warning)}
+
+  /* Feedback */
+  .feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+  .feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem;color:var(--text-primary)}
+  .feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+  .feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+  .feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+  .feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+  .feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+  .feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .spin-sides{grid-template-columns:1fr}
+    .effect-grid{grid-template-columns:1fr 1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} .effect-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+        <a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+        <a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Datenstück #10</span>
+    <span class="snapshot-tag">März 2026</span>
+    <span class="snapshot-tag">Nur Daten</span>
+  </div>
+
+  <h1>Algorithmus trifft KI.</h1>
+  <div class="subtitle">Wo hört Sortieren auf — und wo fängt Denken an?</div>
+
+  <p class="lead">81% der Deutschen kennen „Algorithmus". Nur 10% wissen, wie einer funktioniert. Und die meisten verwechseln ihn mit KI. Ein Versuch, Ordnung in das Chaos zu bringen — mit Daten, nicht mit Meinungen.</p>
+
+  <nav class="section-nav">
+    <a href="#wissensluecke" class="nav-pill">Die Wissenslücke</a>
+    <a href="#spektrum" class="nav-pill">Das Spektrum</a>
+    <a href="#umtaufe" class="nav-pill">Die Umtaufe</a>
+    <span class="nav-sep">|</span>
+    <a href="#ki-effekt" class="nav-pill">Der KI-Effekt</a>
+    <a href="#antwort" class="nav-pill">Die Antwort</a>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: Die Wissenslücke                  -->
+  <!-- ============================================ -->
+
+  <h2 id="wissensluecke">Die Wissenslücke</h2>
+  <p>Die Bertelsmann Stiftung hat nachgefragt. Repräsentativ, über Jahre. Das Ergebnis ist ernüchternd: Deutschland kennt das Wort, aber nicht die Sache.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">81%</div>
+      <div class="kpi-label">Kennen den Begriff</div>
+      <div class="kpi-sub">„Algorithmus" schon mal gehört</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">10%</div>
+      <div class="kpi-label">Verstehen ihn</div>
+      <div class="kpi-sub">Wissen, wie einer funktioniert</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">45%</div>
+      <div class="kpi-label">Keine Ahnung</div>
+      <div class="kpi-sub">Fällt spontan nichts ein</div>
+    </div>
+  </div>
+
+  <p>81% haben das Wort schon gehört. Aber nur jeder Zehnte kann erklären, was ein Algorithmus tut. Und fast die Hälfte — 45% — kann auf die offene Frage „Was fällt Ihnen dazu ein?" schlicht nichts antworten. Die Kluft ist riesig. Und sie verläuft entlang bekannter Linien.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Bekanntheit „Algorithmus" nach Bildungsabschluss</div>
+    <div class="chart-subtitle">Bertelsmann Stiftung / Repräsentative Bevölkerungsumfrage 2022</div>
+    <div id="chart-bildung" class="chart"></div>
+  </div>
+
+  <p class="text-small">97% der Akademiker kennen den Begriff. Bei Menschen mit Haupt- oder Realschulabschluss sind es 54%. Die Kluft hat sich seit 2018 kaum verringert.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card alert">
+      <div class="compare-city">Algorithmen-Einfluss</div>
+      <div class="compare-number zero">29%</div>
+      <div class="compare-detail">Nehmen starken Einfluss auf ihren Alltag wahr</div>
+    </div>
+    <div class="compare-card">
+      <div class="compare-city">KI-Einfluss</div>
+      <div class="compare-number zero">14%</div>
+      <div class="compare-detail">Nehmen starken Einfluss von KI auf ihr Leben wahr</div>
+    </div>
+  </div>
+
+  <p>Nur 29% sehen einen starken Einfluss von Algorithmen auf ihren Alltag. Für KI sind es sogar nur 14%. Die Technologie ist überall — aber die meisten bemerken sie nicht. Oder sie wollen es nicht.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: Das Spektrum                      -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Was ist was?</h2>
+    <p>Von der Rechenregel zum selbstlernenden System — in neun Stufen.</p>
+  </div>
+
+  <h2 id="spektrum">Das Spektrum</h2>
+  <p>Die Frage „Ist das KI?" klingt einfach. Die Antwort ist es nicht. Es gibt kein Schwarz und Weiß. Es gibt ein Spektrum. Und irgendwo auf diesem Spektrum verläuft eine Grenze — wenn man denn eine ziehen will.</p>
+
+  <div class="spectrum-track">
+    <div class="spectrum-items">
+      <div class="spectrum-item algo">Taschenrechner</div>
+      <div class="spectrum-item algo">Sortierung</div>
+      <div class="spectrum-item algo">Spamfilter (Regeln)</div>
+      <div class="spectrum-item grau">Empfehlung (Beliebtheit)</div>
+    </div>
+    <div class="spectrum-divider">EU AI Act: „infers" — hier zieht die EU die Linie</div>
+    <div class="spectrum-items">
+      <div class="spectrum-item ki">Spamfilter (ML)</div>
+      <div class="spectrum-item ki">Machine Learning</div>
+      <div class="spectrum-item ki">Deep Learning</div>
+      <div class="spectrum-item ki">LLM (ChatGPT)</div>
+      <div class="spectrum-item ki">Agent</div>
+    </div>
+    <div class="spectrum-line"></div>
+    <div class="spectrum-legend">
+      <span><span class="spectrum-legend-dot" style="background:var(--accent)"></span> Algorithmus</span>
+      <span><span class="spectrum-legend-dot" style="background:var(--warning)"></span> Grauzone</span>
+      <span><span class="spectrum-legend-dot" style="background:var(--danger)"></span> KI</span>
+    </div>
+  </div>
+
+  <p>Links: feste Regeln, immer gleiches Ergebnis. Rechts: Systeme, die lernen, sich anpassen, generalisieren. Die EU hat im AI Act versucht, die Grenze zu definieren. Das Schlüsselwort: <strong>infers</strong> — schlussfolgern. Wenn ein System aus Daten eigenständig Schlüsse zieht, die über vorgegebene Regeln hinausgehen, ist es KI. Wenn nicht, ist es Software.</p>
+
+  <div class="quote-block">
+    <p>„AI system means a machine-based system that [...] infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions."</p>
+    <span class="quote-author">— EU AI Act, Artikel 3, Absatz 1 (Juli 2024)</span>
+  </div>
+
+  <p>Klingt klar? Ist es nicht. Viele EU-Mitgliedstaaten halten die Definition für zu breit und zu vage. Die Richtlinien der EU-Kommission (Februar 2025) schließen explizit aus: rein regelbasierte Systeme, einfache Optimierung, klassische Heuristiken. Aber in der Praxis: „case-by-case". Das hilft wenig.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: Die Umtaufe                       -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Dieselbe Technik, anderer Name.</h2>
+    <p>Wie aus „Algorithmus" über Nacht „KI" wurde.</p>
+  </div>
+
+  <h2 id="umtaufe">Die Umtaufe</h2>
+  <p>2006 schrieb Netflix einen Preis aus: eine Million Dollar für bessere <em>Empfehlungsalgorithmen</em>. Niemand sagte „KI". 2024 heißt dasselbe System „AI-Driven Personalisation". Die Technologie hat sich weiterentwickelt — aber der Namenswechsel hat mehr mit Marketing zu tun als mit Technik.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Medienpräsenz: Algorithmen und KI in deutschen Medien</div>
+    <div class="chart-subtitle">Bertelsmann Diskursanalyse / ~18.000 Texte / 2005–2020</div>
+    <div id="chart-medien" class="chart chart-tall"></div>
+  </div>
+
+  <p>Von 17 Erwähnungen pro Monat im Jahr 2010 auf 498 im ersten Halbjahr 2020. Eine Explosion. Und das war vor ChatGPT. Die Bertelsmann-Analyse zeigt noch etwas: 42% der Artikel berichten positiv, nur 12% negativ. 37% der zitierten Akteure kommen aus der Wirtschaft. Nur 4% aus der Zivilgesellschaft.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">42%</div>
+      <div class="kpi-label">Positiv</div>
+      <div class="kpi-sub">Medienberichte über KI/Algo</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">12%</div>
+      <div class="kpi-label">Negativ</div>
+      <div class="kpi-sub">Medienberichte über KI/Algo</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">37%</div>
+      <div class="kpi-label">Wirtschaft</div>
+      <div class="kpi-sub">Anteil zitierter Akteure</div>
+    </div>
+  </div>
+
+  <h3>Die Chronik der Umtaufe</h3>
+
+  <div class="chart-container">
+    <div class="chart-title">Gleiche Technologie, anderer Name</div>
+    <div class="chart-subtitle">Von „Algorithmus" zu „KI" — eine Umbenennung in Echtzeit</div>
+    <div id="chart-timeline" class="chart chart-tall"></div>
+  </div>
+
+  <h3>AI Washing</h3>
+  <p>Die Umbenennung hat einen Namen: AI Washing. 2024 wurden mindestens 15 Tech-Unternehmen von Regulierern für übertriebene KI-Behauptungen gerügt — mehr als doppelt so viele wie 2023. Typisch: Ein Chatbot wird auf bestehende Software geschraubt, und plötzlich ist alles „KI-gesteuert".</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">15</div>
+      <div class="kpi-label">Unternehmen gerügt</div>
+      <div class="kpi-sub">AI Washing 2024</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">2x</div>
+      <div class="kpi-label">Verdoppelt</div>
+      <div class="kpi-sub">gegenüber 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">4%</div>
+      <div class="kpi-label">Zivilgesellschaft</div>
+      <div class="kpi-sub">Anteil im Mediendiskurs</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: Der KI-Effekt                     -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Was funktioniert, ist keine KI mehr.</h2>
+    <p>Larry Tesler wusste das schon 1970.</p>
+  </div>
+
+  <h2 id="ki-effekt">Der KI-Effekt</h2>
+  <p>Es gibt ein Muster, das sich seit Jahrzehnten wiederholt: Sobald ein Computer etwas kann, hört man auf, es „intelligent" zu nennen. Schach spielen war „intelligent" — bis Deep Blue es konnte. Texterkennung war „KI" — bis sie Standard wurde. Spam filtern war „KI" — jetzt ist es einfach ein Feature.</p>
+
+  <div class="quote-block">
+    <p>„Intelligence is whatever machines haven't done yet."</p>
+    <span class="quote-author">— Larry Tesler, ca. 1970</span>
+  </div>
+
+  <div class="effect-grid">
+    <div class="effect-card">
+      <div class="effect-icon">&#9823;&#65039;</div>
+      <div class="effect-name">Schach</div>
+      <div class="effect-year">Deep Blue, 1997</div>
+      <div class="effect-reaction">„Nur Brute Force!"</div>
+      <div class="effect-note">War KI — jetzt „Algorithmus"</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-icon">&#128196;</div>
+      <div class="effect-name">OCR / Texterkennung</div>
+      <div class="effect-year">2000er</div>
+      <div class="effect-reaction">„Mustererkennung"</div>
+      <div class="effect-note">War KI — jetzt „Feature"</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-icon">&#128231;</div>
+      <div class="effect-name">Spamfilter</div>
+      <div class="effect-year">2005</div>
+      <div class="effect-reaction">„Simple Regeln"</div>
+      <div class="effect-note">War KI — jetzt „Feature"</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-icon">&#128172;</div>
+      <div class="effect-name">ChatGPT</div>
+      <div class="effect-year">November 2022</div>
+      <div class="effect-reaction">„KI!"</div>
+      <div class="effect-note">Ist KI — noch. Wie lange?</div>
+    </div>
+  </div>
+
+  <p>Pamela McCorduck nannte es 1979 das „odd paradox": Jeder praktische KI-Erfolg wurde in seine Anwendungsdomäne einverleibt und verschwand als „KI". Schach wurde Informatik. OCR wurde Scanner-Software. Spamfilter wurde eine Checkbox. Die Leistung blieb — das Label verschwand.</p>
+
+  <div class="quote-block">
+    <p>„Every time somebody figured out how to make a computer do something... there was a chorus of critics to say, but that's not thinking."</p>
+    <span class="quote-author">— Pamela McCorduck, Machines Who Think (1979)</span>
+  </div>
+
+  <div class="spin-card">
+    <div class="spin-number">1982<span>Fortune Magazine</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Das Zitat</div>
+        <p>„If it works, it isn't AI."</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Was es bedeutet</div>
+        <p>Die Definition von „KI" verschiebt sich permanent. Intelligent ist immer nur das, was der Computer noch nicht kann. Sobald er es kann, ist es „nur Software".</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Wahrnehmung von KI: Experten vs. Bevölkerung</div>
+    <div class="chart-subtitle">Stanford HAI 2025 / Pew Research 2025</div>
+    <div id="chart-perception" class="chart"></div>
+  </div>
+
+  <p class="text-small">76% der KI-Experten glauben, KI wird ihnen persönlich nutzen. Nur 24% der Bevölkerung sehen das so. 77% der Amerikaner misstrauen sowohl Unternehmen als auch der Regierung beim verantwortungsvollen KI-Einsatz.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: Die einfache Antwort              -->
+  <!-- ============================================ -->
+
+  <h2 id="antwort">Die einfache Antwort</h2>
+  <p>Wenn jemand fragt „Was ist der Unterschied?" — hier ist er. Ohne Jargon, ohne Vorlesung.</p>
+
+  <div class="chart-container" style="overflow-x:auto">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-algo">Algorithmus</th>
+          <th class="col-ml">Machine Learning</th>
+          <th class="col-ki">KI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Regeln</strong></td>
+          <td>Vom Menschen vorgegeben</td>
+          <td>Algorithmen trainieren Modelle</td>
+          <td>Aus Daten gelernt</td>
+        </tr>
+        <tr>
+          <td><strong>Anpassung</strong></td>
+          <td>Keine (deterministisch)</td>
+          <td>Lernt aus Daten</td>
+          <td>Adaptiv</td>
+        </tr>
+        <tr>
+          <td><strong>Neues</strong></td>
+          <td>Nur wenn vorgesehen</td>
+          <td>Generalisiert auf neue Daten</td>
+          <td>Kann generalisieren</td>
+        </tr>
+        <tr>
+          <td><strong>Transparenz</strong></td>
+          <td>Nachvollziehbar</td>
+          <td>Teilweise erklärbar</td>
+          <td>Oft Black Box</td>
+        </tr>
+        <tr>
+          <td><strong>Beispiel</strong></td>
+          <td>Taschenrechner, Sortierung</td>
+          <td>Spamfilter (ML), Empfehlung</td>
+          <td>ChatGPT, Bilderkennung</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Machine Learning ist das Bindeglied. Es nutzt Algorithmen (Gradient Descent, Backpropagation), aber das trainierte Modell zeigt Verhalten, das nicht explizit programmiert wurde. Ein Spamfilter mit festen Regeln („Wenn Betreff enthält ‚Viagra' → Spam") ist ein Algorithmus. Derselbe Spamfilter, der aus Millionen E-Mails lernt, welche Muster Spam ausmachen — das ist ML. Das ist KI.</p>
+
+  <div class="spin-card">
+    <div class="spin-number">1 Wort<span>Der ganze Unterschied</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Algorithmus</div>
+        <p>Folgt festen Regeln. Immer gleicher Input = immer gleicher Output. Wie ein Kochrezept.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">KI</div>
+        <p>Lernt aus Daten. Kann Muster erkennen und auf neue, unbekannte Situationen reagieren. Ohne dass ein Mensch jede Regel definiert hat.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="tk-closer">Die Grenze zwischen Algorithmus und KI ist unscharf. Aber die Grenze zwischen Verstehen und Nicht-Verstehen — die ist messbar.</p>
+
+  <p>81% kennen das Wort. 10% verstehen die Sache. 45% fällt nichts ein. Und die Medien erzählen eine Geschichte, in der 42% Optimismus und 37% Wirtschaftsinteresse stecken — aber nur 4% Zivilgesellschaft. Die Technik entwickelt sich weiter. Die Sprache läuft hinterher. Und dazwischen entsteht ein Raum, in dem Marketing als Erklärung verkauft wird.</p>
+
+  <p>Wer den Unterschied zwischen Algorithmus und KI nicht kennt, kann nicht beurteilen, was gerade passiert. Und wer es nicht beurteilen kann, dem wird es erklärt — von denen, die etwas verkaufen wollen.</p>
+
+  <!-- Feedback -->
+  <div class="feedback-box" id="feedback-box">
+    <h3>War das hilfreich?</h3>
+    <p>Sag mir, ob Du mehr davon willst.</p>
+    <div class="feedback-buttons" id="feedback-buttons">
+      <button class="feedback-btn" data-value="mehr">Mehr davon</button>
+      <button class="feedback-btn" data-value="ok">War okay</button>
+      <button class="feedback-btn" data-value="weniger">Weniger Daten</button>
+    </div>
+    <div class="feedback-thanks" id="feedback-thanks">Danke. Wird gespeichert.</div>
+  </div>
+
+  <!-- Sources -->
+  <div class="source-card">
+    <h3>Quellen & Daten</h3>
+    <ul>
+      <li>Bertelsmann Stiftung — Was Deutschland über Algorithmen und KI weiß (2022)</li>
+      <li>Bertelsmann Stiftung — Diskursanalyse: Medialer Diskurs über Algorithmen (2005–2020)</li>
+      <li>EU AI Act — Artikel 3, Absatz 1 (Juli 2024)</li>
+      <li>EU-Kommission — Guidelines zur KI-System-Definition (Februar 2025)</li>
+      <li>Stanford HAI — AI Index Report 2025, Public Opinion</li>
+      <li>Pew Research — How the US Public and AI Experts View AI (2025)</li>
+      <li>Quote Investigator / Larry Tesler / Pamela McCorduck — KI-Effekt</li>
+      <li>Unite.AI — AI Washing Report (2024)</li>
+      <li>Coursera / CMSWire / Audeering — Algorithmus vs. KI Definitionen</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/tkoerting/data-stories" class="github-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      tkoerting/data-stories — Code, Daten, Methodik
+    </a>
+  </p>
+
+  <p class="text-small" style="text-align:center;margin-top:2rem;">Alle Daten wurden nach bestem Wissen und Gewissen recherchiert und aufbereitet. Trotzdem: Fehler passieren, Zahlen veralten, Quellen verschwinden. Wer etwas findet, das nicht stimmt — oder eine bessere Quelle kennt — ich freue mich über eine Nachricht: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+  <div class="article-footer">
+    <p>Der Körting — Datenstück #10 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const DATENSTUECK_ID = 'algorithmus-trifft-ki';
+const charts = {};
+
+function initCharts() {
+  Object.values(charts).forEach(ch => { try { ch.dispose() } catch(e) {} });
+
+  fetch('data.json').then(r => r.json()).then(D => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const c = {
+      accent: isDark ? '#14B8A6' : '#0D9488',
+      accent2: isDark ? '#FACC15' : '#EAB308',
+      danger: isDark ? '#EF4444' : '#DC2626',
+      warning: isDark ? '#F59E0B' : '#D97706',
+      purple: isDark ? '#8B5CF6' : '#7C3AED',
+      text: isDark ? '#E5E7EB' : '#1E293B',
+      textSec: isDark ? '#9CA3AF' : '#64748B',
+      textTert: isDark ? '#6B7280' : '#94A3B8',
+      grid: isDark ? '#2D3139' : '#E2E5E9',
+      bg: isDark ? '#1E2028' : '#FFFFFF'
+    };
+
+    const base = {
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+      grid: { left: 50, right: 20, top: 30, bottom: 30 },
+      tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } }
+    };
+
+    // === CHART 1: Bildungskluft ===
+    const edu = D.wissensluecke.by_education;
+    charts.bildung = echarts.init(document.getElementById('chart-bildung'));
+    charts.bildung.setOption({...base,
+      grid: { left: 140, right: 40, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 100, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: edu.map(d => d.group), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: edu.map(d => ({
+          value: d.kennen_pct,
+          itemStyle: {
+            color: d.kennen_pct >= 90 ? c.accent : d.kennen_pct >= 70 ? c.accent2 : c.danger,
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: d.kennen_pct + '%',
+            color: d.kennen_pct >= 90 ? c.accent : d.kennen_pct >= 70 ? c.accent2 : c.danger,
+            fontSize: 12, fontWeight: 600, fontFamily: 'JetBrains Mono'
+          }
+        })),
+        barWidth: 24
+      }]
+    });
+
+    // === CHART 2: Medienpräsenz ===
+    const med = D.umtaufe.media_mentions.data;
+    charts.medien = echarts.init(document.getElementById('chart-medien'));
+    charts.medien.setOption({...base,
+      grid: {...base.grid, top: 20, right: 30 },
+      xAxis: { type: 'category', data: med.map(d => d.year), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert, fontSize: 11 } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v } },
+      series: [{
+        type: 'bar',
+        data: med.map(d => ({
+          value: d.mentions_per_month,
+          itemStyle: {
+            color: d.year >= 2018 ? c.danger : d.year >= 2014 ? c.warning : c.accent,
+            borderRadius: [4, 4, 0, 0]
+          }
+        })),
+        barWidth: 36,
+        label: { show: true, position: 'top', formatter: p => p.value, color: c.textTert, fontSize: 11, fontFamily: 'JetBrains Mono' },
+        markLine: {
+          silent: true,
+          data: [{
+            xAxis: '2018',
+            lineStyle: { color: c.purple, type: 'dashed', width: 2 },
+            label: {
+              formatter: 'KI-Strategie\nBundesregierung',
+              position: 'start',
+              color: c.purple,
+              fontSize: 9,
+              fontFamily: 'JetBrains Mono'
+            }
+          }]
+        }
+      }]
+    });
+
+    // === CHART 3: Timeline der Umtaufe ===
+    var tl = D.umtaufe.timeline;
+    charts.timeline = echarts.init(document.getElementById('chart-timeline'));
+    charts.timeline.setOption({...base,
+      grid: { left: 60, right: 30, top: 20, bottom: 60 },
+      tooltip: { trigger: 'item', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 },
+        formatter: function(p) { return '<b>' + p.data[0] + '</b><br>' + p.data[2] + '<br>Label: <b>' + p.data[3] + '</b>'; }
+      },
+      xAxis: { type: 'value', min: 2004, max: 2026, axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert, fontSize: 11, formatter: v => v }, splitLine: { show: false } },
+      yAxis: { type: 'category', data: ['Algorithmus', 'Machine Learning', 'KI'], axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'scatter',
+        symbolSize: 20,
+        data: tl.map(function(d) {
+          var yIdx = d.label_then === 'Algorithmus' ? 0 : d.label_then === 'Machine Learning' || d.label_then === 'Deep Learning' ? 1 : 2;
+          return [d.year, yIdx, d.event, d.label_then];
+        }),
+        itemStyle: {
+          color: function(p) {
+            return p.data[1] === 0 ? c.accent : p.data[1] === 1 ? c.accent2 : c.danger;
+          }
+        },
+        label: {
+          show: true, position: 'top',
+          formatter: function(p) { return p.data[0]; },
+          color: c.textTert, fontSize: 10, fontFamily: 'JetBrains Mono'
+        }
+      }],
+      visualMap: { show: false }
+    });
+
+    // === CHART 4: Perception gap ===
+    charts.perception = echarts.init(document.getElementById('chart-perception'));
+    var percData = [
+      { name: 'KI nutzt mir (Experten)', value: D.global_perception.pew.experten_nutzen_pct, cat: 'expert' },
+      { name: 'KI nutzt mir (Bevölkerung)', value: D.global_perception.pew.bevoelkerung_nutzen_pct, cat: 'public' },
+      { name: 'KI schadet mir (Bevölkerung)', value: D.global_perception.pew.bevoelkerung_schaden_pct, cat: 'fear' },
+      { name: 'Verstehe KI (Selbsteinschätzung)', value: D.global_perception.stanford.verstehen_ki_pct, cat: 'self' },
+      { name: 'Misstrauen Unternehmen/Regierung', value: D.global_perception.pew.misstrauen_unternehmen_regierung_pct, cat: 'distrust' }
+    ];
+    charts.perception.setOption({...base,
+      grid: { left: 220, right: 40, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 100, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: percData.map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      series: [{
+        type: 'bar',
+        data: percData.map(d => ({
+          value: d.value,
+          itemStyle: {
+            color: d.cat === 'expert' ? c.accent : d.cat === 'public' ? c.accent2 : d.cat === 'fear' ? c.danger : d.cat === 'distrust' ? c.danger : c.warning,
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: d.value + '%',
+            color: c.textTert, fontSize: 11, fontFamily: 'JetBrains Mono'
+          }
+        })),
+        barWidth: 22
+      }]
+    });
+
+    // Resize handler
+    window.addEventListener('resize', () => Object.values(charts).forEach(ch => { try { ch.resize() } catch(e) {} }));
+  });
+}
+
+// Theme
+(function(){
+  const url = new URLSearchParams(window.location.search).get('theme');
+  const saved = url || localStorage.getItem('tk-theme');
+  if (saved) { document.documentElement.dataset.theme = saved; localStorage.setItem('tk-theme', saved) }
+  const b = document.querySelector('.toggle-btn');
+  if (b) b.textContent = document.documentElement.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+})();
+function toggleTheme() {
+  const h = document.documentElement, b = document.querySelector('.toggle-btn');
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('tk-theme', h.dataset.theme);
+  b.textContent = h.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  initCharts();
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+
+// Feedback
+(function(){
+  var btns = document.querySelectorAll('.feedback-btn');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var val = this.getAttribute('data-value');
+      btns.forEach(function(b){ b.classList.remove('selected') });
+      this.classList.add('selected');
+      document.getElementById('feedback-thanks').style.display = 'block';
+      // Send to Google Sheets
+      var url = 'https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec';
+      fetch(url + '?datenstueck=' + encodeURIComponent(DATENSTUECK_ID) + '&feedback=' + encodeURIComponent(val), { mode: 'no-cors' });
+    });
+  });
+})();
+</script>
+<!-- Cookie Consent Banner -->
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+  <div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">
+      Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. Keine Werbung, keine Weitergabe.
+      <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a>
+    </p>
+    <div style="display:flex;gap:0.5rem;flex-shrink:0">
+      <button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+      <button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA();}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none';}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>

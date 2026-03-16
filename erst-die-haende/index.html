@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<!-- GA4 — nur nach Cookie-Consent -->
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erst die Hände, dann die Köpfe. — Datenstück | Der Körting</title>
+<meta name="description" content="2013 hieß es: Maschinen ersetzen Hände. 2026 sagt der IMF: 60% aller Jobs in reichen Ländern sind KI-exponiert. Diesmal sind es die Köpfe. Ein Datenstück.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Erst die Hände, dann die Köpfe. — Datenstück | Open Data Minded">
+<meta property="og:description" content="2013 hieß es: Maschinen ersetzen Hände. 2026 sagt der IMF: 60% aller Jobs in reichen Ländern sind KI-exponiert. Diesmal sind es die Köpfe. Ein Datenstück.">
+<meta property="og:url" content="https://opendataminded.de/erst-die-haende/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Erst die Hände, dann die Köpfe. — Datenstück | Open Data Minded">
+<meta name="twitter:description" content="2013 hieß es: Maschinen ersetzen Hände. 2026 sagt der IMF: 60% aller Jobs in reichen Ländern sind KI-exponiert. Diesmal sind es die Köpfe. Ein Datenstück.">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/erst-die-haende/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Erst die Hände, dann die Köpfe.",
+  "description": "2013 hieß es: Maschinen ersetzen Hände. 2026 sagt der IMF: 60% aller Jobs in reichen Ländern sind KI-exponiert. Diesmal sind es die Köpfe. Ein Datenstück.",
+  "author": {"@type": "Person", "name": "Thomas Körting", "url": "https://der-koerting.de/ueber-mich/"},
+  "publisher": {"@type": "Person", "name": "Thomas Körting"},
+  "url": "https://opendataminded.de/erst-die-haende/",
+  "inLanguage": "de",
+  "datePublished": "2026-03-16",
+  "dateModified": "2026-03-16",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://opendataminded.de/erst-die-haende/"}
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+  .nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
+  .compare-card.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+  .compare-card.dim{opacity:0.7}
+  .compare-card.alert{border-color:var(--danger);background:var(--danger-subtle)}
+  .compare-city{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+  .compare-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;line-height:1.2}
+  .compare-number.zero{color:var(--danger)}
+  .compare-number.good{color:var(--accent)}
+  .compare-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.25rem}
+
+  .perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+  .perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+  .perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+
+  .spin-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .spin-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;color:var(--accent);text-align:center;margin-bottom:1rem;line-height:1.2}
+  .spin-number span{display:block;font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);font-weight:400;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+  .spin-sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .spin-side{padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.6}
+  .spin-side.positive{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.2)}
+  .spin-side.negative{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)}
+  .spin-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-weight:600}
+  .spin-side.positive .spin-label{color:var(--accent)}
+  .spin-side.negative .spin-label{color:var(--danger)}
+  .spin-side p{margin:0;font-size:0.85rem}
+
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+
+  .feedback-section{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+  .feedback-section p{font-size:0.9rem;margin-bottom:1rem}
+  .feedback-btns{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
+  .feedback-btn{font-family:var(--font-body);font-size:0.85rem;padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--tag-bg);color:var(--text-secondary);cursor:pointer;transition:all var(--transition)}
+  .feedback-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .feedback-btn.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
+  #feedback-thanks{display:none;font-size:0.85rem;color:var(--accent);margin-top:0.75rem}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .spin-sides{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+        <a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+        <a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Datenstück #9</span>
+    <span class="snapshot-tag">März 2026</span>
+  </div>
+
+  <h1>Erst die Hände, dann die Köpfe.</h1>
+  <div class="subtitle">Wie KI den Arbeitsmarkt umkrempelt — und warum es diesmal die Büros trifft.</div>
+
+  <p class="lead">2013 hieß es: Maschinen ersetzen Hände. 47 Prozent aller Jobs seien in Gefahr — Lager, Transport, Fertigung. 2026 sagt der IMF: 60% aller Jobs in reichen Ländern sind KI-exponiert. Diesmal sind es die Köpfe.</p>
+
+  <nav class="section-nav">
+    <a href="#prognose-2013" class="nav-pill">2013</a>
+    <a href="#umkehrung" class="nav-pill">Umkehrung</a>
+    <a href="#laender" class="nav-pill">Länder</a>
+    <span class="nav-sep">|</span>
+    <a href="#deutschland" class="nav-pill">Deutschland</a>
+    <a href="#alter" class="nav-pill">Alt vs. Jung</a>
+    <a href="#realitaet" class="nav-pill">Realität</a>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: Die Prognose von 2013             -->
+  <!-- ============================================ -->
+
+  <h2 id="prognose-2013">Die Prognose von 2013</h2>
+  <p>Carl Benedikt Frey und Michael Osborne von der Uni Oxford haben 2013 eine Studie veröffentlicht, die eine ganze Debatte ausgelöst hat. Sie haben 702 Berufe analysiert und jedem eine Automatisierungswahrscheinlichkeit zugewiesen. Das Ergebnis: 47% aller US-Jobs in der Hochrisiko-Zone.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">47%</div>
+      <div class="kpi-label">Hochrisiko-Jobs</div>
+      <div class="kpi-sub">Automatisierung &gt;70%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2">702</div>
+      <div class="kpi-label">Berufe analysiert</div>
+      <div class="kpi-sub">O*NET-Datenbank</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">3</div>
+      <div class="kpi-label">Schutzfaktoren</div>
+      <div class="kpi-sub">Kreativ, Sozial, Feinmotorik</div>
+    </div>
+  </div>
+
+  <p>Die Botschaft war klar: Wer mit den Händen arbeitet, muss sich Sorgen machen. Telemarketer, Handnäher, Dateneingabe-Kräfte, Lagerarbeiter — das waren die Berufe auf der Abschussliste. Kreative, Therapeuten, Chirurgen? Sicher. Zumindest glaubte man das.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Frey/Osborne: Top 10 Berufe mit höchstem Automatisierungsrisiko</div>
+    <div class="chart-subtitle">Oxford Martin Programme (2013) / 702 Berufe / Wahrscheinlichkeit 0–1</div>
+    <div id="chart-frey" class="chart chart-tall"></div>
+  </div>
+
+  <p class="text-small">Auffällig: Fast alle Top-10-Jobs sind Routinetätigkeiten — manuell oder administrativ. Kreative, analytische und soziale Berufe galten als nahezu immun. Die OECD korrigierte 2016 auf 9%, dann 2019 auf 14%. Aber die Richtung der Debatte war gesetzt: Automatisierung bedroht die Hände.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: Die große Umkehrung               -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Dann kam ChatGPT.</h2>
+    <p>Und plötzlich waren es nicht mehr die Hände, die zittern mussten.</p>
+  </div>
+
+  <h2 id="umkehrung">Die große Umkehrung</h2>
+  <p>Frey und Osborne hatten drei Schutzfaktoren definiert, bei denen Maschinen angeblich an ihre Grenzen stoßen: Kreativität, soziale Intelligenz, komplexe Wahrnehmung. Generative KI hat 2022 mindestens zwei davon durchbrochen.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card dim">
+      <div class="compare-city">2013: Die Bedrohten</div>
+      <div class="compare-number zero">Hände</div>
+      <div class="compare-detail">Lager, Transport, Fertigung, Dateneingabe</div>
+      <div class="compare-detail">Routine-Tätigkeiten, manuell + administrativ</div>
+    </div>
+    <div class="compare-card alert">
+      <div class="compare-city">2026: Die Bedrohten</div>
+      <div class="compare-number zero">Köpfe</div>
+      <div class="compare-detail">Übersetzer, Juristen, Programmierer, Analysten</div>
+      <div class="compare-detail">Hochschulabsolventen 5x stärker exponiert</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">5x</div>
+      <div class="kpi-label">Exposition Akademiker</div>
+      <div class="kpi-sub">vs. Nicht-Akademiker (Brookings)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">24%</div>
+      <div class="kpi-label">Büroarbeit hochexponiert</div>
+      <div class="kpi-sub">ILO 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">80%</div>
+      <div class="kpi-label">US-Jobs teilbetroffen</div>
+      <div class="kpi-sub">OpenAI/UPenn: mind. 10% Aufgaben</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Die Umkehrung: KI-Exposition 2013 vs. 2024</div>
+    <div class="chart-subtitle">Frey/Osborne (2013) vs. Felten/AIOE + OpenAI/UPenn (2023/24)</div>
+    <div id="chart-umkehrung" class="chart chart-tall"></div>
+  </div>
+
+  <p>Die Grafik zeigt es deutlich: Therapeuten und Pflegekräfte sind nach wie vor kaum betroffen. Aber Programmierer, Journalisten, Juristen — die 2013 als sicher galten — sind jetzt in der roten Zone. Büroarbeit, die schon 2013 exponiert war, bleibt es. Die neue Frontlinie verläuft nicht zwischen Fabrik und Büro. Sie verläuft mitten durchs Büro.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: Der Ländervergleich               -->
+  <!-- ============================================ -->
+
+  <h2 id="laender">Der Ländervergleich</h2>
+  <p>Der IMF hat im Januar 2024 eine globale Analyse veröffentlicht. Die Kernaussage: Je reicher ein Land, desto stärker die KI-Exposition. Das klingt paradox — aber es ist logisch. Reiche Länder haben mehr Bürojobs. Und Bürojobs sind das neue Ziel.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">60%</div>
+      <div class="kpi-label">Reiche Länder</div>
+      <div class="kpi-sub">Jobs KI-exponiert (IMF)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">40%</div>
+      <div class="kpi-label">Schwellenländer</div>
+      <div class="kpi-sub">Jobs KI-exponiert</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">26%</div>
+      <div class="kpi-label">Arme Länder</div>
+      <div class="kpi-sub">Jobs KI-exponiert</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">KI-Exposition nach Land</div>
+    <div class="chart-subtitle">IMF (2024) / OECD (2023) / Goldman Sachs (2023)</div>
+    <div id="chart-laender" class="chart chart-tall"></div>
+  </div>
+
+  <p>Singapur, USA, Dänemark — die digitalisiertesten Länder sind am stärksten exponiert. Deutschland liegt mit 55% im oberen Drittel. Sub-Sahara Afrika bei 26%. Die Ironie: Die Länder, die am besten vorbereitet sind, trifft es am härtesten. Aber sie haben auch die besten Chancen, davon zu profitieren.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: Deutschland                       -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Und Deutschland?</h2>
+    <p>Das IAB misst seit 2013. Die Konvergenz ist beunruhigend.</p>
+  </div>
+
+  <h2 id="deutschland">Deutschland</h2>
+  <p>Das Institut für Arbeitsmarkt- und Berufsforschung (IAB) berechnet seit 2013 sogenannte Substituierbarkeitspotenziale: Welcher Anteil der Kernaufgaben eines Berufs könnte potenziell durch Computer oder KI ersetzt werden? Die Daten zeigen eine klare Entwicklung.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Substituierbarkeitspotenzial nach Anforderungsniveau</div>
+    <div class="chart-subtitle">IAB / Dengler & Matthes (2024) / 2013–2022</div>
+    <div id="chart-iab" class="chart chart-tall"></div>
+  </div>
+
+  <p>Bis 2019 galt die alte Regel: Je niedriger die Qualifikation, desto höher das Risiko. Helfer waren immer am stärksten betroffen, Experten am wenigsten. Dann kam generative KI — und die Schere schloss sich dramatisch. Der Sprung bei Experten von 25% (2019) auf 37% (2022) ist der GenKI-Effekt in einer einzigen Zahl.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value warning">58%</div>
+      <div class="kpi-label">Helfer</div>
+      <div class="kpi-sub">Substituierbarkeit 2022</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">44%</div>
+      <div class="kpi-label">Spezialisten</div>
+      <div class="kpi-sub">Stärkster Anstieg seit 2019</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">37%</div>
+      <div class="kpi-label">Experten</div>
+      <div class="kpi-sub">+12 Prozentpunkte seit 2019</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Substituierbarkeit nach Berufsfeld (2022)</div>
+    <div class="chart-subtitle">IAB / Dengler & Matthes (2024)</div>
+    <div id="chart-berufsfelder" class="chart chart-tall"></div>
+  </div>
+
+  <p>Unternehmensführung (65%), Informatik (63%), Recht (58%) — die am stärksten substituierbaren Berufsfelder sind ausnahmslos Kopfarbeit. Sozialarbeit, Medizin, Reinigung — alles unter 20%. Die Hände sind in Deutschland sicherer als die Köpfe.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: Alt gegen Jung                    -->
+  <!-- ============================================ -->
+
+  <h2 id="alter">Alt gegen Jung</h2>
+  <p>Wer ist stärker bedroht — die Jungen oder die Alten? Die Antwort ist ein Paradox.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Das Alters-Paradox: KI-Nutzung vs. KI-Exposition</div>
+    <div class="chart-subtitle">IMF (2024) / Brookings / OECD (2023) / diverse Surveys 2024–25</div>
+    <div id="chart-alter" class="chart chart-tall"></div>
+  </div>
+
+  <p>Gen Z nutzt KI am meisten — aber ihre Jobs sind am wenigsten exponiert. Gen X sitzt auf dem heißesten Stuhl: hohe Exposition, niedrige Nutzung. Die Mid-Career-Profis sind am stärksten betroffen und am wenigsten vorbereitet.</p>
+
+  <div class="spin-card">
+    <div class="spin-number">+34%<span>Produktivitäts-Boost für Anfänger (NBER)</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Die Chance</div>
+        <p>Brynjolfsson et al. (2023) zeigen: KI hilft den Schwächsten am meisten. Anfänger im Kundensupport verbessern sich um 34%. KI verbreitet die Best Practices der Besten an alle.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Das Risiko</div>
+        <p>Wenn KI den Anfänger sofort auf Senior-Niveau bringt — wozu braucht ein Unternehmen dann noch Anfänger? Einstiegsjobs werden ausgedünnt, Junior-Stellen gestrichen, der Weg nach oben wird schmaler.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 6: Was wirklich passiert              -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>Und? Wie viele Jobs sind weg?</h2>
+    <p>Weniger als befürchtet. Aber anders als erwartet.</p>
+  </div>
+
+  <h2 id="realitaet">Was wirklich passiert</h2>
+  <p>Die 47% von Frey und Osborne sind nicht eingetreten. Autonomes Fahren hat keine Millionen Trucker-Jobs vernichtet. Die US-Arbeitslosenquote liegt bei 3,7–4,2%. Aber wer daraus schließt, dass nichts passiert, liest die falschen Zahlen.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">40%</div>
+      <div class="kpi-label">Nutzen GenAI</div>
+      <div class="kpi-sub">US-Bevölkerung 18–64</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2">1,4%</div>
+      <div class="kpi-label">Zeitersparnis</div>
+      <div class="kpi-sub">Gesamte Arbeitszeit (NBER)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">0</div>
+      <div class="kpi-label">Massenentlassungen</div>
+      <div class="kpi-sub">Durch KI allein (bisher)</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Goldman Sachs: Automatisierbarkeit nach Branche</div>
+    <div class="chart-subtitle">Goldman Sachs / Briggs & Kodnani (2023) / Anteil automatisierbarer Aufgaben</div>
+    <div id="chart-branchen" class="chart chart-tall"></div>
+  </div>
+
+  <p>Verwaltung und Büro: 46%. Recht: 44%. Handwerk: 4%. Bau: 6%. Die Goldman-Sachs-Daten bestätigen das Muster: Kopfarbeit ist exponiert, Handarbeit nicht. Aber noch führt die Exposition nicht zu Massenentlassungen — sondern zu leiser Erosion.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">WEF Job-Bilanz bis 2030</div>
+    <div class="chart-subtitle">World Economic Forum / Future of Jobs Report 2025</div>
+    <div id="chart-wef" class="chart"></div>
+  </div>
+
+  <h3>Was schon jetzt passiert</h3>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">–99%</div>
+      <div class="kpi-label">Chegg (US-Nachhilfe)</div>
+      <div class="kpi-sub">Aktie seit ChatGPT-Launch</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">–50%</div>
+      <div class="kpi-label">Stack Overflow Traffic</div>
+      <div class="kpi-sub">+ Entlassungen 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">–20–40%</div>
+      <div class="kpi-label">Freelance-Preise</div>
+      <div class="kpi-sub">Schreiben/Grafik (Upwork)</div>
+    </div>
+  </div>
+
+  <p>Keine Massenarbeitslosigkeit — aber Chegg, die größte US-Nachhilfeplattform, hat 99% ihres Börsenwerts verloren, weil Studenten jetzt ChatGPT fragen. Stack Overflow blutet Nutzer. Und auf Upwork bekommst Du Texte für die Hälfte. Die Disruption kommt nicht als Tsunami. Sie kommt als steigende Flut. Langsam. Aber sie kommt.</p>
+
+  <hr class="divider">
+
+  <p class="tk-closer">Die Maschinen haben angefangen, unsere Hände zu ersetzen. Jetzt sind sie bei unseren Köpfen angekommen. Aber noch nicht bei unserer Haltung.</p>
+
+  <p>Die Daten zeigen: Es gibt keine Massenentlassungs-Apokalypse. Aber es gibt eine stille Verschiebung. Einstiegsjobs verschwinden. Preise fallen. Ganze Geschäftsmodelle kippen. Und die am stärksten Betroffenen sind nicht die, die man 2013 erwartet hätte.</p>
+
+  <p>Wer heute im Büro sitzt und glaubt, dass Automatisierung nur Fabrikhallen betrifft, hat die letzten drei Jahre nicht aufgepasst. Die Frage ist nicht mehr, ob KI Deinen Job verändert. Die Frage ist, ob Du das schneller kapierst als Dein Arbeitgeber.</p>
+
+  <!-- Feedback -->
+  <div class="feedback-section">
+    <p>Hat Dir dieses Datenstück etwas gebracht?</p>
+    <div class="feedback-btns">
+      <button class="feedback-btn" onclick="sendFeedback('top')">Richtig gut</button>
+      <button class="feedback-btn" onclick="sendFeedback('ok')">Ganz okay</button>
+      <button class="feedback-btn" onclick="sendFeedback('naja')">Nicht so</button>
+    </div>
+    <div id="feedback-thanks">Danke. Wird notiert.</div>
+  </div>
+
+  <!-- Sources -->
+  <div class="source-card">
+    <h3>Quellen & Daten</h3>
+    <ul>
+      <li>Frey & Osborne (2013/2017) — The Future of Employment, Oxford Martin Programme</li>
+      <li>IMF (2024) — AI Will Transform the Global Economy, Georgieva</li>
+      <li>ILO (2023) — Generative AI and Jobs, Gmyrek/Berg/Bescond</li>
+      <li>IAB / Dengler & Matthes (2024) — Substituierbarkeitspotenziale, IAB-Kurzbericht 9/2024</li>
+      <li>OpenAI/UPenn / Eloundou et al. (2023) — GPTs are GPTs</li>
+      <li>Goldman Sachs / Briggs & Kodnani (2023) — Effects of AI on Economic Growth</li>
+      <li>NBER / Brynjolfsson, Li & Raymond (2023) — Generative AI at Work</li>
+      <li>NBER / Korinek & Suh (2024) — Scenarios for the Transition to AGI</li>
+      <li>Brookings Institution (2019) — What jobs are affected by AI?</li>
+      <li>WEF Future of Jobs Report 2025</li>
+      <li>OECD Employment Outlook 2023</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/tkoerting/data-stories" class="github-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      tkoerting/data-stories — Code, Daten, Methodik
+    </a>
+  </p>
+
+  <p class="text-small" style="text-align:center;margin-top:2rem;">Alle Daten wurden nach bestem Wissen und Gewissen recherchiert und aufbereitet. Trotzdem: Fehler passieren, Zahlen veralten, Quellen verschwinden. Wer etwas findet, das nicht stimmt — oder eine bessere Quelle kennt — ich freue mich über eine Nachricht: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+  <div class="article-footer">
+    <p>Der Körting — Datenstück #9 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const DATENSTUECK_ID = 'erst-die-haende';
+const charts = {};
+
+function sendFeedback(val) {
+  var btns = document.querySelectorAll('.feedback-btn');
+  btns.forEach(function(b){ b.classList.remove('selected'); });
+  event.target.classList.add('selected');
+  document.getElementById('feedback-thanks').style.display = 'block';
+  var url = 'https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec';
+  fetch(url + '?id=' + DATENSTUECK_ID + '&feedback=' + val, { mode: 'no-cors' });
+}
+
+function initCharts() {
+  Object.values(charts).forEach(ch => { try { ch.dispose() } catch(e) {} });
+
+  fetch('data.json').then(r => r.json()).then(D => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const c = {
+      accent: isDark ? '#14B8A6' : '#0D9488',
+      accent2: isDark ? '#FACC15' : '#EAB308',
+      danger: isDark ? '#EF4444' : '#DC2626',
+      warning: isDark ? '#F59E0B' : '#D97706',
+      purple: isDark ? '#8B5CF6' : '#7C3AED',
+      text: isDark ? '#E5E7EB' : '#1E293B',
+      textSec: isDark ? '#9CA3AF' : '#64748B',
+      textTert: isDark ? '#6B7280' : '#94A3B8',
+      grid: isDark ? '#2D3139' : '#E2E5E9',
+      bg: isDark ? '#1E2028' : '#FFFFFF'
+    };
+
+    const base = {
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+      grid: { left: 50, right: 20, top: 30, bottom: 30 },
+      tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } }
+    };
+
+    // === CHART 1: Frey/Osborne Top 10 ===
+    const frey = D.frey_osborne_2013.top10_high_risk.slice().reverse();
+    charts.frey = echarts.init(document.getElementById('chart-frey'));
+    charts.frey.setOption({...base,
+      grid: { left: 180, right: 50, top: 10, bottom: 30 },
+      xAxis: { type: 'value', min: 0.9, max: 1, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => (v*100).toFixed(0) + '%' } },
+      yAxis: { type: 'category', data: frey.map(d => d.job), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      series: [{
+        type: 'bar',
+        data: frey.map(d => ({
+          value: d.probability,
+          itemStyle: {
+            color: d.probability >= 0.99 ? c.danger : c.warning,
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: (d.probability * 100).toFixed(0) + '%',
+            color: c.danger, fontSize: 11, fontFamily: 'JetBrains Mono', fontWeight: 600
+          }
+        })),
+        barWidth: 20
+      }]
+    });
+
+    // === CHART 2: Umkehrung 2013 vs 2024 ===
+    var cats = D.umkehrung.exposition_2013.map(d => d.category);
+    var vals2013 = D.umkehrung.exposition_2013.map(d => d.level);
+    var vals2024 = D.umkehrung.exposition_2024.map(d => d.level);
+    charts.umkehrung = echarts.init(document.getElementById('chart-umkehrung'));
+    charts.umkehrung.setOption({...base,
+      legend: { data: ['2013 (Frey/Osborne)', '2024 (Felten/AIOE + GPT)'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      grid: { left: 160, right: 30, top: 40, bottom: 10 },
+      xAxis: { type: 'value', max: 100, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: cats.reverse(), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      series: [
+        {
+          name: '2013 (Frey/Osborne)', type: 'bar',
+          data: vals2013.slice().reverse().map(v => ({ value: v, itemStyle: { color: c.accent + '88', borderRadius: [0, 4, 4, 0] } })),
+          barWidth: 12, barGap: '30%'
+        },
+        {
+          name: '2024 (Felten/AIOE + GPT)', type: 'bar',
+          data: vals2024.slice().reverse().map(v => ({ value: v, itemStyle: { color: c.danger, borderRadius: [0, 4, 4, 0] } })),
+          barWidth: 12
+        }
+      ]
+    });
+
+    // === CHART 3: Ländervergleich ===
+    var laender = D.laendervergleich.data.slice().sort((a, b) => a.exposed_pct - b.exposed_pct);
+    charts.laender = echarts.init(document.getElementById('chart-laender'));
+    charts.laender.setOption({...base,
+      grid: { left: 140, right: 50, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 70, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: laender.map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: laender.map(d => ({
+          value: d.exposed_pct,
+          itemStyle: {
+            color: d.exposed_pct >= 58 ? c.danger : d.exposed_pct >= 50 ? c.warning : d.exposed_pct >= 40 ? c.accent2 : c.accent + '66',
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: d.exposed_pct + '%',
+            color: d.name === 'Deutschland' ? c.accent2 : c.textTert,
+            fontSize: 11, fontFamily: 'JetBrains Mono',
+            fontWeight: d.name === 'Deutschland' ? 600 : 400
+          }
+        })),
+        barWidth: 20
+      }]
+    });
+
+    // === CHART 4: IAB Konvergenz ===
+    var iab = D.deutschland_iab.zeitreihe;
+    charts.iab = echarts.init(document.getElementById('chart-iab'));
+    charts.iab.setOption({...base,
+      legend: { data: ['Helfer', 'Fachkraft', 'Spezialist', 'Experte'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      grid: {...base.grid, top: 40 },
+      xAxis: { type: 'category', data: iab.years, axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textTert } },
+      yAxis: { type: 'value', min: 10, max: 65, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      series: [
+        { name: 'Helfer', type: 'line', data: iab.helfer, smooth: true, lineStyle: { width: 2.5, color: c.warning }, itemStyle: { color: c.warning }, symbol: 'circle', symbolSize: 8 },
+        { name: 'Fachkraft', type: 'line', data: iab.fachkraft, smooth: true, lineStyle: { width: 2.5, color: c.accent2 }, itemStyle: { color: c.accent2 }, symbol: 'circle', symbolSize: 8 },
+        { name: 'Spezialist', type: 'line', data: iab.spezialist, smooth: true, lineStyle: { width: 2.5, color: c.purple }, itemStyle: { color: c.purple }, symbol: 'circle', symbolSize: 8 },
+        { name: 'Experte', type: 'line', data: iab.experte, smooth: true, lineStyle: { width: 3, color: c.danger }, itemStyle: { color: c.danger }, symbol: 'circle', symbolSize: 10,
+          label: { show: true, position: 'top', formatter: p => p.value + '%', color: c.danger, fontSize: 10, fontFamily: 'JetBrains Mono' }
+        }
+      ]
+    });
+
+    // === CHART 5: Berufsfelder ===
+    var felder = D.deutschland_iab.berufsfelder_2022.slice().sort((a, b) => a.pct - b.pct);
+    charts.berufsfelder = echarts.init(document.getElementById('chart-berufsfelder'));
+    charts.berufsfelder.setOption({...base,
+      grid: { left: 180, right: 50, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 70, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: felder.map(d => d.field), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      series: [{
+        type: 'bar',
+        data: felder.map(d => ({
+          value: d.pct,
+          itemStyle: {
+            color: d.pct >= 55 ? c.danger : d.pct >= 40 ? c.warning : d.pct >= 25 ? c.accent2 + '88' : c.accent + '66',
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: d.pct + '%',
+            color: d.pct >= 55 ? c.danger : c.textTert,
+            fontSize: 11, fontFamily: 'JetBrains Mono',
+            fontWeight: d.pct >= 55 ? 600 : 400
+          }
+        })),
+        barWidth: 18
+      }]
+    });
+
+    // === CHART 6: Alters-Paradox ===
+    var alter = D.alter_paradox.data;
+    charts.alter = echarts.init(document.getElementById('chart-alter'));
+    charts.alter.setOption({...base,
+      legend: { data: ['KI-Nutzung', 'KI-Exposition im Job'], textStyle: { color: c.textSec, fontSize: 11 }, top: 0 },
+      grid: { left: 130, right: 40, top: 40, bottom: 10 },
+      xAxis: { type: 'value', max: 80, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: alter.map(d => d.group), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      series: [
+        {
+          name: 'KI-Nutzung', type: 'bar',
+          data: alter.map(d => ({ value: d.ki_nutzung_pct, itemStyle: { color: c.accent, borderRadius: [0, 4, 4, 0] } })),
+          barWidth: 14, barGap: '30%'
+        },
+        {
+          name: 'KI-Exposition im Job', type: 'bar',
+          data: alter.map(d => ({ value: d.ki_exposition_pct, itemStyle: { color: c.danger, borderRadius: [0, 4, 4, 0] } })),
+          barWidth: 14
+        }
+      ]
+    });
+
+    // === CHART 7: Branchen Goldman Sachs ===
+    var gs = D.realitaet.goldman_sachs_automatable_pct;
+    var gsData = [
+      { name: 'Handwerk/Wartung', pct: gs.handwerk },
+      { name: 'Bau', pct: gs.bau },
+      { name: 'Gesundheit', pct: gs.gesundheit },
+      { name: 'Bildung', pct: gs.bildung },
+      { name: 'IT/Mathematik', pct: gs.it_mathematik },
+      { name: 'Management/Finanzen', pct: gs.management_finanzen },
+      { name: 'Architektur/Ingenieur', pct: gs.architektur_ingenieur },
+      { name: 'Recht', pct: gs.recht },
+      { name: 'Verwaltung/Büro', pct: gs.verwaltung_buero }
+    ];
+    charts.branchen = echarts.init(document.getElementById('chart-branchen'));
+    charts.branchen.setOption({...base,
+      grid: { left: 160, right: 50, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 50, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + '%' } },
+      yAxis: { type: 'category', data: gsData.map(d => d.name), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      series: [{
+        type: 'bar',
+        data: gsData.map(d => ({
+          value: d.pct,
+          itemStyle: {
+            color: d.pct >= 40 ? c.danger : d.pct >= 30 ? c.warning : d.pct >= 20 ? c.accent2 + '88' : c.accent + '55',
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: d.pct + '%',
+            color: d.pct >= 40 ? c.danger : c.textTert,
+            fontSize: 11, fontFamily: 'JetBrains Mono',
+            fontWeight: d.pct >= 40 ? 600 : 400
+          }
+        })),
+        barWidth: 20
+      }]
+    });
+
+    // === CHART 8: WEF Job-Bilanz ===
+    charts.wef = echarts.init(document.getElementById('chart-wef'));
+    charts.wef.setOption({...base,
+      grid: { left: 50, right: 50, top: 10, bottom: 30 },
+      xAxis: { type: 'category', data: ['Neue Jobs', 'Wegfallende Jobs', 'Netto-Bilanz'], axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: v => v + ' Mio' } },
+      series: [{
+        type: 'bar',
+        data: [
+          { value: 170, itemStyle: { color: c.accent, borderRadius: [4, 4, 0, 0] } },
+          { value: -92, itemStyle: { color: c.danger, borderRadius: [0, 0, 4, 4] } },
+          { value: 78, itemStyle: { color: c.accent2, borderRadius: [4, 4, 0, 0] } }
+        ],
+        barWidth: 50,
+        label: {
+          show: true,
+          position: 'outside',
+          formatter: function(p) {
+            var v = p.value;
+            return (v > 0 ? '+' : '') + v + ' Mio';
+          },
+          color: c.text, fontSize: 13, fontFamily: 'JetBrains Mono', fontWeight: 600
+        },
+        markLine: {
+          silent: true,
+          data: [{ yAxis: 0, lineStyle: { color: c.textTert, width: 1 }, label: { show: false } }]
+        }
+      }]
+    });
+
+    // Resize handler
+    window.addEventListener('resize', () => Object.values(charts).forEach(ch => { try { ch.resize() } catch(e) {} }));
+  });
+}
+
+(function(){
+  const url = new URLSearchParams(window.location.search).get('theme');
+  const saved = url || localStorage.getItem('tk-theme');
+  if (saved) { document.documentElement.dataset.theme = saved; localStorage.setItem('tk-theme', saved) }
+  const b = document.querySelector('.toggle-btn');
+  if (b) b.textContent = document.documentElement.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+})();
+function toggleTheme() {
+  const h = document.documentElement, b = document.querySelector('.toggle-btn');
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('tk-theme', h.dataset.theme);
+  b.textContent = h.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  initCharts();
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+</script>
+<!-- Cookie Consent Banner -->
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+  <div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">
+      Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. Keine Werbung, keine Weitergabe.
+      <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a>
+    </p>
+    <div style="display:flex;gap:0.5rem;flex-shrink:0">
+      <button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+      <button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA();}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none';}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>

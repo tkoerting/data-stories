@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<!-- GA4 — nur nach Cookie-Consent -->
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schneller als du denkst. — Datenstück | Der Körting</title>
+<meta name="description" content="Die Beschleunigung der KI — in Zahlen, nicht in Schlagzeilen. 14 Jahre zwischen Deep Blue und Watson. 5 Monate zwischen ChatGPT und GPT-4. Ein Datenstück.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Schneller als du denkst. — Datenstück | Open Data Minded">
+<meta property="og:description" content="Die Beschleunigung der KI — in Zahlen, nicht in Schlagzeilen. 14 Jahre zwischen Deep Blue und Watson. 5 Monate zwischen ChatGPT und GPT-4. Ein Datenstück.">
+<meta property="og:url" content="https://opendataminded.de/schneller-als-du-denkst/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Schneller als du denkst. — Datenstück | Open Data Minded">
+<meta name="twitter:description" content="Die Beschleunigung der KI — in Zahlen, nicht in Schlagzeilen. 14 Jahre zwischen Deep Blue und Watson. 5 Monate zwischen ChatGPT und GPT-4. Ein Datenstück.">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/schneller-als-du-denkst/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Schneller als du denkst.",
+  "description": "Die Beschleunigung der KI — in Zahlen, nicht in Schlagzeilen. 14 Jahre zwischen Deep Blue und Watson. 5 Monate zwischen ChatGPT und GPT-4. Ein Datenstück.",
+  "author": {"@type": "Person", "name": "Thomas Körting", "url": "https://der-koerting.de/ueber-mich/"},
+  "publisher": {"@type": "Person", "name": "Thomas Körting"},
+  "url": "https://opendataminded.de/schneller-als-du-denkst/",
+  "inLanguage": "de",
+  "datePublished": "2026-03-16",
+  "dateModified": "2026-03-16",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://opendataminded.de/schneller-als-du-denkst/"}
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+  .nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
+  .compare-card.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+  .compare-card.dim{opacity:0.7}
+  .compare-card.alert{border-color:var(--danger);background:var(--danger-subtle)}
+  .compare-city{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+  .compare-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;line-height:1.2}
+  .compare-number.zero{color:var(--danger)}
+  .compare-number.good{color:var(--accent)}
+  .compare-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.25rem}
+
+  .perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+  .perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+  .perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+
+  .spin-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+  .spin-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;color:var(--accent);text-align:center;margin-bottom:1rem;line-height:1.2}
+  .spin-number span{display:block;font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);font-weight:400;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+  .spin-sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .spin-side{padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.6}
+  .spin-side.positive{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.2)}
+  .spin-side.negative{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)}
+  .spin-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-weight:600}
+  .spin-side.positive .spin-label{color:var(--accent)}
+  .spin-side.negative .spin-label{color:var(--danger)}
+  .spin-side p{margin:0;font-size:0.85rem}
+
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .datenbild{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:2rem;margin:1.5rem 0;text-align:center}
+  .datenbild-value{font-family:var(--font-mono);font-size:3rem;font-weight:500;color:var(--accent);line-height:1.1}
+  .datenbild-label{font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem}
+  .datenbild-sub{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.25rem;font-family:var(--font-mono)}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+
+  .feedback-section{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+  .feedback-section p{font-size:0.9rem;margin-bottom:1rem}
+  .feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+  .feedback-btn{font-family:var(--font-body);font-size:0.85rem;padding:0.5rem 1.25rem;border:1px solid var(--border);border-radius:8px;background:var(--tag-bg);color:var(--text-secondary);cursor:pointer;transition:all var(--transition)}
+  .feedback-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .feedback-btn.selected{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent);font-weight:500}
+  .feedback-thanks{display:none;font-size:0.85rem;color:var(--accent);margin-top:0.75rem}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .spin-sides{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+    .datenbild-value{font-size:2.2rem}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+        <a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+        <a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Datenstück #8</span>
+    <span class="snapshot-tag">März 2026</span>
+    <span>zum <a href="https://der-koerting.de/ki-homogenisiert-denken/">Blogpost</a></span>
+  </div>
+
+  <h1>Schneller als du denkst.</h1>
+  <div class="subtitle">Die Beschleunigung der KI — in Zahlen, nicht in Schlagzeilen.</div>
+
+  <p class="lead">Alle reden über KI. Wenige schauen auf die Zahlen dahinter. Wie schnell beschleunigt sich der Fortschritt wirklich? Nicht in Meinungen — in Daten. Dieses Datenstück zeigt fünf Dimensionen der Beschleunigung: Meilensteine, Rechenpower, Kosten, Adoption und das Paradox der Benchmarks.</p>
+
+  <nav class="section-nav">
+    <a href="#meilensteine" class="nav-pill">Meilensteine</a>
+    <a href="#compute" class="nav-pill">Rechenpower</a>
+    <a href="#kosten" class="nav-pill">Preisverfall</a>
+    <span class="nav-sep">|</span>
+    <a href="#adoption" class="nav-pill">Adoption</a>
+    <a href="#paradox" class="nav-pill">Das Paradox</a>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: Die Meilensteine                  -->
+  <!-- ============================================ -->
+
+  <h2 id="meilensteine">Die Meilensteine</h2>
+  <p>1997 schlägt Deep Blue den Schachweltmeister. 2011 gewinnt Watson bei Jeopardy. 14 Jahre dazwischen. Dann geht es schneller. Und schneller. Und schneller.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value accent2">14 Jahre</div>
+      <div class="kpi-label">Deep Blue → Watson</div>
+      <div class="kpi-sub">1997 → 2011</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">4 Jahre</div>
+      <div class="kpi-label">AlphaGo → GPT-3</div>
+      <div class="kpi-sub">2016 → 2020</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">5 Monate</div>
+      <div class="kpi-label">ChatGPT → GPT-4</div>
+      <div class="kpi-sub">Nov 2022 → Mär 2023</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Zeit zwischen KI-Meilensteinen (in Jahren)</div>
+    <div class="chart-subtitle">Stanford HAI AI Index 2025 / Epoch AI</div>
+    <div id="chart-milestones" class="chart chart-tall"></div>
+  </div>
+
+  <p>Die Balken schrumpfen. 14 Jahre. 5 Jahre. 4 Jahre. 2 Jahre. 5 Monate. Was früher Jahrzehnte brauchte, passiert jetzt in Monaten. Das ist keine lineare Entwicklung. Das ist Kompression.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: Die Rechenpower                   -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>10.000.000x</h2>
+    <p>So viel mehr Rechenleistung braucht ein Frontier-Modell heute im Vergleich zu 2012.</p>
+  </div>
+
+  <h2 id="compute">Die Rechenpower</h2>
+  <p>KI-Fortschritt wird mit roher Rechenleistung erkauft. Die Zahlen sind so groß, dass man sie nur noch logarithmisch darstellen kann. AlexNet 2012: 10<sup>18</sup> FLOP. GPT-4 2023: über 10<sup>25</sup> FLOP. Das ist ein Faktor von zehn Millionen.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">10<sup>18</sup></div>
+      <div class="kpi-label">AlexNet (2012)</div>
+      <div class="kpi-sub">FLOP Training Compute</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">10<sup>23</sup></div>
+      <div class="kpi-label">GPT-3 (2020)</div>
+      <div class="kpi-sub">FLOP Training Compute</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">&gt;10<sup>25</sup></div>
+      <div class="kpi-label">GPT-4 (2023)</div>
+      <div class="kpi-sub">FLOP Training Compute</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Training Compute für Frontier-Modelle (log-Skala)</div>
+    <div class="chart-subtitle">Epoch AI Compute Trends Post-2010</div>
+    <div id="chart-compute" class="chart chart-tall"></div>
+  </div>
+
+  <div class="datenbild">
+    <div class="datenbild-value">4-5x</div>
+    <div class="datenbild-label">Wachstum pro Jahr</div>
+    <div class="datenbild-sub">Verdopplung alle ~6 Monate — 33+ Modelle über 10²⁵ FLOP</div>
+  </div>
+
+  <p class="text-small">Die y-Achse ist logarithmisch — jeder Schritt nach oben bedeutet eine Verzehnfachung. Ohne diese Darstellung wären die frühen Modelle nicht sichtbar. Die Wachstumsrate liegt bei 4-5x pro Jahr, mit einer Verdopplung alle sechs Monate.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: Der Preisverfall                  -->
+  <!-- ============================================ -->
+
+  <h2 id="kosten">Der Preisverfall</h2>
+  <p>Mehr Rechenpower, aber was kostet das für den Nutzer? Hier wird es paradox: Während die Trainingskosten explodieren, fallen die Nutzungskosten ins Bodenlose.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value danger">$20</div>
+      <div class="kpi-label">/Mio Tokens (2022)</div>
+      <div class="kpi-sub">GPT-3.5-Niveau MMLU</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value ok">$0,07</div>
+      <div class="kpi-label">/Mio Tokens (2024)</div>
+      <div class="kpi-sub">Gleiche Leistung</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2">285x</div>
+      <div class="kpi-label">günstiger</div>
+      <div class="kpi-sub">in 24 Monaten</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Kosten pro Million Tokens (GPT-3.5-äquivalente Performance)</div>
+    <div class="chart-subtitle">Stanford HAI AI Index 2025 / öffentliche API-Preise</div>
+    <div id="chart-costs" class="chart chart-tall"></div>
+  </div>
+
+  <div class="datenbild">
+    <div class="datenbild-value">142x</div>
+    <div class="datenbild-label">Reduktion in Modellgröße für gleiche Leistung</div>
+    <div class="datenbild-sub">PaLM 540B (2022) → Phi-3-mini 3,8B (2024) — gleicher MMLU-Score</div>
+  </div>
+
+  <p>2022 brauchte man 540 Milliarden Parameter, um 60% auf dem MMLU-Benchmark zu erreichen. 2024 schafft das ein Modell mit 3,8 Milliarden Parametern. 142-mal kleiner. Für die gleiche Leistung. Das ist nicht nur günstiger — das läuft auf einem Laptop.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: Die Adoption                      -->
+  <!-- ============================================ -->
+
+  <div class="perspective-break">
+    <h2>2 Monate.</h2>
+    <p>ChatGPT brauchte 2 Monate für 100 Millionen Nutzer. Das Telefon brauchte 75 Jahre.</p>
+  </div>
+
+  <h2 id="adoption">Die Adoption</h2>
+  <p>Jede Technologie hat ihre Adoptionskurve. Manche brauchen Jahrzehnte. Manche Monate. ChatGPT hat die schnellste Adoption eines Technologie-Produkts in der Geschichte hingelegt.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Zeit bis 100 Millionen Nutzer</div>
+    <div class="chart-subtitle">Visual Capitalist / Epoch AI / UBS Research</div>
+    <div id="chart-adoption" class="chart chart-tall"></div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value ok">72%</div>
+      <div class="kpi-label">Unternehmen nutzen KI</div>
+      <div class="kpi-sub">McKinsey 2024</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value accent2">61%</div>
+      <div class="kpi-label">allen VCs in KI</div>
+      <div class="kpi-sub">Anteil 2025</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">$252 Mrd</div>
+      <div class="kpi-label">Corporate AI Investment</div>
+      <div class="kpi-sub">Global 2024</div>
+    </div>
+  </div>
+
+  <p>700 Millionen wöchentlich aktive Nutzer hat ChatGPT heute. 72% aller Unternehmen weltweit setzen KI ein. 61% aller Venture-Capital-Investitionen fließen in KI. Das Geld folgt der Technologie — $252 Milliarden Corporate AI Investment allein 2024.</p>
+
+  <p>Aber die Adoption hat eine Schattenseite: 74% der Unternehmen schaffen es nicht, KI über Pilotprojekte hinaus zu skalieren. Die Technologie ist da. Die Organisation kommt nicht mit.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: Das Paradox                       -->
+  <!-- ============================================ -->
+
+  <h2 id="paradox">Das Paradox</h2>
+  <p>Benchmarks werden ausgereizt. MMLU, HumanEval, ImageNet — die "einfachen" Tests sind fast gelöst. Gleichzeitig rücken die Modelle immer enger zusammen. Das klingt nach Stillstand. Ist es aber nicht.</p>
+
+  <div class="spin-card">
+    <div class="spin-number">90%+<span>MMLU-Score der besten Modelle (2024)</span></div>
+    <div class="spin-sides">
+      <div class="spin-side positive">
+        <div class="spin-label">Was die Zahl zeigt</div>
+        <p>Die Frontier bewegt sich weiter — auf immer härteren Aufgaben. Forscher wechseln auf MMLU-Pro, GPQA, HLE und MMMU. ImageNet wurde 2017 "gelöst". Coding-Benchmarks sind von 0% (2021) auf 90% (2024) gestiegen.</p>
+      </div>
+      <div class="spin-side negative">
+        <div class="spin-label">Was die Zahl verschweigt</div>
+        <p>Die leichten Gewinne werden weniger. MMLU ist fast ausgereizt. Der Abstand zwischen den Modellen schrumpft. 33+ Modelle von 12 verschiedenen Entwicklern überschreiten die gleiche Compute-Schwelle. Die Frontier wird breiter — nicht nur höher.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card alert">
+      <div class="compare-city">Modell-Abstand 2023</div>
+      <div class="compare-number zero">4,9%</div>
+      <div class="compare-detail">Differenz #1 vs. #2 auf MMLU</div>
+      <div class="compare-detail">Klarer Vorsprung des Besten</div>
+    </div>
+    <div class="compare-card highlight">
+      <div class="compare-city">Modell-Abstand 2024</div>
+      <div class="compare-number good">0,7%</div>
+      <div class="compare-detail">Differenz #1 vs. #2 auf MMLU</div>
+      <div class="compare-detail">Konvergenz an der Frontier</div>
+    </div>
+  </div>
+
+  <p>Der Abstand zwischen dem besten und zweitbesten Modell schrumpfte von 4,9 auf 0,7 Prozentpunkte. Das ist kein Stillstand — das ist Konvergenz. Die Spitze wird dichter. Und gleichzeitig schaffen es 74% der Unternehmen nicht, KI über Pilotprojekte hinaus einzusetzen. Die Technologie rennt. Die Organisationen stehen.</p>
+
+  <hr class="divider">
+
+  <p class="tk-closer">Die Abstände werden kleiner. Die Fragen werden größer.</p>
+
+  <p>14 Jahre. 5 Jahre. 4 Jahre. 2 Jahre. 5 Monate. Die Meilensteine beschleunigen sich. Die Rechenleistung vervielfacht sich jedes Jahr. Die Kosten fallen um den Faktor 285. 100 Millionen Nutzer in 2 Monaten. Und das ist nur der Stand von heute.</p>
+
+  <p>Die Zahlen sind eindeutig. KI beschleunigt sich — auf jeder Dimension, die man messen kann. Die leichten Benchmarks sind fast gelöst. Die Modelle konvergieren. Aber die Frontier bewegt sich weiter. Auf immer härteren Aufgaben. Mit immer mehr Compute. Und mit immer weniger Zeit zwischen den Durchbrüchen.</p>
+
+  <p>Die Frage ist nicht, ob KI schneller wird. Die Frage ist, ob wir mithalten — oder zusehen.</p>
+
+  <!-- Sources -->
+  <div class="source-card">
+    <h3>Quellen & Daten</h3>
+    <ul>
+      <li>Stanford HAI AI Index 2025 — Benchmarks, Compute, Kosten, Investitionen</li>
+      <li>Epoch AI Compute Trends Post-2010 — Training Compute Dataset</li>
+      <li>Visual Capitalist / UBS Research — Time to 100M Users</li>
+      <li>McKinsey State of AI 2025 — Enterprise Adoption</li>
+      <li>OECD VC Report — Venture Capital in KI</li>
+      <li>Microsoft Research — Phi-3-mini Effizienzvergleich</li>
+      <li>Our World in Data / PatentPC — KI-Paper & Patente</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/tkoerting/data-stories" class="github-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      tkoerting/data-stories — Code, Daten, Methodik
+    </a>
+  </p>
+
+  <!-- Feedback -->
+  <div class="feedback-section" id="feedback">
+    <p>Hat Dir dieses Datenstück was gebracht?</p>
+    <div class="feedback-buttons">
+      <button class="feedback-btn" data-value="ja" onclick="sendFeedback('ja')">Ja, mehr davon</button>
+      <button class="feedback-btn" data-value="nein" onclick="sendFeedback('nein')">Nicht so meins</button>
+      <button class="feedback-btn" data-value="daten" onclick="sendFeedback('daten')">Mehr Daten bitte</button>
+    </div>
+    <div class="feedback-thanks" id="feedback-thanks">Danke für Dein Feedback!</div>
+  </div>
+
+  <p class="text-small" style="text-align:center;margin-top:2rem;">Alle Daten wurden nach bestem Wissen und Gewissen recherchiert und aufbereitet. Trotzdem: Fehler passieren, Zahlen veralten, Quellen verschwinden. Wer etwas findet, das nicht stimmt — oder eine bessere Quelle kennt — ich freue mich über eine Nachricht: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+  <div class="article-footer">
+    <p>Der Körting — Datenstück #8 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+const DATENSTUECK_ID = 'schneller-als-du-denkst';
+const charts = {};
+
+function sendFeedback(value) {
+  const btns = document.querySelectorAll('.feedback-btn');
+  btns.forEach(b => { b.classList.remove('selected'); if(b.dataset.value === value) b.classList.add('selected'); });
+  document.getElementById('feedback-thanks').style.display = 'block';
+  fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ datenstueck: DATENSTUECK_ID, feedback: value, timestamp: new Date().toISOString() })
+  }).catch(function(){});
+}
+
+function initCharts() {
+  Object.values(charts).forEach(ch => { try { ch.dispose() } catch(e) {} });
+
+  fetch('data.json').then(r => r.json()).then(D => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const c = {
+      accent: isDark ? '#14B8A6' : '#0D9488',
+      accent2: isDark ? '#FACC15' : '#EAB308',
+      danger: isDark ? '#EF4444' : '#DC2626',
+      warning: isDark ? '#F59E0B' : '#D97706',
+      purple: isDark ? '#8B5CF6' : '#7C3AED',
+      text: isDark ? '#E5E7EB' : '#1E293B',
+      textSec: isDark ? '#9CA3AF' : '#64748B',
+      textTert: isDark ? '#6B7280' : '#94A3B8',
+      grid: isDark ? '#2D3139' : '#E2E5E9',
+      bg: isDark ? '#1E2028' : '#FFFFFF'
+    };
+
+    const base = {
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+      grid: { left: 50, right: 20, top: 30, bottom: 30 },
+      tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } }
+    };
+
+    // === CHART 1: Milestones — Horizontal bar (shrinking bars) ===
+    var ms = D.milestones.data;
+    charts.milestones = echarts.init(document.getElementById('chart-milestones'));
+    charts.milestones.setOption({...base,
+      grid: { left: 160, right: 50, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 16, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v){ return v + ' J.' } } },
+      yAxis: { type: 'category', data: ms.map(function(d){ return d.from + ' → ' + d.to }), inverse: true, axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      series: [{
+        type: 'bar',
+        data: ms.map(function(d, i){
+          var colors = [c.accent + '55', c.accent, c.accent2, c.warning, c.danger];
+          return {
+            value: d.years,
+            itemStyle: { color: colors[i] || c.accent, borderRadius: [0, 4, 4, 0] },
+            label: {
+              show: true, position: 'right',
+              formatter: d.years < 1 ? (d.years * 12) + ' Mon.' : d.years + ' Jahre',
+              color: i >= 3 ? c.danger : c.textTert,
+              fontSize: 12, fontWeight: i >= 3 ? 600 : 400, fontFamily: 'JetBrains Mono'
+            }
+          }
+        }),
+        barWidth: 22
+      }]
+    });
+
+    // === CHART 2: Training Compute (log scale) ===
+    var comp = D.training_compute.data;
+    charts.compute = echarts.init(document.getElementById('chart-compute'));
+    charts.compute.setOption({...base,
+      grid: {...base.grid, top: 20, left: 70, bottom: 40 },
+      xAxis: { type: 'category', data: comp.map(function(d){ return d.model + '\n(' + d.year + ')' }), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 10, interval: 0, rotate: 0 } },
+      yAxis: { type: 'value', name: 'log₁₀(FLOP)', nameTextStyle: { color: c.textTert, fontSize: 10 }, min: 16, max: 28, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v){ return '10^' + v } } },
+      series: [{
+        type: 'line', smooth: true,
+        data: comp.map(function(d){ return d.flop_log10 }),
+        lineStyle: { width: 3, color: c.accent },
+        itemStyle: { color: c.accent },
+        symbolSize: 10,
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: c.accent + '33' },
+            { offset: 1, color: 'transparent' }
+          ])
+        },
+        label: { show: true, position: 'top', formatter: function(p){ return '10^' + comp[p.dataIndex].flop_log10 }, color: c.accent, fontSize: 10, fontFamily: 'JetBrains Mono' }
+      }]
+    });
+
+    // === CHART 3: Cost Collapse ===
+    var costs = D.cost_collapse.data;
+    charts.costs = echarts.init(document.getElementById('chart-costs'));
+    charts.costs.setOption({...base,
+      grid: {...base.grid, top: 20, bottom: 40 },
+      xAxis: { type: 'category', data: costs.map(function(d){ return d.date }), axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 11 } },
+      yAxis: { type: 'value', axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v){ return '$' + v } } },
+      series: [{
+        type: 'bar',
+        data: costs.map(function(d, i){
+          return {
+            value: d.cost_per_mio_tokens,
+            itemStyle: {
+              color: i === 0 ? c.danger : i === costs.length - 1 ? c.accent : c.warning + (i === 1 ? 'CC' : i === 2 ? '99' : '66'),
+              borderRadius: [4, 4, 0, 0]
+            },
+            label: {
+              show: true, position: 'top',
+              formatter: d.label,
+              color: i === 0 ? c.danger : i === costs.length - 1 ? c.accent : c.textTert,
+              fontSize: 12, fontWeight: (i === 0 || i === costs.length - 1) ? 600 : 400, fontFamily: 'JetBrains Mono'
+            }
+          }
+        }),
+        barWidth: 40
+      }]
+    });
+
+    // === CHART 4: Time to 100M Users — Horizontal bar ===
+    var adopt = D.adoption.time_to_100m;
+    charts.adoption = echarts.init(document.getElementById('chart-adoption'));
+    charts.adoption.setOption({...base,
+      grid: { left: 110, right: 60, top: 10, bottom: 30 },
+      xAxis: { type: 'value', max: 80, axisLine: { show: false }, splitLine: { lineStyle: { color: c.grid, type: 'dashed' } }, axisLabel: { color: c.textTert, formatter: function(v){ return v + ' J.' } } },
+      yAxis: { type: 'category', data: adopt.map(function(d){ return d.technology }), inverse: true, axisLine: { lineStyle: { color: c.grid } }, axisLabel: { color: c.textSec, fontSize: 12 } },
+      series: [{
+        type: 'bar',
+        data: adopt.map(function(d, i){
+          var isLast = i === adopt.length - 1;
+          var isTikTok = d.technology === 'TikTok';
+          return {
+            value: d.years,
+            itemStyle: {
+              color: isLast ? c.danger : isTikTok ? c.warning : c.accent + (i < 4 ? '44' : '88'),
+              borderRadius: [0, 4, 4, 0]
+            },
+            label: {
+              show: true, position: 'right',
+              formatter: d.label,
+              color: isLast ? c.danger : c.textTert,
+              fontSize: 11, fontWeight: isLast ? 700 : 400, fontFamily: 'JetBrains Mono'
+            }
+          }
+        }),
+        barWidth: 18
+      }]
+    });
+
+    // Resize handler
+    window.addEventListener('resize', function(){ Object.values(charts).forEach(function(ch){ try { ch.resize() } catch(e) {} }) });
+  });
+}
+
+(function(){
+  var url = new URLSearchParams(window.location.search).get('theme');
+  var saved = url || localStorage.getItem('tk-theme');
+  if (saved) { document.documentElement.dataset.theme = saved; localStorage.setItem('tk-theme', saved) }
+  var b = document.querySelector('.toggle-btn');
+  if (b) b.textContent = document.documentElement.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+})();
+function toggleTheme() {
+  var h = document.documentElement, b = document.querySelector('.toggle-btn');
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('tk-theme', h.dataset.theme);
+  b.textContent = h.dataset.theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  initCharts();
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+</script>
+<!-- Cookie Consent Banner -->
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+  <div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">
+      Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. Keine Werbung, keine Weitergabe.
+      <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a>
+    </p>
+    <div style="display:flex;gap:0.5rem;flex-shrink:0">
+      <button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+      <button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA();}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none';}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>

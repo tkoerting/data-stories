@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "title": "Erst die Hände, dann die Köpfe.",
+    "version": "1.0",
+    "snapshot": "März 2026",
+    "author": "Thomas Körting",
+    "datenstueck_id": "erst-die-haende",
+    "datenstueck_nr": 9
+  },
+
+  "frey_osborne_2013": {
+    "source": "Frey & Osborne (2013/2017), The Future of Employment, Oxford Martin Programme",
+    "label": "Top 10 Berufe mit höchstem Automatisierungsrisiko (2013)",
+    "total_jobs_analyzed": 702,
+    "high_risk_pct": 47,
+    "top10_high_risk": [
+      { "job": "Telemarketer", "probability": 0.99 },
+      { "job": "Versicherungsprüfer", "probability": 0.99 },
+      { "job": "Handnäher", "probability": 0.99 },
+      { "job": "Math.-techn. Assistenten", "probability": 0.99 },
+      { "job": "Uhrmacher", "probability": 0.99 },
+      { "job": "Steuerberater", "probability": 0.99 },
+      { "job": "Fotoentwickler", "probability": 0.99 },
+      { "job": "Buchhaltungskräfte", "probability": 0.99 },
+      { "job": "Bibliothekstechniker", "probability": 0.99 },
+      { "job": "Dateneingabe-Kräfte", "probability": 0.98 }
+    ],
+    "top10_low_risk": [
+      { "job": "Freizeittherapeuten", "probability": 0.003 },
+      { "job": "Sozialarbeiter", "probability": 0.003 },
+      { "job": "Ergotherapeuten", "probability": 0.004 },
+      { "job": "Chirurgen", "probability": 0.004 },
+      { "job": "Psychologen", "probability": 0.004 }
+    ]
+  },
+
+  "umkehrung": {
+    "source_2013": "Frey & Osborne (2013)",
+    "source_2024": "Felten/Raj/Seamans AIOE + OpenAI/UPenn GPT-Studie (2023), Brookings (2019)",
+    "label": "Die große Umkehrung: Wer 2013 sicher war, ist 2024 exponiert",
+    "exposition_2013": [
+      { "category": "Dateneingabe/Lager", "risk": "hoch", "level": 90 },
+      { "category": "Transport/Logistik", "risk": "hoch", "level": 85 },
+      { "category": "Buchhaltung/Büro", "risk": "hoch", "level": 80 },
+      { "category": "Verkauf/Kasse", "risk": "mittel", "level": 60 },
+      { "category": "Programmierer", "risk": "niedrig", "level": 25 },
+      { "category": "Journalisten", "risk": "niedrig", "level": 20 },
+      { "category": "Juristen", "risk": "niedrig", "level": 15 },
+      { "category": "Therapeuten/Pflege", "risk": "niedrig", "level": 5 }
+    ],
+    "exposition_2024": [
+      { "category": "Dateneingabe/Lager", "risk": "mittel", "level": 50 },
+      { "category": "Transport/Logistik", "risk": "mittel", "level": 40 },
+      { "category": "Buchhaltung/Büro", "risk": "hoch", "level": 85 },
+      { "category": "Verkauf/Kasse", "risk": "mittel", "level": 45 },
+      { "category": "Programmierer", "risk": "hoch", "level": 80 },
+      { "category": "Journalisten", "risk": "hoch", "level": 75 },
+      { "category": "Juristen", "risk": "hoch", "level": 70 },
+      { "category": "Therapeuten/Pflege", "risk": "niedrig", "level": 8 }
+    ],
+    "hochschul_faktor": 5,
+    "bueroarbeit_hoch_exponiert_pct": 24,
+    "bueroarbeit_source": "ILO (2023), Gmyrek/Berg/Bescond"
+  },
+
+  "laendervergleich": {
+    "source": "IMF (2024) / OECD Employment Outlook 2023 / Goldman Sachs (2023)",
+    "label": "KI-Exposition nach Land/Region",
+    "data": [
+      { "name": "Singapur", "exposed_pct": 60, "readiness": "Sehr hoch", "readiness_rank": 1 },
+      { "name": "USA", "exposed_pct": 60, "readiness": "Sehr hoch", "readiness_rank": 2 },
+      { "name": "Dänemark", "exposed_pct": 60, "readiness": "Sehr hoch", "readiness_rank": 3 },
+      { "name": "UK", "exposed_pct": 58, "readiness": "Hoch", "readiness_rank": 7 },
+      { "name": "Deutschland", "exposed_pct": 55, "readiness": "Mittel-hoch", "readiness_rank": 12 },
+      { "name": "Japan", "exposed_pct": 55, "readiness": "Mittel-hoch", "readiness_rank": 15 },
+      { "name": "Frankreich", "exposed_pct": 55, "readiness": "Mittel", "readiness_rank": 18 },
+      { "name": "China", "exposed_pct": 40, "readiness": "Steigend", "readiness_rank": 25 },
+      { "name": "Indien", "exposed_pct": 30, "readiness": "Niedrig", "readiness_rank": 45 },
+      { "name": "Sub-Sahara Afrika", "exposed_pct": 26, "readiness": "Niedrig", "readiness_rank": 60 }
+    ],
+    "imf_global_avg": 40,
+    "imf_advanced": 60,
+    "imf_emerging": 40,
+    "imf_low_income": 26
+  },
+
+  "deutschland_iab": {
+    "source": "IAB / Dengler & Matthes (2024), IAB-Kurzbericht 9/2024",
+    "label": "Substituierbarkeitspotenziale nach Anforderungsniveau",
+    "zeitreihe": {
+      "years": [2013, 2016, 2019, 2022],
+      "helfer":      [45, 52, 56, 58],
+      "fachkraft":   [28, 35, 41, 47],
+      "spezialist":  [22, 28, 33, 44],
+      "experte":     [15, 20, 25, 37]
+    },
+    "berufsfelder_2022": [
+      { "field": "Unternehmensführung", "pct": 65 },
+      { "field": "Informatik/IT", "pct": 63 },
+      { "field": "Recht/Verwaltung", "pct": 58 },
+      { "field": "Finanzdienstleistung", "pct": 57 },
+      { "field": "Mediengestaltung", "pct": 55 },
+      { "field": "Lebensmittel/Kochen", "pct": 22 },
+      { "field": "Reinigung", "pct": 20 },
+      { "field": "Medizin/Gesundheit", "pct": 18 },
+      { "field": "Sozialarbeit/Erziehung", "pct": 15 }
+    ]
+  },
+
+  "alter_paradox": {
+    "source": "IMF (2024), Brookings/Felten, OECD (2023), diverse Surveys 2024–2025, NBER/Brynjolfsson (2023)",
+    "label": "KI-Nutzung vs. KI-Exposition nach Altersgruppe",
+    "data": [
+      { "group": "Gen Z (18–26)", "ki_nutzung_pct": 70, "ki_exposition_pct": 35 },
+      { "group": "Millennials (27–42)", "ki_nutzung_pct": 55, "ki_exposition_pct": 55 },
+      { "group": "Gen X (43–58)", "ki_nutzung_pct": 35, "ki_exposition_pct": 60 },
+      { "group": "Boomer (59–77)", "ki_nutzung_pct": 18, "ki_exposition_pct": 40 }
+    ],
+    "nber_anfaenger_boost_pct": 34,
+    "nber_source": "Brynjolfsson, Li & Raymond (2023), NBER Working Paper 31161"
+  },
+
+  "realitaet": {
+    "source": "Korinek & Suh (2024), NBER; US BLS; WEF Future of Jobs Report 2025",
+    "label": "Vorhersage vs. Realität",
+    "genai_nutzung_pct": 40,
+    "genai_weekly_work_pct": 23,
+    "zeitersparnis_pct": 1.4,
+    "massenentlassungen": false,
+    "us_unemployment_range": "3,7–4,2%",
+    "wef_new_jobs_mio": 170,
+    "wef_lost_jobs_mio": 92,
+    "wef_net_jobs_mio": 78,
+    "goldman_sachs_automatable_pct": {
+      "verwaltung_buero": 46,
+      "recht": 44,
+      "architektur_ingenieur": 37,
+      "management_finanzen": 35,
+      "it_mathematik": 29,
+      "bildung": 27,
+      "gesundheit": 15,
+      "bau": 6,
+      "handwerk": 4
+    },
+    "konkrete_signale": [
+      { "name": "Chegg (EdTech)", "detail": "Aktie –99% seit ChatGPT" },
+      { "name": "Stack Overflow", "detail": "Traffic –50%, Entlassungen" },
+      { "name": "Upwork/Fiverr", "detail": "Preise Schreib-/Grafikjobs –20–40%" },
+      { "name": "Tech-Layoffs 2023–24", "detail": ">400.000 Stellen abgebaut" }
+    ]
+  }
+}

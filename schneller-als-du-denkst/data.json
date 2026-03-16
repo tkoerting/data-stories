@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Schneller als du denkst.",
+    "version": "1.0",
+    "snapshot": "März 2026",
+    "author": "Thomas Körting",
+    "blog_post": "https://der-koerting.de/ki-homogenisiert-denken/"
+  },
+
+  "milestones": {
+    "source": "Stanford HAI AI Index 2025 / Epoch AI",
+    "label": "Zeit zwischen KI-Meilensteinen",
+    "data": [
+      { "from": "Deep Blue", "to": "Watson Jeopardy", "from_year": 1997, "to_year": 2011, "years": 14 },
+      { "from": "Watson", "to": "AlphaGo", "from_year": 2011, "to_year": 2016, "years": 5 },
+      { "from": "AlphaGo", "to": "GPT-3", "from_year": 2016, "to_year": 2020, "years": 4 },
+      { "from": "GPT-3", "to": "ChatGPT", "from_year": 2020, "to_year": 2022, "years": 2 },
+      { "from": "ChatGPT", "to": "GPT-4", "from_year": 2022, "to_year": 2023, "years": 0.4 }
+    ],
+    "note": "Die Abstände schrumpfen: 14 → 5 → 4 → 2 → Monate"
+  },
+
+  "training_compute": {
+    "source": "Epoch AI Trends / Epoch AI Compute Trend Post-2010",
+    "label": "Training Compute für Frontier-Modelle (FLOP)",
+    "growth_per_year": "4-5x",
+    "doubling_time_months": 6,
+    "data": [
+      { "model": "AlexNet", "year": 2012, "flop_log10": 18 },
+      { "model": "AlphaGo Zero", "year": 2017, "flop_log10": 23 },
+      { "model": "GPT-3", "year": 2020, "flop_log10": 23.5 },
+      { "model": "GPT-4", "year": 2023, "flop_log10": 25 },
+      { "model": "Gemini Ultra", "year": 2024, "flop_log10": 25.7 },
+      { "model": "Grok 4", "year": 2025, "flop_log10": 26.7 }
+    ],
+    "models_above_1e25": 33,
+    "developers_above_1e25": 12
+  },
+
+  "cost_collapse": {
+    "source": "Stanford HAI AI Index 2025",
+    "label": "Kostenverfall für GPT-3.5-äquivalente MMLU-Performance",
+    "data": [
+      { "date": "Nov 2022", "cost_per_mio_tokens": 20.00, "label": "$20,00" },
+      { "date": "Feb 2023", "cost_per_mio_tokens": 10.00, "label": "$10,00" },
+      { "date": "Jun 2023", "cost_per_mio_tokens": 2.00, "label": "$2,00" },
+      { "date": "Mär 2024", "cost_per_mio_tokens": 0.50, "label": "$0,50" },
+      { "date": "Okt 2024", "cost_per_mio_tokens": 0.07, "label": "$0,07" }
+    ],
+    "reduction_factor": 285,
+    "model_size_reduction": {
+      "note": "Phi-3-mini (3,8B) erreicht 2024 die MMLU-Performance, die 2022 noch PaLM (540B) brauchte",
+      "factor": 142,
+      "old_model": "PaLM 540B",
+      "new_model": "Phi-3-mini 3,8B"
+    }
+  },
+
+  "adoption": {
+    "source": "Visual Capitalist / Epoch AI / McKinsey State of AI 2025",
+    "label": "Zeit bis 100 Millionen Nutzer",
+    "time_to_100m": [
+      { "technology": "Telefon", "years": 75, "label": "75 Jahre" },
+      { "technology": "Radio", "years": 38, "label": "38 Jahre" },
+      { "technology": "Fernsehen", "years": 13, "label": "13 Jahre" },
+      { "technology": "Mobiltelefon", "years": 12, "label": "12 Jahre" },
+      { "technology": "Internet", "years": 7, "label": "7 Jahre" },
+      { "technology": "Instagram", "years": 2.5, "label": "2,5 Jahre" },
+      { "technology": "TikTok", "years": 0.75, "label": "9 Monate" },
+      { "technology": "ChatGPT", "years": 0.17, "label": "2 Monate" }
+    ],
+    "chatgpt_weekly_users": 700000000,
+    "enterprise_adoption": {
+      "2023": 50,
+      "early_2024": 72,
+      "late_2024": 78
+    },
+    "genai_adoption_doubled": "10 Monate (2023→2024)",
+    "cant_scale_beyond_pilots_pct": 74,
+    "vc_share_ai_2025_pct": 61,
+    "corporate_ai_investment_2024_brd": 252.3
+  },
+
+  "benchmark_saturation": {
+    "source": "Stanford HAI AI Index 2025",
+    "label": "Benchmark-Sättigung und Modell-Konvergenz",
+    "mmlu": {
+      "2022_palm": 60,
+      "2023_gpt4": 86.4,
+      "2024_gpt4o": 88.7,
+      "2024_gemini_ultra": 90.0
+    },
+    "humaneval": {
+      "2021_codex": 28.8,
+      "2024_gpt4o": 90.2
+    },
+    "model_gap": {
+      "2023_top1_top2_pct": 4.9,
+      "2024_top1_top2_pct": 0.7,
+      "note": "Abstand zwischen #1 und #2 Modell schrumpft"
+    },
+    "new_benchmarks": ["MMLU-Pro", "GPQA", "HLE", "MMMU"],
+    "imagenet_solved": 2017
+  },
+
+  "investment": {
+    "source": "OECD VC Report / Stanford HAI Economy / CNBC",
+    "label": "Private KI-Investitionen global",
+    "total_corporate_ai_2024_brd": 252.3,
+    "genai_investment": [
+      { "year": 2022, "value_brd": 2.8 },
+      { "year": 2023, "value_brd": 15.3 },
+      { "year": 2024, "value_brd": 33.9 }
+    ],
+    "vc_ai_share_2025_pct": 61,
+    "big_tech_capex": [
+      { "year": 2023, "value_brd": 150 },
+      { "year": 2024, "value_brd": 246 }
+    ]
+  },
+
+  "research": {
+    "source": "Stanford HAI R&D / Our World in Data / PatentPC",
+    "papers": {
+      "2013": 102000,
+      "2023": 242000,
+      "growth": "2,4x in 10 Jahren",
+      "ai_share_cs_2013_pct": 21.6,
+      "ai_share_cs_2023_pct": 41.8
+    },
+    "patents": {
+      "2010": 3833,
+      "2023": 122511,
+      "growth_factor": 32,
+      "yoy_2023_pct": 29.6
+    }
+  }
+}

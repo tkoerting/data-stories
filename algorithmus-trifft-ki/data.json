@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "title": "Algorithmus trifft KI.",
+    "version": "1.0",
+    "snapshot": "März 2026",
+    "author": "Thomas Körting"
+  },
+
+  "wissensluecke": {
+    "source": "Bertelsmann Stiftung — Was Deutschland über Algorithmen und KI weiß (2022)",
+    "label": "Algorithmus-Wissen in Deutschland",
+    "headline": {
+      "kennen_pct": 81,
+      "verstehen_pct": 10,
+      "nichts_einfaellt_pct": 45
+    },
+    "by_education": [
+      { "group": "Akademiker", "kennen_pct": 97 },
+      { "group": "Abitur", "kennen_pct": 89 },
+      { "group": "Mittlere Reife", "kennen_pct": 68 },
+      { "group": "Haupt-/Realschule", "kennen_pct": 54 }
+    ],
+    "perception": {
+      "algo_einfluss_stark_pct": 29,
+      "ki_einfluss_stark_pct": 14,
+      "chancen_risiken_unsicher_pct": 40
+    }
+  },
+
+  "spektrum": {
+    "source": "EU AI Act Artikel 3 / Coursera / CMSWire",
+    "label": "Das Spektrum: Vom Algorithmus zur KI",
+    "items": [
+      { "name": "Taschenrechner", "type": "algorithmus", "complexity": 1, "description": "Feste Rechenregeln, kein Lernen" },
+      { "name": "Sortierung", "type": "algorithmus", "complexity": 2, "description": "Quicksort, Mergesort — deterministische Verfahren" },
+      { "name": "Spamfilter (Regeln)", "type": "algorithmus", "complexity": 3, "description": "If Betreff enthält 'Viagra' → Spam" },
+      { "name": "Empfehlung (Beliebtheit)", "type": "grauzone", "complexity": 4, "description": "Sortierung nach Score — noch kein Lernen" },
+      { "name": "Spamfilter (ML)", "type": "ki", "complexity": 5, "description": "Lernt aus Millionen E-Mails" },
+      { "name": "Machine Learning", "type": "ki", "complexity": 6, "description": "Mustererkennung, Klassifikation" },
+      { "name": "Deep Learning", "type": "ki", "complexity": 7, "description": "Neuronale Netze, Bilderkennung" },
+      { "name": "LLM (ChatGPT)", "type": "ki", "complexity": 8, "description": "Sprachverarbeitung, Textgenerierung" },
+      { "name": "Agent", "type": "ki", "complexity": 9, "description": "Handelt selbstständig, plant mehrstufig" }
+    ],
+    "eu_ai_act_key_word": "infers",
+    "eu_ai_act_definition": "AI system means a machine-based system that [...] infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions."
+  },
+
+  "umtaufe": {
+    "source": "Bertelsmann Stiftung Diskursanalyse 2021 / Unite.AI / Stratoflow",
+    "label": "Die Umtaufe: Von 'Algorithmus' zu 'KI'",
+    "media_mentions": {
+      "source": "Bertelsmann Mediendiskurs-Analyse (2005–2020)",
+      "data": [
+        { "year": 2005, "mentions_per_month": 3 },
+        { "year": 2008, "mentions_per_month": 8 },
+        { "year": 2010, "mentions_per_month": 17 },
+        { "year": 2012, "mentions_per_month": 32 },
+        { "year": 2014, "mentions_per_month": 58 },
+        { "year": 2016, "mentions_per_month": 112 },
+        { "year": 2018, "mentions_per_month": 287 },
+        { "year": 2020, "mentions_per_month": 498 }
+      ]
+    },
+    "media_bias": {
+      "positiv_pct": 42,
+      "negativ_pct": 12,
+      "wirtschaft_akteure_pct": 37,
+      "politik_akteure_pct": 7,
+      "zivilgesellschaft_akteure_pct": 4
+    },
+    "ai_washing": {
+      "unternehmen_geruegt_2024": 15,
+      "verdoppelt_seit": 2023,
+      "source": "Unite.AI 2024"
+    },
+    "timeline": [
+      { "year": 2006, "event": "Netflix Prize: '$1 Mio für bessere Empfehlungsalgorithmen'", "label_then": "Algorithmus" },
+      { "year": 2008, "event": "Spotify: Collaborative Filtering", "label_then": "Algorithmus" },
+      { "year": 2012, "event": "AlexNet: Deep Learning Durchbruch", "label_then": "Machine Learning" },
+      { "year": 2016, "event": "AlphaGo schlägt Lee Sedol", "label_then": "Deep Learning" },
+      { "year": 2022, "event": "ChatGPT Launch — Wendepunkt", "label_then": "KI" },
+      { "year": 2024, "event": "Netflix-Empfehlung heißt jetzt 'AI-Driven'", "label_then": "KI" }
+    ]
+  },
+
+  "ki_effekt": {
+    "source": "Quote Investigator / Larry Tesler / Pamela McCorduck / AI Myths",
+    "label": "Der KI-Effekt",
+    "tesler_quote": "Intelligence is whatever machines haven't done yet.",
+    "tesler_year": "ca. 1970",
+    "mccorduck_quote": "Every time somebody figured out how to make a computer do something... there was a chorus of critics to say, but that's not thinking.",
+    "mccorduck_year": 1979,
+    "fortune_quote": "If it works, it isn't AI.",
+    "fortune_year": 1982,
+    "examples": [
+      { "technology": "Schach", "year": 1997, "reaction": "Nur Brute Force!", "was_called": "KI", "now_called": "Algorithmus", "icon": "♟️" },
+      { "technology": "OCR", "year": 2000, "reaction": "Mustererkennung", "was_called": "KI", "now_called": "Feature", "icon": "📄" },
+      { "technology": "Spamfilter", "year": 2005, "reaction": "Simple Regeln", "was_called": "KI", "now_called": "Feature", "icon": "📧" },
+      { "technology": "Navi/GPS", "year": 2010, "reaction": "Routenplanung", "was_called": "Software", "now_called": "Feature", "icon": "🗺️" },
+      { "technology": "Siri", "year": 2011, "reaction": "Nettes Spielzeug", "was_called": "KI", "now_called": "Assistent", "icon": "🎤" },
+      { "technology": "ChatGPT", "year": 2022, "reaction": "KI!", "was_called": "KI", "now_called": "KI?", "icon": "💬" }
+    ]
+  },
+
+  "antwort": {
+    "source": "Coursera / CMSWire / Audeering / EU AI Act",
+    "label": "Die einfache Antwort",
+    "comparison": {
+      "algorithmus": {
+        "regeln": "Vom Menschen vorgegeben",
+        "anpassung": "Keine (deterministisch)",
+        "neue_situationen": "Nur wenn vorgesehen",
+        "transparenz": "Nachvollziehbar",
+        "beispiel": "Taschenrechner, Sortierung, if/else-Regeln"
+      },
+      "ki": {
+        "regeln": "Aus Daten gelernt",
+        "anpassung": "Ja (adaptiv)",
+        "neue_situationen": "Kann generalisieren",
+        "transparenz": "Oft Black Box",
+        "beispiel": "ChatGPT, Bilderkennung, AlphaGo"
+      },
+      "ml": {
+        "regeln": "Algorithmen trainieren Modelle",
+        "anpassung": "Lernt aus Daten",
+        "neue_situationen": "Generalisiert auf neue Daten",
+        "transparenz": "Teilweise erklärbar",
+        "beispiel": "Spamfilter (ML), Empfehlungssysteme, Spracherkennung"
+      }
+    }
+  },
+
+  "global_perception": {
+    "source": "Stanford HAI AI Index 2025 / Pew Research 2025",
+    "stanford": {
+      "verstehen_ki_pct": 67,
+      "nuetzlich_pct": 55,
+      "datenschutz_vertrauen_pct": 47,
+      "china_positiv_pct": 83,
+      "usa_positiv_pct": 39
+    },
+    "pew": {
+      "experten_nutzen_pct": 76,
+      "bevoelkerung_nutzen_pct": 24,
+      "bevoelkerung_schaden_pct": 43,
+      "misstrauen_unternehmen_regierung_pct": 77
+    }
+  }
+}
