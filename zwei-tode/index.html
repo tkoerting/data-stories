@@ -387,8 +387,8 @@ charts.age.setOption({...base,grid:{left:60,right:30,top:30,bottom:40},legend:{d
 xAxis:{type:'category',data:age.map(function(d){return d.group}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec}},
 yAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
 series:[
-{name:'Habermas',type:'bar',data:age.map(function(d){return{value:d.habermas_pct,itemStyle:{color:c.accent}}}),barWidth:24,label:{show:true,position:'top',formatter:function(p){return p.value+'%'},color:c.accent,fontSize:10,fontFamily:'JetBrains Mono'}},
-{name:'Chuck Norris',type:'bar',data:age.map(function(d){return{value:d.norris_pct,itemStyle:{color:c.danger}}}),barWidth:24,label:{show:true,position:'top',formatter:function(p){return p.value+'%'},color:c.danger,fontSize:10,fontFamily:'JetBrains Mono'}}
+{name:'Habermas',type:'bar',color:c.accent,data:age.map(function(d){return{value:d.habermas_pct}}),barWidth:24,label:{show:true,position:'top',formatter:function(p){return p.value+'%'},color:c.accent,fontSize:10,fontFamily:'JetBrains Mono'}},
+{name:'Chuck Norris',type:'bar',color:c.danger,data:age.map(function(d){return{value:d.norris_pct}}),barWidth:24,label:{show:true,position:'top',formatter:function(p){return p.value+'%'},color:c.danger,fontSize:10,fontFamily:'JetBrains Mono'}}
 ]});
 
 // EDUCATION AWARENESS
@@ -398,8 +398,8 @@ charts.education.setOption({...base,grid:{left:90,right:40,top:10,bottom:30},
 xAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
 yAxis:{type:'category',data:edu.map(function(d){return d.group}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
 series:[
-{name:'Habermas',type:'bar',stack:'stack',data:edu.map(function(d){return{value:d.habermas_pct,itemStyle:{color:c.accent}}}),barWidth:18,label:{show:true,position:'insideRight',formatter:function(p){return p.value+'%'},color:'#fff',fontSize:10,fontFamily:'JetBrains Mono'}},
-{name:'Chuck Norris',type:'bar',stack:'stack2',data:edu.map(function(d){return{value:d.norris_pct,itemStyle:{color:c.danger}}}),barWidth:18,label:{show:true,position:'insideRight',formatter:function(p){return p.value+'%'},color:'#fff',fontSize:10,fontFamily:'JetBrains Mono'}}
+{name:'Habermas',type:'bar',color:c.accent,stack:'stack',data:edu.map(function(d){return{value:d.habermas_pct}}),barWidth:18,label:{show:true,position:'insideRight',formatter:function(p){return p.value+'%'},color:'#fff',fontSize:10,fontFamily:'JetBrains Mono'}},
+{name:'Chuck Norris',type:'bar',color:c.danger,stack:'stack2',data:edu.map(function(d){return{value:d.norris_pct}}),barWidth:18,label:{show:true,position:'insideRight',formatter:function(p){return p.value+'%'},color:'#fff',fontSize:10,fontFamily:'JetBrains Mono'}}
 ]});
 
 // RADAR
