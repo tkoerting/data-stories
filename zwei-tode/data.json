@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "title": "Zwei Tode, eine Woche.",
+    "subtitle": "Habermas vs. Chuck Norris — in Daten.",
+    "number": 11,
+    "date": "März 2026",
+    "author": "Thomas Körting"
+  },
+  "bio": {
+    "habermas": {
+      "name": "Jürgen Habermas",
+      "born": "1929-06-18",
+      "died": "2026-03-14",
+      "age": 96,
+      "place_born": "Düsseldorf",
+      "place_died": "Starnberg",
+      "profession": "Philosoph & Soziologe",
+      "active_years": 72
+    },
+    "norris": {
+      "name": "Chuck Norris",
+      "born": "1940-03-10",
+      "died": "2026-03-19",
+      "age": 86,
+      "place_born": "Ryan, Oklahoma",
+      "place_died": "Hawaii",
+      "profession": "Kampfkünstler & Schauspieler",
+      "active_years": 44
+    }
+  },
+  "output": {
+    "habermas": {
+      "books": 40,
+      "essays": 1500,
+      "languages": 40,
+      "citations": 200000,
+      "h_index": 38,
+      "most_cited_rank": 7,
+      "universities_teaching": 5000
+    },
+    "norris": {
+      "films": 44,
+      "tv_episodes": 203,
+      "books": 6,
+      "box_office_mio_usd": 350,
+      "peak_viewers_mio": 14.4,
+      "memes": 12000,
+      "meme_years": 21
+    }
+  },
+  "walker_ratings": [
+    {"season": 2, "year": "1993-94", "rating": 11.7, "rank": 41},
+    {"season": 3, "year": "1994-95", "rating": 11.2, "rank": 41},
+    {"season": 4, "year": "1995-96", "rating": 12.3, "rank": 18},
+    {"season": 5, "year": "1996-97", "rating": 11.0, "rank": 24},
+    {"season": 6, "year": "1997-98", "viewers_mio": 14.4, "rank": 21},
+    {"season": 7, "year": "1998-99", "viewers_mio": 14.4, "rank": 15},
+    {"season": 8, "year": "1999-00", "viewers_mio": 12.2, "rank": 34},
+    {"season": 9, "year": "2000-01", "viewers_mio": 10.3, "rank": 62}
+  ],
+  "timeline": {
+    "habermas": [
+      {"year": 1962, "event": "Strukturwandel der Öffentlichkeit", "type": "book"},
+      {"year": 1968, "event": "Erkenntnis und Interesse", "type": "book"},
+      {"year": 1981, "event": "Theorie des kommunikativen Handelns", "type": "masterwork"},
+      {"year": 1986, "event": "Historikerstreit", "type": "public"},
+      {"year": 1989, "event": "Wiedervereinigung — Stellungnahmen", "type": "public"},
+      {"year": 2001, "event": "Fundamentalism and Terror (nach 9/11)", "type": "public"},
+      {"year": 2004, "event": "Ratzinger-Habermas-Debatte", "type": "event"},
+      {"year": 2021, "event": "Auch eine Geschichte der Philosophie (1.700 S., mit 92!)", "type": "book"},
+      {"year": 2026, "event": "† 14. März, Starnberg", "type": "death"}
+    ],
+    "norris": [
+      {"year": 1968, "event": "Erster Film (The Wrecking Crew)", "type": "film"},
+      {"year": 1972, "event": "Way of the Dragon (mit Bruce Lee)", "type": "film"},
+      {"year": 1984, "event": "Missing in Action", "type": "film"},
+      {"year": 1986, "event": "Delta Force", "type": "film"},
+      {"year": 1993, "event": "Walker, Texas Ranger (Staffel 1)", "type": "tv"},
+      {"year": 2001, "event": "Walker, Texas Ranger endet", "type": "tv"},
+      {"year": 2005, "event": "Chuck Norris Facts explodieren", "type": "meme"},
+      {"year": 2012, "event": "The Expendables 2 (letzter Film)", "type": "film"},
+      {"year": 2026, "event": "† 19. März, Hawaii", "type": "death"}
+    ]
+  },
+  "awareness": {
+    "by_age": [
+      {"group": "18–25", "habermas_pct": 10, "norris_pct": 70},
+      {"group": "26–40", "habermas_pct": 20, "norris_pct": 85},
+      {"group": "41–55", "habermas_pct": 35, "norris_pct": 90},
+      {"group": "56–70", "habermas_pct": 50, "norris_pct": 75},
+      {"group": "70+", "habermas_pct": 40, "norris_pct": 50}
+    ],
+    "by_education": [
+      {"group": "Hauptschule", "habermas_pct": 5, "norris_pct": 80},
+      {"group": "Realschule", "habermas_pct": 10, "norris_pct": 85},
+      {"group": "Abitur", "habermas_pct": 30, "norris_pct": 85},
+      {"group": "Hochschule", "habermas_pct": 60, "norris_pct": 80},
+      {"group": "Promotion", "habermas_pct": 90, "norris_pct": 75}
+    ]
+  },
+  "conflict_resolution": {
+    "diskurs": {
+      "label": "Herrschaftsfreier Diskurs",
+      "effectiveness": 60,
+      "sustainability": 95,
+      "collateral_damage": 10,
+      "time_required": 15,
+      "universality": 70
+    },
+    "roundhouse": {
+      "label": "Roundhouse-Kick",
+      "effectiveness": 95,
+      "sustainability": 20,
+      "collateral_damage": 90,
+      "time_required": 98,
+      "universality": 85
+    }
+  },
+  "sustainability": {
+    "years": [2026, 2036, 2046, 2056, 2066, 2076],
+    "habermas_relevance": [80, 75, 80, 85, 88, 90],
+    "norris_relevance": [90, 70, 50, 35, 25, 20]
+  },
+  "commonalities": [
+    "Beide deutsch-amerikanisch beeinflusst",
+    "Beide in den 2020ern noch aktiv/relevant",
+    "Beide in derselben Woche gestorben (5 Tage Abstand)",
+    "Beide haben das Internet geprägt (Öffentlichkeitstheorie vs. Meme-Kultur)",
+    "Beide sind in ihrer Domäne 'der Beste'",
+    "Beide haben Bücher geschrieben, die weniger bekannt sind als ihr Hauptwerk"
+  ]
+}

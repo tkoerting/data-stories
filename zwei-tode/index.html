@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zwei Tode, eine Woche. — Datenstück | Der Körting</title>
+<meta name="description" content="Habermas und Chuck Norris sind in derselben Woche gestorben. 40 Bücher vs. 44 Filme. 200.000 Zitationen vs. 12.000 Memes. Der absurdeste Vergleich in Daten.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zwei Tode, eine Woche. — Datenstück | Open Data Minded">
+<meta property="og:description" content="Habermas und Chuck Norris sind in derselben Woche gestorben. 40 Bücher vs. 44 Filme. 200.000 Zitationen vs. 12.000 Memes.">
+<meta property="og:url" content="https://opendataminded.de/zwei-tode/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/zwei-tode/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Zwei Tode, eine Woche.","description":"Habermas und Chuck Norris — in Daten.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/zwei-tode/","inLanguage":"de","datePublished":"2026-03-20","dateModified":"2026-03-20"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);position:relative;padding-bottom:4px;transition:color 0.2s}
+.header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+.header-nav a:hover{color:var(--text-primary)} .header-nav a:hover::after{width:100%}
+.header-nav a.active{color:var(--accent)} .header-nav a.active::after{width:100%}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+.nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+.nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+.kpi-card:hover{border-color:var(--accent)}
+.kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+.kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)}
+.kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+.chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+.chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+.chart{width:100%;height:300px} .chart-tall{height:380px} .chart-wide{height:420px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+.compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;transition:all var(--transition)}
+.compare-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.compare-card .compare-icon{font-size:2.5rem;margin-bottom:0.5rem}
+.compare-card .compare-name{font-family:var(--font-headline);font-size:1.1rem;margin-bottom:0.25rem}
+.compare-card .compare-detail{font-size:0.8rem;color:var(--text-secondary)}
+.compare-card .compare-number{font-family:var(--font-mono);font-size:1.8rem;font-weight:500;margin:0.5rem 0;line-height:1.2}
+.compare-card.habermas{border-left:3px solid var(--accent)}
+.compare-card.norris{border-left:3px solid var(--danger)}
+.perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+.perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+.perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+.commonality-list{list-style:none;margin:1.5rem 0}
+.commonality-list li{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem;font-size:0.9rem;display:flex;align-items:center;gap:0.75rem;transition:border-color var(--transition)}
+.commonality-list li:hover{border-color:var(--accent)}
+.commonality-list li::before{content:"⚡";font-size:1.1rem;flex-shrink:0}
+.quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+.quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+.quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+.source-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+.github-link:hover{border-color:var(--accent);color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)} .back-link:hover{color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+@media(max-width:768px){html{font-size:16px} h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr} .compare-grid{grid-template-columns:1fr} .chart{height:260px} .chart-tall{height:320px} .chart-wide{height:360px} .story-wrapper{padding:2rem 1rem 3rem} .section-nav{top:56px}}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">☀️</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">← Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #11</span>
+<span class="snapshot-tag">März 2026</span>
+<span>zum <a href="https://der-koerting.de/2026/03/22/zwei-tode-eine-woche/">Blogpost</a></span>
+</div>
+
+<h1>Zwei Tode, eine Woche.</h1>
+<div class="subtitle">Habermas vs. Chuck Norris — in Daten.</div>
+
+<p class="lead">In derselben Woche starben ein Philosoph und ein Kampfkünstler. Der eine hinterließ 200.000 Zitationen. Der andere 12.000 Memes. Dieser Vergleich ist absurd. Und genau deshalb funktioniert er.</p>
+
+<nav class="section-nav">
+<a href="#steckbrief" class="nav-pill">Steckbrief</a>
+<a href="#output" class="nav-pill">Output</a>
+<a href="#timeline" class="nav-pill">Timeline</a>
+<span class="nav-sep">|</span>
+<a href="#bekanntheit" class="nav-pill">Wer kennt wen?</a>
+<a href="#konflikt" class="nav-pill">Diskurs vs. Kick</a>
+<a href="#nachhaltigkeit" class="nav-pill">Wer bleibt?</a>
+</nav>
+
+<!-- STECKBRIEF -->
+<h2 id="steckbrief">Der Steckbrief</h2>
+<p>Frankfurt und Hawaii. 96 und 86. Fünf Tage Abstand. Mehr Unterschied geht nicht — oder doch?</p>
+
+<div class="compare-grid">
+<div class="compare-card habermas">
+<div class="compare-icon">📚</div>
+<div class="compare-name">Jürgen Habermas</div>
+<div class="compare-number" style="color:var(--accent)">96</div>
+<div class="compare-detail">† 14. März 2026, Starnberg</div>
+<div class="compare-detail">Philosoph & Soziologe</div>
+<div class="compare-detail">72 Jahre aktiv</div>
+</div>
+<div class="compare-card norris">
+<div class="compare-icon">🥋</div>
+<div class="compare-name">Chuck Norris</div>
+<div class="compare-number" style="color:var(--danger)">86</div>
+<div class="compare-detail">† 19. März 2026, Hawaii</div>
+<div class="compare-detail">Kampfkünstler & Schauspieler</div>
+<div class="compare-detail">44 Jahre aktiv (Meme: ewig)</div>
+</div>
+</div>
+
+<!-- OUTPUT -->
+<div class="perspective-break">
+<h2>40 Bücher vs. 44 Filme.</h2>
+<p>Wer hat mehr hinterlassen?</p>
+</div>
+
+<h2 id="output">Der Output</h2>
+<p>Beide waren produktiv. Aber auf so unterschiedliche Weise, dass der Vergleich fast komisch ist. Fast.</p>
+
+<div class="chart-container">
+<div class="chart-title">Output-Vergleich: Was sie hinterlassen</div>
+<div class="chart-subtitle">Bücher, Filme, Aufsätze, Episoden, Memes — alles zählt</div>
+<div id="chart-output" class="chart chart-tall"></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">200K</div><div class="kpi-label">Zitationen</div><div class="kpi-sub">Habermas (Google Scholar)</div></div>
+<div class="kpi-card"><div class="kpi-value danger">12K</div><div class="kpi-label">Memes</div><div class="kpi-sub">Chuck Norris Facts</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">5</div><div class="kpi-label">Tage Abstand</div><div class="kpi-sub">14. März → 19. März</div></div>
+</div>
+
+<div class="compare-grid">
+<div class="compare-card habermas">
+<div class="compare-number" style="color:var(--accent)">7.</div>
+<div class="compare-detail">Meistzitierter Autor der Geisteswissenschaften weltweit</div>
+<div class="compare-detail" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary)">Times Higher Education, 2007</div>
+</div>
+<div class="compare-card norris">
+<div class="compare-number" style="color:var(--danger)">#1</div>
+<div class="compare-detail">Langlebigestes Personen-Meme des Internets</div>
+<div class="compare-detail" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary)">Seit 2005 — 21 Jahre und counting</div>
+</div>
+</div>
+
+<!-- TIMELINE -->
+<h2 id="timeline">Die Timeline</h2>
+<p>Zwei Lebenslinien. Ein Zeitstrahl. Die Peaks erzählen die Geschichte.</p>
+
+<div class="chart-container">
+<div class="chart-title">Lebenslinien: Wann waren sie relevant?</div>
+<div class="chart-subtitle">Meilensteine 1962–2026</div>
+<div id="chart-timeline" class="chart chart-wide"></div>
+</div>
+
+<p class="text-small">Habermas: konstant, akademisch, mit Peaks bei großen Werken und politischen Momenten. Norris: Film-Peak in den 80ern, TV-Peak in den 90ern, und dann 2005 — der Meme-Urknall. Beide enden 2026. In derselben Woche.</p>
+
+<!-- BEKANNTHEIT -->
+<div class="perspective-break">
+<h2>Wer kennt wen?</h2>
+<p>Die Antwort hängt davon ab, wen man fragt.</p>
+</div>
+
+<h2 id="bekanntheit">Die Bekanntheit</h2>
+<p>Ein 20-Jähriger mit Hauptschulabschluss und ein 65-jähriger Professor leben in verschiedenen Welten. Beide kennen einen der beiden. Selten denselben.</p>
+
+<div class="chart-container">
+<div class="chart-title">Bekanntheit nach Altersgruppe</div>
+<div class="chart-subtitle">Schätzung basierend auf Meme-Verbreitung und akademischer Rezeption</div>
+<div id="chart-age" class="chart chart-tall"></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Bekanntheit nach Bildungsabschluss</div>
+<div class="chart-subtitle">Schätzung — die Diagonale erzählt die Story</div>
+<div id="chart-education" class="chart chart-tall"></div>
+</div>
+
+<p>Bei Promotion: 90% kennen Habermas, 75% kennen Chuck Norris. Bei Hauptschule: 5% kennen Habermas, 80% kennen Chuck Norris. Die Kurven kreuzen sich beim Abitur. Das sagt weniger über die beiden als über uns.</p>
+
+<!-- KONFLIKT -->
+<h2 id="konflikt">Diskurs vs. Roundhouse-Kick</h2>
+<p>Zwei Ansätze zur Konfliktlösung. Einer dauert länger. Der andere tut mehr weh.</p>
+
+<div class="chart-container">
+<div class="chart-title">Konfliktlösung im Vergleich</div>
+<div class="chart-subtitle">Herrschaftsfreier Diskurs vs. Roundhouse-Kick — satirisch, aber nicht falsch</div>
+<div id="chart-radar" class="chart chart-tall"></div>
+</div>
+
+<div class="quote-block">
+<p>„Diskutiert. Hört zu. Lasst das bessere Argument gewinnen."</p>
+<span class="quote-author">— Habermas (sinngemäß, sein ganzes Leben lang)</span>
+</div>
+
+<div class="quote-block" style="border-left-color:var(--danger);background:var(--danger-subtle)">
+<p>„I don't initiate violence. I retaliate."</p>
+<span class="quote-author">— Chuck Norris</span>
+</div>
+
+<!-- NACHHALTIGKEIT -->
+<div class="perspective-break">
+<h2>Wer bleibt länger?</h2>
+<p>Bücher oder Memes — was überlebt 50 Jahre?</p>
+</div>
+
+<h2 id="nachhaltigkeit">Die Nachhaltigkeitsprognose</h2>
+<p>Tote Philosophen werden mehr zitiert — das ist ein dokumentiertes Phänomen. Memes haben einen natürlichen Decay. Aber Chuck Norris Facts sind seit 21 Jahren stabil. Die Frage ist offen.</p>
+
+<div class="chart-container">
+<div class="chart-title">Prognostizierte Relevanz 2026–2076</div>
+<div class="chart-subtitle">Spekulation — aber fundierte Spekulation</div>
+<div id="chart-sustainability" class="chart chart-tall"></div>
+</div>
+
+<p class="text-small">Habermas: Steigende Relevanz, weil Diskurs-Theorie in der Social-Media-Ära wichtiger wird. Norris: Langsamer Decline, aber nie ganz weg — wie „Kilroy was here". Die Kurven kreuzen sich irgendwann um 2040.</p>
+
+<!-- GEMEINSAMKEITEN -->
+<h2>Was beide verbindet</h2>
+<p>Mehr als man denkt.</p>
+
+<ul class="commonality-list">
+<li>Beide deutsch-amerikanisch beeinflusst (Frankfurter Schule → US-Rezeption / US-Action → deutsche Fans)</li>
+<li>Beide in den 2020ern noch aktiv oder relevant</li>
+<li>Beide in derselben Woche gestorben — fünf Tage Abstand</li>
+<li>Beide haben das Internet geprägt (Öffentlichkeitstheorie vs. Meme-Kultur)</li>
+<li>Beide sind in ihrer Domäne unangefochten „der Beste"</li>
+<li>Beide haben Bücher geschrieben, die weniger bekannt sind als ihr Hauptwerk</li>
+</ul>
+
+<hr class="divider">
+
+<p class="tk-closer">Zwei Tode, eine Woche. Vernunft und Roundhouse-Kick. 200.000 Zitationen und 12.000 Memes. Beides sind Formen der Unsterblichkeit.</p>
+
+<p>Die Daten zeigen: Es gibt mehr als einen Weg, etwas zu hinterlassen. Habermas hat die Welt klüger gemacht. Chuck Norris hat sie kurz vergessen lassen, dass sie kompliziert ist. Wir brauchen beides.</p>
+
+<!-- Feedback -->
+<div class="feedback-box">
+<h3>War das hilfreich?</h3>
+<p>Oder zumindest unterhaltsam?</p>
+<div class="feedback-buttons">
+<button class="feedback-btn" data-value="mehr">Mehr davon</button>
+<button class="feedback-btn" data-value="ok">War okay</button>
+<button class="feedback-btn" data-value="absurd">Herrlich absurd</button>
+</div>
+<div class="feedback-thanks" id="feedback-thanks">Danke. Chuck Norris hätte genickt.</div>
+</div>
+
+<!-- Sources -->
+<div class="source-card">
+<h3>Quellen & Daten</h3>
+<ul>
+<li>Wikipedia — Biografien Habermas & Chuck Norris</li>
+<li>Semantic Scholar — Habermas h-Index & Zitationsmetriken</li>
+<li>Times Higher Education (2007) — Meistzitierte Autoren</li>
+<li>IMDb — Chuck Norris Filmografie</li>
+<li>Wikipedia — Walker, Texas Ranger Einschaltquoten</li>
+<li>chucknorrisfacts.net — ~12.000 Chuck Norris Facts</li>
+<li>Know Your Meme — Ursprung Chuck Norris Facts (2005)</li>
+<li>Bekanntheit nach Alter/Bildung: Schätzungen (als solche gekennzeichnet)</li>
+<li>Nachhaltigkeitsprognose: Eigene Projektion (spekulativ)</li>
+</ul>
+</div>
+
+<p><a href="https://github.com/tkoerting/data-stories" class="github-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> tkoerting/data-stories — Code, Daten, Methodik</a></p>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Alle Daten wurden nach bestem Wissen und Gewissen recherchiert und aufbereitet. Bekanntheitsdaten sind Schätzungen, die Nachhaltigkeitsprognose ist spekulativ. Wer etwas findet, das nicht stimmt: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #11 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='zwei-tode';var charts={};
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val),{mode:'no-cors'})})});
+
+function initCharts(){
+Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});
+fetch('data.json').then(function(r){return r.json()}).then(function(D){
+var isDark=document.documentElement.dataset.theme==='dark';
+var c={accent:isDark?'#14B8A6':'#0D9488',accent2:isDark?'#FACC15':'#EAB308',danger:isDark?'#EF4444':'#DC2626',warning:isDark?'#F59E0B':'#D97706',purple:isDark?'#8B5CF6':'#7C3AED',text:isDark?'#E5E7EB':'#1E293B',textSec:isDark?'#9CA3AF':'#64748B',textTert:isDark?'#6B7280':'#94A3B8',grid:isDark?'#2D3139':'#E2E5E9',bg:isDark?'#1E2028':'#FFFFFF'};
+var base={backgroundColor:'transparent',textStyle:{fontFamily:'Space Grotesk,system-ui',color:c.text},grid:{left:50,right:20,top:30,bottom:30},tooltip:{trigger:'axis',backgroundColor:c.bg,borderColor:c.grid,textStyle:{color:c.text,fontSize:12}}};
+
+// OUTPUT CHART
+charts.output=echarts.init(document.getElementById('chart-output'));
+charts.output.setOption({...base,grid:{left:120,right:40,top:10,bottom:30},
+xAxis:{type:'value',axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert}},
+yAxis:{type:'category',data:['Memes','TV-Episoden','Filme','Bücher (CN)','Aufsätze','Bücher (JH)'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+series:[{type:'bar',data:[
+{value:12000,itemStyle:{color:c.danger,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'12.000',color:c.danger,fontSize:11,fontFamily:'JetBrains Mono'}},
+{value:203,itemStyle:{color:c.danger+'99',borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'203',color:c.textTert,fontSize:11,fontFamily:'JetBrains Mono'}},
+{value:44,itemStyle:{color:c.danger+'66',borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'44',color:c.textTert,fontSize:11,fontFamily:'JetBrains Mono'}},
+{value:6,itemStyle:{color:c.danger+'44',borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'6',color:c.textTert,fontSize:11,fontFamily:'JetBrains Mono'}},
+{value:1500,itemStyle:{color:c.accent+'99',borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'1.500',color:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}},
+{value:40,itemStyle:{color:c.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'40',color:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}}
+],barWidth:20}]});
+
+// TIMELINE
+var tlH=D.timeline.habermas;var tlN=D.timeline.norris;
+charts.timeline=echarts.init(document.getElementById('chart-timeline'));
+charts.timeline.setOption({...base,grid:{left:30,right:30,top:40,bottom:40},
+tooltip:{trigger:'item',formatter:function(p){return '<b>'+p.data[2]+'</b><br>'+p.data[0]+' — '+p.data[3]}},
+xAxis:{type:'value',min:1960,max:2028,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textTert,fontSize:11},splitLine:{show:false}},
+yAxis:{type:'category',data:['Chuck Norris','Habermas'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+series:[
+{type:'scatter',symbolSize:16,data:tlH.map(function(d){return[d.year,1,d.event,d.type]}),itemStyle:{color:c.accent},label:{show:false}},
+{type:'scatter',symbolSize:16,data:tlN.map(function(d){return[d.year,0,d.event,d.type]}),itemStyle:{color:c.danger},label:{show:false}}
+]});
+
+// AGE AWARENESS
+var age=D.awareness.by_age;
+charts.age=echarts.init(document.getElementById('chart-age'));
+charts.age.setOption({...base,grid:{left:60,right:30,top:30,bottom:40},legend:{data:['Habermas','Chuck Norris'],textStyle:{color:c.textSec,fontSize:12},top:0},
+xAxis:{type:'category',data:age.map(function(d){return d.group}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec}},
+yAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+series:[
+{name:'Habermas',type:'bar',data:age.map(function(d){return{value:d.habermas_pct,itemStyle:{color:c.accent}}}),barWidth:24,label:{show:true,position:'top',formatter:function(p){return p.value+'%'},color:c.accent,fontSize:10,fontFamily:'JetBrains Mono'}},
+{name:'Chuck Norris',type:'bar',data:age.map(function(d){return{value:d.norris_pct,itemStyle:{color:c.danger}}}),barWidth:24,label:{show:true,position:'top',formatter:function(p){return p.value+'%'},color:c.danger,fontSize:10,fontFamily:'JetBrains Mono'}}
+]});
+
+// EDUCATION AWARENESS
+var edu=D.awareness.by_education;
+charts.education=echarts.init(document.getElementById('chart-education'));
+charts.education.setOption({...base,grid:{left:90,right:40,top:10,bottom:30},
+xAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+yAxis:{type:'category',data:edu.map(function(d){return d.group}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+series:[
+{name:'Habermas',type:'bar',stack:'stack',data:edu.map(function(d){return{value:d.habermas_pct,itemStyle:{color:c.accent}}}),barWidth:18,label:{show:true,position:'insideRight',formatter:function(p){return p.value+'%'},color:'#fff',fontSize:10,fontFamily:'JetBrains Mono'}},
+{name:'Chuck Norris',type:'bar',stack:'stack2',data:edu.map(function(d){return{value:d.norris_pct,itemStyle:{color:c.danger}}}),barWidth:18,label:{show:true,position:'insideRight',formatter:function(p){return p.value+'%'},color:'#fff',fontSize:10,fontFamily:'JetBrains Mono'}}
+]});
+
+// RADAR
+var cr=D.conflict_resolution;
+charts.radar=echarts.init(document.getElementById('chart-radar'));
+charts.radar.setOption({backgroundColor:'transparent',textStyle:{fontFamily:'Space Grotesk',color:c.text},
+radar:{indicator:[{name:'Effektivität',max:100},{name:'Nachhaltigkeit',max:100},{name:'Kollateralschäden\n(weniger=besser)',max:100},{name:'Geschwindigkeit',max:100},{name:'Universalität',max:100}],
+shape:'polygon',splitArea:{areaStyle:{color:['transparent']}},splitLine:{lineStyle:{color:c.grid}},axisLine:{lineStyle:{color:c.grid}},axisName:{color:c.textTert,fontSize:11}},
+series:[{type:'radar',data:[
+{value:[cr.diskurs.effectiveness,cr.diskurs.sustainability,100-cr.diskurs.collateral_damage,100-cr.diskurs.time_required,cr.diskurs.universality],name:'Diskurs',lineStyle:{color:c.accent,width:2},areaStyle:{color:c.accent+'33'},itemStyle:{color:c.accent}},
+{value:[cr.roundhouse.effectiveness,cr.roundhouse.sustainability,100-cr.roundhouse.collateral_damage,100-cr.roundhouse.time_required,cr.roundhouse.universality],name:'Roundhouse-Kick',lineStyle:{color:c.danger,width:2},areaStyle:{color:c.danger+'33'},itemStyle:{color:c.danger}}
+]}],
+legend:{data:['Diskurs','Roundhouse-Kick'],textStyle:{color:c.textSec},bottom:0}});
+
+// SUSTAINABILITY
+var sus=D.sustainability;
+charts.sustainability=echarts.init(document.getElementById('chart-sustainability'));
+charts.sustainability.setOption({...base,grid:{...base.grid,top:30,bottom:40},
+legend:{data:['Habermas','Chuck Norris'],textStyle:{color:c.textSec},top:0},
+xAxis:{type:'category',data:sus.years,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec}},
+yAxis:{type:'value',max:100,name:'Relevanz (%)',nameTextStyle:{color:c.textTert,fontSize:10},axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert}},
+series:[
+{name:'Habermas',type:'line',smooth:true,data:sus.habermas_relevance,lineStyle:{width:3,color:c.accent},itemStyle:{color:c.accent},areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:c.accent+'33'},{offset:1,color:'transparent'}])}},
+{name:'Chuck Norris',type:'line',smooth:true,data:sus.norris_relevance,lineStyle:{width:3,color:c.danger},itemStyle:{color:c.danger},areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:c.danger+'33'},{offset:1,color:'transparent'}])}}
+]});
+
+window.addEventListener('resize',function(){Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+});}
+
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'🌙':'☀️'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'🌙':'☀️';initCharts()}
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>
