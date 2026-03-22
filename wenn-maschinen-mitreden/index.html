@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wenn Maschinen mitreden. — Datenstück | Der Körting</title>
+<meta name="description" content="Von Orwell bis Pravda: Wer hat's kommen sehen? 182 Domains, 3,6 Mio. Artikel, 50% Bot-Traffic. Wie KI-Schwärme den öffentlichen Diskurs unterwandern — in Daten.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wenn Maschinen mitreden. — Datenstück | Open Data Minded">
+<meta property="og:description" content="Von Orwell bis Pravda: 182 Domains, 3,6 Mio. Artikel, 50% Bot-Traffic. Wie KI-Schwärme den Diskurs unterwandern.">
+<meta property="og:url" content="https://opendataminded.de/wenn-maschinen-mitreden/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/wenn-maschinen-mitreden/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Wenn Maschinen mitreden.","description":"Von Orwell bis Pravda — wie KI-Schwärme den öffentlichen Diskurs unterwandern.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/wenn-maschinen-mitreden/","inLanguage":"de","datePublished":"2026-03-22","dateModified":"2026-03-22"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);position:relative;padding-bottom:4px;transition:color 0.2s}
+.header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+.header-nav a:hover{color:var(--text-primary)} .header-nav a:hover::after{width:100%}
+.header-nav a.active{color:var(--accent)} .header-nav a.active::after{width:100%}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+.nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+.nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+.kpi-card:hover{border-color:var(--accent)}
+.kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+.kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)}
+.kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+.chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+.chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+.chart{width:100%;height:300px} .chart-tall{height:380px} .chart-wide{height:420px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+.compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;transition:all var(--transition)}
+.compare-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.compare-card .compare-icon{font-size:2.5rem;margin-bottom:0.5rem}
+.compare-card .compare-name{font-family:var(--font-headline);font-size:1.1rem;margin-bottom:0.25rem}
+.compare-card .compare-detail{font-size:0.8rem;color:var(--text-secondary)}
+.compare-card .compare-number{font-family:var(--font-mono);font-size:1.8rem;font-weight:500;margin:0.5rem 0;line-height:1.2}
+.compare-card.left-accent{border-left:3px solid var(--accent)}
+.compare-card.left-danger{border-left:3px solid var(--danger)}
+.perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+.perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+.perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+.quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+.quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+.quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+.source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+.github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+.github-link:hover{border-color:var(--accent);color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)} .back-link:hover{color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+/* Effect Grid / Capability Cards */
+.effect-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+.effect-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;transition:border-color var(--transition)}
+.effect-card:hover{border-color:var(--accent)}
+.effect-card .effect-icon{font-size:1.5rem;margin-bottom:0.5rem}
+.effect-card .effect-title{font-family:var(--font-headline);font-size:0.95rem;margin-bottom:0.25rem;color:var(--text-primary)}
+.effect-card .effect-desc{font-size:0.8rem;color:var(--text-secondary);line-height:1.5}
+.effect-card.full-width{grid-column:1/-1}
+/* Quiz */
+.quiz-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1rem 0;transition:border-color var(--transition)}
+.quiz-text{font-family:var(--font-headline);font-style:italic;font-size:1rem;line-height:1.5;margin-bottom:1rem;color:var(--text-primary)}
+.quiz-buttons{display:flex;gap:0.5rem}
+.quiz-btn{padding:0.4rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.82rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.quiz-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.quiz-btn.correct{border-color:var(--accent);background:var(--accent);color:#fff}
+.quiz-btn.wrong{border-color:var(--danger);background:var(--danger);color:#fff}
+.quiz-btn:disabled{opacity:0.5;cursor:default}
+.quiz-explanation{display:none;margin-top:0.75rem;padding:0.75rem;border-radius:8px;font-size:0.82rem;line-height:1.5;color:var(--text-secondary)}
+.quiz-explanation.show{display:block}
+.quiz-explanation.is-correct{background:var(--accent-subtle);border-left:3px solid var(--accent)}
+.quiz-explanation.is-wrong{background:var(--danger-subtle);border-left:3px solid var(--danger)}
+.quiz-score{background:var(--bg-card);border:2px solid var(--accent);border-radius:10px;padding:1.5rem;margin:1.5rem 0;text-align:center;display:none}
+.quiz-score .score-value{font-family:var(--font-mono);font-size:2.5rem;font-weight:500;color:var(--accent)}
+.quiz-score .score-label{font-size:0.85rem;color:var(--text-secondary);margin-top:0.25rem}
+.quiz-score .score-compare{font-size:0.8rem;color:var(--text-tertiary);margin-top:0.5rem;font-family:var(--font-mono)}
+/* Big number display */
+.big-number{text-align:center;margin:2rem 0;padding:2rem}
+.big-number .number{font-family:var(--font-mono);font-size:4rem;font-weight:700;color:var(--accent);line-height:1}
+.big-number .number.danger{color:var(--danger)}
+.big-number .label{font-size:1rem;color:var(--text-secondary);margin-top:0.5rem}
+.big-number .sublabel{font-size:0.8rem;color:var(--text-tertiary);margin-top:0.25rem;font-family:var(--font-mono)}
+/* Impact list */
+.impact-list{list-style:none;margin:1.5rem 0;counter-reset:impact}
+.impact-list li{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem;font-size:0.88rem;display:flex;align-items:center;gap:0.75rem;transition:border-color var(--transition);counter-increment:impact}
+.impact-list li:hover{border-color:var(--accent)}
+.impact-list li::before{content:counter(impact);font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);background:var(--accent-subtle);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.action-list{margin:1.5rem 0}
+.action-item{display:flex;gap:1rem;align-items:flex-start;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin-bottom:0.5rem;transition:border-color var(--transition)}
+.action-item:hover{border-color:var(--accent)}
+.action-nr{font-family:var(--font-mono);font-size:0.85rem;color:var(--accent);background:var(--accent-subtle);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:600}
+.action-body{font-size:0.9rem;line-height:1.6}
+@media(max-width:768px){html{font-size:16px} h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr} .compare-grid{grid-template-columns:1fr} .effect-grid{grid-template-columns:1fr} .chart{height:260px} .chart-tall{height:320px} .chart-wide{height:360px} .story-wrapper{padding:2rem 1rem 3rem} .section-nav{top:56px} .big-number .number{font-size:3rem}}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr} .quiz-buttons{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #12</span>
+<span class="snapshot-tag">März 2026</span>
+<span>zum <a href="https://der-koerting.de/2026/03/31/ki-schwaerme-demokratie/">Blogpost</a></span>
+</div>
+
+<h1>Wenn Maschinen mitreden.</h1>
+<div class="subtitle">Von Orwell bis Pravda — wer hat's kommen sehen?</div>
+
+<p class="lead">Science Fiction hat gewarnt. Harari hat es auf den Punkt gebracht. Und dann kam Pravda — 182 Domains, 3,6 Millionen Artikel, ein Ziel. Die Daten zeigen: Die Maschinen reden längst mit. Wir merken es nur nicht.</p>
+
+<nav class="section-nav">
+<a href="#propheten" class="nav-pill">Propheten</a>
+<a href="#realitaet" class="nav-pill">Realität</a>
+<a href="#quiz" class="nav-pill">Erkennst du's?</a>
+<span class="nav-sep">|</span>
+<a href="#kosten" class="nav-pill">Was es kostet</a>
+<a href="#vertrauen" class="nav-pill">Vertrauen</a>
+<a href="#matrix" class="nav-pill">Die Matrix</a>
+<span class="nav-sep">|</span>
+<a href="#wahlen" class="nav-pill">Wahlen</a>
+<a href="#gegenmittel" class="nav-pill">Was tun?</a>
+</nav>
+
+<!-- PROPHETEN -->
+<h2 id="propheten">Die Propheten</h2>
+<p class="lead">Science Fiction hat gewarnt. Harari hat es auf den Punkt gebracht. Und 2026 bestätigt die Wissenschaft, was Romane seit 90 Jahren erzählen.</p>
+
+<div class="chart-container">
+<div class="chart-title">Timeline der Warnungen</div>
+<div class="chart-subtitle">1932–2026 — Bücher, Filme, Serien, Sachbücher</div>
+<div id="chart-predictions" class="chart chart-wide"></div>
+</div>
+
+<p class="text-small">21 Werke, 90 Jahre. Jeder Punkt ist eine Warnung. Hover/Tap für Details. Die Farben zeigen, wie treffsicher die Vorhersage war: <span style="color:var(--danger)">●</span> sehr hoch — <span style="color:var(--accent)">●</span> hoch — <span style="color:var(--warning)">●</span> mittel — <span style="color:var(--purple)">●</span> Realität.</p>
+
+<div class="quote-block">
+<p>&bdquo;Nicht Orwell hat recht behalten, sondern Huxley. Wir werden nicht durch Unterdrückung kontrolliert, sondern durch Unterhaltung.&ldquo;</p>
+<span class="quote-author">— Neil Postman, Amusing Ourselves to Death, 1985</span>
+</div>
+
+<div class="quote-block">
+<p>&bdquo;Sie wissen alles über uns. Wir wissen nichts über sie. Sie sagen unsere Zukunft voraus — aber zum Vorteil anderer.&ldquo;</p>
+<span class="quote-author">— Shoshana Zuboff, The Age of Surveillance Capitalism, 2019</span>
+</div>
+
+<div class="quote-block">
+<p>&bdquo;Das Ziel der Positivisten im Silicon Valley ist es, die liberale Demokratie durch prädiktive Sozialtechnologie zu ersetzen — auf dem Weg in eine kybernetische Diktatur.&ldquo;</p>
+<span class="quote-author">— Richard David Precht, KI und der Sinn des Lebens, 2020</span>
+</div>
+
+<div class="quote-block">
+<p>&bdquo;AI has hacked the operating system of human civilisation.&ldquo;</p>
+<span class="quote-author">— Yuval N. Harari, The Economist, 2023</span>
+</div>
+
+<div class="quote-block">
+<p>&bdquo;For the first time in history, it is possible to create billions of fake people.&ldquo;</p>
+<span class="quote-author">— Yuval N. Harari, Nexus, 2024</span>
+</div>
+
+<div class="quote-block">
+<p>&bdquo;Things are happening much faster than expected, even by people in the field.&ldquo;</p>
+<span class="quote-author">— Yuval N. Harari, Davos, 2025</span>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">1932</div><div class="kpi-label">Huxley warnte</div><div class="kpi-sub">Brave New World</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">1985</div><div class="kpi-label">Postman sagte voraus</div><div class="kpi-sub">Unterhaltung kontrolliert</div></div>
+<div class="kpi-card"><div class="kpi-value warning">2024</div><div class="kpi-label">Harari schrieb Nexus</div><div class="kpi-sub">KI hackt Zivilisation</div></div>
+</div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value purple">21</div><div class="kpi-label">Werke haben gewarnt</div><div class="kpi-sub">Bücher, Filme, Serien</div></div>
+<div class="kpi-card"><div class="kpi-value">90</div><div class="kpi-label">Jahre Vorlauf</div><div class="kpi-sub">1932 → 2026</div></div>
+<div class="kpi-card"><div class="kpi-value danger">2026</div><div class="kpi-label">Science bestätigt</div><div class="kpi-sub">Bot-Schwärme sind real</div></div>
+</div>
+
+<!-- REALITÄT -->
+<div class="perspective-break">
+<h2>3.600.000 Artikel. Ein Netzwerk. Ein Ziel.</h2>
+<p>Das Pravda-Netzwerk ist kein Experiment. Es ist Infrastruktur.</p>
+</div>
+
+<h2 id="realitaet">Die Realität</h2>
+<p>Seit April 2022 betreibt das Pravda-Netzwerk ein koordiniertes Desinformationssystem. Die Zahlen sind keine Schätzungen — sie sind dokumentiert.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value danger">182</div><div class="kpi-label">Domains</div><div class="kpi-sub">Pravda-Netzwerk</div></div>
+<div class="kpi-card"><div class="kpi-value warning">74</div><div class="kpi-label">Länder</div><div class="kpi-sub">als Ziel</div></div>
+<div class="kpi-card"><div class="kpi-value">3,6 Mio.</div><div class="kpi-label">Artikel</div><div class="kpi-sub">allein 2024</div></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value accent2">33%</div><div class="kpi-label">KI-kontaminiert</div><div class="kpi-sub">in LLM-Trainingsdaten</div></div>
+<div class="kpi-card"><div class="kpi-value">18.000</div><div class="kpi-label">Artikel pro Narrativ</div><div class="kpi-sub">koordinierte Kampagnen</div></div>
+<div class="kpi-card"><div class="kpi-value purple">12</div><div class="kpi-label">Sprachen</div><div class="kpi-sub">gleichzeitig</div></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Bot-Anteil: Offizielle Zahlen vs. Realität</div>
+<div class="chart-subtitle">Twitter/X, unabhängige Studien, Internet gesamt</div>
+<div id="chart-bots" class="chart chart-tall"></div>
+</div>
+
+<p class="text-small">Twitter behauptet: 5% Bots. Unabhängige Studien sagen: 9–15%. Eine Carnegie-Mellon-Studie fand während COVID bis zu 64% Bot-Accounts in bestimmten Debatten. Und im gesamten Internet? 50% des Traffics ist nicht-menschlich. 37% davon sind bösartig.</p>
+
+<h2>Was KI-Schwärme können</h2>
+<p>Kein Spam. Keine plumpen Bots. Sondern adaptive, lernende Systeme.</p>
+
+<div class="effect-grid">
+<div class="effect-card">
+<div class="effect-icon">&#128279;</div>
+<div class="effect-title">Dezentrale Orchestrierung</div>
+<div class="effect-desc">Kein zentraler Server. Die Agenten organisieren sich selbst.</div>
+</div>
+<div class="effect-card">
+<div class="effect-icon">&#128101;</div>
+<div class="effect-title">Community-Infiltration</div>
+<div class="effect-desc">Beitreten, mitlesen, mitmachen. Mit Argumenten, nicht mit Spam.</div>
+</div>
+<div class="effect-card">
+<div class="effect-icon">&#128375;</div>
+<div class="effect-title">Erkennungs-Umgehung</div>
+<div class="effect-desc">Adaptives Verhalten. Lernen, was auffällt — und es vermeiden.</div>
+</div>
+<div class="effect-card">
+<div class="effect-icon">&#9889;</div>
+<div class="effect-title">Kontinuierliche Optimierung</div>
+<div class="effect-desc">Was wirkt, wird verstärkt. In Echtzeit. Unmenschlich schnell.</div>
+</div>
+<div class="effect-card full-width">
+<div class="effect-icon">&#8734;</div>
+<div class="effect-title">Persistenz</div>
+<div class="effect-desc">Nie müde. Nie gelangweilt. Unendlich geduldig.</div>
+</div>
+</div>
+
+<!-- QUIZ -->
+<div class="perspective-break">
+<h2>Mensch oder Maschine? Rate mal.</h2>
+<p>Fünf Texte. Fünf Chancen. Trau deinem Bauchgefühl.</p>
+</div>
+
+<h2 id="quiz">Erkennst du's?</h2>
+<p>Lies den Text. Entscheide: Mensch oder Maschine? Am Ende siehst du, wie gut du wirklich bist — und wie gut der Durchschnitt ist.</p>
+
+<div class="quiz-card" data-answer="KI" data-explanation="Generiert von Claude. Klingt plausibel, aber sagt nichts Konkretes.">
+<div class="quiz-num" style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-tertiary);margin-bottom:0.5rem">TEXT 1 / 5</div>
+<div class="quiz-text">&bdquo;Die Debatte um Künstliche Intelligenz zeigt, wie tief die Verunsicherung in der Gesellschaft sitzt. Wir brauchen klare Regeln, die Innovation ermöglichen und gleichzeitig Grundrechte schützen.&ldquo;</div>
+<div class="quiz-buttons">
+<button class="quiz-btn" data-choice="Mensch" onclick="quizAnswer(this)">Mensch</button>
+<button class="quiz-btn" data-choice="KI" onclick="quizAnswer(this)">Maschine</button>
+</div>
+<div class="quiz-explanation"></div>
+</div>
+
+<div class="quiz-card" data-answer="Mensch" data-explanation="Thomas Körting, Blog-Post 'Schneller als du denkst'.">
+<div class="quiz-num" style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-tertiary);margin-bottom:0.5rem">TEXT 2 / 5</div>
+<div class="quiz-text">&bdquo;Was mich nervös macht, ist nicht die KI selbst. Es ist die Geschwindigkeit. Wir regulieren in Jahrzehnten, die Technologie entwickelt sich in Monaten.&ldquo;</div>
+<div class="quiz-buttons">
+<button class="quiz-btn" data-choice="Mensch" onclick="quizAnswer(this)">Mensch</button>
+<button class="quiz-btn" data-choice="KI" onclick="quizAnswer(this)">Maschine</button>
+</div>
+<div class="quiz-explanation"></div>
+</div>
+
+<div class="quiz-card" data-answer="KI" data-explanation="Generiert von ChatGPT. Inhaltlich korrekt, aber generisch formuliert.">
+<div class="quiz-num" style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-tertiary);margin-bottom:0.5rem">TEXT 3 / 5</div>
+<div class="quiz-text">&bdquo;Algorithmen sind nicht neutral. Sie verstärken bestehende Machtverhältnisse und verkleiden sie als objektive Berechnung.&ldquo;</div>
+<div class="quiz-buttons">
+<button class="quiz-btn" data-choice="Mensch" onclick="quizAnswer(this)">Mensch</button>
+<button class="quiz-btn" data-choice="KI" onclick="quizAnswer(this)">Maschine</button>
+</div>
+<div class="quiz-explanation"></div>
+</div>
+
+<div class="quiz-card" data-answer="Mensch" data-explanation="Thomas Körting, Blog-Post 'Erst die Hände, dann die Köpfe'.">
+<div class="quiz-num" style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-tertiary);margin-bottom:0.5rem">TEXT 4 / 5</div>
+<div class="quiz-text">&bdquo;Ich streite mit meiner KI. Jeden Tag. Ich sage: Das stimmt nicht. Oder: Klingt schlau, ist aber falsch. Das ist keine Technikfeindlichkeit. Das ist Erfahrung.&ldquo;</div>
+<div class="quiz-buttons">
+<button class="quiz-btn" data-choice="Mensch" onclick="quizAnswer(this)">Mensch</button>
+<button class="quiz-btn" data-choice="KI" onclick="quizAnswer(this)">Maschine</button>
+</div>
+<div class="quiz-explanation"></div>
+</div>
+
+<div class="quiz-card" data-answer="KI" data-explanation="Generiert von Claude. Strukturiert, ausgewogen — und genau deshalb verdächtig.">
+<div class="quiz-num" style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-tertiary);margin-bottom:0.5rem">TEXT 5 / 5</div>
+<div class="quiz-text">&bdquo;Die Frage ist nicht, ob KI die Demokratie gefährdet. Die Frage ist, ob wir schnell genug handeln, um die demokratischen Institutionen zu stärken, bevor die Technologie sie untergräbt.&ldquo;</div>
+<div class="quiz-buttons">
+<button class="quiz-btn" data-choice="Mensch" onclick="quizAnswer(this)">Mensch</button>
+<button class="quiz-btn" data-choice="KI" onclick="quizAnswer(this)">Maschine</button>
+</div>
+<div class="quiz-explanation"></div>
+</div>
+
+<div class="quiz-score" id="quiz-score">
+<div class="score-value" id="score-value">0/5</div>
+<div class="score-label">richtig erkannt</div>
+<div class="score-compare" id="score-compare"></div>
+</div>
+
+<div class="chart-container" id="detection-chart-wrapper" style="display:none">
+<div class="chart-title">Erkennungsraten: So gut sind Menschen wirklich</div>
+<div class="chart-subtitle">Studien 2023–2025 — Durchschnitt, GPT-3, professionelle Texte</div>
+<div id="chart-detection" class="chart"></div>
+</div>
+
+<!-- KOSTEN -->
+<div class="perspective-break">
+<h2>Von $12 Mio. auf $500.000.</h2>
+<p>Gleiches Ziel. Zwanzigmal mehr Output. Hundertmal schwerer zu erkennen.</p>
+</div>
+
+<h2 id="kosten">Was es kostet</h2>
+<p>2016 brauchte die Internet Research Agency in St. Petersburg 1.000 Mitarbeiter und $12 Millionen. 2026 braucht ein KI-Schwarm null Mitarbeiter und einen Bruchteil des Budgets.</p>
+
+<div class="compare-grid">
+<div class="compare-card left-danger">
+<div class="compare-icon">&#127970;</div>
+<div class="compare-name">Troll-Farm (IRA, 2016)</div>
+<div class="compare-number" style="color:var(--danger)">$12 Mio.</div>
+<div class="compare-detail">1.000 Mitarbeiter</div>
+<div class="compare-detail">5.000 Posts/Tag</div>
+<div class="compare-detail" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary)">Erkennbar: stereotype Muster</div>
+</div>
+<div class="compare-card left-accent">
+<div class="compare-icon">&#129302;</div>
+<div class="compare-name">KI-Schwarm (2026)</div>
+<div class="compare-number" style="color:var(--accent)">$0,5 Mio.</div>
+<div class="compare-detail">0 Mitarbeiter</div>
+<div class="compare-detail">100.000 Posts/Tag</div>
+<div class="compare-detail" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary)">Kaum erkennbar: adaptiv, lernfähig</div>
+</div>
+</div>
+
+<div class="big-number">
+<div class="number danger">50–500x</div>
+<div class="label">kosteneffizienter als eine Troll-Farm</div>
+<div class="sublabel">bei 20x mehr Output und höherer Qualität</div>
+</div>
+
+<!-- VERTRAUEN -->
+<h2 id="vertrauen">Vertrauen</h2>
+<p>Das Edelman Trust Barometer 2025 zeigt: Vertrauen verschiebt sich. Weg von Institutionen, hin zu persönlichen Kreisen. Das klingt gesund — ist aber genau die Lücke, die KI-Schwärme nutzen.</p>
+
+<div class="chart-container">
+<div class="chart-title">Vertrauensverschiebung (5-Jahres-Trend)</div>
+<div class="chart-subtitle">Edelman Trust Barometer 2025 — Veränderung in Prozentpunkten</div>
+<div id="chart-trust" class="chart"></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value danger">65%</div><div class="kpi-label">sorgen sich</div><div class="kpi-sub">wegen ausländischer Desinformation</div></div>
+<div class="kpi-card"><div class="kpi-value warning">39%</div><div class="kpi-label">nutzen diverse</div><div class="kpi-sub">Nachrichtenquellen (wöchentlich)</div></div>
+<div class="kpi-card"><div class="kpi-value purple">18 Pkt.</div><div class="kpi-label">Income Gap</div><div class="kpi-sub">Kompetenz-Vertrauen nach Einkommen</div></div>
+</div>
+
+<div class="quote-block">
+<p>&bdquo;If we allow this, it will do to society what fake money does to the financial system — trust will collapse.&ldquo;</p>
+<span class="quote-author">— Yuval N. Harari, Nexus, 2024</span>
+</div>
+
+<!-- MATRIX -->
+<div class="perspective-break">
+<h2>Die Matrix</h2>
+<p>5 Fähigkeiten. 9 Wirkungspfade. Eine Richtung.</p>
+</div>
+
+<h2 id="matrix">5 &times; 9: Die Wirkungsmatrix</h2>
+<p>Jede der fünf Schwarm-Fähigkeiten wirkt auf mehrere gesellschaftliche Pfade gleichzeitig. Das macht Gegenmaßnahmen so schwer: Es gibt keinen einzelnen Hebel.</p>
+
+<p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem"><strong>Die 5 Fähigkeiten:</strong></p>
+<div class="effect-grid" style="margin-bottom:2rem">
+<div class="effect-card"><div class="effect-title" style="font-size:0.85rem">1. Dezentrale Orchestrierung</div></div>
+<div class="effect-card"><div class="effect-title" style="font-size:0.85rem">2. Community-Infiltration</div></div>
+<div class="effect-card"><div class="effect-title" style="font-size:0.85rem">3. Erkennungs-Umgehung</div></div>
+<div class="effect-card"><div class="effect-title" style="font-size:0.85rem">4. Kontinuierliche Optimierung</div></div>
+<div class="effect-card full-width"><div class="effect-title" style="font-size:0.85rem">5. Persistenz</div></div>
+</div>
+
+<p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem"><strong>Die 9 Wirkungspfade:</strong></p>
+<ol class="impact-list">
+<li>Synthetische Konsens-Kaskaden — künstliche Mehrheiten erzeugen</li>
+<li>Fragmentierte epistemische Commons — gemeinsame Wissensräume zerstören</li>
+<li>LLM-Trainingsdaten-Vergiftung — die nächste KI-Generation manipulieren</li>
+<li>Personalisierte Manipulation — jeden einzeln ansprechen</li>
+<li>Erosion des öffentlichen Diskurses — Debatten vergiften</li>
+<li>Untergrabung demokratischer Institutionen — Vertrauen zerstören</li>
+<li>Polarisierung &amp; Radikalisierung — Extreme verstärken</li>
+<li>Vertrauenszerstörung in Medien — alles wird bezweifelt</li>
+<li>Epistemischer Schwindel — wenn man nicht mehr unterscheiden kann, was wahr ist</li>
+</ol>
+
+<p class="text-small">Epistemischer Schwindel: Der Moment, in dem man nicht mehr weiß, ob eine Information echt ist. Nicht weil sie falsch aussieht — sondern weil alles gleich aussieht. Das ist das Endspiel.</p>
+
+<!-- WAHLEN — NUR ZAHLEN -->
+<h2 id="wahlen">Was bei Wahlen passiert ist</h2>
+<p>2024 war das größte Wahljahr der Geschichte. 87 Länder wählten. Die Angst vor KI-Manipulation war riesig. Und dann?</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value danger">38</div><div class="kpi-label">Länder betroffen</div><div class="kpi-sub">von Deepfakes bei Wahlen seit 2021</div></div>
+<div class="kpi-card"><div class="kpi-value warning">500+</div><div class="kpi-label">Deepfake-Vorfälle</div><div class="kpi-sub">dokumentiert (Purdue Database)</div></div>
+<div class="kpi-card"><div class="kpi-value">3,8 Mrd.</div><div class="kpi-label">Menschen betroffen</div><div class="kpi-sub">in betroffenen Ländern</div></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value ok">&lt;1%</div><div class="kpi-label">war KI-generiert</div><div class="kpi-sub">aller Falschmeldungen im Wahlkampf 2024</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">7x</div><div class="kpi-label">häufiger: Cheap Fakes</div><div class="kpi-sub">ohne KI — einfache Schnitte, Aus-dem-Kontext-Reißen</div></div>
+<div class="kpi-card"><div class="kpi-value purple">0</div><div class="kpi-label">Wahlen nachweislich gekippt</div><div class="kpi-sub">durch KI-Deepfakes (Stand 2024)</div></div>
+</div>
+
+<p>Harvard nennt es „The apocalypse that wasn't." Die Wahrheit ist nüchterner als die Schlagzeilen: Cheap Fakes — einfache Schnitte, aus dem Kontext gerissene Zitate, manipulierte Screenshots — sind immer noch 7-mal effektiver als KI-generierte Deepfakes. Nicht weil KI nicht kann, sondern weil es billiger und einfacher geht.</p>
+
+<p>Aber: Das war 2024. Die Technik wird besser. Die Kosten sinken. Die nächste Wahl kommt.</p>
+
+<p class="text-small">Quellen: Purdue Deepfake Database (500+ Vorfälle). News Literacy Project (Fact-Check-Analyse 2024). Harvard Ash Center. Surfshark (38 Länder).</p>
+
+<!-- WAS WIRD GETAN -->
+<div class="perspective-break">
+<h2>Wer tut was?</h2>
+<p>Drei Kontinente. Drei Ansätze. Keiner reicht allein.</p>
+</div>
+
+<h2 id="gegenmittel">Was dagegen getan wird</h2>
+
+<div class="compare-grid">
+<div class="compare-card" style="border-left:3px solid var(--accent)">
+<div class="compare-icon">🇪🇺</div>
+<div class="compare-name">EU</div>
+<div class="compare-detail"><strong>EU AI Act</strong> — ab August 2026 voll wirksam</div>
+<div class="compare-detail">Deepfakes müssen gelabelt werden</div>
+<div class="compare-detail">Kennzeichnungspflicht für KI-Inhalte</div>
+<div class="compare-detail" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary)">Ansatz: Regulierung durch Gesetz</div>
+</div>
+<div class="compare-card" style="border-left:3px solid var(--danger)">
+<div class="compare-icon">🇨🇳</div>
+<div class="compare-name">China</div>
+<div class="compare-detail"><strong>Alle KI-Medien</strong> müssen gelabelt werden</div>
+<div class="compare-detail">Seit September 2025 Pflicht</div>
+<div class="compare-detail">Staat kontrolliert + fördert gleichzeitig</div>
+<div class="compare-detail" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary)">Ansatz: Staatskontrolle</div>
+</div>
+</div>
+<div class="compare-grid">
+<div class="compare-card" style="border-left:3px solid var(--warning)">
+<div class="compare-icon">🇬🇧</div>
+<div class="compare-name">UK</div>
+<div class="compare-detail">Bewusst <strong>kein eigenes KI-Gesetz</strong></div>
+<div class="compare-detail">Prinzipienbasiert statt Vorschriften</div>
+<div class="compare-detail">House of Lords warnt: „Clear and present danger"</div>
+<div class="compare-detail" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary)">Ansatz: Freiwilligkeit + Appell</div>
+</div>
+<div class="compare-card" style="border-left:3px solid var(--purple)">
+<div class="compare-icon">🔬</div>
+<div class="compare-name">Wissenschaft</div>
+<div class="compare-detail">Schroeder et al. fordern <strong>KI-Einfluss-Observatorium</strong></div>
+<div class="compare-detail">Transnationales Netzwerk aus Fachleuten + NGOs</div>
+<div class="compare-detail">KI gegen KI: Bot-Erkennung mit KI</div>
+<div class="compare-detail" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-tertiary)">Ansatz: Beobachten + entlarven</div>
+</div>
+</div>
+
+<!-- WAS DU TUN KANNST -->
+<h2>Was du tun kannst</h2>
+<p>Kein Gesetz. Kein Observatorium. Nur gesunder Menschenverstand und ein paar Gewohnheiten.</p>
+
+<div class="action-list">
+<div class="action-item"><div class="action-nr">1</div><div class="action-body"><strong>Quellen prüfen.</strong> Wer sagt das? Warum? Mit welchem Interesse? Die drei Fragen, die Habermas sein Leben lang gestellt hat.</div></div>
+<div class="action-item"><div class="action-nr">2</div><div class="action-body"><strong>Diversität im Nachrichtenkonsum.</strong> Nur 39% lesen Nachrichten aus verschiedenen Richtungen. Sei einer davon.</div></div>
+<div class="action-item"><div class="action-nr">3</div><div class="action-body"><strong>Langsam sein.</strong> KI-Schwärme sind schnell. Dein bester Schutz ist, nicht sofort zu reagieren. Teile nichts, das dich wütend macht, bevor du nachgedacht hast.</div></div>
+<div class="action-item"><div class="action-nr">4</div><div class="action-body"><strong>Fragen statt glauben.</strong> Wenn etwas zu perfekt formuliert klingt, zu ausgewogen, zu glatt — frag dich, ob ein Mensch so schreibt. (Spoiler: Meistens nicht.)</div></div>
+<div class="action-item"><div class="action-nr">5</div><div class="action-body"><strong>Transparenz einfordern.</strong> Wer KI nutzt und es nicht sagt, hat etwas zu verbergen. Oder ist zu faul. Beides ist kein gutes Zeichen.</div></div>
+</div>
+
+<hr class="divider">
+
+<!-- CLOSER -->
+<p class="tk-closer">Reden hilft. Aber nur, wenn ein Mensch am anderen Ende sitzt. Oder zumindest einer, der ehrlich sagt, dass er keiner ist.</p>
+
+<p>Die Propheten hatten recht. Die Daten bestätigen es. Und die Frage ist nicht mehr, ob Maschinen mitreden — sondern ob wir es noch merken.</p>
+
+<!-- Feedback -->
+<div class="feedback-box">
+<h3>Was denkst du?</h3>
+<p>Feedback — von Mensch zu Mensch.</p>
+<div class="feedback-buttons">
+<button class="feedback-btn" data-value="mehr">Mehr davon</button>
+<button class="feedback-btn" data-value="angst">Macht mir Angst</button>
+<button class="feedback-btn" data-value="uebertrieben">Übertrieben</button>
+</div>
+<div class="feedback-thanks" id="feedback-thanks">Danke. Und ja — diese Antwort kam von einem Menschen.</div>
+</div>
+
+<!-- Sources -->
+<div class="source-card">
+<h3>Quellen &amp; Daten</h3>
+<ul>
+<li>NewsGuard (2025) — Pravda-Netzwerk: 182 Domains, 74 Länder, 3,6 Mio. Artikel</li>
+<li>AAAI (2025) — &bdquo;LLMs Among Us&ldquo;: KI-Erkennungsraten in sozialen Netzwerken</li>
+<li>Imperva Bad Bot Report (2024) — 50% nicht-menschlicher Internet-Traffic</li>
+<li>Carnegie Mellon University (2020) — Bot-Anteile in COVID-Debatten auf Twitter</li>
+<li>Edelman Trust Barometer (2025) — Vertrauensverschiebung, Desinformations-Sorgen</li>
+<li>Yuval N. Harari — Nexus (2024), 21 Lessons (2018), Homo Deus (2016)</li>
+<li>U.S. Senate Intelligence Committee — IRA-Kosten und -Output</li>
+<li>Musser (2023) — Kosten-Analyse KI-generierter Desinformationskampagnen</li>
+<li>Science (2026) — Schwarm-KI und demokratische Diskurse</li>
+</ul>
+</div>
+
+<p><a href="https://github.com/tkoerting/data-stories" class="github-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> tkoerting/data-stories — Code, Daten, Methodik</a></p>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Alle Daten wurden nach bestem Wissen und Gewissen recherchiert und aufbereitet. Wer etwas findet, das nicht stimmt: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #12 — <a href="https://der-koerting.de">Blog</a> &middot; <a href="https://der-koerting.de/impressum/">Impressum</a> &middot; <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='wenn-maschinen-mitreden';var charts={};
+var quizState={answered:0,correct:0,total:5};
+
+// Quiz logic (inline, no data.json dependency)
+function quizAnswer(btn){
+  var card=btn.closest('.quiz-card');
+  if(card.classList.contains('answered'))return;
+  card.classList.add('answered');
+  var answer=card.getAttribute('data-answer');
+  var explanation=card.getAttribute('data-explanation');
+  var choice=btn.getAttribute('data-choice');
+  var isCorrect=(choice==='Mensch'&&answer==='Mensch')||(choice==='Maschine'&&answer==='KI');
+  // Disable buttons
+  card.querySelectorAll('.quiz-btn').forEach(function(b){b.disabled=true});
+  btn.classList.add(isCorrect?'correct':'wrong');
+  // Show explanation
+  var expEl=card.querySelector('.quiz-explanation');
+  expEl.textContent=(isCorrect?'Richtig! ':'Falsch. ')+(answer==='KI'?'Maschine':'Mensch')+'. '+explanation;
+  expEl.classList.add('show',isCorrect?'is-correct':'is-wrong');
+  quizState.answered++;
+  if(isCorrect)quizState.correct++;
+  // Check if all answered
+  if(quizState.answered===quizState.total){
+    var scoreBox=document.getElementById('quiz-score');
+    scoreBox.style.display='block';
+    document.getElementById('score-value').textContent=quizState.correct+'/'+quizState.total;
+    var pct=Math.round(quizState.correct/quizState.total*100);
+    var compare='';
+    if(pct>57)compare='Besser als der Durchschnitt (57% Erkennungsrate in Studien).';
+    else if(pct===57||pct===60)compare='Genau im Durchschnitt. Die meisten Menschen liegen bei 57%.';
+    else compare='Unter dem Durchschnitt (57%). Keine Sorge — es wird für alle schwerer.';
+    document.getElementById('score-compare').textContent=compare;
+    // Show detection chart
+    document.getElementById('detection-chart-wrapper').style.display='block';
+    setTimeout(function(){initDetectionChart()},100);
+  }
+}
+
+function initDetectionChart(){
+  var isDark=document.documentElement.dataset.theme==='dark';
+  var c=getColors(isDark);
+  var base=getBase(c);
+  if(charts.detection)try{charts.detection.dispose()}catch(e){}
+  charts.detection=echarts.init(document.getElementById('chart-detection'));
+  charts.detection.setOption(Object.assign({},base,{
+    grid:{left:140,right:40,top:10,bottom:30},
+    xAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+    yAxis:{type:'category',data:['Professionelle Texte','GPT-3 Texte','KI allgemein','Menschen erkennen\nMenschen'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+    series:[{type:'bar',data:[
+      {value:20,itemStyle:{color:c.danger,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'<20%',color:c.danger,fontSize:11,fontFamily:'JetBrains Mono'}},
+      {value:49.9,itemStyle:{color:c.warning,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'49,9%',color:c.warning,fontSize:11,fontFamily:'JetBrains Mono'}},
+      {value:57,itemStyle:{color:c.accent+'99',borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'57%',color:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}},
+      {value:64,itemStyle:{color:c.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'64%',color:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}}
+    ],barWidth:22}]
+  }));
+}
+
+function getColors(isDark){
+  return{accent:isDark?'#14B8A6':'#0D9488',accent2:isDark?'#FACC15':'#EAB308',danger:isDark?'#EF4444':'#DC2626',warning:isDark?'#F59E0B':'#D97706',purple:isDark?'#8B5CF6':'#7C3AED',text:isDark?'#E5E7EB':'#1E293B',textSec:isDark?'#9CA3AF':'#64748B',textTert:isDark?'#6B7280':'#94A3B8',grid:isDark?'#2D3139':'#E2E5E9',bg:isDark?'#1E2028':'#FFFFFF'};
+}
+function getBase(c){
+  return{backgroundColor:'transparent',textStyle:{fontFamily:'Space Grotesk,system-ui',color:c.text},grid:{left:50,right:20,top:30,bottom:30},tooltip:{trigger:'axis',backgroundColor:c.bg,borderColor:c.grid,textStyle:{color:c.text,fontSize:12}}};
+}
+
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val),{mode:'no-cors'})})});
+
+function initCharts(){
+Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});
+fetch('data.json').then(function(r){return r.json()}).then(function(D){
+var isDark=document.documentElement.dataset.theme==='dark';
+var c=getColors(isDark);
+var base=getBase(c);
+
+// PREDICTIONS TIMELINE (Scatter)
+var typeMap={'book':0,'film':1,'tv':2};
+var typeLabels=['Buch/Sachbuch','Film','TV-Serie'];
+var accColors={'sehr hoch':c.danger,'hoch':c.accent,'mittel':c.warning,'Realität':c.purple};
+charts.predictions=echarts.init(document.getElementById('chart-predictions'));
+charts.predictions.setOption(Object.assign({},base,{
+  grid:{left:100,right:30,top:30,bottom:40},
+  tooltip:{trigger:'item',formatter:function(p){return '<b>'+p.data[3]+'</b> ('+p.data[0]+')<br>'+p.data[2]+'<br><em>'+p.data[4]+'</em><br>Treffsicherheit: '+p.data[5]}},
+  xAxis:{type:'value',min:1930,max:2028,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textTert,fontSize:11},splitLine:{show:false}},
+  yAxis:{type:'category',data:typeLabels,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+  series:[{
+    type:'scatter',symbolSize:function(d){return d[5]==='Realität'?24:d[5]==='sehr hoch'?18:14},
+    data:D.predictions.map(function(p){
+      var yIdx=p.type==='tv'?2:p.type==='film'?1:0;
+      return[p.year,yIdx,p.author,p.work,p.prediction,p.accuracy];
+    }),
+    itemStyle:{color:function(p){return accColors[p.data[5]]||c.accent}},
+    label:{show:false}
+  }]
+}));
+
+// BOT CHART (Horizontal bars)
+charts.bots=echarts.init(document.getElementById('chart-bots'));
+charts.bots.setOption(Object.assign({},base,{
+  grid:{left:180,right:40,top:10,bottom:30},
+  xAxis:{type:'value',max:70,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+  yAxis:{type:'category',data:['Internet gesamt\n(nicht-menschlich)','Twitter/X\n(Carnegie Mellon, COVID)','Twitter/X\n(unabhängig, 9–15%)','Twitter/X\n(offiziell)'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+  series:[{type:'bar',data:[
+    {value:D.bots.internet_nonhuman_pct,itemStyle:{color:c.danger,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:D.bots.internet_nonhuman_pct+'%',color:c.danger,fontSize:11,fontFamily:'JetBrains Mono'}},
+    {value:D.bots.twitter_5thcolumn_pct,itemStyle:{color:c.warning,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:D.bots.twitter_5thcolumn_pct+'%',color:c.warning,fontSize:11,fontFamily:'JetBrains Mono'}},
+    {value:D.bots.twitter_independent_high_pct,itemStyle:{color:c.accent+'99',borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'9–15%',color:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}},
+    {value:D.bots.twitter_official_pct,itemStyle:{color:c.accent+'55',borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:D.bots.twitter_official_pct+'%',color:c.textTert,fontSize:11,fontFamily:'JetBrains Mono'}}
+  ],barWidth:22}]
+}));
+
+// TRUST CHART (Horizontal bars with pos/neg)
+var trustData=[
+  {name:'Medien',value:D.trust_edelman.media_change_5y},
+  {name:'Persönliche Kreise',value:D.trust_edelman.personal_circles_change_5y},
+  {name:'Kollegen',value:D.trust_edelman.coworkers_change_5y},
+  {name:'CEOs',value:D.trust_edelman.ceo_change_5y}
+];
+charts.trust=echarts.init(document.getElementById('chart-trust'));
+charts.trust.setOption(Object.assign({},base,{
+  grid:{left:120,right:60,top:10,bottom:30},
+  xAxis:{type:'value',min:-15,max:15,axisLine:{lineStyle:{color:c.grid}},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return(v>0?'+':'')+v}}},
+  yAxis:{type:'category',data:trustData.map(function(d){return d.name}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+  series:[{type:'bar',data:trustData.map(function(d){
+    return{value:d.value,itemStyle:{color:d.value<0?c.danger:c.accent,borderRadius:d.value<0?[4,0,0,4]:[0,4,4,0]},label:{show:true,position:d.value<0?'left':'right',formatter:function(p){return(p.value>0?'+':'')+p.value+' Pkt.'},color:d.value<0?c.danger:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}};
+  }),barWidth:22}]
+}));
+
+window.addEventListener('resize',function(){Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+});}
+
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';initCharts();if(document.getElementById('detection-chart-wrapper').style.display!=='none')initDetectionChart()}
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>

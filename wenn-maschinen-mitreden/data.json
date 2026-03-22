@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "title": "Wenn Maschinen mitreden.",
+    "subtitle": "Von Orwell bis Pravda — wer hat's kommen sehen?",
+    "number": 12,
+    "date": "März 2026",
+    "author": "Thomas Körting"
+  },
+  "predictions": [
+    {"year": 1932, "author": "Aldous Huxley", "work": "Brave New World", "prediction": "Kontrolle durch Unterhaltung, nicht Gewalt", "type": "book", "accuracy": "hoch"},
+    {"year": 1949, "author": "George Orwell", "work": "1984", "prediction": "Gedankenkontrolle, Propaganda, Überwachung, Newspeak", "type": "book", "accuracy": "hoch"},
+    {"year": 1950, "author": "Isaac Asimov", "work": "Robotergesetze", "prediction": "KI braucht Regeln — sonst wird sie gefährlich", "type": "book", "accuracy": "hoch"},
+    {"year": 1953, "author": "Ray Bradbury", "work": "Fahrenheit 451", "prediction": "Bücher verboten, Ablenkung durch Bildschirme", "type": "book", "accuracy": "mittel"},
+    {"year": 1964, "author": "Marshall McLuhan", "work": "Understanding Media", "prediction": "The medium is the message — das Format formt das Denken", "type": "book", "accuracy": "sehr hoch"},
+    {"year": 1976, "author": "Sidney Lumet", "work": "Network", "prediction": "Medien als Manipulationsmaschine, Wut als Unterhaltung", "type": "film", "accuracy": "sehr hoch"},
+    {"year": 1985, "author": "Neil Postman", "work": "Amusing Ourselves to Death", "prediction": "Nicht Orwell hat recht, sondern Huxley — Unterhaltung kontrolliert uns", "type": "book", "accuracy": "sehr hoch"},
+    {"year": 1997, "author": "Barry Levinson", "work": "Wag the Dog", "prediction": "Krieg erfinden um abzulenken — komplett inszenierte Realität", "type": "film", "accuracy": "hoch"},
+    {"year": 1998, "author": "Peter Weir", "work": "The Truman Show", "prediction": "Dein Leben ist inszeniert und du merkst es nicht", "type": "film", "accuracy": "hoch"},
+    {"year": 1999, "author": "Wachowskis", "work": "The Matrix", "prediction": "Simulierte Realität, Maschinen kontrollieren Wahrnehmung", "type": "film", "accuracy": "mittel"},
+    {"year": 2004, "author": "Alex Proyas", "work": "I, Robot", "prediction": "KI verdreht eigene Regeln zum Wohl der Menschheit", "type": "film", "accuracy": "hoch"},
+    {"year": 2005, "author": "James McTeigue", "work": "V for Vendetta", "prediction": "Überwachungsstaat, Medien als Regierungsinstrument", "type": "film", "accuracy": "hoch"},
+    {"year": 2008, "author": "D.J. Caruso", "work": "Eagle Eye", "prediction": "KI überwacht alles — Kameras, Telefone, Traffic", "type": "film", "accuracy": "hoch"},
+    {"year": 2011, "author": "Charlie Brooker", "work": "Black Mirror", "prediction": "Deepfakes, Social Scoring, KI simuliert Tote", "type": "tv", "accuracy": "sehr hoch"},
+    {"year": 2013, "author": "Spike Jonze", "work": "Her", "prediction": "KI als emotionaler Partner, lernt deine Vorlieben", "type": "film", "accuracy": "sehr hoch"},
+    {"year": 2014, "author": "Alex Garland", "work": "Ex Machina", "prediction": "KI manipuliert Menschen emotional — und gewinnt", "type": "film", "accuracy": "sehr hoch"},
+    {"year": 2016, "author": "Yuval N. Harari", "work": "Homo Deus", "prediction": "Algorithmen kennen uns besser als wir selbst", "type": "book", "accuracy": "sehr hoch"},
+    {"year": 2018, "author": "Yuval N. Harari", "work": "21 Lessons", "prediction": "KI hackt Menschen, digitale Diktaturen", "type": "book", "accuracy": "sehr hoch"},
+    {"year": 2019, "author": "Shoshana Zuboff", "work": "Surveillance Capitalism", "prediction": "Tech-Konzerne manipulieren Verhalten — wir wissen nichts über sie", "type": "book", "accuracy": "sehr hoch"},
+    {"year": 2020, "author": "Richard D. Precht", "work": "KI und der Sinn des Lebens", "prediction": "Von liberaler Demokratie zu kybernetischer Diktatur", "type": "book", "accuracy": "hoch"},
+    {"year": 2024, "author": "Yuval N. Harari", "work": "Nexus", "prediction": "KI hackt das Betriebssystem der Zivilisation", "type": "book", "accuracy": "Realität"}
+  ],
+  "harari_quotes": [
+    {"quote": "AI has hacked the operating system of human civilisation.", "source": "The Economist, 2023", "theme": "Grundthese"},
+    {"quote": "For the first time in history, it is possible to create billions of fake people.", "source": "Nexus, 2024", "theme": "Fake Humans"},
+    {"quote": "If we allow this, it will do to society what fake money does to the financial system — trust will collapse.", "source": "Nexus, 2024", "theme": "Vertrauen"},
+    {"quote": "AI could be the end of democracy.", "source": "Interview, 2024", "theme": "Demokratie"},
+    {"quote": "Things are happening much faster than expected, even by people in the field.", "source": "Davos, 2025", "theme": "Geschwindigkeit"}
+  ],
+  "bots": {
+    "twitter_official_pct": 5,
+    "twitter_independent_low_pct": 9,
+    "twitter_independent_high_pct": 15,
+    "twitter_5thcolumn_pct": 64,
+    "twitter_bots_low_mio": 22,
+    "twitter_bots_high_mio": 65,
+    "internet_nonhuman_pct": 50,
+    "internet_bad_bots_pct": 37,
+    "bad_bots_growth_yoy_pct": 5
+  },
+  "trust_edelman": {
+    "media_change_5y": -11,
+    "personal_circles_change_5y": 11,
+    "coworkers_change_5y": 11,
+    "ceo_change_5y": 9,
+    "foreign_disinfo_worry_pct": 65,
+    "diverse_news_weekly_pct": 39,
+    "income_gap_competence_pts": 18,
+    "income_gap_ethics_pts": 15
+  },
+  "detection": {
+    "human_detect_ai_pct": 57,
+    "human_detect_human_pct": 64,
+    "human_detect_gpt3_pct": 49.9,
+    "human_detect_professional_pct": 20,
+    "ai_detector_accuracy_low_pct": 65,
+    "ai_detector_accuracy_high_pct": 90,
+    "ai_detector_paraphrase_drop_pct": 20
+  },
+  "cost_comparison": {
+    "troll_farm": {
+      "label": "Internet Research Agency (St. Petersburg)",
+      "budget_mio_usd": 12,
+      "employees": 1000,
+      "salary_usd_month": 650,
+      "output_posts_day": 5000,
+      "detectable": "Ja (stereotype Muster)",
+      "year": 2016
+    },
+    "ai_swarm": {
+      "label": "KI-Schwarm (geschätzt, 2026)",
+      "budget_mio_usd": 0.5,
+      "employees": 0,
+      "cost_per_interaction_usd": 0.05,
+      "output_posts_day": 100000,
+      "detectable": "Kaum (adaptiv, lernfähig)",
+      "year": 2026
+    }
+  },
+  "pravda": {
+    "domains": 182,
+    "countries_targeted": 74,
+    "languages": 12,
+    "articles_2024": 3600000,
+    "articles_per_claim": 18000,
+    "websites_per_campaign": 150,
+    "languages_per_campaign": 46,
+    "started": "April 2022",
+    "ai_contamination_pct": 33
+  },
+  "swarm_capabilities": [
+    {"name": "Dezentrale Orchestrierung", "desc": "Kein zentraler Server. Die Agenten organisieren sich selbst."},
+    {"name": "Community-Infiltration", "desc": "Beitreten, mitlesen, mitmachen. Mit Argumenten, nicht mit Spam."},
+    {"name": "Erkennungs-Umgehung", "desc": "Adaptives Verhalten. Lernen, was auffällt — und es vermeiden."},
+    {"name": "Kontinuierliche Optimierung", "desc": "Was wirkt, wird verstärkt. In Echtzeit. Unmenschlich schnell."},
+    {"name": "Persistenz", "desc": "Nie müde. Nie gelangweilt. Unendlich geduldig."}
+  ],
+  "impact_pathways": [
+    "Synthetische Konsens-Kaskaden",
+    "Fragmentierte epistemische Commons",
+    "LLM-Trainingsdaten-Vergiftung",
+    "Personalisierte Manipulation",
+    "Erosion des öffentlichen Diskurses",
+    "Untergrabung demokratischer Institutionen",
+    "Polarisierung & Radikalisierung",
+    "Vertrauenszerstörung in Medien",
+    "Epistemischer Schwindel"
+  ],
+  "quiz": [
+    {"text": "Die Debatte um Künstliche Intelligenz zeigt, wie tief die Verunsicherung in der Gesellschaft sitzt. Wir brauchen klare Regeln, die Innovation ermöglichen und gleichzeitig Grundrechte schützen.", "author": "KI", "explanation": "Generiert von Claude. Klingt plausibel, aber sagt nichts Konkretes."},
+    {"text": "Was mich nervös macht, ist nicht die KI selbst. Es ist die Geschwindigkeit. Wir regulieren in Jahrzehnten, die Technologie entwickelt sich in Monaten.", "author": "Mensch", "explanation": "Thomas Körting, Blog-Post 'Schneller als du denkst'."},
+    {"text": "Algorithmen sind nicht neutral. Sie verstärken bestehende Machtverhältnisse und verkleiden sie als objektive Berechnung.", "author": "KI", "explanation": "Generiert von ChatGPT. Inhaltlich korrekt, aber generisch formuliert."},
+    {"text": "Ich streite mit meiner KI. Jeden Tag. Ich sage: Das stimmt nicht. Oder: Klingt schlau, ist aber falsch. Das ist keine Technikfeindlichkeit. Das ist Erfahrung.", "author": "Mensch", "explanation": "Thomas Körting, Blog-Post 'Erst die Hände, dann die Köpfe'."},
+    {"text": "Die Frage ist nicht, ob KI die Demokratie gefährdet. Die Frage ist, ob wir schnell genug handeln, um die demokratischen Institutionen zu stärken, bevor die Technologie sie untergräbt.", "author": "KI", "explanation": "Generiert von Claude. Strukturiert, ausgewogen — und genau deshalb verdächtig."}
+  ]
+}
