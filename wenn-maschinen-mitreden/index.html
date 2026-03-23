@@ -155,8 +155,33 @@ p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
 .action-item:hover{border-color:var(--accent)}
 .action-nr{font-family:var(--font-mono);font-size:0.85rem;color:var(--accent);background:var(--accent-subtle);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:600}
 .action-body{font-size:0.9rem;line-height:1.6}
-@media(max-width:768px){html{font-size:16px} h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr} .compare-grid{grid-template-columns:1fr} .effect-grid{grid-template-columns:1fr} .chart{height:260px} .chart-tall{height:320px} .chart-wide{height:360px} .story-wrapper{padding:2rem 1rem 3rem} .section-nav{top:56px} .big-number .number{font-size:3rem}}
-@media(max-width:480px){.kpi-grid{grid-template-columns:1fr} .quiz-buttons{flex-direction:column}}
+@media(max-width:768px){
+  html{font-size:16px}
+  h1{font-size:1.8rem}
+  .kpi-grid{grid-template-columns:1fr 1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .effect-grid{grid-template-columns:1fr}
+  .chart{height:280px}
+  .chart-tall{height:340px}
+  .chart-wide{height:380px}
+  .story-wrapper{padding:2rem 1rem 3rem}
+  .section-nav{top:56px;gap:0.4rem}
+  .nav-pill{font-size:0.72rem;padding:0.3rem 0.65rem}
+  .big-number .number{font-size:3rem}
+  .quiz-text{font-size:0.9rem}
+  .quote-block p{font-size:0.95rem}
+  .action-item{padding:0.75rem 1rem}
+  .action-body{font-size:0.85rem}
+}
+@media(max-width:480px){
+  .kpi-grid{grid-template-columns:1fr}
+  .quiz-buttons{flex-direction:column}
+  .kpi-value{font-size:1.3rem}
+  .nav-pill{font-size:0.68rem;padding:0.25rem 0.5rem}
+  .section-nav{gap:0.3rem}
+  h2{font-size:1.3rem}
+  .perspective-break h2{font-size:1.4rem}
+}
 </style>
 </head>
 <body>
@@ -639,9 +664,9 @@ function initDetectionChart(){
   if(charts.detection)try{charts.detection.dispose()}catch(e){}
   charts.detection=echarts.init(document.getElementById('chart-detection'));
   charts.detection.setOption(Object.assign({},base,{
-    grid:{left:140,right:40,top:10,bottom:30},
+    grid:{left:isMobile?20:140,right:isMobile?30:40,top:10,bottom:30},
     xAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
-    yAxis:{type:'category',data:['Professionelle Texte','GPT-3 Texte','KI allgemein','Menschen erkennen\nMenschen'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+    yAxis:{type:'category',data:isMobile?['Professionell','GPT-3','KI allgemein','Mensch→Mensch']:['Professionelle Texte','GPT-3 Texte','KI allgemein','Menschen erkennen\nMenschen'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:isMobile?9:11}},
     series:[{type:'bar',data:[
       {value:20,itemStyle:{color:c.danger,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'<20%',color:c.danger,fontSize:11,fontFamily:'JetBrains Mono'}},
       {value:49.9,itemStyle:{color:c.warning,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:'49,9%',color:c.warning,fontSize:11,fontFamily:'JetBrains Mono'}},
@@ -650,6 +675,8 @@ function initDetectionChart(){
     ],barWidth:22}]
   }));
 }
+
+var isMobile=window.innerWidth<768;
 
 function getColors(isDark){
   return{accent:isDark?'#14B8A6':'#0D9488',accent2:isDark?'#FACC15':'#EAB308',danger:isDark?'#EF4444':'#DC2626',warning:isDark?'#F59E0B':'#D97706',purple:isDark?'#8B5CF6':'#7C3AED',text:isDark?'#E5E7EB':'#1E293B',textSec:isDark?'#9CA3AF':'#64748B',textTert:isDark?'#6B7280':'#94A3B8',grid:isDark?'#2D3139':'#E2E5E9',bg:isDark?'#1E2028':'#FFFFFF'};
@@ -673,7 +700,7 @@ var typeLabels=['Buch/Sachbuch','Film','TV-Serie'];
 var accColors={'sehr hoch':c.danger,'hoch':c.accent,'mittel':c.warning,'Realität':c.purple};
 charts.predictions=echarts.init(document.getElementById('chart-predictions'));
 charts.predictions.setOption(Object.assign({},base,{
-  grid:{left:100,right:30,top:30,bottom:40},
+  grid:{left:isMobile?70:100,right:isMobile?15:30,top:30,bottom:40},
   tooltip:{trigger:'item',formatter:function(p){return '<b>'+p.data[3]+'</b> ('+p.data[0]+')<br>'+p.data[2]+'<br><em>'+p.data[4]+'</em><br>Treffsicherheit: '+p.data[5]}},
   xAxis:{type:'value',min:1930,max:2028,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textTert,fontSize:11},splitLine:{show:false}},
   yAxis:{type:'category',data:typeLabels,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
@@ -691,9 +718,9 @@ charts.predictions.setOption(Object.assign({},base,{
 // BOT CHART (Horizontal bars)
 charts.bots=echarts.init(document.getElementById('chart-bots'));
 charts.bots.setOption(Object.assign({},base,{
-  grid:{left:180,right:40,top:10,bottom:30},
+  grid:{left:isMobile?20:180,right:isMobile?30:40,top:10,bottom:30},
   xAxis:{type:'value',max:70,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
-  yAxis:{type:'category',data:['Internet gesamt\n(nicht-menschlich)','Twitter/X\n(Carnegie Mellon, COVID)','Twitter/X\n(unabhängig, 9–15%)','Twitter/X\n(offiziell)'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+  yAxis:{type:'category',data:isMobile?['Internet\ngesamt','Twitter/X\n(5th Column)','Twitter/X\n(unabh.)','Twitter/X\n(offiziell)']:['Internet gesamt\n(nicht-menschlich)','Twitter/X\n(Carnegie Mellon, COVID)','Twitter/X\n(unabhängig, 9–15%)','Twitter/X\n(offiziell)'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:isMobile?9:11}},
   series:[{type:'bar',data:[
     {value:D.bots.internet_nonhuman_pct,itemStyle:{color:c.danger,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:D.bots.internet_nonhuman_pct+'%',color:c.danger,fontSize:11,fontFamily:'JetBrains Mono'}},
     {value:D.bots.twitter_5thcolumn_pct,itemStyle:{color:c.warning,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:D.bots.twitter_5thcolumn_pct+'%',color:c.warning,fontSize:11,fontFamily:'JetBrains Mono'}},
@@ -711,15 +738,15 @@ var trustData=[
 ];
 charts.trust=echarts.init(document.getElementById('chart-trust'));
 charts.trust.setOption(Object.assign({},base,{
-  grid:{left:120,right:60,top:10,bottom:30},
+  grid:{left:isMobile?80:120,right:isMobile?40:60,top:10,bottom:30},
   xAxis:{type:'value',min:-15,max:15,axisLine:{lineStyle:{color:c.grid}},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return(v>0?'+':'')+v}}},
-  yAxis:{type:'category',data:trustData.map(function(d){return d.name}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+  yAxis:{type:'category',data:trustData.map(function(d){return d.name}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:isMobile?10:12}},
   series:[{type:'bar',data:trustData.map(function(d){
     return{value:d.value,itemStyle:{color:d.value<0?c.danger:c.accent,borderRadius:d.value<0?[4,0,0,4]:[0,4,4,0]},label:{show:true,position:d.value<0?'left':'right',formatter:function(p){return(p.value>0?'+':'')+p.value+' Pkt.'},color:d.value<0?c.danger:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}};
   }),barWidth:22}]
 }));
 
-window.addEventListener('resize',function(){Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+window.addEventListener('resize',function(){isMobile=window.innerWidth<768;Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
 });}
 
 (function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F'})();
