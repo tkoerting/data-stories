@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>347 Ergebnisse. Null Erinnerungen. — Datenstück | Der Körting</title>
+<meta name="description" content="Was Reisende wollen — und was Hotels liefern. 72% wollen Personalisierung, 23% bekommen sie. Die Lücke zwischen Erwartung und Erlebnis — in Daten.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="347 Ergebnisse. Null Erinnerungen. — Datenstück | Open Data Minded">
+<meta property="og:description" content="72% wollen Personalisierung, 23% bekommen sie. Was Reisende wollen — und was Hotels liefern.">
+<meta property="og:url" content="https://opendataminded.de/347-ergebnisse/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/347-ergebnisse/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"347 Ergebnisse. Null Erinnerungen.","description":"Was Reisende wollen — und was Hotels liefern. 72% wollen Personalisierung, 23% bekommen sie.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/347-ergebnisse/","inLanguage":"de","datePublished":"2026-03-23","dateModified":"2026-03-23"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);position:relative;padding-bottom:4px;transition:color 0.2s}
+.header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+.header-nav a:hover{color:var(--text-primary)} .header-nav a:hover::after{width:100%}
+.header-nav a.active{color:var(--accent)} .header-nav a.active::after{width:100%}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+.nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+.nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+.kpi-card:hover{border-color:var(--accent)}
+.kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+.kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)}
+.kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+.chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+.chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+.chart{width:100%;height:300px} .chart-tall{height:380px} .chart-wide{height:420px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+.compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;transition:all var(--transition)}
+.compare-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.compare-card .compare-icon{font-size:2.5rem;margin-bottom:0.5rem}
+.compare-card .compare-name{font-family:var(--font-headline);font-size:1.1rem;margin-bottom:0.25rem}
+.compare-card .compare-detail{font-size:0.8rem;color:var(--text-secondary)}
+.compare-card .compare-number{font-family:var(--font-mono);font-size:1.8rem;font-weight:500;margin:0.5rem 0;line-height:1.2}
+.compare-card.left-accent{border-left:3px solid var(--accent)}
+.compare-card.left-danger{border-left:3px solid var(--danger)}
+.perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+.perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+.perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+.quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+.quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+.quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+.source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+.github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+.github-link:hover{border-color:var(--accent);color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)} .back-link:hover{color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+.big-number{text-align:center;margin:2rem 0;padding:2rem}
+.big-number .number{font-family:var(--font-mono);font-size:4rem;font-weight:700;color:var(--accent);line-height:1}
+.big-number .number.danger{color:var(--danger)}
+.big-number .label{font-size:1rem;color:var(--text-secondary);margin-top:0.5rem}
+.big-number .sublabel{font-size:0.8rem;color:var(--text-tertiary);margin-top:0.25rem;font-family:var(--font-mono)}
+/* Persona Cards */
+.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.persona-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:border-color var(--transition)}
+.persona-card:hover{border-color:var(--accent)}
+.persona-icon{font-size:2rem;margin-bottom:0.5rem}
+.persona-name{font-family:var(--font-headline);font-size:1.05rem;margin-bottom:0.35rem;color:var(--text-primary)}
+.persona-need{font-size:0.8rem;color:var(--accent);margin-bottom:0.35rem;font-weight:500}
+.persona-surprise{font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.35rem;font-family:var(--font-mono)}
+.persona-experience{font-size:0.8rem;color:var(--text-tertiary);font-style:italic;font-family:var(--font-headline)}
+/* Vertical Journey */
+.journey-vertical{margin:1.5rem 0}
+.journey-step{display:flex;gap:1rem;align-items:flex-start;margin-bottom:0.75rem;padding:1rem;border-radius:10px;border:1px solid var(--border);background:var(--bg-card);transition:border-color var(--transition)}
+.journey-step:hover{border-color:var(--accent)}
+.journey-step.crash{border-color:var(--danger);background:var(--danger-subtle)}
+.journey-nr{font-family:var(--font-mono);font-size:0.85rem;color:var(--accent);background:var(--accent-subtle);width:28px;height:28px;min-width:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600}
+.journey-step.crash .journey-nr{background:var(--danger-subtle);color:var(--danger)}
+.journey-content strong{font-size:1rem;display:block;margin-bottom:0.15rem}
+.journey-emotion{font-size:0.8rem;color:var(--text-tertiary);display:block;margin-bottom:0.4rem}
+.journey-content p{font-size:0.88rem;margin:0;line-height:1.5;color:var(--text-secondary)}
+.aha{margin-top:0.5rem !important;font-size:0.82rem !important;color:var(--accent) !important;font-style:italic}
+.personal-lead{font-family:var(--font-headline);font-style:italic;font-size:1.05rem;color:var(--accent);margin-bottom:0.5rem;margin-top:2rem}
+/* Star Cards */
+.star-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.5rem;margin:1.5rem 0}
+.star-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.5rem;text-align:center;transition:border-color var(--transition)}
+.star-card:hover{border-color:var(--accent)}
+.star-stars{color:var(--accent-2);font-size:0.9rem;margin-bottom:0.25rem}
+.star-label{font-family:var(--font-headline);font-size:0.8rem;margin-bottom:0.15rem;color:var(--text-primary)}
+.star-focus{font-size:0.68rem;color:var(--text-tertiary);line-height:1.3}
+@media(max-width:768px){
+  html{font-size:16px}
+  h1{font-size:1.8rem}
+  .kpi-grid{grid-template-columns:1fr 1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .persona-grid{grid-template-columns:1fr 1fr}
+  .star-grid{grid-template-columns:repeat(3,1fr)}
+  .chart{height:280px}
+  .chart-tall{height:340px}
+  .chart-wide{height:380px}
+  .story-wrapper{padding:2rem 1rem 3rem}
+  .section-nav{top:56px;gap:0.4rem}
+  .nav-pill{font-size:0.72rem;padding:0.3rem 0.65rem}
+  .big-number .number{font-size:3rem}
+  .quote-block p{font-size:0.95rem}
+}
+@media(max-width:480px){
+  .kpi-grid{grid-template-columns:1fr}
+  .persona-grid{grid-template-columns:1fr}
+  .star-grid{grid-template-columns:1fr 1fr}
+  .kpi-value{font-size:1.3rem}
+  .nav-pill{font-size:0.68rem;padding:0.25rem 0.5rem}
+  .section-nav{gap:0.3rem}
+  h2{font-size:1.3rem}
+  .perspective-break h2{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #13</span>
+<span class="snapshot-tag">März 2026</span>
+<span>zum <a href="https://der-koerting.de/2026/03/23/hotel-gasterlebnis-personalisierung/">Blogpost</a></span>
+</div>
+
+<h1>347 Ergebnisse. Null Erinnerungen.</h1>
+<div class="subtitle">Was Reisende wollen — und was Hotels liefern.</div>
+
+<p class="lead">Ich wollte ein Hotel buchen. Usedom, März, mit Helga und Socke. Booking.com zeigte mir 347 Ergebnisse. Ich habe aufgegeben und ChatGPT gefragt. Die KI kannte mich. Die Hotelbranche nicht. Also habe ich die Daten nachgeschlagen — warum das so ist.</p>
+
+<nav class="section-nav">
+<a href="#luecke" class="nav-pill">Die Lücke</a>
+<a href="#journey" class="nav-pill">Guest Journey</a>
+<a href="#personas" class="nav-pill">Wer reist?</a>
+<span class="nav-sep">|</span>
+<a href="#generationen" class="nav-pill">Generationen</a>
+<a href="#ota" class="nav-pill">OTA vs. Direkt</a>
+<a href="#boutique" class="nav-pill">Boutique vs. Kette</a>
+<span class="nav-sep">|</span>
+<a href="#ki" class="nav-pill">KI</a>
+<a href="#sterne" class="nav-pill">Sterne</a>
+<a href="#erlebnis" class="nav-pill">Erlebnis</a>
+</nav>
+
+<!-- DIE LÜCKE -->
+<p class="personal-lead">Ich wollte nur ein Hotel. Warum fragt mich keiner warum?</p>
+<h2 id="luecke">Die Lücke</h2>
+<p class="lead">Zwischen Wunsch und Wirklichkeit liegen 49 Prozentpunkte. Das ist kein Optimierungspotenzial. Das ist ein Branchenversagen.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">72%</div><div class="kpi-label">wollen Personalisierung</div><div class="kpi-sub">der Reisenden</div></div>
+<div class="kpi-card"><div class="kpi-value danger">23%</div><div class="kpi-label">bekommen sie</div><div class="kpi-sub">tatsächlich</div></div>
+<div class="kpi-card"><div class="kpi-value warning">49 PP</div><div class="kpi-label">die Lücke</div><div class="kpi-sub">Erwartung vs. Realität</div></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Was Gäste wollen — und was sie tun würden</div>
+<div class="chart-subtitle">Personalisierung: Erwartung, Realität, Zahlungsbereitschaft, KI-Akzeptanz</div>
+<div id="chart-gap" class="chart chart-tall"></div>
+</div>
+
+<p>61% würden mehr bezahlen für ein besseres Erlebnis. 58% sagen: KI könnte meinen Aufenthalt verbessern. Die Nachfrage ist da. Das Angebot nicht.</p>
+
+<!-- GUEST JOURNEY -->
+<div class="perspective-break">
+<h2>81% brechen ab. Irgendwo auf dem Weg.</h2>
+<p>Zwischen Inspiration und Buchung verliert die Branche 8 von 10 Gästen.</p>
+</div>
+
+<p class="personal-lead">Ich habe alle sieben Phasen durchlebt. Beim Vergleich hätte ich fast aufgegeben.</p>
+<h2 id="journey">Die Guest Journey</h2>
+<p>7 Phasen. Jede mit einem eigenen Schmerzpunkt. Zusammen ergeben sie ein System, das Gäste nicht begleitet — sondern verliert.</p>
+
+<div class="journey-vertical">
+<div class="journey-step up"><span class="journey-nr">1</span><div class="journey-content"><strong>Inspiration</strong><span class="journey-emotion">😊 Vorfreude</span><p>Usedom! Ostsee! Endlich raus. Die Idee ist da — und sie fühlt sich gut an.</p></div></div>
+<div class="journey-step flat"><span class="journey-nr">2</span><div class="journey-content"><strong>Recherche</strong><span class="journey-emotion">🤔 Suchend</span><p>Google, Booking, Instagram. 74% nutzen Social Media. Aber Hotels sind dort kaum präsent.</p></div></div>
+<div class="journey-step down"><span class="journey-nr">3</span><div class="journey-content"><strong>Vergleich</strong><span class="journey-emotion">😑 Genervt</span><p>347 Ergebnisse. Alle gleich. Preis sortiert. Erlebnis? Unsichtbar.</p></div></div>
+<div class="journey-step crash"><span class="journey-nr">4</span><div class="journey-content"><strong>Buchung</strong><span class="journey-emotion">😤 Aufgegeben</span><p>Formulare statt Fragen. Anreise. Abreise. Zimmergröße. Fertig. <strong>81% brechen hier ab.</strong></p><p class="aha">⚡ Das hat mich überrascht: 8 von 10 geben auf. Nicht wegen des Preises — wegen der Reibung.</p></div></div>
+<div class="journey-step flat"><span class="journey-nr">5</span><div class="journey-content"><strong>Vorfreude</strong><span class="journey-emotion">😶 Stille</span><p>Zwischen Buchung und Anreise: nichts. Keine Mail, kein Tipp, kein "Wir freuen uns auf Sie."</p></div></div>
+<div class="journey-step up"><span class="journey-nr">6</span><div class="journey-content"><strong>Aufenthalt</strong><span class="journey-emotion">😊 Endlich da</span><p>Aber: Check-in-Schlange. Kein Name, nur Zimmernummer. Socke wird toleriert, nicht willkommen.</p></div></div>
+<div class="journey-step down"><span class="journey-nr">7</span><div class="journey-content"><strong>Erinnerung</strong><span class="journey-emotion">🤷 Vergessen</span><p>Kein Follow-up. Kein "Wie war's?". Kein "Nächstes Jahr wieder?". Einfach: vorbei.</p></div></div>
+</div>
+
+<p>Die Journey ist kein Trichter. Sie ist ein Sieb. Und das Problem ist nicht der Preis — es ist die Reibung. Formulare statt Fragen. Optionen statt Empfehlungen. Daten statt Dialog.</p>
+
+<!-- WER REIST? -->
+<p class="personal-lead">Ich bin: Hundebesitzer, Teetrinker, kein Schickimicki. Booking.com kennt: nichts davon.</p>
+<h2 id="personas">Wer reist?</h2>
+<p class="lead">6 Reisetypen. Jeder mit einem anderen Bedürfnis. Hotels behandeln alle gleich.</p>
+
+<div class="persona-grid">
+<div class="persona-card">
+<div class="persona-icon">👨‍👩‍👧‍👦</div>
+<div class="persona-name">Familie</div>
+<div class="persona-need">Platz, Flexibilität, Kinderaugen</div>
+<div class="persona-surprise">73% lassen Kinder mitplanen</div>
+<div class="persona-experience">&bdquo;Die Kinder staunen.&ldquo;</div>
+</div>
+<div class="persona-card">
+<div class="persona-icon">🧳</div>
+<div class="persona-name">Solo</div>
+<div class="persona-need">Sicherheit, Navigation, Kontakt ohne Druck</div>
+<div class="persona-surprise">59% reisen solo (+13 PP in 1 Jahr)</div>
+<div class="persona-experience">&bdquo;Jemand zum Reden, ohne Zwang.&ldquo;</div>
+</div>
+<div class="persona-card">
+<div class="persona-icon">💼</div>
+<div class="persona-name">Business</div>
+<div class="persona-need">WLAN, Workspace, Schnelligkeit</div>
+<div class="persona-surprise">40% verlängern um Freizeit (Bleisure)</div>
+<div class="persona-experience">&bdquo;Ein ruhiger Abend nach dem Meeting.&ldquo;</div>
+</div>
+<div class="persona-card">
+<div class="persona-icon">❤️</div>
+<div class="persona-name">Paare</div>
+<div class="persona-need">Ruhe, Intimität, besondere Momente</div>
+<div class="persona-surprise">Kontrolle über Aufenthalt > Zufriedenheit</div>
+<div class="persona-experience">&bdquo;Der Tisch am Fenster, nicht am Durchgang.&ldquo;</div>
+</div>
+<div class="persona-card">
+<div class="persona-icon">🐕</div>
+<div class="persona-name">Hundebesitzer</div>
+<div class="persona-need">Willkommen, nicht toleriert</div>
+<div class="persona-surprise">58% reisen lieber mit Hund als mit Freund</div>
+<div class="persona-experience">&bdquo;Socke darf auf die Terrasse.&ldquo;</div>
+</div>
+<div class="persona-card">
+<div class="persona-icon">📱</div>
+<div class="persona-name">Gen Z</div>
+<div class="persona-need">Spontan, Social-Media-tauglich, Essen</div>
+<div class="persona-surprise">71% Priorität = Essen, NICHT das Zimmer</div>
+<div class="persona-experience">&bdquo;Das Foto, das alle liken.&ldquo;</div>
+</div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value purple">52%</div><div class="kpi-label">planen Reise um Tier</div><div class="kpi-sub">Pet Travel</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">58%</div><div class="kpi-label">lieber Hund als Freund</div><div class="kpi-sub">als Reisebegleitung</div></div>
+<div class="kpi-card"><div class="kpi-value">75%</div><div class="kpi-label">Hotels erlauben Tiere</div><div class="kpi-sub">aber: toleriert ≠ willkommen</div></div>
+</div>
+
+<p class="aha">⚡ Das hat mich überrascht: 58% reisen lieber mit Hund als mit Freund. Und trotzdem werden Hunde in Hotels bestenfalls toleriert — nie willkommen geheißen.</p>
+
+<!-- GENERATIONEN -->
+<p class="personal-lead">Meine Generation bucht anders als meine Eltern. Und ganz anders als Gen Z. Aber alle wollen dasselbe: dass jemand zuhört.</p>
+<h2 id="generationen">Der Generationen-Clash</h2>
+<p class="lead">Gen Z will Essen, Boomer wollen Zimmer. Gen Z bucht über TikTok, Boomer über Booking.com. Und alle wollen etwas anderes unter &bdquo;Erlebnis&ldquo; verstehen.</p>
+
+<div class="chart-container">
+<div class="chart-title">Generationen im Vergleich</div>
+<div class="chart-subtitle">KI-Nutzung, Solo-Reisen, Social Media, Unterkunft, Essen — in %</div>
+<div id="chart-generations" class="chart chart-wide"></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value accent2">71%</div><div class="kpi-label">Gen Z: Essen > Zimmer</div><div class="kpi-sub">Priorität Nr. 1</div></div>
+<div class="kpi-card"><div class="kpi-value">79%</div><div class="kpi-label">Boomer: Zimmer > Essen</div><div class="kpi-sub">Priorität Nr. 1</div></div>
+<div class="kpi-card"><div class="kpi-value danger">72%</div><div class="kpi-label">Gen Z nutzt KI für Reisen</div><div class="kpi-sub">vs. 15% Boomer</div></div>
+</div>
+
+<p>Was wie ein Detail klingt, ist ein strategisches Problem. Wer alle gleich behandelt, enttäuscht alle gleich. Ein Hotel, das einem 22-Jährigen das gleiche Frühstücksbuffet vorsetzt wie einem 65-Jährigen, hat nichts verstanden — außer Effizienz.</p>
+
+<!-- OTA VS. DIREKT -->
+<p class="personal-lead">Booking.com nimmt 25%. Dafür kennt es mich nicht. Ein schlechter Deal — für beide Seiten.</p>
+<h2 id="ota">OTA vs. Direkt</h2>
+<p class="lead">55% aller Buchungen laufen über Online Travel Agencies. Dafür zahlen Hotels 15–25% Provision. Für Sichtbarkeit. Nicht für Beziehung.</p>
+
+<div class="compare-grid">
+<div class="compare-card left-danger">
+<div class="compare-icon">🌐</div>
+<div class="compare-name">OTA</div>
+<div class="compare-number" style="color:var(--danger)">55%</div>
+<div class="compare-detail">Marktanteil<br>15–25% Provision<br>Vergleichbarkeit, Masse</div>
+</div>
+<div class="compare-card left-accent">
+<div class="compare-icon">🏨</div>
+<div class="compare-name">Direkt</div>
+<div class="compare-number" style="color:var(--accent)">+8–15%</div>
+<div class="compare-detail">Wachstum in Europa<br>Keine Provision<br>Beziehung, Daten, Kontrolle</div>
+</div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Online-Buchungsanteil 2000–2025</div>
+<div class="chart-subtitle">Von 5% auf 76% in 25 Jahren</div>
+<div id="chart-evolution" class="chart chart-tall"></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value warning">$23,7 Mrd.</div><div class="kpi-label">Booking Revenue</div><div class="kpi-sub">2024</div></div>
+<div class="kpi-card"><div class="kpi-value">$1,2 Bio.</div><div class="kpi-label">Online-Buchungen</div><div class="kpi-sub">2026 (Prognose)</div></div>
+<div class="kpi-card"><div class="kpi-value danger">–12 PP</div><div class="kpi-label">OTA-Rückgang Europa</div><div class="kpi-sub">Hotels holen Buchungen zurück</div></div>
+</div>
+
+<p>Die Abhängigkeit von OTAs ist ein Teufelskreis: Ohne sie fehlt die Sichtbarkeit. Mit ihnen fehlt die Marge — und der direkte Kontakt zum Gast. Die Gewinner werden die sein, die beides können: gefunden werden und erkannt werden.</p>
+
+<!-- BOUTIQUE VS. KETTE -->
+<p class="personal-lead">Wir haben in Koserow eine Ferienwohnung gebucht. Kein Kettenhotel. Kein Boutique. Einfach: passend.</p>
+<h2 id="boutique">Boutique vs. Kette</h2>
+<p class="lead">Boutique-Hotels wachsen doppelt so schnell wie Ketten. Nicht trotz ihrer Größe — sondern wegen ihr.</p>
+
+<div class="compare-grid">
+<div class="compare-card left-accent">
+<div class="compare-icon">🏡</div>
+<div class="compare-name">Boutique</div>
+<div class="compare-number" style="color:var(--accent)">7,9%</div>
+<div class="compare-detail">CAGR<br>Erlebnis, Individualität<br>$27 → $54 Mrd. bis 2033</div>
+</div>
+<div class="compare-card left-danger">
+<div class="compare-icon">🏢</div>
+<div class="compare-name">Kette</div>
+<div class="compare-number" style="color:var(--warning)">4,9%</div>
+<div class="compare-detail">CAGR<br>Sicherheit, Loyalty-Programme<br>$181 → $294 Mrd. bis 2035</div>
+</div>
+</div>
+
+<p>Warum wächst Boutique schneller? Weil Individualität kein Luxus mehr ist — sondern Erwartung. Und die Ketten haben es verstanden: Marriott gründet Autograph Collection, Hilton startet Curio. Soft Brands. Der Versuch, klein zu wirken, ohne klein zu sein.</p>
+
+<div class="kpi-grid" style="grid-template-columns:1fr">
+<div class="kpi-card"><div class="kpi-value danger">28%</div><div class="kpi-label">finden Ketten zu teuer — für das, was sie bekommen</div><div class="kpi-sub">Preis-Erlebnis-Schere</div></div>
+</div>
+
+<!-- KI IM HOTEL -->
+<div class="perspective-break">
+<h2>40–60% mehr Direktbuchungen. Durch einen Chatbot.</h2>
+<p>Nicht Science Fiction. Sondern messbar.</p>
+</div>
+
+<p class="personal-lead">ChatGPT hat meine Reise geplant. Drei Fragen. Fünf Vorschläge. Einer perfekt.</p>
+<h2 id="ki">KI im Hotel</h2>
+<p>Die Zahlen sind eindeutig. KI verbessert nicht nur die Effizienz — sie verbessert die Beziehung. Wenn man sie richtig einsetzt.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">70%</div><div class="kpi-label">finden KI hilfreich</div><div class="kpi-sub">der Hotelgäste</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">80%</div><div class="kpi-label">wollen Self-Service</div><div class="kpi-sub">ohne Personal-Kontakt</div></div>
+<div class="kpi-card"><div class="kpi-value">+28%</div><div class="kpi-label">Zufriedenheit</div><div class="kpi-sub">mit KI-Personalisierung</div></div>
+</div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value warning">+34%</div><div class="kpi-label">mehr Reviews</div><div class="kpi-sub">durch KI-Follow-up</div></div>
+<div class="kpi-card"><div class="kpi-value">54%</div><div class="kpi-label">wollen Mobile Check-in</div><div class="kpi-sub">keine Schlange</div></div>
+<div class="kpi-card"><div class="kpi-value purple">78%</div><div class="kpi-label">erwarten Sprachsteuerung</div><div class="kpi-sub">im Zimmer</div></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Smart Hotel Markt</div>
+<div class="chart-subtitle">2025: $30 Mrd. → 2029: $75 Mrd. (CAGR 27,8%)</div>
+<div id="chart-smarthotel" class="chart"></div>
+</div>
+
+<p>Die langweilige KI macht Check-in, WLAN-Troubleshooting und Zimmerservice-Bestellungen. Die spannende KI plant deine Reise, erinnert sich an deinen letzten Aufenthalt und fragt, ob du wieder den Tisch am Fenster willst. Die eine spart Kosten. Die andere schafft Erinnerungen.</p>
+
+<!-- STERNE -->
+<p class="personal-lead">270 Kriterien für einen Stern. Keines davon: Hat jemand gefragt warum ich komme?</p>
+<h2 id="sterne">270 Kriterien. 0 über dich.</h2>
+<p class="lead">Das Sterne-System der DEHOGA misst Ausstattung. Nicht Erlebnis. Ein 3-Sterne-Hotel mit Herz schlägt ein anonymes 5-Sterne.</p>
+
+<div class="star-grid">
+<div class="star-card">
+<div class="star-stars">★</div>
+<div class="star-label">Tourist</div>
+<div class="star-focus">Sauber, funktional</div>
+</div>
+<div class="star-card">
+<div class="star-stars">★★</div>
+<div class="star-label">Standard</div>
+<div class="star-focus">Frühstück, TV</div>
+</div>
+<div class="star-card">
+<div class="star-stars">★★★</div>
+<div class="star-label">Komfort</div>
+<div class="star-focus">Restaurant, Fitness</div>
+</div>
+<div class="star-card">
+<div class="star-stars">★★★★</div>
+<div class="star-label">First Class</div>
+<div class="star-focus">Concierge, Spa, Premium</div>
+</div>
+<div class="star-card">
+<div class="star-stars">★★★★★</div>
+<div class="star-label">Luxus</div>
+<div class="star-focus">24/7, personalisiert, Butler</div>
+</div>
+</div>
+
+<div class="big-number">
+<div class="number">270 / 0</div>
+<div class="label">270 Kriterien. 0 messen Personalisierung.</div>
+<div class="sublabel">Hat jemand gefragt, warum du kommst?</div>
+</div>
+
+<p class="aha">⚡ Das hat mich überrascht: 270 Kriterien für einen Stern. Keines davon misst, ob jemand deinen Namen kennt oder weiß, warum du da bist.</p>
+
+<p>270 Kriterien entscheiden über Sterne. Kein einziges fragt: Kennt das Hotel deinen Namen? Weiß es, was dir wichtig ist? Hat jemand zugehört? Sterne messen, ob der Aufzug funktioniert. Nicht, ob der Aufenthalt etwas bedeutet.</p>
+
+<!-- ERLEBNIS -->
+<p class="personal-lead">Ich erinnere mich an Socke am Strand. Nicht an die Matratze.</p>
+<h2 id="erlebnis">Warum Erlebnisse bleiben</h2>
+<p class="lead">Die Psychologie ist eindeutig: Erlebnisse machen glücklicher als Dinge. Und je länger sie her sind, desto besser werden sie.</p>
+
+<div class="chart-container">
+<div class="chart-title">Zufriedenheit über Zeit</div>
+<div class="chart-subtitle">Gilovich (2015): Erlebnisse vs. materielle Güter</div>
+<div id="chart-satisfaction" class="chart chart-tall"></div>
+</div>
+
+<div class="quote-block">
+<p>&bdquo;Menschen bewerten ein Erlebnis nach dem intensivsten Moment und dem Ende. Alles dazwischen vergessen sie.&ldquo;</p>
+<span class="quote-author">— Daniel Kahneman, Peak-End Rule</span>
+</div>
+
+<p class="aha">⚡ Das hat mich überrascht: Zufriedenheit mit Erlebnissen steigt über die Jahre. Bei materiellen Dingen sinkt sie. Wir verklären Reisen — und bereuen Käufe.</p>
+
+<p>Das bedeutet für Hotels: Der Check-in und der Check-out sind die Momente, die bleiben. Nicht das Zimmer. Nicht das Buffet. Der erste Eindruck und der letzte. Und genau dort investiert die Branche am wenigsten.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">€1.636</div><div class="kpi-label">pro Person, pro Urlaub</div><div class="kpi-sub">Deutschland</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">€130</div><div class="kpi-label">pro Tag</div><div class="kpi-sub">Durchschnitt</div></div>
+<div class="kpi-card"><div class="kpi-value">4</div><div class="kpi-label">Reisen pro Jahr</div><div class="kpi-sub">Ø Deutsche</div></div>
+</div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">35%</div><div class="kpi-label">bleiben in Deutschland</div><div class="kpi-sub">Haupturlaub</div></div>
+<div class="kpi-card"><div class="kpi-value warning">497,5 Mio.</div><div class="kpi-label">Übernachtungen 2025</div><div class="kpi-sub">Rekord</div></div>
+<div class="kpi-card"><div class="kpi-value purple">67%</div><div class="kpi-label">buchen individuell</div><div class="kpi-sub">vs. 32% Pauschal</div></div>
+</div>
+
+<!-- WAS ICH GELERNT HABE -->
+<h2>Was ich gelernt habe</h2>
+<p>Ich bin kein Hotelier. Ich bin ein Gast. Einer von 497 Millionen, die jedes Jahr in Deutschland übernachten. Und was ich gelernt habe, ist: Die Branche weiß, dass sie ein Problem hat. Die Daten sind da. Die Technologie ist da. Was fehlt, ist die einfachste Frage der Welt:</p>
+
+<p><em>Warum kommen Sie?</em></p>
+
+<p>Ich habe meine Reise mit ChatGPT geplant. Nicht weil ich Technik-Fan bin — das auch. Sondern weil eine KI mir drei Fragen gestellt hat, die kein Hotel, kein OTA und kein Sternesystem je gestellt hat. Und die Antworten waren: Ruhe. Hund. Kein Schickimicki. Koserow. Perfekt.</p>
+
+<p>72 Prozent wollen das. 23 Prozent bekommen es. Und eine KI auf meiner Couch hat bewiesen, dass die Lücke geschlossen werden kann. Mit drei Fragen.</p>
+
+<!-- CLOSER -->
+<hr class="divider">
+
+<p class="tk-closer">Der Gast will keine 347 Ergebnisse. Er will einen Moment, an den er sich erinnert.</p>
+
+<p>Wir sind die Summe unserer Erfahrungen. Nicht unserer Buchungen. Nicht unserer Zimmernummern. Nicht unserer Sterne-Bewertungen. Sondern der Momente, in denen jemand unseren Namen kannte — und wusste, warum wir da sind.</p>
+
+<div class="feedback-box">
+<h3>Wie war's?</h3>
+<p>Dein Feedback — ein Klick, kein Formular.</p>
+<div class="feedback-buttons">
+<button class="feedback-btn" data-value="mehr">Mehr davon</button>
+<button class="feedback-btn" data-value="betrifft">Betrifft mich</button>
+<button class="feedback-btn" data-value="zuviel">Zu viel Daten</button>
+</div>
+<div class="feedback-thanks" id="feedback-thanks">Danke. Und: Wie war deine letzte Reise? Wirklich?</div>
+</div>
+
+<hr class="divider">
+
+<!-- SOURCES -->
+<div class="source-card">
+<h3>Quellen & Daten</h3>
+<ul>
+<li>Skift Megatrends (2025) — Personalisierung, Guest Experience, KI-Adoption</li>
+<li>McKinsey & Co. (2024/2025) — Hospitality-Personalisierung, Revenue Impact</li>
+<li>Booking.com Traveller Confidence Report (2025) — Reiseverhalten, KI-Akzeptanz</li>
+<li>Statista (2025) — Boutique Hotel Market, Chain Hotel Market, Smart Hotel Market</li>
+<li>Phocuswright (2025) — OTA vs. Direkt, Online-Buchungsanteile</li>
+<li>Deloitte Hospitality Report (2025) — Generationen-Vergleich, Solo Travel</li>
+<li>DEHOGA / Hotelstars Union — Sterne-Klassifizierung, 270 Kriterien</li>
+<li>Gilovich, Kumar & Jampol (2015) — Experiential vs. Material Purchases</li>
+<li>Kahneman (1999) — Peak-End Rule, Experienced Utility</li>
+<li>FUR Reiseanalyse (2025) — Deutsches Reiseverhalten, Ausgaben, Ziele</li>
+<li>Mars Petcare / APPA (2025) — Pet Travel Statistics</li>
+</ul>
+</div>
+
+<p><a href="https://github.com/tkoerting/data-stories" class="github-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> tkoerting/data-stories — Code, Daten, Methodik</a></p>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Alle Daten wurden nach bestem Wissen und Gewissen recherchiert und aufbereitet. Wer etwas findet, das nicht stimmt: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #13 — <a href="https://der-koerting.de">Blog</a> &middot; <a href="https://der-koerting.de/impressum/">Impressum</a> &middot; <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='347-ergebnisse';var charts={};
+var isMobile=window.innerWidth<768;
+
+function getColors(isDark){
+  return{accent:isDark?'#14B8A6':'#0D9488',accent2:isDark?'#FACC15':'#EAB308',danger:isDark?'#EF4444':'#DC2626',warning:isDark?'#F59E0B':'#D97706',purple:isDark?'#8B5CF6':'#7C3AED',text:isDark?'#E5E7EB':'#1E293B',textSec:isDark?'#9CA3AF':'#64748B',textTert:isDark?'#6B7280':'#94A3B8',grid:isDark?'#2D3139':'#E2E5E9',bg:isDark?'#1E2028':'#FFFFFF'};
+}
+function getBase(c){
+  return{backgroundColor:'transparent',textStyle:{fontFamily:'Space Grotesk,system-ui',color:c.text},grid:{left:50,right:20,top:30,bottom:30},tooltip:{trigger:'axis',backgroundColor:c.bg,borderColor:c.grid,textStyle:{color:c.text,fontSize:12}}};
+}
+
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val),{mode:'no-cors'})})});
+
+function initCharts(){
+Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});
+fetch('data.json').then(function(r){return r.json()}).then(function(D){
+var isDark=document.documentElement.dataset.theme==='dark';
+var c=getColors(isDark);
+var base=getBase(c);
+
+// GAP CHART (Bar)
+charts.gap=echarts.init(document.getElementById('chart-gap'));
+charts.gap.setOption(Object.assign({},base,{
+  grid:{left:isMobile?20:40,right:isMobile?30:40,top:30,bottom:40},
+  xAxis:{type:'category',data:['Wollen\nPersonalisierung','Bekommen\nPersonalisierung','Würden mehr\nbezahlen','KI verbessert\nAufenthalt'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:isMobile?9:11,interval:0}},
+  yAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+  series:[{type:'bar',data:[
+    {value:D.gap.want_personalization_pct,itemStyle:{color:c.accent,borderRadius:[4,4,0,0]}},
+    {value:D.gap.get_personalization_pct,itemStyle:{color:c.danger,borderRadius:[4,4,0,0]}},
+    {value:D.gap.pay_more_for_experience_pct,itemStyle:{color:c.accent2,borderRadius:[4,4,0,0]}},
+    {value:D.gap.ai_improves_stay_pct,itemStyle:{color:c.purple,borderRadius:[4,4,0,0]}}
+  ],barWidth:isMobile?36:56,label:{show:true,position:'top',formatter:function(p){return p.value+'%'},color:c.text,fontSize:12,fontFamily:'JetBrains Mono'}}]
+}));
+
+// GENERATIONS CHART (Grouped Bar)
+charts.generations=echarts.init(document.getElementById('chart-generations'));
+var genLabels=D.generations.labels;
+var dims=isMobile?['KI','Solo','Social','Zimmer','Essen']:['KI-Nutzung','Solo-Reisen','Social Media','Unterkunft-Prio','Essen-Prio'];
+var dimColors=[c.accent,c.purple,c.warning,c.danger,c.accent2];
+var genSeries=[];
+for(var i=0;i<dims.length;i++){
+  genSeries.push({
+    name:dims[i],type:'bar',
+    data:[
+      D.generations.ai_usage_pct,
+      D.generations.solo_travel_pct,
+      D.generations.social_media_influence_pct,
+      D.generations.accommodation_priority_pct,
+      D.generations.food_priority_pct
+    ][i],
+    itemStyle:{color:dimColors[i],borderRadius:[4,4,0,0]},
+    barGap:'10%'
+  });
+}
+charts.generations.setOption(Object.assign({},base,{
+  grid:{left:isMobile?40:50,right:isMobile?10:20,top:50,bottom:40},
+  legend:{data:dims,top:5,textStyle:{color:c.textSec,fontSize:isMobile?9:11,fontFamily:'Space Grotesk'},itemGap:isMobile?6:12,itemWidth:12,itemHeight:8},
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  xAxis:{type:'category',data:genLabels,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:isMobile?10:12}},
+  yAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+  series:genSeries
+}));
+
+// EVOLUTION CHART (Line)
+charts.evolution=echarts.init(document.getElementById('chart-evolution'));
+var evoYears=D.evolution.map(function(e){return e.year});
+var evoPct=D.evolution.map(function(e){return e.online_pct});
+var evoHow=D.evolution.map(function(e){return e.how});
+charts.evolution.setOption(Object.assign({},base,{
+  grid:{left:isMobile?40:50,right:isMobile?20:30,top:20,bottom:40},
+  tooltip:{trigger:'axis',formatter:function(p){var idx=p[0].dataIndex;return '<b>'+evoYears[idx]+'</b>: '+evoPct[idx]+'% online<br><em>'+evoHow[idx]+'</em>'}},
+  xAxis:{type:'category',data:evoYears,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+  yAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+  series:[{
+    type:'line',data:evoPct,smooth:true,
+    lineStyle:{color:c.accent,width:3},
+    itemStyle:{color:c.accent},
+    areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:c.accent+'33'},{offset:1,color:c.accent+'05'}]}},
+    symbol:'circle',symbolSize:8,
+    label:{show:true,position:'top',formatter:function(p){return p.value+'%'},color:c.accent,fontSize:10,fontFamily:'JetBrains Mono'}
+  }]
+}));
+
+// SMART HOTEL MARKET CHART (Bar)
+charts.smarthotel=echarts.init(document.getElementById('chart-smarthotel'));
+charts.smarthotel.setOption(Object.assign({},base,{
+  grid:{left:isMobile?50:60,right:isMobile?30:40,top:20,bottom:40},
+  xAxis:{type:'category',data:['2025','2029'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+  yAxis:{type:'value',axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return '$'+v+' Mrd.'}}},
+  series:[{type:'bar',data:[
+    {value:D.ai_hotel.smart_hotel_market_2025_bln,itemStyle:{color:c.accent+'88',borderRadius:[4,4,0,0]}},
+    {value:D.ai_hotel.smart_hotel_market_2029_bln,itemStyle:{color:c.accent,borderRadius:[4,4,0,0]}}
+  ],barWidth:isMobile?50:80,label:{show:true,position:'top',formatter:function(p){return '$'+p.value.toFixed(1)+' Mrd.'},color:c.text,fontSize:12,fontFamily:'JetBrains Mono'}}]
+}));
+
+// SATISFACTION CHART (Line — Erlebnis vs. Dinge über Zeit)
+charts.satisfaction=echarts.init(document.getElementById('chart-satisfaction'));
+var timeLabels=['Kauf/Erlebnis','1 Monat','6 Monate','1 Jahr','3 Jahre','5 Jahre'];
+var experienceData=[70,72,75,80,85,90];
+var thingsData=[75,68,60,52,45,40];
+charts.satisfaction.setOption(Object.assign({},base,{
+  grid:{left:isMobile?40:50,right:isMobile?20:30,top:40,bottom:40},
+  legend:{data:['Erlebnis','Materielles Gut'],top:5,textStyle:{color:c.textSec,fontSize:11,fontFamily:'Space Grotesk'}},
+  tooltip:{trigger:'axis'},
+  xAxis:{type:'category',data:timeLabels,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:isMobile?9:11}},
+  yAxis:{type:'value',min:30,max:100,name:'Zufriedenheit',nameTextStyle:{color:c.textTert,fontSize:10},axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert}},
+  series:[
+    {name:'Erlebnis',type:'line',data:experienceData,smooth:true,lineStyle:{color:c.accent,width:3},itemStyle:{color:c.accent},symbol:'circle',symbolSize:6,
+     areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:c.accent+'22'},{offset:1,color:c.accent+'05'}]}}},
+    {name:'Materielles Gut',type:'line',data:thingsData,smooth:true,lineStyle:{color:c.danger,width:3,type:'dashed'},itemStyle:{color:c.danger},symbol:'circle',symbolSize:6,
+     areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:c.danger+'15'},{offset:1,color:c.danger+'02'}]}}}
+  ]
+}));
+
+window.addEventListener('resize',function(){isMobile=window.innerWidth<768;Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+});}
+
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';initCharts()}
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "title": "347 Ergebnisse. Null Erinnerungen.",
+    "subtitle": "Was Reisende wollen — und was Hotels liefern.",
+    "number": 13,
+    "date": "März 2026",
+    "author": "Thomas Körting"
+  },
+  "gap": {
+    "want_personalization_pct": 72,
+    "get_personalization_pct": 23,
+    "gap_pp": 49,
+    "pay_more_for_experience_pct": 61,
+    "ai_improves_stay_pct": 58,
+    "lost_revenue_pct": 25
+  },
+  "ota_vs_direct": {
+    "ota_market_share_pct": 55,
+    "booking_revenue_bln_usd": 23.7,
+    "booking_properties_mio": 3.4,
+    "commission_low_pct": 15,
+    "commission_high_pct": 25,
+    "cart_abandonment_pct": 81,
+    "direct_growth_europe_pct_low": 8,
+    "direct_growth_europe_pct_high": 15,
+    "ota_decline_europe_pp": 12,
+    "online_bookings_2026_tln_usd": 1.2
+  },
+  "guest_journey": {
+    "phases": [
+      {"name": "Inspiration", "emoji": "💭", "pain": "Reizüberflutung. 347 Ergebnisse, alle gleich."},
+      {"name": "Recherche", "emoji": "🔍", "pain": "74% nutzen Social Media. Aber Hotels sind dort kaum präsent."},
+      {"name": "Vergleich", "emoji": "⚖️", "pain": "Preis dominiert. Erlebnis unsichtbar."},
+      {"name": "Buchung", "emoji": "💳", "pain": "81% brechen ab. Formulare statt Fragen."},
+      {"name": "Vorfreude", "emoji": "✈️", "pain": "Kaum Kommunikation. Stille zwischen Buchung und Anreise."},
+      {"name": "Aufenthalt", "emoji": "🛏️", "pain": "Check-in-Schlange. Kein Name, nur Zimmernummer."},
+      {"name": "Erinnerung", "emoji": "📸", "pain": "Kein Follow-up. Kein 'Wie war's?'. Kein Wiedersehen."}
+    ]
+  },
+  "personas": [
+    {"name": "Familie", "icon": "👨‍👩‍👧‍👦", "size_pct": null, "top_need": "Platz, Flexibilität, Kinderaugen", "surprise": "73% lassen Kinder mitplanen", "books_via": "OTA + Pauschal", "experience_means": "Die Kinder staunen"},
+    {"name": "Solo", "icon": "🧳", "size_pct": 59, "top_need": "Sicherheit, Navigation, Kontakt ohne Druck", "surprise": "59% reisen solo (+13 PP in 1 Jahr)", "books_via": "Direkt + App", "experience_means": "Jemand zum Reden, ohne Zwang"},
+    {"name": "Business", "icon": "💼", "size_pct": null, "top_need": "WLAN, Workspace, Schnelligkeit", "surprise": "40% verlängern um Freizeit (Bleisure)", "books_via": "Firmenportal + Direkt", "experience_means": "Ein ruhiger Abend nach dem Meeting"},
+    {"name": "Paare", "icon": "❤️", "size_pct": null, "top_need": "Ruhe, Intimität, besondere Momente", "surprise": "Kontrolle über Aufenthalt > Zufriedenheit", "books_via": "Direkt + OTA", "experience_means": "Der Tisch am Fenster, nicht am Durchgang"},
+    {"name": "Hundebesitzer", "icon": "🐕", "size_pct": 52, "top_need": "Willkommen, nicht toleriert", "surprise": "58% reisen lieber mit Hund als mit Freund", "books_via": "Direkt + Ferienwohnung", "experience_means": "Socke darf auf die Terrasse"},
+    {"name": "Gen Z", "icon": "📱", "size_pct": null, "top_need": "Spontan, Social-Media-tauglich, Essen", "surprise": "71% Priorität = Essen, NICHT das Zimmer", "books_via": "Social Media + TikTok", "experience_means": "Das Foto, das alle liken"}
+  ],
+  "generations": {
+    "labels": ["Gen Z", "Millennials", "Gen X", "Boomer"],
+    "ai_usage_pct": [72, 55, 35, 15],
+    "solo_travel_pct": [49, 52, 30, 15],
+    "social_media_influence_pct": [90, 65, 40, 15],
+    "accommodation_priority_pct": [29, 45, 60, 79],
+    "food_priority_pct": [71, 55, 40, 35]
+  },
+  "ai_hotel": {
+    "chatbot_helpful_pct": 70,
+    "satisfaction_increase_pct": 28,
+    "review_increase_pct": 34,
+    "no_staff_needed_pct": 80,
+    "direct_booking_increase_low_pct": 40,
+    "direct_booking_increase_high_pct": 60,
+    "mobile_checkin_preference_pct": 54,
+    "mobile_key_adoption_pct": 70,
+    "voice_control_expected_pct": 78,
+    "smart_hotel_market_2025_bln": 29.65,
+    "smart_hotel_market_2029_bln": 74.86,
+    "smart_hotel_cagr_pct": 27.8
+  },
+  "boutique_vs_chain": {
+    "boutique_market_2024_bln": 27.41,
+    "boutique_market_2033_bln": 54.33,
+    "boutique_cagr_pct": 7.9,
+    "chain_market_2026_bln": 180.72,
+    "chain_market_2035_bln": 293.81,
+    "chain_cagr_pct": 4.9,
+    "chain_too_expensive_pct": 28
+  },
+  "germany": {
+    "overnights_2025_mio": 497.5,
+    "cost_per_person_vacation_eur": 1636,
+    "cost_per_day_eur": 130,
+    "trips_per_year": 4,
+    "domestic_main_holiday_pct": 35,
+    "top_domestic": "Bayern",
+    "top_international": "Spanien",
+    "pauschal_pct": 32,
+    "individual_pct": 67
+  },
+  "psychology": {
+    "experience_happier_than_things": true,
+    "satisfaction_things_over_time": "sinkt",
+    "satisfaction_experience_over_time": "steigt",
+    "peak_end_rule": "Menschen bewerten nach intensivstem Moment + Ende",
+    "memorable_24h": "Die denkwürdigsten 24 Stunden bestimmen die Erinnerung"
+  },
+  "evolution": [
+    {"year": 2000, "how": "Reisebüro, Katalog, Telefon", "online_pct": 5},
+    {"year": 2005, "how": "Erste OTAs, 1 von 5 online", "online_pct": 20},
+    {"year": 2010, "how": "Booking.com dominiert, Smartphones", "online_pct": 40},
+    {"year": 2015, "how": "Mobile first, Bewertungen entscheiden", "online_pct": 55},
+    {"year": 2020, "how": "Pandemie: Flexibilität, Stornierung, Nahziele", "online_pct": 65},
+    {"year": 2025, "how": "Social Media + KI planen Reisen, 40% nutzen AI", "online_pct": 76}
+  ],
+  "pet_travel": {
+    "plan_around_pet_pct": 52,
+    "travel_with_pet_pct": 60,
+    "prefer_pet_over_friend_pct": 58,
+    "pet_friendly_hotels_pct": 75,
+    "prefer_pet_hotel_pct": 81,
+    "market_2026_bln": 5.16,
+    "market_cagr_pct": 12.3,
+    "dogs_of_all_pet_travel_pct": 58
+  },
+  "stars": {
+    "system": "Hotelstars Union / DEHOGA",
+    "criteria_count": 270,
+    "criteria_about_personalization": 0,
+    "levels": [
+      {"stars": 1, "label": "Tourist", "focus": "Sauber, funktional"},
+      {"stars": 2, "label": "Standard", "focus": "Frühstück, TV"},
+      {"stars": 3, "label": "Komfort", "focus": "Restaurant, Fitness"},
+      {"stars": 4, "label": "First Class", "focus": "Concierge, Spa, Premium"},
+      {"stars": 5, "label": "Luxus", "focus": "24/7, personalisiert, Butler"}
+    ],
+    "insight": "270 Kriterien. 0 davon messen: Hat jemand gefragt warum du kommst?"
+  }
+}
