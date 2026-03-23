@@ -705,13 +705,19 @@ charts.predictions.setOption(Object.assign({},base,{
   xAxis:{type:'value',min:1930,max:2028,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textTert,fontSize:11},splitLine:{show:false}},
   yAxis:{type:'category',data:typeLabels,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
   series:[{
-    type:'scatter',symbolSize:function(d){return d[5]==='Realität'?24:d[5]==='sehr hoch'?18:14},
+    type:'scatter',symbolSize:function(d){return d[5]==='Realität'?24:d[5]==='sehr hoch'?16:12},
     data:D.predictions.map(function(p){
       var yIdx=p.type==='tv'?2:p.type==='film'?1:0;
-      return[p.year,yIdx,p.author,p.work,p.prediction,p.accuracy];
+      var shortName=p.author.split(' ').pop();
+      return[p.year,yIdx,p.author,p.work,p.prediction,p.accuracy,shortName];
     }),
     itemStyle:{color:function(p){return accColors[p.data[5]]||c.accent}},
-    label:{show:false}
+    label:{show:!isMobile,position:'top',formatter:function(p){
+      var key=['Orwell','Huxley','Asimov','Postman','Zuboff','Precht','Harari','Brooker','Matrix','Machina'];
+      var name=p.data[6];
+      for(var i=0;i<key.length;i++){if(name.indexOf(key[i])>=0||p.data[3].indexOf(key[i])>=0)return name;}
+      return '';
+    },fontSize:9,color:c.textTert,fontFamily:'JetBrains Mono'}
   }]
 }));
 
