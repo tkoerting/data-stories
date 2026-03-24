@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Prost. Oder auch nicht.",
+    "subtitle": "Das Kneipensterben in Daten.",
+    "number": 14,
+    "date": "März 2026",
+    "author": "Thomas Körting"
+  },
+  "kneipen_timeline": [
+    {"year": 1994, "count": 70000},
+    {"year": 2000, "count": 55000},
+    {"year": 2005, "count": 45000},
+    {"year": 2010, "count": 38000},
+    {"year": 2014, "count": 35000},
+    {"year": 2019, "count": 30000},
+    {"year": 2022, "count": 25000},
+    {"year": 2025, "count": 21000}
+  ],
+  "insolvenzen": {
+    "total_2020_2025": 11252,
+    "betriebe_geschlossen_2019_2023": 62000,
+    "betriebe_geschlossen_2024_2025": 24500,
+    "insolvenzen_2022": 1394,
+    "insolvenzen_2025": 2900,
+    "yoy_2024_pct": 26.5,
+    "yoy_2025_pct": 29.6
+  },
+  "corona": {
+    "umsatz_bars_2020_pct": -45.5,
+    "personal_bars_vs_2019_pct": -44.7,
+    "personal_bars_sep2023_vs_2019_pct": -12,
+    "personal_restaurants_sep2023_vs_2019_pct": -4.1,
+    "betriebe_2019": 179000,
+    "betriebe_2022": 158000
+  },
+  "gen_z_alkohol": {
+    "woechentlich_1976_pct": 70,
+    "woechentlich_2021_pct": 32,
+    "gar_nicht_pct": 49,
+    "bier_regelmaessig_pct": 24,
+    "wein_regelmaessig_pct": 18,
+    "verzichten_gesamt_pct": 25,
+    "alkoholfrei_konsumenten_pct": 61
+  },
+  "alkohol_pro_kopf": [
+    {"year": 1980, "liter": 14.4},
+    {"year": 1990, "liter": 12.9},
+    {"year": 2000, "liter": 12.0},
+    {"year": 2010, "liter": 11.5},
+    {"year": 2020, "liter": 10.2}
+  ],
+  "spirituosen_2024": {
+    "gesamt_pct": -7.1,
+    "vodka_pct": -11,
+    "brandy_pct": -17.4,
+    "rum_pct": -13.2,
+    "gin_pct": -8.0,
+    "cocktails_vs_pur": "2x mehr Cocktails als pur",
+    "craft_spirits_cagr_pct": 24.3,
+    "craft_spirits_2024_mio_usd": 1767,
+    "craft_spirits_2032_mio_usd": 10071,
+    "premium_spirits_cagr_pct": 9.4,
+    "premium_spirits_2024_bln_usd": 9.49,
+    "premium_spirits_2033_bln_usd": 21.28
+  },
+  "cocooning": {
+    "weniger_in_bars_pct": 70,
+    "innenstadt_seltener_pct": 32,
+    "gewinn_gastro_2024_pct": -20
+  },
+  "einsamkeit": {
+    "einsam_18_53_anteil": "jeder 3.",
+    "soziale_einsamkeit_pct": 39,
+    "emotionale_einsamkeit_pct": 29,
+    "besonders_betroffen": "Unter 30",
+    "trend": "steigend seit 5 Jahren"
+  },
+  "metropolregionen": {
+    "muenchen_pro_km2": 40,
+    "duesseldorf_pro_km2": 32,
+    "nuernberg_pro_km2": 24,
+    "ruhrgebiet": "Nr. 1 Event-/Diskodichte"
+  },
+  "franken": {
+    "erlangen_studierende_pct": 26.5,
+    "erlangen_kaufkraft": "Top 10 DE",
+    "erlangen_ewerk_luecke_eur": 290000,
+    "fuerth_amerigo": "Insolvenz Oktober 2025",
+    "nuernberg_bars": 150,
+    "metropolregion_einwohner_mio": 3.6
+  },
+  "sperrstunden": [
+    {"region": "Berlin", "regel": "Keine (seit 1949)"},
+    {"region": "Brandenburg, Bremen, Niedersachsen, MV, SA, SH, Thüringen", "regel": "Keine"},
+    {"region": "Bayern, Hamburg, Saarland, RLP, NRW, Sachsen, Hessen", "regel": "5–6 Uhr"},
+    {"region": "Baden-Württemberg", "regel": "3–6 Uhr (strengste)"}
+  ],
+  "nachtbuergermeister": [
+    {"stadt": "Amsterdam", "seit": 2003, "effekt": "Weniger Gewalt Rembrandtplein"},
+    {"stadt": "Mannheim", "seit": 2018, "effekt": "Erster in DE, weniger Beschwerden"},
+    {"stadt": "München", "seit": null, "effekt": "Diskussion, MoNa-Büro"},
+    {"stadt": "Nürnberg", "seit": null, "effekt": "Nichts"},
+    {"stadt": "Erlangen", "seit": null, "effekt": "Nichts"},
+    {"stadt": "Fürth", "seit": null, "effekt": "Nichts"}
+  ],
+  "generationen_trinken": {
+    "labels": ["Gen Z (18-28)", "Millennials (29-44)", "Gen X (45-58)", "Boomer (59+)"],
+    "woechentlich_pct": [32, 45, 55, 50],
+    "gar_nicht_pct": [49, 20, 12, 8]
+  }
+}

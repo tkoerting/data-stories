@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prost. Oder auch nicht. — Datenstück | Der Körting</title>
+<meta name="description" content="Das Kneipensterben in Daten. 70.000 Kneipen 1994, 21.000 heute. Corona, Gen Z, Cocooning, Einsamkeit — warum die Kneipe stirbt und was das bedeutet.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prost. Oder auch nicht. — Datenstück | Open Data Minded">
+<meta property="og:description" content="70.000 Kneipen 1994, 21.000 heute. Das Kneipensterben — in Daten.">
+<meta property="og:url" content="https://opendataminded.de/prost-oder-auch-nicht/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/prost-oder-auch-nicht/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Prost. Oder auch nicht.","description":"Das Kneipensterben in Daten. 70.000 Kneipen 1994, 21.000 heute. Corona, Gen Z, Cocooning, Einsamkeit — warum die Kneipe stirbt.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/prost-oder-auch-nicht/","inLanguage":"de","datePublished":"2026-03-24","dateModified":"2026-03-24"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);position:relative;padding-bottom:4px;transition:color 0.2s}
+.header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+.header-nav a:hover{color:var(--text-primary)} .header-nav a:hover::after{width:100%}
+.header-nav a.active{color:var(--accent)} .header-nav a.active::after{width:100%}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+.nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+.nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+.kpi-card:hover{border-color:var(--accent)}
+.kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+.kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)}
+.kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+.chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+.chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+.chart{width:100%;height:300px} .chart-tall{height:380px} .chart-wide{height:420px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+.compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;transition:all var(--transition)}
+.compare-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.compare-card .compare-icon{font-size:2.5rem;margin-bottom:0.5rem}
+.compare-card .compare-name{font-family:var(--font-headline);font-size:1.1rem;margin-bottom:0.25rem}
+.compare-card .compare-detail{font-size:0.8rem;color:var(--text-secondary)}
+.compare-card .compare-number{font-family:var(--font-mono);font-size:1.8rem;font-weight:500;margin:0.5rem 0;line-height:1.2}
+.compare-card.left-accent{border-left:3px solid var(--accent)}
+.compare-card.left-danger{border-left:3px solid var(--danger)}
+.perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+.perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+.perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+.quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+.quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+.quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+.source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+.github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+.github-link:hover{border-color:var(--accent);color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)} .back-link:hover{color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+.big-number{text-align:center;margin:2rem 0;padding:2rem}
+.big-number .number{font-family:var(--font-mono);font-size:4rem;font-weight:700;color:var(--accent);line-height:1}
+.big-number .number.danger{color:var(--danger)}
+.big-number .label{font-size:1rem;color:var(--text-secondary);margin-top:0.5rem}
+.big-number .sublabel{font-size:0.8rem;color:var(--text-tertiary);margin-top:0.25rem;font-family:var(--font-mono)}
+.aha{margin-top:0.5rem !important;font-size:0.82rem !important;color:var(--accent) !important;font-style:italic}
+.personal-lead{font-family:var(--font-headline);font-style:italic;font-size:1.05rem;color:var(--accent);margin-bottom:0.5rem;margin-top:2rem}
+/* Franken Cards */
+.franken-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.franken-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:border-color var(--transition)}
+.franken-card:hover{border-color:var(--accent)}
+.franken-card .franken-name{font-family:var(--font-headline);font-size:1.1rem;margin-bottom:0.5rem;color:var(--text-primary)}
+.franken-card .franken-detail{font-size:0.82rem;color:var(--text-secondary);line-height:1.5}
+.franken-card .franken-highlight{font-family:var(--font-mono);font-size:0.78rem;color:var(--accent);margin-top:0.5rem;display:block}
+/* Sperrstunden Cards */
+.sperrstunden-list{margin:1.5rem 0}
+.sperrstunden-item{display:flex;justify-content:space-between;align-items:center;padding:0.85rem 1rem;border:1px solid var(--border);border-radius:8px;margin-bottom:0.5rem;background:var(--bg-card);transition:border-color var(--transition)}
+.sperrstunden-item:hover{border-color:var(--accent)}
+.sperrstunden-region{font-size:0.9rem;font-weight:500;color:var(--text-primary)}
+.sperrstunden-regel{font-family:var(--font-mono);font-size:0.82rem;color:var(--text-secondary)}
+.sperrstunden-item.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+.sperrstunden-item.highlight .sperrstunden-regel{color:var(--accent);font-weight:500}
+.sperrstunden-item.strict{border-color:var(--danger);background:var(--danger-subtle)}
+.sperrstunden-item.strict .sperrstunden-regel{color:var(--danger);font-weight:500}
+/* Nachtbuergermeister Cards */
+.nacht-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin:1rem 0}
+.nacht-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:0.85rem;text-align:center;font-size:0.82rem;transition:border-color var(--transition)}
+.nacht-card:hover{border-color:var(--accent)}
+.nacht-card .nacht-city{font-family:var(--font-headline);font-size:0.95rem;margin-bottom:0.25rem}
+.nacht-card .nacht-year{font-family:var(--font-mono);color:var(--accent);font-size:0.85rem;font-weight:500}
+.nacht-card .nacht-effect{font-size:0.72rem;color:var(--text-tertiary);margin-top:0.25rem}
+.nacht-card.empty{opacity:0.5}
+.nacht-card.empty .nacht-year{color:var(--danger)}
+/* Spirituosen decline */
+.spirit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin:1rem 0}
+.spirit-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center;transition:border-color var(--transition)}
+.spirit-card:hover{border-color:var(--accent)}
+.spirit-card .spirit-name{font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.25rem}
+.spirit-card .spirit-val{font-family:var(--font-mono);font-size:1.1rem;font-weight:500;color:var(--danger)}
+@media(max-width:768px){
+  html{font-size:16px}
+  h1{font-size:1.8rem}
+  .kpi-grid{grid-template-columns:1fr 1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .franken-grid{grid-template-columns:1fr}
+  .nacht-grid{grid-template-columns:1fr 1fr}
+  .spirit-grid{grid-template-columns:1fr 1fr}
+  .chart{height:280px}
+  .chart-tall{height:340px}
+  .chart-wide{height:380px}
+  .story-wrapper{padding:2rem 1rem 3rem}
+  .section-nav{top:56px;gap:0.4rem}
+  .nav-pill{font-size:0.72rem;padding:0.3rem 0.65rem}
+  .big-number .number{font-size:3rem}
+  .quote-block p{font-size:0.95rem}
+}
+@media(max-width:480px){
+  .kpi-grid{grid-template-columns:1fr}
+  .nacht-grid{grid-template-columns:1fr}
+  .spirit-grid{grid-template-columns:1fr 1fr}
+  .kpi-value{font-size:1.3rem}
+  .nav-pill{font-size:0.68rem;padding:0.25rem 0.5rem}
+  .section-nav{gap:0.3rem}
+  h2{font-size:1.3rem}
+  .perspective-break h2{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #14</span>
+<span class="snapshot-tag">März 2026</span>
+<span>Blogpost folgt</span>
+</div>
+
+<h1>Prost. Oder auch nicht.</h1>
+<div class="subtitle">Das Kneipensterben in Daten.</div>
+
+<p class="lead">Matze und ich sitzen in Nürnberg. Dienstagabend. Wir wollen einen Gin Tonic trinken. In einer Bar, die kein Kettenrestaurant ist, kein Irish Pub mit Plastik-Kleeblättern und kein Laden, der um 22 Uhr schließt. Wir finden: nichts. Also habe ich die Daten nachgeschlagen.</p>
+
+<nav class="section-nav">
+<a href="#sterben" class="nav-pill">Das Sterben</a>
+<a href="#corona" class="nav-pill">Corona</a>
+<a href="#genz" class="nav-pill">Gen Z</a>
+<span class="nav-sep">|</span>
+<a href="#cocooning" class="nav-pill">Cocooning</a>
+<a href="#einsamkeit" class="nav-pill">Einsamkeit</a>
+<a href="#franken" class="nav-pill">Franken</a>
+<span class="nav-sep">|</span>
+<a href="#sperrstunden" class="nav-pill">Sperrstunden</a>
+<a href="#wastun" class="nav-pill">Was tun?</a>
+</nav>
+
+<!-- DAS GROSSE STERBEN -->
+<p class="personal-lead">1994 war ich 23. Jeder Ort hatte eine Kneipe. Manche drei.</p>
+<h2 id="sterben">Das große Sterben</h2>
+<p class="lead">Von 70.000 auf 21.000. In dreißig Jahren hat Deutschland zwei Drittel seiner Kneipen verloren. Das ist kein Trend. Das ist ein Aussterben.</p>
+
+<div class="chart-container">
+<div class="chart-title">Kneipen in Deutschland</div>
+<div class="chart-subtitle">1994–2025, Schankwirtschaften & Bars</div>
+<div id="chart-kneipen" class="chart chart-tall"></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">70.000</div><div class="kpi-label">Kneipen 1994</div><div class="kpi-sub">Höchststand</div></div>
+<div class="kpi-card"><div class="kpi-value danger">21.000</div><div class="kpi-label">Kneipen 2025</div><div class="kpi-sub">-70%</div></div>
+<div class="kpi-card"><div class="kpi-value warning">62.000</div><div class="kpi-label">Betriebe geschlossen</div><div class="kpi-sub">2019–2023</div></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Gastro-Insolvenzen</div>
+<div class="chart-subtitle">2022 vs. 2025 — verdoppelt in drei Jahren</div>
+<div id="chart-insolvenzen" class="chart"></div>
+</div>
+
+<div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+<div class="kpi-card"><div class="kpi-value danger">2.900</div><div class="kpi-label">Insolvenzen 2025</div><div class="kpi-sub">+29,6% zum Vorjahr</div></div>
+<div class="kpi-card"><div class="kpi-value warning">11.252</div><div class="kpi-label">Insolvenzen 2020–2025</div><div class="kpi-sub">kumuliert</div></div>
+</div>
+
+<!-- CORONA -->
+<p class="personal-lead">Corona hat die Kneipen nicht getötet. Aber es hat dem Sterben einen Turbo verpasst.</p>
+<h2 id="corona">Der Corona-Turbo</h2>
+<p class="lead">Lockdowns, Sperrstunden, 2G, 3G. Die Gastronomie hat Jahre verloren. Restaurants haben sich erholt. Bars nicht.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value danger">-45,5%</div><div class="kpi-label">Umsatz Bars 2020</div><div class="kpi-sub">vs. Vorjahr</div></div>
+<div class="kpi-card"><div class="kpi-value danger">-44,7%</div><div class="kpi-label">Personal Bars</div><div class="kpi-sub">vs. 2019</div></div>
+<div class="kpi-card"><div class="kpi-value warning">-12%</div><div class="kpi-label">Personal Sep 2023</div><div class="kpi-sub">immer noch unter 2019</div></div>
+</div>
+
+<div class="compare-grid">
+<div class="compare-card left-danger">
+<div class="compare-icon">&#127867;</div>
+<div class="compare-name">Bars</div>
+<div class="compare-number" style="color:var(--danger)">-12%</div>
+<div class="compare-detail">Personal Sep 2023 vs. 2019<br>Erholen sich NICHT</div>
+</div>
+<div class="compare-card left-accent">
+<div class="compare-icon">&#127869;</div>
+<div class="compare-name">Restaurants</div>
+<div class="compare-number" style="color:var(--accent)">-4,1%</div>
+<div class="compare-detail">Personal Sep 2023 vs. 2019<br>Fast zurück</div>
+</div>
+</div>
+
+<p>Restaurants können am Mittag öffnen. Eine Bar lebt vom Abend. Und der Abend kam nicht zurück.</p>
+
+<div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+<div class="kpi-card"><div class="kpi-value">179.000</div><div class="kpi-label">Betriebe 2019</div><div class="kpi-sub">vor Corona</div></div>
+<div class="kpi-card"><div class="kpi-value danger">158.000</div><div class="kpi-label">Betriebe 2022</div><div class="kpi-sub">-21.000 in 3 Jahren</div></div>
+</div>
+
+<!-- GEN Z TRINKT NICHT -->
+<p class="personal-lead">Hut ab. Wirklich. Ich hatte die Disziplin nicht. Habe ich immer noch nicht.</p>
+<h2 id="genz">Gen Z trinkt nicht</h2>
+<p class="lead">Die nüchternste Generation seit dem Zweiten Weltkrieg. Weniger Alkohol, weniger Bars, weniger Stammkneipe. Aber: nicht weniger Genuss.</p>
+
+<div class="chart-container">
+<div class="chart-title">Generationen und Alkohol</div>
+<div class="chart-subtitle">Wöchentlich trinken vs. gar nicht — in %</div>
+<div id="chart-generationen" class="chart chart-tall"></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Alkoholkonsum pro Kopf</div>
+<div class="chart-subtitle">1980–2020, Liter reiner Alkohol pro Jahr</div>
+<div id="chart-alkohol" class="chart"></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">49%</div><div class="kpi-label">Gen Z: gar kein Alkohol</div><div class="kpi-sub">fast jeder Zweite</div></div>
+<div class="kpi-card"><div class="kpi-value warning">24%</div><div class="kpi-label">trinken regelmäßig Bier</div><div class="kpi-sub">Gen Z</div></div>
+<div class="kpi-card"><div class="kpi-value purple">18%</div><div class="kpi-label">trinken regelmäßig Wein</div><div class="kpi-sub">Gen Z</div></div>
+</div>
+
+<p style="font-weight:500;">Spirituosen 2024 — alles fällt:</p>
+<div class="spirit-grid">
+<div class="spirit-card"><div class="spirit-name">Vodka</div><div class="spirit-val">-11%</div></div>
+<div class="spirit-card"><div class="spirit-name">Gin</div><div class="spirit-val">-8%</div></div>
+<div class="spirit-card"><div class="spirit-name">Rum</div><div class="spirit-val">-13,2%</div></div>
+<div class="spirit-card"><div class="spirit-name">Brandy</div><div class="spirit-val">-17,4%</div></div>
+</div>
+
+<p class="aha">⚡ Aber: Cocktails boomen. 2x mehr bestellen Cocktails als pur (NIQ). Craft Spirits wachsen mit 24% pro Jahr. Premium-Spirituosen +9%. Weniger trinken, aber besser — genau dafür bräuchte man gute Bars.</p>
+
+<!-- COCOONING -->
+<div class="perspective-break">
+<h2>70% geben weniger in Bars aus. Aber der Einzelhandel hält sich.</h2>
+<p>Die Deutschen trinken. Nur woanders.</p>
+</div>
+
+<p class="personal-lead">Netflix, Sofa, Lieferando. Die Deutschen trinken. Nur woanders. Alleine.</p>
+<h2 id="cocooning">Cocooning</h2>
+<p class="lead">Der Rückzug ins Private ist kein Corona-Phänomen. Er hat sich nur beschleunigt. Die Kneipe verliert gegen die Couch.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value danger">70%</div><div class="kpi-label">weniger Bar-Ausgaben</div><div class="kpi-sub">2024 vs. 2019</div></div>
+<div class="kpi-card"><div class="kpi-value warning">32%</div><div class="kpi-label">seltener in Innenstadt</div><div class="kpi-sub">seit Corona</div></div>
+<div class="kpi-card"><div class="kpi-value danger">-20%</div><div class="kpi-label">Gastro-Gewinn 2024</div><div class="kpi-sub">vs. Vorjahr</div></div>
+</div>
+
+<p>Die Abwärtsspirale: Weniger Gäste bedeuten weniger Umsatz. Weniger Umsatz bedeutet weniger Personal. Weniger Personal bedeutet schlechterer Service. Schlechterer Service bedeutet weniger Gäste. Und so weiter. Und so weiter.</p>
+
+<p>Streaming hat den Fernsehabend ersetzt. Lieferdienste haben das Ausgehen ersetzt. Social Media hat das Gespräch ersetzt. Was bleibt, ist eine Wohnung mit WLAN und ein Kühlschrank mit Craft Beer. Prost.</p>
+
+<!-- EINSAMKEIT -->
+<p class="personal-lead">Die nüchternste Generation ist auch die einsamste. Das ist kein Zufall.</p>
+<h2 id="einsamkeit">Die Einsamkeit</h2>
+<p class="lead">Weniger Kneipen, weniger dritte Orte, weniger zufällige Begegnungen. Die Folgen sind messbar.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value danger">Jeder 3.</div><div class="kpi-label">fühlt sich einsam</div><div class="kpi-sub">18–53 Jahre</div></div>
+<div class="kpi-card"><div class="kpi-value warning">39%</div><div class="kpi-label">soziale Einsamkeit</div><div class="kpi-sub">kein Netzwerk</div></div>
+<div class="kpi-card"><div class="kpi-value purple">Unter 30</div><div class="kpi-label">besonders betroffen</div><div class="kpi-sub">steigend seit 5 Jahren</div></div>
+</div>
+
+<div class="quote-block">
+<p>&bdquo;Die Kneipe war der niedrigschwelligste dritte Ort. Kein Verein, kein Kurs, kein Meetup mit Namensschildern. Einfach: Reingehen. Hinsetzen. Da sein.&ldquo;</p>
+</div>
+
+<p>Ray Oldenburg hat den Begriff &bdquo;dritter Ort&ldquo; geprägt — ein Ort, der weder Zuhause (erster Ort) noch Arbeit (zweiter Ort) ist. Cafes, Friseure, Kneipen. Orte, an denen man niemanden kennen muss, um dazuzugehören. Die Kneipe war der einfachste Einstieg. Kein Mitgliedsbeitrag. Keine Anmeldung. Keine Erwartung. Einfach: hingehen.</p>
+
+<p>Netflix ist kein dritter Ort. Netflix ist das Gegenteil.</p>
+
+<!-- FRANKEN -->
+<p class="personal-lead">3,6 Millionen Menschen. Matze und ich finden keinen ordentlichen Gin Tonic.</p>
+<h2 id="franken">Franken</h2>
+<p class="lead">Die Metropolregion Nürnberg hat 3,6 Millionen Einwohner. Und eine Gastro-Dichte, die unter München und Düsseldorf liegt.</p>
+
+<div class="chart-container">
+<div class="chart-title">Gastro-Dichte pro km²</div>
+<div class="chart-subtitle">Bars & Gastronomie, ausgewählte Städte</div>
+<div id="chart-dichte" class="chart"></div>
+</div>
+
+<div class="franken-grid">
+<div class="franken-card">
+<div class="franken-name">Erlangen</div>
+<div class="franken-detail">26,5% Studierende. Top 10 Kaufkraft in Deutschland. Das E-Werk hat eine Finanzierungslücke von 290.000 Euro.</div>
+<span class="franken-highlight">Kaufkraft Top 10. Aber das Kulturzentrum kann sich kaum halten.</span>
+</div>
+<div class="franken-card">
+<div class="franken-name">Fürth</div>
+<div class="franken-detail">Das Amerigo — eine der wenigen guten Bars — ging im Oktober 2025 in die Insolvenz.</div>
+<span class="franken-highlight">Insolvenz Oktober 2025</span>
+</div>
+<div class="franken-card">
+<div class="franken-name">Nürnberg</div>
+<div class="franken-detail">~150 Bars. 24 pro km². Klingt viel — bis man die Irish Pubs und Shisha-Bars abzieht.</div>
+<span class="franken-highlight">150 Bars, 24/km²</span>
+</div>
+</div>
+
+<p class="aha">Kaufkraft Top 10. Aber das Kulturzentrum kann sich kaum halten. Und das in einer Studentenstadt.</p>
+
+<!-- SPERRSTUNDEN -->
+<p class="personal-lead">Berlin: keine Sperrstunde seit 1949. Fürth: Gute Nacht um 5.</p>
+<h2 id="sperrstunden">Sperrstunden</h2>
+<p class="lead">Deutschland hat kein einheitliches Nachtleben-Gesetz. Jedes Bundesland regelt, wann Schluss ist. Das Ergebnis ist absurd.</p>
+
+<div class="sperrstunden-list" id="sperrstunden-list"></div>
+
+<p style="font-weight:500;margin-top:1.5rem;">Nachtbürgermeister:</p>
+<div class="nacht-grid" id="nacht-grid"></div>
+
+<p>Amsterdam hat seit 2003 einen Nachtbürgermeister. Weniger Gewalt, weniger Beschwerden, bessere Nachtökonomie. Mannheim seit 2018 — als erste Stadt in Deutschland. Nürnberg, Erlangen, Fürth? Nichts. Keine Ansprechperson, keine Strategie, keine Idee.</p>
+
+<!-- WAS TUN? -->
+<p class="personal-lead">Die guten Gespräche habe ich mit Matze. Die guten Drinks hätte ich gerne von jemandem, der weiß was er tut.</p>
+<h2 id="wastun">Was tun?</h2>
+<p class="lead">Die Kneipe stirbt nicht, weil die Leute nicht mehr trinken wollen. Sie stirbt, weil das Drumherum nicht mehr stimmt.</p>
+
+<p>Was helfen könnte:</p>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value accent2">&#127760;</div><div class="kpi-label">Nachtbürgermeister</div><div class="kpi-sub">Ansprechpartner für Nachtökonomie</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">&#128176;</div><div class="kpi-label">Miet-Deckel Gastro</div><div class="kpi-sub">Innenstädte brauchen Bars, nicht Filialen</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">&#127867;</div><div class="kpi-label">Qualität statt Quantität</div><div class="kpi-sub">Cocktails > Massenware</div></div>
+</div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value accent2">&#128101;</div><div class="kpi-label">Dritte Orte fördern</div><div class="kpi-sub">gegen Einsamkeit, für Gemeinschaft</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">&#9200;</div><div class="kpi-label">Sperrstunden lockern</div><div class="kpi-sub">Berlin zeigt: es funktioniert</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">&#128170;</div><div class="kpi-label">Gründer unterstützen</div><div class="kpi-sub">weniger Bürokratie, mehr Mut</div></div>
+</div>
+
+<p>Die Cocktail-Renaissance zeigt: Die Nachfrage ist da. Gen Z trinkt weniger — aber wenn, dann bewusster. Die wollen keinen billigen Fusel an einer klebrigen Theke. Die wollen einen guten Drink an einem guten Ort mit guten Leuten. Das ist keine schwierige Gleichung.</p>
+
+<!-- CLOSER -->
+<hr class="divider">
+
+<p class="tk-closer">Vielleicht sind wir Dinosaurier. Aber Dinosaurier, die an einem Dienstagabend in einer Bar sitzen, Gin Tonic trinken und über das Leben reden — die sterben zumindest nicht einsam. Prost, Buddy.</p>
+
+<div class="feedback-box">
+<h3>Wie war's?</h3>
+<p>Dein Feedback — ein Klick, kein Formular.</p>
+<div class="feedback-buttons">
+<button class="feedback-btn" data-value="mehr">Mehr davon</button>
+<button class="feedback-btn" data-value="kennich">Kenn ich</button>
+<button class="feedback-btn" data-value="prost">Prost!</button>
+</div>
+<div class="feedback-thanks" id="feedback-thanks">Danke. Und: Kennt ihr eine gute Bar in Nürnberg? Ernsthaft.</div>
+</div>
+
+<hr class="divider">
+
+<!-- SOURCES -->
+<div class="source-card">
+<h3>Quellen & Daten</h3>
+<ul>
+<li>DEHOGA Bundesverband — Gastronomie-Statistik, Betriebszahlen, Insolvenzen</li>
+<li>Statistisches Bundesamt (Destatis) — Gastgewerbe-Konjunktur, Beschäftigte, Umsatz</li>
+<li>Creditreform / Haffner (2025) — Insolvenzen Gastronomie & Hotellerie</li>
+<li>BZgA / Epidemiologischer Suchtsurvey — Alkoholkonsum nach Altersgruppen</li>
+<li>IWSR Drinks Market Analysis (2024) — Spirituosen-Absatz, Cocktail-Trend</li>
+<li>Einsamkeitsbarometer Deutschland (2024) — Soziale & emotionale Einsamkeit</li>
+<li>Ray Oldenburg (1989) — The Great Good Place, Dritte Orte</li>
+<li>IHK Nürnberg / Erlangen / Fürth — Regionaldaten Gastronomie</li>
+<li>Club Commission Berlin / Nachtbürgermeister-Netzwerk — Sperrstunden, Nachtökonomie</li>
+</ul>
+</div>
+
+<p><a href="https://github.com/tkoerting/data-stories" class="github-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> tkoerting/data-stories — Code, Daten, Methodik</a></p>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Alle Daten wurden nach bestem Wissen und Gewissen recherchiert und aufbereitet. Wer etwas findet, das nicht stimmt: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #14 — <a href="https://der-koerting.de">Blog</a> &middot; <a href="https://der-koerting.de/impressum/">Impressum</a> &middot; <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='prost-oder-auch-nicht';var charts={};
+var isMobile=window.innerWidth<768;
+
+function getColors(isDark){
+  return{accent:isDark?'#14B8A6':'#0D9488',accent2:isDark?'#FACC15':'#EAB308',danger:isDark?'#EF4444':'#DC2626',warning:isDark?'#F59E0B':'#D97706',purple:isDark?'#8B5CF6':'#7C3AED',text:isDark?'#E5E7EB':'#1E293B',textSec:isDark?'#9CA3AF':'#64748B',textTert:isDark?'#6B7280':'#94A3B8',grid:isDark?'#2D3139':'#E2E5E9',bg:isDark?'#1E2028':'#FFFFFF'};
+}
+function getBase(c){
+  return{backgroundColor:'transparent',textStyle:{fontFamily:'Space Grotesk,system-ui',color:c.text},grid:{left:50,right:20,top:30,bottom:30},tooltip:{trigger:'axis',backgroundColor:c.bg,borderColor:c.grid,textStyle:{color:c.text,fontSize:12}}};
+}
+
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val),{mode:'no-cors'})})});
+
+function buildSperrstunden(D){
+  var list=document.getElementById('sperrstunden-list');
+  if(!list||!D.sperrstunden)return;
+  D.sperrstunden.forEach(function(s){
+    var cls='sperrstunden-item';
+    if(s.regel.indexOf('Keine')===0&&s.region==='Berlin')cls+=' highlight';
+    if(s.regel.indexOf('3–6')>=0)cls+=' strict';
+    var div=document.createElement('div');div.className=cls;
+    div.innerHTML='<span class="sperrstunden-region">'+s.region+'</span><span class="sperrstunden-regel">'+s.regel+'</span>';
+    list.appendChild(div);
+  });
+}
+
+function buildNachtbuergermeister(D){
+  var grid=document.getElementById('nacht-grid');
+  if(!grid||!D.nachtbuergermeister)return;
+  D.nachtbuergermeister.forEach(function(n){
+    var cls='nacht-card';
+    if(!n.seit)cls+=' empty';
+    var div=document.createElement('div');div.className=cls;
+    div.innerHTML='<div class="nacht-city">'+n.stadt+'</div>'
+      +'<div class="nacht-year">'+(n.seit?'seit '+n.seit:'—')+'</div>'
+      +'<div class="nacht-effect">'+n.effekt+'</div>';
+    grid.appendChild(div);
+  });
+}
+
+function initCharts(){
+Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});
+fetch('data.json').then(function(r){return r.json()}).then(function(D){
+var isDark=document.documentElement.dataset.theme==='dark';
+var c=getColors(isDark);
+var base=getBase(c);
+
+// KNEIPEN TIMELINE (Line)
+charts.kneipen=echarts.init(document.getElementById('chart-kneipen'));
+var kYears=D.kneipen_timeline.map(function(e){return e.year});
+var kCounts=D.kneipen_timeline.map(function(e){return e.count});
+charts.kneipen.setOption(Object.assign({},base,{
+  grid:{left:isMobile?55:65,right:isMobile?20:30,top:20,bottom:40},
+  tooltip:{trigger:'axis',formatter:function(p){return '<b>'+p[0].name+'</b>: '+p[0].value.toLocaleString('de-DE')+' Kneipen'}},
+  xAxis:{type:'category',data:kYears,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+  yAxis:{type:'value',min:15000,max:75000,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return(v/1000)+'k'}}},
+  series:[{
+    type:'line',data:kCounts,smooth:true,
+    lineStyle:{color:c.danger,width:3},
+    itemStyle:{color:c.danger},
+    areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:c.danger+'33'},{offset:1,color:c.danger+'05'}]}},
+    symbol:'circle',symbolSize:8,
+    label:{show:true,position:'top',formatter:function(p){return(p.value/1000).toFixed(0)+'k'},color:c.text,fontSize:10,fontFamily:'JetBrains Mono'}
+  }]
+}));
+
+// INSOLVENZEN (Bar)
+charts.insolvenzen=echarts.init(document.getElementById('chart-insolvenzen'));
+charts.insolvenzen.setOption(Object.assign({},base,{
+  grid:{left:isMobile?50:60,right:isMobile?30:40,top:20,bottom:40},
+  xAxis:{type:'category',data:['2022','2025'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+  yAxis:{type:'value',axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert}},
+  series:[{type:'bar',data:[
+    {value:D.insolvenzen.insolvenzen_2022,itemStyle:{color:c.warning+'AA',borderRadius:[4,4,0,0]}},
+    {value:D.insolvenzen.insolvenzen_2025,itemStyle:{color:c.danger,borderRadius:[4,4,0,0]}}
+  ],barWidth:isMobile?50:80,label:{show:true,position:'top',formatter:function(p){return p.value.toLocaleString('de-DE')},color:c.text,fontSize:13,fontWeight:500,fontFamily:'JetBrains Mono'}}]
+}));
+
+// GENERATIONEN TRINKEN (Grouped Bar)
+charts.generationen=echarts.init(document.getElementById('chart-generationen'));
+var genLabels=D.generationen_trinken.labels;
+charts.generationen.setOption(Object.assign({},base,{
+  grid:{left:isMobile?40:50,right:isMobile?10:20,top:50,bottom:40},
+  legend:{data:['Trinkt wöchentlich','Trinkt gar nicht'],top:5,textStyle:{color:c.textSec,fontSize:isMobile?10:12,fontFamily:'Space Grotesk'},itemGap:isMobile?8:16,itemWidth:12,itemHeight:8},
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  xAxis:{type:'category',data:genLabels,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:isMobile?9:11,interval:0}},
+  yAxis:{type:'value',max:100,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+  series:[
+    {name:'Trinkt wöchentlich',type:'bar',data:D.generationen_trinken.woechentlich_pct,itemStyle:{color:c.accent,borderRadius:[4,4,0,0]},barGap:'15%',label:{show:!isMobile,position:'top',formatter:function(p){return p.value+'%'},color:c.text,fontSize:10,fontFamily:'JetBrains Mono'}},
+    {name:'Trinkt gar nicht',type:'bar',data:D.generationen_trinken.gar_nicht_pct,itemStyle:{color:c.danger,borderRadius:[4,4,0,0]},label:{show:!isMobile,position:'top',formatter:function(p){return p.value+'%'},color:c.text,fontSize:10,fontFamily:'JetBrains Mono'}}
+  ]
+}));
+
+// ALKOHOL PRO KOPF (Line)
+charts.alkohol=echarts.init(document.getElementById('chart-alkohol'));
+var aYears=D.alkohol_pro_kopf.map(function(e){return e.year});
+var aLiter=D.alkohol_pro_kopf.map(function(e){return e.liter});
+charts.alkohol.setOption(Object.assign({},base,{
+  grid:{left:isMobile?40:50,right:isMobile?20:30,top:20,bottom:40},
+  tooltip:{trigger:'axis',formatter:function(p){return '<b>'+p[0].name+'</b>: '+p[0].value+' Liter'}},
+  xAxis:{type:'category',data:aYears,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+  yAxis:{type:'value',min:8,max:16,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+' L'}}},
+  series:[{
+    type:'line',data:aLiter,smooth:true,
+    lineStyle:{color:c.accent,width:3},
+    itemStyle:{color:c.accent},
+    areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:c.accent+'33'},{offset:1,color:c.accent+'05'}]}},
+    symbol:'circle',symbolSize:8,
+    label:{show:true,position:'top',formatter:function(p){return p.value+' L'},color:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}
+  }]
+}));
+
+// GASTRO-DICHTE (Bar)
+charts.dichte=echarts.init(document.getElementById('chart-dichte'));
+charts.dichte.setOption(Object.assign({},base,{
+  grid:{left:isMobile?50:60,right:isMobile?30:40,top:20,bottom:40},
+  xAxis:{type:'category',data:['München','Düsseldorf','Nürnberg'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+  yAxis:{type:'value',axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+'/km²'}}},
+  series:[{type:'bar',data:[
+    {value:D.metropolregionen.muenchen_pro_km2,itemStyle:{color:c.accent,borderRadius:[4,4,0,0]}},
+    {value:D.metropolregionen.duesseldorf_pro_km2,itemStyle:{color:c.accent+'AA',borderRadius:[4,4,0,0]}},
+    {value:D.metropolregionen.nuernberg_pro_km2,itemStyle:{color:c.warning,borderRadius:[4,4,0,0]}}
+  ],barWidth:isMobile?40:65,label:{show:true,position:'top',formatter:function(p){return p.value+'/km²'},color:c.text,fontSize:12,fontFamily:'JetBrains Mono'}}]
+}));
+
+// Build dynamic elements
+buildSperrstunden(D);
+buildNachtbuergermeister(D);
+
+window.addEventListener('resize',function(){isMobile=window.innerWidth<768;Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+});}
+
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F';document.getElementById('sperrstunden-list').innerHTML='';document.getElementById('nacht-grid').innerHTML='';initCharts()}
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>
