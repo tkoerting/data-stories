@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "id": "kriege",
+    "title": "KRIEG(e)",
+    "subtitle": "Was wir sehen. Was wir nicht sehen. Wer verdient.",
+    "published": "2026-04-13",
+    "sources_as_of": "2026-04"
+  },
+  "kpis": {
+    "active_conflicts_2024": 61,
+    "wars_2024": 11,
+    "deaths_organized_violence_2024": 160000,
+    "sudan_media_share_pct": 1,
+    "rheinmetall_gain_since_feb2022_pct": 1000,
+    "top100_arms_revenue_usd_bn": 632
+  },
+  "conflicts_timeline": {
+    "note": "Anzahl staatlicher Konflikte pro Jahr, UCDP",
+    "years": [1946,1950,1955,1960,1965,1970,1975,1980,1985,1990,1991,1992,1995,2000,2005,2010,2014,2018,2020,2021,2022,2023,2024],
+    "active": [5,10,14,13,23,29,34,36,39,49,51,53,33,37,32,30,41,52,56,56,55,59,61]
+  },
+  "deadliest_conflicts_2024": [
+    {"name":"Ukraine","battle_deaths":76000,"status":"hoch sichtbar","color":"accent"},
+    {"name":"Sudan","battle_deaths":28700,"indirect":150000,"status":"vergessen","color":"danger"},
+    {"name":"Myanmar","battle_deaths":16000,"status":"vergessen","color":"danger"},
+    {"name":"Gaza/Israel","battle_deaths":15000,"status":"hoch sichtbar","color":"accent"},
+    {"name":"DR Kongo","battle_deaths":6500,"status":"vergessen","color":"danger"},
+    {"name":"Sahel (Mali/BF/Niger)","battle_deaths":5500,"status":"vergessen","color":"danger"},
+    {"name":"Jemen","battle_deaths":3000,"status":"vergessen","color":"danger"},
+    {"name":"Somalia","battle_deaths":2800,"status":"vergessen","color":"danger"}
+  ],
+  "media_vs_reality": {
+    "note": "Geschätzte globale Berichterstattungsanteile 2024, Opferzahlen laut ACLED/UCDP",
+    "data": [
+      {"conflict":"Ukraine","deaths":76000,"media_share":42},
+      {"conflict":"Gaza/Israel","deaths":15000,"media_share":38},
+      {"conflict":"Sudan","deaths":28700,"media_share":1},
+      {"conflict":"Myanmar","deaths":16000,"media_share":0.8},
+      {"conflict":"DR Kongo","deaths":6500,"media_share":0.5},
+      {"conflict":"Sahel","deaths":5500,"media_share":0.4},
+      {"conflict":"Jemen","deaths":3000,"media_share":0.3}
+    ]
+  },
+  "arms_exporters": [
+    {"country":"USA","share_pct":43,"trend":"+"},
+    {"country":"Frankreich","share_pct":9.6,"trend":"+11%"},
+    {"country":"Russland","share_pct":7.8,"trend":"−50%"},
+    {"country":"China","share_pct":5.9,"trend":"stabil"},
+    {"country":"Deutschland","share_pct":5.6,"trend":"+"}
+  ],
+  "arms_importers": [
+    {"country":"Ukraine","share_pct":8.8},
+    {"country":"Indien","share_pct":8.3},
+    {"country":"Katar","share_pct":6.8},
+    {"country":"Saudi-Arabien","share_pct":6.8},
+    {"country":"Pakistan","share_pct":4.6}
+  ],
+  "rheinmetall_stock": {
+    "note": "Indexed, Feb 2022 = 100. Gerundete Kursmarken.",
+    "points": [
+      {"date":"Feb 2022","value":100},
+      {"date":"Jun 2022","value":220},
+      {"date":"Dez 2022","value":280},
+      {"date":"Jun 2023","value":400},
+      {"date":"Dez 2023","value":510},
+      {"date":"Jun 2024","value":720},
+      {"date":"Dez 2024","value":900},
+      {"date":"Mrz 2025","value":1200},
+      {"date":"Aug 2025 (Friedensgerüchte)","value":1130},
+      {"date":"Dez 2025","value":1250},
+      {"date":"Apr 2026","value":1280}
+    ]
+  },
+  "dax_vs_defense": {
+    "note": "5-Handelstage-Reaktion nach Ereignis, gerundet. Quelle: Yahoo Finance Historical Data (DAX, RHM.DE).",
+    "events": [
+      {"label":"Ukraine-Invasion","date":"24.02.2022","dax":-3.3,"rheinmetall":52},
+      {"label":"Zeitenwende-Rede","date":"27.02.2022","dax":-0.5,"rheinmetall":55},
+      {"label":"Hamas-Anschlag","date":"07.10.2023","dax":-1.0,"rheinmetall":14},
+      {"label":"Sudan-Krieg","date":"15.04.2023","dax":0.5,"rheinmetall":2},
+      {"label":"Trump-Wiederwahl","date":"05.11.2024","dax":1.2,"rheinmetall":8}
+    ]
+  },
+  "nato_europe_imports": {
+    "periods": ["2015–2019","2020–2024"],
+    "index": [100,205]
+  },
+  "interveners": [
+    {"actor":"USA","metric":"133+ Militäreinsätze seit 1890 (Grossman)","note":"CRS R42738 listet hunderte"},
+    {"actor":"Frankreich","metric":"50+ Afrika-Interventionen seit 1960","note":"Operation Serval, Barkhane"},
+    {"actor":"Russland/Wagner","metric":"Mali, CAR, Sudan, Libyen","note":"US-Treasury: TCO 2023"},
+    {"actor":"VAE","metric":"Waffen an RSF Sudan","note":"UN Panel 01/2024: near certainty"},
+    {"actor":"Saudi-Arabien","metric":"40.000 RSF-Söldner Jemen","note":"Koalition seit 2015"},
+    {"actor":"Iran","metric":"Hisbollah, Huthis, Hamas, Milizen","note":"Proxy-Netzwerk"}
+  ],
+  "mediators": [
+    {"actor":"Norwegen","metric":"Oslo 1993, Kolumbien, Guatemala","note":"seit 1993 systematisch"},
+    {"actor":"Katar","metric":"Taliban-USA, Hamas-Israel, DRC-Ruanda","note":"Mediation in Verfassung 2004"},
+    {"actor":"Schweiz","metric":"Genf, HD Centre, Oslo Forum","note":"traditionelle Neutralität"},
+    {"actor":"Türkei","metric":"Getreidedeal Ukraine-Russland 2022","note":"Nahost + Kaukasus"},
+    {"actor":"Afrikanische Union","metric":"Sudan, Äthiopien-Tigray 2022","note":"begrenzter Einfluss"}
+  ],
+  "cia_coups": [
+    {"country":"Iran (Mossadegh)","year":1953,"acknowledged":"2013 CIA"},
+    {"country":"Guatemala (Arbenz)","year":1954,"acknowledged":"2003 State Dept"},
+    {"country":"Chile (Allende)","year":1973,"acknowledged":"teilweise: wusste, entmutigte nicht"}
+  ],
+  "defense_index_2025": {
+    "global_pct": 45,
+    "europe_pct": 70,
+    "dip_aug_2025_pct": -6
+  }
+}

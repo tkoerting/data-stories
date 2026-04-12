@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRIEG(e) — Was wir sehen. Was wir nicht sehen. Wer verdient. | Der Körting</title>
+<meta name="description" content="61 aktive Konflikte. 160.000 Tote. Sudan: unter 1% der Berichterstattung. Rheinmetall: +1.000% seit der Ukraine-Invasion. Ein Datenstück über Kriege, Profiteure und Blindspots.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KRIEG(e) — Datenstück | Open Data Minded">
+<meta property="og:description" content="61 aktive Konflikte. Wer kämpft, wer vermittelt, wer verdient. Nur Daten. Nur Quellen.">
+<meta property="og:url" content="https://opendataminded.de/kriege/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/kriege/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"KRIEG(e)","description":"Datenstück über aktive Konflikte, Medienaufmerksamkeit und Rüstungsprofiteure.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/kriege/","inLanguage":"de","datePublished":"2026-04-13","dateModified":"2026-04-13"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);position:relative;padding-bottom:4px;transition:color 0.2s}
+.header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+.header-nav a:hover{color:var(--text-primary)} .header-nav a:hover::after{width:100%}
+.header-nav a.active{color:var(--accent)} .header-nav a.active::after{width:100%}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.6rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+.nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+.nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+.kpi-card:hover{border-color:var(--accent)}
+.kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+.kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)}
+.kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+.chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+.chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+.chart{width:100%;height:300px} .chart-tall{height:380px} .chart-wide{height:460px}
+.perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+.perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+.perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+.perspective-break.danger{border-color:var(--danger)} .perspective-break.danger h2{color:var(--danger)}
+.actor-grid{display:grid;grid-template-columns:1fr;gap:0.6rem;margin:1.5rem 0}
+.actor-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;transition:all var(--transition);overflow:hidden}
+.actor-card[open]{border-color:var(--accent)}
+.actor-card.danger[open]{border-color:var(--danger)}
+.actor-card.mediator[open]{border-color:var(--purple)}
+.actor-card.danger{border-left:3px solid var(--danger)}
+.actor-card.mediator{border-left:3px solid var(--purple)}
+.actor-summary{padding:1rem 1.25rem;display:grid;grid-template-columns:auto 1fr auto auto;gap:1rem;align-items:center;cursor:pointer;list-style:none;transition:background var(--transition)}
+.actor-summary::-webkit-details-marker{display:none}
+.actor-summary:hover{background:var(--accent-subtle)}
+.actor-card.danger .actor-summary:hover{background:var(--danger-subtle)}
+.actor-name{font-family:var(--font-headline);font-size:1.15rem;color:var(--text-primary)}
+.actor-metric{font-size:0.85rem;color:var(--text-secondary);line-height:1.4}
+.actor-metric strong{color:var(--text-primary);font-family:var(--font-mono);font-weight:500}
+.actor-note{font-size:0.7rem;color:var(--text-tertiary);font-family:var(--font-mono);text-align:right;max-width:160px;line-height:1.3}
+.actor-toggle{width:28px;height:28px;border-radius:50%;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text-secondary);font-family:var(--font-mono);flex-shrink:0;transition:all var(--transition)}
+.actor-card[open] .actor-toggle{background:var(--accent);color:#fff;transform:rotate(45deg)}
+.actor-card.danger[open] .actor-toggle{background:var(--danger)}
+.actor-card.mediator[open] .actor-toggle{background:var(--purple)}
+.actor-details{padding:0 1.25rem 1.25rem 1.25rem;border-top:1px solid var(--border);margin-top:-1px;font-size:0.85rem;color:var(--text-secondary);line-height:1.65}
+.actor-details h4{font-family:var(--font-body);font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:1rem 0 0.4rem}
+.actor-details ul{list-style:none;padding-left:0}
+.actor-details li{padding-left:1.1rem;position:relative;margin-bottom:0.35rem;font-size:0.82rem}
+.actor-details li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.actor-card.danger .actor-details li::before{color:var(--danger)}
+.actor-card.mediator .actor-details li::before{color:var(--purple)}
+.actor-details .source-link{font-family:var(--font-mono);font-size:0.72rem;color:var(--text-tertiary);display:inline-block;margin-top:0.5rem;margin-right:0.4rem;padding:0.2rem 0.5rem;background:var(--tag-bg);border-radius:4px}
+.actor-details .source-link:hover{color:var(--accent);background:var(--accent-subtle)}
+.quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+.quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+.quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+.quote-block.danger{border-left-color:var(--danger);background:var(--danger-subtle)}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.fact-box{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--accent-2);border-radius:8px;padding:1rem 1.25rem;margin:1.5rem 0;font-size:0.88rem;color:var(--text-secondary)}
+.fact-box strong{color:var(--text-primary)}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative;line-height:1.5}
+.source-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.source-card .tier{display:inline-block;font-family:var(--font-mono);font-size:0.65rem;padding:0.1rem 0.4rem;border-radius:4px;margin-right:0.4rem;background:var(--accent-subtle);color:var(--accent)}
+.github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+.github-link:hover{border-color:var(--accent);color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)} .back-link:hover{color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+@media(max-width:768px){html{font-size:16px} h1{font-size:1.9rem} .kpi-grid,.kpi-grid-2{grid-template-columns:1fr 1fr} .chart{height:260px} .chart-tall{height:320px} .chart-wide{height:380px} .story-wrapper{padding:2rem 1rem 3rem} .section-nav{top:56px} .actor-card{grid-template-columns:1fr;gap:0.5rem} .actor-note{text-align:left;max-width:none}}
+@media(max-width:480px){.kpi-grid,.kpi-grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">☀️</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">← Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #15</span>
+<span class="snapshot-tag">April 2026</span>
+<span>Quellen: SIPRI, UCDP, ACLED, UN, CRS</span>
+</div>
+
+<h1>KRIEG(e).</h1>
+<div class="subtitle">Was wir sehen. Was wir nicht sehen. Wer verdient.</div>
+
+<p class="lead">61 aktive Konflikte weltweit. 160.000 Tote in einem Jahr. Sudan hat mehr Tote als fast jeder andere Krieg – und unter einem Prozent der Berichterstattung. Dieses Datenstück zeigt, wo gekämpft wird, wer zündelt, wer vermittelt und wer verdient. Keine Diagnose. Keine Moralkeule. Nur dokumentierte Fakten.</p>
+
+<nav class="section-nav">
+<a href="#rekord" class="nav-pill">Rekord</a>
+<a href="#toedlich" class="nav-pill">Tödlich</a>
+<a href="#blindspot" class="nav-pill">Blindspot</a>
+<span class="nav-sep">|</span>
+<a href="#zuendler" class="nav-pill">Zündler</a>
+<a href="#loeser" class="nav-pill">Löser</a>
+<span class="nav-sep">|</span>
+<a href="#ruestung" class="nav-pill">Rüstung</a>
+<a href="#profiteure" class="nav-pill">Profiteure</a>
+<a href="#dax" class="nav-pill">DAX</a>
+</nav>
+
+<!-- REKORD -->
+<h2 id="rekord">Mehr Konflikte als je zuvor</h2>
+<p>Die Uppsala Conflict Data Program (UCDP) zählt seit 1946. 2024 war der Rekord: <strong>61 aktive staatliche Konflikte</strong>. Elf davon erreichten das Niveau eines Krieges – mehr als tausend Kampftote pro Jahr. Das sind die meisten seit 2016.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">61</div><div class="kpi-label">Aktive Konflikte</div><div class="kpi-sub">Rekord seit 1946</div></div>
+<div class="kpi-card"><div class="kpi-value danger">11</div><div class="kpi-label">Echte Kriege</div><div class="kpi-sub">&gt;1.000 Tote/Jahr</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">160K</div><div class="kpi-label">Tote 2024</div><div class="kpi-sub">organisierte Gewalt</div></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Aktive Konflikte weltweit, 1946–2024</div>
+<div class="chart-subtitle">Quelle: UCDP Uppsala / Journal of Peace Research 2025 · Zwischenjahre interpoliert</div>
+<div id="chart-timeline" class="chart chart-tall"></div>
+</div>
+
+<p class="text-small">Der Rückgang in den 1990ern nach Ende des Kalten Kriegs war echt – aber kurz. Seit Mitte der 2000er steigen die Zahlen wieder. Syrien, Sahel, Ukraine, Gaza, Sudan. Sie summieren sich.</p>
+
+<!-- TOEDLICH -->
+<div class="perspective-break danger">
+<h2>Die tödlichsten Konflikte 2024.</h2>
+<p>Zwei davon kennt jeder. Sechs kaum einer.</p>
+</div>
+
+<h2 id="toedlich">Wo gestorben wird</h2>
+<p>Acht Konflikte mit über 2.500 direkten Kampftoten im Jahr 2024. Zwei stehen in jeder Tagesschau. Sechs nicht. Die Zahlen stammen von UCDP und ACLED, den beiden international anerkannten Konfliktdatenbanken.</p>
+
+<div class="chart-container">
+<div class="chart-title">Tödliche Konflikte 2024 — direkte Kampftote</div>
+<div class="chart-subtitle">Quellen: UCDP Uppsala 2025, ACLED Conflict Index 2024</div>
+<div id="chart-deadliest" class="chart chart-tall"></div>
+</div>
+
+<div class="fact-box">
+<strong>Sudan:</strong> 28.700 direkte Tote laut ACLED – humanitäre Analysen kommen auf <strong>~150.000 Gesamttote</strong>, wenn man Hunger, Krankheit und zerstörte Gesundheitsversorgung einrechnet. Manche Modellierungen gehen deutlich höher. Wir zeigen hier nur die direkt gezählten Toten, um methodisch konservativ zu bleiben.
+</div>
+
+<!-- BLINDSPOT -->
+<h2 id="blindspot">Was wir nicht sehen</h2>
+<p>Berichterstattung hat wenig mit Opferzahlen zu tun. Ukraine und Gaza dominieren zusammen rund 80 % der globalen Konfliktberichterstattung. Sudan – mit mehr direkten Toten als Gaza – macht unter einem Prozent aus. Das ist nicht gefühlt. Das ist gemessen.</p>
+
+<div class="chart-container">
+<div class="chart-title">Opfer vs. Aufmerksamkeit</div>
+<div class="chart-subtitle">Balken: Tote (ACLED/UCDP) · Linie: geschätzter Anteil globaler Konfliktberichterstattung 2024</div>
+<div id="chart-media" class="chart chart-wide"></div>
+</div>
+
+<p class="text-small">Die Disproportion ist dokumentiert: Laut einer UN-Analyse machte Sudan 2024 weniger als 1 % der globalen Konfliktberichterstattung aus – bei rund 150.000 Toten. CARE veröffentlicht jährlich den "Suffering in Silence"-Report über die zehn am wenigsten beachteten humanitären Krisen. Folge der Stille: weniger Hilfsgelder, weniger politischer Druck, weniger Kontrolle.</p>
+
+<div class="quote-block">
+<p>„Silence isn't neutral."</p>
+<span class="quote-author">— ResetDOC: How Media Coverage Frames Global Crises</span>
+</div>
+
+<!-- ZUENDLER -->
+<div class="perspective-break danger">
+<h2>Wer zündelt.</h2>
+<p>Acht Akteure. Alle dokumentiert. Alle durch Primärquellen belegt.</p>
+</div>
+
+<h2 id="zuendler">Die Intervenierenden</h2>
+<p>Dokumentierte Einmischung – Waffenlieferungen, Militäreinsätze, Proxys, Söldner, Besatzungen. Quellen: UN Panel of Experts, US Treasury, State Department, CRS, ICC, SIPRI, Human Rights Watch.</p>
+<p class="text-small">→ Klick auf eine Kachel öffnet Details und Primärquellen. <strong>Hinweis:</strong> Die ausgeklappten Fakten sind bewusst kuratierte Auszüge – die aussagekräftigsten Belege aus den Primärquellen. Keine Vollständigkeit. Wer den Gesamtbefund will, folgt dem Quelllink.</p>
+
+<div class="actor-grid">
+
+<details class="actor-card danger">
+<summary class="actor-summary">
+<div class="actor-name">🇺🇸 USA</div>
+<div class="actor-metric"><strong>133+</strong> Militäreinsätze seit 1890. Aktuell: Iran-Bombardement Juni 2025, Venezuela-Marineoperation seit Herbst 2025.</div>
+<div class="actor-note">Grossman / CRS R42738</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Aktuelle Einsätze 2025/26</h4>
+<ul>
+<li><strong>Iran</strong> (Juni 2025): "Operation Midnight Hammer" – B-2-Bomberangriffe auf die Atomanlagen Fordow, Natanz und Isfahan, koordiniert mit israelischen Angriffen</li>
+<li><strong>Venezuela</strong> (seit Herbst 2025): Marine-Aufmarsch in der Karibik, tödliche Angriffe auf mutmaßliche Drogenboote ohne Gerichtsverfahren – UN-Menschenrechtskommission kritisiert</li>
+</ul>
+<h4>Dokumentierte Eingriffe seit 1945</h4>
+<ul>
+<li><strong>Korea</strong> (1950–1953), <strong>Vietnam</strong> (1955–1975), <strong>Kuba</strong> (Bay of Pigs 1961), <strong>Grenada</strong> (1983), <strong>Panama</strong> (1989)</li>
+<li><strong>Irak</strong> (1991, 2003–2011), <strong>Afghanistan</strong> (2001–2021), <strong>Libyen</strong> (2011), <strong>Syrien</strong> (seit 2014)</li>
+<li>Nicaragua (Contras, 1980er), Somalia (1993), Kosovo (1999) – alles in offiziellen US-Dokumenten gelistet</li>
+</ul>
+<h4>Offiziell anerkannte CIA-Putsche</h4>
+<ul>
+<li><strong>Iran 1953</strong> (Mossadegh) – 2013 von CIA erstmals offiziell dokumentiert</li>
+<li><strong>Guatemala 1954</strong> (Árbenz) – 2003 vom State Department anerkannt</li>
+<li><strong>Chile 1973</strong> (Allende) – CIA-Formulierung: "wusste von Putschplänen, entmutigte nicht, hatte 1970 selbst einen versucht"</li>
+</ul>
+<a class="source-link" href="https://www.congress.gov/crs-product/R42738" target="_blank" rel="noopener">↗ CRS Report R42738 (Primärquelle)</a>
+</div>
+</details>
+
+<details class="actor-card danger">
+<summary class="actor-summary">
+<div class="actor-name">🇫🇷 Frankreich</div>
+<div class="actor-metric"><strong>50+</strong> Militärinterventionen in Afrika seit 1960. 2022–2025: fast vollständiger Rückzug aus Westafrika. Von 11 Basen auf 1 (Dschibuti).</div>
+<div class="actor-note">Ende der Françafrique</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Sahel-Ära &amp; Kollaps 2022–2025</h4>
+<ul>
+<li><strong>Operation Serval</strong> (Mali 2013), <strong>Barkhane</strong> (Sahel 2014–2022): 4.500 Soldaten auf Höhepunkt</li>
+<li><strong>Mali</strong> (2022), <strong>Burkina Faso</strong> (2023), <strong>Niger</strong> (2023): Juntas erzwingen Abzug</li>
+<li><strong>Tschad</strong> (November 2024): kündigt 60-jähriges Verteidigungsabkommen; letzte Basis übergeben Januar 2025</li>
+<li><strong>Elfenbeinküste</strong> (Dezember 2024): kündigt Abzug an</li>
+<li><strong>Senegal</strong> (Juli 2025): letzte Basis nach 65 Jahren Präsenz übergeben – erste demokratisch regierte Nation, die Abzug fordert</li>
+<li>Von permanenter Präsenz in <strong>11 afrikanischen Ländern</strong> auf faktisch <strong>nur noch Dschibuti</strong> (und reduziert Gabun)</li>
+</ul>
+<h4>Françafrique historisch</h4>
+<ul>
+<li>Durchschnittlich <strong>eine Intervention pro Jahr</strong> 1960 – Mitte der 1990er</li>
+<li>Wirtschaftliche Hebel: CFA-Franc, Ressourcenverträge (Uran, Öl)</li>
+</ul>
+<a class="source-link" href="https://en.wikipedia.org/wiki/Fran%C3%A7afrique" target="_blank" rel="noopener">↗ Dokumentation "Françafrique"</a>
+</div>
+</details>
+
+<details class="actor-card danger">
+<summary class="actor-summary">
+<div class="actor-name">🇷🇺 Russland</div>
+<div class="actor-metric">Vollinvasion Ukraine seit 24.02.2022. Wagner/Africa Corps in Mali, CAR, Sudan, Libyen. Tschetschenien, Georgien, Syrien.</div>
+<div class="actor-note">UN-GV, ICC, US Treasury</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Ukraine – laufender Krieg</h4>
+<ul>
+<li><strong>24.02.2022:</strong> Vollinvasion der Ukraine – weltweit tödlichster Konflikt 2024 mit ~76.000 Kampftoten</li>
+<li><strong>UN-Generalversammlung Resolution ES-11/1</strong> (März 2022): 141 Staaten verurteilten die Aggression</li>
+<li><strong>Internationaler Strafgerichtshof (ICC):</strong> Haftbefehl gegen Putin wegen Kinderdeportationen (März 2023), weitere Haftbefehle gegen Schoigu und Gerassimow wegen Infrastrukturangriffen (Juni 2024)</li>
+<li><strong>Vorläufer:</strong> Tschetschenien (1994–2009), Georgien (2008), Krim-Annexion (2014), Syrien (seit 2015)</li>
+</ul>
+<h4>Wagner / Africa Corps</h4>
+<ul>
+<li><strong>US-Finanzministerium Januar 2023:</strong> Wagner als "Transnational Criminal Organization" designiert</li>
+<li><strong>EU-Sanktionen</strong> 2021 + 2023 gegen Wagner-Führungspersonen</li>
+<li>Putin Juni 2023: Bestätigte <strong>86 Mrd Rubel</strong> (~940 Mio USD) Kreml-Gelder an Wagner (Mai 22 – Mai 23)</li>
+<li><strong>Mali / CAR / Libyen / Sudan:</strong> UN dokumentiert Massaker, Folter, Vergewaltigungen</li>
+<li><strong>Seit 2025:</strong> Umbenennung in "Africa Corps" unter direkter russischer Militärkontrolle</li>
+</ul>
+<a class="source-link" href="https://2021-2025.state.gov/the-wagner-groups-atrocities-in-africa-lies-and-truth/" target="_blank" rel="noopener">↗ US State Department Briefing</a>
+</div>
+</details>
+
+<details class="actor-card danger">
+<summary class="actor-summary">
+<div class="actor-name">🇨🇳 China</div>
+<div class="actor-metric">Viertgrößter Waffenexporteur. Myanmar-Junta-Lieferant. Taiwan-Drohkulisse. Nordkorea-Versorger.</div>
+<div class="actor-note">SIPRI, UN Panel Myanmar</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Waffenexporte &amp; Stellvertreter</h4>
+<ul>
+<li><strong>4. größter Waffenexporteur</strong> weltweit 2020–2024 (SIPRI): 5,9 % Weltmarktanteil</li>
+<li><strong>Myanmar:</strong> UN-Sonderberichterstatter dokumentiert Waffenlieferungen an Militärjunta seit Putsch 2021</li>
+<li><strong>Nordkorea:</strong> Wichtigster wirtschaftlicher Partner, umgeht UN-Sanktionen</li>
+<li><strong>Pakistan:</strong> größter Einzelempfänger chinesischer Waffen (ca. 80 % der pakistanischen Importe)</li>
+</ul>
+<h4>Eigene militärische Expansion</h4>
+<ul>
+<li><strong>Taiwan-Straße:</strong> Rekordzahl an Luftraum-Verletzungen (ADIZ) seit 2020, dokumentiert vom taiwanesischen Verteidigungsministerium</li>
+<li><strong>Südchinesisches Meer:</strong> Künstliche Inseln, Militärbasen – Schiedsspruch Den Haag 2016 gegen China</li>
+<li><strong>Erste Auslandsbasis Dschibuti</strong> (2017), wachsende Marinepräsenz</li>
+</ul>
+<a class="source-link" href="https://www.sipri.org/publications/2025/sipri-fact-sheets/trends-international-arms-transfers-2024" target="_blank" rel="noopener">↗ SIPRI Arms Transfers 2024</a>
+</div>
+</details>
+
+<details class="actor-card danger">
+<summary class="actor-summary">
+<div class="actor-name">🇮🇱 Israel</div>
+<div class="actor-metric">Iran-Angriff Juni 2025 (mit USA). Gaza-Offensive seit 10/2023, erneute Eskalation 03/2025. Syrien-Pufferzone seit Assad-Sturz. Westjordanland seit 1967.</div>
+<div class="actor-note">UN-Resolutionen, ICJ, OCHA</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Aktuelle Einsätze 2025/26</h4>
+<ul>
+<li><strong>Iran</strong> (Juni 2025): Direkte Angriffe auf Atomanlagen und Militärführung, koordiniert mit US-Operation "Midnight Hammer"</li>
+<li><strong>Gaza:</strong> Waffenstillstand + Geiseldeal Januar 2025, Bruch im März 2025, erneute Bodenoffensive – Laut UN OCHA über 60.000 palästinensische Tote bis Ende 2025 (Zahlen umstritten, Spanne je nach Methodik)</li>
+<li><strong>Syrien</strong> (seit Assad-Sturz Dezember 2024): Besetzung der Pufferzone auf den Golanhöhen, großflächige Luftangriffe auf syrische Militärinfrastruktur</li>
+<li><strong>Jemen:</strong> Luftangriffe gegen Huthi-Stellungen 2024/25</li>
+</ul>
+<h4>Länger laufende Konflikte</h4>
+<ul>
+<li><strong>Gaza</strong> seit 07.10.2023, <strong>Libanon</strong> Luftangriffe + Bodenoffensive 2024 (Waffenstillstand Nov 2024, Verletzungen dokumentiert)</li>
+<li><strong>Syrien:</strong> Hunderte Luftangriffe seit 2012 (offiziell zugegeben 2019)</li>
+<li><strong>Iran</strong>: Direkte Angriffe April + Oktober 2024</li>
+</ul>
+<h4>Völkerrechtlicher Rahmen</h4>
+<ul>
+<li><strong>UN-Resolutionen 242, 338, 2334, 2720:</strong> Besatzung Westjordanland + Gaza seit 1967 völkerrechtswidrig</li>
+<li><strong>ICJ-Verfahren Südafrika vs. Israel</strong> (2024): vorläufige Anordnungen zur Gaza-Offensive</li>
+<li><strong>ICC:</strong> Haftbefehle gegen Netanjahu und Gallant (November 2024) – parallel zu Hamas-Führung</li>
+<li><strong>Größter Empfänger von US-Waffen weltweit:</strong> $3,8 Mrd jährlich (Memorandum of Understanding 2016–2028)</li>
+</ul>
+<a class="source-link" href="https://www.ochaopt.org/" target="_blank" rel="noopener">↗ UN OCHA Opt (Occupied Palestinian Territory)</a>
+</div>
+</details>
+
+<details class="actor-card danger">
+<summary class="actor-summary">
+<div class="actor-name">🇦🇪 VAE</div>
+<div class="actor-metric">Waffenlieferungen an RSF in Sudan via Amdjarass-Flughafen (Tschad). Chinesische Drohnen, bulgarische Mörser.</div>
+<div class="actor-note">UN Panel, Januar 2024</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>UN-dokumentierte Waffenrouten</h4>
+<ul>
+<li><strong>UN Panel of Experts, Januar 2024:</strong> Waffentransfer VAE → RSF via <strong>Amdjarass-Flughafen (Tschad)</strong> mit "near certainty"</li>
+<li><strong>US-Geheimdienst + WSJ:</strong> Chinesische Drohnen an RSF geliefert – VAE als Zwischenstation</li>
+<li><strong>April 2025:</strong> Bulgarische Mörser-Granaten (legal an VAE exportiert) in Darfur bei RSF-Einheiten nachgewiesen</li>
+</ul>
+<h4>Weitere Netzwerke</h4>
+<ul>
+<li>Finanzielle Unterstützung für <strong>Ethiopien und Kenia</strong> zur Rückendeckung der RSF</li>
+<li>Militärlogistik über <strong>Libyen, Tschad, Südsudan, CAR</strong></li>
+<li>Auch aktiv im <strong>Libyen-Konflikt</strong> (Haftar/LNA) – EU dokumentiert</li>
+</ul>
+<a class="source-link" href="https://www.middleeasteye.net/news/sudan-uae-war-arms-trade-rsf" target="_blank" rel="noopener">↗ Middle East Eye: Waffenhandel Recherche</a>
+</div>
+</details>
+
+<details class="actor-card danger">
+<summary class="actor-summary">
+<div class="actor-name">🇸🇦 Saudi-Arabien</div>
+<div class="actor-metric"><strong>40.000</strong> RSF-Söldner im Jemen-Krieg (2016/17) finanziert. Koalition gegen Huthis seit 2015.</div>
+<div class="actor-note">UN-Dokumente, ECFR</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Jemen-Koalition seit 2015</h4>
+<ul>
+<li>Führung der "Arabischen Koalition" gegen Huthis – bis zu 10 Staaten beteiligt</li>
+<li><strong>14.000 sudanesische Soldaten</strong> (RSF + SAF) 2015 unter saudi-emiratischem Kommando</li>
+<li><strong>40.000 RSF-Söldner</strong> 2016/17 finanziert – größte Söldner-Operation der Region</li>
+<li>UN schätzt: >377.000 Tote im Jemen-Krieg (2015–2021, inkl. indirekte)</li>
+</ul>
+<h4>Sudan-Konflikt</h4>
+<ul>
+<li>Steht im aktuellen Krieg auf Seite der <strong>sudanesischen Armee (SAF)</strong>, gegen RSF</li>
+<li>Vermittlungsversuche in Dschidda 2023 – bislang ohne Durchbruch</li>
+<li>Gleichzeitig enger Verbündeter der VAE trotz gegensätzlicher Sudan-Positionen</li>
+</ul>
+<a class="source-link" href="https://ecfr.eu/publication/the-falcons-and-the-secretary-bird-arab-gulf-states-in-sudans-war/" target="_blank" rel="noopener">↗ ECFR: Gulf States in Sudan's War</a>
+</div>
+</details>
+
+<details class="actor-card danger">
+<summary class="actor-summary">
+<div class="actor-name">🇮🇷 Iran</div>
+<div class="actor-metric">"Achse des Widerstands" 2024/25 schwer beschädigt: Nasrallah tot, Assad gestürzt, Hamas dezimiert. Direkter Angriff auf Israel (2024), US-Bombardement (Juni 2025).</div>
+<div class="actor-note">Axis-Kollaps 2024–25</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Zusammenbruch der Achse 2024/25</h4>
+<ul>
+<li><strong>Hisbollah-Führung eliminiert</strong> (2024): Hassan Nasrallah in Beirut getötet, gesamtes Oberkommando ausgeschaltet, Großteil des Arsenals zerstört</li>
+<li><strong>Hamas-Führung dezimiert:</strong> Ismail Haniyeh (Teheran, Juli 2024), Yahya Sinwar (Gaza, Oktober 2024)</li>
+<li><strong>Assad-Sturz (Dezember 2024):</strong> HTS-Offensive beendet 54 Jahre Baath-Herrschaft – Syrien-Korridor Teheran ↔ Libanon weg</li>
+<li><strong>Hisbollah-Rückzug</strong> aus Süd-Libanon an libanesische Armee (April 2025)</li>
+<li><strong>Direkte Angriffe auf Israel:</strong> April + Oktober 2024 (erste offene Iran-Israel-Angriffe)</li>
+<li><strong>US-Bombardement Atomanlagen</strong> Juni 2025: Fordow, Natanz, Isfahan</li>
+</ul>
+<h4>Verbleibende Proxys</h4>
+<ul>
+<li><strong>Huthis (Jemen):</strong> Drohnen-/Raketenangriffe auf Schiffe im Roten Meer weiter aktiv</li>
+<li><strong>Schiitische Milizen Irak</strong> (Kataib Hizbollah, PMF) – wichtigster verbliebener Einflusshebel</li>
+<li><strong>Shahed-Drohnen an Russland</strong> für Ukraine-Krieg – EU-Sanktionen</li>
+</ul>
+<h4>Offizielle Einstufungen</h4>
+<ul>
+<li><strong>US Treasury:</strong> IRGC als Foreign Terrorist Organization (2019)</li>
+<li><strong>UN-Sanktionen</strong> gegen Rüstungsprogramme (teils durch JCPOA-Ablauf entfallen)</li>
+</ul>
+<a class="source-link" href="https://home.treasury.gov/policy-issues/financial-sanctions/sanctions-programs-and-country-information/iran-sanctions" target="_blank" rel="noopener">↗ US Treasury: Iran Sanctions</a>
+</div>
+</details>
+
+</div>
+
+
+<!-- LOESER -->
+<div class="perspective-break">
+<h2>Wer vermittelt.</h2>
+<p>Diplomatie lässt sich messen – an Abkommen, Prozessen, erreichten Waffenruhen.</p>
+</div>
+
+<h2 id="loeser">Die Vermittelnden</h2>
+<p>Kleine Länder, große Wirkung. Die erfolgreichsten Mediatoren der letzten 30 Jahre sind selten Großmächte. Sie setzen auf Verlässlichkeit, Diskretion und Geduld.</p>
+<p class="text-small">→ Auch hier: Details sind <strong>Auszüge</strong>, keine Vollständigkeit. Symmetrisch behandelt – Erfolge und Schwächen.</p>
+
+<div class="actor-grid">
+
+<details class="actor-card mediator">
+<summary class="actor-summary">
+<div class="actor-name">🇳🇴 Norwegen</div>
+<div class="actor-metric">Oslo-Abkommen 1993 (Israel/PLO), Kolumbien-FARC seit 1999, Guatemala, Taliban-USA-Gespräche 2013.</div>
+<div class="actor-note">seit 1993 systematisch</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Erfolgreiche Vermittlungen</h4>
+<ul>
+<li><strong>Oslo-Abkommen 1993:</strong> Israel/PLO – Ausgangspunkt für die Zwei-Staaten-Diskussion</li>
+<li><strong>Guatemala-Friedensabkommen</strong> (1996): Ende des 36-jährigen Bürgerkriegs</li>
+<li><strong>Kolumbien–FARC</strong> (seit 1999, Abschluss 2016) – aktuell Folgeverhandlungen mit EGC (mit Katar, Schweiz, Spanien)</li>
+<li><strong>Taliban–USA 2013:</strong> Vorarbeit für das Doha-Abkommen 2020</li>
+</ul>
+<h4>Schwächen & Lernkurven</h4>
+<ul>
+<li><strong>Sri Lanka</strong> (2002–2008): Friedensprozess gescheitert, LTTE-Krieg eskalierte</li>
+<li><strong>Philippinen</strong> (MILF): Lange Phasen, begrenzter Erfolg</li>
+<li>Oslo Forum jährlich im Juni – größte informelle Mediation-Konferenz weltweit</li>
+</ul>
+<a class="source-link" href="https://www.regjeringen.no/en/topics/foreign-affairs/peace-and-reconciliation-efforts/innsiktsmappe/peace_efforts/id732943/" target="_blank" rel="noopener">↗ Regjeringen.no: Peace Efforts Portfolio</a>
+</div>
+</details>
+
+<details class="actor-card mediator">
+<summary class="actor-summary">
+<div class="actor-name">🇶🇦 Katar</div>
+<div class="actor-metric">Taliban-USA, Hamas-Israel, DRC-Ruanda, Kolumbien-EGC. <strong>9. September 2025: Israel griff Hamas-Delegation in Doha an</strong> – erster Angriff auf einen Golf-Staat.</div>
+<div class="actor-note">Vermittler unter Beschuss</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Angriff auf den Vermittler – 9. September 2025</h4>
+<ul>
+<li><strong>Israelischer Luftangriff auf Doha:</strong> Ziele waren vier Hamas-Verhandler im Leqtaifiya-Viertel, die über einen US-vermittelten Waffenstillstand sprachen</li>
+<li><strong>6 Tote:</strong> darunter Sohn von Chefverhandler Khalil al-Hayya und ein katarischer Sicherheitsbeamter – Hamas-Führung überlebte</li>
+<li><strong>Erster direkter Angriff Israels auf ein Mitglied des Golf-Kooperationsrates</strong></li>
+<li>Internationale Verurteilung, sogar Trump "very unhappy" über unilaterale Aktion</li>
+<li>Gaza-Waffenstillstandsverhandlungen faktisch sabotiert</li>
+</ul>
+<h4>Vermittlungs-Portfolio</h4>
+<ul>
+<li><strong>USA–Taliban:</strong> Doha-Abkommen 2020, Grundlage für US-Abzug aus Afghanistan 2021</li>
+<li><strong>Israel–Hamas:</strong> Geisel-/Waffenstillstand Januar 2025 (gebrochen März 2025)</li>
+<li><strong>DRC–Ruanda:</strong> Friedenserklärung Doha 2024</li>
+<li><strong>Ukraine–Russland:</strong> Kinder-Rückführungen (über 100 Fälle)</li>
+<li><strong>Kolumbien–EGC:</strong> Friedenszusage Dezember 2025 in Doha</li>
+</ul>
+<h4>Die Doppelrolle</h4>
+<ul>
+<li>Kontakte zu <strong>Hamas, Taliban, Muslimbruderschaft</strong> – Hamas-Politbüro in Doha seit 2012</li>
+<li>"Wer mit allen reden kann, kann vermitteln" – PRIO-Studie</li>
+<li>Kritik: finanziert teilweise Akteure, die später vermittelt werden</li>
+</ul>
+<a class="source-link" href="https://en.wikipedia.org/wiki/2025_Israeli_attack_on_Doha" target="_blank" rel="noopener">↗ 2025 Israeli Attack on Doha (Dokumentation)</a>
+<a class="source-link" href="https://www.prio.org/research/locations/qatar" target="_blank" rel="noopener">↗ PRIO: Qatar Mediation Research</a>
+</div>
+</details>
+
+<details class="actor-card mediator">
+<summary class="actor-summary">
+<div class="actor-name">🇨🇭 Schweiz</div>
+<div class="actor-metric">Genf als Verhandlungsort, HD Centre (Humanitarian Dialogue), Co-Host Oslo Forum, Mitvermittler Kolumbien.</div>
+<div class="actor-note">Genfer Konventionen 1949</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Institutionelle Rolle</h4>
+<ul>
+<li><strong>Genf als Verhandlungsort:</strong> UN, IKRK, WHO, WTO – globaler Diplomatie-Hub</li>
+<li><strong>Genfer Konventionen 1949</strong> – Grundlage des humanitären Völkerrechts</li>
+<li><strong>Centre for Humanitarian Dialogue (HD):</strong> über 100 diskrete Mediationsinitiativen weltweit</li>
+</ul>
+<h4>Aktive Vermittlungen</h4>
+<ul>
+<li>Mitvermittler <strong>Kolumbien–EGC</strong> (2025)</li>
+<li>Historisch: <strong>Nuklearabkommen Iran</strong> (Genf als Verhandlungsort 2013–2015)</li>
+<li><strong>Schutzmachtmandate:</strong> Vertritt z.B. US-Interessen im Iran, iranische in den USA</li>
+</ul>
+<a class="source-link" href="https://www.hdcentre.org/" target="_blank" rel="noopener">↗ Centre for Humanitarian Dialogue</a>
+</div>
+</details>
+
+<details class="actor-card mediator">
+<summary class="actor-summary">
+<div class="actor-name">🇹🇷 Türkei</div>
+<div class="actor-metric">Getreidedeal Ukraine-Russland 2022 (UN-Dach). Nahost-Vermittlungen, Kaukasus.</div>
+<div class="actor-note">UN-Abkommen 2022</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Geopolitische Brücke</h4>
+<ul>
+<li><strong>Getreide-Abkommen Ukraine–Russland</strong> (Juli 2022): Unter UN-Dach in Istanbul, ermöglichte Schwarzmeer-Export bis 2023</li>
+<li><strong>Gefangenenaustausch</strong> Ukraine–Russland (mehrfach)</li>
+<li><strong>Somalia–Äthiopien</strong>: Vermittlung im Zugangs-Streit 2024</li>
+</ul>
+<h4>Doppelrolle</h4>
+<ul>
+<li>NATO-Mitglied, aber bilaterale Beziehungen zu Russland + Iran</li>
+<li>Gleichzeitig Waffenlieferant an Ukraine (Bayraktar-Drohnen)</li>
+<li>Einfluss im <strong>Kaukasus</strong> (Berg-Karabach), im <strong>Nahen Osten</strong> (Syrien, Libyen)</li>
+</ul>
+<a class="source-link" href="https://www.un.org/en/black-sea-grain-initiative" target="_blank" rel="noopener">↗ UN Black Sea Grain Initiative</a>
+</div>
+</details>
+
+<details class="actor-card mediator">
+<summary class="actor-summary">
+<div class="actor-name">🌍 Afrikanische Union</div>
+<div class="actor-metric">Sudan-Diplomatie, Äthiopien-Tigray-Abkommen 2022 (Pretoria). Gemischte Bilanz, begrenzter Einfluss.</div>
+<div class="actor-note">AU-Dokumente, UN-Partner</div>
+<div class="actor-toggle">+</div>
+</summary>
+<div class="actor-details">
+<h4>Erfolge</h4>
+<ul>
+<li><strong>Äthiopien–Tigray</strong> (Pretoria-Abkommen, November 2022): Waffenruhe nach 2-jährigem Krieg</li>
+<li><strong>DRC–M23</strong>: Luanda- und Nairobi-Prozesse (mit gemischtem Erfolg)</li>
+<li>Aufbau der <strong>African Standby Force</strong> – Peacekeeping-Kapazitäten</li>
+</ul>
+<h4>Strukturelle Grenzen</h4>
+<ul>
+<li><strong>Sudan:</strong> AU suspendierte Mitgliedschaft nach 2021-Putsch, Vermittlung bisher erfolglos</li>
+<li><strong>Sahel:</strong> Mali, Burkina Faso, Niger nach Putschen suspendiert – AU ohne Durchgriff</li>
+<li>Finanzierung zu >60% aus externen Gebern (EU, UN) – Abhängigkeitsproblem</li>
+</ul>
+<a class="source-link" href="https://au.int/en/peaceandsecurity" target="_blank" rel="noopener">↗ AU Peace & Security Department</a>
+</div>
+</details>
+
+</div>
+
+<div class="fact-box">
+<strong>Die Doppelrolle:</strong> Katar vermittelt und hat gleichzeitig Kontakte zu Hamas, Taliban und Muslimbruderschaft. Das ist keine Schwäche des Mediators – es ist die Bedingung seiner Wirkung. Wer mit allen reden kann, kann vermitteln. <span class="text-small">(PRIO Comparative Study: Qatar vs. Norway)</span>
+</div>
+
+<!-- RUESTUNG -->
+<div class="perspective-break">
+<h2>Die Lieferketten.</h2>
+<p>Fünf Länder liefern 71 Prozent aller Waffen weltweit.</p>
+</div>
+
+<h2 id="ruestung">Wer exportiert, wer importiert</h2>
+<p>SIPRI, das Stockholm International Peace Research Institute, gilt als Goldstandard für Rüstungsdaten. Unabhängig, schwedisch, seit 1966. Die Zahlen beziehen sich auf den Fünfjahreszeitraum 2020–2024.</p>
+
+<div class="chart-container">
+<div class="chart-title">Top 5 Waffenexporteure — Anteil am Weltmarkt, 2020–2024</div>
+<div class="chart-subtitle">SIPRI Fact Sheet März 2025</div>
+<div id="chart-exporters" class="chart"></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Top 5 Waffenimporteure, 2020–2024</div>
+<div class="chart-subtitle">SIPRI Fact Sheet März 2025</div>
+<div id="chart-importers" class="chart"></div>
+</div>
+
+<div class="fact-box">
+<strong>Zeitenwende in einer Zahl:</strong> NATO-Europa hat seine Waffenimporte zwischen 2015–2019 und 2020–2024 mehr als verdoppelt – um <strong>+105 %</strong>. Russlands Exporte haben sich im selben Zeitraum halbiert. <span class="text-small">(SIPRI 2025)</span>
+</div>
+
+<!-- PROFITEURE -->
+<div class="perspective-break danger">
+<h2>Die Profiteure.</h2>
+<p>+1.000 % Kursanstieg. 632 Milliarden Umsatz. Und Friedensgerüchte sind schlecht für die Aktie.</p>
+</div>
+
+<h2 id="profiteure">Wer an Kriegen verdient</h2>
+<p>Die SIPRI Top 100 – die hundert größten Rüstungskonzerne – erwirtschafteten 2023 zusammen 632 Milliarden US-Dollar Umsatz. US-Firmen dominieren mit 317 Milliarden. Seit der russischen Ukraine-Invasion am 24. Februar 2022 sind die Aktien der großen Rüstungskonzerne explodiert.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value danger">$632B</div><div class="kpi-label">SIPRI Top 100 2023</div><div class="kpi-sub">+4,2 % ggü. Vorjahr</div></div>
+<div class="kpi-card"><div class="kpi-value danger">+1.000%</div><div class="kpi-label">Rheinmetall</div><div class="kpi-sub">seit Feb 2022</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">+70%</div><div class="kpi-label">Defense-Index Europa</div><div class="kpi-sub">2025</div></div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">Rheinmetall-Aktie seit der Ukraine-Invasion</div>
+<div class="chart-subtitle">Indexiert: Feb 2022 = 100 — Quellen: Fortune, Nordic Defence Review, Börsendaten</div>
+<div id="chart-stock" class="chart chart-tall"></div>
+</div>
+
+<div class="quote-block danger">
+<p>„Im August 2025 fielen Rheinmetall, Leonardo und Renk um 5 bis 8 Prozent – nach Gerüchten über einen Ukraine-Waffenstillstand."</p>
+<span class="quote-author">— mehrere Finanzmedien, u.a. Scope Ratings 2025</span>
+</div>
+
+<p>Das ist keine Spekulation. Das ist Börsentag. Frieden ist, rein finanziell, ein negatives Ereignis für Rüstungsaktien. Wer das Geld hat, um zu investieren, investiert rational. Die Frage ist nicht, ob das moralisch ist. Die Frage ist, was es bedeutet.</p>
+
+<h2 id="dax">Was der DAX zeigt</h2>
+<p>Fünf geopolitische Ereignisse. Fünf Handelstage danach. Der DAX als Gesamtmarkt reagiert verhalten, mal leicht rauf, mal leicht runter. Rheinmetall reagiert jedes Mal – <strong>außer bei Sudan</strong>. Die Börse hat denselben Blindspot wie die Medien.</p>
+
+<div class="chart-container">
+<div class="chart-title">DAX vs. Rheinmetall — 5-Tages-Reaktion nach Ereignis</div>
+<div class="chart-subtitle">Prozentuale Kursveränderung · Quelle: Yahoo Finance Historical Data (DAX, RHM.DE) · gerundet · Sudan 15.04.2023: näherungsweise, da Datum Samstag</div>
+<div id="chart-dax" class="chart chart-tall"></div>
+</div>
+
+<p class="text-small">Bei der Ukraine-Invasion und der Zeitenwende-Rede von Scholz legte Rheinmetall innerhalb einer Woche über 50 % zu – während der DAX insgesamt leicht nachgab. Beim Hamas-Anschlag: +14 % Rheinmetall bei leicht negativem DAX. Beim Sudan-Krieg – einem der größten humanitären Konflikte überhaupt – nahezu keine Reaktion. Weder im DAX, noch in Rheinmetall. Kein Schlagzeilen-Impact, kein Kurs-Impact.</p>
+
+<div class="fact-box">
+<strong>Der Mechanismus:</strong> Börsenkurse reagieren auf Nachfrage-Erwartung, nicht auf Opferzahlen. Ohne neue Aufträge, ohne politischen Druck, ohne Schlagzeilen – keine Kursbewegung. Der Sudan-Krieg ist das Lehrbuchbeispiel: real, tödlich, groß – und börsentechnisch unsichtbar.
+</div>
+
+<div class="fact-box">
+<strong>Rheinmetall 2024 in Zahlen:</strong> Umsatz €9,8 Mrd (+36 %), Defense-Sparte €7,6 Mrd (+50 %), EPS +42 % in 9 Monaten. <strong>Lockheed Martin:</strong> +24 % im ersten Kriegsjahr. <strong>Global Defense Index 2025:</strong> +45 % weltweit, +70 % in Europa. <span class="text-small">(Fortune, Nordic Defence Review, Al Jazeera)</span>
+</div>
+
+<!-- FAZIT -->
+<hr class="divider">
+
+<h2>Was die Zahlen sagen</h2>
+
+<p>61 Konflikte. 160.000 Tote im Jahr. Eine Berichterstattung, die sich an Geografie und Bekanntheit orientiert, nicht an Opferzahlen. Acht Staaten, die dokumentiert Waffen, Söldner oder Soldaten in fremde Kriege schicken. Fünf Staaten, die professionell vermitteln. Fünf Länder, die 71 % aller Waffen liefern. Hundert Konzerne, die 632 Milliarden umsetzen. Und eine Aktienkurve, die zeigt: Frieden ist schlecht fürs Geschäft.</p>
+
+<p class="tk-closer">Die Zahlen stehen für sich. Wer sie einordnen, kommentieren, in persönlichen Kontext setzen will, findet das im Blog. Dieses Datenstück will nur zeigen, was ist.</p>
+
+<!-- Feedback -->
+<div class="feedback-box">
+<h3>War das nützlich?</h3>
+<p>Oder zu nüchtern? Zu politisch? Genau richtig?</p>
+<div class="feedback-buttons">
+<button class="feedback-btn" data-value="mehr">Mehr davon</button>
+<button class="feedback-btn" data-value="ok">War okay</button>
+<button class="feedback-btn" data-value="zuviel">Zu heftig</button>
+</div>
+<div class="feedback-thanks" id="feedback-thanks">Danke. Jede Rückmeldung hilft.</div>
+</div>
+
+<!-- Sources -->
+<div class="source-card">
+<h3>Quellen &amp; Primärdaten</h3>
+<ul>
+<li><span class="tier">Tier 1</span><strong>SIPRI</strong> — "Trends in International Arms Transfers, 2024" (März 2025); "Top 100 Arms-producing Companies, 2023" (Nov 2024); Yearbook 2025. sipri.org</li>
+<li><span class="tier">Tier 1</span><strong>UCDP Uppsala</strong> — Davies et al., "Organized violence 1989–2024", Journal of Peace Research 2025. ucdp.uu.se</li>
+<li><span class="tier">Tier 1</span><strong>ACLED</strong> — Conflict Index 2024/2025, Watchlist 2025. acleddata.com</li>
+<li><span class="tier">Tier 1</span><strong>CRS Report R42738</strong> — "Instances of Use of United States Armed Forces Abroad, 1798–2023", Congressional Research Service. congress.gov</li>
+<li><span class="tier">Tier 1</span><strong>UN Panel of Experts on Sudan</strong> — Januar 2024 (Waffenlieferungen VAE → RSF via Amdjarass)</li>
+<li><span class="tier">Tier 1</span><strong>US Treasury</strong> — Designation Wagner Group as Transnational Criminal Organization, Januar 2023</li>
+<li><span class="tier">Tier 1</span><strong>National Security Archive GWU</strong> — CIA Iran 1953 Documents. nsarchive2.gwu.edu</li>
+<li><span class="tier">Tier 1</span><strong>UN OCHA</strong> — Office for the Coordination of Humanitarian Affairs (Gaza, Sudan, Jemen). ochaopt.org</li>
+<li><span class="tier">Tier 1</span><strong>Internationaler Strafgerichtshof (ICC)</strong> — Haftbefehle Russland (Putin, Schoigu, Gerassimow), Israel (Netanjahu, Gallant), Hamas-Führung. icc-cpi.int</li>
+<li><span class="tier">Tier 1</span><strong>Internationaler Gerichtshof (ICJ)</strong> — Südafrika vs. Israel (2024), vorläufige Anordnungen. icj-cij.org</li>
+<li><span class="tier">Tier 1</span><strong>UN-Generalversammlung</strong> — Resolution ES-11/1 zur Russland-Ukraine-Aggression (März 2022)</li>
+<li><span class="tier">Tier 2</span><strong>CARE International</strong> — "Suffering in Silence" Report (jährlich)</li>
+<li><span class="tier">Tier 2</span><strong>PRIO</strong> — Peace Research Institute Oslo: Qatar Mediation Study</li>
+<li><span class="tier">Tier 2</span><strong>Brookings / Human Rights Watch / ECFR / CSIS</strong> — Wagner-Group-Analysen, Sudan-Konflikt</li>
+<li><span class="tier">Tier 3</span><strong>Fortune, Reuters, Al Jazeera, CNN, PBS, Wall Street Journal</strong> — Finanzdaten und aktuelle Entwicklungen</li>
+<li><span class="tier">Tier 3</span><strong>Grossman</strong> — "From Wounded Knee to Iran" (Evergreen State College)</li>
+</ul>
+<p style="font-size:0.75rem;margin-top:0.75rem;color:var(--text-tertiary)">Tier 1 = Primärquelle / Regierungsdokument · Tier 2 = anerkanntes Institut / NGO · Tier 3 = etablierter Journalismus. Wer methodische Fehler oder veraltete Zahlen findet: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+</div>
+
+<p><a href="https://github.com/tkoerting/data-stories" class="github-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> tkoerting/data-stories — Code, Daten, Methodik</a></p>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Datenstand April 2026. Konfliktdaten ändern sich täglich. Für die aktuellsten Zahlen: UCDP, ACLED, SIPRI direkt. Wer Unstimmigkeiten findet: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #15 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='kriege';var charts={};
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val),{mode:'no-cors'})})});
+
+function initCharts(){
+Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});
+fetch('data.json').then(function(r){return r.json()}).then(function(D){
+var isDark=document.documentElement.dataset.theme==='dark';
+var c={accent:isDark?'#14B8A6':'#0D9488',accent2:isDark?'#FACC15':'#EAB308',danger:isDark?'#EF4444':'#DC2626',warning:isDark?'#F59E0B':'#D97706',purple:isDark?'#8B5CF6':'#7C3AED',text:isDark?'#E5E7EB':'#1E293B',textSec:isDark?'#9CA3AF':'#64748B',textTert:isDark?'#6B7280':'#94A3B8',grid:isDark?'#2D3139':'#E2E5E9',bg:isDark?'#1E2028':'#FFFFFF'};
+var base={backgroundColor:'transparent',textStyle:{fontFamily:'Space Grotesk,system-ui',color:c.text},grid:{left:50,right:20,top:30,bottom:30},tooltip:{trigger:'axis',backgroundColor:c.bg,borderColor:c.grid,textStyle:{color:c.text,fontSize:12}}};
+
+// TIMELINE 1946-2024
+charts.timeline=echarts.init(document.getElementById('chart-timeline'));
+charts.timeline.setOption({...base,grid:{left:40,right:30,top:30,bottom:40},
+tooltip:{trigger:'axis',formatter:function(p){return p[0].axisValue+'<br>Konflikte: <b>'+p[0].value+'</b>'}},
+xAxis:{type:'category',data:D.conflicts_timeline.years,axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+yAxis:{type:'value',name:'Aktive Konflikte',nameTextStyle:{color:c.textTert,fontSize:10},axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert}},
+series:[{type:'line',smooth:true,data:D.conflicts_timeline.active,lineStyle:{width:3,color:c.accent},itemStyle:{color:c.accent},areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:c.accent+'55'},{offset:1,color:'transparent'}])},markPoint:{symbol:'pin',symbolSize:50,data:[{name:'Rekord 2024',coord:[D.conflicts_timeline.years.length-1,61]}],itemStyle:{color:c.danger}}}]});
+
+// DEADLIEST
+var dl=D.deadliest_conflicts_2024;
+charts.deadliest=echarts.init(document.getElementById('chart-deadliest'));
+charts.deadliest.setOption({...base,grid:{left:140,right:60,top:10,bottom:30},
+tooltip:{trigger:'item',formatter:function(p){var d=dl[p.dataIndex];var s='<b>'+d.name+'</b><br>'+d.battle_deaths.toLocaleString('de-DE')+' direkte Kampftote';if(d.indirect)s+='<br>~'+d.indirect.toLocaleString('de-DE')+' inkl. indirekter Tote';s+='<br><span style="color:'+(d.status==='vergessen'?c.danger:c.accent)+'">'+d.status+'</span>';return s}},
+xAxis:{type:'value',axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v>=1000?(v/1000)+'k':v}}},
+yAxis:{type:'category',data:dl.map(function(d){return d.name}).reverse(),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+series:[{type:'bar',data:dl.slice().reverse().map(function(d){return{value:d.battle_deaths,itemStyle:{color:d.color==='danger'?c.danger:c.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:d.battle_deaths.toLocaleString('de-DE'),color:d.color==='danger'?c.danger:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}}}),barWidth:20}]});
+
+// MEDIA vs REALITY (dual-axis)
+var mv=D.media_vs_reality.data;
+charts.media=echarts.init(document.getElementById('chart-media'));
+charts.media.setOption({...base,grid:{left:60,right:70,top:40,bottom:50},
+legend:{data:['Tote','Anteil Berichterstattung (%)'],textStyle:{color:c.textSec,fontSize:11},top:0},
+tooltip:{trigger:'axis',formatter:function(p){var d=mv[p[0].dataIndex];return '<b>'+d.conflict+'</b><br>Tote: '+d.deaths.toLocaleString('de-DE')+'<br>Medienanteil: ~'+d.media_share+'%'}},
+xAxis:{type:'category',data:mv.map(function(d){return d.conflict}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11,rotate:30}},
+yAxis:[
+{type:'value',name:'Tote',nameTextStyle:{color:c.textTert,fontSize:10},axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v>=1000?(v/1000)+'k':v}}},
+{type:'value',name:'Medien (%)',nameTextStyle:{color:c.textTert,fontSize:10},axisLine:{show:false},splitLine:{show:false},axisLabel:{color:c.textTert,formatter:'{value}%'},max:50}
+],
+series:[
+{name:'Tote',type:'bar',yAxisIndex:0,data:mv.map(function(d){return{value:d.deaths,itemStyle:{color:c.danger,borderRadius:[4,4,0,0]}}}),barWidth:30},
+{name:'Anteil Berichterstattung (%)',type:'line',yAxisIndex:1,smooth:true,data:mv.map(function(d){return d.media_share}),lineStyle:{width:3,color:c.accent2},itemStyle:{color:c.accent2},symbolSize:10}
+]});
+
+// EXPORTERS
+var ex=D.arms_exporters;
+charts.exporters=echarts.init(document.getElementById('chart-exporters'));
+charts.exporters.setOption({...base,grid:{left:110,right:60,top:10,bottom:30},
+xAxis:{type:'value',max:45,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:'{value}%'}},
+yAxis:{type:'category',data:ex.map(function(d){return d.country}).reverse(),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+series:[{type:'bar',data:ex.slice().reverse().map(function(d,i){return{value:d.share_pct,itemStyle:{color:i===ex.length-1?c.danger:c.accent+(i===ex.length-2?'':'99'),borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:d.share_pct+'% · '+d.trend,color:c.textSec,fontSize:11,fontFamily:'JetBrains Mono'}}}),barWidth:22}]});
+
+// IMPORTERS
+var im=D.arms_importers;
+charts.importers=echarts.init(document.getElementById('chart-importers'));
+charts.importers.setOption({...base,grid:{left:120,right:60,top:10,bottom:30},
+xAxis:{type:'value',max:10,axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:'{value}%'}},
+yAxis:{type:'category',data:im.map(function(d){return d.country}).reverse(),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+series:[{type:'bar',data:im.slice().reverse().map(function(d){return{value:d.share_pct,itemStyle:{color:c.accent2,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:d.share_pct+'%',color:c.textSec,fontSize:11,fontFamily:'JetBrains Mono'}}}),barWidth:22}]});
+
+// STOCK RHEINMETALL
+var st=D.rheinmetall_stock.points;
+charts.stock=echarts.init(document.getElementById('chart-stock'));
+charts.stock.setOption({...base,grid:{left:50,right:30,top:30,bottom:60},
+tooltip:{trigger:'axis',formatter:function(p){return p[0].axisValue+'<br>Index: <b>'+p[0].value+'</b>'}},
+xAxis:{type:'category',data:st.map(function(d){return d.date}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:10,rotate:35}},
+yAxis:{type:'value',name:'Index (Feb 2022 = 100)',nameTextStyle:{color:c.textTert,fontSize:10},axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert}},
+series:[{type:'line',smooth:true,data:st.map(function(d){return d.value}),lineStyle:{width:3,color:c.danger},itemStyle:{color:c.danger},areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:c.danger+'55'},{offset:1,color:'transparent'}])},markPoint:{data:[{name:'Friedensgerüchte',coord:[7,1130],value:'Delle'}],symbol:'pin',symbolSize:50,itemStyle:{color:c.accent2},label:{formatter:'{b}',fontSize:10}}}]});
+
+// DAX vs RHEINMETALL
+var dv=D.dax_vs_defense.events;
+charts.dax=echarts.init(document.getElementById('chart-dax'));
+charts.dax.setOption({...base,grid:{left:50,right:30,top:40,bottom:60},
+legend:{data:['DAX','Rheinmetall'],textStyle:{color:c.textSec,fontSize:11},top:0},
+tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){var d=dv[p[0].dataIndex];var fmt=function(v){return (v>0?'+':'')+v+'%'};return '<b>'+d.label+'</b> ('+d.date+')<br>DAX: '+fmt(d.dax)+'<br>Rheinmetall: '+fmt(d.rheinmetall)}},
+xAxis:{type:'category',data:dv.map(function(d){return d.label}),axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:10,interval:0,rotate:20}},
+yAxis:{type:'value',name:'5-Tages-Reaktion (%)',nameTextStyle:{color:c.textTert,fontSize:10},axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:'{value}%'}},
+series:[
+{name:'DAX',type:'bar',data:dv.map(function(d){return{value:d.dax,itemStyle:{color:c.textTert,borderRadius:[4,4,0,0]}}}),barWidth:22,label:{show:true,position:'top',formatter:function(p){return (p.value>0?'+':'')+p.value+'%'},color:c.textSec,fontSize:10,fontFamily:'JetBrains Mono'}},
+{name:'Rheinmetall',type:'bar',data:dv.map(function(d){return{value:d.rheinmetall,itemStyle:{color:c.danger,borderRadius:[4,4,0,0]}}}),barWidth:22,label:{show:true,position:'top',formatter:function(p){return (p.value>0?'+':'')+p.value+'%'},color:c.danger,fontSize:10,fontFamily:'JetBrains Mono',fontWeight:'bold'}}
+]});
+
+window.addEventListener('resize',function(){Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+});}
+
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'🌙':'☀️'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'🌙':'☀️';initCharts()}
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>
