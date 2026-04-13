@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dieselben Zahlen. Drei Wahrheiten. — Datenstück | Der Körting</title>
+<meta name="description" content="Wie man mit echten Daten lügt — eine interaktive Vorführung. KI, Politik, Gesundheit: Dieselben Zahlen, drei verschiedene Wahrheiten.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dieselben Zahlen. Drei Wahrheiten. — Datenstück | Open Data Minded">
+<meta property="og:description" content="Wie man mit echten Daten lügt — eine interaktive Vorführung. Dieselben Zahlen, drei verschiedene Wahrheiten.">
+<meta property="og:url" content="https://opendataminded.de/dieselben-zahlen/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/dieselben-zahlen/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Dieselben Zahlen. Drei Wahrheiten.","description":"Wie man mit echten Daten lügt — eine interaktive Vorführung. KI, Politik, Gesundheit.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/dieselben-zahlen/","inLanguage":"de","datePublished":"2026-03-24","dateModified":"2026-03-24"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);position:relative;padding-bottom:4px;transition:color 0.2s}
+.header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+.header-nav a:hover{color:var(--text-primary)} .header-nav a:hover::after{width:100%}
+.header-nav a.active{color:var(--accent)} .header-nav a.active::after{width:100%}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)} .back-link:hover{color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+.source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+.github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+.github-link:hover{border-color:var(--accent);color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+
+/* Theme Tabs */
+.theme-tabs{display:flex;gap:0.5rem;margin:2rem 0 1.5rem;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.theme-tab{background:var(--tag-bg);color:var(--tag-text);padding:0.45rem 1rem;border-radius:100px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition);font-family:var(--font-body)}
+.theme-tab:hover,.theme-tab.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+
+/* Truth Cards */
+.truth-cards{display:flex;flex-direction:column;gap:1.25rem;margin:1rem 0}
+.truth-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color var(--transition),opacity 0.5s,transform 0.5s}
+.truth-card:hover{border-color:var(--accent)}
+.truth-card.view-optimist{border-color:#22C55E;border-left:3px solid #22C55E}
+.truth-card.view-pessimist{border-color:var(--danger);border-left:3px solid var(--danger)}
+.truth-card.view-realist{border-color:var(--accent);border-left:3px solid var(--accent)}
+.truth-card.hidden{display:none}
+.truth-card.revealing{animation:cardReveal 0.6s cubic-bezier(0.4,0,0.2,1) forwards}
+@keyframes cardReveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.truth-value{font-family:var(--font-mono);font-size:2.2rem;font-weight:600;color:var(--accent);line-height:1.1;margin-bottom:0.25rem;transition:color var(--transition)}
+.view-optimist .truth-value{color:#22C55E}
+.view-pessimist .truth-value{color:var(--danger)}
+.view-realist .truth-value{color:var(--accent)}
+.truth-label{font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;line-height:1.4}
+.truth-original{font-size:0.8rem;color:var(--text-tertiary);background:var(--tag-bg);padding:0.6rem 0.8rem;border-radius:6px;margin-bottom:0.75rem;line-height:1.5;font-family:var(--font-body)}
+.truth-prompt{font-family:var(--font-headline);font-style:italic;font-size:0.9rem;color:var(--accent);margin-bottom:0.5rem}
+.theme-header{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.5rem}
+.theme-header-title{font-family:var(--font-headline);font-size:1.2rem;margin-bottom:0.25rem}
+.theme-header-source{font-size:0.78rem;color:var(--text-tertiary);font-family:var(--font-mono)}
+.truth-toggles{display:flex;gap:0.5rem;margin-bottom:0.75rem;flex-wrap:wrap}
+.truth-toggle{padding:0.4rem 0.9rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.8rem;cursor:pointer;transition:all var(--transition);color:var(--text-secondary)}
+.truth-toggle:hover{border-color:var(--text-tertiary)}
+.truth-toggle.optimist.active{border-color:#22C55E;background:rgba(34,197,94,0.1);color:#22C55E}
+.truth-toggle.pessimist.active{border-color:var(--danger);background:var(--danger-subtle);color:var(--danger)}
+.truth-toggle.realist.active{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.truth-content{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1),opacity 0.4s;opacity:0}
+.truth-content.visible{max-height:300px;opacity:1}
+.truth-headline{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.35rem;line-height:1.3}
+.truth-text{font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin:0}
+.bias-badge{display:inline-block;margin-top:0.6rem;padding:0.2rem 0.7rem;border-radius:100px;font-size:0.72rem;font-weight:500;font-family:var(--font-mono);background:var(--accent-subtle);color:var(--accent);border:1px solid rgba(20,184,166,0.25)}
+
+/* Level Gate */
+.level-gate{text-align:center;margin:2.5rem 0;padding:2rem 0}
+.level-gate.hidden{display:none}
+.gate-btn{padding:0.65rem 1.8rem;border-radius:10px;border:2px solid var(--accent);background:transparent;font-family:var(--font-headline);font-size:1.05rem;cursor:pointer;color:var(--accent);transition:all var(--transition)}
+.gate-btn:hover{background:var(--accent);color:#fff}
+.gate-progress{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;font-family:var(--font-mono)}
+
+/* Score Box */
+.score-box{background:var(--bg-card);border:2px solid var(--accent);border-radius:12px;padding:2rem;margin:3rem 0;text-align:center}
+.score-box.hidden{display:none}
+.score-box h2{margin:0 0 1rem;font-size:1.6rem}
+.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.score-item{padding:1rem;border-radius:10px;border:1px solid var(--border)}
+.score-item .score-count{font-family:var(--font-mono);font-size:2rem;font-weight:600;line-height:1.2}
+.score-item .score-label{font-size:0.78rem;color:var(--text-secondary);margin-top:0.25rem}
+.score-item.optimist .score-count{color:#22C55E}
+.score-item.pessimist .score-count{color:var(--danger)}
+.score-item.realist .score-count{color:var(--accent)}
+.score-closer{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-top:1.5rem;line-height:1.5}
+
+/* Bias Glossar */
+.bias-glossar{margin:2.5rem 0}
+.bias-item{border:1px solid var(--border);border-radius:10px;margin-bottom:0.5rem;overflow:hidden;background:var(--bg-card);transition:border-color var(--transition)}
+.bias-item:hover{border-color:var(--accent)}
+.bias-header{display:flex;align-items:center;gap:0.75rem;padding:0.85rem 1.25rem;cursor:pointer;font-size:0.9rem;font-weight:500;user-select:none}
+.bias-header .bias-icon{font-size:1.1rem;flex-shrink:0}
+.bias-header .bias-name{flex:1}
+.bias-header .bias-arrow{font-size:0.7rem;color:var(--text-tertiary);transition:transform 0.3s}
+.bias-item.open .bias-arrow{transform:rotate(180deg)}
+.bias-body{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1)}
+.bias-item.open .bias-body{max-height:200px}
+.bias-body-inner{padding:0 1.25rem 1rem;font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+
+@media(max-width:768px){
+  html{font-size:16px}
+  h1{font-size:1.8rem}
+  .truth-value{font-size:1.8rem}
+  .story-wrapper{padding:2rem 1rem 3rem}
+  .theme-tabs{top:56px;gap:0.4rem}
+  .theme-tab{font-size:0.75rem;padding:0.35rem 0.75rem}
+  .score-grid{grid-template-columns:1fr}
+  .score-grid .score-item{display:flex;align-items:center;justify-content:center;gap:1rem;padding:0.75rem 1rem}
+}
+@media(max-width:480px){
+  .truth-toggles{flex-direction:column}
+  .truth-toggle{text-align:center}
+  h2{font-size:1.3rem}
+  .theme-tab{font-size:0.7rem;padding:0.3rem 0.6rem}
+}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#9728;&#65039;</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #15</span>
+<span class="snapshot-tag">März 2026</span>
+</div>
+
+<h1>Dieselben Zahlen. Drei Wahrheiten.</h1>
+<p class="subtitle">Wie man mit echten Daten lügt — eine Vorführung.</p>
+
+<p>Ich zeige dir gleich echte Daten. Offizielle Quellen. Nachprüfbar.</p>
+<p>Und ich werde dich dreimal manipulieren. Du wirst es jedes Mal glauben.</p>
+<p class="lead">Klick dich durch die Karten. Entscheide bei jeder Zahl: Siehst du den Optimisten, den Pessimisten — oder den Realisten? Am Ende zählen wir.</p>
+
+<hr class="divider">
+
+<!-- Theme Tabs -->
+<div class="theme-tabs" id="theme-tabs"></div>
+
+<!-- Cards Container -->
+<div id="cards-container"></div>
+
+<!-- Level Gates -->
+<div class="level-gate" id="gate-2">
+<button class="gate-btn" onclick="revealLevel(2)">Ich glaub's immer noch nicht.</button>
+<p class="gate-progress"><span id="progress-1">0</span> von <span id="total-1">0</span> Karten bewertet</p>
+</div>
+
+<div class="level-gate hidden" id="gate-3">
+<button class="gate-btn" onclick="revealLevel(3)">Immer noch nicht.</button>
+<p class="gate-progress"><span id="progress-2">0</span> von <span id="total-2">0</span> Karten bewertet</p>
+</div>
+
+<!-- Score Box -->
+<div class="score-box hidden" id="score-box">
+<h2>Dein Blick.</h2>
+<div class="score-grid">
+<div class="score-item optimist"><div class="score-count" id="score-optimist">0</div><div class="score-label">Optimist</div></div>
+<div class="score-item pessimist"><div class="score-count" id="score-pessimist">0</div><div class="score-label">Pessimist</div></div>
+<div class="score-item realist"><div class="score-count" id="score-realist">0</div><div class="score-label">Realist</div></div>
+</div>
+<p class="score-closer" id="score-closer"></p>
+</div>
+
+<hr class="divider">
+
+<!-- Bias Glossar -->
+<h2>Die Werkzeuge der Manipulation.</h2>
+<p class="text-small">10 kognitive Verzerrungen, die in diesem Datenstück vorkommen. Jede einzelne funktioniert — auch wenn du sie kennst.</p>
+<div class="bias-glossar" id="bias-glossar"></div>
+
+<hr class="divider">
+
+<p class="tk-closer">Die Daten haben sich nicht geändert. Nur dein Blick.</p>
+
+<!-- Sources -->
+<div class="source-card" id="sources-card">
+<h3>Quellen</h3>
+<ul id="sources-list"></ul>
+</div>
+
+<!-- Feedback -->
+<div class="feedback-box">
+<h3>Hat dich das zum Nachdenken gebracht?</h3>
+<p>Drei Klicks, kein Tracking, kein Login.</p>
+<div class="feedback-buttons">
+<button class="feedback-btn" data-value="augenöffner">Augenöffner</button>
+<button class="feedback-btn" data-value="kannte-ich">Kannte ich schon</button>
+<button class="feedback-btn" data-value="mehr-davon">Mehr davon</button>
+</div>
+<p class="feedback-thanks" id="feedback-thanks">Danke. Wirklich.</p>
+</div>
+
+<p><a href="https://github.com/tkoerting/data-stories" class="github-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> tkoerting/data-stories — Code, Daten, Methodik</a></p>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Alle Daten wurden nach bestem Wissen und Gewissen recherchiert und aufbereitet. Wer etwas findet, das nicht stimmt: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #15 — <a href="https://der-koerting.de">Blog</a> &middot; <a href="https://der-koerting.de/impressum/">Impressum</a> &middot; <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='dieselben-zahlen';
+var FEEDBACK_URL='https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec';
+var DATA=null;
+var currentTheme='ki';
+var currentLevel=1;
+var scores={optimist:0,pessimist:0,realist:0};
+var cardChoices={};
+
+function sendFeedback(key,val){
+  fetch(FEEDBACK_URL+'?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(key+':'+val),{mode:'no-cors'});
+}
+
+function init(){
+  DATA={"meta": {"title": "Dieselben Zahlen. Drei Wahrheiten.", "subtitle": "Wie man mit echten Daten lügt — eine Vorführung.", "number": 15, "date": "März 2026", "author": "Thomas Körting"}, "themes": [{"id": "ki", "label": "KI", "icon": "🤖", "source": "Anthropic, 81.000 Interviews, März 2026"}, {"id": "wahl", "label": "Politik", "icon": "🗳️", "source": "Landeswahlleiter RLP, Infratest dimap, Stat. Landesamt, März 2026"}, {"id": "health", "label": "Gesundheit", "icon": "🏥", "source": "RKI, BMG, ME/CFS Research Foundation, Lancet, NEJM"}], "points": [{"id": "ki-1", "theme": "ki", "level": 1, "value": "81%", "label": "positive Erfahrungen mit KI", "optimist": {"headline": "4 von 5 profitieren von KI.", "text": "Die überwältigende Mehrheit der Befragten berichtet positive Erlebnisse. KI funktioniert.", "chart_highlight": "green"}, "pessimist": {"headline": "Nur KI-Fans wurden gefragt.", "text": "Befragt wurden ausschließlich Claude-Nutzer. Wer die KI nicht mag, hat sie längst gelöscht — und war nicht in der Studie.", "chart_highlight": "red"}, "realist": {"headline": "Selbstselektion.", "text": "Ein All-Volunteer-Sample ist der schlimmste Fall von Nonresponse-Bias. Wer sich freiwillig meldet, ist systematisch anders als die Grundgesamtheit. Die 81% sagen nichts über die Welt — nur über die, die geblieben sind.", "bias": "Survivorship Bias"}, "original": "81% der Befragten berichten positive Erfahrungen mit KI. — Anthropic, 80.508 Claude-Nutzer, 159 Länder"}, {"id": "ki-2", "theme": "ki", "level": 1, "value": "50%", "label": "sparen Zeit durch KI", "optimist": {"headline": "Die Hälfte hat mehr Freizeit.", "text": "Jeder Zweite spart messbar Zeit im Arbeitsalltag. Das ist ein enormer Produktivitätsgewinn.", "chart_highlight": "green"}, "pessimist": {"headline": "18% sagen: Die Zeit verschwindet sofort.", "text": "Schneller laufen, um stehen zu bleiben. Die gesparte Zeit wird mit mehr Aufgaben gefüllt. Illusorische Produktivität.", "chart_highlight": "red"}, "realist": {"headline": "Framing.", "text": "'50% sparen Zeit' und '50% sparen NICHT' sind derselbe Datenpunkt. Welche Headline du liest, entscheidet dein Gefühl — nicht die Daten.", "bias": "Framing"}, "original": "50% der Befragten geben an, durch KI Zeit zu sparen. — Anthropic Studie, Kategorie Productivity"}, {"id": "ki-3", "theme": "ki", "level": 1, "value": "67%", "label": "positive Stimmung global", "optimist": {"headline": "Zwei Drittel der Welt sind optimistisch.", "text": "Global betrachtet überwiegt der Optimismus deutlich. Die Menschheit begrüßt KI.", "chart_highlight": "green"}, "pessimist": {"headline": "In Westeuropa nur 35%.", "text": "Die Optimisten sind die, die KI noch nicht im Alltag spüren. Ärmere Länder sind begeistert — reichere nicht.", "chart_highlight": "red"}, "realist": {"headline": "Kontext weglassen.", "text": "67% global klingt überzeugend — bis du die regionale Aufschlüsselung siehst. Wer den Durchschnitt zeigt und die Verteilung verschweigt, manipuliert.", "bias": "Kontext weglassen"}, "original": "67% der Befragten weltweit haben eine positive Grundstimmung gegenüber KI. — Anthropic, globale Auswertung"}, {"id": "ki-4", "theme": "ki", "level": 2, "value": "37%", "label": "erleben Unzuverlässigkeit", "optimist": {"headline": "63% haben keine Probleme.", "text": "Fast zwei Drittel erleben KI als zuverlässig. Die Technologie wird besser.", "chart_highlight": "green"}, "pessimist": {"headline": "Das einzige Feld wo Risiko größer ist als Nutzen.", "text": "Fast die Hälfte aller Anwälte hat KI-Fehler aus erster Hand erlebt. Halluzinationen, erfundene Quellen, plausibel klingender Unsinn.", "chart_highlight": "red"}, "realist": {"headline": "Cherry Picking.", "text": "'63% keine Probleme' und '37% Halluzinationen' — je nachdem welche Zahl du in die Headline packst, erzählst du eine andere Geschichte. Mit demselben Datensatz.", "bias": "Cherry Picking"}, "original": "37% der Befragten nennen Unzuverlässigkeit als Hauptproblem. — Anthropic, höchste Einzelbesorgnis"}, {"id": "ki-5", "theme": "ki", "level": 2, "value": "28% vs. 22%", "label": "Empowerment vs. Jobangst", "optimist": {"headline": "Mehr Empowerment als Angst.", "text": "28% erleben wirtschaftliche Stärkung. Nur 22% fürchten Jobverlust. Netto positiv.", "chart_highlight": "green"}, "pessimist": {"headline": "Jobangst ist der stärkste Stimmungs-Prädiktor.", "text": "Die 22% die Angst haben, sind pessimistischer als alle anderen Gruppen. Angst wiegt schwerer als Empowerment.", "chart_highlight": "red"}, "realist": {"headline": "Versteckte Asymmetrie.", "text": "Freelancer profitieren (47%). Angestellte kaum (14%). Dieselbe Zahl '28% Empowerment' versteckt eine brutale Kluft zwischen Gewinnern und Verlierern.", "bias": "Durchschnitt versteckt Verteilung"}, "original": "28% erleben wirtschaftliche Stärkung, 22% fürchten Jobverlust. — Anthropic, Spannungsfeld 5"}, {"id": "ki-6", "theme": "ki", "level": 2, "value": "8,7%", "label": "Nicht-Entwickler bauen Dinge", "optimist": {"headline": "KI demokratisiert Technologie.", "text": "Fast jeder Zehnte baut ohne Programmierkenntnisse Dinge, die vorher unmöglich waren.", "chart_highlight": "green"}, "pessimist": {"headline": "Weniger als 1 von 10.", "text": "Die überwältigende Mehrheit — 91,3% — baut gar nichts. Die 8,7% sind die Ausnahme, nicht die Regel.", "chart_highlight": "red"}, "realist": {"headline": "Survivorship Bias.", "text": "Wir hören die Geschichten der 8,7%. Die 91,3% die nichts bauen, erzählen keine Heldengeschichte. Erfolgsberichte verzerren systematisch.", "bias": "Survivorship Bias"}, "original": "8,7% der Befragten bauen als Nicht-Entwickler technische Produkte. — Anthropic, Kategorie Technical Accessibility"}, {"id": "ki-7", "theme": "ki", "level": 3, "value": "33% vs. 17%", "label": "Lernen vs. Abbau", "optimist": {"headline": "Doppelt so viele lernen wie abbauen.", "text": "33% lernen schneller. Nur 17% fürchten Abbau. Das Verhältnis ist klar positiv.", "chart_highlight": "green"}, "pessimist": {"headline": "Lehrer sehen es 3x häufiger.", "text": "'Gute Noten, aber nichts gelernt.' Die, die es beobachten können — Lehrer — schlagen Alarm.", "chart_highlight": "red"}, "realist": {"headline": "Wer beobachtet wen?", "text": "Studenten berichten Lerngewinne. Lehrer berichten Abbau. Beide sehen dieselbe Situation — aus verschiedenen Perspektiven. Wer hat recht? Beide.", "bias": "Perspektiv-Bias"}, "original": "33% berichten Lerngewinne, 17% fürchten kognitiven Abbau. — Anthropic, Spannungsfeld 1"}, {"id": "ki-8", "theme": "ki", "level": 3, "value": "16%", "label": "emotionale KI-Nutzung", "optimist": {"headline": "Soldaten finden Halt. Eine Mutter tanzt wieder.", "text": "KI als urteilsfreier Zuhörer in Momenten, wo kein Mensch verfügbar oder bereit ist.", "chart_highlight": "green"}, "pessimist": {"headline": "'Ich hatte eine emotionale Affäre mit Claude.'", "text": "Ein Mensch wählte die KI statt den Freund — und verlor die Freundschaft.", "chart_highlight": "red"}, "realist": {"headline": "Extrembeispiele.", "text": "Beide Zitate stammen aus derselben Studie. Welches du zeigst, bestimmt die Reaktion des Lesers. Das ist keine Analyse — das ist Redaktion.", "bias": "Anekdotische Evidenz"}, "original": "16% nutzen KI für emotionale Unterstützung. — Anthropic, Spannungsfeld 3"}, {"id": "wahl-1", "theme": "wahl", "level": 1, "value": "31%", "label": "CDU stärkste Kraft", "optimist": {"headline": "Klarer Regierungsauftrag.", "text": "Die CDU gewinnt mit deutlichem Vorsprung. Der Wähler hat entschieden. Machtwechsel nach 35 Jahren SPD.", "chart_highlight": "green"}, "pessimist": {"headline": "69% haben nicht CDU gewählt.", "text": "Mehr als zwei Drittel der Wähler wollten eine andere Partei. Regierungsauftrag von einer Minderheit.", "chart_highlight": "red"}, "realist": {"headline": "Was '31%' wirklich bedeutet.", "text": "31% der Stimmen. Bei 68,5% Wahlbeteiligung. Das sind 21% aller Wahlberechtigten. Jeder Fünfte. Das nennen wir 'Regierungsauftrag'.", "bias": "Relative vs. absolute Zahlen"}, "original": "CDU erhält 31,0% der Landesstimmen. — Landeswahlleiter Rheinland-Pfalz, vorläufiges Ergebnis"}, {"id": "wahl-2", "theme": "wahl", "level": 1, "value": "19,5%", "label": "AfD-Rekord im Westen", "optimist": {"headline": "Über 80% wählen nicht AfD.", "text": "Selbst beim Rekordergebnis: 4 von 5 Wählern entscheiden sich gegen die AfD.", "chart_highlight": "green"}, "pessimist": {"headline": "Verdoppelt seit der letzten Wahl.", "text": "Von 8,3% auf 19,5%. In einem westdeutschen Bundesland. Das ist kein Randphänomen mehr.", "chart_highlight": "red"}, "realist": {"headline": "Framing durch Zeitraum.", "text": "'Verdoppelt' klingt dramatisch. '19,5%' klingt beherrschbar. Beides ist wahr. Welchen Vergleichszeitraum du wählst, bestimmt die Geschichte.", "bias": "Zeitraum-Trick"}, "original": "AfD erreicht 19,5% — bestes Ergebnis bei einer westdeutschen Landtagswahl. — Landeswahlleiter RLP"}, {"id": "wahl-3", "theme": "wahl", "level": 1, "value": "68,5%", "label": "Wahlbeteiligung gestiegen", "optimist": {"headline": "Die Demokratie lebt. Mehr Menschen gehen wählen.", "text": "+4,2 Prozentpunkte gegenüber 2021. Die Bürger engagieren sich.", "chart_highlight": "green"}, "pessimist": {"headline": "31,5% gehen nicht wählen.", "text": "Fast ein Drittel hat aufgegeben. Die sind in keinem Ergebnis sichtbar. Aber sie sind die größte 'Partei'.", "chart_highlight": "red"}, "realist": {"headline": "Was zählt — die Richtung oder das Niveau?", "text": "Der Trend ist positiv (+4,2 PP). Aber das Niveau ist niedrig (68,5%). Je nachdem was du betonst, erzählst du Hoffnung oder Verzweiflung.", "bias": "Framing"}, "original": "Die Wahlbeteiligung lag bei 68,5%, ein Plus von 4,2 Prozentpunkten. — Landeswahlleiter RLP"}, {"id": "wahl-4", "theme": "wahl", "level": 2, "value": "21-26%", "label": "AfD bei 18-44-Jährigen stärkste Partei", "optimist": {"headline": "74-79% der Jungen wählen NICHT AfD.", "text": "Selbst in der jüngsten Gruppe: Drei von vier entscheiden sich anders.", "chart_highlight": "green"}, "pessimist": {"headline": "Hätten nur U45 gewählt, hätte die AfD gewonnen.", "text": "Bei Ü70: 11% AfD. Bei U45: stärkste Partei. Die Jugend wählt rechts.", "chart_highlight": "red"}, "realist": {"headline": "Alters-Cherry-Pick.", "text": "Du kannst jede Altersgruppe isolieren und eine andere Geschichte erzählen. Das ist keine Analyse — das ist Alters-Gerrymandering.", "bias": "Cherry Picking"}, "original": "Bei 18-44-Jährigen ist die AfD mit 21-26% stärkste Partei. — Infratest dimap, Wahltagsbefragung"}, {"id": "wahl-5", "theme": "wahl", "level": 2, "value": "48,1%", "label": "Briefwahl", "optimist": {"headline": "Modern, bequem, erhöht die Beteiligung.", "text": "Fast die Hälfte nutzt die Briefwahl. Die Demokratie passt sich dem Alltag an.", "chart_highlight": "green"}, "pessimist": {"headline": "Die Hälfte war nicht im Wahllokal.", "text": "Demokratie als Beipackzettel. Kein Gang, kein Ritual, kein Moment. Ankreuzen am Küchentisch.", "chart_highlight": "red"}, "realist": {"headline": "Korrelation ≠ Kausalität.", "text": "Steigende Briefwahl UND steigende Beteiligung. Heißt das, Briefwahl mobilisiert? Oder wären die sowieso gegangen?", "bias": "Falsche Kausalität"}, "original": "48,1% der Stimmen wurden per Briefwahl abgegeben. — Landeswahlleiter RLP"}, {"id": "wahl-6", "theme": "wahl", "level": 2, "value": "-10 PP", "label": "SPD schlechtestes Ergebnis aller Zeiten", "optimist": {"headline": "Demokratischer Wechsel nach 35 Jahren.", "text": "Die Wähler haben entschieden. Machtwechsel ist gesund für die Demokratie.", "chart_highlight": "green"}, "pessimist": {"headline": "Die Volkspartei zerfällt.", "text": "Von 36% auf 26%. In der ehemaligen Hochburg. Die SPD verliert ihre Basis.", "chart_highlight": "red"}, "realist": {"headline": "Wohin gingen die Wähler?", "text": "Zur CDU? Zur AfD? Aufs Sofa? Ohne Wählerströme sagt der Verlust allein nichts über die Ursache.", "bias": "Fehlender Kontext"}, "original": "SPD verliert 10 Prozentpunkte und erzielt mit 25,9% ihr schlechtestes Ergebnis in RLP. — Landeswahlleiter"}, {"id": "wahl-7", "theme": "wahl", "level": 3, "value": "Strukturschwache Regionen", "label": "AfD stärker in armen Regionen", "optimist": {"headline": "Verständlicher Protest gegen Vernachlässigung.", "text": "Die Menschen in vergessenen Regionen machen sich bemerkbar. Das ist Demokratie.", "chart_highlight": "green"}, "pessimist": {"headline": "Populismus fängt die Abgehängten.", "text": "Je höher die Arbeitslosigkeit, desto höher die AfD. Verzweiflung statt Überzeugung.", "chart_highlight": "red"}, "realist": {"headline": "Korrelation.", "text": "Arbeitslosigkeit korreliert mit AfD-Stimmen. Aber ist Armut die Ursache? Oder Frust? Oder fehlende Alternativen? Die Daten sagen nur: Es gibt einen Zusammenhang. Nicht warum.", "bias": "Falsche Kausalität"}, "original": "AfD und Linke erzielen stärkere Ergebnisse in strukturschwachen Regionen. — Stat. Landesamt, 90-Seiten-Analyse"}, {"id": "wahl-8", "theme": "wahl", "level": 3, "value": "2 Überhangmandate", "label": "Parlament wächst erstmals seit 1991", "optimist": {"headline": "Das System funktioniert. Ausgleichsmandate sorgen für Fairness.", "text": "SPD und AfD erhalten je ein Ausgleichsmandat. Niemand wird benachteiligt.", "chart_highlight": "green"}, "pessimist": {"headline": "CDU bekommt 2 Sitze mehr als ihr zustehen.", "text": "Das Parlament wächst von 101 auf 105. Mehrkosten für den Steuerzahler.", "chart_highlight": "red"}, "realist": {"headline": "Systemische Verzerrung.", "text": "Überhangmandate begünstigen IMMER die stärkste Partei. Das ist kein Bug — das ist ein Feature des Wahlsystems. Und kaum jemand versteht es.", "bias": "Systemischer Bias"}, "original": "Erstmals seit 1991 entstehen 2 Überhangmandate und 2 Ausgleichsmandate. Parlament wächst auf 105 Sitze. — Landeswahlleiter"}, {"id": "health-1", "theme": "health", "level": 1, "value": "10-15%", "label": "Infizierte entwickeln Long Covid", "optimist": {"headline": "85-90% erholen sich vollständig.", "text": "Die überwältigende Mehrheit hat keine Langzeitfolgen. Corona ist für die meisten vorbei.", "chart_highlight": "green"}, "pessimist": {"headline": "Bei 80 Mio. Infizierten = bis zu 12 Millionen.", "text": "Mehr als alle MS-Patienten, Parkinson-Kranken und Epileptiker zusammen.", "chart_highlight": "red"}, "realist": {"headline": "Die Spanne IST die Geschichte.", "text": "6-15% — je nach Definition, Zeitraum, Studienpopulation. Wer '6%' zitiert, beruhigt. Wer '15%' zitiert, alarmiert. Beide zitieren korrekt.", "bias": "Definitions-Problem"}, "original": "10-15% der SARS-CoV-2-Infizierten entwickeln Long-Covid-Symptome. — RKI, Journal of Health Monitoring 02/2026"}, {"id": "health-2", "theme": "health", "level": 1, "value": "63 Mrd. €", "label": "Kosten pro Jahr", "optimist": {"headline": "Gesellschaft investiert in Betroffene.", "text": "500 Millionen Euro Forschung bis 2036. Nationale Dekade gegen postinfektiöse Erkrankungen.", "chart_highlight": "green"}, "pessimist": {"headline": "1,5% des BIP. Jedes Jahr.", "text": "250 Milliarden kumuliert seit 2020. Mehr als der gesamte Verteidigungsetat.", "chart_highlight": "red"}, "realist": {"headline": "Wer rechnet?", "text": "Die 63-Milliarden-Zahl kommt von der ME/CFS Research Foundation — einer Betroffenenorganisation. Ihre Methodik ist transparent. Aber ihr Interesse ist: hohe Zahlen = mehr Aufmerksamkeit. Das macht die Zahl nicht falsch. Aber auch nicht neutral.", "bias": "Autoritäts-Trick"}, "original": "Gesellschaftliche Kosten durch Long Covid und ME/CFS: 63,1 Mrd. Euro in 2024. — ME/CFS Research Foundation + RiskLayer"}, {"id": "health-3", "theme": "health", "level": 1, "value": "Omikron: -50 bis -76%", "label": "weniger Long-Covid-Risiko pro Infektion", "optimist": {"headline": "Omikron ist deutlich milder.", "text": "Das individuelle Risiko für Long Covid hat sich halbiert bis geviertelt.", "chart_highlight": "green"}, "pessimist": {"headline": "Aber die Gesamtzahl der Betroffenen STIEG.", "text": "UK: 1,3 Mio. im Januar → 1,7 Mio. im März 2022. Weniger pro Person, aber so viele wurden infiziert, dass es mehr wurden.", "chart_highlight": "red"}, "realist": {"headline": "Relativ vs. Absolut.", "text": "DER Klassiker. '76% weniger Risiko' klingt beruhigend. 'Trotzdem 400.000 mehr Betroffene' klingt alarmierend. Beides derselbe Zeitraum, dieselben Daten. Pharma und Politik nutzen IMMER die relative Zahl.", "bias": "Relative vs. absolute Zahlen"}, "original": "Long-Covid-Risiko bei Omikron um 50-76% niedriger als bei Delta pro Infektion. — The Lancet, 2022"}, {"id": "health-4", "theme": "health", "level": 2, "value": "45%", "label": "nach 6 Monaten nicht vollzeit-arbeitsfähig", "optimist": {"headline": "55% können wieder Vollzeit arbeiten.", "text": "Die Mehrheit erholt sich innerhalb von sechs Monaten.", "chart_highlight": "green"}, "pessimist": {"headline": "Fast die Hälfte fällt monatelang aus.", "text": "In einer Gesellschaft mit Fachkräftemangel. 45% Arbeitsausfall. Über Monate.", "chart_highlight": "red"}, "realist": {"headline": "Wer antwortet?", "text": "Selbstauskunft. Die, denen es schlecht geht, melden sich eher. Die, die längst genesen sind, machen keine Umfrage mit. Jede Betroffenenstudie hat diesen Bias.", "bias": "Stichproben-Problem"}, "original": "45% der Long-Covid-Erkrankten sind nach 6 Monaten nicht in der Lage, Vollzeit zu arbeiten. — BMG-Initiative"}, {"id": "health-5", "theme": "health", "level": 2, "value": "0,4% vs. 1,4%", "label": "Geimpft vs. Ungeimpft Long Covid", "optimist": {"headline": "Impfung schützt. 3,5x weniger Risiko.", "text": "Die Risikoreduktion ist massiv und konsistent über alle Studien.", "chart_highlight": "green"}, "pessimist": {"headline": "0,4% klingt wenig. Bei 60 Mio. Geimpften = 240.000.", "text": "Selbst mit Impfung: Hunderttausende betroffen. Kein vollständiger Schutz.", "chart_highlight": "red"}, "realist": {"headline": "Relative vs. absolute Risikoreduktion.", "text": "71% relative Reduktion klingt beeindruckend. 1 Prozentpunkt absolute Reduktion klingt nach: naja. Pharma nutzt die relative Zahl. Kritiker die absolute. Beide korrekt.", "bias": "Relative vs. absolute Zahlen"}, "original": "0,4% der Geimpften vs. 1,4% der Ungeimpften entwickeln Long Covid. — Schwedische Studie, 600.000 Teilnehmer"}, {"id": "health-6", "theme": "health", "level": 2, "value": "Frauen häufiger", "label": "betroffen als Männer", "optimist": {"headline": "Biologische Erklärung: Immunsystem reagiert anders.", "text": "Frauen haben ein aktiveres Immunsystem — das schützt vor akuter Erkrankung, kann aber Autoimmunreaktionen begünstigen.", "chart_highlight": "green"}, "pessimist": {"headline": "Oder: Frauen gehen häufiger zum Arzt.", "text": "Was nicht diagnostiziert wird, existiert nicht in der Statistik. Männer mit Long Covid bleiben unsichtbar.", "chart_highlight": "red"}, "realist": {"headline": "Diagnosebias.", "text": "Wir wissen nicht, ob Frauen häufiger BETROFFEN sind oder häufiger DIAGNOSTIZIERT. Die Statistik misst Diagnosen — nicht Krankheiten. Ein fundamentaler Unterschied.", "bias": "Diagnosebias / Selection Bias"}, "original": "Frauen sind häufiger von Long Covid betroffen als Männer. — RKI, multiple Studien"}, {"id": "health-7", "theme": "health", "level": 3, "value": "2-3,5%", "label": "Kinder betroffen", "optimist": {"headline": "96,5-98% der Kinder haben keine Langzeitfolgen.", "text": "Kinder sind kaum betroffen. Die Sorge war übertrieben.", "chart_highlight": "green"}, "pessimist": {"headline": "Bei 14 Mio. Kindern = 280.000-490.000 Betroffene.", "text": "Schulausfall. Soziale Isolation. Keine Leitlinie bis 2025. Eine halbe Million Kinder, die niemand zählt.", "chart_highlight": "red"}, "realist": {"headline": "Kleine Prozente, große Populationen.", "text": "2% klingt harmlos. 490.000 klingt katastrophal. Beides beschreibt denselben Zustand. Die Darstellungsform entscheidet über die politische Reaktion.", "bias": "Relative vs. absolute Zahlen"}, "original": "2-3,5% der an Covid erkrankten Kinder entwickeln Long-Covid-Symptome. — BMG, Deutsches Ärzteblatt"}, {"id": "health-8", "theme": "health", "level": 3, "value": "500 Mio. €", "label": "Forschung bis 2036", "optimist": {"headline": "Größtes Forschungsprogramm zu postinfektiösen Erkrankungen.", "text": "Nationale Dekade. 500 Millionen Euro. Ein klares Signal.", "chart_highlight": "green"}, "pessimist": {"headline": "50 Mio. pro Jahr. Bei 63 Mrd. Kosten pro Jahr.", "text": "0,08% der jährlichen Kosten werden in Forschung investiert. Ein Tropfen auf den heißen Stein.", "chart_highlight": "red"}, "realist": {"headline": "Kontext.", "text": "500 Millionen klingt nach viel — bis du es neben die 63 Milliarden Kosten stellst. Ohne Kontext ist jede Zahl bedeutungslos. Mit Kontext wird sie unbequem.", "bias": "Kontext weglassen"}, "original": "500 Mio. Euro Forschungsförderung für postinfektiöse Erkrankungen 2026-2036. — BMFTR, Nationale Dekade"}, {"id": "health-9", "theme": "health", "level": 3, "value": "Nocebo-Debatte", "label": "Symptome teilweise psychisch?", "optimist": {"headline": "76% der Impf-Nebenwirkungen waren Nocebo.", "text": "Erwartungseffekte sind real und messbar. Ein Teil der Long-Covid-Symptome könnte psychosomatisch sein.", "chart_highlight": "green"}, "pessimist": {"headline": "Psychologisierung = Stigmatisierung.", "text": "Studie Uni Leipzig 2025: Betroffene leiden MEHR unter dem Stigma als unter der Krankheit selbst.", "chart_highlight": "red"}, "realist": {"headline": "Beide haben peer-reviewed Studien.", "text": "Die Nocebo-Forscher publizieren in renommierten Journals. Die Stigma-Forscher auch. Beide haben Daten. Beide haben recht. Und der Patient sitzt dazwischen.", "bias": "Selektive Evidenz"}, "original": "Bis zu 76% der Impf-Nebenwirkungen sind auf den Nocebo-Effekt zurückzuführen. — Meta-Analyse, 45.000 Probanden"}], "biases": [{"name": "Survivorship Bias", "short": "Nur die Überlebenden fragen", "icon": "🏆", "example": "Oben gesehen bei: <a href=\"#card-ki-1\" onclick=\"scrollToCard('ki-1')\">«81% positive KI-Erfahrungen»</a> — nur Claude-Nutzer wurden befragt. Und bei <a href=\"#card-ki-6\" onclick=\"scrollToCard('ki-6')\">«8,7% bauen als Nicht-Entwickler»</a> — wir hören nur die Erfolgsgeschichten."}, {"name": "Framing", "short": "Dieselbe Zahl, andere Headline", "icon": "🖼️", "example": "Oben gesehen bei: <a href=\"#card-ki-2\" onclick=\"scrollToCard('ki-2')\">«50% sparen Zeit»</a> — dieselbe Zahl, zwei Headlines. Und bei <a href=\"#card-wahl-3\" onclick=\"scrollToCard('wahl-3')\">«68,5% Wahlbeteiligung»</a> — Hoffnung oder Verzweiflung, je nach Betonung."}, {"name": "Cherry Picking", "short": "Rosinen rauspicken", "icon": "🍒", "example": "Oben gesehen bei: <a href=\"#card-ki-4\" onclick=\"scrollToCard('ki-4')\">«37% Unzuverlässigkeit»</a> — zeigst du die 37% oder die 63%? Und bei <a href=\"#card-wahl-4\" onclick=\"scrollToCard('wahl-4')\">«AfD 21-26% bei Jungen»</a> — isoliere eine Altersgruppe und du erzählst eine andere Geschichte."}, {"name": "Kontext weglassen", "short": "Die gefährlichste Manipulation", "icon": "✂️", "example": "Oben gesehen bei: <a href=\"#card-ki-3\" onclick=\"scrollToCard('ki-3')\">«67% global optimistisch»</a> — ohne regionale Aufschlüsselung eine komplett andere Story. Und bei <a href=\"#card-health-8\" onclick=\"scrollToCard('health-8')\">«500 Mio. Forschung»</a> — klingt viel, bis du die 63 Mrd. Kosten daneben stellst."}, {"name": "Relative vs. absolute Zahlen", "short": "71% Reduktion oder 1 Prozentpunkt?", "icon": "📐", "example": "Oben gesehen bei: <a href=\"#card-health-3\" onclick=\"scrollToCard('health-3')\">«Omikron 76% weniger Risiko»</a> — aber absolute Betroffenenzahl STIEG. Bei <a href=\"#card-wahl-1\" onclick=\"scrollToCard('wahl-1')\">«CDU 31%»</a> — das sind 21% aller Wahlberechtigten. Und bei <a href=\"#card-health-5\" onclick=\"scrollToCard('health-5')\">«0,4% vs. 1,4%»</a> — 71% Reduktion oder 1 Prozentpunkt?"}, {"name": "Falsche Kausalität", "short": "Korrelation ≠ Ursache", "icon": "🔗", "example": "Oben gesehen bei: <a href=\"#card-wahl-7\" onclick=\"scrollToCard('wahl-7')\">«Strukturschwache Regionen wählen AfD»</a> — Korrelation, nicht Ursache. Und bei <a href=\"#card-wahl-5\" onclick=\"scrollToCard('wahl-5')\">«48% Briefwahl»</a> — mobilisiert Briefwahl, oder wären die sowieso gegangen?"}, {"name": "Stichproben-Problem", "short": "Wen fragst du? Wen nicht?", "icon": "🎯", "example": "Oben gesehen bei: <a href=\"#card-health-4\" onclick=\"scrollToCard('health-4')\">«45% nach 6 Monaten nicht arbeitsfähig»</a> — Selbstauskunft. Die Genesen machen keine Umfrage mit."}, {"name": "Autoritäts-Trick", "short": "Wer hat die Studie bezahlt?", "icon": "🎓", "example": "Oben gesehen bei: <a href=\"#card-health-2\" onclick=\"scrollToCard('health-2')\">«63 Mrd. Euro Kosten»</a> — die Zahl kommt von der ME/CFS Research Foundation. Methodik transparent. Aber Interesse: hohe Zahlen = mehr Aufmerksamkeit."}, {"name": "Durchschnitt versteckt Verteilung", "short": "Der Durchschnitt lügt", "icon": "📊", "example": "Oben gesehen bei: <a href=\"#card-ki-5\" onclick=\"scrollToCard('ki-5')\">«28% Empowerment»</a> — klingt ausgeglichen. Aber: Freelancer 47%, Angestellte 14%. Der Durchschnitt versteckt die Kluft."}, {"name": "Zeitraum-Trick", "short": "Startdatum bestimmt den Trend", "icon": "📅", "example": "Oben gesehen bei: <a href=\"#card-wahl-2\" onclick=\"scrollToCard('wahl-2')\">«AfD verdoppelt»</a> — dramatisch. «AfD bei 19,5%» — beherrschbar. Welchen Vergleichszeitraum du wählst, bestimmt die Geschichte."}]};
+  renderThemeTabs();
+  renderCards();
+  renderBiasGlossar();
+  renderSources();
+  updateGateProgress();
+}
+
+function renderThemeTabs(){
+  var container=document.getElementById('theme-tabs');
+  container.innerHTML='';
+  DATA.themes.forEach(function(t){
+    var btn=document.createElement('button');
+    btn.className='theme-tab'+(t.id===currentTheme?' active':'');
+    btn.textContent=t.icon+' '+t.label;
+    btn.onclick=function(){
+      currentTheme=t.id;
+      document.querySelectorAll('.theme-tab').forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      renderCards();
+      updateGateProgress();
+    };
+    container.appendChild(btn);
+  });
+}
+
+function renderCards(){
+  var container=document.getElementById('cards-container');
+  container.innerHTML='';
+
+  // Theme Header
+  var theme=DATA.themes.find(function(t){return t.id===currentTheme});
+  var header=document.createElement('div');
+  header.className='theme-header';
+  header.innerHTML='<div class="theme-header-title">'+theme.icon+' '+theme.label+'</div><div class="theme-header-source">Quelle: '+theme.source+'</div>';
+  container.appendChild(header);
+
+  var points=DATA.points.filter(function(p){return p.theme===currentTheme});
+
+  for(var lvl=1;lvl<=3;lvl++){
+    var levelPoints=points.filter(function(p){return p.level===lvl});
+    levelPoints.forEach(function(pt,idx){
+      var card=document.createElement('div');
+      card.className='truth-card'+(lvl>currentLevel?' hidden':'');
+      if(lvl<=currentLevel&&lvl>1)card.className+=' revealing';
+      card.dataset.id=pt.id;
+      card.dataset.level=lvl;
+      card.id='card-'+pt.id;
+
+      var choice=cardChoices[pt.id]||null;
+
+      card.innerHTML=
+        '<div class="truth-value">'+pt.value+'</div>'+
+        '<div class="truth-label">'+pt.label+'</div>'+
+        '<div class="truth-original">📋 '+pt.original+'</div>'+
+        (idx===0&&lvl===1?'<div class="truth-prompt">Dieselbe Zahl. Drei Lesarten:</div>':'')+
+        '<div class="truth-toggles">'+
+          '<button class="truth-toggle optimist'+(choice==='optimist'?' active':'')+'" data-id="'+pt.id+'" data-view="optimist" onclick="toggleView(this)">&#x1F7E2; Optimist</button>'+
+          '<button class="truth-toggle pessimist'+(choice==='pessimist'?' active':'')+'" data-id="'+pt.id+'" data-view="pessimist" onclick="toggleView(this)">&#x1F534; Pessimist</button>'+
+          '<button class="truth-toggle realist'+(choice==='realist'?' active':'')+'" data-id="'+pt.id+'" data-view="realist" onclick="toggleView(this)">&#x1F50D; Realist</button>'+
+        '</div>'+
+        '<div class="truth-content'+(choice?' visible':'')+'" id="content-'+pt.id+'">'+
+          (choice?getContentHTML(pt,choice):'')+
+        '</div>';
+
+      container.appendChild(card);
+    });
+  }
+}
+
+function getContentHTML(pt,view){
+  var d=pt[view];
+  var html='<div class="truth-headline">'+d.headline+'</div><p class="truth-text">'+d.text+'</p>';
+  if(view==='realist'&&pt.bias){
+    html+='<span class="bias-badge">'+pt.bias+'</span>';
+  }
+  return html;
+}
+
+function toggleView(btn){
+  var id=btn.dataset.id;
+  var view=btn.dataset.view;
+  var pt=DATA.points.find(function(p){return p.id===id});
+  if(!pt)return;
+
+  var prev=cardChoices[id];
+  if(prev){scores[prev]=Math.max(0,scores[prev]-1)}
+  cardChoices[id]=view;
+  scores[view]++;
+
+  var card=btn.closest('.truth-card');
+  card.classList.remove('view-optimist','view-pessimist','view-realist');
+  card.classList.add('view-'+view);
+  card.querySelectorAll('.truth-toggle').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+
+  var content=document.getElementById('content-'+id);
+  content.classList.remove('visible');
+
+  setTimeout(function(){
+    content.innerHTML=getContentHTML(pt,view);
+    content.classList.add('visible');
+  },150);
+
+  updateGateProgress();
+  checkAllDone();
+}
+
+function getPointsForThemeLevel(theme,level){
+  return DATA.points.filter(function(p){return p.theme===theme&&p.level===level});
+}
+
+function updateGateProgress(){
+  // Level 1 progress
+  var l1=DATA.points.filter(function(p){return p.level===1});
+  var l1done=l1.filter(function(p){return cardChoices[p.id]}).length;
+  document.getElementById('progress-1').textContent=l1done;
+  document.getElementById('total-1').textContent=l1.length;
+
+  // Level 2 progress
+  var l2=DATA.points.filter(function(p){return p.level<=2});
+  var l2done=l2.filter(function(p){return cardChoices[p.id]}).length;
+  document.getElementById('progress-2').textContent=l2done;
+  document.getElementById('total-2').textContent=l2.length;
+}
+
+function revealLevel(level){
+  currentLevel=level;
+  var gate=document.getElementById('gate-'+level);
+  gate.classList.add('hidden');
+
+  if(level===2){
+    document.getElementById('gate-3').classList.remove('hidden');
+  }
+
+  sendFeedback('level',level);
+  renderCards();
+  updateGateProgress();
+
+  // Scroll to first new card
+  setTimeout(function(){
+    var newCards=document.querySelectorAll('.truth-card[data-level="'+level+'"]');
+    if(newCards.length){
+      var visibleNew=Array.from(newCards).filter(function(c){return !c.classList.contains('hidden')});
+      if(visibleNew.length) visibleNew[0].scrollIntoView({behavior:'smooth',block:'center'});
+    }
+  },100);
+}
+
+function checkAllDone(){
+  var visible=DATA.points.filter(function(p){return p.level<=currentLevel});
+  var done=visible.filter(function(p){return cardChoices[p.id]}).length;
+  if(done===visible.length&&currentLevel===3){
+    showScore();
+  }
+}
+
+function showScore(){
+  var box=document.getElementById('score-box');
+  box.classList.remove('hidden');
+  document.getElementById('score-optimist').textContent=scores.optimist;
+  document.getElementById('score-pessimist').textContent=scores.pessimist;
+  document.getElementById('score-realist').textContent=scores.realist;
+
+  var total=scores.optimist+scores.pessimist+scores.realist;
+  var total=scores.optimist+scores.pessimist+scores.realist;
+  var closer='Du hast '+total+' Mal geklickt. '+total+' Mal eine Perspektive gewählt. Und bei jeder einzelnen hast du genickt — egal welche. ';
+  if(scores.realist>=scores.optimist&&scores.realist>=scores.pessimist){
+    closer+='Du bist Realist. Du fragst: Wer sagt das? Warum? Das ist die unbequemste aller Perspektiven — und die einzige, die vor Manipulation schützt.';
+  }else if(scores.optimist>scores.pessimist){
+    closer+='Du bist Optimist. Die Mehrheit ist es. Genau darauf bauen Manipulatoren: auf den Wunsch, dass es schon gut wird. Nicht weil du naiv bist — sondern weil Hoffnung angenehmer ist als Zweifel.';
+  }else if(scores.pessimist>scores.optimist){
+    closer+='Du bist Pessimist. Du siehst die Gefahr zuerst. Das schützt dich — und macht dich anfällig für jeden, der mit Angst arbeitet. Denn Angst verkauft besser als Hoffnung.';
+  }else{
+    closer+='Du bist unentschieden. Das klingt neutral — aber genau das nutzen beide Seiten: Wer sich nicht entscheidet, wird entschieden.';
+  }
+  document.getElementById('score-closer').textContent=closer;
+
+  sendFeedback('score','o'+scores.optimist+'_p'+scores.pessimist+'_r'+scores.realist);
+
+  setTimeout(function(){
+    box.scrollIntoView({behavior:'smooth',block:'center'});
+  },200);
+}
+
+function scrollToCard(cardId){
+  // Switch to correct theme
+  var pt=DATA.points.find(function(p){return p.id===cardId});
+  if(pt&&pt.theme!==currentTheme){
+    currentTheme=pt.theme;
+    document.querySelectorAll('.theme-tab').forEach(function(b){b.classList.remove('active')});
+    var tabs=document.querySelectorAll('.theme-tab');
+    tabs.forEach(function(b){if(b.textContent.indexOf(DATA.themes.find(function(t){return t.id===pt.theme}).label)>=0)b.classList.add('active')});
+    // Reveal level if needed
+    if(pt.level>currentLevel){for(var l=currentLevel+1;l<=pt.level;l++)revealLevel(l)}
+    renderCards();
+    updateGateProgress();
+  }
+  setTimeout(function(){
+    var el=document.getElementById('card-'+cardId);
+    if(el){
+      el.scrollIntoView({behavior:'smooth',block:'center'});
+      el.style.boxShadow='0 0 0 3px var(--accent)';
+      setTimeout(function(){el.style.boxShadow=''},2000);
+    }
+  },300);
+}
+
+function renderBiasGlossar(){
+  var container=document.getElementById('bias-glossar');
+  container.innerHTML='';
+  DATA.biases.forEach(function(b){
+    var item=document.createElement('div');
+    item.className='bias-item';
+    item.innerHTML=
+      '<div class="bias-header" onclick="this.parentElement.classList.toggle(\'open\')">'+
+        '<span class="bias-icon">'+b.icon+'</span>'+
+        '<span class="bias-name">'+b.name+' <span style="color:var(--text-tertiary);font-weight:400;font-size:0.8rem">— '+b.short+'</span></span>'+
+        '<span class="bias-arrow">&#9660;</span>'+
+      '</div>'+
+      '<div class="bias-body"><div class="bias-body-inner">'+(b.example||b.short)+'</div></div>';
+    container.appendChild(item);
+  });
+}
+
+function renderSources(){
+  var list=document.getElementById('sources-list');
+  list.innerHTML='';
+  DATA.themes.forEach(function(t){
+    var li=document.createElement('li');
+    li.innerHTML='<strong>'+t.icon+' '+t.label+':</strong> '+t.source;
+    list.appendChild(li);
+  });
+}
+
+// Theme toggle
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'\uD83C\uDF19':'\u2600\uFE0F'}
+
+// Feedback buttons
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch(FEEDBACK_URL+'?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val),{mode:'no-cors'})})});
+
+document.addEventListener('DOMContentLoaded',init);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>

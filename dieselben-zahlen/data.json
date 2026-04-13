@@ -1,0 +1,668 @@
+{
+  "meta": {
+    "title": "Dieselben Zahlen. Drei Wahrheiten.",
+    "subtitle": "Wie man mit echten Daten lügt — eine Vorführung.",
+    "number": 15,
+    "date": "März 2026",
+    "author": "Thomas Körting"
+  },
+  "themes": [
+    {
+      "id": "ki",
+      "label": "KI",
+      "icon": "🤖",
+      "source": "Anthropic, 81.000 Interviews, März 2026"
+    },
+    {
+      "id": "wahl",
+      "label": "Politik",
+      "icon": "🗳️",
+      "source": "Landeswahlleiter RLP, Infratest dimap, Stat. Landesamt, März 2026"
+    },
+    {
+      "id": "health",
+      "label": "Gesundheit",
+      "icon": "🏥",
+      "source": "RKI, BMG, ME/CFS Research Foundation, Lancet, NEJM"
+    }
+  ],
+  "points": [
+    {
+      "id": "ki-1",
+      "theme": "ki",
+      "level": 1,
+      "value": "81%",
+      "label": "positive Erfahrungen mit KI",
+      "optimist": {
+        "headline": "4 von 5 profitieren von KI.",
+        "text": "Die überwältigende Mehrheit der Befragten berichtet positive Erlebnisse. KI funktioniert.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Nur KI-Fans wurden gefragt.",
+        "text": "Befragt wurden ausschließlich Claude-Nutzer. Wer die KI nicht mag, hat sie längst gelöscht — und war nicht in der Studie.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Selbstselektion.",
+        "text": "Ein All-Volunteer-Sample ist der schlimmste Fall von Nonresponse-Bias. Wer sich freiwillig meldet, ist systematisch anders als die Grundgesamtheit. Die 81% sagen nichts über die Welt — nur über die, die geblieben sind.",
+        "bias": "Survivorship Bias"
+      },
+      "original": "81% der Befragten berichten positive Erfahrungen mit KI. — Anthropic, 80.508 Claude-Nutzer, 159 Länder"
+    },
+    {
+      "id": "ki-2",
+      "theme": "ki",
+      "level": 1,
+      "value": "50%",
+      "label": "sparen Zeit durch KI",
+      "optimist": {
+        "headline": "Die Hälfte hat mehr Freizeit.",
+        "text": "Jeder Zweite spart messbar Zeit im Arbeitsalltag. Das ist ein enormer Produktivitätsgewinn.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "18% sagen: Die Zeit verschwindet sofort.",
+        "text": "Schneller laufen, um stehen zu bleiben. Die gesparte Zeit wird mit mehr Aufgaben gefüllt. Illusorische Produktivität.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Framing.",
+        "text": "'50% sparen Zeit' und '50% sparen NICHT' sind derselbe Datenpunkt. Welche Headline du liest, entscheidet dein Gefühl — nicht die Daten.",
+        "bias": "Framing"
+      },
+      "original": "50% der Befragten geben an, durch KI Zeit zu sparen. — Anthropic Studie, Kategorie Productivity"
+    },
+    {
+      "id": "ki-3",
+      "theme": "ki",
+      "level": 1,
+      "value": "67%",
+      "label": "positive Stimmung global",
+      "optimist": {
+        "headline": "Zwei Drittel der Welt sind optimistisch.",
+        "text": "Global betrachtet überwiegt der Optimismus deutlich. Die Menschheit begrüßt KI.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "In Westeuropa nur 35%.",
+        "text": "Die Optimisten sind die, die KI noch nicht im Alltag spüren. Ärmere Länder sind begeistert — reichere nicht.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Kontext weglassen.",
+        "text": "67% global klingt überzeugend — bis du die regionale Aufschlüsselung siehst. Wer den Durchschnitt zeigt und die Verteilung verschweigt, manipuliert.",
+        "bias": "Kontext weglassen"
+      },
+      "original": "67% der Befragten weltweit haben eine positive Grundstimmung gegenüber KI. — Anthropic, globale Auswertung"
+    },
+    {
+      "id": "ki-4",
+      "theme": "ki",
+      "level": 2,
+      "value": "37%",
+      "label": "erleben Unzuverlässigkeit",
+      "optimist": {
+        "headline": "63% haben keine Probleme.",
+        "text": "Fast zwei Drittel erleben KI als zuverlässig. Die Technologie wird besser.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Das einzige Feld wo Risiko größer ist als Nutzen.",
+        "text": "Fast die Hälfte aller Anwälte hat KI-Fehler aus erster Hand erlebt. Halluzinationen, erfundene Quellen, plausibel klingender Unsinn.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Cherry Picking.",
+        "text": "'63% keine Probleme' und '37% Halluzinationen' — je nachdem welche Zahl du in die Headline packst, erzählst du eine andere Geschichte. Mit demselben Datensatz.",
+        "bias": "Cherry Picking"
+      },
+      "original": "37% der Befragten nennen Unzuverlässigkeit als Hauptproblem. — Anthropic, höchste Einzelbesorgnis"
+    },
+    {
+      "id": "ki-5",
+      "theme": "ki",
+      "level": 2,
+      "value": "28% vs. 22%",
+      "label": "Empowerment vs. Jobangst",
+      "optimist": {
+        "headline": "Mehr Empowerment als Angst.",
+        "text": "28% erleben wirtschaftliche Stärkung. Nur 22% fürchten Jobverlust. Netto positiv.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Jobangst ist der stärkste Stimmungs-Prädiktor.",
+        "text": "Die 22% die Angst haben, sind pessimistischer als alle anderen Gruppen. Angst wiegt schwerer als Empowerment.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Versteckte Asymmetrie.",
+        "text": "Freelancer profitieren (47%). Angestellte kaum (14%). Dieselbe Zahl '28% Empowerment' versteckt eine brutale Kluft zwischen Gewinnern und Verlierern.",
+        "bias": "Durchschnitt versteckt Verteilung"
+      },
+      "original": "28% erleben wirtschaftliche Stärkung, 22% fürchten Jobverlust. — Anthropic, Spannungsfeld 5"
+    },
+    {
+      "id": "ki-6",
+      "theme": "ki",
+      "level": 2,
+      "value": "8,7%",
+      "label": "Nicht-Entwickler bauen Dinge",
+      "optimist": {
+        "headline": "KI demokratisiert Technologie.",
+        "text": "Fast jeder Zehnte baut ohne Programmierkenntnisse Dinge, die vorher unmöglich waren.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Weniger als 1 von 10.",
+        "text": "Die überwältigende Mehrheit — 91,3% — baut gar nichts. Die 8,7% sind die Ausnahme, nicht die Regel.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Survivorship Bias.",
+        "text": "Wir hören die Geschichten der 8,7%. Die 91,3% die nichts bauen, erzählen keine Heldengeschichte. Erfolgsberichte verzerren systematisch.",
+        "bias": "Survivorship Bias"
+      },
+      "original": "8,7% der Befragten bauen als Nicht-Entwickler technische Produkte. — Anthropic, Kategorie Technical Accessibility"
+    },
+    {
+      "id": "ki-7",
+      "theme": "ki",
+      "level": 3,
+      "value": "33% vs. 17%",
+      "label": "Lernen vs. Abbau",
+      "optimist": {
+        "headline": "Doppelt so viele lernen wie abbauen.",
+        "text": "33% lernen schneller. Nur 17% fürchten Abbau. Das Verhältnis ist klar positiv.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Lehrer sehen es 3x häufiger.",
+        "text": "'Gute Noten, aber nichts gelernt.' Die, die es beobachten können — Lehrer — schlagen Alarm.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Wer beobachtet wen?",
+        "text": "Studenten berichten Lerngewinne. Lehrer berichten Abbau. Beide sehen dieselbe Situation — aus verschiedenen Perspektiven. Wer hat recht? Beide.",
+        "bias": "Perspektiv-Bias"
+      },
+      "original": "33% berichten Lerngewinne, 17% fürchten kognitiven Abbau. — Anthropic, Spannungsfeld 1"
+    },
+    {
+      "id": "ki-8",
+      "theme": "ki",
+      "level": 3,
+      "value": "16%",
+      "label": "emotionale KI-Nutzung",
+      "optimist": {
+        "headline": "Soldaten finden Halt. Eine Mutter tanzt wieder.",
+        "text": "KI als urteilsfreier Zuhörer in Momenten, wo kein Mensch verfügbar oder bereit ist.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "'Ich hatte eine emotionale Affäre mit Claude.'",
+        "text": "Ein Mensch wählte die KI statt den Freund — und verlor die Freundschaft.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Extrembeispiele.",
+        "text": "Beide Zitate stammen aus derselben Studie. Welches du zeigst, bestimmt die Reaktion des Lesers. Das ist keine Analyse — das ist Redaktion.",
+        "bias": "Anekdotische Evidenz"
+      },
+      "original": "16% nutzen KI für emotionale Unterstützung. — Anthropic, Spannungsfeld 3"
+    },
+    {
+      "id": "wahl-1",
+      "theme": "wahl",
+      "level": 1,
+      "value": "31%",
+      "label": "CDU stärkste Kraft",
+      "optimist": {
+        "headline": "Klarer Regierungsauftrag.",
+        "text": "Die CDU gewinnt mit deutlichem Vorsprung. Der Wähler hat entschieden. Machtwechsel nach 35 Jahren SPD.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "69% haben nicht CDU gewählt.",
+        "text": "Mehr als zwei Drittel der Wähler wollten eine andere Partei. Regierungsauftrag von einer Minderheit.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Was '31%' wirklich bedeutet.",
+        "text": "31% der Stimmen. Bei 68,5% Wahlbeteiligung. Das sind 21% aller Wahlberechtigten. Jeder Fünfte. Das nennen wir 'Regierungsauftrag'.",
+        "bias": "Relative vs. absolute Zahlen"
+      },
+      "original": "CDU erhält 31,0% der Landesstimmen. — Landeswahlleiter Rheinland-Pfalz, vorläufiges Ergebnis"
+    },
+    {
+      "id": "wahl-2",
+      "theme": "wahl",
+      "level": 1,
+      "value": "19,5%",
+      "label": "AfD-Rekord im Westen",
+      "optimist": {
+        "headline": "Über 80% wählen nicht AfD.",
+        "text": "Selbst beim Rekordergebnis: 4 von 5 Wählern entscheiden sich gegen die AfD.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Verdoppelt seit der letzten Wahl.",
+        "text": "Von 8,3% auf 19,5%. In einem westdeutschen Bundesland. Das ist kein Randphänomen mehr.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Framing durch Zeitraum.",
+        "text": "'Verdoppelt' klingt dramatisch. '19,5%' klingt beherrschbar. Beides ist wahr. Welchen Vergleichszeitraum du wählst, bestimmt die Geschichte.",
+        "bias": "Zeitraum-Trick"
+      },
+      "original": "AfD erreicht 19,5% — bestes Ergebnis bei einer westdeutschen Landtagswahl. — Landeswahlleiter RLP"
+    },
+    {
+      "id": "wahl-3",
+      "theme": "wahl",
+      "level": 1,
+      "value": "68,5%",
+      "label": "Wahlbeteiligung gestiegen",
+      "optimist": {
+        "headline": "Die Demokratie lebt. Mehr Menschen gehen wählen.",
+        "text": "+4,2 Prozentpunkte gegenüber 2021. Die Bürger engagieren sich.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "31,5% gehen nicht wählen.",
+        "text": "Fast ein Drittel hat aufgegeben. Die sind in keinem Ergebnis sichtbar. Aber sie sind die größte 'Partei'.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Was zählt — die Richtung oder das Niveau?",
+        "text": "Der Trend ist positiv (+4,2 PP). Aber das Niveau ist niedrig (68,5%). Je nachdem was du betonst, erzählst du Hoffnung oder Verzweiflung.",
+        "bias": "Framing"
+      },
+      "original": "Die Wahlbeteiligung lag bei 68,5%, ein Plus von 4,2 Prozentpunkten. — Landeswahlleiter RLP"
+    },
+    {
+      "id": "wahl-4",
+      "theme": "wahl",
+      "level": 2,
+      "value": "21-26%",
+      "label": "AfD bei 18-44-Jährigen stärkste Partei",
+      "optimist": {
+        "headline": "74-79% der Jungen wählen NICHT AfD.",
+        "text": "Selbst in der jüngsten Gruppe: Drei von vier entscheiden sich anders.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Hätten nur U45 gewählt, hätte die AfD gewonnen.",
+        "text": "Bei Ü70: 11% AfD. Bei U45: stärkste Partei. Die Jugend wählt rechts.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Alters-Cherry-Pick.",
+        "text": "Du kannst jede Altersgruppe isolieren und eine andere Geschichte erzählen. Das ist keine Analyse — das ist Alters-Gerrymandering.",
+        "bias": "Cherry Picking"
+      },
+      "original": "Bei 18-44-Jährigen ist die AfD mit 21-26% stärkste Partei. — Infratest dimap, Wahltagsbefragung"
+    },
+    {
+      "id": "wahl-5",
+      "theme": "wahl",
+      "level": 2,
+      "value": "48,1%",
+      "label": "Briefwahl",
+      "optimist": {
+        "headline": "Modern, bequem, erhöht die Beteiligung.",
+        "text": "Fast die Hälfte nutzt die Briefwahl. Die Demokratie passt sich dem Alltag an.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Die Hälfte war nicht im Wahllokal.",
+        "text": "Demokratie als Beipackzettel. Kein Gang, kein Ritual, kein Moment. Ankreuzen am Küchentisch.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Korrelation ≠ Kausalität.",
+        "text": "Steigende Briefwahl UND steigende Beteiligung. Heißt das, Briefwahl mobilisiert? Oder wären die sowieso gegangen?",
+        "bias": "Falsche Kausalität"
+      },
+      "original": "48,1% der Stimmen wurden per Briefwahl abgegeben. — Landeswahlleiter RLP"
+    },
+    {
+      "id": "wahl-6",
+      "theme": "wahl",
+      "level": 2,
+      "value": "-10 PP",
+      "label": "SPD schlechtestes Ergebnis aller Zeiten",
+      "optimist": {
+        "headline": "Demokratischer Wechsel nach 35 Jahren.",
+        "text": "Die Wähler haben entschieden. Machtwechsel ist gesund für die Demokratie.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Die Volkspartei zerfällt.",
+        "text": "Von 36% auf 26%. In der ehemaligen Hochburg. Die SPD verliert ihre Basis.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Wohin gingen die Wähler?",
+        "text": "Zur CDU? Zur AfD? Aufs Sofa? Ohne Wählerströme sagt der Verlust allein nichts über die Ursache.",
+        "bias": "Fehlender Kontext"
+      },
+      "original": "SPD verliert 10 Prozentpunkte und erzielt mit 25,9% ihr schlechtestes Ergebnis in RLP. — Landeswahlleiter"
+    },
+    {
+      "id": "wahl-7",
+      "theme": "wahl",
+      "level": 3,
+      "value": "Strukturschwache Regionen",
+      "label": "AfD stärker in armen Regionen",
+      "optimist": {
+        "headline": "Verständlicher Protest gegen Vernachlässigung.",
+        "text": "Die Menschen in vergessenen Regionen machen sich bemerkbar. Das ist Demokratie.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Populismus fängt die Abgehängten.",
+        "text": "Je höher die Arbeitslosigkeit, desto höher die AfD. Verzweiflung statt Überzeugung.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Korrelation.",
+        "text": "Arbeitslosigkeit korreliert mit AfD-Stimmen. Aber ist Armut die Ursache? Oder Frust? Oder fehlende Alternativen? Die Daten sagen nur: Es gibt einen Zusammenhang. Nicht warum.",
+        "bias": "Falsche Kausalität"
+      },
+      "original": "AfD und Linke erzielen stärkere Ergebnisse in strukturschwachen Regionen. — Stat. Landesamt, 90-Seiten-Analyse"
+    },
+    {
+      "id": "wahl-8",
+      "theme": "wahl",
+      "level": 3,
+      "value": "2 Überhangmandate",
+      "label": "Parlament wächst erstmals seit 1991",
+      "optimist": {
+        "headline": "Das System funktioniert. Ausgleichsmandate sorgen für Fairness.",
+        "text": "SPD und AfD erhalten je ein Ausgleichsmandat. Niemand wird benachteiligt.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "CDU bekommt 2 Sitze mehr als ihr zustehen.",
+        "text": "Das Parlament wächst von 101 auf 105. Mehrkosten für den Steuerzahler.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Systemische Verzerrung.",
+        "text": "Überhangmandate begünstigen IMMER die stärkste Partei. Das ist kein Bug — das ist ein Feature des Wahlsystems. Und kaum jemand versteht es.",
+        "bias": "Systemischer Bias"
+      },
+      "original": "Erstmals seit 1991 entstehen 2 Überhangmandate und 2 Ausgleichsmandate. Parlament wächst auf 105 Sitze. — Landeswahlleiter"
+    },
+    {
+      "id": "health-1",
+      "theme": "health",
+      "level": 1,
+      "value": "10-15%",
+      "label": "Infizierte entwickeln Long Covid",
+      "optimist": {
+        "headline": "85-90% erholen sich vollständig.",
+        "text": "Die überwältigende Mehrheit hat keine Langzeitfolgen. Corona ist für die meisten vorbei.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Bei 80 Mio. Infizierten = bis zu 12 Millionen.",
+        "text": "Mehr als alle MS-Patienten, Parkinson-Kranken und Epileptiker zusammen.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Die Spanne IST die Geschichte.",
+        "text": "6-15% — je nach Definition, Zeitraum, Studienpopulation. Wer '6%' zitiert, beruhigt. Wer '15%' zitiert, alarmiert. Beide zitieren korrekt.",
+        "bias": "Definitions-Problem"
+      },
+      "original": "10-15% der SARS-CoV-2-Infizierten entwickeln Long-Covid-Symptome. — RKI, Journal of Health Monitoring 02/2026"
+    },
+    {
+      "id": "health-2",
+      "theme": "health",
+      "level": 1,
+      "value": "63 Mrd. €",
+      "label": "Kosten pro Jahr",
+      "optimist": {
+        "headline": "Gesellschaft investiert in Betroffene.",
+        "text": "500 Millionen Euro Forschung bis 2036. Nationale Dekade gegen postinfektiöse Erkrankungen.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "1,5% des BIP. Jedes Jahr.",
+        "text": "250 Milliarden kumuliert seit 2020. Mehr als der gesamte Verteidigungsetat.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Wer rechnet?",
+        "text": "Die 63-Milliarden-Zahl kommt von der ME/CFS Research Foundation — einer Betroffenenorganisation. Ihre Methodik ist transparent. Aber ihr Interesse ist: hohe Zahlen = mehr Aufmerksamkeit. Das macht die Zahl nicht falsch. Aber auch nicht neutral.",
+        "bias": "Autoritäts-Trick"
+      },
+      "original": "Gesellschaftliche Kosten durch Long Covid und ME/CFS: 63,1 Mrd. Euro in 2024. — ME/CFS Research Foundation + RiskLayer"
+    },
+    {
+      "id": "health-3",
+      "theme": "health",
+      "level": 1,
+      "value": "Omikron: -50 bis -76%",
+      "label": "weniger Long-Covid-Risiko pro Infektion",
+      "optimist": {
+        "headline": "Omikron ist deutlich milder.",
+        "text": "Das individuelle Risiko für Long Covid hat sich halbiert bis geviertelt.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Aber die Gesamtzahl der Betroffenen STIEG.",
+        "text": "UK: 1,3 Mio. im Januar → 1,7 Mio. im März 2022. Weniger pro Person, aber so viele wurden infiziert, dass es mehr wurden.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Relativ vs. Absolut.",
+        "text": "DER Klassiker. '76% weniger Risiko' klingt beruhigend. 'Trotzdem 400.000 mehr Betroffene' klingt alarmierend. Beides derselbe Zeitraum, dieselben Daten. Pharma und Politik nutzen IMMER die relative Zahl.",
+        "bias": "Relative vs. absolute Zahlen"
+      },
+      "original": "Long-Covid-Risiko bei Omikron um 50-76% niedriger als bei Delta pro Infektion. — The Lancet, 2022"
+    },
+    {
+      "id": "health-4",
+      "theme": "health",
+      "level": 2,
+      "value": "45%",
+      "label": "nach 6 Monaten nicht vollzeit-arbeitsfähig",
+      "optimist": {
+        "headline": "55% können wieder Vollzeit arbeiten.",
+        "text": "Die Mehrheit erholt sich innerhalb von sechs Monaten.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Fast die Hälfte fällt monatelang aus.",
+        "text": "In einer Gesellschaft mit Fachkräftemangel. 45% Arbeitsausfall. Über Monate.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Wer antwortet?",
+        "text": "Selbstauskunft. Die, denen es schlecht geht, melden sich eher. Die, die längst genesen sind, machen keine Umfrage mit. Jede Betroffenenstudie hat diesen Bias.",
+        "bias": "Stichproben-Problem"
+      },
+      "original": "45% der Long-Covid-Erkrankten sind nach 6 Monaten nicht in der Lage, Vollzeit zu arbeiten. — BMG-Initiative"
+    },
+    {
+      "id": "health-5",
+      "theme": "health",
+      "level": 2,
+      "value": "0,4% vs. 1,4%",
+      "label": "Geimpft vs. Ungeimpft Long Covid",
+      "optimist": {
+        "headline": "Impfung schützt. 3,5x weniger Risiko.",
+        "text": "Die Risikoreduktion ist massiv und konsistent über alle Studien.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "0,4% klingt wenig. Bei 60 Mio. Geimpften = 240.000.",
+        "text": "Selbst mit Impfung: Hunderttausende betroffen. Kein vollständiger Schutz.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Relative vs. absolute Risikoreduktion.",
+        "text": "71% relative Reduktion klingt beeindruckend. 1 Prozentpunkt absolute Reduktion klingt nach: naja. Pharma nutzt die relative Zahl. Kritiker die absolute. Beide korrekt.",
+        "bias": "Relative vs. absolute Zahlen"
+      },
+      "original": "0,4% der Geimpften vs. 1,4% der Ungeimpften entwickeln Long Covid. — Schwedische Studie, 600.000 Teilnehmer"
+    },
+    {
+      "id": "health-6",
+      "theme": "health",
+      "level": 2,
+      "value": "Frauen häufiger",
+      "label": "betroffen als Männer",
+      "optimist": {
+        "headline": "Biologische Erklärung: Immunsystem reagiert anders.",
+        "text": "Frauen haben ein aktiveres Immunsystem — das schützt vor akuter Erkrankung, kann aber Autoimmunreaktionen begünstigen.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Oder: Frauen gehen häufiger zum Arzt.",
+        "text": "Was nicht diagnostiziert wird, existiert nicht in der Statistik. Männer mit Long Covid bleiben unsichtbar.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Diagnosebias.",
+        "text": "Wir wissen nicht, ob Frauen häufiger BETROFFEN sind oder häufiger DIAGNOSTIZIERT. Die Statistik misst Diagnosen — nicht Krankheiten. Ein fundamentaler Unterschied.",
+        "bias": "Diagnosebias / Selection Bias"
+      },
+      "original": "Frauen sind häufiger von Long Covid betroffen als Männer. — RKI, multiple Studien"
+    },
+    {
+      "id": "health-7",
+      "theme": "health",
+      "level": 3,
+      "value": "2-3,5%",
+      "label": "Kinder betroffen",
+      "optimist": {
+        "headline": "96,5-98% der Kinder haben keine Langzeitfolgen.",
+        "text": "Kinder sind kaum betroffen. Die Sorge war übertrieben.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Bei 14 Mio. Kindern = 280.000-490.000 Betroffene.",
+        "text": "Schulausfall. Soziale Isolation. Keine Leitlinie bis 2025. Eine halbe Million Kinder, die niemand zählt.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Kleine Prozente, große Populationen.",
+        "text": "2% klingt harmlos. 490.000 klingt katastrophal. Beides beschreibt denselben Zustand. Die Darstellungsform entscheidet über die politische Reaktion.",
+        "bias": "Relative vs. absolute Zahlen"
+      },
+      "original": "2-3,5% der an Covid erkrankten Kinder entwickeln Long-Covid-Symptome. — BMG, Deutsches Ärzteblatt"
+    },
+    {
+      "id": "health-8",
+      "theme": "health",
+      "level": 3,
+      "value": "500 Mio. €",
+      "label": "Forschung bis 2036",
+      "optimist": {
+        "headline": "Größtes Forschungsprogramm zu postinfektiösen Erkrankungen.",
+        "text": "Nationale Dekade. 500 Millionen Euro. Ein klares Signal.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "50 Mio. pro Jahr. Bei 63 Mrd. Kosten pro Jahr.",
+        "text": "0,08% der jährlichen Kosten werden in Forschung investiert. Ein Tropfen auf den heißen Stein.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Kontext.",
+        "text": "500 Millionen klingt nach viel — bis du es neben die 63 Milliarden Kosten stellst. Ohne Kontext ist jede Zahl bedeutungslos. Mit Kontext wird sie unbequem.",
+        "bias": "Kontext weglassen"
+      },
+      "original": "500 Mio. Euro Forschungsförderung für postinfektiöse Erkrankungen 2026-2036. — BMFTR, Nationale Dekade"
+    },
+    {
+      "id": "health-9",
+      "theme": "health",
+      "level": 3,
+      "value": "Nocebo-Debatte",
+      "label": "Symptome teilweise psychisch?",
+      "optimist": {
+        "headline": "76% der Impf-Nebenwirkungen waren Nocebo.",
+        "text": "Erwartungseffekte sind real und messbar. Ein Teil der Long-Covid-Symptome könnte psychosomatisch sein.",
+        "chart_highlight": "green"
+      },
+      "pessimist": {
+        "headline": "Psychologisierung = Stigmatisierung.",
+        "text": "Studie Uni Leipzig 2025: Betroffene leiden MEHR unter dem Stigma als unter der Krankheit selbst.",
+        "chart_highlight": "red"
+      },
+      "realist": {
+        "headline": "Beide haben peer-reviewed Studien.",
+        "text": "Die Nocebo-Forscher publizieren in renommierten Journals. Die Stigma-Forscher auch. Beide haben Daten. Beide haben recht. Und der Patient sitzt dazwischen.",
+        "bias": "Selektive Evidenz"
+      },
+      "original": "Bis zu 76% der Impf-Nebenwirkungen sind auf den Nocebo-Effekt zurückzuführen. — Meta-Analyse, 45.000 Probanden"
+    }
+  ],
+  "biases": [
+    {
+      "name": "Survivorship Bias",
+      "short": "Nur die Überlebenden fragen",
+      "icon": "🏆",
+      "example": "Oben gesehen bei: <a href=\"#card-ki-1\" onclick=\"scrollToCard('ki-1')\">«81% positive KI-Erfahrungen»</a> — nur Claude-Nutzer wurden befragt. Und bei <a href=\"#card-ki-6\" onclick=\"scrollToCard('ki-6')\">«8,7% bauen als Nicht-Entwickler»</a> — wir hören nur die Erfolgsgeschichten."
+    },
+    {
+      "name": "Framing",
+      "short": "Dieselbe Zahl, andere Headline",
+      "icon": "🖼️",
+      "example": "Oben gesehen bei: <a href=\"#card-ki-2\" onclick=\"scrollToCard('ki-2')\">«50% sparen Zeit»</a> — dieselbe Zahl, zwei Headlines. Und bei <a href=\"#card-wahl-3\" onclick=\"scrollToCard('wahl-3')\">«68,5% Wahlbeteiligung»</a> — Hoffnung oder Verzweiflung, je nach Betonung."
+    },
+    {
+      "name": "Cherry Picking",
+      "short": "Rosinen rauspicken",
+      "icon": "🍒",
+      "example": "Oben gesehen bei: <a href=\"#card-ki-4\" onclick=\"scrollToCard('ki-4')\">«37% Unzuverlässigkeit»</a> — zeigst du die 37% oder die 63%? Und bei <a href=\"#card-wahl-4\" onclick=\"scrollToCard('wahl-4')\">«AfD 21-26% bei Jungen»</a> — isoliere eine Altersgruppe und du erzählst eine andere Geschichte."
+    },
+    {
+      "name": "Kontext weglassen",
+      "short": "Die gefährlichste Manipulation",
+      "icon": "✂️",
+      "example": "Oben gesehen bei: <a href=\"#card-ki-3\" onclick=\"scrollToCard('ki-3')\">«67% global optimistisch»</a> — ohne regionale Aufschlüsselung eine komplett andere Story. Und bei <a href=\"#card-health-8\" onclick=\"scrollToCard('health-8')\">«500 Mio. Forschung»</a> — klingt viel, bis du die 63 Mrd. Kosten daneben stellst."
+    },
+    {
+      "name": "Relative vs. absolute Zahlen",
+      "short": "71% Reduktion oder 1 Prozentpunkt?",
+      "icon": "📐",
+      "example": "Oben gesehen bei: <a href=\"#card-health-3\" onclick=\"scrollToCard('health-3')\">«Omikron 76% weniger Risiko»</a> — aber absolute Betroffenenzahl STIEG. Bei <a href=\"#card-wahl-1\" onclick=\"scrollToCard('wahl-1')\">«CDU 31%»</a> — das sind 21% aller Wahlberechtigten. Und bei <a href=\"#card-health-5\" onclick=\"scrollToCard('health-5')\">«0,4% vs. 1,4%»</a> — 71% Reduktion oder 1 Prozentpunkt?"
+    },
+    {
+      "name": "Falsche Kausalität",
+      "short": "Korrelation ≠ Ursache",
+      "icon": "🔗",
+      "example": "Oben gesehen bei: <a href=\"#card-wahl-7\" onclick=\"scrollToCard('wahl-7')\">«Strukturschwache Regionen wählen AfD»</a> — Korrelation, nicht Ursache. Und bei <a href=\"#card-wahl-5\" onclick=\"scrollToCard('wahl-5')\">«48% Briefwahl»</a> — mobilisiert Briefwahl, oder wären die sowieso gegangen?"
+    },
+    {
+      "name": "Stichproben-Problem",
+      "short": "Wen fragst du? Wen nicht?",
+      "icon": "🎯",
+      "example": "Oben gesehen bei: <a href=\"#card-health-4\" onclick=\"scrollToCard('health-4')\">«45% nach 6 Monaten nicht arbeitsfähig»</a> — Selbstauskunft. Die Genesen machen keine Umfrage mit."
+    },
+    {
+      "name": "Autoritäts-Trick",
+      "short": "Wer hat die Studie bezahlt?",
+      "icon": "🎓",
+      "example": "Oben gesehen bei: <a href=\"#card-health-2\" onclick=\"scrollToCard('health-2')\">«63 Mrd. Euro Kosten»</a> — die Zahl kommt von der ME/CFS Research Foundation. Methodik transparent. Aber Interesse: hohe Zahlen = mehr Aufmerksamkeit."
+    },
+    {
+      "name": "Durchschnitt versteckt Verteilung",
+      "short": "Der Durchschnitt lügt",
+      "icon": "📊",
+      "example": "Oben gesehen bei: <a href=\"#card-ki-5\" onclick=\"scrollToCard('ki-5')\">«28% Empowerment»</a> — klingt ausgeglichen. Aber: Freelancer 47%, Angestellte 14%. Der Durchschnitt versteckt die Kluft."
+    },
+    {
+      "name": "Zeitraum-Trick",
+      "short": "Startdatum bestimmt den Trend",
+      "icon": "📅",
+      "example": "Oben gesehen bei: <a href=\"#card-wahl-2\" onclick=\"scrollToCard('wahl-2')\">«AfD verdoppelt»</a> — dramatisch. «AfD bei 19,5%» — beherrschbar. Welchen Vergleichszeitraum du wählst, bestimmt die Geschichte."
+    }
+  ]
+}
