@@ -1,0 +1,22 @@
+# Research-Notizen (gehören ins der-koerting-Repo, nicht ins public Pages-Repo)
+*research*.md
+*RESEARCH*.md
+*RECHERCHE*.md
+*research*.MD
+
+# Backups & Versionen
+*.bak
+*-v[0-9]*.html
+*-v[0-9]*.md
+*-original.html
+*-original.md
+
+# System
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporär
+*.tmp
+*.swp
