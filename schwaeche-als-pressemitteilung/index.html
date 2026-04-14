@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schwäche als Pressemitteilung — Datenstück | Der Körting</title>
+<meta name="description" content="Der Jahresbericht des Wehrbeauftragten dokumentiert offen, wie es um die Bundeswehr steht. Frei zugänglich, sauber gegliedert, mehrsprachig. Eine Quelle, eine Wahrheit. Was steht drin – und was sagt das über uns?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Schwäche als Pressemitteilung — Datenstück | Open Data Minded">
+<meta property="og:description" content="Der Jahresbericht des Wehrbeauftragten – öffentlich, sauber, mehrsprachig. Was drin steht, und was das über uns sagt.">
+<meta property="og:url" content="https://opendataminded.de/schwaeche-als-pressemitteilung/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/schwaeche-als-pressemitteilung/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Schwäche als Pressemitteilung","description":"Der Jahresbericht des Wehrbeauftragten 2025 in Daten.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/schwaeche-als-pressemitteilung/","inLanguage":"de","datePublished":"2026-04-14","dateModified":"2026-04-14"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);padding-bottom:4px}
+.header-nav a.active{color:var(--accent)}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent}
+.nav-pill:hover{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+.nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+.kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.accent2{color:var(--accent-2)}
+.kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+.chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+.chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+.chart{width:100%;height:300px} .chart-tall{height:380px} .chart-wide{height:420px}
+.perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+.perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+.perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+.access-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin:1.5rem 0}
+.access-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.75rem}
+.access-card .icon{font-size:1.5rem;flex-shrink:0}
+.access-card .title{font-family:var(--font-mono);font-size:0.85rem;color:var(--text-primary);font-weight:500}
+.access-card .sub{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.15rem}
+.quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+.quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+.quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+.source-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+.back-link:hover{color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+.note-box{background:var(--accent-subtle);border:1px solid var(--accent);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.9rem}
+.note-box .note-label{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:0.5rem;display:block}
+@media(max-width:768px){html{font-size:16px} h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr} .access-grid{grid-template-columns:1fr} .chart{height:260px} .chart-tall{height:320px} .chart-wide{height:360px} .story-wrapper{padding:2rem 1rem 3rem} .section-nav{top:56px}}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">☀️</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">← Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #14</span>
+<span class="snapshot-tag">April 2026</span>
+<span>zum <a href="https://der-koerting.de/2026/04/14/schwaeche-als-pressemitteilung/">Blogpost</a></span>
+</div>
+
+<h1>Schwäche als Pressemitteilung.</h1>
+<div class="subtitle">Was im Jahresbericht des Wehrbeauftragten steht – und wie einfach es zu finden ist.</div>
+
+<p class="lead">Wenn man wissen will, wie es um die deutsche Bundeswehr steht, muss man nicht spionieren. Man muss herunterladen. Der Jahresbericht 2025 des Wehrbeauftragten ist ein öffentliches, sauber gegliedertes, mehrsprachiges Dokument. Dieses Datenstück zeigt, was drin steht – und wirft die Frage auf, ob das so bleiben soll.</p>
+
+<div class="note-box">
+<span class="note-label">Zur Einordnung</span>
+Dieses Datenstück verwendet ausschließlich öffentlich zugängliche Daten aus dem Jahresbericht des Wehrbeauftragten (Drucksache 21/4200, 03.03.2026). Es wird hier nichts neu recherchiert, nichts aggregiert, was nicht ohnehin veröffentlicht ist. Die Absicht ist kein Lagebild für Dritte, sondern eine Reflexion darüber, wie offen unsere Transparenz geworden ist.
+</div>
+
+<nav class="section-nav">
+<a href="#zugang" class="nav-pill">Das gibt es</a>
+<a href="#personal" class="nav-pill">Personal</a>
+<a href="#einsaetze" class="nav-pill">Einsätze</a>
+<a href="#haushalt" class="nav-pill">Haushalt</a>
+<span class="nav-sep">|</span>
+<a href="#frage" class="nav-pill">Die Frage</a>
+</nav>
+
+<!-- DAS GIBT ES -->
+<h2 id="zugang">Das gibt es.</h2>
+<p>Der Bericht erscheint jedes Jahr. Der aktuelle wurde am 3. März 2026 an die Präsidentin des Deutschen Bundestages übergeben. Er ist frei verfügbar. Nicht nur als PDF. Auch als EPUB. Mit Pressemitteilung. Sauber nummeriert (der 67. Bericht in Folge). Auf der Website des Bundestags findet man alle Jahrgänge rückwirkend – archiviert, indexiert, durchsuchbar.</p>
+
+<div class="access-grid">
+<div class="access-card"><div class="icon">📄</div><div><div class="title">PDF</div><div class="sub">Drucksache 21/4200 · ca. 90 Seiten</div></div></div>
+<div class="access-card"><div class="icon">📖</div><div><div class="title">EPUB</div><div class="sub">E-Book-Version · bundestag.de</div></div></div>
+<div class="access-card"><div class="icon">📰</div><div><div class="title">Pressemitteilung</div><div class="sub">Redaktionell aufbereitet · PDF</div></div></div>
+<div class="access-card"><div class="icon">🌐</div><div><div class="title">Deutsch &amp; English</div><div class="sub">Mehrsprachige Aufbereitung</div></div></div>
+<div class="access-card"><div class="icon">📚</div><div><div class="title">67 Jahrgänge</div><div class="sub">Rückwirkend bis in die frühen 1960er</div></div></div>
+<div class="access-card"><div class="icon">🔍</div><div><div class="title">Volltextsuche</div><div class="sub">Drucksachenserver öffentlich</div></div></div>
+</div>
+
+<p class="text-small">Nichts davon ist ein Vorwurf. Es sind Tatsachen. Sie sind das Fundament dieses Datenstücks – und der Ausgangspunkt der Frage, die es stellt.</p>
+
+<!-- KPI OVERVIEW -->
+<div class="perspective-break">
+<h2>4.254 Vorgänge.</h2>
+<p>So viel wurde 2025 an den Wehrbeauftragten gerichtet.</p>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">4.254</div><div class="kpi-label">Vorgänge 2025</div><div class="kpi-sub">Alle Eingaben &amp; Beschwerden</div></div>
+<div class="kpi-card"><div class="kpi-value">2.819</div><div class="kpi-label">Persönliche Eingaben</div><div class="kpi-sub">Soldat:innen direkt</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">62,3 Mrd €</div><div class="kpi-label">Verteidigungshaushalt</div><div class="kpi-sub">Einzelplan 14 · +10 Mrd vs. Vorjahr</div></div>
+</div>
+
+<!-- PERSONAL -->
+<h2 id="personal">Das Personal.</h2>
+<p>Im Bericht steht sehr klar, wie viele Soldatinnen und Soldaten die Bundeswehr hat. Und wie viele sie haben müsste. Die Lücke ist keine Spekulation – sie ist nummeriert.</p>
+
+<div class="chart-container">
+<div class="chart-title">Personal: Ist vs. Zielgröße</div>
+<div class="chart-subtitle">Aktive Soldat:innen &amp; Reservist:innen · Quelle: Jahresbericht 2025</div>
+<div id="chart-personal" class="chart chart-tall"></div>
+</div>
+
+<p>Der Bericht nennt die Zielgröße von <strong>260.000 aktiven Soldat:innen</strong> bis Mitte der 2030er-Jahre und <strong>200.000 Reservist:innen</strong> bis 2033. Aktuell: 181.174 aktive Soldat:innen (Stand 2024, höchster Wert seit Aussetzung der Wehrpflicht), etwa 70.000–80.000 Reservist:innen. Die Lücke steht beziffert im Dokument.</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">+3.000</div><div class="kpi-label">Neuzugänge 2025</div><div class="kpi-sub">Einstellungsstärkstes Jahr</div></div>
+<div class="kpi-card"><div class="kpi-value warning">13,71%</div><div class="kpi-label">Frauenanteil</div><div class="kpi-sub">Ziel laut SoldGG: deutlich höher</div></div>
+<div class="kpi-card"><div class="kpi-value">34,8</div><div class="kpi-label">Ø Alter Berufssoldaten</div><div class="kpi-sub">Jahre (Berufs- und Zeitsoldaten)</div></div>
+</div>
+
+<!-- EINSÄTZE -->
+<h2 id="einsaetze">Die Einsätze.</h2>
+<p>Wo die Bundeswehr gerade ist. Nicht „in etwa". Nicht „ungefähr". Sondern auf den Einzelnen genau.</p>
+
+<div class="chart-container">
+<div class="chart-title">Auslandseinsätze Ende 2025</div>
+<div class="chart-subtitle">977 Soldat:innen in 9 mandatierten Missionen · Quelle: Jahresbericht 2025</div>
+<div id="chart-einsaetze" class="chart chart-tall"></div>
+</div>
+
+<p>Zusätzlich zu den vom Bundestag mandatierten Einsätzen waren im Berichtsjahr etwa 30.000 Soldat:innen in einsatzgleichen Verpflichtungen gebunden – darunter 1.046 an der NATO-Ostflanke (Litauen, Polen, Rumänien) und 2.303 in der Unterstützungsmission für die Ukraine. Die Brigade Litauen (Panzerbrigade 45) soll bis 2027 auf 4.800 Soldat:innen plus 200 zivile Mitarbeiter:innen anwachsen.</p>
+
+<!-- HAUSHALT -->
+<h2 id="haushalt">Der Haushalt.</h2>
+<p>Geld ist im Bericht kein Tabu. Im Gegenteil – es steht in der Einleitung. Klare Zahlen, klare Entwicklung.</p>
+
+<div class="chart-container">
+<div class="chart-title">Verteidigungshaushalt 2025 im Detail</div>
+<div class="chart-subtitle">Einzelplan 14 &amp; Sondervermögen · Quelle: Jahresbericht 2025</div>
+<div id="chart-haushalt" class="chart"></div>
+</div>
+
+<p>62,3 Milliarden Euro regulärer Verteidigungshaushalt, ein Plus von 10 Milliarden gegenüber 2024. Zusätzlich rund 24 Milliarden aus dem Sondervermögen. Im Juni 2025 beschloss die NATO in Den Haag eine weitere Erhöhung der Verteidigungsausgabenzusagen. All das steht im Bericht. Mit Seitenzahlen.</p>
+
+<!-- DER BOGEN -->
+<div class="perspective-break">
+<h2>Das ist alles öffentlich.</h2>
+<p>Sauber gegliedert. Übersetzt. Gut gesucht.</p>
+</div>
+
+<h2 id="frage">Die Frage.</h2>
+<p>Ein Blogger mit einem Laptop und einer halben Stunde Zeit kommt an diese Zahlen. Ohne Kontakte. Ohne Quellen. Ohne Aufwand. Die Bundesrepublik stellt sie ihm zur Verfügung – freundlich, sauber, mehrsprachig.</p>
+
+<p>Das ist demokratisch gut. Das Parlament soll kontrollieren können. Die Öffentlichkeit soll einschätzen können, was unser Geld leistet und was nicht. Der Wehrbeauftragte ist seit 1957 das Scharnier, an dem diese Kontrolle hängt. Dass er seinen Bericht veröffentlicht, ist kein Fehler. Es ist sein Auftrag.</p>
+
+<p>Was sich verändert hat, ist etwas anderes: der Grad der Detaillierung, die Geschwindigkeit der Verbreitung, die Leichtigkeit des Zugangs. Ein Bericht, der früher in Bibliotheken lag, ist heute drei Klicks von jedem Endgerät entfernt. Mit Volltextsuche. In beiden Richtungen.</p>
+
+<div class="quote-block">
+<p>„Die lesen nicht deutsche Twitter-Debatten zur Abschreckung. Die lesen den Jahresbericht."</p>
+<span class="quote-author">— aus dem Blogpost zu diesem Datenstück</span>
+</div>
+
+<p>Ob das gut oder schlecht ist, ist die eigentliche Frage. Sie hat zwei Seiten, und beide sind ernst zu nehmen. Transparenz schafft Druck, Druck schafft Veränderung – ohne beides hätten wir kein Sondervermögen und keine Debatte über die Wehrpflicht. Gleichzeitig verschiebt umfassende Öffentlichkeit das, was Militärwissenschaftler strategische Ambiguität nennen: das bewusste Im-Ungewissen-lassen des Gegners darüber, wie dünn die Decke ist.</p>
+
+<p>Dieses Datenstück hat darauf keine Antwort. Es hat nur einen Befund. Der Befund lautet: Wir sagen öffentlich, präzise und mehrsprachig, wo wir stehen. Aus demokratischer Gewohnheit. Aus Reife. Vielleicht auch, weil wir es nicht mehr anders können. Und vielleicht sollten wir uns, in der Welt von heute, einmal fragen, ob wir das wirklich so wollen.</p>
+
+<hr class="divider">
+
+<p class="tk-closer">Eine Quelle, eine Wahrheit. Frei zugänglich, sauber gegliedert, übersichtlich. Danke für die Mühe.</p>
+
+<p>Der Satz ist nicht ironisch gemeint. Aber er ist auch nicht nur ernst.</p>
+
+<!-- Feedback -->
+<div class="feedback-box">
+<h3>War das hilfreich?</h3>
+<p>Oder zumindest zum Nachdenken?</p>
+<div class="feedback-buttons">
+<button class="feedback-btn" data-value="mehr">Mehr davon</button>
+<button class="feedback-btn" data-value="ok">War okay</button>
+<button class="feedback-btn" data-value="heikel">Heikles Thema</button>
+</div>
+<div class="feedback-thanks" id="feedback-thanks">Danke. Das hilft.</div>
+</div>
+
+<!-- Sources -->
+<div class="source-card">
+<h3>Quellen &amp; Daten</h3>
+<ul>
+<li>Jahresbericht 2025 des Wehrbeauftragten — Drucksache 21/4200 (03.03.2026) — <a href="https://dserver.bundestag.de/btd/21/042/2104200.pdf">PDF auf dserver.bundestag.de</a></li>
+<li>Pressemitteilung zum Jahresbericht 2025 — <a href="https://www.bundestag.de/resource/blob/1150830/2216afcd58569ae306a185963f677ed4/jahresbericht_2025_pm-data.pdf">PDF</a></li>
+<li>Übersicht aller Jahresberichte — <a href="https://www.bundestag.de/parlament/wehrbeauftragter/jahresberichte">bundestag.de/wehrbeauftragter</a></li>
+<li>Der Wehrbeauftragte des Deutschen Bundestages — <a href="https://www.bundestag.de/wehrbeauftragte">Institution</a></li>
+<li>Aktueller Wehrbeauftragter: Henning Otte (gewählt 21.05.2025)</li>
+</ul>
+</div>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Alle Zahlen wurden dem Jahresbericht 2025 entnommen und nach bestem Wissen und Gewissen übertragen. Wer etwas findet, das nicht stimmt: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #14 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='schwaeche-als-pressemitteilung';var charts={};
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val),{mode:'no-cors'})})});
+
+function initCharts(){
+Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});
+var isDark=document.documentElement.dataset.theme==='dark';
+var c={accent:isDark?'#14B8A6':'#0D9488',accent2:isDark?'#FACC15':'#EAB308',danger:isDark?'#EF4444':'#DC2626',warning:isDark?'#F59E0B':'#D97706',text:isDark?'#E5E7EB':'#1E293B',textSec:isDark?'#9CA3AF':'#64748B',textTert:isDark?'#6B7280':'#94A3B8',grid:isDark?'#2D3139':'#E2E5E9',bg:isDark?'#1E2028':'#FFFFFF'};
+var base={backgroundColor:'transparent',textStyle:{fontFamily:'Space Grotesk,system-ui',color:c.text},tooltip:{trigger:'axis',backgroundColor:c.bg,borderColor:c.grid,textStyle:{color:c.text,fontSize:12}}};
+
+// PERSONAL: Ist vs Ziel
+charts.personal=echarts.init(document.getElementById('chart-personal'));
+charts.personal.setOption({...base,grid:{left:120,right:80,top:40,bottom:30},
+legend:{data:['Ist (2024/25)','Zielgröße'],textStyle:{color:c.textSec,fontSize:12},top:0},
+xAxis:{type:'value',axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return (v/1000)+'k'}}},
+yAxis:{type:'category',data:['Reservist:innen','Aktive Soldat:innen'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:12}},
+series:[
+{name:'Ist (2024/25)',type:'bar',data:[75000,181174],barWidth:20,itemStyle:{color:c.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:function(p){return p.value.toLocaleString('de-DE')},color:c.accent,fontSize:11,fontFamily:'JetBrains Mono'}},
+{name:'Zielgröße',type:'bar',data:[200000,260000],barWidth:20,itemStyle:{color:c.warning+'88',borderRadius:[0,4,4,0]},label:{show:true,position:'right',formatter:function(p){return p.value.toLocaleString('de-DE')},color:c.warning,fontSize:11,fontFamily:'JetBrains Mono'}}
+]});
+
+// EINSÄTZE: Missionen mit Personalstärke
+charts.einsaetze=echarts.init(document.getElementById('chart-einsaetze'));
+charts.einsaetze.setOption({...base,grid:{left:170,right:60,top:10,bottom:30},
+xAxis:{type:'value',axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert}},
+yAxis:{type:'category',data:['SEA GUARDIAN','ASPIDES','IRINI','EUFOR Althea (BiH)','UNIFIL (Libanon)','KFOR (Kosovo)','Sonstige','Naher Osten'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+series:[{type:'bar',barWidth:16,data:[
+{value:76,itemStyle:{color:c.accent+'55',borderRadius:[0,4,4,0]}},
+{value:23,itemStyle:{color:c.accent+'44',borderRadius:[0,4,4,0]}},
+{value:13,itemStyle:{color:c.accent+'33',borderRadius:[0,4,4,0]}},
+{value:36,itemStyle:{color:c.accent+'55',borderRadius:[0,4,4,0]}},
+{value:211,itemStyle:{color:c.accent+'99',borderRadius:[0,4,4,0]}},
+{value:287,itemStyle:{color:c.accent,borderRadius:[0,4,4,0]}},
+{value:16,itemStyle:{color:c.accent+'33',borderRadius:[0,4,4,0]}},
+{value:315,itemStyle:{color:c.accent,borderRadius:[0,4,4,0]}}
+],label:{show:true,position:'right',formatter:function(p){return p.value},color:c.textSec,fontSize:11,fontFamily:'JetBrains Mono'}}]});
+
+// HAUSHALT: Einzelplan 14 Entwicklung
+charts.haushalt=echarts.init(document.getElementById('chart-haushalt'));
+charts.haushalt.setOption({...base,grid:{left:50,right:60,top:30,bottom:30},
+xAxis:{type:'category',data:['2024','2025','Sondervermögen 2025'],axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+yAxis:{type:'value',axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},axisLabel:{color:c.textTert,formatter:function(v){return v+' Mrd'}}},
+series:[{type:'bar',barWidth:40,data:[
+{value:52.3,itemStyle:{color:c.accent+'66',borderRadius:[4,4,0,0]}},
+{value:62.3,itemStyle:{color:c.accent,borderRadius:[4,4,0,0]}},
+{value:24,itemStyle:{color:c.accent2,borderRadius:[4,4,0,0]}}
+],label:{show:true,position:'top',formatter:function(p){return p.value+' Mrd €'},color:c.text,fontSize:11,fontFamily:'JetBrains Mono'}}]});
+
+window.addEventListener('resize',function(){Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+}
+
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'🌙':'☀️'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'🌙':'☀️';initCharts()}
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>
