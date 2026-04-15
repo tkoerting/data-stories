@@ -31,10 +31,8 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"KRIEG(e)","description":"Datenstück über aktive Konflikte, Medienaufmerksamkeit und Rüstungsprofiteure.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/kriege/","inLanguage":"de","datePublished":"2026-04-13","dateModified":"2026-04-13"}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../fonts/fonts.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
 :root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
 [data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
@@ -750,7 +748,7 @@ p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
 
 <script>
 var DATENSTUECK_ID='kriege';var charts={};
-document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val),{mode:'no-cors'})})});
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val)+'&t=8e113d5fff88b4d54708bd196e73c42a',{mode:'no-cors'})})});
 
 function initCharts(){
 Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});

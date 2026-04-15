@@ -47,10 +47,8 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../fonts/fonts.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 
 <style>
   :root {
@@ -824,7 +822,7 @@ document.addEventListener('DOMContentLoaded', initCharts);
       document.getElementById('feedback-thanks').style.display = 'block';
       // Send to Google Sheets
       var url = 'https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec';
-      fetch(url + '?datenstueck=' + encodeURIComponent(DATENSTUECK_ID) + '&feedback=' + encodeURIComponent(val), { mode: 'no-cors' });
+      fetch(url + '?datenstueck=' + encodeURIComponent(DATENSTUECK_ID) + '&feedback=' + encodeURIComponent(val) + '&t=8e113d5fff88b4d54708bd196e73c42a', { mode: 'no-cors' });
     });
   });
 })();
