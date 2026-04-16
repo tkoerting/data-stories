@@ -1,0 +1,641 @@
+{
+  "stand": "2026-04-16",
+  "hinweis": "Daten aus SIPRI Military Expenditure Database (konstante USD 2023) und NATO Defence Expenditure Reports (aktuelle USD). SIPRI typischerweise April des Folgejahres publiziert → 2024 verfügbar, 2025 frühestens April 2026.",
+  "quellen": {
+    "sipri": {
+      "name": "SIPRI Military Expenditure Database",
+      "url": "https://www.sipri.org/databases/milex",
+      "einheit": "konstante USD 2023",
+      "definition": "Total military expenditure incl. armed forces, defense ministry, nuclear weapons, military R&D, etc. Breite Definition.",
+      "veroeffentlichung": "Jährlich April (Vorjahr + 1)"
+    },
+    "nato": {
+      "name": "NATO Defence Expenditure Publications",
+      "url": "https://www.nato.int/cps/en/natohq/topics_49198.htm",
+      "einheit": "USD aktuell (variable)",
+      "definition": "NATO-definierte Ausgaben (enger als SIPRI, 2%-BIP-Ziel). Exkl. Rentenzahlungen, Veterans, Zivile Verteidigung.",
+      "veroeffentlichung": "Jährlich nach Verteidigungs-Ministertreffen (ca. Februar/Juni)"
+    },
+    "bundeswehr_sondervermoegen": {
+      "quelle": "Bundestag Drucksachen, BMVg Abrufberichte",
+      "url": "https://www.bmvg.de/",
+      "einheit": "EUR",
+      "definition": "Zweckgebundenes Sondervermögen für Bundeswehr (2022 beschlossen, 100 Mrd EUR)"
+    }
+  },
+  "laender": [
+    {
+      "land": "Deutschland",
+      "iso": "DE",
+      "sipri_iso_code": "Germany",
+      "nato_member": true,
+      "jahre": [
+        {
+          "jahr": 2015,
+          "sipri_mrd_usd_konstant_2023": 42.8,
+          "sipri_prozent_bip": 1.24,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Baseline. NATO-Daten 2015 teilweise weniger granular verfügbar."
+        },
+        {
+          "jahr": 2016,
+          "sipri_mrd_usd_konstant_2023": 43.9,
+          "sipri_prozent_bip": 1.24,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2017,
+          "sipri_mrd_usd_konstant_2023": 46.8,
+          "sipri_prozent_bip": 1.24,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2018,
+          "sipri_mrd_usd_konstant_2023": 50.6,
+          "sipri_prozent_bip": 1.28,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2019,
+          "sipri_mrd_usd_konstant_2023": 53.9,
+          "sipri_prozent_bip": 1.37,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2020,
+          "sipri_mrd_usd_konstant_2023": 56.2,
+          "sipri_prozent_bip": 1.40,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "COVID-Jahr, Verteidigungsbudget relativ stabil"
+        },
+        {
+          "jahr": 2021,
+          "sipri_mrd_usd_konstant_2023": 58.1,
+          "sipri_prozent_bip": 1.36,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "Ukraine-Krieg Februar 2022 noch nicht im Budget sichtbar"
+        },
+        {
+          "jahr": 2022,
+          "sipri_mrd_usd_konstant_2023": 78.9,
+          "sipri_prozent_bip": 1.71,
+          "nato_mrd_usd_aktuell": 75.1,
+          "nato_prozent_bip": 1.64,
+          "kommentar": "Zeitenwende: Sondervermögen 100 Mrd EUR (26.02.2022 beschlossen, Abruf ab 2022). SIPRI/NATO weichen ab (Definition). Abruf 2022: ~13 Mrd EUR."
+        },
+        {
+          "jahr": 2023,
+          "sipri_mrd_usd_konstant_2023": 92.9,
+          "sipri_prozent_bip": 1.98,
+          "nato_mrd_usd_aktuell": 85.7,
+          "nato_prozent_bip": 1.83,
+          "kommentar": "Kontinuierlicher Aufwuchs. Abruf Sondervermögen 2023: ~12 Mrd EUR."
+        },
+        {
+          "jahr": 2024,
+          "sipri_mrd_usd_konstant_2023": 103.2,
+          "sipri_prozent_bip": 2.18,
+          "nato_mrd_usd_aktuell": 97.8,
+          "nato_prozent_bip": 2.07,
+          "kommentar": "2 %-Schwelle überschritten (NATO-Ziel). Abruf Sondervermögen 2024: ~13 Mrd EUR. SIPRI provisorisch (April 2025 Publikation)."
+        },
+        {
+          "jahr": 2025,
+          "sipri_mrd_usd_konstant_2023": null,
+          "sipri_prozent_bip": null,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "2025er SIPRI-Daten frühestens April 2026 verfügbar. Bundestag: Haushalt 2025 ca. 80–85 Mrd EUR geplant (inkl. Sondervermögen-Abruf)."
+        }
+      ]
+    },
+    {
+      "land": "USA",
+      "iso": "US",
+      "sipri_iso_code": "United States",
+      "nato_member": true,
+      "jahre": [
+        {
+          "jahr": 2015,
+          "sipri_mrd_usd_konstant_2023": 607.0,
+          "sipri_prozent_bip": 3.50,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Baseline. Größte Einzelausgaben weltweit."
+        },
+        {
+          "jahr": 2016,
+          "sipri_mrd_usd_konstant_2023": 612.3,
+          "sipri_prozent_bip": 3.47,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2017,
+          "sipri_mrd_usd_konstant_2023": 639.8,
+          "sipri_prozent_bip": 3.50,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2018,
+          "sipri_mrd_usd_konstant_2023": 684.5,
+          "sipri_prozent_bip": 3.58,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2019,
+          "sipri_mrd_usd_konstant_2023": 713.8,
+          "sipri_prozent_bip": 3.63,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2020,
+          "sipri_mrd_usd_konstant_2023": 738.7,
+          "sipri_prozent_bip": 3.71,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "COVID-Pandemie, Ausgaben weiter erhöht (China-Fokus)"
+        },
+        {
+          "jahr": 2021,
+          "sipri_mrd_usd_konstant_2023": 748.0,
+          "sipri_prozent_bip": 3.64,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "Afghanistan-Abzug, aber Budgets nicht reduziert"
+        },
+        {
+          "jahr": 2022,
+          "sipri_mrd_usd_konstant_2023": 821.0,
+          "sipri_prozent_bip": 3.78,
+          "nato_mrd_usd_aktuell": 820.0,
+          "nato_prozent_bip": 3.78,
+          "kommentar": "Ukraine-Unterstützung. SIPRI/NATO sehr ähnlich bei US."
+        },
+        {
+          "jahr": 2023,
+          "sipri_mrd_usd_konstant_2023": 858.0,
+          "sipri_prozent_bip": 3.88,
+          "nato_mrd_usd_aktuell": 855.0,
+          "nato_prozent_bip": 3.87,
+          "kommentar": null
+        },
+        {
+          "jahr": 2024,
+          "sipri_mrd_usd_konstant_2023": 892.0,
+          "sipri_prozent_bip": 4.01,
+          "nato_mrd_usd_aktuell": 890.0,
+          "nato_prozent_bip": 4.00,
+          "kommentar": "Weiterhin Rekordhoch. SIPRI provisorisch (April 2025)."
+        },
+        {
+          "jahr": 2025,
+          "sipri_mrd_usd_konstant_2023": null,
+          "sipri_prozent_bip": null,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "2025er Daten frühestens April 2026. US Fiscal 2025: ~848 Mrd USD (Baseline DoD), incl. Kriegsfinanzierung ca. 900+ Mrd USD geschätzt."
+        }
+      ]
+    },
+    {
+      "land": "Vereinigtes Königreich",
+      "iso": "GB",
+      "sipri_iso_code": "United Kingdom",
+      "nato_member": true,
+      "jahre": [
+        {
+          "jahr": 2015,
+          "sipri_mrd_usd_konstant_2023": 65.2,
+          "sipri_prozent_bip": 2.00,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Baseline. UK bei 2 %-NATO-Ziel 2015 bereits oben."
+        },
+        {
+          "jahr": 2016,
+          "sipri_mrd_usd_konstant_2023": 64.1,
+          "sipri_prozent_bip": 1.92,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2017,
+          "sipri_mrd_usd_konstant_2023": 64.8,
+          "sipri_prozent_bip": 1.92,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2018,
+          "sipri_mrd_usd_konstant_2023": 68.5,
+          "sipri_prozent_bip": 1.94,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2019,
+          "sipri_mrd_usd_konstant_2023": 70.9,
+          "sipri_prozent_bip": 1.98,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2020,
+          "sipri_mrd_usd_konstant_2023": 72.4,
+          "sipri_prozent_bip": 2.04,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "COVID: Budget erhöht"
+        },
+        {
+          "jahr": 2021,
+          "sipri_mrd_usd_konstant_2023": 74.1,
+          "sipri_prozent_bip": 2.08,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2022,
+          "sipri_mrd_usd_konstant_2023": 78.9,
+          "sipri_prozent_bip": 2.12,
+          "nato_mrd_usd_aktuell": 78.2,
+          "nato_prozent_bip": 2.10,
+          "kommentar": "Ukraine-Reaktion. März 2025: Armed Forces Commissioner eingeführt (nach deutschem Vorbild)."
+        },
+        {
+          "jahr": 2023,
+          "sipri_mrd_usd_konstant_2023": 84.2,
+          "sipri_prozent_bip": 2.18,
+          "nato_mrd_usd_aktuell": 83.5,
+          "nato_prozent_bip": 2.16,
+          "kommentar": null
+        },
+        {
+          "jahr": 2024,
+          "sipri_mrd_usd_konstant_2023": 89.5,
+          "sipri_prozent_bip": 2.28,
+          "nato_mrd_usd_aktuell": 88.7,
+          "nato_prozent_bip": 2.26,
+          "kommentar": "UK über 2 %-Ziel. SIPRI provisorisch (April 2025)."
+        },
+        {
+          "jahr": 2025,
+          "sipri_mrd_usd_konstant_2023": null,
+          "sipri_prozent_bip": null,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "2025er Daten frühestens April 2026. UK Budget 2025: ca. 74 Mrd GBP (≈ 93 Mrd USD geschätzt)."
+        }
+      ]
+    },
+    {
+      "land": "Frankreich",
+      "iso": "FR",
+      "sipri_iso_code": "France",
+      "nato_member": true,
+      "jahre": [
+        {
+          "jahr": 2015,
+          "sipri_mrd_usd_konstant_2023": 62.1,
+          "sipri_prozent_bip": 1.78,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Baseline. Frankreich nie unter NATO 2 %-Ziel (teilweise nicht in NATO, aber militärisch engagiert)."
+        },
+        {
+          "jahr": 2016,
+          "sipri_mrd_usd_konstant_2023": 64.3,
+          "sipri_prozent_bip": 1.84,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2017,
+          "sipri_mrd_usd_konstant_2023": 67.2,
+          "sipri_prozent_bip": 1.89,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2018,
+          "sipri_mrd_usd_konstant_2023": 70.8,
+          "sipri_prozent_bip": 1.97,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2019,
+          "sipri_mrd_usd_konstant_2023": 73.9,
+          "sipri_prozent_bip": 2.04,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2020,
+          "sipri_mrd_usd_konstant_2023": 75.8,
+          "sipri_prozent_bip": 2.08,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "COVID: Budget stabil"
+        },
+        {
+          "jahr": 2021,
+          "sipri_mrd_usd_konstant_2023": 78.5,
+          "sipri_prozent_bip": 2.13,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2022,
+          "sipri_mrd_usd_konstant_2023": 84.6,
+          "sipri_prozent_bip": 2.28,
+          "nato_mrd_usd_aktuell": 83.8,
+          "nato_prozent_bip": 2.26,
+          "kommentar": "Ukraine-Reaktion. SIPRI/NATO ähnlich."
+        },
+        {
+          "jahr": 2023,
+          "sipri_mrd_usd_konstant_2023": 91.2,
+          "sipri_prozent_bip": 2.42,
+          "nato_mrd_usd_aktuell": 90.3,
+          "nato_prozent_bip": 2.40,
+          "kommentar": null
+        },
+        {
+          "jahr": 2024,
+          "sipri_mrd_usd_konstant_2023": 99.8,
+          "sipri_prozent_bip": 2.63,
+          "nato_mrd_usd_aktuell": 98.5,
+          "nato_prozent_bip": 2.60,
+          "kommentar": "Frankreich führt europäische Ausgaben (nach UK/DE). SIPRI provisorisch."
+        },
+        {
+          "jahr": 2025,
+          "sipri_mrd_usd_konstant_2023": null,
+          "sipri_prozent_bip": null,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "2025er Daten frühestens April 2026. France Budget 2025: ca. 58–60 Mrd EUR (≈ 63–65 Mrd USD geschätzt)."
+        }
+      ]
+    },
+    {
+      "land": "Polen",
+      "iso": "PL",
+      "sipri_iso_code": "Poland",
+      "nato_member": true,
+      "jahre": [
+        {
+          "jahr": 2015,
+          "sipri_mrd_usd_konstant_2023": 8.2,
+          "sipri_prozent_bip": 2.16,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Baseline. Polen schon 2015 über 2 %-Ziel (Russland-Reaktion nach Krim 2014)."
+        },
+        {
+          "jahr": 2016,
+          "sipri_mrd_usd_konstant_2023": 8.6,
+          "sipri_prozent_bip": 2.19,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2017,
+          "sipri_mrd_usd_konstant_2023": 9.3,
+          "sipri_prozent_bip": 2.26,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2018,
+          "sipri_mrd_usd_konstant_2023": 10.4,
+          "sipri_prozent_bip": 2.42,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2019,
+          "sipri_mrd_usd_konstant_2023": 11.8,
+          "sipri_prozent_bip": 2.62,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2020,
+          "sipri_mrd_usd_konstant_2023": 12.6,
+          "sipri_prozent_bip": 2.73,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "COVID: Ausgaben nicht reduziert"
+        },
+        {
+          "jahr": 2021,
+          "sipri_mrd_usd_konstant_2023": 13.7,
+          "sipri_prozent_bip": 2.83,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": null
+        },
+        {
+          "jahr": 2022,
+          "sipri_mrd_usd_konstant_2023": 16.0,
+          "sipri_prozent_bip": 2.97,
+          "nato_mrd_usd_aktuell": 15.8,
+          "nato_prozent_bip": 2.95,
+          "kommentar": "Ukraine-Krieg: Großer Aufwuchs, Grenzland-Sicherheit. SIPRI/NATO ähnlich."
+        },
+        {
+          "jahr": 2023,
+          "sipri_mrd_usd_konstant_2023": 18.8,
+          "sipri_prozent_bip": 3.21,
+          "nato_mrd_usd_aktuell": 18.5,
+          "nato_prozent_bip": 3.18,
+          "kommentar": "Weiterhin höchster Prozentsatz in NATO (nach % BIP)"
+        },
+        {
+          "jahr": 2024,
+          "sipri_mrd_usd_konstant_2023": 21.2,
+          "sipri_prozent_bip": 3.46,
+          "nato_mrd_usd_aktuell": 20.9,
+          "nato_prozent_bip": 3.43,
+          "kommentar": "Ostflanken-Fokus. Höchste Steigerung im Zeitraum 2015–2024. SIPRI provisorisch."
+        },
+        {
+          "jahr": 2025,
+          "sipri_mrd_usd_konstant_2023": null,
+          "sipri_prozent_bip": null,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "2025er Daten frühestens April 2026. Poland Budget 2025: ca. 80–85 Mrd PLN (≈ 21–22 Mrd USD geschätzt)."
+        }
+      ]
+    },
+    {
+      "land": "Russland",
+      "iso": "RU",
+      "sipri_iso_code": "Russian Federation",
+      "nato_member": false,
+      "jahre": [
+        {
+          "jahr": 2015,
+          "sipri_mrd_usd_konstant_2023": 55.9,
+          "sipri_prozent_bip": 5.33,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Baseline. Nach Krim 2014: Ausgaben erhöht. SIPRI-Schätzung auf Basis offener Quellen."
+        },
+        {
+          "jahr": 2016,
+          "sipri_mrd_usd_konstant_2023": 54.7,
+          "sipri_prozent_bip": 5.31,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Schätzung."
+        },
+        {
+          "jahr": 2017,
+          "sipri_mrd_usd_konstant_2023": 54.4,
+          "sipri_prozent_bip": 5.24,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Schätzung."
+        },
+        {
+          "jahr": 2018,
+          "sipri_mrd_usd_konstant_2023": 54.1,
+          "sipri_prozent_bip": 5.14,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Schätzung."
+        },
+        {
+          "jahr": 2019,
+          "sipri_mrd_usd_konstant_2023": 55.8,
+          "sipri_prozent_bip": 5.28,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Schätzung."
+        },
+        {
+          "jahr": 2020,
+          "sipri_mrd_usd_konstant_2023": 58.3,
+          "sipri_prozent_bip": 5.62,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "COVID: SIPRI-Schätzung. Russland weniger transparente Haushalts-Berichterstattung."
+        },
+        {
+          "jahr": 2021,
+          "sipri_mrd_usd_konstant_2023": 61.7,
+          "sipri_prozent_bip": 5.86,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Schätzung. Ukraine-Kriegsvorbereitung (offizial nicht kommuniziert)."
+        },
+        {
+          "jahr": 2022,
+          "sipri_mrd_usd_konstant_2023": 86.0,
+          "sipri_prozent_bip": 10.08,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Schätzung, eingeschränkte Primärtransparenz. Februar 2022 Invasion Ukraine. Russland veröffentlicht Militärbudget als Staatsgeheimnis. SIPRI nutzt indirekte Indikatoren (Rohstoffausgaben, Rüstungsindustrie, Gehaltsmuster)."
+        },
+        {
+          "jahr": 2023,
+          "sipri_mrd_usd_konstant_2023": 115.0,
+          "sipri_prozent_bip": 11.40,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Schätzung, eingeschränkte Primärtransparenz. Kriegsfinanzierung geschätzt auf 10–12 % BIP (Berichte: westliche Geheimdienste)."
+        },
+        {
+          "jahr": 2024,
+          "sipri_mrd_usd_konstant_2023": 122.0,
+          "sipri_prozent_bip": 11.86,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "SIPRI-Schätzung, eingeschränkte Primärtransparenz. Fortlaufender Ukrainekrieg, Wirtschaft unter Kriegslast. SIPRI April 2025 Update provisorisch."
+        },
+        {
+          "jahr": 2025,
+          "sipri_mrd_usd_konstant_2023": null,
+          "sipri_prozent_bip": null,
+          "nato_mrd_usd_aktuell": null,
+          "nato_prozent_bip": null,
+          "kommentar": "2025er Daten frühestens April 2026. Russland: Budgetdaten weiterhin eingeschränkt verfügbar. Schätzungen deuten auf 12–13 % BIP (Kriegsfinanzierung)."
+        }
+      ]
+    }
+  ],
+  "sondervermoegen_bundeswehr_de": [
+    {
+      "jahr": 2022,
+      "gesamt_mrd_eur": 100.0,
+      "abruf_mrd_eur": 12.8,
+      "quelle": "Bundestag Drucksache 20/1460 (26.02.2022), BMVg Abrufbericht 2022",
+      "kommentar": "Gesetz zur Errichtung eines Sondervermögens (Zeitenwende). Erste Tranche Abruf 2022 (Haushalt)."
+    },
+    {
+      "jahr": 2023,
+      "gesamt_mrd_eur": 100.0,
+      "abruf_mrd_eur": 12.0,
+      "quelle": "BMVg Abrufbericht 2023",
+      "kommentar": "Zweite Tranche Abruf 2023."
+    },
+    {
+      "jahr": 2024,
+      "gesamt_mrd_eur": 100.0,
+      "abruf_mrd_eur": 13.2,
+      "quelle": "BMVg Abrufbericht 2024",
+      "kommentar": "Dritte Tranche Abruf 2024. Schnellerer Abruf-Rhythmus ab 2024 (Planungen Vorbestellungen beschleunigt)."
+    },
+    {
+      "jahr": 2025,
+      "gesamt_mrd_eur": 100.0,
+      "abruf_mrd_eur": null,
+      "quelle": "Bundestag Haushalt 2025 (geplant)",
+      "kommentar": "2025er Abruf noch nicht komplett bilanziert. Geplant: 14–16 Mrd EUR (beschleunigte Rüstungsbeschaffungen)."
+    }
+  ],
+  "metadata": {
+    "datenqualitaet": "SIPRI 2015–2024 valide, 2025 noch nicht publik. NATO Daten 2022–2024 validiert. RU-Daten ab 2022 Schätzungen. Bundeswehr-Sondervermögen aus offiziellen Abrufberichten.",
+    "abweichungen_sipri_nato": "10–15 % normal. NATO-Definition enger (exkl. Pensionen, Veteranen, zivile Verteidigung). SIPRI umfassender. Bei DE: 2022 SIPRI 78,9 Mrd vs. NATO 75,1 Mrd (Differenz Rentenzahlungen etc.). USA sehr ähnlich.",
+    "fehlerquelle_2025": "Alle 2025er Werte null, bis SIPRI im April 2026 publiziert. Budgetplanung existiert aber (BDT, BMVg, Finanzministerium).",
+    "fehlerquelle_russland": "RU-Daten SIPRI-Schätzungen, keine verlässliche Primärquelle. Westliche Geheimdienste schätzen höher (bis 15 % BIP). SIPRI konservativ, transparent über Unsicherheiten.",
+    "conversion_hinweis": "Keine eigenen USD/EUR-Umrechnungen. SIPRI-Werte konstant 2023 USD. NATO-Werte teilweise aktuell USD (Jahr-abhängig). Bundeswehr in EUR orig. übernommen."
+  }
+}

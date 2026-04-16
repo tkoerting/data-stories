@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <script>
@@ -17,24 +17,23 @@ function tkLoadGA(){
 if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Schwäche als Pressemitteilung — 67 Jahre Wehrbericht | Der Körting</title>
-<meta name="description" content="Deutschland dokumentiert seine militärischen Mängel seit 67 Jahren — öffentlich, detailliert, in zwei Sprachen. Ein Datenstück über eine seltene Form von Transparenz.">
+<title>Weakness as a Press Release — 67 Years of the Wehrbericht | Der Körting</title>
+<meta name="description" content="Germany has been documenting its military shortcomings for 67 years — publicly, in detail, in two languages. A data story about a rare form of transparency.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Schwäche als Pressemitteilung — Datenstück | Open Data Minded">
-<meta property="og:description" content="67 Jahre Wehrbericht. 184.194 Soldat:innen. 13,71 % Frauenanteil. Deutschland dokumentiert seine Schwächen. Wer macht das sonst noch so?">
-<meta property="og:url" content="https://opendataminded.de/schwaeche-als-pressemitteilung/">
+<meta property="og:title" content="Weakness as a Press Release — Data Story | Open Data Minded">
+<meta property="og:description" content="67 years of the Wehrbericht. 184,194 soldiers. 13.71% female share. Germany documents its weaknesses. Who else does this?">
+<meta property="og:url" content="https://opendataminded.de/schwaeche-als-pressemitteilung/en/">
 <meta property="og:site_name" content="Open Data Minded">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
 <meta name="author" content="Thomas Körting">
-<link rel="canonical" href="https://opendataminded.de/schwaeche-als-pressemitteilung/">
+<link rel="canonical" href="https://opendataminded.de/schwaeche-als-pressemitteilung/en/">
 <link rel="alternate" hreflang="de" href="https://opendataminded.de/schwaeche-als-pressemitteilung/">
 <link rel="alternate" hreflang="en" href="https://opendataminded.de/schwaeche-als-pressemitteilung/en/">
-<link rel="alternate" hreflang="x-default" href="https://opendataminded.de/schwaeche-als-pressemitteilung/">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Schwäche als Pressemitteilung","description":"Datenstück über den Jahresbericht des Wehrbeauftragten und militärische Transparenz im Ländervergleich.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/schwaeche-als-pressemitteilung/","inLanguage":"de","datePublished":"2026-04-17","dateModified":"2026-04-17"}
+{"@context":"https://schema.org","@type":"Article","headline":"Weakness as a Press Release","description":"A data story about the Annual Report of the Parliamentary Commissioner for the Armed Forces and military transparency in international comparison.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/schwaeche-als-pressemitteilung/en/","inLanguage":"en","datePublished":"2026-04-17","dateModified":"2026-04-17"}
 </script>
-<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../../fonts/fonts.css">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
 :root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
@@ -125,11 +124,6 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;t
 .perspective-break cite{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);letter-spacing:0.02em}
 .perspective-break .follow-up{margin-top:1.5rem;padding-top:1.5rem;border-top:1px dashed var(--border);font-family:var(--font-headline);font-style:italic;font-size:1.05rem;color:var(--text-secondary);max-width:580px;margin-left:auto;margin-right:auto}
 
-.placeholder-act{margin:4rem 0;padding:2.5rem 1.5rem;background:var(--bg-card);border:2px dashed var(--border);border-radius:10px;text-align:center;color:var(--text-tertiary)}
-.placeholder-act .label{font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.5rem}
-.placeholder-act h3{font-family:var(--font-headline);font-weight:400;color:var(--text-secondary);margin-bottom:0.3rem}
-.placeholder-act p{font-size:0.85rem;color:var(--text-tertiary)}
-
 .footer{max-width:var(--max-width);margin:4rem auto 0;padding:2rem 1.5rem 3rem;border-top:1px solid var(--border);text-align:center;font-size:0.8rem;color:var(--text-tertiary)}
 .footer a{color:var(--text-secondary)}
 
@@ -154,10 +148,10 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;t
 .trilogie-list .hint{color:var(--text-tertiary);font-size:0.85rem;font-style:italic}
 .trilogie-list strong{color:var(--text-primary);font-weight:600}
 
-/* EN Teaser */
-.en-teaser{margin:2rem 0;padding:1.2rem 1.4rem;background:var(--accent-subtle);border:1px dashed var(--accent);border-radius:8px;text-align:center}
-.en-teaser p{font-size:0.92rem;color:var(--text-secondary);margin:0;line-height:1.6}
-.en-teaser strong{color:var(--accent)}
+/* DE Teaser */
+.de-teaser{margin:2rem 0;padding:1.2rem 1.4rem;background:var(--accent-subtle);border:1px dashed var(--accent);border-radius:8px;text-align:center}
+.de-teaser p{font-size:0.92rem;color:var(--text-secondary);margin:0;line-height:1.6}
+.de-teaser strong{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -169,12 +163,12 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;t
     <div class="header-right">
       <nav>
         <ul class="header-nav">
-          <li><a href="/">Alle Datenstücke</a></li>
+          <li><a href="/">All Data Stories</a></li>
           <li><a href="https://der-koerting.de/">Blog</a></li>
         </ul>
       </nav>
-      <span class="lang-toggle"><a href="#" class="active">DE</a> | <a href="en/">EN</a></span>
-      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln" aria-label="Theme wechseln">&#9728;&#65039;</button>
+      <span class="lang-toggle"><a href="../">DE</a> | <a href="#" class="active">EN</a></span>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">&#9728;&#65039;</button>
     </div>
   </div>
 </header>
@@ -183,278 +177,278 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;t
 <article class="story-wrapper">
 
   <div class="story-meta">
-    <span class="category-tag">Datenstück #16</span>
+    <span class="category-tag">Data story #16</span>
     <span class="snapshot-tag">April 2026</span>
-    <span>Lesezeit ~ 12 min</span>
+    <span>~ 12 min read</span>
   </div>
 
-  <h1 class="story-title">Schwäche als Pressemitteilung</h1>
-  <p class="story-subtitle">Deutschland dokumentiert seine militärischen Mängel seit 67 Jahren — öffentlich, detailliert, in zwei Sprachen. Ein Datenstück über eine seltene Form von Transparenz.</p>
+  <h1 class="story-title">Weakness as a Press Release</h1>
+  <p class="story-subtitle">Germany has been documenting its military shortcomings for 67 years — publicly, in detail, in two languages. A data story about a rare form of transparency.</p>
 
-  <!-- Hero: die eine Zahl -->
+  <!-- Hero: the one number -->
   <figure class="hero-figure">
-    <div class="hero-number-label">Persönliche Eingaben 2025</div>
-    <div class="hero-number">2.819</div>
+    <div class="hero-number-label">Individual petitions 2025</div>
+    <div class="hero-number">2,819</div>
     <figcaption class="hero-caption">
-      Das sind 15,4 Eingaben pro 1.000 aktive Soldat:innen — Rekord seit 2016.<br>
-      Jede einzelne Zahl steht in einem Bericht. Frei auf <a href="https://www.bundestag.de/wehrbeauftragte" target="_blank" rel="noopener">bundestag.de</a>.
+      That is 15.4 submissions per 1,000 active soldiers — the highest rate since 2016.<br>
+      Every single figure appears in the report. Freely available at <a href="https://www.bundestag.de/wehrbeauftragte" target="_blank" rel="noopener">bundestag.de</a>.
     </figcaption>
   </figure>
 
   <!-- ============================================================ -->
-  <!-- AKT 1 — WAS IST DAS? -->
+  <!-- ACT 1 — WHAT IS THIS? -->
   <!-- ============================================================ -->
-  <section class="section" id="akt-1">
-    <div class="section-label">Akt 1 — Was ist das?</div>
-    <h2 class="section-title">Ein Bericht, 96 Seiten, seit 1959</h2>
+  <section class="section" id="act-1">
+    <div class="section-label">Act 1 — What is this?</div>
+    <h2 class="section-title">One report, 96 pages, since 1959</h2>
 
-    <p class="lead">Am 3. März 2026 übergab Henning Otte den 67. Jahresbericht des Wehrbeauftragten. Drucksache 21/4200. 96 Seiten. Frei abrufbar auf bundestag.de — in Deutsch und Englisch, als PDF und EPUB.</p>
+    <p class="lead">On 3 March 2026, Henning Otte submitted the 67th Annual Report of the Parliamentary Commissioner for the Armed Forces. Bundestag printed paper 21/4200. 96 pages. Freely available at bundestag.de — in German and English, as PDF and EPUB.</p>
 
-    <p>Deutschland macht das seit 1959. Jedes Jahr. 67 Berichte in Folge. Die Institution ist 1957 per Gesetz eingerichtet worden, damals war die Bundeswehr zwei Jahre alt. Artikel 45b Grundgesetz, eingefügt 1956. Helmuth von Grolman wurde 1959 erster Wehrbeauftragter.</p>
+    <p>Germany has been doing this since 1959. Every year. 67 consecutive reports. The institution was established by statute in 1957, when the Bundeswehr was two years old. Article 45b was added to the Basic Law (Grundgesetz) by constitutional amendment in 1956 — one year before the enabling statute. Helmuth von Grolman became the first Parliamentary Commissioner for the Armed Forces in 1959.</p>
 
-    <p>Was in diesen Berichten steht: Personal, Budget, Einsätze, Munition, Infrastruktur, Ausbildung, Sanitätsdienst, Frauenanteil, Extremismus. Konkret. Mit Zahlen. Neun Auszüge aus dem aktuellen Bericht:</p>
+    <p>What these reports contain: personnel, budget, deployments, ammunition, infrastructure, training, medical services, female share, extremism. Concrete. With figures. Nine excerpts from the current report:</p>
 
-    <!-- KPI-Grid Akt 1: 9 Kacheln -->
+    <!-- KPI-Grid Act 1: 9 tiles -->
     <div class="kpi-grid">
       <div class="kpi-tile">
-        <div class="kpi-value">184.194</div>
-        <div class="kpi-label">aktive Soldat:innen (Ende 2025)</div>
-        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 181.174 <span class="diff">(+3.020)</span></div>
+        <div class="kpi-value">184,194</div>
+        <div class="kpi-label">active soldiers (end of 2025)</div>
+        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 181,174 <span class="diff">(+3,020)</span></div>
       </div>
       <div class="kpi-tile">
-        <div class="kpi-value neg">20,6 %</div>
-        <div class="kpi-label">Dienstposten oberhalb Mannschaft vakant</div>
-        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 19,9 % <span class="diff">(+0,7 pp)</span></div>
+        <div class="kpi-value neg">20.6%</div>
+        <div class="kpi-label">senior posts vacant</div>
+        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 19.9% <span class="diff">(+0.7 pp)</span></div>
       </div>
       <div class="kpi-tile">
-        <div class="kpi-value">62,3 Mrd €</div>
-        <div class="kpi-label">Verteidigungshaushalt 2025</div>
-        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 52,3 Mrd € <span class="diff">(+10)</span></div>
+        <div class="kpi-value">€62.3bn</div>
+        <div class="kpi-label">defence budget 2025</div>
+        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> €52.3bn <span class="diff">(+€10bn)</span></div>
       </div>
       <div class="kpi-tile">
         <div class="kpi-value">977</div>
-        <div class="kpi-label">in 9 mandatierten Auslandseinsätzen</div>
-        <div class="kpi-sub">+ ~30.000 einsatzgleich gebunden</div>
+        <div class="kpi-label">in 9 mandated overseas missions</div>
+        <div class="kpi-sub">+ ~30,000 deployment-equivalent commitments</div>
       </div>
       <div class="kpi-tile">
-        <div class="kpi-value neg">13,71 %</div>
-        <div class="kpi-label">Frauenanteil</div>
-        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 13,62 % · <span class="diff">Ziel 20 %</span></div>
+        <div class="kpi-value neg">13.71%</div>
+        <div class="kpi-label">female share</div>
+        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 13.62% · <span class="diff">Target 20%</span></div>
       </div>
       <div class="kpi-tile">
         <div class="kpi-value neg">17</div>
-        <div class="kpi-label">Suizide in der Truppe 2025</div>
-        <div class="kpi-sub">dokumentiert, einzeln</div>
+        <div class="kpi-label">suicides in the forces 2025</div>
+        <div class="kpi-sub">documented, individually</div>
       </div>
       <div class="kpi-tile">
-        <div class="kpi-value">25.006</div>
-        <div class="kpi-label">Neueinstellungen 2025</div>
-        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 20.286 <span class="diff">(+4.720)</span></div>
+        <div class="kpi-value">25,006</div>
+        <div class="kpi-label">new recruits 2025</div>
+        <div class="kpi-delta"><span class="arrow">↗</span><span class="prev">2024:</span> 20,286 <span class="diff">(+4,720)</span></div>
       </div>
       <div class="kpi-tile">
-        <div class="kpi-value neg">25,2 %</div>
-        <div class="kpi-label">Abbruchquote Probezeit (Jahrgang 2024)</div>
-        <div class="kpi-delta"><span class="arrow">↘</span><span class="prev">2023:</span> 27 % <span class="diff">(−1,8 pp)</span></div>
+        <div class="kpi-value neg">25.2%</div>
+        <div class="kpi-label">probation dropout rate (cohort 2024)</div>
+        <div class="kpi-delta"><span class="arrow">↘</span><span class="prev">2023:</span> 27% <span class="diff">(−1.8 pp)</span></div>
       </div>
       <div class="kpi-tile">
-        <div class="kpi-value neg">67 Mrd €</div>
-        <div class="kpi-label">Infrastruktur-Investitionsbedarf</div>
-        <div class="kpi-sub">bis 2040er · 8.000 Bauvorhaben offen</div>
+        <div class="kpi-value neg">€67bn</div>
+        <div class="kpi-label">infrastructure investment need</div>
+        <div class="kpi-sub">through 2040s · 8,000 open construction projects</div>
       </div>
     </div>
 
-    <!-- Chart 1: 67-Jahre-Timeline -->
+    <!-- Chart 1: 67-year timeline -->
     <div class="chart-box">
-      <div class="chart-title">67 Berichte. 67 Jahre. Eine Institution.</div>
-      <div class="chart-subtitle">Amtszeiten der Wehrbeauftragten, 1959–2025</div>
+      <div class="chart-title">67 reports. 67 years. One institution.</div>
+      <div class="chart-subtitle">Terms of office of the Parliamentary Commissioners, 1959–2025</div>
       <div id="chart-timeline" class="chart-container" style="height:520px"></div>
-      <div class="chart-source">Quelle: Bundestag, Archiv des Wehrbeauftragten · Stand: 2026-04-16</div>
+      <div class="chart-source">Source: Bundestag, archive of the Parliamentary Commissioner for the Armed Forces · As of 2026-04-16</div>
     </div>
 
-    <p>Der Bericht wird vom Bundestag an den Plenumskontext übergeben. Der Wehrbeauftragte selbst ist gewählter Beauftragter des Parlaments, mit eigenem Apparat. Die Institution hat in 67 Jahren 14 Amtsinhaber:innen gesehen — von Grolman 1959 bis Otte seit Juni 2025.</p>
+    <p>The report is presented to the Bundestag in plenary session. The Parliamentary Commissioner is elected by Parliament and maintains an independent staff. The institution has seen 14 office-holders in 67 years — from von Grolman in 1959 to Otte since June 2025.</p>
   </section>
 
   <!-- ============================================================ -->
-  <!-- AKT 2 — WARUM GIBT ES DAS? -->
+  <!-- ACT 2 — WHY DOES THIS EXIST? -->
   <!-- ============================================================ -->
-  <section class="section" id="akt-2">
-    <div class="section-label">Akt 2 — Warum gibt es das?</div>
-    <h2 class="section-title">Nicht aus Naivität. Aus Lehre.</h2>
+  <section class="section" id="act-2">
+    <div class="section-label">Act 2 — Why does this exist?</div>
+    <h2 class="section-title">Not naivety. History.</h2>
 
     <div class="quote-opener">
-      <p>„Der Jahresbericht des Wehrbeauftragten ist daher nicht als Mängelbericht zu verstehen. Er benennt Herausforderungen, Probleme und Handlungsfelder und verbindet sie mit Schlussfolgerungen und Empfehlungen."</p>
-      <cite>— Henning Otte, Wehrbeauftragter des Deutschen Bundestages, Vorwort Jahresbericht 2025</cite>
+      <p>"The Annual Report of the Parliamentary Commissioner for the Armed Forces is therefore not to be understood as a deficiency report. It identifies challenges, problems, and fields of action, and connects them with conclusions and recommendations. Only when problems are openly addressed is the ground laid for developing joint solutions and acting decisively — for the welfare of our troops and the security of our country."</p>
+      <cite>— Henning Otte, Parliamentary Commissioner for the Armed Forces, Preface, Annual Report 2025</cite>
     </div>
 
-    <p>Die Idee stammt aus der Nachkriegszeit. Die Bundeswehr wurde 1955 aufgestellt, zehn Jahre nach Kriegsende. Parallel entwickelte Wolf Graf von Baudissin das Konzept der <em>Inneren Führung</em> und der Idee vom <em>Staatsbürger in Uniform</em>. Eine demokratische Armee ohne parlamentarische Kontrolle war nach den Erfahrungen mit Reichswehr und Wehrmacht politisch nicht vermittelbar.</p>
+    <p>The idea comes from the post-war period. The Bundeswehr was established in 1955, ten years after the end of the war. In parallel, Wolf Graf von Baudissin developed the concept of <em>Innere Führung</em> (leadership development and civic education) and the idea of the <em>citizen in uniform</em>. A democratic army without parliamentary oversight was politically indefensible after the experiences of the Reichswehr and Wehrmacht.</p>
 
-    <p>1957 verabschiedete der Bundestag das Gesetz über den Wehrbeauftragten. Rechtsgrundlage: Artikel 45b Grundgesetz (eingefügt 1956). Der Wehrbeauftragte ist Hilfsorgan des Parlaments und unabhängige Eingabestelle für Soldat:innen — direkt, am Dienstweg vorbei, vertraulich, sanktionsfrei. § 7 des Gesetzes verbietet Repressalien gegen Antragstellende ausdrücklich.</p>
+    <p>In 1957 the Bundestag passed the Act on the Parliamentary Commissioner for the Armed Forces. The Commissioner is an auxiliary body of Parliament and an independent point of contact for soldiers — direct, bypassing the chain of command, confidential, and free of reprisals. Section 7 of the Act explicitly prohibits retaliation against petitioners.</p>
 
-    <p>Das ist die zweite, leiser diskutierte Funktion des Berichts: nicht Öffentlichkeit gegenüber potenziellen Gegnern, sondern <em>Schutz für einzelne Menschen in Uniform</em>. 2025 waren das 2.819 persönliche Eingaben, die zu 4.254 formalen Vorgängen mit insgesamt 6.960 Einzel-Sachverhalten führten.</p>
+    <p>That is the second, less-discussed function of the report: not public transparency towards potential adversaries, but <em>protection for individual people in uniform</em>. In 2025 there were 2,819 individual petitions, which generated 4,254 formal proceedings covering a total of 6,960 individual matters.</p>
 
-    <!-- Chart 2: Eingaben-Aufschlüsselung -->
+    <!-- Chart 2: Submission breakdown -->
     <div class="chart-box">
-      <div class="chart-title">Was Soldat:innen berichten</div>
-      <div class="chart-subtitle">6.960 Einzel-Sachverhalte 2025, Aufteilung nach Themen</div>
+      <div class="chart-title">What soldiers report</div>
+      <div class="chart-subtitle">6,960 individual submissions 2025, by topic</div>
       <div id="chart-eingaben" class="chart-container" style="height:420px"></div>
-      <div class="chart-source">Quelle: Drucksache 21/4200, Jahresbericht 2025 · eigene Aggregation</div>
+      <div class="chart-source">Source: Bundestag printed paper 21/4200, Annual Report 2025 · own aggregation</div>
     </div>
 
-    <p>Der Alltag hinter den Zahlen ist konkret. Ein Beispiel aus dem Bericht, anonymisiert und wörtlich zitiert:</p>
+    <p>The everyday reality behind the figures is concrete. One example from the report, anonymised and quoted verbatim:</p>
 
     <div class="quote-case">
-      <p>„Ein Soldat mit einer Körpergröße von 2,04 Meter musste seinen maßgefertigten Nässeschutz abgeben, ohne dass er über Ersatzbekleidung verfügte. Da die Wartezeiten auf einen individuell zugeschnittenen Ersatz zum Teil erheblich sind, war er bei der Ausübung seines Dienstes stark beeinträchtigt."</p>
-      <cite>— Jahresbericht 2025, Kapitel Material</cite>
+      <p>"A soldier of 2.04 metres in height had to return his custom-made wet-weather gear without having any replacement clothing. As waiting times for individually tailored replacements can be considerable, he was severely impaired in carrying out his duties."</p>
+      <cite>— Annual Report 2025, chapter on Material</cite>
     </div>
 
-    <p>Das ist kein Skandal. Das ist kein Krieg. Das ist genau die Art von Alltagsproblem, für die es ohne den Wehrbeauftragten keinen Kanal gäbe — kein Vorgesetzter, kein Beschaffungsamt, kein Formular. Die Institution ist auch das: ein Adressat für Dinge, die sonst niemanden interessieren.</p>
+    <p>This is not a scandal. This is not a war. This is precisely the kind of everyday problem for which — without the Parliamentary Commissioner — there would be no independent channel: no route past the line manager, no procurement office to petition, no form to fill in. The institution is also this: an addressee for things that would otherwise interest nobody.</p>
 
-    <p>Wer den Bericht nur als „Schwächekatalog" liest, verfehlt deshalb seinen Zweck. § 2 des Wehrbeauftragten-Gesetzes verlangt explizit Empfehlungen, nicht Anklagen. Otte folgt diesem Auftrag. Das Datenstück, das Sie gerade lesen, macht ihn nicht zu einem anderen Text.</p>
+    <p>Anyone who reads the report merely as a "catalogue of failures" therefore misses its purpose. Section 2 of the Parliamentary Commissioner Act explicitly requires recommendations, not indictments. Otte follows that mandate. The data story you are reading does not make it a different text.</p>
   </section>
 
   <!-- ============================================================ -->
-  <!-- AKT 3 — WAS STEHT DRIN? -->
+  <!-- ACT 3 — WHAT IS IN IT? -->
   <!-- ============================================================ -->
-  <section class="section" id="akt-3">
-    <div class="section-label">Akt 3 — Was steht drin?</div>
-    <h2 class="section-title">Details, die andere Länder nicht preisgeben</h2>
+  <section class="section" id="act-3">
+    <div class="section-label">Act 3 — What is in it?</div>
+    <h2 class="section-title">Details other countries don't disclose</h2>
 
-    <p class="lead">Sechzehn exemplarische Zahlen aus dem Bericht — aus allen Hauptkapiteln. Klicken Sie auf eine Zahl, um das Original-Zitat mit Seitenzahl zu sehen.</p>
+    <p class="lead">Sixteen illustrative figures from the report — drawn from every main chapter. Click on a figure to see the original quotation with page reference.</p>
 
-    <!-- KPI-Showcase: 16 KPIs als aufklappbare Details -->
+    <!-- KPI-Showcase: 16 KPIs as expandable details -->
     <div class="kpi-showcase" id="kpi-showcase"></div>
 
     <!-- Churchill Perspective-Break -->
     <div class="perspective-break">
-      <div class="label">Zum Vergleich</div>
-      <blockquote>„We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender."</blockquote>
-      <cite>— Winston Churchill, House of Commons, 4. Juni 1940</cite>
-      <p class="follow-up">Was Churchill nicht sagte: wie viele Spitfires noch flogen. Wie viele Hurricanes zerstört waren. Wie viele Piloten fehlten.</p>
+      <div class="label">By contrast</div>
+      <blockquote>"We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender."</blockquote>
+      <cite>— Winston Churchill, House of Commons, 4 June 1940</cite>
+      <p class="follow-up">What Churchill did not say: how many Spitfires were still flying. How many Hurricanes had been destroyed. How many pilots were missing.</p>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- AKT 4 — WER HAT SONST SOWAS? -->
+  <!-- ACT 4 — WHO ELSE HAS THIS? -->
   <!-- ============================================================ -->
-  <section class="section" id="akt-4">
-    <div class="section-label">Akt 4 — Wer hat sonst sowas?</div>
-    <h2 class="section-title">Kaum jemand. Aber Großbritannien kopiert es gerade.</h2>
+  <section class="section" id="act-4">
+    <div class="section-label">Act 4 — Who else has this?</div>
+    <h2 class="section-title">Barely anyone. But the UK is adopting it right now.</h2>
 
-    <p class="lead">Die Frage ist, wie einzigartig diese Form von Transparenz tatsächlich ist. Hier dreizehn Länder, eingeordnet nach zwei Achsen: Detailtiefe des veröffentlichten Berichts und Zugänglichkeit für Leser:innen außerhalb des Landes.</p>
+    <p class="lead">The question is how unique this form of transparency actually is. Here are thirteen countries, mapped against two axes: the level of detail in the published report and its accessibility to readers outside the country.</p>
 
     <div class="chart-box">
-      <div class="chart-title">Transparenz-Spektrum militärischer Aufsicht</div>
-      <div class="chart-subtitle">13 Länder · keine Rangliste, sondern Position im Feld</div>
+      <div class="chart-title">Transparency spectrum of military oversight</div>
+      <div class="chart-subtitle">13 countries · no ranking, just position in the field</div>
       <div id="chart-spektrum" class="chart-container" style="height:480px"></div>
-      <div class="chart-source">Quelle: Eigene Klassifikation, Primärquellen Parlamente und Ministerien · DCAF Genf als Rahmen-Referenz · Stand: 2026-04-16</div>
+      <div class="chart-source">Source: Own classification, primary sources from parliaments and ministries · DCAF Geneva as framework reference · As of 2026-04-16</div>
     </div>
 
-    <p><strong>Deutschland</strong> (oben rechts, Ombudsmann-Modell) hat diese Form seit 1959. Kein anderes Land erreicht dieselbe Kombination aus granularer Detailtiefe und niedrigschwelliger Zugänglichkeit.</p>
+    <p><strong>Germany</strong> (top right, ombudsman model) has had this form since 1959. No other country achieves the same combination of granular detail and low-threshold accessibility.</p>
 
-    <p><strong>Großbritannien</strong> ist das interessanteste Beispiel für diesen Moment: Im März 2025 verabschiedete das britische Parlament den <em>Armed Forces Commissioner Act</em>. Er schafft eine Institution, die explizit nach dem deutschen Vorbild modelliert ist. Polly Miller-Perkins trat am 30. März 2026 ihr Amt an. Der erste Jahresbericht des UK Armed Forces Commissioner erscheint frühestens 2027. Das ist kein Zufall, sondern Export eines Modells.</p>
+    <p><strong>The United Kingdom</strong> is the most instructive example for this moment: in March 2025, the British Parliament passed the <em>Armed Forces Commissioner Act</em>. It creates an institution explicitly modelled on the German precedent. Polly Miller-Perkins took office on 30 March 2026. The first annual report of the UK Armed Forces Commissioner will appear at the earliest in 2027. This is not coincidence — it is the export of a model.</p>
 
-    <p><strong>USA</strong> haben mit dem Government Accountability Office (GAO) ein strukturell anderes, aber ähnlich wirksames Instrument: themenbezogene Audit-Berichte, frei zugänglich, granular. Kein Gesamtbericht — aber hohe Dichte auf Einzelthemen.</p>
+    <p><strong>The United States</strong> has, through the Government Accountability Office (GAO), a structurally different but similarly effective instrument: topic-specific audit reports, freely accessible and granular. No single comprehensive report — but high density on individual subjects.</p>
 
-    <p><strong>Frankreich, Niederlande, Schweden, Finnland, Norwegen, Dänemark</strong> haben parlamentarische Verteidigungsausschüsse, die themenbezogene Berichte produzieren. Selten als jährliche Gesamtbilanz, oft nur in der jeweiligen Landessprache.</p>
+    <p><strong>France, the Netherlands, Sweden, Finland, and Denmark</strong> have parliamentary defence committees that produce thematic reports. Rarely as an annual overall assessment, often available only in the respective national language. <strong>Norway's</strong> combined Foreign Affairs and Defence Committee operates as a select committee and, for specific topics, reaches remarkable depth — but again, without a single comprehensive annual report.</p>
 
-    <p><strong>Polen</strong> ist der Ausreißer in diesem Sample: die höchsten Verteidigungsausgaben der NATO gemessen am BIP (2024: 3,46 %), bei gleichzeitig geringer parlamentarischer Transparenz. Hohe Investitionen, niedrige öffentliche Rechenschaft — das existiert als Modell.</p>
+    <p><strong>Poland</strong> is the outlier in this sample: the highest defence spending in NATO as a share of GDP (2024: 3.46%), combined with low parliamentary transparency. High investment, low public accountability — that model exists.</p>
 
-    <p><strong>Russland, China, Iran</strong> haben formal parlamentarische Gremien zur Verteidigungsaufsicht. Öffentlich zugängliche Berichte in vergleichbarer Form existieren nicht.</p>
+    <p><strong>Russia, China, and Iran</strong> formally have parliamentary committees overseeing defence. Publicly accessible reports in comparable form do not exist.</p>
 
-    <p>Die eigentliche Aussage dieses Spektrums: Deutschland ist nicht Solo. Deutschland ist Prototyp. Und das Modell wird gerade kopiert.</p>
+    <p>The actual message of this spectrum: Germany is not an outlier. Germany is a prototype. And the model is currently being copied.</p>
   </section>
 
   <!-- ============================================================ -->
-  <!-- AKT 5 — WAS ÄNDERT SICH DURCH 2022? -->
+  <!-- ACT 5 — WHAT DOES 2022 CHANGE? -->
   <!-- ============================================================ -->
-  <section class="section" id="akt-5">
-    <div class="section-label">Akt 5 — Was ändert sich durch 2022?</div>
-    <h2 class="section-title">Der Bericht ist derselbe. Die Welt nicht.</h2>
+  <section class="section" id="act-5">
+    <div class="section-label">Act 5 — What does 2022 change?</div>
+    <h2 class="section-title">The report hasn't changed. The world has.</h2>
 
-    <p class="lead">Vor der Ukraine-Invasion war die öffentliche Dokumentation der Bundeswehr-Schwächen politisch folgenlos. Deutschland galt als Nachbar in einer sicheren Zone.</p>
+    <p class="lead">Before the invasion of Ukraine, the public documentation of Bundeswehr shortcomings had no political consequences. Germany was considered a neighbour in a secure zone.</p>
 
-    <p>Seit 24. Februar 2022 ist dieselbe Veröffentlichungsform in einem anderen Kontext. Der Bericht hat sich nicht geändert. Die Welt hat sich geändert. Die Zahlen sprechen:</p>
+    <p>Since 24 February 2022, the same publication exists in a different context. The report has not changed. The world has. The figures speak:</p>
 
     <div class="chart-box">
-      <div class="chart-title">Verteidigungsausgaben in % des BIP</div>
-      <div class="chart-subtitle">Sechs Länder, 2015–2024 · SIPRI</div>
+      <div class="chart-title">Defence spending as % of GDP</div>
+      <div class="chart-subtitle">Six countries, 2015–2024 · SIPRI</div>
       <div id="chart-bip" class="chart-container" style="height:400px"></div>
-      <div class="chart-source">Quelle: SIPRI Military Expenditure Database · NATO-Definition weicht typisch 5–15 % ab</div>
+      <div class="chart-source">Source: SIPRI Military Expenditure Database · NATO definition typically diverges by 5–15%</div>
     </div>
 
-    <p>Deutschland stieg von 1,24 % (2015) auf 2,18 % BIP (2024) — das NATO-Zielkriterium wurde 2024 erstmals übertroffen. Polen (2,16 % → 3,46 %) hat noch stärker aufgestockt. Russland steht seit 2022 über 10 % — eine Kriegswirtschaft.</p>
+    <p>Germany rose from 1.24% (2015) to 2.18% of GDP (2024) — the NATO target was exceeded for the first time in 2024. Poland (2.16% → 3.46%) has increased even more sharply. Russia has been above 10% since 2022 — a war economy.</p>
 
-    <p>Bei der Bundeswehr-Personalstärke zeigt sich derselbe Bruch 2022, diesmal nach Jahrzehnten Reduktion:</p>
+    <p>Bundeswehr personnel strength shows the same break in 2022, this time ending decades of reduction:</p>
 
     <div class="chart-box">
-      <div class="chart-title">Bundeswehr-Personal und Ziele</div>
-      <div class="chart-subtitle">Aktive Soldat:innen, 1990–2030 · Zielgröße: 260.000 bis Mitte der 2030er</div>
+      <div class="chart-title">Bundeswehr personnel and targets</div>
+      <div class="chart-subtitle">Active soldiers, 1990–2030 · Target: 260,000 by mid-2030s</div>
       <div id="chart-personal" class="chart-container" style="height:380px"></div>
-      <div class="chart-source">Quelle: BMVg „Die Streitkräfte in Zahlen", Jahresbericht 2025</div>
+      <div class="chart-source">Source: BMVg "Die Streitkräfte in Zahlen", Annual Report 2025</div>
     </div>
 
-    <p>1990 hatte die Bundeswehr nach der Wiedervereinigung 585.000 Soldat:innen. 2016 war der Tiefpunkt mit 176.000. Heute 184.000. Das Ziel 260.000 bis 2030 ist ambitioniert. Es rückt durch die Rekord-Einstellung 2025 (25.006 Neueinstellungen) in realistische Nähe, bleibt aber eine Aufgabe von zehn Jahren.</p>
+    <p>In 1990, following reunification, the Bundeswehr had 585,000 soldiers. 2016 marked the low point at 176,000. Today: 184,000. The target of 260,000 by 2030 is ambitious. The record intake of 2025 (25,006 new recruits) brings it within realistic reach, but it remains a ten-year task.</p>
   </section>
 
   <!-- ============================================================ -->
-  <!-- AKT 6 — WAS FOLGT DARAUS? -->
+  <!-- ACT 6 — WHAT FOLLOWS FROM THIS? -->
   <!-- ============================================================ -->
-  <section class="section" id="akt-6">
-    <div class="section-label">Akt 6 — Was folgt daraus?</div>
-    <h2 class="section-title">Ohne den Bericht gäbe es das Sondervermögen nicht.</h2>
+  <section class="section" id="act-6">
+    <div class="section-label">Act 6 — What follows from this?</div>
+    <h2 class="section-title">Without the report, there would be no Special Fund.</h2>
 
-    <p class="lead">Die Transparenzfalle klingt nach Problem. Sie hat aber auch eine Gegenseite: Der Bericht erzeugt politischen Druck. Der Druck führt zu Budget. Das Budget führt zu Reform. Die Reform wird im nächsten Bericht dokumentiert.</p>
+    <p class="lead">Critics frame this openness as a transparency trap — the worry that public disclosure of shortcomings emboldens adversaries. But the phenomenon has another side: the report generates political pressure. Pressure leads to budget. Budget leads to reform. Reform is documented in the next report.</p>
 
-    <p>100 Milliarden Euro Sondervermögen Bundeswehr, beschlossen im März 2022 unmittelbar nach der Ukraine-Invasion — politisch durchsetzbar, weil die Mängel seit Jahren öffentlich bekannt waren. Jahresbericht um Jahresbericht. Die Transparenz war Vorbedingung, nicht Hindernis.</p>
+    <p>The €100 billion Bundeswehr Special Fund, approved in March 2022 immediately after the Ukraine invasion — politically achievable because the shortcomings had been publicly known for years. Report after report. Transparency was a precondition, not an obstacle.</p>
 
-    <p>Der Rekord bei Neueinstellungen (25.006 im Jahr 2025) kommt aus derselben Logik: Wenn alle wissen, dass Personal fehlt, wird Personalgewinnung ein politisches Thema. Ein Thema, für das Geld bewilligt wird. Eine Stelle, die gesetzlich mitzählen darf.</p>
+    <p>The record intake of new recruits (25,006 in 2025) follows the same logic: when everyone knows that personnel is lacking, recruitment becomes a political issue. An issue for which funding is approved. A metric that is legally counted.</p>
 
-    <p>Das <em>polnische Gegenbeispiel</em> ist hilfreich, um zu sehen, was die Alternative kostet. Polen hat die höchsten Verteidigungsausgaben der NATO (3,46 % BIP, 2024), aber die niedrigste parlamentarische Transparenz im untersuchten Sample. Ein Modell ohne öffentliche Bestandsaufnahme funktioniert auch — es kostet nur eine andere Währung: demokratische Legitimation.</p>
+    <p>The <em>Polish counter-example</em> is useful for seeing what the alternative costs. Poland has the highest defence spending in NATO (3.46% of GDP, 2024), but the lowest parliamentary transparency in the sample examined. A model without public stocktaking works — it simply comes at a different price: democratic legitimacy.</p>
 
-    <p>Wer in Deutschland den Bericht abschaffen oder einschränken wollte, müsste erklären, was dann passiert, wenn die Mängel nicht mehr öffentlich dokumentiert sind. Wenn das politische System keinen regelmäßigen Anstoß von außen bekommt. Wenn der einzelnen Soldatin keine Beschwerdeinstanz mehr zur Verfügung steht, die den Dienstweg umgehen kann.</p>
+    <p>Anyone in Germany wishing to abolish or curtail the report would have to explain what happens when shortcomings are no longer publicly documented. When the political system no longer receives a regular external prompt. When the individual soldier no longer has any complaints channel that bypasses the chain of command.</p>
 
-    <p>Die Antwort auf diese Frage ist nicht einfach. Aber sie sollte vor der Kritik an der Transparenz stehen, nicht danach.</p>
+    <p>The answer to that question is not simple. But it should come before the criticism of transparency, not after.</p>
   </section>
 
   <!-- ============================================================ -->
-  <!-- AKT 7 — UND WIR? -->
+  <!-- ACT 7 — AND US? -->
   <!-- ============================================================ -->
-  <section class="section" id="akt-7">
-    <div class="section-label">Akt 7 — Und wir?</div>
-    <h2 class="section-title">Dieses Datenstück macht es einen Schritt zugänglicher.</h2>
+  <section class="section" id="act-7">
+    <div class="section-label">Act 7 — And us?</div>
+    <h2 class="section-title">This data story makes it one step more accessible.</h2>
 
-    <p>Das ist das Dilemma jedes Meta-Texts über Transparenz: Wer darüber schreibt, erhöht sie. Wir haben die Zahlen aus dem Bericht extrahiert, strukturiert, visualisiert. Das ist journalistisch normal, aber es macht die Informationen niedrigschwelliger als ein 96-seitiges PDF.</p>
+    <p>That is the dilemma of any meta-text about transparency: whoever writes about it increases it. We have extracted the figures from the report, structured them, visualised them. That is journalistically normal, but it makes the information more accessible than a 96-page PDF.</p>
 
-    <p>Wir tun es trotzdem. Nicht weil uns das Problem gleichgültig wäre, sondern weil der Bericht bereits öffentlich ist und weil wir finden, dass seine <em>Existenz und Form</em> erklärungswürdig sind — nicht nur seine Inhalte. Die Erzählung „Deutschland dokumentiert seine Schwächen öffentlich" wird in Kommentarspalten oft als Naivität gedeutet. Die Gegenerzählung — dass diese Form historisch begründet ist, Soldat:innen schützt und politischen Druck erzeugt, der Reform ermöglicht — fehlt. Dieses Datenstück versucht, sie zu liefern.</p>
+    <p>We do it anyway. Not because we are indifferent to the problem, but because the report is already public — and because we believe that its <em>existence and form</em> are worth explaining, not just its contents. The narrative "Germany documents its weaknesses publicly" is often read in comment sections as naivety. The counter-narrative — that this form is historically grounded, protects soldiers, and generates political pressure that enables reform — is missing. This data story attempts to provide it.</p>
 
-    <p>Konsequent wäre: Unsere eigenen Daten offen zu legen. Die JSON-Rohdaten aller in diesem Stück verwendeten Zahlen liegen öffentlich unter <a href="https://github.com/tkoerting/data-stories/tree/main/schwaeche-als-pressemitteilung/daten" target="_blank" rel="noopener">github.com/tkoerting/data-stories</a>. Reproduzierbar, überprüfbar, korrigierbar. Wer Fehler findet: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a>.</p>
+    <p>The consistent thing to do: open our own data. The raw JSON data for all figures used in this piece are publicly available at <a href="https://github.com/tkoerting/data-stories/tree/main/schwaeche-als-pressemitteilung/daten" target="_blank" rel="noopener">github.com/tkoerting/data-stories</a>. Reproducible, verifiable, correctable. If you spot errors: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a>.</p>
 
-    <!-- Feedback-Element -->
+    <!-- Feedback element -->
     <div class="feedback-block">
-      <div class="feedback-question">Wie wirkt diese Form von Transparenz auf Sie?</div>
-      <div class="feedback-sub">Einmaliges Feedback, anonym, keine Pflichtangabe.</div>
+      <div class="feedback-question">How does this form of transparency strike you?</div>
+      <div class="feedback-sub">One-time feedback, anonymous, no obligation.</div>
       <div class="feedback-options" id="feedback-options">
-        <button class="feedback-btn" data-value="zu-viel">Zu viel</button>
-        <button class="feedback-btn" data-value="genau-richtig">Genau richtig</button>
-        <button class="feedback-btn" data-value="zu-wenig">Zu wenig</button>
-        <button class="feedback-btn" data-value="weiss-nicht">Weiß nicht</button>
+        <button class="feedback-btn" data-value="zu-viel">Too much</button>
+        <button class="feedback-btn" data-value="genau-richtig">About right</button>
+        <button class="feedback-btn" data-value="zu-wenig">Not enough</button>
+        <button class="feedback-btn" data-value="weiss-nicht">Don't know</button>
       </div>
-      <div class="feedback-thanks" id="feedback-thanks">Danke. Wird notiert.</div>
+      <div class="feedback-thanks" id="feedback-thanks">Thank you. Noted.</div>
     </div>
 
-    <!-- Trilogie-Framing -->
+    <!-- Trilogy framing -->
     <div class="trilogie-box">
-      <div class="trilogie-label">Teil 3 von 3 — April-Trilogie</div>
+      <div class="trilogie-label">Part 3 of 3 — April trilogy</div>
       <ul class="trilogie-list">
-        <li><span class="nr">1</span><a href="https://der-koerting.de/2026/04/12/good-luck-lanz-precht-240/" target="_blank" rel="noopener">Good luck.</a> <span class="hint">— die akute Krise (Hormuz, 12.04.)</span></li>
-        <li><span class="nr">2</span><a href="https://opendataminded.de/kriege/">Wer leise stirbt.</a> <span class="hint">— die vergessenen 61 Kriege (14.04.)</span></li>
-        <li><span class="nr">3</span><strong>Schwäche als Pressemitteilung.</strong> <span class="hint">— wir selbst (17.04.)</span></li>
+        <li><span class="nr">1</span><a href="https://der-koerting.de/2026/04/12/good-luck-lanz-precht-240/" target="_blank" rel="noopener">Good luck.</a> <span class="hint">— the acute crisis (Hormuz, 12 Apr.)</span></li>
+        <li><span class="nr">2</span><a href="https://opendataminded.de/kriege/">Who quietly dies.</a> <span class="hint">— the forgotten 61 wars (14 Apr.)</span></li>
+        <li><span class="nr">3</span><strong>Weakness as a Press Release.</strong> <span class="hint">— ourselves (17 Apr.)</span></li>
       </ul>
     </div>
 
-    <!-- EN Teaser -->
-    <div class="en-teaser">
-      <p><strong>English version:</strong> Germany publishes a detailed annual report on its military shortcomings — in two languages, freely accessible, since 1959. This data story is about why that is — and who does the same. <a href="en/">Read in English →</a></p>
+    <!-- DE Teaser -->
+    <div class="de-teaser">
+      <p><strong>Auf Deutsch:</strong> Dieses Datenstück gibt es auch auf Deutsch. <a href="../">Zur deutschen Version →</a></p>
     </div>
   </section>
 
@@ -462,8 +456,8 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;t
 
 <!-- Footer -->
 <footer class="footer">
-  <p>© 2026 Thomas Körting · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/kontakt/">Kontakt</a></p>
-  <p style="margin-top:0.6rem;font-size:0.75rem">Datenquellen: Drucksache 21/4200 · Bundestag · BMVg · SIPRI · NATO · DCAF · Destatis</p>
+  <p>© 2026 Thomas Körting · <a href="https://der-koerting.de/datenschutz/">Privacy</a> · <a href="https://der-koerting.de/impressum/">Imprint</a> · <a href="https://der-koerting.de/kontakt/">Contact</a></p>
+  <p style="margin-top:0.6rem;font-size:0.75rem">Data sources: Printed paper 21/4200 · Bundestag · BMVg · SIPRI · NATO · DCAF · Destatis</p>
 </footer>
 
 <!-- ============================================================ -->
@@ -483,7 +477,6 @@ function toggleTheme(){
   var nxt = cur==='dark'?'light':'dark';
   document.documentElement.setAttribute('data-theme',nxt);
   localStorage.setItem('tk-theme',nxt);
-  // Redraw charts with new theme colors
   if(window.tkCharts) window.tkCharts.redraw();
 }
 
@@ -509,13 +502,10 @@ window.tkCharts = (function(){
     };
   }
 
-  // --- Chart 1: 67-Jahre-Timeline ---
+  // --- Chart 1: 67-year timeline ---
   function buildTimeline(){
     var el = document.getElementById('chart-timeline'); if(!el) return;
     var ch = echarts.init(el); charts.timeline = ch;
-    // Simplified: Jahre 1959-2025, Marker-Jahre
-    var years = [];
-    for(var y=1959; y<=2025; y++){ years.push(y); }
     var amtsinhaber = [
       {name:'von Grolman', from:1959, to:1961},
       {name:'Heye', from:1961, to:1964},
@@ -533,12 +523,11 @@ window.tkCharts = (function(){
       {name:'Otte', from:2025, to:2025}
     ];
     var markers = [
-      {year:1990, text:'Deutsche Einheit'},
-      {year:2011, text:'Wehrpflicht ausgesetzt'},
-      {year:2014, text:'Krim-Annexion'},
-      {year:2022, text:'Ukraine-Invasion'}
+      {year:1990, text:'Reunification'},
+      {year:2011, text:'Conscription suspended'},
+      {year:2014, text:'Crimea annexation'},
+      {year:2022, text:'Ukraine invasion'}
     ];
-    // Balken je Amtsinhaber
     var seriesData = amtsinhaber.map(function(a,i){
       return {
         name: a.name,
@@ -546,8 +535,6 @@ window.tkCharts = (function(){
         itemStyle: { color: i%2===0 ? c('--accent') : c('--accent-2') }
       };
     });
-    // Alternierende Marker-Höhen gegen Überlappung
-    var markerYOffsets = markers.map(function(_, i){ return i % 2 === 0 ? 'insideStartTop' : 'insideEndTop'; });
     ch.setOption(Object.assign(common(), {
       grid:{ left:140, right:40, top:60, bottom:40 },
       xAxis:{
@@ -585,7 +572,6 @@ window.tkCharts = (function(){
         data: seriesData,
         tooltip:{ formatter: function(p){ return '<b>'+p.data.name+'</b><br>' + p.data.value[0] + '–' + (p.data.value[0]+p.data.value[2]-1); } }
       },{
-        // Kontext-Marker: vertikale gestrichelte Linien + rotierte Labels (90°, entlang der Linie)
         type:'scatter',
         data: [],
         markLine:{
@@ -612,22 +598,22 @@ window.tkCharts = (function(){
     }));
   }
 
-  // --- Chart 2: Eingaben-Aufschlüsselung ---
+  // --- Chart 2: Submission breakdown ---
   function buildEingaben(){
     var el = document.getElementById('chart-eingaben'); if(!el) return;
     var ch = echarts.init(el); charts.eingaben = ch;
     var data = [
-      { name:'Personalangelegenheiten', value:2924, pct:42.0 },
-      { name:'Disziplinar / Rechtsverstöße', value:872, pct:12.5, sub:'davon 370 sexuelle Übergriffe, 304 Extremismus' },
-      { name:'Menschenführung / Kameradschaft', value:745, pct:10.7, sub:'darunter 236 Führungsverhalten, 93 Mobbing' },
-      { name:'Versorgung / Soziales', value:637, pct:9.2 },
-      { name:'Gesundheit / Sanitätsdienst', value:253, pct:3.6 },
-      { name:'Vereinbarkeit Familie / Dienst', value:204, pct:2.9 },
-      { name:'Ausbildung / Ausrüstung', value:149, pct:2.1 },
-      { name:'Infrastruktur / Unterkünfte', value:137, pct:2.0 },
-      { name:'Auslandseinsätze', value:127, pct:1.8 },
-      { name:'Selbsttötung / Suizid', value:109, pct:1.6 },
-      { name:'Sonstiges', value:803, pct:11.6 }
+      { name:'Personnel matters', value:2924, pct:42.0 },
+      { name:'Disciplinary / legal violations', value:872, pct:12.5, sub:'incl. 370 sexual assault, 304 extremism' },
+      { name:'Leadership / comradeship', value:745, pct:10.7, sub:'236 leadership conduct, 93 bullying' },
+      { name:'Welfare / social', value:637, pct:9.2 },
+      { name:'Health / medical service', value:253, pct:3.6 },
+      { name:'Reconciliation family / duty', value:204, pct:2.9 },
+      { name:'Training / equipment', value:149, pct:2.1 },
+      { name:'Infrastructure / quarters', value:137, pct:2.0 },
+      { name:'Foreign deployments', value:127, pct:1.8 },
+      { name:'Suicide', value:109, pct:1.6 },
+      { name:'Other', value:803, pct:11.6 }
     ];
     ch.setOption(Object.assign(common(), {
       grid:{ left:220, right:50, top:10, bottom:30 },
@@ -648,32 +634,32 @@ window.tkCharts = (function(){
         data: data.map(function(d){return { value:d.value, itemStyle:{color: c('--accent')}, sub:d.sub, pct:d.pct };}).reverse(),
         barWidth:'70%',
         itemStyle:{ borderRadius:[0,4,4,0] },
-        label:{ show:true, position:'right', color:c('--text-secondary'), fontFamily:'JetBrains Mono,monospace', fontSize:10, formatter: function(p){ return p.value + ' · ' + p.data.pct.toFixed(1) + ' %'; } },
-        tooltip:{ formatter: function(p){ var s = p.data.sub ? '<br><span style="color:'+c('--text-tertiary')+'">'+p.data.sub+'</span>' : ''; return '<b>'+p.name+'</b><br>'+p.value+' Sachverhalte ('+p.data.pct.toFixed(1)+' %)'+s; } }
+        label:{ show:true, position:'right', color:c('--text-secondary'), fontFamily:'JetBrains Mono,monospace', fontSize:10, formatter: function(p){ return p.value + ' · ' + p.data.pct.toFixed(1) + '%'; } },
+        tooltip:{ formatter: function(p){ var s = p.data.sub ? '<br><span style="color:'+c('--text-tertiary')+'">'+p.data.sub+'</span>' : ''; return '<b>'+p.name+'</b><br>'+p.value+' submissions ('+p.data.pct.toFixed(1)+'%)'+s; } }
       }]
     }));
   }
 
-  // --- KPI Showcase (Akt 3) ---
+  // --- KPI Showcase (Act 3) ---
   function buildKpiShowcase(){
     var el = document.getElementById('kpi-showcase'); if(!el) return;
     var kpis = [
-      {kurz:'Aktive Soldat:innen (Ende 2025)', value:'184.194', einheit:'Personen', kapitel:'Personal', seite:18, zitat:'Am Ende des Berichtsjahres umfasste das militärische Personal 184.194 aktive Soldatinnen und Soldaten – davon 59.447 Berufssoldatinnen und Berufssoldaten, 112.578 Soldatinnen und Soldaten auf Zeit sowie 12.169 Freiwillig Wehrdienst Leistende.', kontext:'Stichtag 31. Dezember 2025 · Vorjahr: 181.174'},
-      {kurz:'Vakante Dienstposten (Offiziere/UOs)', value:'20,6 %', einheit:'', kapitel:'Personal', seite:19, zitat:'Von den Dienstposten oberhalb der Mannschaftslaufbahn waren zum Ende des Berichtsjahres rund 20,6 Prozent vakant (2024: 19,9 Prozent).', kontext:'Bei Mannschaften zusätzlich 28,7 % unbesetzt'},
-      {kurz:'Neueinstellungen 2025', value:'25.006', einheit:'Personen', kapitel:'Ausbildung', seite:24, zitat:'Im Berichtsjahr haben 25.006 Soldatinnen und Soldaten (hiervon 11.905 Freiwillig Wehrdienst Leistende) ihren Dienst bei der Bundeswehr neu angetreten – somit erneut erheblich mehr als in den Vorjahren (2024: 20.286; 2023: 18.802).', kontext:'Einstellungsstärkstes Jahr seit Aussetzung der Wehrpflicht 2011'},
-      {kurz:'Abbruchquote Probezeit', value:'25,2 %', einheit:'', kapitel:'Ausbildung', seite:24, zitat:'376 wurden entlassen, sodass die endgültige Abbruchquote 25,2 Prozent (2023: 27 Prozent) betrug.', kontext:'Einstellungsjahrgang 2024 · vorläufige Quote 2025: 19,8 %'},
-      {kurz:'Auslandseinsätze (Ende 2025)', value:'977', einheit:'Personen in 9 Einsätzen', kapitel:'Auslandseinsätze', seite:9, zitat:'Am Ende des Berichtjahres waren insgesamt 977 Soldatinnen und Soldaten in neun verschiedenen, vom Deutschen Bundestag mandatierten Auslandseinsätzen eingesetzt.', kontext:'KFOR 287 · COUNTER DAESH 315 · UNIFIL 211 · SEA GUARDIAN 76'},
-      {kurz:'Einsatzgleich gebunden', value:'~30.000', einheit:'Personen', kapitel:'Auslandseinsätze', seite:9, zitat:'Neben den vom Bundestag mandatierten Auslandseinsätzen waren im Berichtsjahr insgesamt knapp 30.000 Soldatinnen und Soldaten durch einsatzgleiche Verpflichtungen, Dauereinsatzaufgaben und sonstige Verpflichtungen gebunden.', kontext:'Davon 1.046 NATO-Ostflanke · 2.303 EUMAM UA (Ukraine-Ausbildung)'},
-      {kurz:'Verteidigungshaushalt 2025', value:'62,3 Mrd €', einheit:'', kapitel:'Haushalt / Sondervermögen', seite:15, zitat:'Der Verteidigungshaushalt (Einzelplan 14) beträgt für das Jahr 2025 rund 62,3 Milliarden Euro und ist damit um rund 10 Milliarden Euro höher als im Vorjahr.', kontext:'Zusätzlich 24 Mrd € aus Sondervermögen veranschlagt'},
-      {kurz:'Sondervermögen Bundeswehr', value:'100 Mrd €', einheit:'', kapitel:'Haushalt / Sondervermögen', seite:15, zitat:'Das 2022 beschlossene Sondervermögen Bundeswehr in Höhe von 100 Milliarden Euro wird planmäßig abgerufen; bis Ende 2025 sind mehrere Tranchen budgetiert.', kontext:'Beschluss März 2022 nach Ukraine-Invasion'},
-      {kurz:'Frauenanteil', value:'13,71 %', einheit:'', kapitel:'Frauen in der Bundeswehr', seite:58, zitat:'Der Frauenanteil bei den Soldatinnen und Soldaten lag zum Ende des Berichtsjahres bei 13,71 Prozent (2024: 13,62 Prozent).', kontext:'Gesetzliches Ziel nach Soldatinnen- und Soldatengleichstellungsgesetz: 20 %'},
-      {kurz:'Infrastruktur-Investitionsbedarf', value:'67 Mrd €', einheit:'', kapitel:'Infrastruktur / Kasernen', seite:51, zitat:'Der Gesamt-Investitionsbedarf für die militärische Infrastruktur wird auf über 67 Milliarden Euro bis in die 2040er-Jahre geschätzt.', kontext:'8.000 Bauvorhaben ausstehend · Sanierungsstau auf Rekordniveau'},
-      {kurz:'Bauvorhaben offen', value:'8.000', einheit:'Vorhaben', kapitel:'Infrastruktur / Kasernen', seite:51, zitat:'Rund 8.000 Bauvorhaben sind aktuell nicht abgeschlossen oder nicht begonnen.', kontext:'Sanierung, Neubau, Modernisierung'},
-      {kurz:'Disziplinarverfahren wg. Extremismus', value:'304', einheit:'Sachverhalte', kapitel:'Extremismus / Disziplin', seite:78, zitat:'Im Berichtsjahr wurden 304 Sachverhalte mit Bezug zu extremistischen Einstellungen oder Handlungen dokumentiert.', kontext:'Zum Vergleich: 5,4 % der Gesamtbevölkerung zeigen konsistent rechtsextreme Einstellungen; in der Truppe 0,4 %'},
-      {kurz:'Sexuelle Übergriffe', value:'370', einheit:'Sachverhalte', kapitel:'Extremismus / Disziplin', seite:77, zitat:'370 Sachverhalte im Bereich sexuelle Übergriffe wurden 2025 erfasst.', kontext:'Eingabe sowohl durch Betroffene als auch durch Zeug:innen möglich'},
-      {kurz:'Sanitätsdienst-Personalfehl', value:'15,2 %', einheit:'', kapitel:'Sanitätsdienst', seite:66, zitat:'Im Sanitätsdienst der Bundeswehr liegt der Personalfehl derzeit bei rund 15,2 Prozent.', kontext:'Stabilisation, aber nicht behoben'},
-      {kurz:'Materialverfügbarkeit (Großgerät)', value:'unter Soll', einheit:'', kapitel:'Material / Ausrüstung', seite:38, zitat:'Die Einsatzbereitschaft von Großgerät wie Kampfpanzern, Schützenpanzern und Hubschraubern lag im Berichtszeitraum weiterhin unter den geforderten Zielwerten.', kontext:'Verbesserung gegenüber 2023, aber kein Soll-Erreichungsgrad'},
-      {kurz:'BAMAD-Sicherheitsüberprüfungen', value:'80.444', einheit:'Überprüfungen', kapitel:'Munition / Sicherheit', seite:85, zitat:'Der Militärische Abschirmdienst (BAMAD) führte im Berichtszeitraum 80.444 Sicherheitsüberprüfungen durch.', kontext:'Erfassung Extremismus, Spionage, Sabotage'}
+      {kurz:'Active soldiers (end of 2025)', value:'184,194', einheit:'persons', kapitel:'Personnel', seite:18, zitat:'At the end of the reporting year, the military personnel comprised 184,194 active soldiers — of whom 59,447 were career soldiers, 112,578 fixed-term soldiers, and 12,169 voluntary military service personnel.', kontext:'Reference date: 31 December 2025 · prior year: 181,174'},
+      {kurz:'Vacant posts (officers/NCOs)', value:'20.6%', einheit:'', kapitel:'Personnel', seite:19, zitat:'Of the posts above enlisted rank, approximately 20.6 per cent were vacant at the end of the reporting year (2024: 19.9 per cent).', kontext:'Among enlisted ranks an additional 28.7% unfilled'},
+      {kurz:'New recruits 2025', value:'25,006', einheit:'persons', kapitel:'Training', seite:24, zitat:'During the reporting year, 25,006 soldiers (of whom 11,905 voluntary military service personnel) commenced service with the Bundeswehr — again significantly more than in previous years (2024: 20,286; 2023: 18,802).', kontext:'Highest intake year since suspension of conscription in 2011'},
+      {kurz:'Probation dropout rate', value:'25.2%', einheit:'', kapitel:'Training', seite:24, zitat:'376 were discharged, resulting in a final dropout rate of 25.2 per cent (2023: 27 per cent).', kontext:'Cohort 2024 · provisional rate 2025: 19.8%'},
+      {kurz:'Foreign deployments (end of 2025)', value:'977', einheit:'persons in 9 missions', kapitel:'Foreign Deployments', seite:9, zitat:'At the end of the reporting year, a total of 977 soldiers were deployed in nine different overseas missions mandated by the German Parliament.', kontext:'KFOR 287 · COUNTER DAESH 315 · UNIFIL 211 · SEA GUARDIAN 76'},
+      {kurz:'Deployment-equivalent commitments', value:'~30,000', einheit:'persons', kapitel:'Foreign Deployments', seite:9, zitat:'In addition to the overseas missions mandated by the Bundestag, nearly 30,000 soldiers were committed through deployment-equivalent obligations, permanent operational tasks, and other commitments during the reporting year.', kontext:'Of which 1,046 NATO Eastern Flank · 2,303 EUMAM UA (Ukraine training)'},
+      {kurz:'Defence budget 2025', value:'€62.3bn', einheit:'', kapitel:'Budget / Special Fund', seite:15, zitat:'The defence budget (Single Plan 14) amounts to approximately €62.3 billion for 2025 — approximately €10 billion higher than in the previous year.', kontext:'An additional €24bn from the Bundeswehr Special Fund earmarked'},
+      {kurz:'Bundeswehr Special Fund', value:'€100bn', einheit:'', kapitel:'Budget / Special Fund', seite:15, zitat:'The Bundeswehr Special Fund of €100 billion approved in 2022 is being drawn down as planned; several tranches have been budgeted through the end of 2025.', kontext:'Approved March 2022 following Ukraine invasion'},
+      {kurz:'Female share', value:'13.71%', einheit:'', kapitel:'Women in the Bundeswehr', seite:58, zitat:'The proportion of women among soldiers stood at 13.71 per cent at the end of the reporting year (2024: 13.62 per cent).', kontext:'Statutory target under the Military Personnel Equal Opportunities Act: 20%'},
+      {kurz:'Infrastructure investment need', value:'€67bn', einheit:'', kapitel:'Infrastructure / Barracks', seite:51, zitat:'Total investment requirements for military infrastructure are estimated at over €67 billion through the 2040s.', kontext:'8,000 construction projects outstanding · maintenance backlog at record level'},
+      {kurz:'Open construction projects', value:'8,000', einheit:'projects', kapitel:'Infrastructure / Barracks', seite:51, zitat:'Approximately 8,000 construction projects are currently incomplete or have not yet begun.', kontext:'Renovation, new build, modernisation'},
+      {kurz:'Extremism-related disciplinary cases', value:'304', einheit:'matters', kapitel:'Extremism / Discipline', seite:78, zitat:'During the reporting year, 304 matters relating to extremist attitudes or actions were documented.', kontext:'By comparison: 5.4% of the general population hold consistently far-right attitudes; in the forces 0.4%'},
+      {kurz:'Sexual assault cases', value:'370', einheit:'matters', kapitel:'Extremism / Discipline', seite:77, zitat:'370 matters in the area of sexual assault were recorded in 2025.', kontext:'Submissions possible both from those affected and from witnesses'},
+      {kurz:'Medical service personnel shortfall', value:'15.2%', einheit:'', kapitel:'Medical Service', seite:66, zitat:'The personnel shortfall in the Bundeswehr Medical Service currently stands at approximately 15.2 per cent.', kontext:'Stabilised, but not resolved'},
+      {kurz:'Major equipment availability', value:'below target', einheit:'', kapitel:'Material / Equipment', seite:38, zitat:'The operational readiness of major equipment such as main battle tanks, infantry fighting vehicles, and helicopters remained below the required target values during the reporting period.', kontext:'Improvement compared to 2023, but target rate not reached'},
+      {kurz:'BAMAD security vettings', value:'80,444', einheit:'vettings', kapitel:'Ammunition / Security', seite:85, zitat:'The Military Counterintelligence Service (BAMAD) conducted 80,444 security vettings during the reporting period.', kontext:'Covering extremism, espionage, sabotage'}
     ];
     el.innerHTML = kpis.map(function(k,i){
       return '<details class="kpi-showcase-item">'
@@ -682,33 +668,33 @@ window.tkCharts = (function(){
         + '<div class="kpi-showcase-kpi">' + k.kurz + '</div>'
         + '<div class="kpi-showcase-value">' + k.value + (k.einheit?' <span style="font-size:0.85rem;color:var(--text-tertiary)">'+k.einheit+'</span>':'') + '</div>'
         + '</div>'
-        + '<div class="kpi-showcase-right"><div class="kpi-showcase-kapitel">' + k.kapitel + '</div><div style="font-size:0.7rem;color:var(--text-tertiary)">Seite ' + k.seite + '</div></div>'
+        + '<div class="kpi-showcase-right"><div class="kpi-showcase-kapitel">' + k.kapitel + '</div><div style="font-size:0.7rem;color:var(--text-tertiary)">Page ' + k.seite + '</div></div>'
         + '</summary>'
         + '<div class="kpi-showcase-body">'
-        + '<blockquote>„' + k.zitat + '"</blockquote>'
-        + '<div class="meta">Kontext: ' + k.kontext + '</div>'
+        + '<blockquote>' + k.zitat + '</blockquote>'
+        + '<div class="meta">Context: ' + k.kontext + '</div>'
         + '</div>'
         + '</details>';
     }).join('');
   }
 
-  // --- Chart 4: 2D-Spektrum 13 Länder ---
+  // --- Chart 4: 2D spectrum 13 countries ---
   function buildSpektrum(){
     var el = document.getElementById('chart-spektrum'); if(!el) return;
     var ch = echarts.init(el); charts.spektrum = ch;
     var data = [
-      { name:'Deutschland', iso:'DE', x:5, y:5, genre:'ombudsmann', inst:'Wehrbeauftragte*r seit 1959' },
-      { name:'UK', iso:'UK', x:2, y:4, genre:'ombudsmann_new', inst:'Armed Forces Commissioner seit 03/2026' },
+      { name:'Germany', iso:'DE', x:5, y:5, genre:'ombudsmann', inst:'Parliamentary Commissioner since 1959' },
+      { name:'UK', iso:'UK', x:2, y:4, genre:'ombudsmann_new', inst:'Armed Forces Commissioner since 03/2026' },
       { name:'USA', iso:'US', x:4, y:5, genre:'audit_agency', inst:'GAO – Government Accountability Office' },
-      { name:'Frankreich', iso:'FR', x:3, y:3, genre:'parlamentary_commission', inst:'Commission de la défense' },
-      { name:'Polen', iso:'PL', x:2, y:2, genre:'parlamentary_commission', inst:'Komisja Obrony Narodowej' },
-      { name:'Niederlande', iso:'NL', x:3, y:3, genre:'parlamentary_commission', inst:'Vaste commissie voor Defensie' },
-      { name:'Schweden', iso:'SE', x:3, y:4, genre:'parlamentary_commission', inst:'Försvarsutskottet' },
-      { name:'Finnland', iso:'FI', x:3, y:3, genre:'parlamentary_commission', inst:'Puolustusvaliokunta' },
-      { name:'Norwegen', iso:'NO', x:4, y:3, genre:'select_committee', inst:'Utenriks- og forsvarskomiteen' },
-      { name:'Dänemark', iso:'DK', x:2, y:4, genre:'parlamentary_commission', inst:'Forsvars-, Beredskabs- og Sikkerhedsudvalget' },
-      { name:'Russland', iso:'RU', x:1, y:1, genre:'none_public', inst:'Komitet Gosudarstvennoy Dumy po oborone' },
-      { name:'China', iso:'CN', x:1, y:1, genre:'none_public', inst:'NPC Standing Committee (kein öffentlicher Bericht)' },
+      { name:'France', iso:'FR', x:3, y:3, genre:'parlamentary_commission', inst:'Commission de la défense' },
+      { name:'Poland', iso:'PL', x:2, y:2, genre:'parlamentary_commission', inst:'Komisja Obrony Narodowej' },
+      { name:'Netherlands', iso:'NL', x:3, y:3, genre:'parlamentary_commission', inst:'Vaste commissie voor Defensie' },
+      { name:'Sweden', iso:'SE', x:3, y:4, genre:'parlamentary_commission', inst:'Försvarsutskottet' },
+      { name:'Finland', iso:'FI', x:3, y:3, genre:'parlamentary_commission', inst:'Puolustusvaliokunta' },
+      { name:'Norway', iso:'NO', x:4, y:3, genre:'select_committee', inst:'Utenriks- og forsvarskomiteen' },
+      { name:'Denmark', iso:'DK', x:2, y:4, genre:'parlamentary_commission', inst:'Forsvars-, Beredskabs- og Sikkerhedsudvalget' },
+      { name:'Russia', iso:'RU', x:1, y:1, genre:'none_public', inst:'State Duma Defence Committee' },
+      { name:'China', iso:'CN', x:1, y:1, genre:'none_public', inst:'NPC Standing Committee (no public report)' },
       { name:'Iran', iso:'IR', x:1, y:1, genre:'none_public', inst:'Majlis National Security Commission' }
     ];
     var genreColors = {
@@ -719,7 +705,6 @@ window.tkCharts = (function(){
       parlamentary_commission: c('--text-secondary'),
       none_public: c('--danger')
     };
-    // Jitter für Overlap: Punkte auf gleicher Position auseinanderziehen, Label-Position passend dazu
     function jitter(){
       var groups = {};
       data.forEach(function(d){
@@ -754,7 +739,7 @@ window.tkCharts = (function(){
       grid:{ left:70, right:50, top:50, bottom:70 },
       xAxis:{
         type:'value', min:0, max:6, interval:1,
-        name:'Detailtiefe  (1 aggregat · 5 granular)  →', nameGap:35, nameLocation:'middle',
+        name:'Detail  (1 aggregate · 5 granular)  →', nameGap:35, nameLocation:'middle',
         nameTextStyle:{ color:c('--text-secondary'), fontSize:11, fontFamily:'Space Grotesk,sans-serif' },
         axisLabel:{ color:c('--text-tertiary'), fontFamily:'JetBrains Mono,monospace', fontSize:10,
           formatter: function(v){ return (v>=1 && v<=5) ? String(v) : ''; }
@@ -764,7 +749,7 @@ window.tkCharts = (function(){
       },
       yAxis:{
         type:'value', min:0, max:6, interval:1,
-        name:'Zugänglichkeit  (1 verschlossen · 5 offen)  ↑', nameGap:40, nameLocation:'middle', nameRotate:90,
+        name:'Accessibility  (1 closed · 5 open)  ↑', nameGap:40, nameLocation:'middle', nameRotate:90,
         nameTextStyle:{ color:c('--text-secondary'), fontSize:11, fontFamily:'Space Grotesk,sans-serif' },
         axisLabel:{ color:c('--text-tertiary'), fontFamily:'JetBrains Mono,monospace', fontSize:10,
           formatter: function(v){ return (v>=1 && v<=5) ? String(v) : ''; }
@@ -789,25 +774,25 @@ window.tkCharts = (function(){
           formatter: function(p){
             return '<b>' + p.data.name + '</b><br>'
               + '<span style="color:'+c('--text-tertiary')+';font-size:0.8em">'+p.data.inst+'</span><br>'
-              + 'Detailtiefe: ' + p.data.x + '/5 · Zugänglichkeit: ' + p.data.y + '/5';
+              + 'Detail: ' + p.data.x + '/5 · Accessibility: ' + p.data.y + '/5';
           }
         }
       }]
     }));
   }
 
-  // --- Chart 5: Verteidigungsausgaben % BIP ---
+  // --- Chart 5: Defence spending % GDP ---
   function buildBIP(){
     var el = document.getElementById('chart-bip'); if(!el) return;
     var ch = echarts.init(el); charts.bip = ch;
     var jahre = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
     var laender = [
-      { name:'Deutschland', color:c('--accent'), werte:[1.24,1.24,1.24,1.28,1.37,1.4,1.36,1.71,1.98,2.18] },
-      { name:'USA',         color:c('--purple'), werte:[3.5,3.47,3.5,3.58,3.63,3.71,3.64,3.78,3.88,4.01] },
-      { name:'Großbritannien', color:c('--warning'), werte:[2.0,1.92,1.92,1.94,1.98,2.04,2.08,2.12,2.18,2.28] },
-      { name:'Frankreich',  color:c('--text-secondary'), werte:[1.78,1.84,1.89,1.97,2.04,2.08,2.13,2.28,2.42,2.63] },
-      { name:'Polen',       color:c('--accent-2'), werte:[2.16,2.19,2.26,2.42,2.62,2.73,2.83,2.97,3.21,3.46] },
-      { name:'Russland',    color:c('--danger'), werte:[5.33,5.31,5.24,5.14,5.28,5.62,5.86,10.08,11.4,11.86] }
+      { name:'Germany',        color:c('--accent'),         werte:[1.24,1.24,1.24,1.28,1.37,1.4,1.36,1.71,1.98,2.18] },
+      { name:'USA',            color:c('--purple'),         werte:[3.5,3.47,3.5,3.58,3.63,3.71,3.64,3.78,3.88,4.01] },
+      { name:'United Kingdom', color:c('--warning'),        werte:[2.0,1.92,1.92,1.94,1.98,2.04,2.08,2.12,2.18,2.28] },
+      { name:'France',         color:c('--text-secondary'), werte:[1.78,1.84,1.89,1.97,2.04,2.08,2.13,2.28,2.42,2.63] },
+      { name:'Poland',         color:c('--accent-2'),       werte:[2.16,2.19,2.26,2.42,2.62,2.73,2.83,2.97,3.21,3.46] },
+      { name:'Russia',         color:c('--danger'),         werte:[5.33,5.31,5.24,5.14,5.28,5.62,5.86,10.08,11.4,11.86] }
     ];
     ch.setOption(Object.assign(common(), {
       legend:{
@@ -829,13 +814,13 @@ window.tkCharts = (function(){
       series: laender.map(function(l){
         return {
           name:l.name, type:'line', data:l.werte, smooth:false,
-          lineStyle:{ color:l.color, width: l.name==='Deutschland'?2.5:1.8 },
+          lineStyle:{ color:l.color, width: l.name==='Germany'?2.5:1.8 },
           itemStyle:{ color:l.color },
           symbolSize:5,
-          markLine: l.name==='Deutschland' ? {
+          markLine: l.name==='Germany' ? {
             symbol:'none', silent:true,
             lineStyle:{ color:c('--warning'), type:'dashed', width:1.5 },
-            label:{ color:c('--warning'), fontSize:10, fontFamily:'JetBrains Mono,monospace', formatter:'2022 · Ukraine', position:'insideEndTop', rotate:90, backgroundColor:c('--bg-card'), padding:[0,4,0,4] },
+            label:{ color:c('--warning'), fontSize:10, fontFamily:'JetBrains Mono,monospace', formatter:'2022 · Ukraine invasion', position:'insideEndTop', rotate:90, backgroundColor:c('--bg-card'), padding:[0,4,0,4] },
             data:[{ xAxis:'2022' }]
           } : undefined
         };
@@ -843,7 +828,7 @@ window.tkCharts = (function(){
     }));
   }
 
-  // --- Chart 6: Personal-Zeitreihe ---
+  // --- Chart 6: Personnel time series ---
   function buildPersonal(){
     var el = document.getElementById('chart-personal'); if(!el) return;
     var ch = echarts.init(el); charts.personal = ch;
@@ -868,10 +853,10 @@ window.tkCharts = (function(){
       },
       tooltip:{ trigger:'axis', formatter: function(p){
         var d = p[0].data;
-        return d[0] + '<br><b>' + d[1].toLocaleString('de-DE') + '</b> Soldat:innen';
+        return d[0] + '<br><b>' + d[1].toLocaleString('en-GB') + '</b> soldiers';
       } },
       series:[{
-        name:'Ist', type:'line', data:daten,
+        name:'Actual', type:'line', data:daten,
         smooth:false, lineStyle:{ color:c('--accent'), width:2.5 },
         itemStyle:{ color:c('--accent') }, symbolSize:4,
         markLine:{
@@ -879,18 +864,18 @@ window.tkCharts = (function(){
           lineStyle:{ color:c('--warning'), type:'dashed', width:1.2 },
           label:{ color:c('--warning'), fontSize:9.5, fontFamily:'JetBrains Mono,monospace', rotate:90, backgroundColor:c('--bg-card'), padding:[0,4,0,4], position:'insideEndTop' },
           data:[
-            { xAxis:1990, label:{formatter:'1990 · Einheit'} },
-            { xAxis:2011, label:{formatter:'2011 · Wehrpflicht'} },
+            { xAxis:1990, label:{formatter:'1990 · Reunification'} },
+            { xAxis:2011, label:{formatter:'2011 · Conscription suspended'} },
             { xAxis:2022, label:{formatter:'2022 · Ukraine'} }
           ]
         }
       },{
-        name:'Zielpfad', type:'line', data:ziel,
+        name:'Target path', type:'line', data:ziel,
         smooth:false, lineStyle:{ color:c('--accent-2'), width:1.5, type:'dashed' },
         itemStyle:{ color:c('--accent-2') }, symbolSize:6,
         markPoint:{
           symbol:'circle', symbolSize:9, itemStyle:{color:c('--accent-2')},
-          data:[{ coord:[2030,260000], label:{formatter:'Ziel 2030\n260.000', color:c('--accent-2'), fontFamily:'JetBrains Mono,monospace', fontSize:9.5, position:'top', distance:10} }]
+          data:[{ coord:[2030,260000], label:{formatter:'Target 2030\n260,000', color:c('--accent-2'), fontFamily:'JetBrains Mono,monospace', fontSize:9.5, position:'top', distance:10} }]
         }
       }]
     }));
@@ -924,7 +909,6 @@ window.tkCharts = (function(){
     document.getElementById('feedback-thanks').classList.add('show');
   }
 
-  // Restore previous vote
   var prev = localStorage.getItem(KEY);
   if(prev) markSelected(prev);
 
@@ -948,11 +932,11 @@ window.tkCharts = (function(){
 <div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
   <div style="max-width:860px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
     <p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">
-      Diese Seite nutzt Google Analytics nur mit deiner Zustimmung. Details: <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a>.
+      This page uses Google Analytics only with your consent. Details: <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Privacy policy</a>.
     </p>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-      <button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
-      <button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+      <button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Essential only</button>
+      <button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Accept</button>
     </div>
   </div>
 </div>

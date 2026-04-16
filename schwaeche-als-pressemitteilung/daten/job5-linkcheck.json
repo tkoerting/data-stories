@@ -1,0 +1,52 @@
+{
+  "abgerufen": "2026-04-16",
+  "links_geprueft": 5,
+  "links": [
+    {
+      "url": "https://dserver.bundestag.de/btd/21/042/2104200.pdf",
+      "erreichbar": true,
+      "content_type": "application/pdf",
+      "titel": "Jahresbericht 2025 des Wehrbeauftragten (Drucksache 21/4200)",
+      "ok": true,
+      "kommentar": null
+    },
+    {
+      "url": "https://www.bundestag.de/parlament/wehrbeauftragter/jahresberichte",
+      "erreichbar": true,
+      "content_type": "text/html",
+      "titel": "Deutscher Bundestag - Jahresberichte",
+      "ok": true,
+      "kommentar": null
+    },
+    {
+      "url": "https://www.bundestag.de/wehrbeauftragte",
+      "erreichbar": true,
+      "content_type": "text/html",
+      "titel": "Deutscher Bundestag - Wehrbeauftragter",
+      "ok": true,
+      "kommentar": null
+    },
+    {
+      "url": "https://www.bundestag.de/dokumente/textarchiv/2025/kw21-de-bericht-wehrbeauftragte-1067376",
+      "erreichbar": true,
+      "content_type": "text/html",
+      "titel": "Deutscher Bundestag - Jahresbericht der Wehrbeauftragten beraten",
+      "ok": true,
+      "kommentar": "Pressekonferenz-Dokumentation vom 21.05.2025"
+    },
+    {
+      "url": "https://www.bundestag.de/resource/blob/1150830/.../jahresbericht_2025_pm-data.pdf",
+      "erreichbar": false,
+      "content_type": null,
+      "titel": null,
+      "ok": false,
+      "grund": "URL unvollständig/ungültig in research.md (blob/1150830/... placeholder statt vollständigem Pfad). HTTP 404 bei vermuteter Standardform."
+    }
+  ],
+  "tote_links": [
+    {
+      "url": "https://www.bundestag.de/resource/blob/1150830/.../jahresbericht_2025_pm-data.pdf",
+      "grund": "Unvollständige URL — Wildcard-Pattern /.../ ist nicht erreichbar. Korrekte URL müsste per Bundestag-Seite recherchiert werden."
+    }
+  ]
+}

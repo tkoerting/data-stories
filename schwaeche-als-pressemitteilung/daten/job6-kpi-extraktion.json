@@ -1,0 +1,186 @@
+{
+  "quelle": "Drucksache 21/4200, Jahresbericht 2025 des Wehrbeauftragten",
+  "abgerufen": "2026-04-16",
+  "otte_framing_zitat": {
+    "wortlaut": "Der Jahresbericht des Wehrbeauftragten ist daher nicht als Mängelbericht zu verstehen. Er benennt Herausforderungen, Probleme und Handlungsfelder und verbindet sie mit Schlussfolgerungen und Empfehlungen. Nur wenn Probleme transparent angesprochen werden, wird die Grundlage geschaffen, um gemeinsame Lösungen zu entwickeln und entschlossen zu handeln – zum Wohle unserer Truppe und für die Sicherheit unseres Landes.",
+    "seite_markdown": 6
+  },
+  "kpis": [
+    {
+      "id": 1,
+      "kapitel": "Personal",
+      "seite_markdown": 18,
+      "kpi_kurz": "Aktive Soldatinnen und Soldaten (Ende 2025)",
+      "wert": 184194,
+      "einheit": "Personen",
+      "zitat_woertlich": "Am Ende des Berichtsjahres umfasste das militärische Personal 184.194 aktive Soldatinnen und Soldaten – davon 59.447 Berufssoldatinnen und Berufssoldaten, 112.578 Soldatinnen und Soldaten auf Zeit sowie 12.169 Freiwillig Wehrdienst Leistende.",
+      "kontext": "Stichtag 31. Dezember 2025; Vorjahr: 181.174 (2024)",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 2,
+      "kapitel": "Personal",
+      "seite_markdown": 19,
+      "kpi_kurz": "Vakante Dienstposten (Offiziere/Unteroffiziere)",
+      "wert": 20.6,
+      "einheit": "Prozent",
+      "zitat_woertlich": "Von den Dienstposten oberhalb der Mannschaftslaufbahn waren zum Ende des Berichtsjahres rund 20,6 Prozent vakant (2024: 19,9 Prozent).",
+      "kontext": "Dienstposten oberhalb Mannschaftslaufbahn; bei Mannschaften 28,7 % unbesetzt",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 3,
+      "kapitel": "Ausbildung",
+      "seite_markdown": 24,
+      "kpi_kurz": "Neueinstellungen 2025",
+      "wert": 25006,
+      "einheit": "Personen",
+      "zitat_woertlich": "Im Berichtsjahr haben 25.006 Soldatinnen und Soldaten (hiervon 11.905 Freiwillig Wehrdienst Leistende) ihren Dienst bei der Bundeswehr neu angetreten – somit erneut erheblich mehr als in den Vorjahren (2024: 20.286; 2023: 18.802).",
+      "kontext": "Einstellungsstärkstes Jahr seit Aussetzung der Wehrpflicht 2011",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 4,
+      "kapitel": "Ausbildung",
+      "seite_markdown": 24,
+      "kpi_kurz": "Abbruchquote Probezeit (Einstellungsjahrgang 2024, endgültig)",
+      "wert": 25.2,
+      "einheit": "Prozent",
+      "zitat_woertlich": "376 wurden entlassen, sodass die endgültige Abbruchquote 25,2 Prozent (2023: 27 Prozent) betrug.",
+      "kontext": "Einstellungsjahrgang 2024; vorläufige Quote 2025: 19,8 %; Widerruf der Verpflichtungserklärung innerhalb der sechsmonatigen Probezeit",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 5,
+      "kapitel": "Auslandseinsätze",
+      "seite_markdown": 9,
+      "kpi_kurz": "Mandatierte Auslandseinsätze (Ende 2025)",
+      "wert": 977,
+      "einheit": "Personen in 9 Einsätzen",
+      "zitat_woertlich": "Am Ende des Berichtjahres waren insgesamt 977 Soldatinnen und Soldaten in neun verschiedenen, vom Deutschen Bundestag mandatierten Auslandseinsätzen eingesetzt.",
+      "kontext": "Davon: KFOR 287, COUNTER DAESH 315, UNIFIL 211, SEA GUARDIAN 76",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 6,
+      "kapitel": "Auslandseinsätze",
+      "seite_markdown": 9,
+      "kpi_kurz": "Soldaten durch einsatzgleiche Verpflichtungen gebunden",
+      "wert": 30000,
+      "einheit": "Personen (knapp)",
+      "zitat_woertlich": "Neben den vom Bundestag mandatierten Auslandseinsätzen waren im Berichtsjahr insgesamt knapp 30.000 Soldatinnen und Soldaten durch einsatzgleiche Verpflichtungen, Dauereinsatzaufgaben und sonstige Verpflichtungen gebunden.",
+      "kontext": "Davon 1.046 an der NATO-Ostflanke (Litauen, Polen, Rumänien); 2.303 im Rahmen EUMAM UA (Ukraine-Ausbildung)",
+      "verwertbarkeit_fuer_datenstueck": "mittel"
+    },
+    {
+      "id": 7,
+      "kapitel": "Haushalt/Sondervermögen",
+      "seite_markdown": 15,
+      "kpi_kurz": "Verteidigungshaushalt 2025 (Einzelplan 14)",
+      "wert": 62.3,
+      "einheit": "Milliarden Euro",
+      "zitat_woertlich": "Im Haushaltjahr 2025 standen im originären Verteidigungshaushalt (Einzelplan 14) rund 62,3 Milliarden Euro zur Verfügung. Dies sind 10 Milliarden Euro mehr im Vergleich zum Vorjahr.",
+      "kontext": "Ist-Ausgaben: ca. 59,4 Mrd. Euro; Sondervermögen veranschlagt: 24 Mrd., verausgabt: 19,5 Mrd.",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 8,
+      "kapitel": "Haushalt/Sondervermögen",
+      "seite_markdown": 15,
+      "kpi_kurz": "Vertraglich gebundenes Sondervermögen (Ende 2025)",
+      "wert": 51.5,
+      "einheit": "Milliarden Euro",
+      "zitat_woertlich": "Am Ende des Jahres 2025 waren rund 51,5 Milliarden Euro des Sondervermögens über das Jahr hinaus vertraglich gebunden.",
+      "kontext": "Beschaffungsvolumen 25-Mio.-Euro-Vorlagen: 103 Freigaben, Gesamtvolumen 83,8 Mrd. Euro",
+      "verwertbarkeit_fuer_datenstueck": "mittel"
+    },
+    {
+      "id": 9,
+      "kapitel": "Frauen in der Bundeswehr",
+      "seite_markdown": 39,
+      "kpi_kurz": "Frauenanteil Bundeswehr gesamt (2025)",
+      "wert": 13.71,
+      "einheit": "Prozent",
+      "zitat_woertlich": "Trotz aller Bemühungen um frauenspezifische Personalwerbung stieg der Anteil an Soldatinnen im Berichtsjahr nur minimal auf 13,71 Prozent (2024: 13,62 Prozent) und blieb daher weit hinter den im Soldatinnen- und Soldatengleichstellungsgesetz geforderten 20 Prozent außerhalb der Sanität zurück.",
+      "kontext": "Gesetzliches Ziel: 20 % außerhalb Sanität, 50 % in der Sanität; Bewerberinnenanteil sank von 16 % (2024) auf 15 % (2025)",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 10,
+      "kapitel": "Infrastruktur/Kasernen",
+      "seite_markdown": 50,
+      "kpi_kurz": "Gesamtinvestitionsbedarf militärische Infrastruktur bis 2040er-Jahre",
+      "wert": 67,
+      "einheit": "Milliarden Euro (über)",
+      "zitat_woertlich": "Auf über 67 Milliarden Euro wird sich der Gesamtinvestitionsbedarf für militärische Infrastruktur bis in die 2040er-Jahre belaufen – so der letzte Infrastrukturbericht, den das Verteidigungsministerium im Juni 2025 dem Parlament vorgelegt hat. Zusammen mit den 8.000 anstehenden Bauvorhaben verdeutlicht die Summe, vor welch immenser Herausforderung die Bundeswehr steht.",
+      "kontext": "Laut Infrastrukturbericht des BMVg, Juni 2025; 8.000 Bauvorhaben ausstehend",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 11,
+      "kapitel": "Infrastruktur/Kasernen",
+      "seite_markdown": 50,
+      "kpi_kurz": "Geplante neue Einzelunterkünfte (Pilotprogramm)",
+      "wert": 7150,
+      "einheit": "Unterkunftsplätze",
+      "zitat_woertlich": "Im Rahmen des Bauvorhabens sollen rund 7.150 moderne Einzelunterkünfte mit eigenem Sanitärbereich für die Soldatinnen und Soldaten geschaffen werden.",
+      "kontext": "Bundeswehr-Bauprogramm Unterkünfte: 76 Gebäude an 31 Standorten, serielle/modulare Bauweise, geplant 2026–2031",
+      "verwertbarkeit_fuer_datenstueck": "mittel"
+    },
+    {
+      "id": 12,
+      "kapitel": "Extremismus/Disziplinarvorgänge",
+      "seite_markdown": 57,
+      "kpi_kurz": "Rechtsextremistische Einstellungen in der Bundeswehr (Studie)",
+      "wert": 0.4,
+      "einheit": "Prozent (konsistent rechtsextremistisch)",
+      "zitat_woertlich": "Lediglich 0,2 Prozent der befragten Soldatinnen und Soldaten zeigten konsistent ablehnende Einstellungsmuster gegenüber der freiheitlichen demokratischen Grundordnung und nur 0,4 Prozent konsistent rechtsextremistische Einstellungen. In der Gesamtbevölkerung lag der entsprechende Anteil bei jeweils 0,5 Prozent und 5,4 Prozent.",
+      "kontext": "Studie Armee in der Demokratie, ZMSBw; ca. 4.300 Bundeswehrangehörige + 4.600 Vergleichspersonen aus der Bevölkerung befragt",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 13,
+      "kapitel": "Extremismus/Disziplinarvorgänge",
+      "seite_markdown": 65,
+      "kpi_kurz": "Alkoholbedingte Pflichtverstöße (Anteil an Straftaten)",
+      "wert": 28,
+      "einheit": "Prozent",
+      "zitat_woertlich": "In etwa 28 Prozent der in den Kategorien Straftaten gegen die Pflichten von Untergebenen, Straftaten gegen die Pflichten von Vorgesetzten sowie Straftaten gegen das Leben, die körperliche Unversehrtheit oder die persönliche Freiheit gemeldeten Fälle war die Tat unmittelbar auf Alkoholkonsum zurückzuführen (101 der insgesamt 355 Fälle; 2024: 124 aus 384).",
+      "kontext": "101 von 355 gemeldeten Fällen in den genannten Kategorien (2025)",
+      "verwertbarkeit_fuer_datenstueck": "mittel"
+    },
+    {
+      "id": 14,
+      "kapitel": "Sanitätsdienst",
+      "seite_markdown": 75,
+      "kpi_kurz": "Suizide in der Bundeswehr 2025",
+      "wert": 17,
+      "einheit": "Selbsttötungen",
+      "zitat_woertlich": "Im Jahr 2025 registrierte der Wehrbeauftragte 17 Selbsttötungen (2024: 18; 2023: 15; 2022: 18; 2021: 20; 2020: 11) und 57 Versuche einer Selbsttötung (2024: 44; 2023: 57; 2022: 64; 2021: 58; 2020: 61) von Soldatinnen und Soldaten.",
+      "kontext": "Erfassung durch Tagesmeldungen des BMVg über Meldepflichtige Ereignisse; dazu 57 Suizidversuche",
+      "verwertbarkeit_fuer_datenstueck": "hoch"
+    },
+    {
+      "id": 15,
+      "kapitel": "Material/Ausrüstung",
+      "seite_markdown": 43,
+      "kpi_kurz": "Betroffene Soldaten durch veraltete Monteurkombination",
+      "wert": 13000,
+      "einheit": "Personen",
+      "zitat_woertlich": "Es ist daher erfreulich, dass die Bundeswehr nun endlich eine modernisierte Monteurbekleidung für die rund 13.000 betroffenen Soldatinnen und Soldaten beschaffen wird. Die Auslieferung der ersten Artikel ist für Ende 2026 vorgesehen.",
+      "kontext": "Kapitel 8 Material – Bekleidung und persönliche Ausrüstung; unzureichende Atmungsaktivität der Monteurkombination für luftfahrzeugtechnisches Personal seit Jahren bekannt",
+      "verwertbarkeit_fuer_datenstueck": "mittel"
+    },
+    {
+      "id": 16,
+      "kapitel": "Munition/Waffenverluste",
+      "seite_markdown": 34,
+      "kpi_kurz": "Durchgeführte Sicherheitsüberprüfungen (BAMAD, 2025)",
+      "wert": 80444,
+      "einheit": "Überprüfungen",
+      "zitat_woertlich": "Zugleich hat sich die Anzahl der durchgeführten Sicherheitsüberprüfungen im Berichtsjahr auf 80.444 erhöht (2024: 67.894; 2023: 57.375; 2022: 52.288).",
+      "kontext": "Kapitel Sicherheitsüberprüfungen / BAMAD; Soldateneinstellungsüberprüfung dauerte durchschnittlich 9–11 Wochen (je 3 Wochen länger als 2024); Hinweis: Munitions- und Waffenverluste im Bericht nur als qualitative Einzelfälle ohne übergreifende Gesamtzahl dokumentiert",
+      "verwertbarkeit_fuer_datenstueck": "niedrig"
+    }
+  ]
+}

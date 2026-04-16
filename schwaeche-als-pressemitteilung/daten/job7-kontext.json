@@ -1,0 +1,153 @@
+{
+  "stand": "2026-04-16",
+  "gruendung": {
+    "jahr": 1957,
+    "rechtsgrundlage": "Artikel 45b Grundgesetz (GG) + Gesetz über den Wehrbeauftragten des Deutschen Bundestages (WBeauftrG)",
+    "gg_45b_eingefuegt": "1956",
+    "gg_45b_wortlaut": "Zum Schutz der Grundrechte und als Hilfsorgan des Bundestages bei der Ausübung der parlamentarischen Kontrolle wird ein Wehrbeauftragter des Bundestages berufen. Das Nähere regelt ein Bundesgesetz.",
+    "historischer_kontext": "Das Amt wurde am 6. März 1956 im Rahmen der neuen Wehrverfassung nach dem Vorbild des schwedischen Militärombudsman in Artikel 45b des Grundgesetzes verankert. Dies war eine Antwort auf die Wehrmacht und sollte die parlamentarische Kontrolle einer Parlamentsarmee stärken. Das Konzept der 'Inneren Führung' und 'Staatsbürger in Uniform' (Baudissin-Konzept) prägte die Gründungsidee: Ein Hilfsorgan des Bundestages zum Schutz der Grundrechte von Soldatinnen und Soldaten und zur Wahrung der Grundsätze demokratischer Kontrolle innerhalb der Streitkräfte.",
+    "gesetz_verabschiedung": "11. April 1957 (Bundestag)",
+    "gesetz_inkrafttreten": "27. Juni 1957",
+    "erste_amtsinhaber": "Helmuth von Grolman",
+    "erstes_amtsjahr": 1959,
+    "erster_bericht_jahr": 1959,
+    "quellen": [
+      "https://www.bundestag.de/dokumente/textarchiv/1957-04-11-wehrbeauftragte-888868",
+      "https://www.grundgesetz-fuer-jeden.de/artikel-45b.html",
+      "Drucksache 21/4200, Jahresbericht 2025 des Wehrbeauftragten, Seiten 88-90"
+    ]
+  },
+  "eingabeprozess": {
+    "wie_einreichen": "Jede Soldatin und jeder Soldat hat das Recht, sich einzeln und ohne Einhaltung des Dienstweges unmittelbar schriftlich mit Bitten oder Beschwerden an den Wehrbeauftragten zu wenden. Dies ist im Gegensatz zu anderen militärischen Beschwerdeverfahren eine direktale Möglichkeit, die an der Befehlshierarchie vorbeigeht. Anonyme Eingaben werden nicht bearbeitet (§ 8 WBeauftrG).",
+    "vertraulichkeit": "Wird der Wehrbeauftragte aufgrund einer Eingabe tätig, steht es in seinem Ermessen, die Tatsache der Eingabe und den Namen des Einsenders bekannt zu geben. Er soll von der Bekanntgabe absehen, wenn der Einsender es wünscht und der Erfüllung des Wunsches keine Rechtspflichten entgegenstehen (§ 9 WBeauftrG). Alle mit der Bearbeitung beauftragten Dienststellen haben Verschwiegenheit und Vertraulichkeit zu wahren, auch wenn die Angelegenheit auf dem Dienstweg oder an mehrere Dienststellen weitergeleitet wird (A-2600/2, § 3.1).",
+    "sanktionsfreiheit": "Es ist absolut verboten, eine Soldatin oder einen Soldaten wegen der Tatsache der Anrufung des Wehrbeauftragten dienstlich zu gemaßregeln oder zu benachteiligen (§ 7 WBeauftrG). Dies ist ein fundamentaler Schutz gegen Represalien. Der Wehrbeauftragte und seine Mitarbeiterinnen und Mitarbeiter sind auch nach Beendigung ihres Amtsverhältnisses zur Verschwiegenheit verpflichtet (§ 10 WBeauftrG).",
+    "quelle": "Gesetz über den Wehrbeauftragten (WBeauftrG), Drucksache 21/4200, Seiten 88-92; Zentrale Dienstvorschrift A-2600/2"
+  },
+  "eingaben_2025_aufschluesselung": {
+    "gesamt_persoenliche_eingaben": 2819,
+    "eingabenquote_je_1000_soldaten": 15.4,
+    "bemerkung": "Die statistischen Aufschlüsselungen beziehen sich auf die 4.254 erfassten Vorgänge insgesamt (nicht nur die 2.819 persönlichen Eingaben). Ein Vorgang kann mehrere Sachverhalte enthalten (6.960 Sachverhalte für 4.254 Vorgänge). Die folgende Aufschlüsselung stammt aus der Kategorisierung aller Vorgänge nach Sachverhalten und gibt die relevantesten Bereiche wider, die mit persönlichen Eingaben korrelieren.",
+    "themen_aufschluesselung": [
+      {
+        "kategorie": "Personalangelegenheiten aktiver Soldaten",
+        "anzahl": 2924,
+        "anteil_prozent": 42.0,
+        "unterkategorien": [
+          "Verwendungsplanung, Beurteilung, Beförderung: 607",
+          "Begründung und Beendigung von Dienstverhältnissen: 607",
+          "Reservistenangelegenheiten: 530",
+          "Personalbearbeitung und Personalführung: 508",
+          "Besoldung und besoldungsrechtliche Nebengebiete: 427",
+          "Personalstruktur: 52"
+        ]
+      },
+      {
+        "kategorie": "Disziplinarrecht, Rechtsverstöße",
+        "anzahl": 872,
+        "anteil_prozent": 12.5,
+        "unterkategorien": [
+          "Verstöße gegen die sexuelle Selbstbestimmung: 370",
+          "Verletzung der freiheitlichen demokratischen Grundordnung: 304"
+        ]
+      },
+      {
+        "kategorie": "Menschenführung, Kameradschaft",
+        "anzahl": 745,
+        "anteil_prozent": 10.7,
+        "unterkategorien": [
+          "Fragen des Führungsverhaltens und des Führungsstils: 236",
+          "Diskriminierendes Verhalten; Mobbing: 93"
+        ]
+      },
+      {
+        "kategorie": "Versorgung, Soziales",
+        "anzahl": 637,
+        "anteil_prozent": 9.2,
+        "unterkategorien": [
+          "Besoldung: 140",
+          "Reisekosten-, Umzugskosten- und Trennungsgeldrecht: 74"
+        ]
+      },
+      {
+        "kategorie": "Gesundheit, Sanitätsdienst, Heilfürsorge",
+        "anzahl": 253,
+        "anteil_prozent": 3.6
+      },
+      {
+        "kategorie": "Vereinbarkeit von Familie und Dienst",
+        "anzahl": 204,
+        "anteil_prozent": 2.9,
+        "unterkategorien": [
+          "Pendlerangelegenheiten: 74"
+        ]
+      },
+      {
+        "kategorie": "Ausbildung, Ausrüstung für die Ausbildung",
+        "anzahl": 149,
+        "anteil_prozent": 2.1
+      },
+      {
+        "kategorie": "Infrastruktur, Unterkünfte",
+        "anzahl": 137,
+        "anteil_prozent": 2.0
+      },
+      {
+        "kategorie": "Auslandseinsätze, Ausrüstung im Einsatz",
+        "anzahl": 127,
+        "anteil_prozent": 1.8
+      },
+      {
+        "kategorie": "Sicherheitsfragen, Unfälle",
+        "anzahl": 110,
+        "anteil_prozent": 1.6
+      },
+      {
+        "kategorie": "Selbsttötung, Selbsttötungsversuch, Ankündigung und ungeklärte Todesfälle",
+        "anzahl": 109,
+        "anteil_prozent": 1.6
+      },
+      {
+        "kategorie": "Verpflegung, Bekleidung, Betreuung",
+        "anzahl": 106,
+        "anteil_prozent": 1.5
+      },
+      {
+        "kategorie": "Diversity",
+        "anzahl": 86,
+        "anteil_prozent": 1.2,
+        "unterkategorien": [
+          "Frauen in den Streitkräften (Gleichstellungsfragen): 56",
+          "Sexuelle Vielfalt: 25",
+          "Soldaten und Soldatinnen mit Migrationshintergrund: 5"
+        ]
+      },
+      {
+        "kategorie": "Arbeitszeit",
+        "anzahl": 55,
+        "anteil_prozent": 0.8
+      },
+      {
+        "kategorie": "Verhalten und Auftreten von Soldaten innerhalb und außerhalb des Dienstes",
+        "anzahl": 45,
+        "anteil_prozent": 0.6
+      },
+      {
+        "kategorie": "Bürokratie",
+        "anzahl": 12,
+        "anteil_prozent": 0.2
+      },
+      {
+        "kategorie": "Sonstiges",
+        "anzahl": 389,
+        "anteil_prozent": 5.6,
+        "bemerkung": "Unzuständigkeit, Abgabe an Petitionsausschuss, Anfragen wegen Akteneinsicht, Reaktionen auf den Jahresbericht"
+      }
+    ],
+    "gesamt_sachverhalte": 6960,
+    "gesamt_vorgaenge": 4254,
+    "quelle": "Drucksache 21/4200, Jahresbericht 2025 des Wehrbeauftragten, Seiten 83-87",
+    "kontext": "2025 ist das erste Jahr, in dem die Zahl der persönlichen Eingaben wieder über 2.800 liegt (Quote: 15,4 je 1.000 aktive Soldaten) — ein Anstieg gegenüber 2024 (2.467, Quote: 13,6). Dies deutet auf gestiegenes Vertrauen oder auch auf vermehrte Probleme hin, die Soldaten zur Anrufung des Wehrbeauftragten bewegen."
+  },
+  "kontext_innere_führung": "Das Konzept 'Innere Führung' nach Graf Baudissin ist zentral für die Gründungsidee des Wehrbeauftragten: Soldatinnen und Soldaten sind 'Staatsbürger in Uniform', keine bloßen Befehlesempfänger. Der Wehrbeauftragte schützt genau diesen Status und kontrolliert, ob die Grundsätze der Inneren Führung eingehalten werden.",
+  "note_historisch": "Der erste Jahresbericht stammt aus dem Jahr 1959. Die statistische Erfassung von 'persönlichen Eingaben' ist erst seit 2012 (Einführung eines neuen Datenerfassungssystems) verfügbar — davor wurden nur Gesamtvorgänge gezählt."
+}

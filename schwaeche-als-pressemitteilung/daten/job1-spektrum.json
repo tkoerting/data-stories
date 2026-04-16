@@ -1,0 +1,334 @@
+{
+  "stand": "2026-04-15",
+  "methodik_version": "1.0",
+  "haltung": "Spektrum, nicht Ranking. Genres sind nicht vergleichbar, sondern unterschiedliche Instrumente.",
+  "quellen": {
+    "DE": "Wehrbeauftragter Jahresbericht 2025 (67. Bericht), vorgelegt 03.03.2026, Drucksache 21/4200",
+    "UK": "Armed Forces Commissioner Act 2025 (Royal Assent erteilt), Polly Miller-Perkins im Amt ab 30.03.2026; Defence Committee publications.parliament.uk; MoD Annual Report 2024-25",
+    "USA": "GAO.gov – öffentliche Defense Reports-Datenbank; DoD Inspector General FY2026 Oversight Plan",
+    "FR": "Assemblée nationale – Commission de la défense nationale et des forces armées, Rapport d'activité 2024-2025; Sénat – Commission des affaires étrangères, de la défense et des forces armées",
+    "PL": "Sejm Nationalverteidigungsausschuss (Komisja Obrony Narodowej); IPU PARLINE database Polen; defence24.com",
+    "NL": "Tweede Kamer – vaste commissie voor Defensie; Kamerstukken tweedekamer.nl",
+    "SE": "Riksdagen – Försvarsutskottet (FöU); riksdagen.se/en/how-the-riksdag-works/committees/committee-on-defence/",
+    "FI": "Eduskunta – Puolustusvaliokunta; Parliament of Finland puolustusvaliokunta; eduskunta.fi",
+    "NO": "Stortinget – Utenriks- og forsvarskomiteen; stortinget.no; Eksportrapport forsvarsmateriell 2024",
+    "DK": "Folketing – Forsvarsudvalget (jetzt: Forsvar-, Beredskabs- og Sikkerhedsudvalget); thedanishparliament.dk",
+    "RU": "State Duma Defense Committee; IPU Parline Russia; Columbia CIAO Forschung zur russischen Verteidigungssteuerung",
+    "CN": "NPC Standing Committee Work Report (Xinhua 2026); US DoD China Military Power Report 2025",
+    "IR": "Majlis National Security and Foreign Policy Commission; Wikipedia SNSC; NCRI Bericht"
+  },
+  "laender": [
+    {
+      "land": "Deutschland",
+      "iso": "DE",
+      "genre": "ombudsmann",
+      "institution": "Wehrbeauftragte*r des Deutschen Bundestages",
+      "seit_jahr": 1959,
+      "aktueller_bericht": {
+        "titel": "Jahresbericht 2025 (67. Bericht)",
+        "url": "https://dserver.bundestag.de/btd/21/042/2104200.pdf",
+        "sprachen": ["de", "en"],
+        "formate": ["PDF", "EPUB"]
+      },
+      "detailtiefe": {
+        "score": 5,
+        "begruendung": "Granular mit Personal, Budget, Einzelmängeln pro Kapitel: 17 Hauptkapitel, Personalstatistiken, Mängelkataloge, Einzelbeschwerden aggregiert und thematisch aufgeschlüsselt. Seit 67 Jahren kontinuierliche Berichterstattung.",
+        "score_konfidenz": "hoch"
+      },
+      "zugaenglichkeit": {
+        "score": 5,
+        "begruendung": "Frei + Volltextsuche auf dserver.bundestag.de, Direktdownload PDF + EPUB ohne Hürde, DE + EN verfügbar, keine Registrierung.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": null
+    },
+    {
+      "land": "Vereinigtes Königreich",
+      "iso": "UK",
+      "genre": "ombudsmann_new",
+      "institution": "Armed Forces Commissioner (neu seit 2025/2026) + Defence Select Committee (weiterhin aktiv)",
+      "seit_jahr": 2026,
+      "aktueller_bericht": {
+        "titel": "Erster Jahresbericht noch nicht erschienen (Commissioner im Amt seit 30.03.2026)",
+        "url": "https://committees.parliament.uk/committee/24/defence-committee/publications/",
+        "sprachen": ["en"],
+        "formate": ["PDF"]
+      },
+      "detailtiefe": {
+        "score": 2,
+        "begruendung": "Commissioner Polly Miller-Perkins trat ihr Amt am 30.03.2026 an – kein erster Jahresbericht vorhanden. Bis zur Ernennung: Defence Select Committee publiziert thematische Einzelberichte (z.B. Armed Forces Covenant, UK contribution to European Security), aber keinen systematischen Gesamtbericht nach DE-Muster. Vorläufig Score 2 (aggregierte Narrative mit Schlüsselzahlen via Committee Reports).",
+        "score_konfidenz": "mittel"
+      },
+      "zugaenglichkeit": {
+        "score": 4,
+        "begruendung": "parliament.uk publications frei zugänglich, gute Suchfunktion, nur EN, Direktdownload. Kein zweisprachiges Angebot. Aktuell kein Commissioner-Bericht vorhanden.",
+        "score_konfidenz": "mittel"
+      },
+      "kommentar": "Dualer Zustand: (1) Armed Forces Commissioner Act 2025 – Royal Assent März 2025, Polly Miller-Perkins (ehem. RAF Air Commodore) ab 30.03.2026 im Amt, explizit nach deutschem Wehrbeauftragten-Modell gestaltet. Erster Jahresbericht frühestens 2027 zu erwarten. (2) Defence Select Committee bleibt parallel aktiv und publiziert thematische Untersuchungsberichte. Das Genre wird zu 'ombudsmann' konvergieren, sobald der erste Bericht vorliegt. Übergangsstatus dokumentiert."
+    },
+    {
+      "land": "USA",
+      "iso": "USA",
+      "genre": "audit_agency",
+      "institution": "Government Accountability Office (GAO) – Defense Reports",
+      "seit_jahr": 1921,
+      "aktueller_bericht": {
+        "titel": "Mehrere publizierte Defense Reports (z.B. GAO-25-108104 Military Readiness, GAO-25-107468 Weapon System Sustainment)",
+        "url": "https://www.gao.gov/products/gao-25-108104",
+        "sprachen": ["en"],
+        "formate": ["PDF", "HTML"]
+      },
+      "detailtiefe": {
+        "score": 4,
+        "begruendung": "GAO-Berichte sind thematisch granular mit KPIs, Statistiken, Empfehlungen und Follow-up-Tracking (über 1.300 offene DoD-Empfehlungen, 74 davon kritisch). Keine einheitliche Personalstatistik als Gesamtbericht, aber starke thematische Tiefe. Kein einzelner Jahresbericht nach DE-Muster, sondern kontinuierliche Einzelberichte.",
+        "score_konfidenz": "hoch"
+      },
+      "zugaenglichkeit": {
+        "score": 5,
+        "begruendung": "gao.gov: freie Volltextsuche, Direktdownload PDF+HTML, gut auffindbar, keine Registrierung. Nur EN, aber exzellente Suchinfrastruktur. Manche Berichte restricted (classified), aber öffentliche Berichte vollständig zugänglich.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Das US-Modell ist dezentral: GAO liefert thematische Audit-Berichte, DoD Inspector General publiziert separaten Oversight Plan. Kein parlamentarischer Ombudsmann, aber sehr hohe institutionelle Transparenz durch parallele Mechanismen."
+    },
+    {
+      "land": "Frankreich",
+      "iso": "FR",
+      "genre": "parlamentary_commission",
+      "institution": "Commission de la défense nationale et des forces armées (Assemblée nationale) + Commission des affaires étrangères, de la défense et des forces armées (Sénat)",
+      "seit_jahr": 1958,
+      "aktueller_bericht": {
+        "titel": "Rapport d'activité 2024-2025 de la commission de la défense nationale et des forces armées",
+        "url": "https://www.assemblee-nationale.fr/dyn/opendata/PNREANR5L17B1852.html",
+        "sprachen": ["fr"],
+        "formate": ["PDF", "HTML"]
+      },
+      "detailtiefe": {
+        "score": 3,
+        "begruendung": "Aktivitätsbericht mit KPIs zur Ausschussarbeit, thematischen Schwerpunkten (Personalrekrutierung, Wirtschaft des Krieges, Europa der Verteidigung), Auditions-Übersichten. Keine granulare Personalstatistik der Streitkräfte im DE-Stil. Thematische Informationsberichte (rapports d'information) separat publiziert.",
+        "score_konfidenz": "hoch"
+      },
+      "zugaenglichkeit": {
+        "score": 3,
+        "begruendung": "Assemblee-nationale.fr + senat.fr frei zugänglich, aber ausschließlich auf Französisch. Auffindbarkeit mittelmäßig (kein direkter Startseiten-Link zu Jahresbericht). Kein EN-Angebot für parlamentarische Berichte.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Frankreich hat ein zweikammeriges System mit zwei aktiven Verteidigungskommissionen. Zusätzlich legt die Regierung jährlich einen Rapport au Parlement über Rüstungsexporte vor. Kein Ombudsmann-Äquivalent."
+    },
+    {
+      "land": "Polen",
+      "iso": "PL",
+      "genre": "parlamentary_commission",
+      "institution": "Komisja Obrony Narodowej (Nationalverteidigungsausschuss des Sejm)",
+      "seit_jahr": 1989,
+      "aktueller_bericht": {
+        "titel": "Kein eigenständiger publizierter Jahresbericht – Ausschussarbeit via Budgetbegutachtung und Anfragen",
+        "url": "https://www.sejm.gov.pl/sejm10.nsf/komisja.xsp?id=RON",
+        "sprachen": ["pl"],
+        "formate": ["HTML"]
+      },
+      "detailtiefe": {
+        "score": 2,
+        "begruendung": "Budgetüberwachung durch Ausschuss und Subkomitee für Budget/Militärinfrastruktur. Berichte aggregiert-narrativ, primär Budgetzahlen und Empfehlungen. Kein systematischer Jahresbericht mit Mängelkatalog. NIK (Rechnungshof) liefert separate Prüfberichte.",
+        "score_konfidenz": "mittel"
+      },
+      "zugaenglichkeit": {
+        "score": 2,
+        "begruendung": "Sejm-Website frei zugänglich, aber nur Polnisch, Auffindbarkeit einzelner Dokumente gering, keine integrierte Suchfunktion für Verteidigungsberichte. Ausschusssitzungen protokolliert, aber kein zentrales Berichtsportal.",
+        "score_konfidenz": "mittel"
+      },
+      "kommentar": "Polen hat 2024/2025 mit 4,7% des BIP die höchsten NATO-Verteidigungsausgaben – aber parlamentarische Aufsichtstransparenz korreliert nicht mit Ausgabenhöhe. Stark exekutiv-dominiertes System trotz formalem Parlamentsausschuss."
+    },
+    {
+      "land": "Niederlande",
+      "iso": "NL",
+      "genre": "parlamentary_commission",
+      "institution": "Vaste commissie voor Defensie (Tweede Kamer)",
+      "seit_jahr": 1945,
+      "aktueller_bericht": {
+        "titel": "Begrotingsstaten Ministerie van Defensie 2025 (36 600 X) + Commissie-Rapporteur Jahresbericht-Begutachtung",
+        "url": "https://www.tweedekamer.nl/kamerleden_en_commissies/commissies/def",
+        "sprachen": ["nl"],
+        "formate": ["PDF", "HTML"]
+      },
+      "detailtiefe": {
+        "score": 3,
+        "begruendung": "Ausschuss prüft Jahresbericht des Verteidigungsministeriums mit Rapporteur-Funktion (Qualitätsbegutachtung). Kamerstukken enthalten KPIs + thematische Mängelanalysen zu Großprojekten (F-35, U-Boote). Kein eigenständiger parlamentarischer Kontrollbericht nach DE-Muster.",
+        "score_konfidenz": "hoch"
+      },
+      "zugaenglichkeit": {
+        "score": 3,
+        "begruendung": "Tweedekamer.nl mit Suchfunktion für Kamerstukken, frei zugänglich. Ausschließlich Niederländisch. Gut strukturiert, aber Barriere durch Sprache und spezifische Dokumentenstruktur.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Niederlande nutzen das Rapporteur-Modell innerhalb des Ausschusses als Qualitätssicherung. Kein Ombudsmann, aber vergleichsweise systematische Budgetkontrolle."
+    },
+    {
+      "land": "Schweden",
+      "iso": "SE",
+      "genre": "parlamentary_commission",
+      "institution": "Försvarsutskottet – Riksdagen (Verteidigungsausschuss)",
+      "seit_jahr": 1971,
+      "aktueller_bericht": {
+        "titel": "Utskottsbetänkanden (Ausschussgutachten) + Berichte Totaalförsvar 2025-2030",
+        "url": "https://www.riksdagen.se/en/how-the-riksdag-works/committees/committee-on-defence/",
+        "sprachen": ["sv", "en"],
+        "formate": ["PDF", "HTML"]
+      },
+      "detailtiefe": {
+        "score": 3,
+        "begruendung": "Ausschuss behandelt militärische und zivile Verteidigung, Krisenvorsorge. Schwedische Verteidigungskommission (Försvarsberedningen, nicht parlamentarisch) publiziert tiefgreifende Gutachten. Ausschussberichte fokussiert auf Legislativprozesse. KPIs vorhanden, aber kein eigenständiger Mängelkatalog.",
+        "score_konfidenz": "mittel"
+      },
+      "zugaenglichkeit": {
+        "score": 4,
+        "begruendung": "Riksdagen.se bietet englischsprachige Übersicht + schwedische Vollberichte. Gute Suchfunktion, freier Zugang, Direktdownload. Zweisprachig (SE/EN) für Grunddokumente.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Schweden unterscheidet zwischen Riksdag-Ausschuss (parlamentarische Kontrolle) und der Försvarsberedningen (Regierungskommission). Letztere lieferte 2023/2024 sehr tiefgreifende öffentliche Berichte zur Gesamtverteidigung."
+    },
+    {
+      "land": "Finnland",
+      "iso": "FI",
+      "genre": "parlamentary_commission",
+      "institution": "Puolustusvaliokunta – Eduskunta (Verteidigungsausschuss des Parlaments)",
+      "seit_jahr": 1906,
+      "aktueller_bericht": {
+        "titel": "Valiokunnan lausunnot (Ausschussgutachten) + Regierungs-Verteidigungsbericht 2024 an Parlament",
+        "url": "https://www.eduskunta.fi/EN/valiokunnat/puolustusvaliokunta/Pages/default.aspx",
+        "sprachen": ["fi", "sv"],
+        "formate": ["PDF", "HTML"]
+      },
+      "detailtiefe": {
+        "score": 3,
+        "begruendung": "Regierung legt alle paar Jahre einen Verteidigungsbericht (Valtioneuvoston puolustusselonteko) an das Parlament vor – aktuell Dezember 2024, erster nach NATO-Beitritt. Ausschuss gibt Stellungnahmen ab. Systematischer aber nicht granular auf DE-Niveau (kein Personalstatistik-Fokus).",
+        "score_konfidenz": "mittel"
+      },
+      "zugaenglichkeit": {
+        "score": 3,
+        "begruendung": "Eduskunta.fi frei zugänglich. Hauptdokumente auf Finnisch/Schwedisch, einige englische Zusammenfassungen. Grundsätzlich auffindbar, aber Sprachbarriere für Nicht-FI/SE-Sprecher groß.",
+        "score_konfidenz": "mittel"
+      },
+      "kommentar": "Finnlands Verteidigungsberichte sind qualitativ hochwertig und strategisch tiefgreifend, aber kein parlamentarischer Ombudsmann. Der Bericht 2024 war der erste nach NATO-Beitritt und thematisiert die veränderte Sicherheitslage ausführlich."
+    },
+    {
+      "land": "Norwegen",
+      "iso": "NO",
+      "genre": "select_committee",
+      "institution": "Utenriks- og forsvarskomiteen – Stortinget (Außen- und Verteidigungsausschuss)",
+      "seit_jahr": 1814,
+      "aktueller_bericht": {
+        "titel": "Innstilling om eksport av forsvarsmateriell fra Norge i 2024 (Innst. 39 S 2025-2026) + Innst. 40 S (2025-2026)",
+        "url": "https://www.stortinget.no/no/Representanter-og-komiteer/Komiteene/Utenriks--og-forsvarskomiteen/",
+        "sprachen": ["no"],
+        "formate": ["HTML", "PDF"]
+      },
+      "detailtiefe": {
+        "score": 4,
+        "begruendung": "Stortinget publiziert detaillierten Bericht zu Rüstungsexporten (30. Bericht in Folge seit 1997) mit granularen Statistiken. Außerdem Langzeitplan Forsvarssektoren 2025-2036. Thematische Tiefe hoch, aber kein einheitlicher Streitkräfte-Mängelkatalog.",
+        "score_konfidenz": "hoch"
+      },
+      "zugaenglichkeit": {
+        "score": 3,
+        "begruendung": "Stortinget.no frei zugänglich, gut strukturiert, aber primär Norwegisch. Englischsprachiger Bereich vorhanden, jedoch nicht für alle Ausschussberichte. Direktdownload möglich.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Norwegen hat eine lange Tradition der Rüstungsexport-Transparenz (seit 1997 jährlicher Bericht). Der kombinierte Außen-Verteidigungsausschuss ist ein institutionelles Spezifikum. Kein Ombudsmann."
+    },
+    {
+      "land": "Dänemark",
+      "iso": "DK",
+      "genre": "parlamentary_commission",
+      "institution": "Forsvar-, Beredskabs- og Sikkerhedsudvalget – Folketing (ehemals Forsvarsudvalget)",
+      "seit_jahr": 1953,
+      "aktueller_bericht": {
+        "titel": "Ausschussarbeit zu Verteidigungshaushalt 2025-2026 (DKK 50 Mrd. Accelerationsfonds) – kein eigenständiger Jahresbericht",
+        "url": "https://www.thedanishparliament.dk/committees/committees/the-defence-resilience-and-preparedness-committee",
+        "sprachen": ["da", "en"],
+        "formate": ["HTML"]
+      },
+      "detailtiefe": {
+        "score": 2,
+        "begruendung": "Ausschuss behandelt Verteidigungsstrukturen, Souveränitätsdurchsetzung, Rettungsdienste und internationale Missionen. Kein öffentlich zugänglicher Jahresbericht mit systematischem Mängelkatalog gefunden. Budgetbezogene Ausschussberichte vorhanden.",
+        "score_konfidenz": "mittel"
+      },
+      "zugaenglichkeit": {
+        "score": 4,
+        "begruendung": "Thedanishparliament.dk mit englischer Übersicht, gut auffindbar, frei zugänglich. Gute Zweisprachigkeit (DA/EN) auf Ausschuss-Übersichtsebene.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Dänemark hat den Ausschuss 2025 umbenannt und erweitert (jetzt: Verteidigung + Bereitschaft + Sicherheit). Hintergrund: starke Erhöhung der Verteidigungsausgaben auf über 3% des BIP. Kein Ombudsmann."
+    },
+    {
+      "land": "Russland",
+      "iso": "RU",
+      "genre": "none_public",
+      "institution": "Komitet Gosudarstvennoy Dumy po oborone (Verteidigungsausschuss der Staatsduma) – formal existent",
+      "seit_jahr": 1993,
+      "aktueller_bericht": {
+        "titel": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt",
+        "url": "http://duma.gov.ru/en/duma/commissions/",
+        "sprachen": [],
+        "formate": []
+      },
+      "detailtiefe": {
+        "score": 1,
+        "begruendung": "Ordentliche Duma-Mitglieder erhalten nur 1-2 Seiten Verteidigungshaushalt mit 6-17 aggregierten Ausgabenkategorien. Keine öffentlichen granularen Berichte. Formale Parlamentsstrukturen existieren, faktische Kontrollfunktion minimal.",
+        "score_konfidenz": "hoch"
+      },
+      "zugaenglichkeit": {
+        "score": 1,
+        "begruendung": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt. Duma-Website nicht öffentlich transparent über Verteidigungsdetails.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt. Forschung (Columbia CIAO) dokumentiert: Haushaltszugangsmechanismus für Duma-Mitglieder ist nicht funktionsfähig. Verteidigungsausschuss existiert formal (IPU PARLINE registriert), publiziert aber keine öffentlichen Kontrollberichte. Kriegszustand seit 2022 verstärkt Intransparenz."
+    },
+    {
+      "land": "China",
+      "iso": "CN",
+      "genre": "none_public",
+      "institution": "NPC Standing Committee – kein dedizierter parlamentarischer Verteidigungsausschuss im westlichen Sinne",
+      "seit_jahr": 1954,
+      "aktueller_bericht": {
+        "titel": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt",
+        "url": "http://www.npc.gov.cn/",
+        "sprachen": [],
+        "formate": []
+      },
+      "detailtiefe": {
+        "score": 1,
+        "begruendung": "NPC-Arbeitsbericht (Zhao Leji, März 2026) enthält keine granularen Verteidigungsdetails. Militärische Aufsicht erfolgt über Zentrale Militärkommission (CMC), nicht über ziviles Parlament. Kein öffentlicher parlamentarischer Kontrollbericht.",
+        "score_konfidenz": "hoch"
+      },
+      "zugaenglichkeit": {
+        "score": 1,
+        "begruendung": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt. Die militärische Aufsicht in China liegt institutionell bei der CMC unter KPCh-Führung. Der NPC hat sechs permanente Ausschüsse, keiner davon ist ein Verteidigungsausschuss im parlamentarisch-kontrollfähigen Sinne. US DoD publiziert jährlichen China Military Power Report (extern, nicht chinesische Transparenz)."
+    },
+    {
+      "land": "Iran",
+      "iso": "IR",
+      "genre": "none_public",
+      "institution": "Komisyon-e Amniyat-e Melli va Siyasat-e Khareji (Majlis National Security and Foreign Policy Commission)",
+      "seit_jahr": 1979,
+      "aktueller_bericht": {
+        "titel": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt",
+        "url": null,
+        "sprachen": [],
+        "formate": []
+      },
+      "detailtiefe": {
+        "score": 1,
+        "begruendung": "Majlis-Kommission für nationale Sicherheit existiert formal. Militärische Entscheidungen werden unter Kontrolle des Revolutionsführers getroffen, parlamentarische Rolle bei operativen Verteidigungsangelegenheiten explizit eingeschränkt. Keine öffentlichen Kontrollberichte bekannt.",
+        "score_konfidenz": "hoch"
+      },
+      "zugaenglichkeit": {
+        "score": 1,
+        "begruendung": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt.",
+        "score_konfidenz": "hoch"
+      },
+      "kommentar": "Keine öffentlich zugängliche parlamentarische Kontrollveröffentlichung bekannt. Iran hat 2025 einen neuen Defence Council eingerichtet, der laut Parlamentsabgeordneten (Hamid Resaee) das Parlament weiter marginalisiert. Verteidigungsbudget wird nach NCRI-Berichten über geheimgehaltene Kanäle durch das Militär gesteuert. Oberster Nationaler Sicherheitsrat (SNSC) dominiert Verteidigungspolitik ohne parlamentarische Transparenz."
+    }
+  ]
+}
