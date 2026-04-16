@@ -1,0 +1,156 @@
+{
+  "stand": "2026-04-16",
+  "quelle": "der-koerting.de/wp-json/wp/v2/posts",
+  "total_posts": 57,
+  "monate": [
+    {
+      "monat": "2020-04",
+      "count": 2,
+      "words": 2645,
+      "categories": {
+        "Laut gedacht": 2
+      }
+    },
+    {
+      "monat": "2021-04",
+      "count": 1,
+      "words": 1295,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2022-05",
+      "count": 1,
+      "words": 1657,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2023-05",
+      "count": 1,
+      "words": 3131,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2023-08",
+      "count": 1,
+      "words": 311,
+      "categories": {
+        "Technik & KI": 1
+      }
+    },
+    {
+      "monat": "2024-01",
+      "count": 1,
+      "words": 1035,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2024-04",
+      "count": 1,
+      "words": 893,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2024-05",
+      "count": 1,
+      "words": 936,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2024-06",
+      "count": 2,
+      "words": 3393,
+      "categories": {
+        "Laut gedacht": 2
+      }
+    },
+    {
+      "monat": "2024-09",
+      "count": 1,
+      "words": 884,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2024-10",
+      "count": 1,
+      "words": 862,
+      "categories": {
+        "Technik & KI": 1
+      }
+    },
+    {
+      "monat": "2025-03",
+      "count": 1,
+      "words": 598,
+      "categories": {
+        "Technik & KI": 1
+      }
+    },
+    {
+      "monat": "2025-06",
+      "count": 1,
+      "words": 949,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2025-08",
+      "count": 1,
+      "words": 632,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2025-11",
+      "count": 1,
+      "words": 872,
+      "categories": {
+        "Technik & KI": 1
+      }
+    },
+    {
+      "monat": "2026-01",
+      "count": 1,
+      "words": 810,
+      "categories": {
+        "Laut gedacht": 1
+      }
+    },
+    {
+      "monat": "2026-03",
+      "count": 31,
+      "words": 34023,
+      "categories": {
+        "Nachlese": 6,
+        "Laut gedacht": 17,
+        "Technik & KI": 6,
+        "Lab": 2
+      }
+    },
+    {
+      "monat": "2026-04",
+      "count": 8,
+      "words": 8894,
+      "categories": {
+        "Laut gedacht": 4,
+        "Nachlese": 3,
+        "Musikkram": 1
+      }
+    }
+  ]
+}

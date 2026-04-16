@@ -1,0 +1,104 @@
+{
+  "stand": "2026-04-16",
+  "urlaub": "Usedom 10.-16.03.2026",
+  "tage": [
+    {
+      "datum": "2026-03-10",
+      "wochentag": "Mo",
+      "posts": [
+        {
+          "titel": "Ankommen",
+          "zeit": "20:08"
+        }
+      ],
+      "commits_der_koerting": 1,
+      "commits_data_stories": 0,
+      "commits_total": 1
+    },
+    {
+      "datum": "2026-03-11",
+      "wochentag": "Di",
+      "posts": [
+        {
+          "titel": "Nicht fauler. Führungsloser.",
+          "zeit": "18:47"
+        }
+      ],
+      "commits_der_koerting": 1,
+      "commits_data_stories": 0,
+      "commits_total": 1
+    },
+    {
+      "datum": "2026-03-12",
+      "wochentag": "Mi",
+      "posts": [
+        {
+          "titel": "Eine Woche im März",
+          "zeit": "10:00"
+        }
+      ],
+      "commits_der_koerting": 3,
+      "commits_data_stories": 12,
+      "commits_total": 15
+    },
+    {
+      "datum": "2026-03-13",
+      "wochentag": "Do",
+      "posts": [
+        {
+          "titel": "Was Socke hinterlässt",
+          "zeit": "10:36"
+        },
+        {
+          "titel": "Zwei Stühle, ein Podcast",
+          "zeit": "11:00"
+        }
+      ],
+      "commits_der_koerting": 2,
+      "commits_data_stories": 7,
+      "commits_total": 9
+    },
+    {
+      "datum": "2026-03-14",
+      "wochentag": "Fr",
+      "posts": [
+        {
+          "titel": "Der Kreis, der sich schließt",
+          "zeit": "11:00"
+        },
+        {
+          "titel": "Haltung.",
+          "zeit": "12:54"
+        }
+      ],
+      "commits_der_koerting": 2,
+      "commits_data_stories": 5,
+      "commits_total": 7
+    },
+    {
+      "datum": "2026-03-15",
+      "wochentag": "Sa",
+      "posts": [],
+      "commits_der_koerting": 0,
+      "commits_data_stories": 0,
+      "commits_total": 0
+    },
+    {
+      "datum": "2026-03-16",
+      "wochentag": "So",
+      "posts": [
+        {
+          "titel": "Klares Wasser",
+          "zeit": "10:00"
+        },
+        {
+          "titel": "Bonds Personalakte.",
+          "zeit": "22:55"
+        }
+      ],
+      "commits_der_koerting": 7,
+      "commits_data_stories": 2,
+      "commits_total": 9
+    }
+  ]
+}

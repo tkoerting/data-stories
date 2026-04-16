@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Der Kopf kennt keinen Urlaub — Ein Selbstporträt in Zahlen | Der Körting</title>
+<meta name="description" content="31 Posts, 34.023 Wörter, 110 Commits, 17 Datenstücke — 2026 in Zahlen. Ehrliches Selbstporträt eines Tempo-Peaks. Mit Grenzen der Messung.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Der Kopf kennt keinen Urlaub — Datenstück | Open Data Minded">
+<meta property="og:description" content="Vom stillen Bau zur Bühne. Die Kurve, die entsteht, wenn man keinen Unterschied mehr zwischen Arbeit und Urlaub macht.">
+<meta property="og:url" content="https://opendataminded.de/der-kopf-kennt-keinen-urlaub/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/der-kopf-kennt-keinen-urlaub/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Der Kopf kennt keinen Urlaub","description":"Selbstporträt in Zahlen zum Blogpost 'Der Körting kann das ja schnell'.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/der-kopf-kennt-keinen-urlaub/","inLanguage":"de","datePublished":"2026-04-23","dateModified":"2026-04-23"}
+</script>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s} a:hover{border-bottom-color:var(--accent);color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary);border:0} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1rem}
+.header-nav{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);border-bottom:0}
+.header-nav a:hover{color:var(--text-primary)}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+.story-title{font-family:var(--font-headline);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:0.8rem}
+.story-subtitle{font-family:var(--font-headline);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--text-secondary);line-height:1.4;margin-bottom:3rem}
+
+.hero-figure{margin:3rem 0;padding:2.5rem 2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-align:center}
+.hero-number{font-family:var(--font-headline);font-size:clamp(3.5rem,10vw,5.5rem);font-weight:400;color:var(--accent);line-height:1;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.hero-number-label{font-family:var(--font-mono);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:1rem}
+.hero-caption{font-size:0.95rem;color:var(--text-secondary);max-width:480px;margin:0 auto}
+
+.section{margin:4rem 0}
+.section-label{font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.6rem}
+.section-title{font-family:var(--font-headline);font-size:clamp(1.7rem,3.5vw,2.2rem);font-weight:400;line-height:1.2;margin-bottom:1.2rem;letter-spacing:-0.01em}
+.section p{margin:0.7rem 0 1.1rem;color:var(--text-primary)}
+.section p.lead{font-size:1.1rem;color:var(--text-secondary)}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin:1.5rem 0 2rem}
+@media(max-width:820px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+.kpi-tile{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1rem}
+.kpi-value{font-family:var(--font-headline);font-size:1.8rem;font-weight:400;color:var(--accent);line-height:1.1;margin-bottom:0.2rem;letter-spacing:-0.01em}
+.kpi-label{font-size:0.78rem;color:var(--text-secondary);line-height:1.3}
+.kpi-sub{font-size:0.68rem;color:var(--text-tertiary);font-family:var(--font-mono);margin-top:0.3rem;letter-spacing:0.02em}
+
+.chart-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1.2rem;color:var(--text-primary);margin-bottom:0.2rem;font-weight:400}
+.chart-subtitle{font-size:0.8rem;color:var(--text-tertiary);margin-bottom:1rem;font-family:var(--font-mono)}
+.chart-container{width:100%;height:380px}
+@media(max-width:640px){.chart-container{height:320px}}
+.chart-source{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.5rem;font-family:var(--font-mono);letter-spacing:0.02em}
+
+.callout{margin:2rem 0;padding:1.4rem 1.6rem;background:var(--accent-subtle);border-left:3px solid var(--accent);border-radius:0 8px 8px 0}
+.callout p{font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary);margin:0.2rem 0}
+
+.selfref{margin:3rem 0;padding:1.8rem;background:var(--bg-card);border:1px dashed var(--border);border-radius:10px}
+.selfref .label{font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.8rem}
+.selfref p{margin:0.5rem 0 0.8rem;color:var(--text-primary)}
+
+.trilogie-box{margin:2.5rem 0;padding:1.4rem 1.6rem;background:var(--bg-card);border-left:3px solid var(--accent);border-radius:0 8px 8px 0}
+.trilogie-label{font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.8rem}
+
+.warning-box{margin:2rem 0;padding:1.3rem 1.5rem;background:var(--accent-subtle);border-left:3px solid var(--accent);border-radius:0 8px 8px 0}
+.warning-box p{font-family:var(--font-headline);font-style:italic;font-size:1.05rem;line-height:1.55;color:var(--text-primary);margin:0}
+
+.footer{max-width:var(--max-width);margin:4rem auto 0;padding:2rem 1.5rem 3rem;border-top:1px solid var(--border);text-align:center;font-size:0.8rem;color:var(--text-tertiary)}
+.footer a{color:var(--text-secondary)}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-name">Open <span>Data</span> Minded</a>
+    <div class="header-right">
+      <nav>
+        <ul class="header-nav">
+          <li><a href="/">Alle Datenstücke</a></li>
+          <li><a href="https://der-koerting.de/2026/04/16/der-koerting-kann-das-ja-schnell/">Blog</a></li>
+        </ul>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln" aria-label="Theme wechseln">&#9728;&#65039;</button>
+    </div>
+  </div>
+</header>
+
+<article class="story-wrapper">
+
+  <div class="story-meta">
+    <span class="category-tag">Datenstück #17</span>
+    <span class="snapshot-tag">April 2026</span>
+    <span>Lesezeit ~ 10 min</span>
+  </div>
+
+  <h1 class="story-title">Der Kopf kennt keinen Urlaub.</h1>
+  <p class="story-subtitle">Ein Selbstporträt in Zahlen zum Blogpost „<a href="https://der-koerting.de/2026/04/16/der-koerting-kann-das-ja-schnell/" target="_blank" rel="noopener">Der Körting kann das ja schnell.</a>" Ehrlich gemessen. Mit Grenzen der Messung.</p>
+
+  <figure class="hero-figure">
+    <div class="hero-number-label">Commits am Mittwoch · 12. März · Usedom</div>
+    <div class="hero-number">15</div>
+    <figcaption class="hero-caption">
+      Mitten in der Urlaubswoche, in einer Ferienwohnung an der Ostsee, entsteht das Repository, in dem später 17 Datenstücke liegen werden. Der Anfang von allem, was danach kam.
+    </figcaption>
+  </figure>
+
+  <!-- PLACEHOLDER-Struktur: Akte werden nach und nach gefüllt -->
+  <!-- Akt 1: Sechs Jahre Ruhe -->
+  <!-- Akt 2: 27. Februar — Der stille Startschuss -->
+  <!-- Akt 3: Eine Woche auf Usedom -->
+  <!-- Akt 4: März 2026 in Zahlen -->
+  <!-- Akt 5: Der Rhythmus -->
+  <!-- Akt 6: Was hier nicht steht (Selbstreferenz) -->
+
+  <section class="section" id="akt-1">
+    <div class="section-label">Akt 1 — Sechs Jahre Ruhe</div>
+    <h2 class="section-title">Der Blog lief. Aber leise.</h2>
+    <p class="lead">Der Blog der-koerting.de ging im April 2020 online. Der erste Post war vermutlich kein Meisterwerk, aber er war da. Danach: 17 Posts in sechs Jahren. 20.093 Wörter in neunundsechzig Monaten. Das ist nicht viel.</p>
+
+    <p>Ich habe nicht systematisch geschrieben. Wenn ein Gedanke kam, der groß genug war, wurde er ein Post. Wenn nicht, eben nicht. Dazwischen lagen Monate, manchmal Jahre. Das war kein Problem. Ich hatte keine Reichweite zu bedienen, keinen Rhythmus zu halten, keine Erwartung zu erfüllen.</p>
+
+    <p>Bis Januar 2026. Da kam auch ein Post. Einer. Wie die Monate davor. Und dann kippte etwas.</p>
+
+    <div class="chart-box">
+      <div class="chart-title">Die Kippe</div>
+      <div class="chart-subtitle">Posts und Commits pro Monat, 2020–2026</div>
+      <div id="chart-kippe" class="chart-container" style="height:420px"></div>
+      <div class="chart-source">Quelle: der-koerting.de WP API · GitHub Git-Log · Stand 2026-04-16</div>
+    </div>
+  </section>
+
+  <section class="section" id="akt-2">
+    <div class="section-label">Akt 2 — 27. Februar</div>
+    <h2 class="section-title">Der stille Startschuss.</h2>
+    <p class="lead">Drei Commits im Februar 2026. Alle gegen Ende des Monats. Der erste am 27. Februar.</p>
+
+    <p>Was nach außen nach normaler Ruhe aussah, war nach innen der Start einer kompletten Blog-Neukonzeption. Ein neues Design (Slate &amp; Tonic), das Kadence-Theme von Grund auf neu aufgesetzt, self-hosted Fonts für DSGVO-Konformität, Dark Mode via JavaScript, Mobile responsive bis in die kleinste Kachel. Plus das Rebranding auf „Der Körting".</p>
+
+    <p>Diese Arbeit brauchte Wochen. Sie war öffentlich nicht sichtbar — kein neuer Post, kein Tweet, nichts. Aber sie bereitete einen Kanal vor, der danach gefüllt werden konnte. Die stille Zeit vor dem März war nicht Abwesenheit. Sie war Fundament.</p>
+
+    <p>Das macht einen ehrlichen Unterschied zum vereinfachten Bild „KI hat mich plötzlich produktiv gemacht". Ich habe die Beschleunigung selbst vorbereitet. Nicht bewusst als „ich werde jetzt der Schnelle" — sondern als „ich will einen Blog haben, der lesbar ist". Das eine wurde dann unmerklich zum anderen.</p>
+  </section>
+
+  <section class="section" id="akt-3">
+    <div class="section-label">Akt 3 — Eine Woche auf Usedom</div>
+    <h2 class="section-title">Im Urlaub entsteht das Repository.</h2>
+    <p class="lead">Am 10. März 2026 bin ich mit Helga und Socke auf Usedom angekommen. Erstes Mal Ostsee. Ferienwohnung, Strandwanderungen, Hundespaziergänge, Ruhe.</p>
+
+    <p>Am Mittwoch, 12. März, habe ich auf einem Laptop in dieser Ferienwohnung ein neues Repository angelegt — <code>data-stories</code>. Heute liegen dort siebzehn Datenstücke, inklusive dieses hier. Es begann an diesem Mittwoch. Im Urlaub.</p>
+
+    <p>Fünfzehn Commits an diesem einen Tag. Zwölf davon im neuen Repo. Neun Posts in sieben Urlaubstagen, zweiundvierzig Commits gesamt. Der Samstag war der einzige Tag ohne Aktivität.</p>
+
+    <p>Das Wetter auf Usedom war im März okay. Kalt, grau, die Ostsee leer. Wir sind jeden Tag spazieren gegangen. Socke hat das Meer kennengelernt. Ich hatte im Kopf zehn Ideen parallel. Und Zeit. Und Stille.</p>
+
+    <div class="chart-box">
+      <div class="chart-title">Sieben Tage Ostsee</div>
+      <div class="chart-subtitle">10.–16. März 2026, Posts und Commits pro Tag</div>
+      <div id="chart-urlaub" class="chart-container"></div>
+      <div class="chart-source">Quelle: Git-Log + WP-API, eigene Aggregation</div>
+    </div>
+  </section>
+
+  <section class="section" id="akt-4">
+    <div class="section-label">Akt 4 — Das Ausmaß</div>
+    <h2 class="section-title">März 2026 in Zahlen.</h2>
+    <p class="lead">34.000 Wörter. 31 Posts. 110 Commits. 17 Datenstücke. 4 Kategorien. Ein Monat, der kaum vorbei war, bevor der April ähnlich laut begann.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-tile"><div class="kpi-value">31</div><div class="kpi-label">Blogposts im März</div><div class="kpi-sub">Ø zuvor: 1 pro Monat</div></div>
+      <div class="kpi-tile"><div class="kpi-value">34.023</div><div class="kpi-label">Wörter im März</div><div class="kpi-sub">1,69 × alle 6 Jahre davor</div></div>
+      <div class="kpi-tile"><div class="kpi-value">110</div><div class="kpi-label">Git-Commits</div><div class="kpi-sub">in ~7 Wochen</div></div>
+      <div class="kpi-tile"><div class="kpi-value">17</div><div class="kpi-label">Datenstücke</div><div class="kpi-sub">neues Kanal-Format</div></div>
+      <div class="kpi-tile"><div class="kpi-value">4</div><div class="kpi-label">Aktive Kategorien März</div><div class="kpi-sub">2020–2025: nur 2</div></div>
+      <div class="kpi-tile"><div class="kpi-value">42</div><div class="kpi-label">Commits Urlaubswoche</div><div class="kpi-sub">Peak 12.03.: 15</div></div>
+      <div class="kpi-tile"><div class="kpi-value">9</div><div class="kpi-label">Posts in 7 Tagen Ostsee</div><div class="kpi-sub">Ø 1,3/Tag im Urlaub</div></div>
+      <div class="kpi-tile"><div class="kpi-value">110</div><div class="kpi-label">EPO-Edits erfasst</div><div class="kpi-sub">Selbst-Korrektur-System</div></div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-title">Ein Monat vs. sechs Jahre</div>
+      <div class="chart-subtitle">Posts und Wörter — 2020 bis Januar 2026 kumuliert vs. März 2026 allein</div>
+      <div id="chart-vergleich" class="chart-container" style="height:300px"></div>
+      <div class="chart-source">Quelle: der-koerting.de WP API</div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-title">Die Breite wächst mit</div>
+      <div class="chart-subtitle">Aktive Kategorien pro Monat</div>
+      <div id="chart-kategorien" class="chart-container" style="height:340px"></div>
+      <div class="chart-source">Quelle: WP Categories per Post</div>
+    </div>
+  </section>
+
+  <section class="section" id="akt-5">
+    <div class="section-label">Akt 5 — Der Rhythmus</div>
+    <h2 class="section-title">Wann der Kopf arbeitet.</h2>
+    <p class="lead">Die Heatmap zeigt etwas, das ich ohne Daten nicht gewusst hätte: Es gibt einen klaren Rhythmus.</p>
+
+    <p>Morgens zwischen neun und elf passiert das meiste im Blog-Repo. Abends um einundzwanzig Uhr eine zweite Welle. Dazwischen weniger, aber konstant. Nachts fast nichts. Vor sechs Uhr gar nichts. Ich schlafe also. Das ist die eine gute Nachricht.</p>
+
+    <p>Die Blogposts selbst erscheinen zu dreißig Prozent um zehn Uhr. Eine Gewohnheit, ohne dass ich sie bewusst geplant hätte. Zehn Uhr ist der Moment, in dem der Tag angekommen ist, aber noch Luft hat. Bevor etwas Konkretes anfängt, kann ein Post raus.</p>
+
+    <p>Das data-stories-Repo dagegen hat seinen Peak abends. Datenarbeit braucht mehr Stille, weniger Unterbrechung. Das passt zu meiner Tagesstruktur. Morgens Struktur, abends Tiefe.</p>
+
+    <div class="chart-box">
+      <div class="chart-title">Git-Aktivität nach Tag und Uhrzeit</div>
+      <div class="chart-subtitle">Alle Commits beider Repos, 2026</div>
+      <div id="chart-heatmap" class="chart-container" style="height:340px"></div>
+      <div class="chart-source">Quelle: Git-Commit-Zeitstempel</div>
+    </div>
+  </section>
+
+  <section class="section" id="akt-6">
+    <div class="section-label">Akt 6 — Die Grenze der Messung</div>
+    <h2 class="section-title">Was hier nicht steht.</h2>
+
+    <div class="selfref">
+      <div class="label">Selbstreferenz</div>
+      <p><strong>Dieses Datenstück ist Teil der Kurve.</strong> Es wurde Mitte April 2026 gebaut. Die Arbeit daran ist in keinem dieser Charts drin. Die Messung misst sich nicht mit.</p>
+      <p><strong>Was nicht gemessen wurde:</strong> Zeit am Strand mit Socke. Gespräche mit Helga. Entscheidungen unter der Dusche. Offline-Denken. 40°C-Fieber-Phasen. Also genau die Dinge, die den Kopf wirklich zur Ruhe bringen. Davon gibt es hier kein Datum.</p>
+      <p><strong>Warum trotzdem zeigen:</strong> Weil ich gerade an einem System arbeite, das solche Muster bei mir sichtbar machen soll — LIMBIC. Und weil jede Selbstmessung nur funktioniert, wenn man auch das Nicht-Messbare benennt. Transparenz beginnt mit dem, was man nicht sieht.</p>
+    </div>
+
+    <div class="warning-box">
+      <p>Bei Fragen und Nebenwirkungen frag nicht Deine KI. Frag Dich selbst. Frag Deine Lieben. Und achte auf die Signale. Offline und in Stille. Denn da hört man sich am lautesten.</p>
+    </div>
+
+    <div class="trilogie-box">
+      <div class="trilogie-label">Kontext</div>
+      <p>Dieses Datenstück gehört zum Blogpost „<a href="https://der-koerting.de/2026/04/16/der-koerting-kann-das-ja-schnell/" target="_blank" rel="noopener">Der Körting kann das ja schnell.</a>" Der Blogpost ist der Einstieg aus dem Bauch. Dieses Datenstück ist die empirische Antwort. Beides zusammen hoffentlich kein Urteil, sondern eine Einladung zum Nachdenken — bei Dir und bei mir.</p>
+    </div>
+  </section>
+
+</article>
+
+<footer class="footer">
+  <p>© 2026 Thomas Körting · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/kontakt/">Kontakt</a></p>
+  <p style="margin-top:0.6rem;font-size:0.75rem">Rohdaten öffentlich: <a href="https://github.com/tkoerting/data-stories/tree/main/der-kopf-kennt-keinen-urlaub/daten">github.com/tkoerting/data-stories</a></p>
+</footer>
+
+<script>
+// Theme Toggle
+(function(){
+  var saved = localStorage.getItem('tk-theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    document.documentElement.setAttribute('data-theme','dark');
+})();
+function toggleTheme(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  var nxt = cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',nxt);
+  localStorage.setItem('tk-theme',nxt);
+  if(window.tkCharts) window.tkCharts.redraw();
+}
+
+// ============ Charts ============
+window.tkCharts = (function(){
+  var charts = {};
+  function theme(){ return document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light'; }
+  function c(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+  function common(){
+    return {
+      textStyle:{ fontFamily:'Space Grotesk,sans-serif', color:c('--text-primary') },
+      backgroundColor:'transparent',
+      tooltip:{
+        backgroundColor: theme()==='dark'?'#1E2028':'#FFFFFF',
+        borderColor: c('--border'),
+        textStyle:{ color:c('--text-primary'), fontFamily:'Space Grotesk,sans-serif', fontSize:12 }
+      }
+    };
+  }
+  function buildMonths(){
+    var months=[];
+    for(var y=2020;y<=2026;y++){
+      var sm=y===2020?4:1, em=y===2026?4:12;
+      for(var m=sm;m<=em;m++) months.push(y+'-'+(m<10?'0':'')+m);
+    }
+    return months;
+  }
+
+  // --- Chart 1: Die Kippe ---
+  function buildKippe(){
+    var el=document.getElementById('chart-kippe'); if(!el) return;
+    var ch=echarts.init(el); charts.kippe=ch;
+    var months=buildMonths();
+    var postCounts={'2020-04':2,'2021-04':1,'2022-05':1,'2023-05':1,'2023-08':1,'2024-01':1,'2024-04':1,'2024-05':1,'2024-06':2,'2024-09':1,'2024-10':1,'2025-03':1,'2025-06':1,'2025-08':1,'2025-11':1,'2026-01':1,'2026-03':31,'2026-04':8};
+    var commitsDK={'2026-02':3,'2026-03':54,'2026-04':11};
+    var commitsDS={'2026-03':34,'2026-04':8};
+    var posts=months.map(function(m){return postCounts[m]||0;});
+    var commits=months.map(function(m){return (commitsDK[m]||0)+(commitsDS[m]||0);});
+    var xLabels=months.map(function(m,i){ return (i%6===0||m==='2026-03'||m==='2026-04')?m:''; });
+    ch.setOption(Object.assign(common(),{
+      legend:{data:['Blogposts','Git-Commits'],top:5,textStyle:{color:c('--text-secondary'),fontSize:11},icon:'roundRect'},
+      grid:{left:50,right:60,top:45,bottom:50},
+      xAxis:{type:'category',data:months,axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:9,interval:0,formatter:function(v,i){return xLabels[i];}},axisLine:{lineStyle:{color:c('--border')}}},
+      yAxis:[
+        {type:'value',name:'Posts',position:'left',nameTextStyle:{color:c('--text-secondary'),fontSize:10},axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:10},splitLine:{lineStyle:{color:c('--border'),type:'dotted'}}},
+        {type:'value',name:'Commits',position:'right',nameTextStyle:{color:c('--accent-2'),fontSize:10},axisLabel:{color:c('--accent-2'),fontFamily:'JetBrains Mono,monospace',fontSize:10},splitLine:{show:false}}
+      ],
+      tooltip:{trigger:'axis'},
+      series:[
+        {name:'Blogposts',type:'bar',data:posts,yAxisIndex:0,itemStyle:{color:c('--accent'),borderRadius:[3,3,0,0]},barWidth:'60%',
+         markLine:{symbol:'none',silent:true,lineStyle:{color:c('--warning'),type:'dashed',width:1.3},
+           label:{color:c('--warning'),fontSize:10,fontFamily:'JetBrains Mono,monospace',rotate:90,backgroundColor:c('--bg-card'),padding:[0,4,0,4]},
+           data:[
+             {xAxis:'2026-02',label:{formatter:'27.02. · Bau-Start',position:'insideStartTop'}},
+             {xAxis:'2026-03',label:{formatter:'12.03. · Usedom',position:'insideEndTop'}}
+           ]}},
+        {name:'Git-Commits',type:'line',data:commits,yAxisIndex:1,smooth:false,lineStyle:{color:c('--accent-2'),width:2},itemStyle:{color:c('--accent-2')},symbolSize:5}
+      ]
+    }));
+  }
+
+  // --- Chart 2: Sieben Tage Ostsee ---
+  function buildUrlaub(){
+    var el=document.getElementById('chart-urlaub'); if(!el) return;
+    var ch=echarts.init(el); charts.urlaub=ch;
+    var days=['Mo 10.','Di 11.','Mi 12.','Do 13.','Fr 14.','Sa 15.','So 16.'];
+    var posts=[1,1,1,2,2,0,2];
+    var commitsDK=[1,1,3,2,2,0,7];
+    var commitsDS=[0,0,12,7,5,0,2];
+    ch.setOption(Object.assign(common(),{
+      legend:{data:['Blogposts','Commits der-koerting','Commits data-stories'],top:5,textStyle:{color:c('--text-secondary'),fontSize:11},icon:'roundRect'},
+      grid:{left:50,right:30,top:45,bottom:50},
+      xAxis:{type:'category',data:days,axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:11},axisLine:{lineStyle:{color:c('--border')}}},
+      yAxis:{type:'value',axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:10},splitLine:{lineStyle:{color:c('--border'),type:'dotted'}}},
+      tooltip:{trigger:'axis'},
+      series:[
+        {name:'Blogposts',type:'bar',stack:'total',data:posts,itemStyle:{color:c('--accent')},barWidth:'50%'},
+        {name:'Commits der-koerting',type:'bar',stack:'total',data:commitsDK,itemStyle:{color:c('--purple')}},
+        {name:'Commits data-stories',type:'bar',stack:'total',data:commitsDS,itemStyle:{color:c('--accent-2')}}
+      ]
+    }));
+  }
+
+  // --- Chart 3: Heatmap ---
+  function buildHeatmap(){
+    var el=document.getElementById('chart-heatmap'); if(!el) return;
+    var ch=echarts.init(el); charts.heatmap=ch;
+    fetch('daten/tageszeit-heatmap.json').then(function(r){return r.json();}).then(function(d){
+      var max=0; d.grid.forEach(function(p){if(p[2]>max)max=p[2];});
+      ch.setOption(Object.assign(common(),{
+        grid:{left:40,right:20,top:20,bottom:80},
+        xAxis:{type:'category',data:Array.from({length:24},function(_,i){return (i<10?'0':'')+i;}),axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:9,interval:1},splitArea:{show:false},axisLine:{show:false},axisTick:{show:false}},
+        yAxis:{type:'category',data:['Mo','Di','Mi','Do','Fr','Sa','So'],axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:10},splitArea:{show:false},axisLine:{show:false},axisTick:{show:false}},
+        visualMap:{min:0,max:max,calculable:true,orient:'horizontal',left:'center',bottom:10,inRange:{color:[c('--bg-card'),c('--accent')]},textStyle:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:9}},
+        tooltip:{formatter:function(p){var t=p.data;return t[3]+' '+t[0]+':00<br>'+t[2]+' Commits';}},
+        series:[{type:'heatmap',data:d.grid.map(function(p){return [p[0],p[1],p[2],p[3]];}),label:{show:false},itemStyle:{borderRadius:2,borderWidth:1,borderColor:c('--bg')}}]
+      }));
+    });
+  }
+
+  // --- Chart 4: Vergleich ---
+  function buildVergleich(){
+    var el=document.getElementById('chart-vergleich'); if(!el) return;
+    var ch=echarts.init(el); charts.vergleich=ch;
+    ch.setOption(Object.assign(common(),{
+      legend:{data:['6 Jahre + Jan 2026 gesamt','März 2026 allein'],top:5,textStyle:{color:c('--text-secondary'),fontSize:11},icon:'roundRect'},
+      grid:{left:110,right:70,top:45,bottom:20},
+      xAxis:{type:'value',axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:10,formatter:function(v){return v>=1000?(v/1000)+'k':v;}},splitLine:{lineStyle:{color:c('--border'),type:'dotted'}}},
+      yAxis:{type:'category',data:['Wörter','Blogposts'],axisLabel:{color:c('--text-primary'),fontSize:13,fontFamily:'Space Grotesk,sans-serif'},axisTick:{show:false},axisLine:{show:false}},
+      tooltip:{trigger:'axis'},
+      series:[
+        {name:'6 Jahre + Jan 2026 gesamt',type:'bar',data:[20093,17],itemStyle:{color:c('--text-tertiary'),borderRadius:[0,4,4,0]},barWidth:22,label:{show:true,position:'right',color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:10,formatter:function(p){return p.value.toLocaleString('de-DE');}}},
+        {name:'März 2026 allein',type:'bar',data:[34023,31],itemStyle:{color:c('--accent'),borderRadius:[0,4,4,0]},barWidth:22,label:{show:true,position:'right',color:c('--accent'),fontFamily:'JetBrains Mono,monospace',fontSize:10,fontWeight:500,formatter:function(p){return p.value.toLocaleString('de-DE');}}}
+      ]
+    }));
+  }
+
+  // --- Chart 5: Kategorien ---
+  function buildKategorien(){
+    var el=document.getElementById('chart-kategorien'); if(!el) return;
+    var ch=echarts.init(el); charts.kategorien=ch;
+    var months=buildMonths();
+    var catsRaw={'2020-04':{'Laut gedacht':2},'2021-04':{'Laut gedacht':1},'2022-05':{'Laut gedacht':1},'2023-05':{'Laut gedacht':1},'2023-08':{'Technik & KI':1},'2024-01':{'Laut gedacht':1},'2024-04':{'Laut gedacht':1},'2024-05':{'Laut gedacht':1},'2024-06':{'Laut gedacht':2},'2024-09':{'Laut gedacht':1},'2024-10':{'Technik & KI':1},'2025-03':{'Technik & KI':1},'2025-06':{'Laut gedacht':1},'2025-08':{'Laut gedacht':1},'2025-11':{'Technik & KI':1},'2026-01':{'Laut gedacht':1},'2026-03':{'Laut gedacht':17,'Technik & KI':6,'Nachlese':6,'Lab':2},'2026-04':{'Laut gedacht':4,'Nachlese':3,'Musikkram':1}};
+    var cats=['Laut gedacht','Technik & KI','Nachlese','Lab','Musikkram'];
+    var colors={'Laut gedacht':c('--accent'),'Technik & KI':c('--purple'),'Nachlese':c('--accent-2'),'Lab':c('--warning'),'Musikkram':c('--danger')};
+    var xLabels=months.map(function(m,i){ return (i%6===0||m==='2026-03'||m==='2026-04')?m:''; });
+    ch.setOption(Object.assign(common(),{
+      legend:{data:cats,top:5,textStyle:{color:c('--text-secondary'),fontSize:11},icon:'roundRect'},
+      grid:{left:40,right:20,top:45,bottom:30},
+      xAxis:{type:'category',data:months,axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:9,interval:0,formatter:function(v,i){return xLabels[i];}},axisLine:{lineStyle:{color:c('--border')}}},
+      yAxis:{type:'value',axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:10},splitLine:{lineStyle:{color:c('--border'),type:'dotted'}}},
+      tooltip:{trigger:'axis'},
+      series:cats.map(function(cat){ return {name:cat,type:'bar',stack:'total',data:months.map(function(m){return (catsRaw[m]||{})[cat]||0;}),itemStyle:{color:colors[cat]}}; })
+    }));
+  }
+
+  function buildAll(){ buildKippe(); buildUrlaub(); buildHeatmap(); buildVergleich(); buildKategorien(); }
+  function redraw(){ Object.keys(charts).forEach(function(k){ if(charts[k]) charts[k].dispose(); }); charts={}; buildAll(); }
+  window.addEventListener('resize', function(){ Object.values(charts).forEach(function(ch){ ch&&ch.resize(); }); });
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', buildAll);
+  else buildAll();
+  return { redraw:redraw, charts:charts };
+})();
+</script>
+
+<!-- Consent Banner -->
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+  <div style="max-width:860px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+    <p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">
+      Diese Seite nutzt Google Analytics nur mit deiner Zustimmung. Details: <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a>.
+    </p>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+      <button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){ if(!localStorage.getItem('tk-consent')) document.getElementById('tk-consent-banner').style.display='block'; })();
+function tkConsentYes(){ localStorage.setItem('tk-consent','yes'); document.getElementById('tk-consent-banner').style.display='none'; if(typeof tkLoadGA==='function') tkLoadGA(); }
+function tkConsentNo(){ localStorage.setItem('tk-consent','no'); document.getElementById('tk-consent-banner').style.display='none'; }
+</script>
+
+</body>
+</html>

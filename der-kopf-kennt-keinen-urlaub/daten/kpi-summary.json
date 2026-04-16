@@ -1,0 +1,21 @@
+{
+  "stand": "2026-04-16",
+  "maerz_2026_posts": 31,
+  "maerz_2026_woerter": 34023,
+  "maerz_2026_kategorien": 4,
+  "vor_2026_posts_gesamt": 17,
+  "vor_2026_woerter_gesamt": 20093,
+  "faktor_maerz_vs_vor2026_posts": 1.8,
+  "faktor_maerz_vs_vor2026_woerter": 1.69,
+  "urlaubswoche_posts": 9,
+  "urlaubswoche_commits": 42,
+  "urlaub_peak_tag": "2026-03-12",
+  "urlaub_peak_wochentag": "Mi",
+  "urlaub_peak_commits": 15,
+  "der_koerting_erster_commit": "2026-02-27",
+  "data_stories_erster_commit": "2026-03-12",
+  "der_koerting_total_commits": 68,
+  "data_stories_total_commits": 42,
+  "total_commits_beide_repos": 110,
+  "total_posts": 57
+}
