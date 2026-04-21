@@ -378,7 +378,7 @@ window.tkCharts = (function(){
         grid:{left:40,right:20,top:20,bottom:80},
         xAxis:{type:'category',data:Array.from({length:24},function(_,i){return (i<10?'0':'')+i;}),axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:9,interval:1},splitArea:{show:false},axisLine:{show:false},axisTick:{show:false}},
         yAxis:{type:'category',data:['Mo','Di','Mi','Do','Fr','Sa','So'],axisLabel:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:10},splitArea:{show:false},axisLine:{show:false},axisTick:{show:false}},
-        visualMap:{min:0,max:max,calculable:true,orient:'horizontal',left:'center',bottom:10,inRange:{color:[c('--bg-card'),c('--accent')]},textStyle:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:9}},
+        visualMap:{min:0,max:max,dimension:2,calculable:true,orient:'horizontal',left:'center',bottom:10,inRange:{color:[c('--bg-card'),c('--accent')]},textStyle:{color:c('--text-secondary'),fontFamily:'JetBrains Mono,monospace',fontSize:9}},
         tooltip:{formatter:function(p){var t=p.data;return t[3]+' '+t[0]+':00<br>'+t[2]+' Commits';}},
         series:[{type:'heatmap',data:d.grid.map(function(p){return [p[0],p[1],p[2],p[3]];}),label:{show:false},itemStyle:{borderRadius:2,borderWidth:1,borderColor:c('--bg')}}]
       }));
