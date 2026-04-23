@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://opendataminded.de/sitemap.xml
