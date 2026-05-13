@@ -69,6 +69,12 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
   nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;
     display:flex;justify-content:space-between;align-items:center;
     background:rgba(17,19,24,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-links{display:flex;align-items:center;gap:1rem}
+  .nav-links a{font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .3s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a.active{color:var(--accent)}
+  @media(max-width:768px){.nav-links{display:none}}
   .nav-brand{font-family:var(--serif);font-size:1.1rem;color:var(--text-2);text-decoration:none}
   .nav-brand em{color:var(--accent)}
   .nav-right{display:flex;align-items:center;gap:1rem}
@@ -253,6 +259,15 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
 
 <nav>
   <a href="https://der-koerting.de" class="nav-brand">Der <em>Körting</em></a>
+  <div class="nav-links">
+    <a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+    <a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+    <a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+    <a href="https://der-koerting.de/category/lab/">Lab</a>
+    <a href="https://opendataminded.de/" class="active">Datenstücke</a>
+    <a href="https://der-koerting.de/category/musikkram/">Musikkram</a>
+    <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+  </div>
   <div class="nav-right">
     <span class="nav-label">Datenstück #18</span>
     <button class="sound-btn" id="soundBtn" aria-label="Sound an/aus" title="Am besten mit Kopfhörern">
