@@ -58,13 +58,6 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
     --text:#E8EAED;--text-2:#9CA3AF;--text-3:#6B7280;
     --border:rgba(255,255,255,.06);--tag-bg:#23272F
   }
-  [data-theme="light"]{
-    --bg:#F4F6F7;--surface:#FFFFFF;--surface-2:#F0F2F4;
-    --accent:#0D9488;--accent-dim:rgba(13,148,136,.08);--accent-glow:rgba(13,148,136,.04);
-    --citrus:#EAB308;--citrus-dim:rgba(234,179,8,.08);
-    --text:#1E293B;--text-2:#64748B;--text-3:#94A3B8;
-    --border:#E2E5E9;--tag-bg:#F0F2F4
-  }
   html{font-size:16px}
   body{font-family:var(--sans);background:var(--bg);color:var(--text);
     line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -77,8 +70,7 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
 
   .site-header{position:fixed;top:0;left:0;right:0;z-index:100;
     background:rgba(17,19,24,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-  [data-theme="light"] .site-header{background:rgba(244,246,247,.85)}
-  .header-inner{max-width:var(--ww);margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .header-inner{max-width:860px;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
   .site-name{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--text);text-decoration:none;border:0}
   .site-name span{color:var(--accent)}
   .header-right{display:flex;align-items:center;gap:.75rem}
@@ -87,65 +79,7 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
     text-transform:uppercase;color:var(--text-2);text-decoration:none;border-bottom:0;transition:color .3s}
   .header-nav a:hover{color:var(--text)}
   .header-nav a.active{color:var(--accent)}
-  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;
-    cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
   @media(max-width:768px){.header-nav{display:none}}
-
-  /* Light-Mode: Fullscreen-Sektionen bleiben dunkel */
-  [data-theme="light"] .bg-section{color:#E8EAED}
-  [data-theme="light"] .bg-section .sh-label{color:#14B8A6}
-  [data-theme="light"] .bg-section .sh-title{color:#E8EAED}
-  [data-theme="light"] .bg-section .sh-title em{color:#14B8A6}
-  [data-theme="light"] .bg-section p{color:#9CA3AF}
-  [data-theme="light"] .bg-section strong{color:#E8EAED}
-  [data-theme="light"] .bg-section .muni-num{color:#14B8A6}
-  [data-theme="light"] .bg-section .muni-unit{color:#6B7280}
-  [data-theme="light"] .bg-section .muni-desc{color:#9CA3AF}
-  [data-theme="light"] .bg-section .timmy-question{color:#E8EAED}
-  [data-theme="light"]{--bg:#111318}
-  [data-theme="light"] .content,
-  [data-theme="light"] .kpi-grid,
-  [data-theme="light"] .big-stat,
-  [data-theme="light"] .callout-box,
-  [data-theme="light"] .frag-grid,
-  [data-theme="light"] .phos-chart,
-  [data-theme="light"] .dz-map-wrap,
-  [data-theme="light"] .sources,
-  [data-theme="light"] .transparency{
-    background:#F4F6F7;border-radius:8px;padding-top:2rem;padding-bottom:2rem}
-  [data-theme="light"] .content p{color:#1E293B}
-  [data-theme="light"] .content p strong{color:#0F172A}
-  [data-theme="light"] .sh-title{color:#1E293B}
-  [data-theme="light"] .sh-title em{color:var(--accent)}
-  [data-theme="light"] .kpi{background:#FFFFFF}
-  [data-theme="light"] .kpi-l{color:#64748B}
-  [data-theme="light"] .kpi-s{color:#94A3B8}
-  [data-theme="light"] .big-stat{border-color:#E2E5E9}
-  [data-theme="light"] .big-stat-ctx h3{color:#1E293B}
-  [data-theme="light"] .big-stat-ctx p{color:#64748B}
-  [data-theme="light"] .frag-card{background:#FFFFFF;border-color:#E2E5E9}
-  [data-theme="light"] .frag-region{color:#1E293B}
-  [data-theme="light"] .frag-desc{color:#64748B}
-  [data-theme="light"] .frag-gap{border-color:#E2E5E9;color:#94A3B8}
-  [data-theme="light"] .callout-box{background:rgba(13,148,136,.04);border-left-color:var(--accent)}
-  [data-theme="light"] .callout-box p{color:#1E293B}
-  [data-theme="light"] .callout-box.citrus{background:rgba(234,179,8,.06);border-left-color:var(--citrus)}
-  [data-theme="light"] .dz-info-size{color:#64748B}
-  [data-theme="light"] .dz-map-svg .coast{stroke:#94A3B8}
-  [data-theme="light"] .dz-map-svg .sea{fill:rgba(13,148,136,.06)}
-  [data-theme="light"] .dz-map-svg .country-label{fill:#94A3B8}
-  [data-theme="light"] .sources{border-top-color:#E2E5E9}
-  [data-theme="light"] .sources h3{color:#1E293B}
-  [data-theme="light"] .sources li{color:#64748B;border-left-color:#E2E5E9}
-  [data-theme="light"] .transparency{color:#94A3B8}
-  [data-theme="light"] .phos-bar{background:rgba(13,148,136,.15)}
-  [data-theme="light"] .phos-bar.over{background:rgba(234,179,8,.15)}
-  [data-theme="light"] body::after{opacity:.01}
-  [data-theme="light"] .consent{background:var(--surface);border-color:var(--border);color:var(--text-2)}
-  [data-theme="light"] .sound-btn{background:var(--tag-bg);border-color:var(--border);color:var(--text-3)}
-  [data-theme="light"] .act-dot{background:var(--border)}
-  [data-theme="light"] .act-progress-line{background:var(--border)}
-  [data-theme="light"] .deadzone{filter:drop-shadow(0 0 6px rgba(13,148,136,.3))}
   .sound-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-3);
     width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;
     justify-content:center;font-size:.85rem;transition:all .3s ease;position:relative}
@@ -337,15 +271,14 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
         <a href="https://der-koerting.de/category/musikkram/">Musikkram</a>
         <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
       </nav>
-      <button class="sound-btn" id="soundBtn" aria-label="Sound an/aus" title="Am besten mit Kopfhörern">
-        <span id="soundIcon">&#9835;</span>
-        <div class="pulse"></div>
-      </button>
-      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln" aria-label="Theme wechseln">&#9728;&#65039;</button>
     </div>
   </div>
 </header>
 
+<button class="sound-btn" id="soundBtn" aria-label="Sound an/aus" title="Am besten mit Kopfhörern" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:95">
+  <span id="soundIcon">&#9835;</span>
+  <div class="pulse"></div>
+</button>
 <div class="sound-hint" id="soundHint">&#9835; Sound verfügbar</div>
 
 <div class="act-progress" id="actProgress">
@@ -725,20 +658,6 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
   <button class="deny" onclick="localStorage.setItem('tk-consent','no');document.getElementById('consent').style.display='none'">Nein</button>
 </div>
 
-<script>
-(function(){
-  var saved=localStorage.getItem('tk-theme');
-  if(saved) document.documentElement.setAttribute('data-theme',saved);
-  else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)
-    document.documentElement.setAttribute('data-theme','light');
-})();
-function toggleTheme(){
-  var cur=document.documentElement.getAttribute('data-theme');
-  var nxt=cur==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme',nxt);
-  localStorage.setItem('tk-theme',nxt);
-}
-</script>
 
 <!-- ====== GSAP + Sound ====== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
