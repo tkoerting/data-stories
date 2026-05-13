@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Das Meer unter dem Meer — Datenstück #18 | Der Körting</title>
+<meta name="description" content="60.000 km² Todeszonen, 65.000 Tonnen Kampfstoffe, ein Wal der hier nicht hingehört — die Ostsee in Zahlen. Scroll-Storytelling mit echten Daten.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Das Meer unter dem Meer — Datenstück #18 | Open Data Minded">
+<meta property="og:description" content="60.000 km² Todeszonen, 65.000 Tonnen Kampfstoffe, ein Wal der hier nicht hingehört — die Ostsee in Zahlen.">
+<meta property="og:url" content="https://opendataminded.de/das-meer-unter-dem-meer/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Das Meer unter dem Meer — Datenstück #18 | Open Data Minded">
+<meta name="twitter:description" content="60.000 km² Todeszonen, 65.000 Tonnen Kampfstoffe, ein Wal der hier nicht hingehört — die Ostsee in Zahlen.">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/das-meer-unter-dem-meer/">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Article",
+  "headline":"Das Meer unter dem Meer",
+  "description":"60.000 km² Todeszonen, 65.000 Tonnen Kampfstoffe, ein Wal der hier nicht hingehört — die Ostsee in Zahlen.",
+  "author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},
+  "publisher":{"@type":"Person","name":"Thomas Körting"},
+  "url":"https://opendataminded.de/das-meer-unter-dem-meer/",
+  "inLanguage":"de","datePublished":"2026-05-13","dateModified":"2026-05-13",
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://opendataminded.de/das-meer-unter-dem-meer/"}
+}
+</script>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#111318;--surface:#17191F;--surface-2:#1D2027;
+    --accent:#14B8A6;--accent-dim:rgba(20,184,166,.15);--accent-glow:rgba(20,184,166,.06);
+    --citrus:#FACC15;--citrus-dim:rgba(250,204,21,.12);
+    --text:#E8EAED;--text-2:#9CA3AF;--text-3:#6B7280;
+    --border:rgba(255,255,255,.06);
+    --serif:'Instrument Serif',Georgia,serif;
+    --sans:'Space Grotesk',system-ui,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+    --cw:680px;--ww:960px
+  }
+  html{font-size:16px}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);
+    line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+  body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.02;
+    background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:256px}
+
+  .progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:1000;width:0%}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(17,19,24,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-brand{font-family:var(--serif);font-size:1.1rem;color:var(--text-2);text-decoration:none}
+  .nav-brand em{color:var(--accent)}
+  .nav-right{display:flex;align-items:center;gap:1rem}
+  .nav-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3)}
+  .sound-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-3);
+    width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;
+    justify-content:center;font-size:.85rem;transition:all .3s ease;position:relative}
+  .sound-btn:hover,.sound-btn.active{border-color:var(--accent);color:var(--accent)}
+  .sound-btn .pulse{position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--accent);
+    opacity:0;animation:none}
+  .sound-btn.active .pulse{animation:soundPulse 2s ease-out infinite}
+  @keyframes soundPulse{0%{opacity:.6;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+
+  /* -- Fullscreen BG -- */
+  .bg-section{position:relative;min-height:85vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .bg-img{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;will-change:transform}
+  .bg-overlay{position:absolute;inset:0;z-index:1}
+  .bg-section .cz{position:relative;z-index:2;width:100%}
+
+  /* -- Content -- */
+  .content{max-width:var(--cw);margin:0 auto;padding:0 2rem}
+  .content p{font-size:1.05rem;line-height:1.85;color:var(--text-2);margin-bottom:1.75rem;font-weight:300}
+  .content p strong{color:var(--text);font-weight:500}
+  .spacer{height:8vh}.spacer-sm{height:4vh}.spacer-lg{height:12vh}
+
+  /* -- Section Header -- */
+  .sh{max-width:var(--cw);margin:0 auto;padding:0 2rem 3rem}
+  .sh-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+  .sh-title{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;line-height:1.2;color:var(--text)}
+  .sh-title em{font-style:italic;color:var(--accent)}
+
+  /* -- Hero -- */
+  .hero-inner{max-width:var(--cw);text-align:left;padding:0 2rem}
+  .hero-meta{font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;opacity:0}
+  .hero-inner h1{font-family:var(--serif);font-size:clamp(2.5rem,7vw,5rem);font-weight:400;line-height:1.08;color:var(--text);margin-bottom:2rem;opacity:0}
+  .hero-inner h1 em{font-style:italic;color:var(--accent)}
+  .hero-sub{font-size:1.2rem;font-weight:300;color:var(--text-2);max-width:520px;line-height:1.7;opacity:0}
+  .hero-line{width:40px;height:1px;background:var(--accent);margin-top:3rem;opacity:0}
+  .scroll-cue{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;z-index:2}
+  .scroll-cue span{font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+  .scroll-cue-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);animation:sp 2s ease-in-out infinite}
+  @keyframes sp{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* -- Big Stat -- */
+  .big-stat{max-width:var(--ww);margin:0 auto;padding:5rem 2rem;display:flex;align-items:baseline;gap:2.5rem;
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .big-stat-num{font-family:var(--serif);font-size:clamp(4rem,12vw,9rem);font-weight:400;color:var(--accent);line-height:1;flex-shrink:0}
+  .big-stat-ctx{max-width:360px}
+  .big-stat-ctx h3{font-size:1rem;font-weight:500;color:var(--text);margin-bottom:.5rem}
+  .big-stat-ctx p{font-size:.95rem;color:var(--text-2);font-weight:300;line-height:1.6}
+
+  /* -- KPI Grid -- */
+  .kpi-grid{max-width:var(--ww);margin:0 auto;padding:0 2rem;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .kpi{background:var(--surface);padding:2rem;opacity:0;transform:translateY(20px)}
+  .kpi-v{font-family:var(--serif);font-size:2.2rem;font-weight:400;color:var(--accent);line-height:1.2;margin-bottom:.5rem}
+  .kpi-l{font-size:.85rem;color:var(--text-2);margin-bottom:.25rem}
+  .kpi-s{font-size:.75rem;color:var(--text-3);font-weight:300}
+
+  /* -- Callout -- */
+  .callout{max-width:var(--cw);margin:0 auto;padding:0 2rem}
+  .callout-box{border-left:2px solid var(--accent);padding:1.5rem 2rem;background:var(--accent-glow);border-radius:0 6px 6px 0}
+  .callout-box p{font-size:.95rem;color:var(--text-2);line-height:1.7;font-weight:300;margin:0}
+  .callout-box strong{color:var(--text);font-weight:500}
+  .callout-box.citrus{border-left-color:var(--citrus);background:var(--citrus-dim)}
+
+  /* -- Dead Zone Map -- */
+  .dz-map-wrap{max-width:var(--ww);margin:0 auto;padding:0 2rem;min-height:500px;position:relative;
+    display:flex;align-items:center;justify-content:center;flex-direction:column}
+  .dz-map-svg{width:min(700px,90vw);height:auto}
+  .dz-map-svg .coast{fill:none;stroke:var(--text-3);stroke-width:.8;opacity:.5}
+  .dz-map-svg .sea{fill:rgba(20,184,166,.06);stroke:none}
+  .dz-map-svg .deadzone{fill:var(--accent);opacity:0;transition:opacity .5s ease;filter:drop-shadow(0 0 8px rgba(20,184,166,.4))}
+  .dz-map-svg .dz-label{font-family:var(--mono);font-size:6px;fill:var(--text-3);letter-spacing:.5px}
+  .dz-map-svg .country-label{font-family:var(--sans);font-size:5px;fill:var(--text-3);opacity:.4}
+  .dz-info-top{text-align:center;margin-bottom:1.5rem}
+  .dz-info-year{font-family:var(--serif);font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);font-weight:400;line-height:1}
+  .dz-info-size{font-family:var(--mono);font-size:.8rem;color:var(--text-2);margin-top:.5rem}
+
+  /* -- Munition -- */
+  .muni-stack{max-width:var(--cw);margin:0 auto;padding:0 2rem;display:flex;flex-direction:column;gap:4rem}
+  .muni-item{opacity:0;transform:translateY(40px)}
+  .muni-num{font-family:var(--serif);font-size:clamp(3rem,8vw,6rem);font-weight:400;color:var(--accent);line-height:1}
+  .muni-unit{font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3);margin-top:.5rem}
+  .muni-desc{font-size:1rem;color:var(--text-2);font-weight:300;margin-top:.75rem;max-width:480px}
+
+  /* -- Timmy -- */
+  .timmy-section{min-height:85vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:4rem 2rem}
+  .timmy-svg{width:min(640px,85vw);opacity:0;transform:translateX(-120px)}
+  .timmy-svg path{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .timmy-svg .body-fill{fill:rgba(20,184,166,.2);stroke:none}
+  .timmy-svg .eye{fill:var(--accent);stroke:none}
+  .timmy-question{font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:400;
+    font-style:italic;color:var(--text);text-align:center;margin-top:3rem;opacity:0;max-width:500px}
+
+  /* -- Fragments -- */
+  .frag-grid{max-width:var(--ww);margin:0 auto;padding:0 2rem;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem}
+  .frag-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.75rem;
+    opacity:0;transform:translateY(20px);position:relative;overflow:hidden}
+  .frag-card::after{content:'';position:absolute;top:0;right:0;bottom:0;width:3px;background:var(--accent);
+    opacity:0;transition:opacity .3s}
+  .frag-card:hover::after{opacity:1}
+  .frag-org{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+  .frag-region{font-size:.9rem;color:var(--text);font-weight:500;margin-bottom:.25rem}
+  .frag-desc{font-size:.8rem;color:var(--text-3);font-weight:300;line-height:1.5}
+  .frag-gap{display:flex;align-items:center;justify-content:center;font-family:var(--mono);
+    font-size:.75rem;color:var(--text-3);letter-spacing:.15em;min-height:80px;
+    border:1px dashed var(--border);border-radius:8px;opacity:0}
+
+  /* -- Phosphor Chart -- */
+  .phos-chart{max-width:var(--ww);margin:0 auto;padding:0 2rem}
+  .phos-bars{display:flex;align-items:flex-end;gap:3px;height:200px;position:relative}
+  .phos-bar{flex:1;background:var(--accent-dim);border-radius:2px 2px 0 0;min-width:8px;
+    transition:height 1.2s cubic-bezier(.22,1,.36,1)}
+  .phos-bar.over{background:rgba(250,204,21,.2)}
+  .phos-limit{position:absolute;left:0;right:0;height:1px;background:var(--citrus);z-index:5;opacity:0}
+  .phos-limit-label{position:absolute;right:0;top:-1.2rem;font-family:var(--mono);font-size:.6rem;color:var(--citrus);white-space:nowrap}
+  .phos-labels{display:flex;gap:3px;margin-top:.5rem}
+  .phos-labels span{flex:1;font-family:var(--mono);font-size:.55rem;color:var(--text-3);text-align:center;min-width:8px}
+
+  /* -- Finale -- */
+  .finale{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 2rem}
+  .finale-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);margin-bottom:1.5rem}
+  .finale h2{font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:400;color:var(--text);line-height:1.4;max-width:500px}
+  .finale h2 em{color:var(--accent);font-style:italic}
+  .finale-footer{margin-top:3rem;font-size:.8rem;color:var(--text-3)}
+  .finale-footer a{color:var(--accent);text-decoration:none}
+
+  /* -- Sources -- */
+  .sources{max-width:var(--cw);margin:0 auto;padding:4rem 2rem;border-top:1px solid var(--border)}
+  .sources h3{font-size:.85rem;font-weight:500;color:var(--text);letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.5rem}
+  .sources ul{list-style:none;padding:0}
+  .sources li{font-size:.8rem;color:var(--text-3);margin-bottom:.75rem;line-height:1.5;padding-left:1rem;border-left:1px solid var(--border)}
+  .sources a{color:var(--accent);text-decoration:none}
+
+  .transparency{max-width:var(--cw);margin:0 auto;padding:2rem;font-size:.75rem;color:var(--text-3);text-align:center;line-height:1.6}
+  .transparency a{color:var(--accent);text-decoration:none}
+
+  .consent{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:999;
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.5rem;
+    display:flex;align-items:center;gap:1rem;font-size:.8rem;color:var(--text-2);
+    box-shadow:0 4px 20px rgba(0,0,0,.3);max-width:520px;width:calc(100% - 2rem)}
+  .consent button{background:var(--accent);color:var(--bg);border:none;padding:.5rem 1rem;
+    border-radius:4px;cursor:pointer;font-family:var(--sans);font-size:.75rem;font-weight:500;white-space:nowrap}
+  .consent .deny{background:transparent;color:var(--text-3);border:1px solid var(--border)}
+
+  .r{opacity:0;transform:translateY(30px)}
+
+  /* -- Act Progress -- */
+  .act-progress{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);z-index:90;
+    display:flex;flex-direction:column;align-items:center;gap:0}
+  .act-progress-line{width:1px;height:24px;background:var(--border);transition:background .5s}
+  .act-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .5s;cursor:pointer;position:relative}
+  .act-dot.active{background:var(--accent);box-shadow:0 0 8px rgba(20,184,166,.5);transform:scale(1.3)}
+  .act-dot-label{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--mono);
+    font-size:.55rem;color:var(--text-3);white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;
+    opacity:0;transition:opacity .3s;pointer-events:none}
+  .act-dot:hover .act-dot-label,.act-dot.active .act-dot-label{opacity:1}
+  @media(max-width:640px){.act-progress{display:none}}
+
+  /* -- Sound indicator -- */
+  .sound-hint{position:fixed;bottom:1.5rem;right:1.5rem;z-index:99;font-family:var(--mono);
+    font-size:.65rem;color:var(--text-3);letter-spacing:.1em;text-transform:uppercase;
+    background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:.4rem .8rem;
+    opacity:0;transition:opacity .5s;pointer-events:none}
+  .sound-hint.show{opacity:1}
+
+  @media(max-width:640px){
+    .big-stat{flex-direction:column;gap:1rem;padding:3rem 1.5rem}
+    .kpi-grid{grid-template-columns:1fr 1fr}
+    .frag-grid{grid-template-columns:1fr 1fr}
+    nav{padding:1rem 1.25rem}
+    .hero-inner{padding:0 1.5rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<nav>
+  <a href="https://der-koerting.de" class="nav-brand">Der <em>Körting</em></a>
+  <div class="nav-right">
+    <span class="nav-label">Datenstück #18</span>
+    <button class="sound-btn" id="soundBtn" aria-label="Sound an/aus" title="Am besten mit Kopfhörern">
+      <span id="soundIcon">&#9835;</span>
+      <div class="pulse"></div>
+    </button>
+  </div>
+</nav>
+
+<div class="sound-hint" id="soundHint">&#9835; Sound verfügbar</div>
+
+<div class="act-progress" id="actProgress">
+  <div class="act-dot" data-act="akt1"><span class="act-dot-label">Hero</span></div>
+  <div class="act-progress-line"></div>
+  <div class="act-dot" data-act="akt2"><span class="act-dot-label">Todeszonen</span></div>
+  <div class="act-progress-line"></div>
+  <div class="act-dot" data-act="akt3"><span class="act-dot-label">Munition</span></div>
+  <div class="act-progress-line"></div>
+  <div class="act-dot" data-act="akt4"><span class="act-dot-label">Timmy</span></div>
+  <div class="act-progress-line"></div>
+  <div class="act-dot" data-act="akt5"><span class="act-dot-label">Daten</span></div>
+  <div class="act-progress-line"></div>
+  <div class="act-dot" data-act="akt6"><span class="act-dot-label">Finale</span></div>
+</div>
+
+<!-- ======= AKT 1 — HERO: Algenblüte ======= -->
+<section class="bg-section" id="akt1" data-sound="waves" style="min-height:100vh">
+  <div class="bg-img" id="heroBg"
+    style="background-image:url('img/hero-algae-nasa.jpg');
+    filter:saturate(.6) brightness(.5)"></div>
+  <div class="bg-overlay" id="heroOverlay"
+    style="background:linear-gradient(to bottom,rgba(17,19,24,.75),rgba(17,19,24,.2) 35%,rgba(17,19,24,.65) 100%)"></div>
+  <div class="cz hero-inner">
+    <div class="hero-meta">Datenstück #18 — Mai 2026</div>
+    <h1>Das Meer<br>unter dem <em>Meer.</em></h1>
+    <p class="hero-sub">412.560 Quadratkilometer. Neun Anrainerstaaten. 85 Millionen Menschen an ihren Küsten. Von oben sieht die Ostsee aus wie Urlaub.</p>
+    <div class="hero-line"></div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="scroll-cue-line"></div></div>
+</section>
+
+<div class="spacer-sm"></div>
+<div class="content">
+  <p class="r">Dieses Satellitenbild zeigt die Ostsee im August 2020. Die grünen Schlieren sind keine Strömungen. Es sind <strong>Cyanobakterien</strong> — giftige Algenblüten, die sich jedes Jahr weiter ausbreiten.</p>
+  <p class="r">Darunter liegt eine der größten Umweltkrisen Europas. Fünf Akte. Nur Zahlen. Keine Meinungen.</p>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ======= AKT 2 — TODESZONEN (Satellitenbild 2) ======= -->
+<section class="bg-section" id="akt2" data-sound="deep">
+  <div class="bg-img"
+    style="background-image:url('img/modis-bloom-2018.jpg');
+    filter:saturate(.5) brightness(.45)"></div>
+  <div class="bg-overlay"
+    style="background:linear-gradient(to bottom,rgba(17,19,24,.6),rgba(17,19,24,.2) 30%,rgba(17,19,24,.7) 100%)"></div>
+  <div class="cz" style="max-width:var(--cw);padding:0 2rem">
+    <div class="sh" style="padding:0 0 2rem">
+      <div class="sh-label">Akt 1</div>
+      <div class="sh-title">60.000 Quadratkilometer <em>Nichts</em></div>
+    </div>
+    <p class="r" style="font-size:1.05rem;line-height:1.85;color:var(--text-2);font-weight:300;margin-bottom:1.5rem">
+      In den 1960er-Jahren waren 5.000 km² des Ostseebodens sauerstoffarm. Heute sind es über 60.000. Ein Gebiet, <strong>größer als Kroatien</strong>, in dem nichts mehr lebt.
+    </p>
+  </div>
+</section>
+
+<div class="spacer-sm"></div>
+
+<div class="dz-map-wrap" id="dzMapWrap">
+  <div class="dz-info-top">
+    <div class="dz-info-year" id="dzYear">1960</div>
+    <div class="dz-info-size" id="dzSize">~ 5.000 km² sauerstoffarm</div>
+  </div>
+  <!-- Stilisierte Ostseekarte mit echten Todeszonen-Becken -->
+  <svg class="dz-map-svg" viewBox="-30 20 600 420" xmlns="http://www.w3.org/2000/svg">
+    <!-- Ostsee-Umriss: gestreckt SW→NO, realistischere Form -->
+    <path class="sea" d="M60,350 C65,342 72,330 82,318
+      C90,308 95,295 98,282 C100,270 97,258 100,245
+      C104,230 112,220 118,208 C122,198 118,185 122,172
+      C128,155 140,145 150,135 C158,127 162,115 170,105
+      C178,95 190,88 200,80 C212,72 225,65 240,58
+      C258,50 278,45 300,42 C322,40 345,42 365,48
+      C382,53 395,62 408,72 C420,82 430,95 438,108
+      C445,118 455,125 468,130
+      C482,136 498,138 515,135 C530,132 545,128 555,130
+      C562,132 558,140 550,145 C540,150 525,152 512,148
+      C500,145 488,142 475,140
+      C465,138 455,140 448,145
+      C440,152 435,162 430,175
+      C425,190 422,205 420,220
+      C418,235 420,250 418,265
+      C415,278 408,288 398,298
+      C388,310 375,318 360,325
+      C345,332 328,330 312,332
+      C295,335 278,338 260,342
+      C242,345 222,342 205,338
+      C188,332 170,336 152,340
+      C132,346 108,350 88,348
+      C75,347 65,348 60,350 Z"/>
+
+    <!-- Küstenlinien -->
+    <path class="coast" d="M55,354 C60,345 70,332 80,320 C88,310 93,298 96,285 C98,273 95,260 98,248 C102,232 110,222 116,210 C120,200 116,188 120,175 C126,158 138,148 148,138 C156,130 160,118 168,108 C176,98 188,90 198,82 C210,74 223,67 238,60 C256,52 276,47 298,44 C320,42 343,44 363,50 C380,55 393,64 406,74 C418,84 428,97 436,110"/>
+    <path class="coast" d="M436,110 C443,120 453,127 466,132 C480,138 496,140 513,137 C528,134 543,130 553,132"/>
+    <path class="coast" d="M448,147 C440,154 435,164 430,177 C425,192 422,207 420,222 C418,237 420,252 418,267 C415,280 408,290 398,300 C388,312 375,320 360,327 C345,334 328,332 312,334 C295,337 278,340 260,344 C242,347 222,344 205,340 C188,334 170,338 152,342 C132,348 108,352 88,350 C75,349 65,350 55,354"/>
+
+    <!-- Inseln: Gotland, Öland, Bornholm -->
+    <ellipse cx="355" cy="210" rx="16" ry="30" style="fill:var(--surface);stroke:var(--text-3);stroke-width:.6;opacity:.35"/>
+    <ellipse cx="285" cy="240" rx="4" ry="18" style="fill:var(--surface);stroke:var(--text-3);stroke-width:.5;opacity:.25"/>
+    <ellipse cx="215" cy="310" rx="7" ry="5" style="fill:var(--surface);stroke:var(--text-3);stroke-width:.5;opacity:.25"/>
+
+    <!-- === TODESZONEN (innerhalb der Wasserfläche) === -->
+    <!-- Bornholmbecken (südlich Bornholm) -->
+    <ellipse class="deadzone" id="dz-bornholm" cx="230" cy="320" rx="25" ry="13" transform="rotate(-10,230,320)"/>
+
+    <!-- Danziger Becken (südöstlich, Richtung Polen) -->
+    <ellipse class="deadzone" id="dz-gdansk" cx="310" cy="335" rx="20" ry="10" transform="rotate(10,310,335)"/>
+
+    <!-- Westliches Gotlandbecken (westlich von Gotland) -->
+    <ellipse class="deadzone" id="dz-west-gotland" cx="300" cy="250" rx="25" ry="18" transform="rotate(-5,300,250)"/>
+
+    <!-- Östliches Gotlandbecken (östlich von Gotland, das größte) -->
+    <ellipse class="deadzone" id="dz-east-gotland" cx="385" cy="220" rx="28" ry="40" transform="rotate(8,385,220)"/>
+
+    <!-- Nördliches Becken -->
+    <ellipse class="deadzone" id="dz-north" cx="400" cy="160" rx="18" ry="22" transform="rotate(15,400,160)"/>
+
+    <!-- Finnischer Meerbusen (schmaler Arm nach Osten) -->
+    <ellipse class="deadzone" id="dz-finland" cx="475" cy="138" rx="22" ry="8" transform="rotate(-5,475,138)"/>
+
+    <!-- Becken-Labels -->
+    <text class="dz-label" x="230" y="340" text-anchor="middle" opacity="0" id="lbl-bornholm">BORNHOLM</text>
+    <text class="dz-label" x="310" y="352" text-anchor="middle" opacity="0" id="lbl-gdansk">GDAŃSK</text>
+    <text class="dz-label" x="300" y="276" text-anchor="middle" opacity="0" id="lbl-wgotland">W-GOTLAND</text>
+    <text class="dz-label" x="385" y="268" text-anchor="middle" opacity="0" id="lbl-egotland">E-GOTLAND</text>
+    <text class="dz-label" x="400" y="190" text-anchor="middle" opacity="0" id="lbl-north">NÖRDL. BECKEN</text>
+    <text class="dz-label" x="505" y="135" text-anchor="middle" opacity="0" id="lbl-finland">FINN. BUSEN</text>
+
+    <!-- Länder-Labels -->
+    <text class="country-label" x="130" y="260">SCHWEDEN</text>
+    <text class="country-label" x="195" y="62">FINNLAND</text>
+    <text class="country-label" x="310" y="368" text-anchor="middle">POLEN</text>
+    <text class="country-label" x="430" y="285">LETTLAND</text>
+    <text class="country-label" x="68" y="355">DK</text>
+    <text class="country-label" x="355" y="215" text-anchor="middle" style="font-size:4px">Gotland</text>
+  </svg>
+
+</div>
+
+<div class="spacer-sm"></div>
+
+<div class="callout r">
+  <div class="callout-box">
+    <p><strong>7 der 10 größten Todeszonen weltweit</strong> liegen in der Ostsee. 20 Prozent des gesamten Meeresbodens sind anoxisch. Kein Fisch. Kein Krebs. Kein Wurm. Nichts.</p>
+  </div>
+</div>
+
+<div class="spacer-sm"></div>
+
+<div class="big-stat r">
+  <div class="big-stat-num">×12</div>
+  <div class="big-stat-ctx">
+    <h3>Faktor der Ausbreitung</h3>
+    <p>Die Todeszonen haben sich seit 1960 verzwölffacht. Haupttreiber: Überdüngung durch Landwirtschaft in neun Anrainerstaaten.</p>
+  </div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ======= AKT 3 — MUNITION (Wrack-Bild) ======= -->
+<section class="bg-section" id="akt3" data-sound="metal">
+  <div class="bg-img"
+    style="background-image:url('img/wreck-underwater.jpg');
+    filter:saturate(.4) brightness(.4)"></div>
+  <div class="bg-overlay"
+    style="background:linear-gradient(to bottom,rgba(17,19,24,.5),rgba(17,19,24,.15) 30%,rgba(17,19,24,.6) 100%)"></div>
+  <div class="cz" style="width:100%">
+    <div class="sh" style="padding-bottom:4rem">
+      <div class="sh-label">Akt 2</div>
+      <div class="sh-title">Was auf dem <em>Grund</em> liegt</div>
+    </div>
+    <div class="muni-stack">
+      <div class="muni-item">
+        <div class="muni-num">65.000 t</div>
+        <div class="muni-unit">Chemische Kampfstoffe</div>
+        <div class="muni-desc">Senfgas, Tabun, Sarin — in Fässern versenkt, die seit 80 Jahren korrodieren. Bornholm-Becken, Gotland-Becken, Kleiner Belt.</div>
+      </div>
+      <div class="muni-item">
+        <div class="muni-num">1,6 Mio t</div>
+        <div class="muni-unit">Konventionelle Munition</div>
+        <div class="muni-desc">Bomben, Granaten, Torpedos. Nord- und Ostsee zusammen. Niemand weiß genau, wann sie aufgehen.</div>
+      </div>
+      <div class="muni-item">
+        <div class="muni-num">16.000</div>
+        <div class="muni-unit">Wracks auf dem Grund</div>
+        <div class="muni-desc">Konserviert durch wenig Salz und wenig Sauerstoff. Manche Holzschiffe sind nach Jahrhunderten noch intakt.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer-sm"></div>
+<div class="content">
+  <p class="r">Nach dem Zweiten Weltkrieg hat man die Ostsee als Mülldepot benutzt. Die Alliierten versenkten hunderttausende Tonnen Munition — die billigste Entsorgung. <strong>Die Fässer waren auf 50 Jahre ausgelegt.</strong> Das war vor 80.</p>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ======= AKT 4 — TIMMY (düstere Meeresoberfläche) ======= -->
+<section class="bg-section timmy-section" id="akt4" data-sound="whale">
+  <div class="bg-img"
+    style="background-image:url('img/dark-ocean-waves.jpg');
+    filter:saturate(.4) brightness(.35)"></div>
+  <div class="bg-overlay"
+    style="background:linear-gradient(to bottom,rgba(17,19,24,.5),rgba(17,19,24,.2) 30%,rgba(17,19,24,.5) 100%)"></div>
+  <div class="cz" style="display:flex;flex-direction:column;align-items:center">
+    <div class="sh" style="padding-bottom:2rem;text-align:center;max-width:var(--cw)">
+      <div class="sh-label" style="text-align:center">Akt 3</div>
+      <div class="sh-title" style="text-align:center">Ein Wal, der hier <em>nicht hingehört</em></div>
+    </div>
+
+    <svg class="timmy-svg" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- Buckelwal-Silhouette -->
+      <path class="body-fill" d="M120,160 C130,130 160,90 220,70 C280,50 360,42 440,45
+        C500,47 560,55 600,52 C630,50 660,44 690,38
+        C710,33 730,28 745,30 C755,32 750,40 740,48
+        C730,55 710,62 690,65 C665,68 640,72 620,78
+        C600,85 575,95 545,108 C510,122 460,138 400,148
+        C340,158 270,158 220,152 C180,147 150,142 135,148
+        C125,152 118,158 120,160 Z" opacity=".6"/>
+      <path d="M120,160 C130,130 160,90 220,70 C280,50 360,42 440,45
+        C500,47 560,55 600,52 C630,50 660,44 690,38
+        C710,33 730,28 745,30 C755,32 750,40 740,48
+        C730,55 710,62 690,65 C665,68 640,72 620,78
+        C600,85 575,95 545,108 C510,122 460,138 400,148
+        C340,158 270,158 220,152 C180,147 150,142 135,148
+        C125,152 118,158 120,160 Z"/>
+      <!-- Fluke -->
+      <path d="M740,38 C760,22 778,12 790,16 C795,18 788,28 775,38"/>
+      <path d="M745,42 C762,30 778,24 786,28 C790,32 782,40 770,46"/>
+      <!-- Auge -->
+      <circle class="eye" cx="210" cy="82" r="4"/>
+      <!-- Brustflosse -->
+      <path d="M320,145 C330,165 325,190 310,205 C300,215 290,212 295,200
+        C300,188 310,170 315,150" opacity=".7"/>
+      <!-- Bauchfalten -->
+      <path d="M200,120 C250,130 320,138 380,140" opacity=".3" stroke-width=".8"/>
+      <path d="M210,128 C260,136 330,143 375,144" opacity=".25" stroke-width=".8"/>
+      <path d="M220,136 C270,142 335,147 370,148" opacity=".2" stroke-width=".8"/>
+      <!-- Rückenflosse -->
+      <path d="M530,52 C532,45 536,40 540,42 C542,44 538,50 535,55" opacity=".7"/>
+      <!-- Blas -->
+      <path d="M200,68 C195,50 188,30 192,15" opacity=".2" stroke-width=".8" stroke-dasharray="3 4"/>
+      <path d="M205,65 C202,48 200,32 205,18" opacity=".15" stroke-width=".8" stroke-dasharray="3 4"/>
+    </svg>
+
+    <div class="timmy-question">Warum schwimmt ein Buckelwal in der Ostsee?</div>
+  </div>
+</section>
+
+<div class="spacer-sm"></div>
+<div class="content">
+  <p class="r">Timmy war kein Wunder. <strong>Timmy war ein Datenpunkt.</strong> Die Ostsee erwärmt sich doppelt so schnell wie der Weltdurchschnitt. Nahrungsketten verschieben sich. Routen ändern sich.</p>
+  <p class="r">Der Dorsch, einst Brotfisch der Ostsee, ist fast weg. Seit 2024: <strong>Null-Fangquote.</strong> Die Rippenqualle Mnemiopsis leidyi — ein Einwanderer aus dem Schwarzen Meer — breitet sich aus. Bis zu 100 Individuen pro Kubikmeter.</p>
+</div>
+<div class="spacer-sm"></div>
+
+<div class="kpi-grid" id="timmyKpis">
+  <div class="kpi"><div class="kpi-v">0,6 °C</div><div class="kpi-l">Erwärmung pro Dekade</div><div class="kpi-s">Südliche Ostsee, 1959–2019</div></div>
+  <div class="kpi"><div class="kpi-v">2×</div><div class="kpi-l">Schneller als global</div><div class="kpi-s">Im Sommer bis zu 1 °C/Dekade</div></div>
+  <div class="kpi"><div class="kpi-v">0 t</div><div class="kpi-l">Empfohlene Dorsch-Fangquote</div><div class="kpi-s">ICES Empfehlung seit 2024</div></div>
+  <div class="kpi"><div class="kpi-v">100/m³</div><div class="kpi-l">Rippenquallen-Dichte</div><div class="kpi-s">Kieler Bucht, 2006</div></div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ======= AKT 5 — DATENQUALITÄT (Quallen-Bild) ======= -->
+<section class="bg-section" id="akt5" data-sound="silence">
+  <div class="bg-img"
+    style="background-image:url('img/moon-jellies.jpg');
+    filter:saturate(.5) brightness(.35);background-position:center 30%"></div>
+  <div class="bg-overlay"
+    style="background:linear-gradient(to bottom,rgba(17,19,24,.6),rgba(17,19,24,.25) 30%,rgba(17,19,24,.7) 100%)"></div>
+  <div class="cz" style="max-width:var(--cw);padding:0 2rem">
+    <div class="sh" style="padding:0 0 2rem">
+      <div class="sh-label">Akt 4</div>
+      <div class="sh-title">Niemand zählt <em>zusammen</em></div>
+    </div>
+    <p class="r" style="font-size:1.05rem;line-height:1.85;color:var(--text-2);font-weight:300;margin-bottom:1.5rem">
+      Die IWC baut seit 2016 an einer globalen Strandungs-Datenbank. Zehn Jahre später zählt immer noch niemand zusammen. Jedes Land hat eigene Felder, eigene Definitionen, eigene Lücken.
+    </p>
+  </div>
+</section>
+
+<div class="spacer-sm"></div>
+
+<div class="frag-grid" id="fragGrid">
+  <div class="frag-card"><div class="frag-org">NOAA</div><div class="frag-region">USA</div><div class="frag-desc">National database. Eigene Taxonomie, eigene Felder, keine API.</div></div>
+  <div class="frag-card"><div class="frag-org">SMASS</div><div class="frag-region">Schottland</div><div class="frag-desc">Scottish Marine Animal Stranding Scheme. Excel-basiert.</div></div>
+  <div class="frag-card"><div class="frag-org">CSIP</div><div class="frag-region">England & Wales</div><div class="frag-desc">Cetacean Strandings Investigation Programme. Seit 1990.</div></div>
+  <div class="frag-gap r">? ? ?</div>
+  <div class="frag-card"><div class="frag-org">IWC</div><div class="frag-region">Global (geplant)</div><div class="frag-desc">Seit 2016 in Arbeit. Noch kein konsolidiertes Bild.</div></div>
+</div>
+
+<div class="spacer-sm"></div>
+
+<div class="callout r">
+  <div class="callout-box citrus">
+    <p>Das Meer hat kein Umweltproblem. Das Meer hat ein <strong>Datenqualitätsproblem.</strong> Und das zweite verhindert, dass wir das erste verstehen.</p>
+  </div>
+</div>
+
+<div class="spacer-sm"></div>
+
+<div class="sh r"><div class="sh-label">Überdüngung</div><div class="sh-title">Phosphor-Einträge <em>seit 1980</em></div></div>
+<div class="content"><p class="r">Die Einträge sinken — von 70.000 t/Jahr auf unter 30.000. Klingt nach Erfolg. Aber die HELCOM-Grenzwerte werden in keinem Hauptbecken eingehalten.</p></div>
+<div class="spacer-sm"></div>
+<div class="phos-chart" id="phosChart">
+  <div style="position:relative">
+    <div class="phos-bars" id="phosBars"></div>
+    <div class="phos-limit" id="phosLimit" style="bottom:35%"><div class="phos-limit-label">HELCOM-Grenzwert</div></div>
+  </div>
+  <div class="phos-labels" id="phosLabels"></div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ======= AKT 6 — FINALE (Satellitenbild Reprise) ======= -->
+<section class="bg-section" id="akt6" data-sound="waves-quiet">
+  <div class="bg-img"
+    style="background-image:url('img/hero-algae-nasa.jpg');
+    filter:saturate(.4) brightness(.3)"></div>
+  <div class="bg-overlay" style="background:rgba(17,19,24,.7)"></div>
+  <div class="cz" style="max-width:var(--cw);padding:0 2rem">
+    <div class="sh" style="padding:0 0 2rem">
+      <div class="sh-label">Akt 5</div>
+      <div class="sh-title">Was hier <em>nicht steht</em></div>
+    </div>
+    <p class="r" style="font-size:1.05rem;line-height:1.85;color:var(--text-2);font-weight:300;margin-bottom:1.75rem">
+      Dieses Datenstück zeigt Zahlen. Keine Meinungen. Keine Lösungen. Keine Petition.
+    </p>
+    <p class="r" style="font-size:1.05rem;line-height:1.85;color:var(--text-2);font-weight:300">
+      Es zeigt nicht, ob es besser wird. Es zeigt nicht, wer schuld ist. <strong>Es zeigt, was ist.</strong> Die Interpretation liegt bei dir.
+    </p>
+  </div>
+</section>
+
+<div class="spacer"></div>
+
+<section class="bg-section" style="min-height:60vh">
+  <div class="bg-img"
+    style="background-image:url('img/modis-bloom-2018.jpg');
+    filter:saturate(.55) brightness(.3);background-position:center 40%"></div>
+  <div class="bg-overlay" style="background:rgba(17,19,24,.6)"></div>
+  <div class="cz finale">
+    <div class="finale-label">Datenstück #18 — Der Körting</div>
+    <h2>412.560 km² Oberfläche.<br>Darunter eine Krise,<br>die <em>niemand zusammenzählt.</em></h2>
+    <div class="finale-footer">
+      <a href="https://der-koerting.de">der-koerting.de</a> ·
+      <a href="https://opendataminded.de">Alle Datenstücke</a>
+    </div>
+  </div>
+</section>
+
+<div class="sources">
+  <h3>Quellen</h3>
+  <ul>
+    <li>Todeszonen: <a href="https://helcom.fi/baltic-sea-trends/holistic-assessments/state-of-the-baltic-sea-2023/" target="_blank" rel="noopener">HELCOM State of the Baltic Sea 2023</a></li>
+    <li>Munition: <a href="https://www.thuenen.de/de/fachinstitute/fischereioekologie/arbeitsbereiche/meeresumwelt/munition-im-meer" target="_blank" rel="noopener">Thünen-Institut — Munition im Meer</a>, Umweltbundesamt</li>
+    <li>Erwärmung: Kniebusch et al. 2019, <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018JC013948" target="_blank" rel="noopener">JGR Oceans</a></li>
+    <li>Phosphor: <a href="https://indicators.helcom.fi/indicator/inputs-of-nutrients/" target="_blank" rel="noopener">HELCOM PLC — Inputs of Nutrients</a></li>
+    <li>Dorsch: <a href="https://s3-eu-west-1.amazonaws.com/pstorage-ices-library-4680295428/54858659/cod.27.2432.pdf" target="_blank" rel="noopener">ICES Advice Eastern Baltic Cod 2023</a></li>
+    <li>Rippenqualle: Javidpour et al., <a href="https://www.researchgate.net/publication/228667799" target="_blank" rel="noopener">Marine Ecology Progress Series</a></li>
+    <li>Bilder: <a href="https://science.nasa.gov/earth/earth-observatory/beguiling-bloom-in-the-baltic-sea-147135" target="_blank" rel="noopener">NASA Earth Observatory</a> (Public Domain), Unsplash (Free License), <a href="https://commons.wikimedia.org/wiki/File:Moon_Jellies_blacklight.jpg" target="_blank" rel="noopener">Wikimedia CC BY-SA 4.0</a></li>
+  </ul>
+</div>
+
+<div class="transparency">
+  Fehler gefunden? <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a><br>
+  Recherche und Visualisierung mit KI-Unterstützung. Alle Zahlen quellenbelegt.
+</div>
+
+<div class="consent" id="consent" style="display:none">
+  <span>Diese Seite nutzt GA4 zur anonymen Reichweitenmessung.</span>
+  <button onclick="localStorage.setItem('tk-consent','yes');tkLoadGA();document.getElementById('consent').style.display='none'">OK</button>
+  <button class="deny" onclick="localStorage.setItem('tk-consent','no');document.getElementById('consent').style.display='none'">Nein</button>
+</div>
+
+<!-- ====== GSAP + Sound ====== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+if(!localStorage.getItem('tk-consent')) document.getElementById('consent').style.display='flex';
+
+// Progress
+gsap.to('#progress',{width:'100%',ease:'none',scrollTrigger:{trigger:'body',start:'top top',end:'bottom bottom',scrub:.3}});
+
+// Hero
+const ht=gsap.timeline({delay:.4});
+ht.to('.hero-meta',{opacity:1,y:0,duration:.6})
+  .to('.hero-inner h1',{opacity:1,y:0,duration:.8},'-.3')
+  .to('.hero-sub',{opacity:1,y:0,duration:.6},'-.3')
+  .to('.hero-line',{opacity:1,width:60,duration:.8},'-.2')
+  .to('.scroll-cue',{opacity:1,duration:.6},'-.2');
+
+// Sound hint after 3s
+setTimeout(()=>{document.getElementById('soundHint').classList.add('show');
+  setTimeout(()=>document.getElementById('soundHint').classList.remove('show'),4000)},3000);
+
+// Hero parallax
+gsap.to('#heroBg',{filter:'saturate(0.9) brightness(0.65)',
+  scrollTrigger:{trigger:'#akt1',start:'top top',end:'bottom top',scrub:true}});
+gsap.to('#heroOverlay',{
+  background:'linear-gradient(to bottom,rgba(17,19,24,.3),rgba(17,19,24,.1) 35%,rgba(17,19,24,.4) 100%)',
+  scrollTrigger:{trigger:'#akt1',start:'center center',end:'bottom top',scrub:true}});
+gsap.to('.hero-inner',{opacity:0,y:-60,scrollTrigger:{trigger:'#akt1',start:'center center',end:'bottom top',scrub:true}});
+gsap.to('.scroll-cue',{opacity:0,scrollTrigger:{trigger:'#akt1',start:'20% top',end:'30% top',scrub:true}});
+
+// Reveals
+document.querySelectorAll('.r').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power2.out',
+    scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none reverse'}});
+});
+
+// Dead Zone Map — Becken erscheinen chronologisch
+const dzSteps=[
+  {y:1960,s:'~ 5.000 km²',zones:['dz-bornholm'],labels:['lbl-bornholm']},
+  {y:1970,s:'~ 8.000 km²',zones:['dz-bornholm','dz-gdansk'],labels:['lbl-bornholm','lbl-gdansk']},
+  {y:1980,s:'~ 15.000 km²',zones:['dz-bornholm','dz-gdansk','dz-west-gotland'],labels:['lbl-bornholm','lbl-gdansk','lbl-wgotland']},
+  {y:1990,s:'~ 25.000 km²',zones:['dz-bornholm','dz-gdansk','dz-west-gotland','dz-east-gotland'],labels:['lbl-bornholm','lbl-gdansk','lbl-wgotland','lbl-egotland']},
+  {y:2000,s:'~ 35.000 km²',zones:['dz-bornholm','dz-gdansk','dz-west-gotland','dz-east-gotland','dz-north'],labels:['lbl-bornholm','lbl-gdansk','lbl-wgotland','lbl-egotland','lbl-north']},
+  {y:2010,s:'~ 50.000 km²',zones:['dz-bornholm','dz-gdansk','dz-west-gotland','dz-east-gotland','dz-north','dz-finland'],labels:['lbl-bornholm','lbl-gdansk','lbl-wgotland','lbl-egotland','lbl-north','lbl-finland']},
+  {y:2023,s:'> 60.000 km²',zones:['dz-bornholm','dz-gdansk','dz-west-gotland','dz-east-gotland','dz-north','dz-finland'],labels:['lbl-bornholm','lbl-gdansk','lbl-wgotland','lbl-egotland','lbl-north','lbl-finland']}
+];
+const allDzIds=['dz-bornholm','dz-gdansk','dz-west-gotland','dz-east-gotland','dz-north','dz-finland'];
+const allLblIds=['lbl-bornholm','lbl-gdansk','lbl-wgotland','lbl-egotland','lbl-north','lbl-finland'];
+let lastDzStep=-1;
+
+gsap.to({i:0},{i:dzSteps.length-1,ease:'none',
+  scrollTrigger:{trigger:'#dzMapWrap',start:'top 70%',end:'top 10%',scrub:true},
+  onUpdate:function(){
+    const idx=Math.round(this.targets()[0].i);
+    if(idx===lastDzStep)return;
+    lastDzStep=idx;
+    const step=dzSteps[idx];
+    document.getElementById('dzYear').textContent=step.y;
+    document.getElementById('dzSize').textContent=step.s+' sauerstoffarm';
+    // Alle Zonen/Labels aus, dann aktive an
+    allDzIds.forEach(id=>{const el=document.getElementById(id);if(el)el.style.opacity='0'});
+    allLblIds.forEach(id=>{const el=document.getElementById(id);if(el)el.setAttribute('opacity','0')});
+    step.zones.forEach(id=>{const el=document.getElementById(id);if(el)el.style.opacity=idx>=6?'.6':idx>=4?'.4':'.3'});
+    step.labels.forEach(id=>{const el=document.getElementById(id);if(el)el.setAttribute('opacity','1')});
+  }});
+
+// Munition
+document.querySelectorAll('.muni-item').forEach((item,i)=>{
+  gsap.to(item,{opacity:1,y:0,duration:.8,delay:i*.2,ease:'power2.out',
+    scrollTrigger:{trigger:item,start:'top 85%',toggleActions:'play none none reverse'}});
+});
+
+// Timmy
+gsap.to('.timmy-svg',{opacity:1,x:0,duration:1.8,ease:'power3.out',
+  scrollTrigger:{trigger:'#akt4',start:'top 60%',toggleActions:'play none none reverse'}});
+gsap.to('.timmy-question',{opacity:1,duration:1,delay:.6,
+  scrollTrigger:{trigger:'#akt4',start:'top 60%',toggleActions:'play none none reverse'}});
+
+// KPIs
+document.querySelectorAll('#timmyKpis .kpi').forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.5,delay:i*.1,ease:'power2.out',
+    scrollTrigger:{trigger:'#timmyKpis',start:'top 80%',toggleActions:'play none none reverse'}});
+});
+
+// Fragments
+document.querySelectorAll('.frag-card').forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.6,delay:i*.12,ease:'power2.out',
+    scrollTrigger:{trigger:'#fragGrid',start:'top 80%',toggleActions:'play none none reverse'}});
+});
+gsap.to('.frag-gap',{opacity:1,duration:.8,delay:.5,
+  scrollTrigger:{trigger:'#fragGrid',start:'top 70%',toggleActions:'play none none reverse'}});
+
+// Phosphor
+const phosData=[{y:'1980',v:70},{y:'85',v:65},{y:'1990',v:55},{y:'95',v:45},
+  {y:'2000',v:40},{y:'05',v:35},{y:'2010',v:32},{y:'15',v:28},{y:'2019',v:25}];
+const phosMax=75,bEl=document.getElementById('phosBars'),lEl=document.getElementById('phosLabels');
+phosData.forEach(d=>{
+  const b=document.createElement('div');b.className='phos-bar'+(d.v>30?' over':'');
+  b.style.height='0%';b.dataset.h=((d.v/phosMax)*100)+'%';bEl.appendChild(b);
+  const l=document.createElement('span');l.textContent=d.y;lEl.appendChild(l);
+});
+document.getElementById('phosLimit').style.bottom=((30/phosMax)*100)+'%';
+ScrollTrigger.create({trigger:'#phosChart',start:'top 75%',
+  onEnter:()=>{document.querySelectorAll('.phos-bar').forEach(b=>b.style.height=b.dataset.h);
+    gsap.to('#phosLimit',{opacity:1,duration:.8,delay:.8})},
+  onLeaveBack:()=>{document.querySelectorAll('.phos-bar').forEach(b=>b.style.height='0%');
+    gsap.to('#phosLimit',{opacity:0,duration:.3})}
+});
+
+// Finale
+gsap.to('.finale h2',{opacity:1,duration:1,ease:'power2.out',
+  scrollTrigger:{trigger:'.finale',start:'top 70%',toggleActions:'play none none reverse'}});
+
+// ===== FEATURE 1: Parallax auf Hintergrundbildern =====
+document.querySelectorAll('.bg-section .bg-img').forEach(img=>{
+  gsap.to(img,{y:'-15%',ease:'none',
+    scrollTrigger:{trigger:img.closest('.bg-section'),start:'top bottom',end:'bottom top',scrub:true}});
+});
+
+// ===== FEATURE 2: Akt-Fortschrittsanzeige =====
+const actSections=['akt1','akt2','akt3','akt4','akt5','akt6'];
+const actDots=document.querySelectorAll('.act-dot');
+const actLines=document.querySelectorAll('.act-progress-line');
+
+actDots.forEach(dot=>{
+  dot.addEventListener('click',()=>{
+    const t=document.getElementById(dot.dataset.act);
+    if(t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+actSections.forEach((id,i)=>{
+  const el=document.getElementById(id);
+  if(!el) return;
+  ScrollTrigger.create({trigger:el,start:'top 60%',end:'bottom 40%',
+    onEnter:()=>setActiveDot(i),onEnterBack:()=>setActiveDot(i)});
+});
+
+function setActiveDot(idx){
+  actDots.forEach((d,i)=>{
+    d.classList.toggle('active',i===idx);
+  });
+  actLines.forEach((l,i)=>{
+    l.style.background=i<idx?'var(--accent)':'var(--border)';
+  });
+}
+
+// ===== FEATURE 3: Scroll-Geschwindigkeit → Sound-Turbulenz =====
+let lastScrollY=window.scrollY,scrollVelocity=0;
+const velocitySmooth=.85;
+window.addEventListener('scroll',()=>{
+  const dy=Math.abs(window.scrollY-lastScrollY);
+  scrollVelocity=scrollVelocity*velocitySmooth+dy*(1-velocitySmooth);
+  lastScrollY=window.scrollY;
+},{passive:true});
+
+// ===== FEATURE 4: Wassertiefe als Sound-Filter =====
+let depthFilter=null;
+function getDepthFilter(){
+  if(!audioCtx) return null;
+  if(!depthFilter){
+    depthFilter=audioCtx.createBiquadFilter();
+    depthFilter.type='lowpass';
+    depthFilter.frequency.value=20000;
+    depthFilter.Q.value=.7;
+  }
+  return depthFilter;
+}
+
+function updateDepthFilter(){
+  if(!depthFilter||!audioCtx) return;
+  const scrollPct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+  const freq=20000-scrollPct*16000;
+  depthFilter.frequency.linearRampToValueAtTime(Math.max(freq,800),audioCtx.currentTime+.3);
+  if(scrollVelocity>3&&turbulenceGain){
+    const t=Math.min(scrollVelocity/30,.12);
+    turbulenceGain.gain.linearRampToValueAtTime(t,audioCtx.currentTime+.1);
+  }else if(turbulenceGain){
+    turbulenceGain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+.5);
+  }
+}
+
+// ===== FEATURE 5: Herzschlag bei Timmy =====
+let heartbeatInterval=null;
+function startHeartbeat(){
+  if(heartbeatInterval||!audioCtx) return;
+  function beat(){
+    if(!heartbeatInterval||!audioCtx) return;
+    const o1=audioCtx.createOscillator();o1.type='sine';o1.frequency.value=40;
+    const g1=audioCtx.createGain();g1.gain.value=.15;
+    g1.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.35);
+    o1.connect(g1).connect(masterGain);o1.start();o1.stop(audioCtx.currentTime+.4);
+    setTimeout(()=>{
+      if(!heartbeatInterval||!audioCtx) return;
+      const o2=audioCtx.createOscillator();o2.type='sine';o2.frequency.value=35;
+      const g2=audioCtx.createGain();g2.gain.value=.1;
+      g2.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.25);
+      o2.connect(g2).connect(masterGain);o2.start();o2.stop(audioCtx.currentTime+.3);
+    },180);
+  }
+  beat();
+  heartbeatInterval=setInterval(beat,1000);
+}
+function stopHeartbeat(){
+  if(heartbeatInterval){clearInterval(heartbeatInterval);heartbeatInterval=null}
+}
+
+// Depth + Turbulenz Update Loop
+let turbulenceNode=null,turbulenceGain=null;
+setInterval(()=>{if(soundOn) updateDepthFilter()},100);
+
+// ===== SOUND ENGINE (Web Audio API Synthesis — Crossfade) =====
+let audioCtx, soundOn=false, masterGain;
+const layers={};
+const FADE=3.5;
+
+function createNoise(ctx){
+  const len=ctx.sampleRate*4;
+  const buf=ctx.createBuffer(1,len,ctx.sampleRate);
+  const d=buf.getChannelData(0);
+  for(let i=0;i<len;i++) d[i]=Math.random()*2-1;
+  return buf;
+}
+
+function fadeLayer(name,targetVol){
+  const l=layers[name];
+  if(!l||!l.gain) return;
+  l.gain.gain.cancelScheduledValues(audioCtx.currentTime);
+  l.gain.gain.setValueAtTime(l.gain.gain.value,audioCtx.currentTime);
+  l.gain.gain.linearRampToValueAtTime(targetVol,audioCtx.currentTime+FADE);
+  l.targetVol=targetVol;
+}
+
+function startWaves(vol=.18){
+  if(layers.waves){fadeLayer('waves',vol);return}
+  const noise=audioCtx.createBufferSource();
+  noise.buffer=createNoise(audioCtx);
+  noise.loop=true;
+  const lp=audioCtx.createBiquadFilter();
+  lp.type='lowpass';lp.frequency.value=400;
+  const lfo=audioCtx.createOscillator();
+  lfo.frequency.value=.15;
+  const lfoGain=audioCtx.createGain();
+  lfoGain.gain.value=120;
+  lfo.connect(lfoGain).connect(lp.frequency);
+  lfo.start();
+  const gain=audioCtx.createGain();
+  gain.gain.value=0;
+  noise.connect(lp).connect(gain).connect(masterGain);
+  noise.start();
+  gain.gain.linearRampToValueAtTime(vol,audioCtx.currentTime+FADE);
+  layers.waves={nodes:[noise,lfo],gain,targetVol:vol};
+}
+
+function startDeep(vol=.2){
+  if(layers.deep){fadeLayer('deep',vol);return}
+  const osc=audioCtx.createOscillator();
+  osc.type='sine';osc.frequency.value=55;
+  const osc2=audioCtx.createOscillator();
+  osc2.type='sine';osc2.frequency.value=82;
+  const lfo=audioCtx.createOscillator();
+  lfo.frequency.value=.08;
+  const lfoG=audioCtx.createGain();
+  lfoG.gain.value=8;
+  lfo.connect(lfoG).connect(osc.frequency);
+  const gain=audioCtx.createGain();
+  gain.gain.value=0;
+  const gain2=audioCtx.createGain();
+  gain2.gain.value=0;
+  osc.connect(gain).connect(masterGain);
+  osc2.connect(gain2).connect(masterGain);
+  osc.start();osc2.start();lfo.start();
+  gain.gain.linearRampToValueAtTime(vol,audioCtx.currentTime+FADE);
+  gain2.gain.linearRampToValueAtTime(vol*.5,audioCtx.currentTime+FADE);
+  layers.deep={nodes:[osc,osc2,lfo],gain,gain2,targetVol:vol};
+}
+
+function startMetal(vol=.15){
+  if(layers.metal){fadeLayer('metal',vol);return}
+  const gain=audioCtx.createGain();
+  gain.gain.value=0;
+  gain.connect(masterGain);
+  function ping(){
+    if(!layers.metal) return;
+    const o=audioCtx.createOscillator();
+    o.type='sine';o.frequency.value=1200;
+    o.frequency.exponentialRampToValueAtTime(800,audioCtx.currentTime+.8);
+    const g=audioCtx.createGain();
+    g.gain.value=.4;
+    g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+1.5);
+    const bp=audioCtx.createBiquadFilter();
+    bp.type='bandpass';bp.frequency.value=1000;bp.Q.value=8;
+    o.connect(bp).connect(g).connect(gain);
+    o.start();
+    o.stop(audioCtx.currentTime+2);
+    layers.metal._timer=setTimeout(ping,3000+Math.random()*4000);
+  }
+  layers.metal={nodes:[],gain,targetVol:vol};
+  gain.gain.linearRampToValueAtTime(vol,audioCtx.currentTime+FADE);
+  ping();
+  const noise=audioCtx.createBufferSource();
+  noise.buffer=createNoise(audioCtx);
+  noise.loop=true;
+  const lp=audioCtx.createBiquadFilter();
+  lp.type='lowpass';lp.frequency.value=120;
+  const nGain=audioCtx.createGain();
+  nGain.gain.value=.08;
+  noise.connect(lp).connect(nGain).connect(gain);
+  noise.start();
+  layers.metal.nodes.push(noise);
+}
+
+function startWhale(vol=.22){
+  if(layers.whale){fadeLayer('whale',vol);return}
+  const gain=audioCtx.createGain();
+  gain.gain.value=0;
+  gain.connect(masterGain);
+  const osc=audioCtx.createOscillator();
+  osc.type='sine';
+  osc.frequency.value=300;
+  const vibrato=audioCtx.createOscillator();
+  vibrato.frequency.value=5;
+  const vibG=audioCtx.createGain();
+  vibG.gain.value=40;
+  vibrato.connect(vibG).connect(osc.frequency);
+  const sweep=audioCtx.createOscillator();
+  sweep.frequency.value=.12;
+  const sweepG=audioCtx.createGain();
+  sweepG.gain.value=200;
+  sweep.connect(sweepG).connect(osc.frequency);
+  osc.connect(gain).connect(masterGain);
+  osc.start();vibrato.start();sweep.start();
+  gain.gain.linearRampToValueAtTime(vol,audioCtx.currentTime+FADE);
+  const noise=audioCtx.createBufferSource();
+  noise.buffer=createNoise(audioCtx);
+  noise.loop=true;
+  const bp=audioCtx.createBiquadFilter();
+  bp.type='bandpass';bp.frequency.value=200;bp.Q.value=2;
+  const nGain=audioCtx.createGain();
+  nGain.gain.value=.04;
+  noise.connect(bp).connect(nGain).connect(masterGain);
+  noise.start();
+  layers.whale={nodes:[osc,vibrato,sweep,noise],gain,targetVol:vol};
+}
+
+function stopLayer(name){
+  const l=layers[name];
+  if(!l) return;
+  if(l._timer) clearTimeout(l._timer);
+  if(l.gain){
+    l.gain.gain.cancelScheduledValues(audioCtx.currentTime);
+    l.gain.gain.setValueAtTime(l.gain.gain.value,audioCtx.currentTime);
+    l.gain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+FADE);
+  }
+  if(l.gain2){
+    l.gain2.gain.cancelScheduledValues(audioCtx.currentTime);
+    l.gain2.gain.setValueAtTime(l.gain2.gain.value,audioCtx.currentTime);
+    l.gain2.gain.linearRampToValueAtTime(0,audioCtx.currentTime+FADE);
+  }
+  const cleanup=()=>{
+    if(l.nodes) l.nodes.forEach(n=>{try{n.stop()}catch(e){}});
+    try{l.gain.disconnect()}catch(e){}
+    if(l.gain2) try{l.gain2.disconnect()}catch(e){}
+  };
+  setTimeout(cleanup,FADE*1000+500);
+  delete layers[name];
+}
+
+function stopAllLayers(){
+  Object.keys(layers).forEach(stopLayer);
+}
+
+const soundScenes={
+  waves:()=>{stopHeartbeat();stopLayer('deep');stopLayer('metal');stopLayer('whale');startWaves(.18)},
+  deep:()=>{stopHeartbeat();stopLayer('waves');stopLayer('metal');stopLayer('whale');startDeep(.2)},
+  metal:()=>{stopHeartbeat();stopLayer('waves');stopLayer('whale');startDeep(.08);startMetal(.15)},
+  whale:()=>{stopLayer('metal');stopLayer('deep');startWaves(.05);startWhale(.22);startHeartbeat()},
+  silence:()=>{stopHeartbeat();stopAllLayers()},
+  'waves-quiet':()=>{stopHeartbeat();stopLayer('deep');stopLayer('metal');stopLayer('whale');startWaves(.07)}
+};
+
+let currentSound='';
+function updateSound(){
+  if(!soundOn)return;
+  const sections=document.querySelectorAll('[data-sound]');
+  let active='';
+  sections.forEach(s=>{
+    const r=s.getBoundingClientRect();
+    if(r.top<window.innerHeight*.6&&r.bottom>window.innerHeight*.3) active=s.dataset.sound;
+  });
+  if(active&&active!==currentSound){
+    currentSound=active;
+    const fn=soundScenes[active];
+    if(fn) fn();
+  }
+}
+
+const soundBtn=document.getElementById('soundBtn');
+soundBtn.addEventListener('click',async()=>{
+  if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended') await audioCtx.resume();
+  if(!masterGain){
+    masterGain=audioCtx.createGain();masterGain.gain.value=.7;
+    const df=getDepthFilter();
+    turbulenceNode=audioCtx.createBufferSource();
+    turbulenceNode.buffer=createNoise(audioCtx);turbulenceNode.loop=true;
+    turbulenceGain=audioCtx.createGain();turbulenceGain.gain.value=0;
+    turbulenceNode.connect(turbulenceGain).connect(df);
+    turbulenceNode.start();
+    masterGain.connect(df).connect(audioCtx.destination);
+  }
+
+  soundOn=!soundOn;
+  soundBtn.classList.toggle('active',soundOn);
+  document.getElementById('soundIcon').innerHTML=soundOn?'&#9834;':'&#9835;';
+
+  if(soundOn){
+    currentSound='';
+    updateSound();
+  }else{
+    stopAllLayers();
+    currentSound='';
+  }
+});
+
+window.addEventListener('scroll',()=>{if(soundOn) requestAnimationFrame(updateSound)},{passive:true});
+</script>
+</body>
+</html>
