@@ -251,7 +251,8 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
     .frag-grid{grid-template-columns:1fr 1fr}
     nav{padding:1rem 1.25rem}
     .hero-inner{padding:0 1.5rem}
-    .sound-btn{width:44px;height:44px;font-size:1rem}
+    .sound-btn{width:44px;height:44px;font-size:1rem;bottom:7rem!important}
+    .sound-hint{bottom:11.5rem!important}
   }
 </style>
 </head>
@@ -276,7 +277,7 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
   </div>
 </header>
 
-<button class="sound-btn" id="soundBtn" aria-label="Sound an/aus" title="Am besten mit Kopfhörern" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:95">
+<button class="sound-btn" id="soundBtn" aria-label="Sound an/aus" title="Am besten mit Kopfhörern" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:1000">
   <span id="soundIcon">&#9835;</span>
   <div class="pulse"></div>
 </button>
