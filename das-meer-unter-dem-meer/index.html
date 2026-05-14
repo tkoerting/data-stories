@@ -1061,12 +1061,19 @@ function updateSound(){
 }
 
 const soundBtn=document.getElementById('soundBtn');
-soundBtn.addEventListener('click',async()=>{
-  if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-  if(audioCtx.state==='suspended') await audioCtx.resume();
+soundBtn.addEventListener('click',function(){
+  if(!audioCtx){
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    // iOS unlock: stummer Oszillator im User-Gesture-Kontext
+    var unlock=audioCtx.createOscillator();
+    var unlockGain=audioCtx.createGain();unlockGain.gain.value=0;
+    unlock.connect(unlockGain).connect(audioCtx.destination);
+    unlock.start();unlock.stop(audioCtx.currentTime+.01);
+  }
+  if(audioCtx.state==='suspended') audioCtx.resume();
   if(!masterGain){
     masterGain=audioCtx.createGain();masterGain.gain.value=.7;
-    const df=getDepthFilter();
+    var df=getDepthFilter();
     turbulenceNode=audioCtx.createBufferSource();
     turbulenceNode.buffer=createNoise(audioCtx);turbulenceNode.loop=true;
     turbulenceGain=audioCtx.createGain();turbulenceGain.gain.value=0;
