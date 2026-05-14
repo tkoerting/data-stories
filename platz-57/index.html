@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<!-- GA4 — nur nach Cookie-Consent -->
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platz 57. — Datenstück #19 | Der Körting</title>
+<meta name="description" content="Fürth nennt sich Wissenschaftsstadt und hat kein Open-Data-Portal. 10 km weiter liegt Nürnberg auf Platz 8. Ein Datenstück über digitales Scheitern — von der Kommune bis nach Europa.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Platz 57. — Datenstück #19 | Open Data Minded">
+<meta property="og:description" content="Fürth nennt sich Wissenschaftsstadt und hat kein Open-Data-Portal. 10 km weiter liegt Nürnberg auf Platz 8. Ein Datenstück über digitales Scheitern — von der Kommune bis nach Europa.">
+<meta property="og:url" content="https://opendataminded.de/platz-57/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Platz 57. — Datenstück #19 | Open Data Minded">
+<meta name="twitter:description" content="Fürth nennt sich Wissenschaftsstadt und hat kein Open-Data-Portal. 10 km weiter liegt Nürnberg auf Platz 8. Ein Datenstück über digitales Scheitern — von der Kommune bis nach Europa.">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/platz-57/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Platz 57.",
+  "description": "Fürth nennt sich Wissenschaftsstadt und hat kein Open-Data-Portal. 10 km weiter liegt Nürnberg auf Platz 8. Ein Datenstück über digitales Scheitern — von der Kommune bis nach Europa.",
+  "author": {"@type": "Person", "name": "Thomas Körting", "url": "https://der-koerting.de/ueber-mich/"},
+  "publisher": {"@type": "Person", "name": "Thomas Körting"},
+  "url": "https://opendataminded.de/platz-57/",
+  "inLanguage": "de",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://opendataminded.de/platz-57/"}
+}
+</script>
+
+<link rel="stylesheet" href="../fonts/fonts.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+<style>
+  :root {
+    --font-headline: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #111318; --bg-surface: #1A1D24; --bg-card: #1E2028;
+    --text-primary: #E5E7EB; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --border: #2D3139; --accent: #14B8A6; --accent-hover: #2DD4BF;
+    --accent-subtle: rgba(20,184,166,0.1); --accent-2: #FACC15;
+    --danger: #EF4444; --danger-subtle: rgba(239,68,68,0.1);
+    --warning: #F59E0B; --warning-subtle: rgba(245,158,11,0.1);
+    --purple: #8B5CF6; --tag-bg: #23272F; --tag-text: #9CA3AF;
+  }
+  [data-theme="light"] {
+    --bg: #F4F6F7; --bg-surface: #FFFFFF; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #64748B; --text-tertiary: #94A3B8;
+    --border: #E2E5E9; --accent: #0D9488; --accent-hover: #0F766E;
+    --accent-subtle: rgba(13,148,136,0.08); --accent-2: #EAB308;
+    --danger: #DC2626; --danger-subtle: rgba(220,38,38,0.06);
+    --warning: #D97706; --warning-subtle: rgba(217,119,6,0.06);
+    --purple: #7C3AED; --tag-bg: #F0F2F4; --tag-text: #64748B;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+  ::selection{background:var(--accent);color:white}
+  a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  [data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+  .header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+  .site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)}
+  .site-name span{color:var(--accent)}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-nav{display:flex;align-items:center;gap:1rem;list-style:none}
+  .header-nav a{font-family:var(--font-body);font-size:0.7rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;position:relative;padding-bottom:4px;transition:color 0.2s}
+  .header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+  .header-nav a:hover{color:var(--text-primary)}
+  .header-nav a:hover::after{width:100%}
+  .header-nav a.active{color:var(--accent)}
+  .header-nav a.active::after{width:100%;background:var(--accent)}
+  .toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+  @media(max-width:768px){.header-nav{display:none}}
+
+  .story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+  .story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+  .category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+  .snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+
+  h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+  .subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+  h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+  h3{font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:1.5rem 0 0.5rem;color:var(--text-primary)}
+  p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+  p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+  .text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+
+  .section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+  .nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition);text-decoration:none}
+  .nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+  .nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+  .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+  .kpi-card:hover{border-color:var(--accent)}
+  .kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+  .kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)} .kpi-value.ok{color:var(--accent)}
+  .kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+  .kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+
+  .chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+  .chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+  .chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+  .chart{width:100%;height:300px}
+  .chart-tall{height:380px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+  .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
+  .compare-card.highlight{border-color:var(--accent);background:var(--accent-subtle)}
+  .compare-card.dim{opacity:0.7}
+  .compare-card.alert{border-color:var(--danger);background:var(--danger-subtle)}
+  .compare-city{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+  .compare-number{font-family:var(--font-mono);font-size:2rem;font-weight:500;line-height:1.2}
+  .compare-number.zero{color:var(--danger)}
+  .compare-number.good{color:var(--accent)}
+  .compare-detail{font-size:0.75rem;color:var(--text-tertiary);margin-top:0.25rem}
+
+  .callout{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:1.25rem;margin:1.5rem 0;font-size:0.9rem;line-height:1.7;color:var(--text-secondary)}
+  .callout.citrus{border-left-color:var(--accent-2)}
+  .callout p{margin:0;font-size:0.9rem}
+  .callout p + p{margin-top:0.75rem}
+
+  /* Timeline */
+  .timeline{position:relative;margin:2rem 0;padding:2rem 0}
+  .timeline-line{position:absolute;top:50%;left:0;right:0;height:2px;background:var(--border)}
+  .timeline-points{display:flex;justify-content:space-between;position:relative;z-index:1}
+  .timeline-point{display:flex;flex-direction:column;align-items:center;gap:0.5rem;flex:1}
+  .timeline-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent)}
+  .timeline-dot.citrus{background:var(--accent-2);box-shadow:0 0 0 2px var(--accent-2)}
+  .timeline-year{font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:var(--text-primary)}
+  .timeline-label{font-size:0.7rem;color:var(--text-secondary);text-align:center;max-width:100px;line-height:1.3}
+
+  /* Tile Grid for EU Clusters */
+  .tile-grid{display:grid;grid-template-columns:1fr;gap:0.75rem;margin:1.5rem 0}
+  .tile-row{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+  .tile-row.trendsetter{border-left:3px solid var(--accent)}
+  .tile-row.fast-tracker{border-left:3px solid var(--accent-2)}
+  .tile-row.follower{border-left:3px solid var(--warning)}
+  .tile-row.beginner{border-left:3px solid var(--text-tertiary)}
+  .tile-cluster-name{font-family:var(--font-mono);font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;min-width:100px;flex-shrink:0}
+  .tile-row.trendsetter .tile-cluster-name{color:var(--accent)}
+  .tile-row.fast-tracker .tile-cluster-name{color:var(--accent-2)}
+  .tile-row.follower .tile-cluster-name{color:var(--warning)}
+  .tile-row.beginner .tile-cluster-name{color:var(--text-tertiary)}
+  .tile-countries{font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+  .tile-countries .highlight{color:var(--accent-2);font-weight:600}
+
+  .datenbild{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:2rem;margin:1.5rem 0;text-align:center}
+  .datenbild-value{font-family:var(--font-mono);font-size:3rem;font-weight:500;color:var(--accent);line-height:1.1}
+  .datenbild-label{font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem}
+  .datenbild-sub{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.25rem;font-family:var(--font-mono)}
+
+  .divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+  .tk-closer{font-family:var(--font-headline);font-style:italic;font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem;text-align:center}
+  .article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+  .back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)}
+  .back-link:hover{color:var(--accent)}
+
+  .source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+  .source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+  .source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+  .source-card li::before{content:"\2192";position:absolute;left:0;color:var(--accent)}
+
+  .github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+  .github-link:hover{border-color:var(--accent);color:var(--accent)}
+  .github-link svg{flex-shrink:0}
+
+  .feedback-section{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+  .feedback-section p{font-size:0.9rem;margin-bottom:1rem}
+  .feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+  .feedback-btn{font-family:var(--font-body);font-size:0.85rem;padding:0.5rem 1.25rem;border:1px solid var(--border);border-radius:8px;background:var(--tag-bg);color:var(--text-secondary);cursor:pointer;transition:all var(--transition)}
+  .feedback-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .feedback-btn.selected{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent);font-weight:500}
+  .feedback-thanks{display:none;font-size:0.85rem;color:var(--accent);margin-top:0.75rem}
+
+  .closer-link{font-size:0.9rem;color:var(--text-secondary);text-align:center;margin-top:2rem}
+  .closer-link a{color:var(--accent)}
+
+  @media(max-width:768px){
+    html{font-size:16px}
+    h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr}
+    .compare-grid{grid-template-columns:1fr}
+    .chart{height:260px} .chart-tall{height:320px}
+    .story-wrapper{padding:2rem 1rem 3rem}
+    .section-nav{top:56px}
+    .datenbild-value{font-size:2.2rem}
+    .timeline-points{flex-wrap:wrap;gap:1.5rem;justify-content:center}
+    .timeline-line{display:none}
+    .tile-row{flex-direction:column;gap:0.5rem}
+    .tile-cluster-name{min-width:auto}
+  }
+  @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+        <a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+        <a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="https://der-koerting.de/category/lab/">&#129514; Lab</a>
+        <a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/category/musikkram/">Musikkram</a>
+        <a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">&#127769;</button>
+    </div>
+  </div>
+</header>
+
+<div class="story-wrapper">
+
+  <a href="https://opendataminded.de/" class="back-link">&larr; Alle Datenstücke</a>
+
+  <div class="story-meta">
+    <span class="category-tag">Datenstück #19</span>
+    <span class="snapshot-tag">Mai 2026</span>
+  </div>
+
+  <h1>Platz 57.</h1>
+  <div class="subtitle">Warum deutsche Städte digital scheitern — und was eine finnische Verordnung von 1766 damit zu tun hat.</div>
+
+  <p class="lead">Fürth nennt sich seit 2007 „Wissenschaftsstadt". Sein Open-Data-Portal hat 19 Einträge — keiner davon ist echtes Open Data. 10 Kilometer weiter liegt Nürnberg. Platz 8.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value accent2">Platz 57</div>
+      <div class="kpi-label">Bitkom Smart City Index 2025</div>
+      <div class="kpi-sub">von 82 Großstädten</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">19</div>
+      <div class="kpi-label">Portal-Einträge, 0 echtes Open Data</div>
+      <div class="kpi-sub">ArcGIS-Portal, Mai 2026</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value warning">222.275 &euro;</div>
+      <div class="kpi-label">Jährliches Digitalisierungsbudget</div>
+      <div class="kpi-sub">Stadtratsbeschluss 2017</div>
+    </div>
+  </div>
+
+  <nav class="section-nav">
+    <a href="#bayern" class="nav-pill">Bayern</a>
+    <a href="#deutschland" class="nav-pill">Deutschland</a>
+    <a href="#europa" class="nav-pill">Europa</a>
+    <span class="nav-sep">|</span>
+    <a href="#wurzel" class="nav-pill">Wurzel</a>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: Bayern                            -->
+  <!-- ============================================ -->
+
+  <h2 id="bayern">Gleiche Größe, anderes Ergebnis</h2>
+  <p>Regensburg hat 155.000 Einwohner und liegt auf Platz 12. Fürth hat 135.000 und liegt auf Platz 57. Regensburg hat ein Open-Source-Dashboard, einen Digitalen Energie-Zwilling und 17 Millionen Euro BMI-Förderung. Fürth hat einen Chatbot namens Kleebot.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Bitkom Smart City Index 2025 — Bayerische Peers</div>
+    <div class="chart-subtitle">Score von 100 | bitkom.org</div>
+    <div id="chart-lollipop" class="chart chart-tall"></div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">Fürth vs. Regensburg — 5 Bitkom-Kategorien</div>
+    <div class="chart-subtitle">Smart City Index 2025 | Score von 100</div>
+    <div id="chart-radar" class="chart chart-tall"></div>
+  </div>
+
+  <div class="callout">
+    <p>Fürth ist bei Mobilität überraschend stark — Platz 24 bundesweit. Aber bei IT, Energie und Gesellschaft fällt die Stadt ab. Und: Fürth hat als einzige Peer-Stadt kein Open-Data-Portal und keine veröffentlichte Digitalisierungsstrategie.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: Deutschland                       -->
+  <!-- ============================================ -->
+
+  <h2 id="deutschland">Das Portal-Problem</h2>
+  <p>Moers hat 105.000 Einwohner und 470 echte Datensätze — Bevölkerung, Haushalt, Verkehr, Bußgelder, Musikschule. Fürth hat 135.000 Einwohner und ein Portal mit 19 Einträgen: 11 durchgereichte Landeskarten, 8 Verwaltungs-Geodaten. Kein Haushalt. Keine Statistik. Keine Umweltdaten.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Open Data pro 100.000 Einwohner</div>
+    <div class="chart-subtitle">Eigene Recherche, Mai 2026</div>
+    <div id="chart-opendata" class="chart"></div>
+  </div>
+
+  <p class="text-small" style="margin-top:-0.5rem;margin-bottom:1.5rem">* Hamburg: Nur 3% maschinenlesbar (CSV/XML/JSON)</p>
+
+  <div class="callout citrus">
+    <p><strong>100.000 Euro pro Jahr.</strong> Das kostet ein funktionierendes Open-Data-Portal laut Moers-Modell. Bei einem Fürther Gesamthaushalt von 684 Millionen Euro sind das 0,015 Prozent. Ein Rundungsfehler.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: Europa                            -->
+  <!-- ============================================ -->
+
+  <h2 id="europa">260 Jahre Vorsprung</h2>
+  <p>Schweden hat seit 1766 ein Informationsfreiheitsgesetz. Deutschland seit 2017. Und das deutsche Gesetz gilt nur für Bundesbehörden — nicht für Länder, nicht für Kommunen. Keine Stadt in Deutschland ist verpflichtet, auch nur einen einzigen Datensatz zu öffnen.</p>
+
+  <div class="chart-container" style="padding:1.5rem 1.25rem">
+    <div class="chart-title">Informationsfreiheit — wer kam zuerst?</div>
+    <div class="chart-subtitle">Zeitstrahl: Gesetzgebung</div>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-points">
+        <div class="timeline-point">
+          <div class="timeline-label">Schweden (via finnisch-schwedische Union)</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1766</div>
+        </div>
+        <div class="timeline-point">
+          <div class="timeline-label">Norwegen, Dänemark</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1970</div>
+        </div>
+        <div class="timeline-point">
+          <div class="timeline-label">Estland</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2000</div>
+        </div>
+        <div class="timeline-point">
+          <div class="timeline-label">Deutschland (§12a EGovG, nur Bund)</div>
+          <div class="timeline-dot citrus"></div>
+          <div class="timeline-year">2017</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-container" style="padding:1.5rem 1.25rem">
+    <div class="chart-title">EU Open Data Maturity 2025</div>
+    <div class="chart-subtitle">data.europa.eu | 4 Cluster</div>
+    <div class="tile-grid">
+      <div class="tile-row trendsetter">
+        <div class="tile-cluster-name">Trendsetter</div>
+        <div class="tile-countries">Kroatien (#1), Frankreich, Polen, Estland, Spanien</div>
+      </div>
+      <div class="tile-row fast-tracker">
+        <div class="tile-cluster-name">Fast-Tracker</div>
+        <div class="tile-countries">Dänemark, Österreich, Norwegen</div>
+      </div>
+      <div class="tile-row follower">
+        <div class="tile-cluster-name">Follower</div>
+        <div class="tile-countries"><span class="highlight">Deutschland</span>, Finnland, Schweden, Niederlande</div>
+      </div>
+      <div class="tile-row beginner">
+        <div class="tile-cluster-name">Beginner</div>
+        <div class="tile-countries">Rest</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>Finnland und Schweden — die Länder, die 1766 die Aktenöffentlichkeit erfunden haben — liegen im selben Open-Data-Cluster wie Deutschland. Digitaler Ruf ist nicht gleich digitale Realität. Kroatien, 2024 noch Beginner, führt 2025 das Ranking an.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: Wurzel                            -->
+  <!-- ============================================ -->
+
+  <h2 id="wurzel">Es ist kein Geldproblem</h2>
+  <p>222.275 Euro pro Jahr — das ist Fürths Digitalisierungsbudget seit dem Stadtratsbeschluss von 2017. Davon gehen 6,5 Stellen bezahlt. Für Open Data bleibt: nichts. Der Stadtrat hat nie über Open Data abgestimmt. Es gibt kein veröffentlichtes Digitalisierungs-Strategiepapier. Und Fürth hat sich auch nie für die BMI-Modellprojekte Smart Cities beworben — 73 Städte bekamen insgesamt 820 Millionen Euro. Fürth war nicht dabei.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card highlight">
+      <div class="compare-city">Moers</div>
+      <div class="compare-number good">470</div>
+      <div class="compare-detail">echte Datensätze</div>
+      <div class="compare-detail" style="margin-top:0.75rem">105.000 Einwohner</div>
+      <div class="compare-detail">~100.000 &euro;/Jahr Open-Data-Budget</div>
+      <div class="compare-detail">Portal: CKAN (offenesdatenportal.de)</div>
+    </div>
+    <div class="compare-card alert">
+      <div class="compare-city">Fürth</div>
+      <div class="compare-number zero">0</div>
+      <div class="compare-detail">echte Datensätze</div>
+      <div class="compare-detail" style="margin-top:0.75rem">135.000 Einwohner</div>
+      <div class="compare-detail">0 &euro; Open-Data-Budget</div>
+      <div class="compare-detail">Portal: ArcGIS (Alibi)</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CLOSER                                       -->
+  <!-- ============================================ -->
+
+  <hr class="divider">
+
+  <p>Fürth hat 2017 beschlossen, sich zu digitalisieren. Neun Jahre später hat die Stadt ein Portal mit 19 Einträgen, von denen keiner echtes Open Data ist.</p>
+
+  <p>Regensburg — gleich groß — liegt 45 Plätze weiter vorne. Moers — kleiner — hat 470 echte Datensätze. Estland — ein ganzer Staat — hat 100 Prozent digitale Dienste.</p>
+
+  <p class="tk-closer">Die Frage ist nicht, ob Fürth es kann. Die Frage ist, ob Fürth es will.</p>
+
+  <p style="font-size:0.85rem;color:var(--text-tertiary);text-align:center;margin-top:2rem;line-height:1.7;font-style:italic">Der Autor dieses Datenstücks lebt in Fürth, arbeitet mit Daten und wäre gesprächsbereit.</p>
+
+  <p class="closer-link"><a href="https://opendataminded.de/fuerth-wissenschaftsstadt/">&rarr; Vorgeschichte: Wie man seine Stadt schön träumt (Datenstück, 2024)</a></p>
+
+  <!-- Sources -->
+  <div class="source-card">
+    <h3>Quellen &amp; Daten</h3>
+    <ul>
+      <li><a href="https://www.bitkom.org/Smart-City-Index" target="_blank" rel="noopener">Bitkom Smart City Index 2025 — bitkom.org</a></li>
+      <li><a href="https://data.europa.eu/en/publications/open-data-maturity" target="_blank" rel="noopener">EU Open Data Maturity 2025 — data.europa.eu</a></li>
+      <li><a href="https://www.imd.org/smart-city-observatory/home/" target="_blank" rel="noopener">IMD Smart City Index 2025 — imd.org</a></li>
+      <li><a href="https://opendataranking.de/" target="_blank" rel="noopener">OKF Open Data Ranking 2025 — opendataranking.de</a></li>
+      <li><a href="https://portal-stadt-fuerth.opendata.arcgis.com/" target="_blank" rel="noopener">Stadt Fürth ArcGIS-Portal — portal-stadt-fuerth.opendata.arcgis.com</a></li>
+      <li><a href="https://www.offenesdatenportal.de/" target="_blank" rel="noopener">Offenes Datenportal Moers — offenesdatenportal.de</a></li>
+      <li><a href="https://hri.fi/" target="_blank" rel="noopener">HELCOM/Helsinki Region Infoshare — hri.fi</a></li>
+      <li><a href="https://www.regensburg.de/r-next" target="_blank" rel="noopener">Regensburg R-NEXT — regensburg.de/r-next</a></li>
+      <li><a href="https://en.unesco.org/" target="_blank" rel="noopener">UNESCO: Schwedisches Pressefreiheitsgesetz 1766 — unesco.org</a></li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/tkoerting/data-stories" class="github-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      tkoerting/data-stories — Code, Daten, Methodik
+    </a>
+  </p>
+
+  <!-- Feedback -->
+  <div class="feedback-section" id="feedback">
+    <p>Hat Dir dieses Datenstück was gebracht?</p>
+    <div class="feedback-buttons">
+      <button class="feedback-btn" data-value="ja" onclick="sendFeedback('ja')">Ja, mehr davon</button>
+      <button class="feedback-btn" data-value="nein" onclick="sendFeedback('nein')">Nicht so meins</button>
+      <button class="feedback-btn" data-value="daten" onclick="sendFeedback('daten')">Mehr Daten bitte</button>
+    </div>
+    <div class="feedback-thanks" id="feedback-thanks">Danke für Dein Feedback!</div>
+  </div>
+
+  <p class="text-small" style="text-align:center;margin-top:2rem;">Fehler gefunden? <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a><br>Recherche und Visualisierung mit KI-Unterstützung. Alle Zahlen quellenbelegt.</p>
+
+  <div class="article-footer">
+    <p><a href="https://der-koerting.de">der-koerting.de</a> · <a href="https://opendataminded.de/">Alle Datenstücke</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
+  </div>
+
+</div>
+
+<script>
+var DATENSTUECK_ID = 'platz-57';
+var charts = {};
+
+function sendFeedback(value) {
+  var btns = document.querySelectorAll('.feedback-btn');
+  btns.forEach(function(b) { b.classList.remove('selected'); if(b.dataset.value === value) b.classList.add('selected'); });
+  document.getElementById('feedback-thanks').style.display = 'block';
+  fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ t: "8e113d5fff88b4d54708bd196e73c42a", datenstueck: DATENSTUECK_ID, feedback: value, timestamp: new Date().toISOString() })
+  }).catch(function(){});
+}
+
+function getColors() {
+  var isDark = document.documentElement.dataset.theme === 'dark';
+  return {
+    accent: isDark ? '#14B8A6' : '#0D9488',
+    citrus: isDark ? '#FACC15' : '#EAB308',
+    danger: isDark ? '#EF4444' : '#DC2626',
+    warning: isDark ? '#F59E0B' : '#D97706',
+    purple: isDark ? '#8B5CF6' : '#7C3AED',
+    text: isDark ? '#E5E7EB' : '#1E293B',
+    textSec: isDark ? '#9CA3AF' : '#64748B',
+    textTert: isDark ? '#6B7280' : '#94A3B8',
+    grid: isDark ? '#2D3139' : '#E2E5E9',
+    bg: isDark ? '#1E2028' : '#FFFFFF',
+    surface: isDark ? '#1A1D24' : '#FFFFFF'
+  };
+}
+
+function initCharts() {
+  Object.values(charts).forEach(function(ch) { try { ch.dispose() } catch(e) {} });
+
+  var c = getColors();
+
+  var base = {
+    backgroundColor: 'transparent',
+    textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+    grid: { left: 50, right: 20, top: 30, bottom: 30 },
+    tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } }
+  };
+
+  // === CHART 1: Lollipop — Bayerische Peers ===
+  var cities = ['Erlangen', 'Würzburg', 'Fürth', 'Ingolstadt', 'Regensburg', 'Nürnberg'];
+  var scores = [56.3, 61.4, 65.7, 78.5, 83.2, 85.3];
+  var ranks = ['Platz 75', 'Platz 64', 'Platz 57', 'Platz 28', 'Platz 12', 'Platz 8'];
+
+  charts.lollipop = echarts.init(document.getElementById('chart-lollipop'));
+  charts.lollipop.setOption({
+    backgroundColor: 'transparent',
+    textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+    grid: { left: 140, right: 60, top: 10, bottom: 30 },
+    tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } },
+    xAxis: {
+      type: 'value', min: 0, max: 100,
+      axisLine: { show: false },
+      splitLine: { lineStyle: { color: c.grid, type: 'dashed' } },
+      axisLabel: { color: c.textTert }
+    },
+    yAxis: {
+      type: 'category',
+      data: cities.map(function(name, i) { return ranks[i] + '  ' + name }),
+      axisLine: { lineStyle: { color: c.grid } },
+      axisLabel: { color: c.textSec, fontSize: 11 }
+    },
+    series: [{
+      type: 'bar',
+      data: scores.map(function(v, i) {
+        var isFuerth = cities[i] === 'Fürth';
+        return {
+          value: v,
+          itemStyle: {
+            color: isFuerth ? c.citrus : c.accent,
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: v.toFixed(1),
+            color: isFuerth ? c.citrus : c.textTert,
+            fontSize: 12, fontWeight: isFuerth ? 700 : 400,
+            fontFamily: 'JetBrains Mono'
+          }
+        }
+      }),
+      barWidth: 20
+    }]
+  });
+
+  // === CHART 2: Radar — Fürth vs. Regensburg ===
+  charts.radar = echarts.init(document.getElementById('chart-radar'));
+  charts.radar.setOption({
+    backgroundColor: 'transparent',
+    textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+    legend: {
+      data: ['Fürth', 'Regensburg'],
+      bottom: 0,
+      textStyle: { color: c.textSec, fontSize: 12 }
+    },
+    radar: {
+      indicator: [
+        { name: 'Mobilität', max: 100 },
+        { name: 'Verwaltung', max: 100 },
+        { name: 'Energie &\nUmwelt', max: 100 },
+        { name: 'IT &\nKommunikation', max: 100 },
+        { name: 'Gesellschaft &\nBildung', max: 100 }
+      ],
+      shape: 'polygon',
+      splitNumber: 4,
+      axisName: { color: c.textSec, fontSize: 11 },
+      splitLine: { lineStyle: { color: c.grid } },
+      splitArea: { show: false },
+      axisLine: { lineStyle: { color: c.grid } }
+    },
+    series: [{
+      type: 'radar',
+      data: [
+        {
+          value: [80.0, 78.4, 58.0, 56.4, 55.9],
+          name: 'Fürth',
+          lineStyle: { color: c.citrus, width: 2 },
+          itemStyle: { color: c.citrus },
+          areaStyle: { color: c.citrus, opacity: 0.15 }
+        },
+        {
+          value: [75, 85, 80, 85, 85],
+          name: 'Regensburg',
+          lineStyle: { color: c.accent, width: 2 },
+          itemStyle: { color: c.accent },
+          areaStyle: { color: c.accent, opacity: 0.15 }
+        }
+      ]
+    }]
+  });
+
+  // === CHART 3: Open Data pro 100k EW ===
+  var odUnits = ['Bayern (Land)', 'Fürth', 'GovData DE', 'Moers', 'Hamburg*'];
+  var odValues = [9, 14, 174, 448, 742];
+
+  charts.opendata = echarts.init(document.getElementById('chart-opendata'));
+  charts.opendata.setOption({
+    backgroundColor: 'transparent',
+    textStyle: { fontFamily: 'Space Grotesk, system-ui', color: c.text },
+    grid: { left: 120, right: 60, top: 10, bottom: 30 },
+    tooltip: { trigger: 'axis', backgroundColor: c.bg, borderColor: c.grid, textStyle: { color: c.text, fontSize: 12 } },
+    xAxis: {
+      type: 'value',
+      axisLine: { show: false },
+      splitLine: { lineStyle: { color: c.grid, type: 'dashed' } },
+      axisLabel: { color: c.textTert }
+    },
+    yAxis: {
+      type: 'category',
+      data: odUnits,
+      axisLine: { lineStyle: { color: c.grid } },
+      axisLabel: { color: c.textSec, fontSize: 11 }
+    },
+    series: [{
+      type: 'bar',
+      data: odValues.map(function(v, i) {
+        var isFuerth = odUnits[i] === 'Fürth';
+        return {
+          value: v,
+          itemStyle: {
+            color: isFuerth ? c.citrus : c.accent,
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true, position: 'right',
+            formatter: '' + v,
+            color: isFuerth ? c.citrus : c.textTert,
+            fontSize: 12, fontWeight: isFuerth ? 700 : 400,
+            fontFamily: 'JetBrains Mono'
+          }
+        }
+      }),
+      barWidth: 20
+    }]
+  });
+
+  // Resize handler
+  window.addEventListener('resize', function() {
+    Object.values(charts).forEach(function(ch) { try { ch.resize() } catch(e) {} });
+  });
+}
+
+// Theme init
+(function(){
+  var url = new URLSearchParams(window.location.search).get('theme');
+  var saved = url || localStorage.getItem('tk-theme') || 'dark';
+  document.documentElement.dataset.theme = saved;
+  localStorage.setItem('tk-theme', saved);
+  var b = document.querySelector('.toggle-btn');
+  if (b) b.textContent = saved === 'dark' ? '🌙' : '☀️';
+})();
+
+function toggleTheme() {
+  var h = document.documentElement, b = document.querySelector('.toggle-btn');
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('tk-theme', h.dataset.theme);
+  b.textContent = h.dataset.theme === 'dark' ? '🌙' : '☀️';
+  initCharts();
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+
+// Section nav active state
+document.addEventListener('DOMContentLoaded', function() {
+  var pills = document.querySelectorAll('.nav-pill');
+  var sections = [];
+  pills.forEach(function(pill) {
+    var id = pill.getAttribute('href');
+    if (id && id.startsWith('#')) {
+      var el = document.querySelector(id);
+      if (el) sections.push({ el: el, pill: pill });
+    }
+  });
+  window.addEventListener('scroll', function() {
+    var scrollPos = window.scrollY + 120;
+    var active = null;
+    sections.forEach(function(s) {
+      if (s.el.offsetTop <= scrollPos) active = s;
+    });
+    pills.forEach(function(p) { p.classList.remove('active') });
+    if (active) active.pill.classList.add('active');
+  });
+});
+</script>
+
+<!-- Cookie Consent Banner -->
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+  <div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">
+      Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. Keine Werbung, keine Weitergabe.
+      <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a>
+    </p>
+    <div style="display:flex;gap:0.5rem;flex-shrink:0">
+      <button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+      <button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA();}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none';}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>
