@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>84.400 ohne Platz. — Datenstück | Der Körting</title>
+<meta name="description" content="2025 stieg die Nachfrage nach Ausbildungsplätzen, das Angebot fiel um 4,6 %. 84.400 junge Menschen blieben ohne Platz. Und seit 2007 bilden ein Fünftel weniger Betriebe aus.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="84.400 ohne Platz. — Datenstück | Open Data Minded">
+<meta property="og:description" content="Mehr Betriebe als 2007, ein Fünftel weniger, die ausbilden. Der Ausbildungsmarkt in vier amtlichen Zeitreihen.">
+<meta property="og:url" content="https://opendataminded.de/84400-ohne-platz/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/84400-ohne-platz/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"84.400 ohne Platz.","description":"Der Ausbildungsmarkt in vier amtlichen Zeitreihen.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/84400-ohne-platz/","inLanguage":"de","datePublished":"2026-09-04","dateModified":"2026-09-04"}
+</script>
+<link rel="stylesheet" href="../fonts/fonts.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.7rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);position:relative;padding-bottom:4px;transition:color 0.2s}
+.header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+.header-nav a:hover{color:var(--text-primary)} .header-nav a:hover::after{width:100%}
+.header-nav a.active{color:var(--accent)} .header-nav a.active::after{width:100%}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+.nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+.nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+.kpi-card:hover{border-color:var(--accent)}
+.kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+.kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)}
+.kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+.chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+.chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+.chart{width:100%;height:300px} .chart-tall{height:380px} .chart-wide{height:420px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+.compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;transition:all var(--transition)}
+.compare-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.compare-card .compare-icon{font-size:2.5rem;margin-bottom:0.5rem}
+.compare-card .compare-name{font-family:var(--font-headline);font-size:1.1rem;margin-bottom:0.25rem}
+.compare-card .compare-detail{font-size:0.8rem;color:var(--text-secondary)}
+.compare-card .compare-number{font-family:var(--font-mono);font-size:1.8rem;font-weight:500;margin:0.5rem 0;line-height:1.2}
+.compare-card.habermas{border-left:3px solid var(--accent)}
+.compare-card.norris{border-left:3px solid var(--danger)}
+.perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+.perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+.perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+.commonality-list{list-style:none;margin:1.5rem 0}
+.commonality-list li{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem;font-size:0.9rem;display:flex;align-items:center;gap:0.75rem;transition:border-color var(--transition)}
+.commonality-list li:hover{border-color:var(--accent)}
+.commonality-list li::before{content:"⚡";font-size:1.1rem;flex-shrink:0}
+.quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+.quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+.quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+.source-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+.github-link:hover{border-color:var(--accent);color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)} .back-link:hover{color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+@media(max-width:768px){html{font-size:16px} h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr} .compare-grid{grid-template-columns:1fr} .chart{height:260px} .chart-tall{height:320px} .chart-wide{height:360px} .story-wrapper{padding:2rem 1rem 3rem} .section-nav{top:56px}}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="https://der-koerting.de/category/lab/">🧪 Lab</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/category/musikkram/">Musikkram</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">☀️</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">← Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #20</span>
+<span class="snapshot-tag">September 2026</span>
+<span>zum <a href="https://der-koerting.de/2026/09/04/das-geben-die-daten-nicht-her/">Blogpost</a></span>
+</div>
+
+<h1>84.400 ohne Platz.</h1>
+<div class="subtitle">Die unterste Sprosse verschwindet — und zwar nicht, weil keiner mehr will.</div>
+
+<p class="lead">Die gewohnte Erzählung geht so: Die jungen Leute wollen keine Ausbildung mehr. Vier amtliche Zeitreihen sagen etwas anderes. 2025 ist die Nachfrage gestiegen und das Angebot eingebrochen. Und seit 2007 gibt es mehr Betriebe in Deutschland — aber ein Fünftel weniger, die ausbilden.</p>
+
+<nav class="section-nav">
+<a href="#angebot" class="nav-pill">Angebot &amp; Nachfrage</a>
+<a href="#rueckzug" class="nav-pill">Der Rückzug</a>
+<a href="#erfolglos" class="nav-pill">Zwei Zahlen</a>
+<span class="nav-sep">|</span>
+<a href="#demografie" class="nav-pill">Oben</a>
+<a href="#langreihe" class="nav-pill">Seit 2007</a>
+<a href="#grenzen" class="nav-pill">Grenzen</a>
+</nav>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value danger">84.400</div><div class="kpi-label">ohne Ausbildungsplatz</div><div class="kpi-sub">2025 — ein Fünftel mehr als im Vorjahr</div></div>
+<div class="kpi-card"><div class="kpi-value danger">−4,6 %</div><div class="kpi-label">Angebot</div><div class="kpi-sub">während die Nachfrage um 0,7 % stieg</div></div>
+<div class="kpi-card"><div class="kpi-value accent2">13,4 Mio</div><div class="kpi-label">erreichen bis 2039 das Rentenalter</div><div class="kpi-sub">31 % aller Erwerbspersonen</div></div>
+</div>
+
+<h2 id="angebot">Nicht die Bewerber fehlen. Die Plätze.</h2>
+<p>Zum Stichtag 30. September zählt das Bundesinstitut für Berufsbildung, wie viele junge Menschen einen Ausbildungsplatz nachgefragt und wie viele Betriebe einen angeboten haben. 2025 laufen die beiden Kurven auseinander — und zwar in die unangenehme Richtung.</p>
+
+<div class="chart-container">
+<div class="chart-title">Das Angebot bricht ein, während die Nachfrage steigt</div>
+<div class="chart-subtitle">Ausbildungsplatzangebot und -nachfrage, Deutschland, Stichtag 30.09. · BIBB</div>
+<div id="chart-angebot" class="chart chart-tall"></div>
+</div>
+
+<p>Das Angebot fiel 2025 um <strong>25.332 Plätze</strong> oder 4,6 Prozent, das betriebliche sogar um 5,0 Prozent. Die Nachfrage stieg um 3.663 Personen oder 0,7 Prozent. Rechnerisch kamen damit nur noch <strong>94,7 Angebote auf 100 Nachfragende</strong>. 2023 waren es 101,8 — ein Absturz um 7,1 Punkte in zwei Jahren.</p>
+
+<div class="perspective-break">
+<h2>Mehr Betriebe. Weniger Ausbilder.</h2>
+<p>Der eigentliche Befund steckt nicht in den Verträgen.</p>
+</div>
+
+<h2 id="rueckzug">Wer sich zurückgezogen hat</h2>
+<p>Die Ausbildungsbetriebsquote sagt, wie viele Betriebe überhaupt ausbilden. 2007 war es fast jeder vierte, 2024 nicht einmal mehr jeder fünfte. Nach Betriebsgröße aufgeschlüsselt zeigt sich, dass das kein gleichmäßiger Trend ist, sondern ein sehr einseitiger.</p>
+
+<div class="chart-container">
+<div class="chart-title">Je kleiner der Betrieb, desto stärker der Rückzug</div>
+<div class="chart-subtitle">Anteil der Betriebe, die ausbilden, nach Beschäftigtenzahl — 2007 gegen 2024 · BIBB/BA</div>
+<div id="chart-quote" class="chart chart-tall"></div>
+</div>
+
+<p>Bei Betrieben mit bis zu vier Beschäftigten hat sich die Quote <strong>mehr als halbiert</strong> — von 11,8 auf 5,5 Prozent. Bei Großbetrieben ab 500 Beschäftigten ging sie von 88,3 auf 85,8 Prozent zurück, also kaum. Die Ausbildung wandert vom kleinen zum großen Betrieb.</p>
+
+<div class="data-box">
+<p>2024 gab es in Deutschland <strong>81.022 Betriebe mehr</strong> als 2007 — und <strong>93.073 Ausbildungsbetriebe weniger</strong>. Plus 4,0 Prozent Betriebe, minus 19,0 Prozent Ausbildungsbetriebe.</p>
+</div>
+
+<h2 id="erfolglos">Zwei Zahlen, die beide stimmen</h2>
+<p>Hier wäre es einfach, sich eine Seite auszusuchen. Beide Zahlen stehen nebeneinander in derselben Erhebung, und beide sind wahr.</p>
+
+<div class="chart-container">
+<div class="chart-title">54.400 Stellen blieben leer. 84.400 Menschen blieben ohne.</div>
+<div class="chart-subtitle">Unbesetzte Ausbildungsstellen und unversorgte junge Menschen, 30.09.2025 · BIBB</div>
+<div id="chart-erfolglos" class="chart"></div>
+</div>
+
+<p>Das ist kein reines Mengenproblem, sondern auch ein Passungsproblem — regional und nach Berufen. Wer nur eine Hälfte zeigt, erzählt eine bequemere Geschichte, als die Daten hergeben. Bemerkenswert bleibt die Richtung: Die unbesetzten Stellen sind gegenüber dem Vorjahr um 21,6 Prozent <em>gesunken</em>, die unversorgten jungen Menschen um 19,9 Prozent <em>gestiegen</em>.</p>
+
+<h2 id="demografie">Oben geht mehr, als unten nachkommt</h2>
+<p>Während unten weniger ausgebildet wird, verlässt oben der größte Jahrgangsblock der Nachkriegszeit den Arbeitsmarkt. Das Statistische Bundesamt hat das im Mikrozensus 2024 durchgerechnet.</p>
+
+<div class="chart-container">
+<div class="chart-title">Die Nachrückenden sind weniger als die Gehenden</div>
+<div class="chart-subtitle">Erwerbspersonen nach Altersgruppen 2024, in Millionen · Destatis, Mikrozensus</div>
+<div id="chart-alter" class="chart"></div>
+</div>
+
+<p>Bis 2039 überschreiten <strong>13,4 Millionen Erwerbspersonen</strong> das Renteneintrittsalter von 67 — knapp ein Drittel aller Erwerbspersonen. Die 55- bis 64-Jährigen umfassen zusammen 10,0 Millionen, die 25- bis 34-Jährigen 9,0 Millionen.</p>
+
+<div class="perspective-break">
+<h2>Und die KI?</h2>
+<p>Die Kurve fällt länger, als es ChatGPT gibt.</p>
+</div>
+
+<h2 id="langreihe">Der Abstieg begann 2007</h2>
+<p>Es liegt nahe, den Einbruch mit der Automatisierung von Einstiegsarbeit zu erklären. Die lange Reihe erlaubt das nicht.</p>
+
+<div class="chart-container">
+<div class="chart-title">Fast ein Viertel weniger Verträge als 2007</div>
+<div class="chart-subtitle">Neu abgeschlossene Ausbildungsverträge, Deutschland, Stichtag 30.09. · BIBB</div>
+<div id="chart-langreihe" class="chart chart-tall"></div>
+</div>
+
+<p>Der Höchststand liegt im Jahr <strong>2007 bei 625.884</strong> Verträgen. 2025 sind es <strong>475.950</strong> — ein Minus von <strong>149.934 oder 24,0 Prozent</strong>. Achtzehn Jahre Abstieg, und sie beginnen anderthalb Jahrzehnte vor der Debatte über generative KI. Das Vor-Corona-Niveau wurde nie wieder erreicht.</p>
+
+<h2 id="grenzen">Was diese Daten nicht hergeben</h2>
+<p>Der wichtigste Abschnitt, und er gehört nicht ans Ende, sondern mitten hinein.</p>
+<ul>
+<li><strong>Keine Ursache.</strong> Es gibt keine amtliche Statistik, die den Rückgang von Ausbildungsplätzen mit dem Einsatz von KI verknüpft. Wer diese Brücke baut, behauptet.</li>
+<li><strong>Der Trend ist älter als das Werkzeug.</strong> Demografie, Akademisierung und Betriebsstruktur erklären mehr als jede Technologie der letzten drei Jahre.</li>
+<li><strong>54.400 leere Stellen</strong> widerlegen die einfache Lesart, die Betriebe bildeten nicht mehr aus, zumindest teilweise.</li>
+<li><strong>Ein Stichtag ist kein Jahr.</strong> Der 30. September ist eine Momentaufnahme; später geschlossene Verträge fehlen darin.</li>
+<li><strong>In der amtlichen Zahl steckt eine aufgefüllte Lücke.</strong> Für einen Melder in Nordrhein-Westfalen lagen keine Daten vor; eingesetzt wurden die Werte des Vorjahres. Korrekt in einer Fußnote gekennzeichnet — und in keiner Pressemitteilung erwähnt.</li>
+</ul>
+
+<hr class="divider">
+
+<p class="tk-closer">Seniorität entsteht an Arbeit, die jemand vorher gemacht hat. Wenn die unterste Sprosse fehlt, fällt niemand herunter. Es kommt nur keiner mehr oben an.</p>
+
+<p>Die Daten sagen nicht, warum das passiert. Sie sagen ziemlich genau, dass es passiert — seit achtzehn Jahren, quer durch zwei unabhängige Erhebungen. Bleibt die Frage, die keine Statistik beantwortet: Ersetzen wir die Sprosse, oder entfernen wir sie nur?</p>
+
+<!-- Feedback -->
+<div class="feedback-box">
+<h3>War das hilfreich?</h3>
+<p>Sagen Sie es mir.</p>
+<div class="feedback-buttons">
+<button class="feedback-btn" data-value="mehr">Mehr davon</button>
+<button class="feedback-btn" data-value="ok">War okay</button>
+<button class="feedback-btn" data-value="ueberrascht">Hat mich überrascht</button>
+</div>
+<div class="feedback-thanks" id="feedback-thanks">Danke. Notiert.</div>
+</div>
+
+<!-- Sources -->
+<div class="source-card">
+<h3>Quellen &amp; Daten</h3>
+<ul>
+<li>BIBB, Datenreport zum Berufsbildungsbericht 2026 — Tab. A1.1.1-1 (Angebot/Nachfrage), A1.2-1 (Verträge), A7.1-1 (Ausbildungsbetriebsquote)</li>
+<li>BIBB, Datenreport zum Berufsbildungsbericht 2021 — Tab. A1.2-1, für die Jahre 2002 bis 2010</li>
+<li>BIBB, Der Ausbildungsmarkt im Jahr 2025 — unbesetzte Stellen und unversorgte junge Menschen</li>
+<li>Statistisches Bundesamt, Pressemitteilung Nr. 048/2025 — Mikrozensus 2024, Erwerbspersonen nach Alter</li>
+<li>Rohdaten und Rechenweg: <code>data.json</code> und <code>METHODIK.md</code> in diesem Verzeichnis</li>
+</ul>
+</div>
+
+<p><a href="https://github.com/tkoerting/data-stories" class="github-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> tkoerting/data-stories — Code, Daten, Methodik</a></p>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Alle Zahlen stammen aus amtlichen Primärquellen und wurden gegengerechnet; die Verkettung der beiden Datenreport-Ausgaben ist in den zehn Überlappungsjahren geprüft. Nichts davon ist geschätzt. Wer etwas findet, das nicht stimmt: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #20 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a> · <a href="https://x.com/derkoerting" target="_blank" rel="noopener">𝕏</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='84400-ohne-platz';var charts={};
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val)+'&t=8e113d5fff88b4d54708bd196e73c42a',{mode:'no-cors'})})});
+
+function initCharts(){
+fetch('data.json').then(function(r){return r.json()}).then(function(D){
+var dark=document.documentElement.dataset.theme==='dark';
+var c={accent:dark?'#14B8A6':'#0D9488',danger:dark?'#EF4444':'#DC2626',
+       accent2:dark?'#FACC15':'#EAB308',
+       text:dark?'#E5E7EB':'#1E293B',textSec:dark?'#9CA3AF':'#64748B',
+       textTert:dark?'#6B7280':'#94A3B8',grid:dark?'#2D3139':'#E2E5E9',
+       neutral:dark?'#4B5563':'#CBD5E1'};
+var base={backgroundColor:'transparent',
+  textStyle:{fontFamily:'Space Grotesk',color:c.text},
+  grid:{left:56,right:24,top:24,bottom:32,containLabel:true},
+  tooltip:{trigger:'axis',backgroundColor:dark?'#1E2028':'#fff',
+    borderColor:c.grid,textStyle:{color:c.text,fontSize:12}}};
+var mono={fontFamily:'JetBrains Mono',fontSize:10};
+Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});
+
+// 1 — ANGEBOT vs NACHFRAGE
+var an=D.angebot_nachfrage;
+charts.angebot=echarts.init(document.getElementById('chart-angebot'));
+charts.angebot.setOption({...base,
+ legend:{data:['Nachfrage','Angebot'],textStyle:{color:c.textSec},top:0},
+ grid:{...base.grid,top:36},
+ xAxis:{type:'category',data:an.jahre,axisLine:{lineStyle:{color:c.grid}},
+   axisLabel:{color:c.textTert,fontSize:10,interval:1}},
+ yAxis:{type:'value',min:500000,axisLine:{show:false},
+   splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(v){return(v/1000)+'k'}}},
+ series:[
+  {name:'Nachfrage',type:'line',smooth:false,data:an.nachfrage,symbol:'none',
+   lineStyle:{width:2.5,color:c.accent},itemStyle:{color:c.accent},
+   markLine:{silent:true,symbol:'none',data:[{xAxis:'2020'}],
+     lineStyle:{color:c.textTert,type:'dotted'},
+     label:{formatter:'Corona',color:c.textTert,fontSize:10}}},
+  {name:'Angebot',type:'line',smooth:false,data:an.angebot,symbol:'none',
+   lineStyle:{width:3,color:c.danger},itemStyle:{color:c.danger},
+   markPoint:{symbol:'circle',symbolSize:8,data:[{coord:['2025',an.angebot[14]]}],
+     itemStyle:{color:c.danger},
+     label:{formatter:'−4,6 %',position:'bottom',color:c.danger,...mono}}}
+ ]});
+
+// 2 — AUSBILDUNGSBETRIEBSQUOTE
+var q=D.betriebsquote;
+charts.quote=echarts.init(document.getElementById('chart-quote'));
+charts.quote.setOption({...base,
+ legend:{data:['2007','2024'],textStyle:{color:c.textSec},top:0},
+ grid:{left:96,right:56,top:36,bottom:24,containLabel:true},
+ xAxis:{type:'value',max:100,axisLine:{show:false},
+   splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+ yAxis:{type:'category',data:q.klassen,inverse:true,
+   axisLine:{lineStyle:{color:c.grid}},
+   axisLabel:{color:c.textSec,fontSize:11}},
+ series:[
+  {name:'2007',type:'bar',color:c.neutral,data:q.quote_2007,barWidth:9,barGap:'20%'},
+  {name:'2024',type:'bar',color:c.danger,data:q.quote_2024,barWidth:9,
+   label:{show:true,position:'right',
+     formatter:function(p){return p.value.toFixed(1).replace('.',',')+'%'},
+     color:c.danger,...mono}}
+ ]});
+
+// 3 — UNBESETZT vs UNVERSORGT
+var e=D.erfolglos_2025;
+charts.erfolglos=echarts.init(document.getElementById('chart-erfolglos'));
+charts.erfolglos.setOption({...base,
+ grid:{left:24,right:72,top:16,bottom:16,containLabel:true},
+ xAxis:{type:'value',axisLine:{show:false},
+   splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(v){return(v/1000)+'k'}}},
+ yAxis:{type:'category',inverse:true,axisLine:{lineStyle:{color:c.grid}},
+   axisLabel:{color:c.textSec,fontSize:12},
+   data:['unbesetzte Ausbildungsstellen','junge Menschen ohne Platz']},
+ series:[{type:'bar',barWidth:26,
+   data:[{value:e.unbesetzte_stellen,itemStyle:{color:c.neutral}},
+         {value:e.unversorgte,itemStyle:{color:c.danger}}],
+   label:{show:true,position:'right',
+     formatter:function(p){return p.value.toLocaleString('de-DE')},
+     color:c.text,...mono}}]});
+
+// 4 — ERWERBSPERSONEN NACH ALTER
+var w=D.erwerbspersonen_2024;
+charts.alter=echarts.init(document.getElementById('chart-alter'));
+charts.alter.setOption({...base,
+ grid:{left:8,right:56,top:16,bottom:16,containLabel:true},
+ xAxis:{type:'value',axisLine:{show:false},
+   splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(v){return v+' Mio'}}},
+ yAxis:{type:'category',data:w.gruppen,inverse:true,
+   axisLine:{lineStyle:{color:c.grid}},axisLabel:{color:c.textSec,fontSize:11}},
+ series:[{type:'bar',barWidth:18,
+   data:w.millionen.map(function(v,i){
+     var col=(i===0)?c.accent:((i>=3)?c.danger:c.neutral);
+     return{value:v,itemStyle:{color:col}}}),
+   label:{show:true,position:'right',
+     formatter:function(p){return p.value.toFixed(1).replace('.',',')},
+     color:c.text,...mono}}]});
+
+// 5 — LANGREIHE
+var v=D.vertraege;
+charts.langreihe=echarts.init(document.getElementById('chart-langreihe'));
+charts.langreihe.setOption({...base,
+ xAxis:{type:'category',data:v.jahre,axisLine:{lineStyle:{color:c.grid}},
+   axisLabel:{color:c.textTert,fontSize:10,interval:2}},
+ yAxis:{type:'value',min:440000,axisLine:{show:false},
+   splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(x){return(x/1000)+'k'}}},
+ series:[{type:'line',smooth:false,data:v.werte,symbol:'none',
+   lineStyle:{width:3,color:c.danger},itemStyle:{color:c.danger},
+   areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,
+     [{offset:0,color:c.danger+'33'},{offset:1,color:'transparent'}])},
+   markPoint:{symbol:'circle',symbolSize:9,itemStyle:{color:c.accent2},
+     data:[{coord:['2007',625884],name:'Höchststand'}],
+     label:{formatter:'2007: 625.884',position:'top',color:c.text,...mono}},
+   markLine:{silent:true,symbol:'none',
+     data:[{yAxis:475950}],
+     lineStyle:{color:c.textTert,type:'dotted'},
+     label:{formatter:'2025: 475.950',position:'insideStartTop',
+       color:c.textTert,...mono}}}]});
+
+window.addEventListener('resize',function(){Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+});}
+
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'🌙':'☀️'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'🌙':'☀️';initCharts()}
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>
