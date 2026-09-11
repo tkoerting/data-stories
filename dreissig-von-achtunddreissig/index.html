@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>
+function tkLoadGA(){
+  if(document.querySelector('script[src*="gtag"]'))return;
+  var s=document.createElement('script');
+  s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Q50MESBRQS';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q50MESBRQS',{anonymize_ip:true});
+}
+if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreißig von achtunddreißig. — Datenstück | Der Körting</title>
+<meta name="description" content="In Berlin stimmte die CDU 2023 in 30 von 38 Wahl-O-Mat-Thesen mit der AfD überein. In Sachsen-Anhalt 2026 sind es 18. Programmatische Nähe über 22 Wahlen, gerechnet statt behauptet.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dreißig von achtunddreißig. — Datenstück | Open Data Minded">
+<meta property="og:description" content="Die CDU stimmt mit der AfD je nach Wahl in 45 bis 79 Prozent der Thesen überein. Am fernsten steht sie ihr dort, wo die AfD am stärksten ist.">
+<meta property="og:url" content="https://opendataminded.de/dreissig-von-achtunddreissig/">
+<meta property="og:site_name" content="Open Data Minded">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<meta name="author" content="Thomas Körting">
+<link rel="canonical" href="https://opendataminded.de/dreissig-von-achtunddreissig/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"84.400 ohne Platz.","description":"Der Ausbildungsmarkt in vier amtlichen Zeitreihen.","author":{"@type":"Person","name":"Thomas Körting","url":"https://der-koerting.de/ueber-mich/"},"publisher":{"@type":"Person","name":"Thomas Körting"},"url":"https://opendataminded.de/dreissig-von-achtunddreissig/","inLanguage":"de","datePublished":"2026-09-04","dateModified":"2026-09-04"}
+</script>
+<link rel="stylesheet" href="../fonts/fonts.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--font-headline:'Instrument Serif',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:760px;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+[data-theme="dark"]{--bg:#111318;--bg-surface:#1A1D24;--bg-card:#1E2028;--text-primary:#E5E7EB;--text-secondary:#9CA3AF;--text-tertiary:#6B7280;--border:#2D3139;--accent:#14B8A6;--accent-hover:#2DD4BF;--accent-subtle:rgba(20,184,166,0.1);--accent-2:#FACC15;--danger:#EF4444;--danger-subtle:rgba(239,68,68,0.1);--warning:#F59E0B;--purple:#8B5CF6;--tag-bg:#23272F;--tag-text:#9CA3AF}
+[data-theme="light"]{--bg:#F4F6F7;--bg-surface:#FFFFFF;--bg-card:#FFFFFF;--text-primary:#1E293B;--text-secondary:#64748B;--text-tertiary:#94A3B8;--border:#E2E5E9;--accent:#0D9488;--accent-hover:#0F766E;--accent-subtle:rgba(13,148,136,0.08);--accent-2:#EAB308;--danger:#DC2626;--danger-subtle:rgba(220,38,38,0.06);--warning:#D97706;--purple:#7C3AED;--tag-bg:#F0F2F4;--tag-text:#64748B}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-primary);line-height:1.7;transition:background var(--transition),color var(--transition);min-height:100vh}
+::selection{background:var(--accent);color:white}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-hover)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,246,247,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+[data-theme="dark"] .site-header{background:rgba(17,19,24,0.85)}
+.header-inner{max-width:860px;margin:0 auto;padding:0.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;color:var(--text-primary)} .site-name span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:1.5rem}
+.header-nav{display:flex;align-items:center;gap:1rem;list-style:none}
+.header-nav a{font-family:var(--font-body);font-size:0.7rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);position:relative;padding-bottom:4px;transition:color 0.2s}
+.header-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.25s}
+.header-nav a:hover{color:var(--text-primary)} .header-nav a:hover::after{width:100%}
+.header-nav a.active{color:var(--accent)} .header-nav a.active::after{width:100%}
+.toggle-btn{background:var(--tag-bg);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.header-nav{display:none}}
+.story-wrapper{max-width:var(--max-width);margin:0 auto;padding:3rem 1.5rem 4rem}
+.story-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-secondary);flex-wrap:wrap}
+.category-tag{background:var(--accent-subtle);color:var(--accent);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:500}
+.snapshot-tag{background:var(--tag-bg);color:var(--tag-text);padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem}
+h1{font-family:var(--font-headline);font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.subtitle{font-family:var(--font-headline);font-style:italic;font-size:1.15rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.4}
+h2{font-family:var(--font-headline);font-size:1.5rem;font-weight:400;margin:3rem 0 1rem;color:var(--accent)}
+p{margin-bottom:1.25rem;font-size:0.95rem;line-height:1.8}
+p.lead{font-size:1.05rem;color:var(--text-secondary);line-height:1.7}
+.text-small{font-size:0.8rem;color:var(--text-tertiary);line-height:1.6}
+.section-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;position:sticky;top:60px;z-index:50;background:var(--bg);padding:0.75rem 0}
+.nav-pill{background:var(--tag-bg);color:var(--tag-text);padding:0.35rem 0.85rem;border-radius:100px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition)}
+.nav-pill:hover,.nav-pill.active{background:var(--accent-subtle);color:var(--accent);border-color:rgba(20,184,166,0.3)}
+.nav-sep{color:var(--text-tertiary);font-size:0.7rem;display:flex;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color var(--transition)}
+.kpi-card:hover{border-color:var(--accent)}
+.kpi-value{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--accent);line-height:1.2}
+.kpi-value.danger{color:var(--danger)} .kpi-value.warning{color:var(--warning)} .kpi-value.purple{color:var(--purple)} .kpi-value.accent2{color:var(--accent-2)}
+.kpi-label{font-size:0.7rem;color:var(--text-tertiary);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.04em}
+.kpi-sub{font-size:0.65rem;color:var(--text-tertiary);margin-top:0.15rem;font-family:var(--font-mono)}
+.chart-container{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:1.5rem 0}
+.chart-title{font-family:var(--font-headline);font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem}
+.chart-subtitle{font-size:0.75rem;color:var(--text-tertiary);margin-bottom:0.75rem;font-family:var(--font-mono)}
+.chart{width:100%;height:300px} .chart-tall{height:380px} .chart-wide{height:420px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0}
+.compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;transition:all var(--transition)}
+.compare-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.compare-card .compare-icon{font-size:2.5rem;margin-bottom:0.5rem}
+.compare-card .compare-name{font-family:var(--font-headline);font-size:1.1rem;margin-bottom:0.25rem}
+.compare-card .compare-detail{font-size:0.8rem;color:var(--text-secondary)}
+.compare-card .compare-number{font-family:var(--font-mono);font-size:1.8rem;font-weight:500;margin:0.5rem 0;line-height:1.2}
+.compare-card.habermas{border-left:3px solid var(--accent)}
+.compare-card.norris{border-left:3px solid var(--danger)}
+.perspective-break{margin:4rem 0;padding:3rem 0;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
+.perspective-break h2{color:var(--accent);margin:0 0 0.5rem;font-size:1.8rem}
+.perspective-break p{color:var(--text-secondary);margin:0;font-size:1rem}
+.commonality-list{list-style:none;margin:1.5rem 0}
+.commonality-list li{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem;font-size:0.9rem;display:flex;align-items:center;gap:0.75rem;transition:border-color var(--transition)}
+.commonality-list li:hover{border-color:var(--accent)}
+.commonality-list li::before{content:"⚡";font-size:1.1rem;flex-shrink:0}
+.quote-block{border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0;background:var(--accent-subtle);border-radius:0 8px 8px 0}
+.quote-block p{margin:0;font-family:var(--font-headline);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--text-primary)}
+.quote-block .quote-author{font-family:var(--font-mono);font-style:normal;font-size:0.75rem;color:var(--text-tertiary);margin-top:0.5rem;display:block}
+.divider{border:none;height:1px;background:var(--border);margin:2.5rem 0}
+.tk-closer{font-family:var(--font-headline);font-size:1.3rem;color:var(--accent);line-height:1.4;margin-bottom:1.5rem}
+.source-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin:2rem 0;font-size:0.8rem;color:var(--text-secondary)}
+.source-card h3{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);margin:0 0 0.75rem}
+.source-card ul{list-style:none} .source-card li{margin-bottom:0.35rem;padding-left:1rem;position:relative}
+.source-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+.github-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--tag-bg);padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:var(--font-mono);color:var(--text-secondary);border:1px solid var(--border);transition:all var(--transition)}
+.github-link:hover{border-color:var(--accent);color:var(--accent)}
+.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-tertiary);text-align:center}
+.back-link{display:inline-block;margin-bottom:2rem;font-size:0.85rem;color:var(--text-tertiary)} .back-link:hover{color:var(--accent)}
+.feedback-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.feedback-box h3{font-family:var(--font-headline);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem}
+.feedback-box p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem}
+.feedback-buttons{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.feedback-btn{padding:0.5rem 1.25rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;transition:all var(--transition);color:var(--text-primary)}
+.feedback-btn:hover{border-color:var(--accent);background:var(--accent-subtle);color:var(--accent)}
+.feedback-btn.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+.feedback-thanks{display:none;font-family:var(--font-headline);font-size:1rem;color:var(--accent);margin-top:0.5rem}
+@media(max-width:768px){html{font-size:16px} h1{font-size:1.8rem} .kpi-grid{grid-template-columns:1fr 1fr} .compare-grid{grid-template-columns:1fr} .chart{height:260px} .chart-tall{height:320px} .chart-wide{height:360px} .story-wrapper{padding:2rem 1rem 3rem} .section-nav{top:56px}}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr}}
+</style>
+<style>
+.legende{font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--text-tertiary,#94A3B8);margin:.1rem 0 .6rem;display:flex;
+  align-items:center;gap:.35rem;flex-wrap:wrap}
+.legende .pkt{width:9px;height:9px;border-radius:50%;display:inline-block;margin-left:.7rem}
+.legende .pkt:first-child{margin-left:0}
+.pkt-west{background:#0D9488}.pkt-balken{background:#94A3B8}.pkt-ost{background:#EAB308}.pkt-st{background:#DC2626}
+.these-liste{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.2rem 0 1.8rem}
+.these{font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.4;
+  padding:.32rem .6rem;border-radius:4px;border:1px solid var(--border,#2D3139);
+  color:var(--text-secondary,#64748B)}
+.these-zu{border-left:2px solid var(--accent,#0D9488)}
+.these-nein{border-left:2px solid var(--text-tertiary,#94A3B8)}
+p.warnung{border-left:2px solid var(--accent,#0D9488);padding-left:1rem;
+  color:var(--text-secondary,#64748B);font-size:.94rem}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+<a href="https://der-koerting.de" class="site-name" style="color:var(--text-primary)">Der <span>Körting</span></a>
+<div class="header-right"><nav class="header-nav">
+<a href="https://der-koerting.de/category/laut-gedacht/">Laut gedacht</a>
+<a href="https://der-koerting.de/category/nachlese/">Nachlese</a>
+<a href="https://der-koerting.de/category/technik-ki/">Technik &amp; KI</a>
+        <a href="https://der-koerting.de/category/lab/">🧪 Lab</a>
+<a href="https://opendataminded.de/" class="active">Datenstücke</a>
+        <a href="https://der-koerting.de/category/musikkram/">Musikkram</a>
+<a href="https://der-koerting.de/ueber-mich/">Über mich</a>
+</nav><button class="toggle-btn" onclick="toggleTheme()" title="Theme wechseln">☀️</button></div>
+</div></header>
+
+<div class="story-wrapper">
+<a href="https://opendataminded.de/" class="back-link">← Alle Datenstücke</a>
+
+<div class="story-meta">
+<span class="category-tag">Datenstück #21</span>
+<span class="snapshot-tag">September 2026</span>
+</div>
+
+<h1>Dreißig von<br>achtunddreißig.</h1>
+
+<p class="lead">Bei der Wiederholungswahl in Berlin 2023 stimmte die CDU in 30 von 38 Wahl-O-Mat-Thesen mit der AfD überein. Das sind 79 Prozent — der höchste Wert, den ich in 22 Wahlen gefunden habe. Die AfD kam dort auf 9,1 Prozent der Stimmen.</p>
+
+<p>In Sachsen-Anhalt, wo die AfD im September 43,8 Prozent geholt hat, sind es 18 von 38. Also 47 Prozent, fast der niedrigste Wert der ganzen Reihe.</p>
+
+<p>Das ist die Sorte Zahl, die man leicht falsch herum liest. Ich hatte zuerst nur Sachsen-Anhalt gerechnet und die 47 Prozent für den Befund gehalten — bis der Vergleich da war. Ohne Maßstab sagt eine einzelne Zahl nichts.</p>
+
+<h2 id="was">Was hier gemessen wird</h2>
+
+<p>Der Wahl-O-Mat legt allen antretenden Parteien dieselben 38 Thesen vor. Jede antwortet mit „Stimme zu", „Neutral" oder „Stimme nicht zu". Die Kennzahl dieses Datenstücks ist eine simple Zählung: <strong>Bei wie vielen der 38 Thesen antworten zwei Parteien gleich?</strong></p>
+
+<p>Kein Modell, keine Gewichtung. Wer will, zählt nach.</p>
+
+<div class="chart-container">
+<div class="chart-title">Die CDU stimmt der AfD überall teilweise zu — wie stark, schwankt enorm</div>
+<div class="chart-subtitle">Anteil identischer Positionen bei 38 Thesen, 22 Wahlen seit 2021</div><div class="legende"><span class="pkt pkt-balken"></span>West und Bund<span class="pkt pkt-ost"></span>Ost<span class="pkt pkt-st"></span>Sachsen-Anhalt 2026</div>
+<div id="chart-rang" style="height:620px"></div>
+</div>
+
+<p>Die Spanne reicht von <strong>45 bis 79 Prozent</strong>, der Median liegt bei 55. Es gibt keine Wahl, bei der CDU und AfD überwiegend verschiedener Meinung wären. Und keine, bei der sie überwiegend gleicher Meinung wären.</p>
+
+<h2 id="umgekehrt">Der Zusammenhang läuft andersherum als erwartet</h2>
+
+<p>Man würde vermuten: Wo die AfD stark ist, rückt die CDU auf sie zu. Die Daten zeigen eher das Gegenteil.</p>
+
+<div class="chart-container">
+<div class="chart-title">Je stärker die AfD, desto ferner steht ihr die CDU programmatisch</div>
+<div class="chart-subtitle">Jeder Punkt eine Wahl. Waagerecht das AfD-Ergebnis, senkrecht die Übereinstimmung mit der CDU. Gepunktet die Regressionsgerade (r = −0,33, r² = 0,11).</div><div class="legende"><span class="pkt pkt-west"></span>West und Bund<span class="pkt pkt-ost"></span>Ost<span class="pkt pkt-st"></span>Sachsen-Anhalt 2026</div>
+<div id="chart-streu" style="height:440px"></div>
+</div>
+
+<p>Die Korrelation beträgt <strong>r = −0,33</strong>. Das Vorzeichen ist stabil, die Erklärungskraft klein — rund elf Prozent der Streuung. Als Median über die Länder: <strong>51 Prozent im Osten, 63 im Westen.</strong></p>
+
+<p class="warnung"><strong>Das ist ein Trend, keine Regel.</strong> Die Ausreißer sind größer als der Zusammenhang. Berlin 2023 hat den höchsten Nähewert bei fast schwächstem AfD-Ergebnis, die Europawahl im selben Jahr den niedrigsten. Wer hieraus eine Ursache macht, geht über die Daten hinaus.</p>
+
+<h2 id="isolation">Wird die AfD programmatisch normaler?</h2>
+
+<p>Dieselben Daten beantworten die Frage, die unter der Brandmauer-Debatte liegt. Dafür vergleiche ich zwei Größen: wie nah die AfD im Mittel allen anderen etablierten Parteien steht — und wie nah diese anderen einander stehen.</p>
+
+<div class="chart-container">
+<div class="chart-title">Die AfD steht den anderen ferner als diese einander — und der Abstand wächst</div>
+<div class="chart-subtitle">Mittlere Übereinstimmung in Prozent der Thesen, je Wahl</div>
+<div id="chart-isolation" style="height:420px"></div>
+</div>
+
+<p>Im Mittel über alle 22 Wahlen: Die AfD stimmt mit den anderen in <strong>39 Prozent</strong> der Thesen überein, die anderen untereinander in <strong>48 Prozent</strong>. Die Sonderstellung ist messbar, aber moderat — die AfD ist im Programmraum kein Fremdkörper, sondern ein Randmitglied.</p>
+
+<p class="warnung"><strong>Und hier ist Vorsicht geboten.</strong> Der Abstand ist von 8 Punkten (2021–22) auf 12 Punkte (2024–26) gewachsen. Das klingt nach Abgrenzung — aber ab 2024 tritt das BSW an und verändert beide Messgrößen gleichzeitig. Ob der wachsende Abstand an der AfD liegt oder am veränderten Parteienfeld, lässt sich mit diesen Daten nicht trennen. Deshalb steht diese Zahl hier als Beobachtung, nicht als Befund.</p>
+
+<h2 id="sachsenanhalt">Sachsen-Anhalt im Detail</h2>
+
+<p>Für die Wahl vom 6. September, bei der die AfD 43,8 Prozent holte und 39 von 83 Sitzen bekam, sieht das Feld so aus:</p>
+
+<div class="chart-container">
+<div class="chart-title">Wer stimmt mit wem überein — die sechs Parteien im Landtag</div>
+<div class="chart-subtitle">Anteil identischer Positionen bei 38 Thesen, Sachsen-Anhalt 2026</div>
+<div id="chart-matrix" style="height:400px"></div>
+</div>
+
+<p>Zwei Dinge fallen auf. Die programmatisch nächste Partei zur CDU ist die AfD — und umgekehrt. Und der linke Block ist deutlich fester als alles auf der anderen Seite: SPD und Linke stimmen in 84 Prozent der Thesen überein, Grüne und SPD in 74.</p>
+
+<p>Die 18 Thesen, bei denen CDU und AfD dieselbe Position einnehmen, liegen nicht zufällig verteilt:</p>
+
+<div id="liste-gemeinsam" class="these-liste"></div>
+
+<p>Was die einfache Erzählung stört: <strong>Bei nur 4 von 38 Thesen steht die AfD allein gegen die anderen fünf.</strong> Gemeinsame Schulform, Klimaneutralität, Demokratiebildung, Masern-Impfpflicht. Sonst hat sie fast immer jemanden an ihrer Seite. Und bei genau einer These sind sich alle sechs einig: Die Geschäfte sollen sonntags geschlossen bleiben.</p>
+
+<h2 id="grenzen">Was diese Zahlen nicht sagen</h2>
+
+<p><strong>Die Thesen sind zwischen den Wahlen nicht dieselben.</strong> Jede bpb-Redaktion wählt 38 aus rund 80 neu aus. Die Prozentwerte zweier Wahlen sind deshalb nicht auf den Punkt vergleichbar — vergleichbar sind Größenordnung und Rangfolge. Dass Sachsen-Anhalt von 50 auf 47 Prozent gefallen ist, ist bei wechselnder Thesenauswahl <em>kein</em> Beleg für eine Bewegung.</p>
+
+<p><strong>Es sind absichtlich die strittigen Thesen.</strong> Die bpb wählt aus, was die Parteien kontrovers beantwortet haben. Gemessen wird also die Übereinstimmung auf dem trennendsten Feld. Die tatsächliche Nähe liegt höher als hier gemessen.</p>
+
+<p><strong>Gleiche Position ist nicht gleiche Begründung.</strong> Bei der Sonntagsöffnung sind alle sechs dagegen — mit völlig verschiedenen Argumenten. Wer aus diesen Zahlen inhaltliche Verwandtschaft liest, liest mehr hinein, als drinsteht.</p>
+
+<p><strong>Und es ist kein Abstimmungsverhalten.</strong> Gemessen sind Wahlkampfpositionen, nicht Entscheidungen in Parlamenten. Was CDU und AfD in einem Landtag tatsächlich tun, steht in Plenarprotokollen und nicht hier.</p>
+
+<p class="text-small">Datengrundlage sind die Wahl-O-Mat-Datensätze der Bundeszentrale für politische Bildung sowie die amtlichen Endergebnisse der Bundeswahlleiterin und der Landeswahlleitungen. <strong>Die Auswertung stammt nicht von der Bundeszentrale für politische Bildung.</strong> Der Datensatz selbst wird hier nicht weiterveröffentlicht, nur die daraus berechneten Ergebnisse. Die vollständige Methodik samt Grenzen liegt im Repository.</p>
+
+<p><a href="https://github.com/tkoerting/data-stories" class="github-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> tkoerting/data-stories — Code, Daten, Methodik</a></p>
+
+<p class="text-small" style="text-align:center;margin-top:2rem;">Jede Zahl ist aus der Primärquelle gerechnet, keine aus einem Fließtext übernommen. Wer etwas findet, das nicht stimmt: <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a></p>
+
+<div class="article-footer">
+<p>Der Körting — Datenstück #21 — <a href="https://der-koerting.de">Blog</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a> · <a href="https://x.com/derkoerting" target="_blank" rel="noopener">𝕏</a></p>
+</div>
+</div>
+
+<script>
+var DATENSTUECK_ID='84400-ohne-platz';var charts={};
+document.querySelectorAll('.feedback-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=this.getAttribute('data-value');document.querySelectorAll('.feedback-btn').forEach(function(b){b.classList.remove('selected')});this.classList.add('selected');document.getElementById('feedback-thanks').style.display='block';fetch('https://script.google.com/macros/s/AKfycbyy039GkKBM-YHDyHkMkAeMqsjhMVqG_bFoMihb5LbRh-2Bo-plWicuQO-Vw2ICu0oQ/exec?datenstueck='+encodeURIComponent(DATENSTUECK_ID)+'&feedback='+encodeURIComponent(val)+'&t=8e113d5fff88b4d54708bd196e73c42a',{mode:'no-cors'})})});
+
+function initCharts(){
+fetch('data.json').then(function(r){return r.json()}).then(function(D){
+var dark=document.documentElement.dataset.theme==='dark';
+var c={accent:dark?'#14B8A6':'#0D9488',danger:dark?'#EF4444':'#DC2626',
+       accent2:dark?'#FACC15':'#EAB308',
+       text:dark?'#E5E7EB':'#1E293B',textSec:dark?'#9CA3AF':'#64748B',
+       textTert:dark?'#6B7280':'#94A3B8',grid:dark?'#2D3139':'#E2E5E9',
+       neutral:dark?'#4B5563':'#94A3B8'};
+var base={backgroundColor:'transparent',
+  textStyle:{fontFamily:'Space Grotesk',color:c.text},
+  grid:{left:56,right:24,top:24,bottom:32,containLabel:true},
+  tooltip:{trigger:'axis',backgroundColor:dark?'#1E2028':'#fff',
+    borderColor:c.grid,textStyle:{color:c.text,fontSize:12}}};
+var mono={fontFamily:'JetBrains Mono',fontSize:10};
+Object.values(charts).forEach(function(ch){try{ch.dispose()}catch(e){}});
+
+// 1 — RANGFOLGE ÜBER 22 WAHLEN
+var S=D.serie;
+charts.rang=echarts.init(document.getElementById('chart-rang'));
+charts.rang.setOption({...base,
+ grid:{left:150,right:64,top:12,bottom:28,containLabel:true},
+ xAxis:{type:'value',max:85,axisLine:{show:false},
+   splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+ yAxis:{type:'category',inverse:true,axisLine:{lineStyle:{color:c.grid}},
+   axisLabel:{color:c.textSec,fontSize:10},
+   data:S.map(function(r){return r.land+' '+r.jahr})},
+ tooltip:{trigger:'item',backgroundColor:dark?'#1E2028':'#fff',borderColor:c.grid,
+   textStyle:{color:c.text,fontSize:12},
+   formatter:function(p){var r=S[p.dataIndex];
+     return '<b>'+r.land+' '+r.jahr+'</b><br>'+r.gleich+' von '+r.thesen+' Thesen gleich ('+r.naehe_prozent+' %)<br>AfD-Ergebnis: '+String(r.afd_prozent).replace('.',',')+' %'}},
+ series:[{type:'bar',barWidth:13,
+   data:S.map(function(r){
+     var ist=(r.land==='Sachsen-Anhalt'&&r.jahr===2026);
+     return {value:r.naehe_prozent,
+       itemStyle:{color: ist?c.danger : (r.ost?c.accent2:c.neutral)}}}),
+   label:{show:true,position:'right',
+     formatter:function(p){return S[p.dataIndex].gleich+'/38'},
+     color:c.textTert,fontFamily:'JetBrains Mono',fontSize:9}}]});
+
+// 2 — STREUUNG: AfD-ERGEBNIS gegen PROGRAMMNÄHE
+charts.streu=echarts.init(document.getElementById('chart-streu'));
+charts.streu.setOption({...base,
+ grid:{left:52,right:28,top:20,bottom:44,containLabel:true},
+ xAxis:{type:'value',min:0,max:48,name:'AfD-Ergebnis',nameLocation:'middle',nameGap:30,
+   nameTextStyle:{color:c.textSec,fontSize:11},
+   axisLine:{lineStyle:{color:c.grid}},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+ yAxis:{type:'value',min:40,max:84,name:'Übereinstimmung CDU/AfD',nameLocation:'middle',nameGap:42,
+   nameTextStyle:{color:c.textSec,fontSize:11},
+   axisLine:{show:false},splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+ tooltip:{trigger:'item',backgroundColor:dark?'#1E2028':'#fff',borderColor:c.grid,
+   textStyle:{color:c.text,fontSize:12},
+   formatter:function(p){return '<b>'+p.data[2]+'</b><br>AfD '+String(p.data[0]).replace('.',',')+' %<br>Übereinstimmung '+p.data[1]+' %'}},
+ series:[{type:'scatter',symbolSize:11,
+   data:S.map(function(r){return {value:[r.afd_prozent,r.naehe_prozent,r.land+' '+r.jahr],
+     itemStyle:{color:(r.land==='Sachsen-Anhalt'&&r.jahr===2026)?c.danger:(r.ost?c.accent2:c.accent),
+       opacity:0.85}}}),
+   markLine:{silent:true,symbol:'none',lineStyle:{color:c.textTert,type:'dotted',width:1.5},
+     data:[[{coord:[D.regression.x1,D.regression.y1]},{coord:[D.regression.x2,D.regression.y2]}]],
+     label:{show:false}}}]});
+
+// 3 — ISOLATION ÜBER ZEIT
+var I=D.isolation;
+charts.isolation=echarts.init(document.getElementById('chart-isolation'));
+charts.isolation.setOption({...base,
+ legend:{data:['AfD zu den anderen','die anderen untereinander'],textStyle:{color:c.textSec},top:0},
+ grid:{left:52,right:24,top:38,bottom:76,containLabel:true},
+ xAxis:{type:'category',data:I.map(function(r){return r.wahl}),
+   axisLine:{lineStyle:{color:c.grid}},
+   axisLabel:{color:c.textTert,fontSize:9,rotate:52,interval:0}},
+ yAxis:{type:'value',min:25,max:60,axisLine:{show:false},
+   splitLine:{lineStyle:{color:c.grid,type:'dashed'}},
+   axisLabel:{color:c.textTert,formatter:function(v){return v+'%'}}},
+ series:[
+  {name:'die anderen untereinander',type:'line',data:I.map(function(r){return r.andere_untereinander}),
+   symbol:'circle',symbolSize:5,lineStyle:{width:2.5,color:c.accent},itemStyle:{color:c.accent}},
+  {name:'AfD zu den anderen',type:'line',data:I.map(function(r){return r.afd_zu_anderen}),
+   symbol:'circle',symbolSize:5,lineStyle:{width:2.5,color:c.danger},itemStyle:{color:c.danger}}
+ ]});
+
+// 4 — MATRIX SACHSEN-ANHALT 2026
+var M=D.matrix_st2026, P=['AfD','CDU','BSW','SPD','GRÜNE','Die Linke'];
+var zellen=[];
+P.forEach(function(a,i){P.forEach(function(b,j){
+  var v=M[a][b];
+  if(v===null){zellen.push({value:[j,i,'-'],label:{show:false}});return}
+  zellen.push({value:[j,i,v],
+    label:{show:true,color:v>=55?'#fff':(dark?'#E5E7EB':'#334155')}})})});
+charts.matrix=echarts.init(document.getElementById('chart-matrix'));
+charts.matrix.setOption({...base,
+ grid:{left:82,right:24,top:36,bottom:48,containLabel:true},
+ xAxis:{type:'category',data:P,position:'top',axisLine:{show:false},axisTick:{show:false},
+   axisLabel:{color:c.textSec,fontSize:11}},
+ yAxis:{type:'category',data:P,inverse:true,axisLine:{show:false},axisTick:{show:false},
+   axisLabel:{color:c.textSec,fontSize:11}},
+ visualMap:{min:20,max:85,calculable:false,show:false,
+   inRange:{color:dark?['#1E2028','#0D9488','#14B8A6']:['#F1F5F9','#5EEAD4','#0D9488']}},
+ tooltip:{trigger:'item',backgroundColor:dark?'#1E2028':'#fff',borderColor:c.grid,
+   textStyle:{color:c.text,fontSize:12},
+   formatter:function(p){if(p.value[2]==='-')return '';
+     return P[p.value[1]]+' und '+P[p.value[0]]+'<br><b>'+p.value[2]+' %</b> identische Positionen'}},
+ series:[{type:'heatmap',data:zellen,
+   label:{show:true,fontFamily:'JetBrains Mono',fontSize:11,
+     formatter:function(p){return p.value[2]==='-'?'':p.value[2]+'%'}},
+   itemStyle:{borderColor:dark?'#15171D':'#fff',borderWidth:3}}]});
+
+// LISTE DER 18 GEMEINSAMEN POSITIONEN
+var L=document.getElementById('liste-gemeinsam');
+if(L){L.innerHTML=D.gemeinsam_cdu_afd_st2026.map(function(g){
+  var zu=g.position==='Stimme zu';
+  return '<span class="these'+(zu?' these-zu':' these-nein')+'">'+
+    (zu?'dafür':'dagegen')+' · '+g.titel+'</span>'}).join('');}
+
+
+window.addEventListener('resize',function(){Object.values(charts).forEach(function(ch){try{ch.resize()}catch(e){}})});
+});}
+
+(function(){var url=new URLSearchParams(window.location.search).get('theme');var saved=url||localStorage.getItem('tk-theme');if(saved){document.documentElement.dataset.theme=saved;localStorage.setItem('tk-theme',saved)}var b=document.querySelector('.toggle-btn');if(b)b.textContent=document.documentElement.dataset.theme==='dark'?'🌙':'☀️'})();
+function toggleTheme(){var h=document.documentElement,b=document.querySelector('.toggle-btn');h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tk-theme',h.dataset.theme);b.textContent=h.dataset.theme==='dark'?'🌙':'☀️';initCharts()}
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+<div id="tk-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg-card,#1E2028);border-top:1px solid var(--border,#2D3139);padding:1rem 1.5rem;font-family:'Space Grotesk',system-ui,sans-serif">
+<div style="max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<p style="font-size:0.85rem;color:var(--text-secondary,#9CA3AF);margin:0;line-height:1.5;flex:1;min-width:200px">Diese Seite nutzt Google Analytics zur anonymisierten Nutzungsanalyse. <a href="https://der-koerting.de/datenschutz/" style="color:var(--accent,#14B8A6)">Datenschutz</a></p>
+<div style="display:flex;gap:0.5rem;flex-shrink:0">
+<button onclick="tkConsentNo()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--border,#2D3139);border-radius:6px;background:transparent;color:var(--text-secondary,#9CA3AF);cursor:pointer">Nur essenzielle</button>
+<button onclick="tkConsentYes()" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;padding:0.4rem 1rem;border:1px solid var(--accent,#14B8A6);border-radius:6px;background:var(--accent,#14B8A6);color:#fff;cursor:pointer;font-weight:500">Akzeptieren</button>
+</div></div></div>
+<script>
+function tkConsentYes(){localStorage.setItem('tk-consent','yes');document.getElementById('tk-consent-banner').style.display='none';tkLoadGA()}
+function tkConsentNo(){localStorage.setItem('tk-consent','no');document.getElementById('tk-consent-banner').style.display='none'}
+if(!localStorage.getItem('tk-consent'))document.getElementById('tk-consent-banner').style.display='block';
+</script>
+</body>
+</html>

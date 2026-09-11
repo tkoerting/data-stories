@@ -1,0 +1,233 @@
+{
+ "schema": "befunde/v1",
+ "stueck": {
+  "id": "ds21-dreissig-von-achtunddreissig",
+  "titel": "Dreißig von achtunddreißig.",
+  "nummer": 21,
+  "url": "https://opendataminded.de/dreissig-von-achtunddreissig/",
+  "veroeffentlicht": "2026-09-11",
+  "thema": [
+   "Parteien",
+   "Wahlen",
+   "AfD",
+   "CDU",
+   "Programmatik",
+   "Sachsen-Anhalt"
+  ]
+ },
+ "quellen": [
+  {
+   "id": "bpb-wom-sammel",
+   "bezeichnung": "Wahl-O-Mat-Datensätze, Sammelausgabe",
+   "herausgeber": "Bundeszentrale für politische Bildung",
+   "stand": "2026-03-30",
+   "url": "https://www.bpb.de/themen/wahl-o-mat/556865/datensaetze-des-wahl-o-mat/",
+   "lizenz": "Analyse und Veröffentlichung der Ergebnisse erlaubt; Weiterveröffentlichung des Datensatzes untersagt; Urheberschaft der Analyse muss erkennbar bei Dritten liegen",
+   "weiterveroeffentlichung_erlaubt": false
+  },
+  {
+   "id": "bpb-wom-st2026",
+   "bezeichnung": "Wahl-O-Mat Sachsen-Anhalt 2026, Datensatz v1.01",
+   "herausgeber": "Bundeszentrale für politische Bildung",
+   "stand": "2026-08-14",
+   "url": "https://www.bpb.de/themen/wahl-o-mat/sachsen-anhalt-2026/579411/download/",
+   "weiterveroeffentlichung_erlaubt": false
+  },
+  {
+   "id": "bwl",
+   "bezeichnung": "Amtliche Endergebnisse Bundestagswahl 2021/2025, Europawahl 2024",
+   "herausgeber": "Die Bundeswahlleiterin",
+   "url": "https://www.bundeswahlleiterin.de/",
+   "weiterveroeffentlichung_erlaubt": true
+  },
+  {
+   "id": "lwl",
+   "bezeichnung": "Amtliche Endergebnisse der Landtagswahlen 2021–2026",
+   "herausgeber": "Landeswahlleitungen der Länder",
+   "weiterveroeffentlichung_erlaubt": true
+  }
+ ],
+ "befunde": [
+  {
+   "id": "spanne",
+   "behauptung": "Die CDU nimmt je nach Wahl in 45 bis 79 Prozent der Wahl-O-Mat-Thesen dieselbe Position ein wie die AfD.",
+   "wert": {
+    "min": 44.7,
+    "max": 78.9,
+    "median": 55.3,
+    "mittel": 58.1,
+    "einheit": "Prozent"
+   },
+   "grundgesamtheit": "22 Wahlen 2021–2026, je 38 Thesen",
+   "quelle": [
+    "bpb-wom-sammel",
+    "bpb-wom-st2026"
+   ],
+   "ampel": "gruen",
+   "geprueft_am": "2026-09-11",
+   "methode": "Zählung identischer Antworten je Parteienpaar, selbst gerechnet",
+   "einschraenkung": "Thesen sind zwischen den Wahlen nicht identisch; Prozentwerte einzelner Wahlen nur eingeschränkt vergleichbar.",
+   "gerundet_veroeffentlicht": "45 bis 79 Prozent, Median 55"
+  },
+  {
+   "id": "berlin-2023-hoechstwert",
+   "behauptung": "Den höchsten Wert der Reihe hat Berlin 2023: Die CDU stimmte in 30 von 38 Thesen mit der AfD überein, bei einem AfD-Ergebnis von 9,1 Prozent.",
+   "wert": {
+    "gleich": 30,
+    "thesen": 38,
+    "anteil": 78.9,
+    "afd_ergebnis": 9.1
+   },
+   "quelle": [
+    "bpb-wom-sammel",
+    "lwl"
+   ],
+   "ampel": "gruen",
+   "geprueft_am": "2026-09-11",
+   "gerundet_veroeffentlicht": "30 von 38, also 79 Prozent"
+  },
+  {
+   "id": "sachsen-anhalt-2026",
+   "behauptung": "In Sachsen-Anhalt 2026 stimmen CDU und AfD in 18 von 38 Thesen überein, also 47 Prozent. Das ist Rang 19 von 22 und damit nahe am unteren Ende der Reihe.",
+   "wert": {
+    "gleich": 18,
+    "thesen": 38,
+    "anteil": 47.4,
+    "rang": 19,
+    "von": 22,
+    "afd_ergebnis": 43.8
+   },
+   "quelle": [
+    "bpb-wom-st2026",
+    "lwl"
+   ],
+   "ampel": "gruen",
+   "geprueft_am": "2026-09-11",
+   "gerundet_veroeffentlicht": "18 von 38, also 47 Prozent"
+  },
+  {
+   "id": "korrelation",
+   "behauptung": "Zwischen dem Stimmenanteil der AfD und der Programmnähe von CDU und AfD besteht ein schwach negativer Zusammenhang.",
+   "wert": {
+    "r": -0.334,
+    "r2": 0.111,
+    "n": 22,
+    "regression": "y = 63,26 − 0,312·x"
+   },
+   "quelle": [
+    "bpb-wom-sammel",
+    "bpb-wom-st2026",
+    "bwl",
+    "lwl"
+   ],
+   "ampel": "gruen",
+   "geprueft_am": "2026-09-11",
+   "einschraenkung": "r² = 0,11 — die Erklärungskraft ist gering. Als Trend belastbar, als Regel nicht. Keine Kausalaussage."
+  },
+  {
+   "id": "ost-west",
+   "behauptung": "Der Median der Programmnähe liegt in den ostdeutschen Ländern bei 51 Prozent, in den westdeutschen bei 63 Prozent.",
+   "wert": {
+    "median_ost": 51.3,
+    "median_west": 63.2,
+    "n_ost": 6,
+    "n_west": 13,
+    "einheit": "Prozent"
+   },
+   "quelle": [
+    "bpb-wom-sammel",
+    "bpb-wom-st2026"
+   ],
+   "ampel": "gelb",
+   "geprueft_am": "2026-09-11",
+   "einschraenkung": "Bei sechs östlichen Wahlen ist das eine Beobachtung, kein statistisch geprüfter Befund. Ein Signifikanztest wird nicht behauptet.",
+   "gerundet_veroeffentlicht": "51 Prozent im Osten, 63 im Westen"
+  },
+  {
+   "id": "isolation",
+   "behauptung": "Die AfD stimmt mit den anderen etablierten Parteien im Mittel in 39 Prozent der Thesen überein, diese untereinander in 48 Prozent.",
+   "wert": {
+    "afd_zu_anderen": 39,
+    "andere_untereinander": 48,
+    "abstand": 9,
+    "einheit": "Prozent"
+   },
+   "grundgesamtheit": "22 Wahlen, Parteien CDU, SPD, GRÜNE, FDP, Linke, AfD, BSW, Freie Wähler",
+   "quelle": [
+    "bpb-wom-sammel",
+    "bpb-wom-st2026"
+   ],
+   "ampel": "gruen",
+   "geprueft_am": "2026-09-11"
+  },
+  {
+   "id": "isolation-trend",
+   "behauptung": "Der Abstand der AfD zu den anderen Parteien ist von 8 Punkten (2021–2022) auf 12 Punkte (2024–2026) gewachsen.",
+   "wert": {
+    "abstand_frueh": 8,
+    "abstand_spaet": 12,
+    "einheit": "Prozentpunkte"
+   },
+   "quelle": [
+    "bpb-wom-sammel",
+    "bpb-wom-st2026"
+   ],
+   "ampel": "gelb",
+   "geprueft_am": "2026-09-11",
+   "einschraenkung": "Ab 2024 tritt das BSW an und verändert beide Messgrößen gleichzeitig. Ob der wachsende Abstand an der AfD oder am veränderten Parteienfeld liegt, lässt sich mit diesen Daten nicht trennen. Beobachtung, kein Befund."
+  },
+  {
+   "id": "afd-nicht-isoliert",
+   "behauptung": "Bei nur 4 von 38 Thesen steht die AfD in Sachsen-Anhalt allein gegen alle fünf anderen Landtagsparteien.",
+   "wert": {
+    "allein": 4,
+    "thesen": 38
+   },
+   "detail": [
+    "Gemeinsame Schulform",
+    "Maßnahmen zur Erreichung der Klimaneutralität",
+    "Demokratiebildung im Unterricht",
+    "Masern-Impfpflicht"
+   ],
+   "quelle": [
+    "bpb-wom-st2026"
+   ],
+   "ampel": "gruen",
+   "geprueft_am": "2026-09-11"
+  },
+  {
+   "id": "einzige-einigkeit",
+   "behauptung": "Bei genau einer der 38 Thesen sind sich alle sechs Landtagsparteien in Sachsen-Anhalt einig: Die Geschäfte sollen sonntags nicht öffnen dürfen.",
+   "wert": {
+    "einig": 1,
+    "thesen": 38
+   },
+   "quelle": [
+    "bpb-wom-st2026"
+   ],
+   "ampel": "gruen",
+   "geprueft_am": "2026-09-11"
+  },
+  {
+   "id": "linker-block",
+   "behauptung": "Die höchste Übereinstimmung im Landtag von Sachsen-Anhalt haben SPD und Linke mit 84 Prozent, gefolgt von Grünen und SPD mit 74 Prozent.",
+   "wert": {
+    "spd_linke": 84,
+    "gruene_spd": 74,
+    "einheit": "Prozent"
+   },
+   "quelle": [
+    "bpb-wom-st2026"
+   ],
+   "ampel": "gruen",
+   "geprueft_am": "2026-09-11"
+  }
+ ],
+ "nicht_belegt": [
+  "Warum die Programmnähe zwischen den Ländern so stark streut. Die Daten zeigen die Streuung, nicht ihre Ursache.",
+  "Ob CDU und AfD in Parlamenten tatsächlich gleich abstimmen. Gemessen sind Wahlkampfpositionen, nicht Entscheidungen.",
+  "Ob Parteien mit gleicher Position dieselbe Begründung haben. Die Begründungstexte liegen im Datensatz, wurden hier aber nicht ausgewertet.",
+  "Ob sich einzelne Parteien über die Zeit bewegt haben. Dafür wären identische Thesen nötig, die es nicht gibt."
+ ],
+ "hinweis_rundung": "Das Feld 'wert' enthält die exakt gerechneten Zahlen. 'gerundet_veroeffentlicht' zeigt, wie sie im Text erscheinen. Wer nachprüft, vergleicht gegen 'wert'."
+}

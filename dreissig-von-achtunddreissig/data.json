@@ -1,0 +1,571 @@
+{
+ "meta": {
+  "titel": "Dreißig von achtunddreißig.",
+  "stand": "2026-09-11",
+  "quellen": [
+   "Bundeszentrale für politische Bildung, Wahl-O-Mat-Datensätze, Stand 30.03.2026",
+   "Bundeszentrale für politische Bildung, Wahl-O-Mat Sachsen-Anhalt 2026, Datensatz v1.01",
+   "Die Bundeswahlleiterin, amtliche Endergebnisse Bundestagswahl 2021 und 2025, Europawahl 2024",
+   "Landeswahlleitungen der Länder, amtliche Endergebnisse der Landtagswahlen 2021–2026"
+  ],
+  "hinweis": "Die Analyse stammt nicht von der Bundeszentrale für politische Bildung. Der zugrunde liegende Datensatz wird hier nicht weiterveröffentlicht, nur die daraus berechneten Ergebnisse."
+ },
+ "serie": [
+  {
+   "land": "Berlin",
+   "jahr": 2023,
+   "thesen": 38,
+   "gleich": 30,
+   "naehe_prozent": 78.9,
+   "afd_prozent": 9.1,
+   "ost": false
+  },
+  {
+   "land": "Bayern",
+   "jahr": 2023,
+   "thesen": 38,
+   "gleich": 28,
+   "naehe_prozent": 73.7,
+   "afd_prozent": 14.6,
+   "ost": false
+  },
+  {
+   "land": "Berlin",
+   "jahr": 2021,
+   "thesen": 38,
+   "gleich": 27,
+   "naehe_prozent": 71.1,
+   "afd_prozent": 8.0,
+   "ost": false
+  },
+  {
+   "land": "Schleswig-Holstein",
+   "jahr": 2022,
+   "thesen": 38,
+   "gleich": 26,
+   "naehe_prozent": 68.4,
+   "afd_prozent": 4.4,
+   "ost": false
+  },
+  {
+   "land": "Hessen",
+   "jahr": 2023,
+   "thesen": 38,
+   "gleich": 25,
+   "naehe_prozent": 65.8,
+   "afd_prozent": 18.4,
+   "ost": false
+  },
+  {
+   "land": "Rheinland-Pfalz",
+   "jahr": 2026,
+   "thesen": 38,
+   "gleich": 25,
+   "naehe_prozent": 65.8,
+   "afd_prozent": 19.5,
+   "ost": false
+  },
+  {
+   "land": "Baden-Württemberg",
+   "jahr": 2026,
+   "thesen": 38,
+   "gleich": 24,
+   "naehe_prozent": 63.2,
+   "afd_prozent": 18.8,
+   "ost": false
+  },
+  {
+   "land": "Baden-Württemberg",
+   "jahr": 2021,
+   "thesen": 38,
+   "gleich": 23,
+   "naehe_prozent": 60.5,
+   "afd_prozent": 9.7,
+   "ost": false
+  },
+  {
+   "land": "Bundestag",
+   "jahr": 2025,
+   "thesen": 38,
+   "gleich": 23,
+   "naehe_prozent": 60.5,
+   "afd_prozent": 20.8,
+   "ost": false
+  },
+  {
+   "land": "Hamburg",
+   "jahr": 2025,
+   "thesen": 38,
+   "gleich": 23,
+   "naehe_prozent": 60.5,
+   "afd_prozent": 7.5,
+   "ost": false
+  },
+  {
+   "land": "Rheinland-Pfalz",
+   "jahr": 2021,
+   "thesen": 38,
+   "gleich": 21,
+   "naehe_prozent": 55.3,
+   "afd_prozent": 8.3,
+   "ost": false
+  },
+  {
+   "land": "Mecklenburg-Vorpommern",
+   "jahr": 2021,
+   "thesen": 38,
+   "gleich": 21,
+   "naehe_prozent": 55.3,
+   "afd_prozent": 16.7,
+   "ost": true
+  },
+  {
+   "land": "Bundestag",
+   "jahr": 2021,
+   "thesen": 38,
+   "gleich": 21,
+   "naehe_prozent": 55.3,
+   "afd_prozent": 10.4,
+   "ost": false
+  },
+  {
+   "land": "Brandenburg",
+   "jahr": 2024,
+   "thesen": 38,
+   "gleich": 21,
+   "naehe_prozent": 55.3,
+   "afd_prozent": 29.2,
+   "ost": true
+  },
+  {
+   "land": "Niedersachsen",
+   "jahr": 2022,
+   "thesen": 38,
+   "gleich": 20,
+   "naehe_prozent": 52.6,
+   "afd_prozent": 11.0,
+   "ost": false
+  },
+  {
+   "land": "Thüringen",
+   "jahr": 2024,
+   "thesen": 38,
+   "gleich": 20,
+   "naehe_prozent": 52.6,
+   "afd_prozent": 32.8,
+   "ost": true
+  },
+  {
+   "land": "Sachsen-Anhalt",
+   "jahr": 2021,
+   "thesen": 38,
+   "gleich": 19,
+   "naehe_prozent": 50.0,
+   "afd_prozent": 20.8,
+   "ost": true
+  },
+  {
+   "land": "Nordrhein-Westfalen",
+   "jahr": 2022,
+   "thesen": 38,
+   "gleich": 19,
+   "naehe_prozent": 50.0,
+   "afd_prozent": 5.4,
+   "ost": false
+  },
+  {
+   "land": "Sachsen",
+   "jahr": 2024,
+   "thesen": 38,
+   "gleich": 18,
+   "naehe_prozent": 47.4,
+   "afd_prozent": 30.6,
+   "ost": true
+  },
+  {
+   "land": "Sachsen-Anhalt",
+   "jahr": 2026,
+   "thesen": 38,
+   "gleich": 18,
+   "naehe_prozent": 47.4,
+   "afd_prozent": 43.8,
+   "ost": true
+  },
+  {
+   "land": "Saarland",
+   "jahr": 2022,
+   "thesen": 38,
+   "gleich": 17,
+   "naehe_prozent": 44.7,
+   "afd_prozent": 5.7,
+   "ost": false
+  },
+  {
+   "land": "Europawahl",
+   "jahr": 2024,
+   "thesen": 38,
+   "gleich": 17,
+   "naehe_prozent": 44.7,
+   "afd_prozent": 15.9,
+   "ost": false
+  }
+ ],
+ "kennzahlen": {
+  "wahlen": 22,
+  "min": 44.7,
+  "max": 78.9,
+  "median": 55.3,
+  "mittel": 58.1,
+  "korrelation_r": -0.33,
+  "median_ost": 51.3,
+  "median_west": 63.2
+ },
+ "matrix_st2026": {
+  "AfD": {
+   "AfD": null,
+   "CDU": 47,
+   "SPD": 26,
+   "GRÜNE": 26,
+   "Die Linke": 21,
+   "BSW": 47
+  },
+  "CDU": {
+   "AfD": 47,
+   "CDU": null,
+   "SPD": 32,
+   "GRÜNE": 39,
+   "Die Linke": 26,
+   "BSW": 34
+  },
+  "SPD": {
+   "AfD": 26,
+   "CDU": 32,
+   "SPD": null,
+   "GRÜNE": 74,
+   "Die Linke": 84,
+   "BSW": 42
+  },
+  "GRÜNE": {
+   "AfD": 26,
+   "CDU": 39,
+   "SPD": 74,
+   "GRÜNE": null,
+   "Die Linke": 74,
+   "BSW": 39
+  },
+  "Die Linke": {
+   "AfD": 21,
+   "CDU": 26,
+   "SPD": 84,
+   "GRÜNE": 74,
+   "Die Linke": null,
+   "BSW": 53
+  },
+  "BSW": {
+   "AfD": 47,
+   "CDU": 34,
+   "SPD": 42,
+   "GRÜNE": 39,
+   "Die Linke": 53,
+   "BSW": null
+  }
+ },
+ "gemeinsam_cdu_afd_st2026": [
+  {
+   "nr": 1,
+   "titel": "Sonntagsöffnung",
+   "position": "Stimme nicht zu"
+  },
+  {
+   "nr": 5,
+   "titel": "Tempo 30 innerorts",
+   "position": "Stimme nicht zu"
+  },
+  {
+   "nr": 6,
+   "titel": "Inhaftierungen vor einer Abschiebung",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 10,
+   "titel": "Weniger Auflagen bei der Nutztierhaltung",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 13,
+   "titel": "Landeseigene Wohnungsbaugesellschaft",
+   "position": "Stimme nicht zu"
+  },
+  {
+   "nr": 14,
+   "titel": "Fünf-Prozent-Hürde",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 15,
+   "titel": "Verlängerung der Grundschulzeit",
+   "position": "Stimme nicht zu"
+  },
+  {
+   "nr": 18,
+   "titel": "Gemeinnützige Arbeit in der Grundsicherung",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 19,
+   "titel": "Verbot von Schreibweisen mit Sonderzeichen",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 21,
+   "titel": "Software bei der Strafverfolgung",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 22,
+   "titel": "Vermögensteuer",
+   "position": "Stimme nicht zu"
+  },
+  {
+   "nr": 23,
+   "titel": "Einrichtung von Drogenkonsumräumen",
+   "position": "Stimme nicht zu"
+  },
+  {
+   "nr": 25,
+   "titel": "Streichung der Schuldenbremse",
+   "position": "Stimme nicht zu"
+  },
+  {
+   "nr": 29,
+   "titel": "Bezahlkarte für Asylbewerberinnen und Asylbewerber",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 30,
+   "titel": "Forschung für militärische Zwecke",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 31,
+   "titel": "Ausbildungsfonds",
+   "position": "Stimme nicht zu"
+  },
+  {
+   "nr": 33,
+   "titel": "Truppenübungsplatz in der Colbitz-Letzlinger Heide",
+   "position": "Stimme zu"
+  },
+  {
+   "nr": 34,
+   "titel": "Wohneigentum",
+   "position": "Stimme zu"
+  }
+ ],
+ "afd_allein_st2026": [
+  {
+   "nr": 11,
+   "titel": "Gemeinsame Schulform"
+  },
+  {
+   "nr": 17,
+   "titel": "Maßnahmen zur Erreichung der Klimaneutralität"
+  },
+  {
+   "nr": 32,
+   "titel": "Demokratiebildung im Unterricht"
+  },
+  {
+   "nr": 35,
+   "titel": "Masern-Impfpflicht"
+  }
+ ],
+ "isolation": [
+  {
+   "wahl": "Baden-Württemberg 2021",
+   "jahr": 2021,
+   "parteien": 7,
+   "afd_zu_anderen": 42.1,
+   "andere_untereinander": 51.4,
+   "abstand": 9.3
+  },
+  {
+   "wahl": "Berlin 2021",
+   "jahr": 2021,
+   "parteien": 7,
+   "afd_zu_anderen": 46.5,
+   "andere_untereinander": 46.0,
+   "abstand": -0.5
+  },
+  {
+   "wahl": "Bundestag 2021",
+   "jahr": 2021,
+   "parteien": 7,
+   "afd_zu_anderen": 36.0,
+   "andere_untereinander": 45.3,
+   "abstand": 9.3
+  },
+  {
+   "wahl": "Mecklenburg-Vorpommern 2021",
+   "jahr": 2021,
+   "parteien": 7,
+   "afd_zu_anderen": 38.2,
+   "andere_untereinander": 52.5,
+   "abstand": 14.3
+  },
+  {
+   "wahl": "Rheinland-Pfalz 2021",
+   "jahr": 2021,
+   "parteien": 7,
+   "afd_zu_anderen": 40.8,
+   "andere_untereinander": 40.5,
+   "abstand": -0.3
+  },
+  {
+   "wahl": "Sachsen-Anhalt 2021",
+   "jahr": 2021,
+   "parteien": 7,
+   "afd_zu_anderen": 35.1,
+   "andere_untereinander": 50.7,
+   "abstand": 15.6
+  },
+  {
+   "wahl": "Niedersachsen 2022",
+   "jahr": 2022,
+   "parteien": 7,
+   "afd_zu_anderen": 38.2,
+   "andere_untereinander": 44.4,
+   "abstand": 6.2
+  },
+  {
+   "wahl": "Nordrhein-Westfalen 2022",
+   "jahr": 2022,
+   "parteien": 7,
+   "afd_zu_anderen": 33.8,
+   "andere_untereinander": 42.3,
+   "abstand": 8.5
+  },
+  {
+   "wahl": "Saarland 2022",
+   "jahr": 2022,
+   "parteien": 7,
+   "afd_zu_anderen": 40.8,
+   "andere_untereinander": 47.7,
+   "abstand": 6.9
+  },
+  {
+   "wahl": "Schleswig-Holstein 2022",
+   "jahr": 2022,
+   "parteien": 7,
+   "afd_zu_anderen": 35.5,
+   "andere_untereinander": 49.5,
+   "abstand": 13.9
+  },
+  {
+   "wahl": "Bayern 2023",
+   "jahr": 2023,
+   "parteien": 7,
+   "afd_zu_anderen": 39.0,
+   "andere_untereinander": 47.7,
+   "abstand": 8.7
+  },
+  {
+   "wahl": "Berlin 2023",
+   "jahr": 2023,
+   "parteien": 7,
+   "afd_zu_anderen": 45.6,
+   "andere_untereinander": 44.2,
+   "abstand": -1.4
+  },
+  {
+   "wahl": "Hessen 2023",
+   "jahr": 2023,
+   "parteien": 7,
+   "afd_zu_anderen": 41.7,
+   "andere_untereinander": 47.2,
+   "abstand": 5.5
+  },
+  {
+   "wahl": "Brandenburg 2024",
+   "jahr": 2024,
+   "parteien": 6,
+   "afd_zu_anderen": 35.8,
+   "andere_untereinander": 45.0,
+   "abstand": 9.2
+  },
+  {
+   "wahl": "Europawahl 2024",
+   "jahr": 2024,
+   "parteien": 8,
+   "afd_zu_anderen": 30.8,
+   "andere_untereinander": 56.4,
+   "abstand": 25.6
+  },
+  {
+   "wahl": "Sachsen 2024",
+   "jahr": 2024,
+   "parteien": 8,
+   "afd_zu_anderen": 39.8,
+   "andere_untereinander": 45.7,
+   "abstand": 5.9
+  },
+  {
+   "wahl": "Thüringen 2024",
+   "jahr": 2024,
+   "parteien": 8,
+   "afd_zu_anderen": 39.5,
+   "andere_untereinander": 45.5,
+   "abstand": 6.0
+  },
+  {
+   "wahl": "Bundestag 2025",
+   "jahr": 2025,
+   "parteien": 8,
+   "afd_zu_anderen": 31.2,
+   "andere_untereinander": 46.9,
+   "abstand": 15.7
+  },
+  {
+   "wahl": "Hamburg 2025",
+   "jahr": 2025,
+   "parteien": 8,
+   "afd_zu_anderen": 33.1,
+   "andere_untereinander": 47.9,
+   "abstand": 14.8
+  },
+  {
+   "wahl": "Baden-Württemberg 2026",
+   "jahr": 2026,
+   "parteien": 8,
+   "afd_zu_anderen": 42.5,
+   "andere_untereinander": 53.1,
+   "abstand": 10.7
+  },
+  {
+   "wahl": "Rheinland-Pfalz 2026",
+   "jahr": 2026,
+   "parteien": 8,
+   "afd_zu_anderen": 44.7,
+   "andere_untereinander": 52.6,
+   "abstand": 7.9
+  },
+  {
+   "wahl": "Sachsen-Anhalt 2026",
+   "jahr": 2026,
+   "parteien": 8,
+   "afd_zu_anderen": 38.0,
+   "andere_untereinander": 48.6,
+   "abstand": 10.7
+  }
+ ],
+ "regression": {
+  "a": 63.26,
+  "b": -0.312,
+  "r": -0.334,
+  "r2": 0.111,
+  "x1": 4.4,
+  "y1": 61.9,
+  "x2": 43.8,
+  "y2": 49.6
+ }
+}
