@@ -159,6 +159,17 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;t
 .en-teaser p{font-size:0.92rem;color:var(--text-secondary);margin:0;line-height:1.6}
 .en-teaser strong{color:var(--accent)}
 </style>
+<style>
+.verwandt{margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--border)}
+.verwandt-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text-tertiary);margin-bottom:.9rem}
+.verwandt-liste{display:flex;flex-direction:column;gap:.55rem}
+.verwandt-liste a{display:flex;gap:.6rem;align-items:baseline;text-decoration:none;
+  color:var(--text-secondary);font-size:.9rem;line-height:1.45}
+.verwandt-liste a:hover{color:var(--accent)}
+.verwandt-nr{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-tertiary);
+  flex-shrink:0;min-width:2.1rem}
+</style>
 </head>
 <body>
 
@@ -689,7 +700,17 @@ window.tkCharts = (function(){
         + '</summary>'
         + '<div class="kpi-showcase-body">'
         + '<blockquote>„' + k.zitat + '"</blockquote>'
-        + '<div class="meta">Kontext: ' + k.kontext + '</div>'
+        + '<!-- VERWANDT:START -->
+<div class="verwandt">
+  <div class="verwandt-label">Gehört zu: Offene Daten und Verwaltung</div>
+  <div class="verwandt-liste">
+    <a href="../fuerth-wissenschaftsstadt/"><span class="verwandt-nr">#2</span><span>Wie man seine Stadt schön träumt</span></a>
+    <a href="../platz-57/"><span class="verwandt-nr">#20</span><span>Platz 57.</span></a>
+  </div>
+</div>
+<!-- VERWANDT:ENDE -->
+
+<div class="meta">Kontext: ' + k.kontext + '</div>'
         + '</div>'
         + '</details>';
     }).join('');

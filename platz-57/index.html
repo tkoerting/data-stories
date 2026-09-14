@@ -217,6 +217,17 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
   }
   @media(max-width:480px){ .kpi-grid{grid-template-columns:1fr} }
 </style>
+<style>
+.verwandt{margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--border)}
+.verwandt-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text-tertiary);margin-bottom:.9rem}
+.verwandt-liste{display:flex;flex-direction:column;gap:.55rem}
+.verwandt-liste a{display:flex;gap:.6rem;align-items:baseline;text-decoration:none;
+  color:var(--text-secondary);font-size:.9rem;line-height:1.45}
+.verwandt-liste a:hover{color:var(--accent)}
+.verwandt-nr{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-tertiary);
+  flex-shrink:0;min-width:2.1rem}
+</style>
 </head>
 <body>
 
@@ -462,7 +473,17 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
 
   <p class="text-small" style="text-align:center;margin-top:2rem;">Fehler gefunden? <a href="mailto:ich@der-koerting.de">ich@der-koerting.de</a><br>Recherche und Visualisierung mit KI-Unterstützung. Alle Zahlen quellenbelegt.</p>
 
-  <div class="article-footer">
+  <!-- VERWANDT:START -->
+<div class="verwandt">
+  <div class="verwandt-label">Gehört zu: Offene Daten und Verwaltung</div>
+  <div class="verwandt-liste">
+    <a href="../fuerth-wissenschaftsstadt/"><span class="verwandt-nr">#2</span><span>Wie man seine Stadt schön träumt</span></a>
+    <a href="../schwaeche-als-pressemitteilung/"><span class="verwandt-nr">#17</span><span>Schwäche als Pressemitteilung</span></a>
+  </div>
+</div>
+<!-- VERWANDT:ENDE -->
+
+<div class="article-footer">
     <p><a href="https://der-koerting.de">der-koerting.de</a> · <a href="https://opendataminded.de/">Alle Datenstücke</a> · <a href="https://der-koerting.de/impressum/">Impressum</a> · <a href="https://der-koerting.de/datenschutz/">Datenschutz</a></p>
   </div>
 

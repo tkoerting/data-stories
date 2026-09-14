@@ -255,6 +255,17 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
     .sound-hint{bottom:11.5rem!important}
   }
 </style>
+<style>
+.verwandt{margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--border)}
+.verwandt-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text-tertiary);margin-bottom:.9rem}
+.verwandt-liste{display:flex;flex-direction:column;gap:.55rem}
+.verwandt-liste a{display:flex;gap:.6rem;align-items:baseline;text-decoration:none;
+  color:var(--text-secondary);font-size:.9rem;line-height:1.45}
+.verwandt-liste a:hover{color:var(--accent)}
+.verwandt-nr{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-tertiary);
+  flex-shrink:0;min-width:2.1rem}
+</style>
 </head>
 <body>
 
@@ -629,7 +640,17 @@ if(localStorage.getItem('tk-consent')==='yes') tkLoadGA();
   <div class="cz finale">
     <div class="finale-label">Datenstück #19 — Der Körting</div>
     <h2>412.560 km² Oberfläche.<br>Darunter eine Krise,<br>die <em>niemand zusammenzählt.</em></h2>
-    <div class="finale-footer">
+    <!-- VERWANDT:START -->
+<div class="verwandt">
+  <div class="verwandt-label">Gehört zu: Umwelt</div>
+  <div class="verwandt-liste">
+    <a href="../mikroplastik-ostsee/"><span class="verwandt-nr">#1</span><span>Was unter der klaren Ostsee liegt</span></a>
+    <a href="../was-socke-hinterlaesst/"><span class="verwandt-nr">#6</span><span>1 Gramm, 23 Millionen</span></a>
+  </div>
+</div>
+<!-- VERWANDT:ENDE -->
+
+<div class="finale-footer">
       <a href="https://der-koerting.de">der-koerting.de</a> ·
       <a href="https://opendataminded.de">Alle Datenstücke</a>
     </div>

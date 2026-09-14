@@ -1,0 +1,33 @@
+{
+ "_hinweis": "Thematische Spuren. Jedes Datenstück kann in mehreren stehen. Aus diesen Spuren erzeugt bin/verwandt.py die 'Gehört zu'-Blöcke. Von Hand gepflegt, bewusst nicht automatisch geraten.",
+ "spuren": {
+  "ki": {
+   "titel": "Künstliche Intelligenz",
+   "stuecke": ["schneller-als-du-denkst", "erst-die-haende", "algorithmus-trifft-ki", "wenn-maschinen-mitreden"]
+  },
+  "arbeit": {
+   "titel": "Arbeit und Qualifikation",
+   "stuecke": ["nicht-fauler-fuehrungsloser", "erst-die-haende", "84400-ohne-platz"]
+  },
+  "offene-daten": {
+   "titel": "Offene Daten und Verwaltung",
+   "stuecke": ["fuerth-wissenschaftsstadt", "platz-57", "schwaeche-als-pressemitteilung"]
+  },
+  "umwelt": {
+   "titel": "Umwelt",
+   "stuecke": ["mikroplastik-ostsee", "was-socke-hinterlaesst", "das-meer-unter-dem-meer"]
+  },
+  "medien": {
+   "titel": "Medien und Aufmerksamkeit",
+   "stuecke": ["zwei-tode", "wenn-maschinen-mitreden", "kriege", "347-ergebnisse"]
+  },
+  "zahlen-lesen": {
+   "titel": "Wie Zahlen gelesen werden",
+   "stuecke": ["dieselben-zahlen", "dreissig-von-achtunddreissig", "algorithmus-trifft-ki"]
+  },
+  "gesellschaft": {
+   "titel": "Gesellschaft",
+   "stuecke": ["tauschgeschaeft", "ich-hab-corona", "prost-oder-auch-nicht", "du-dumme-gans"]
+  }
+ }
+}
