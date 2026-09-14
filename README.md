@@ -16,23 +16,32 @@ Datenstücke nehmen ein Thema aus dem [Blog](https://der-koerting.de) und gehen 
 
 ## Übersicht
 
-| # | Titel | Thema | Cluster |
-|---|-------|-------|---------|
-| 15 | [KRIEG(e).](https://opendataminded.de/kriege/) | 61 aktive Konflikte, Medien-Blindspot, Rüstungsprofiteure, DAX-Paradox | Geopolitik |
-| 14 | [Prost. Oder auch nicht.](https://opendataminded.de/prost-oder-auch-nicht/) | Kneipensterben, Gen Z, Craft Spirits, Einsamkeit | Gesellschaft |
-| 13 | [347 Ergebnisse. Null Erinnerungen.](https://opendataminded.de/347-ergebnisse/) | Hotels, Personalisierungs-Paradox, Guest Journey | Hospitality |
-| 12 | [Wenn Maschinen mitreden.](https://opendataminded.de/wenn-maschinen-mitreden/) | KI-Schwärme, Demokratie, 21 Propheten, Quiz | KI |
-| 11 | [Zwei Tode, eine Woche.](https://opendataminded.de/zwei-tode/) | Habermas vs. Chuck Norris — in Daten | Kultur |
-| 10 | [Algorithmus trifft KI.](https://opendataminded.de/algorithmus-trifft-ki/) | Was 81% verwechseln, was 10% verstehen | KI |
-| 9 | [Erst die Hände, dann die Köpfe.](https://opendataminded.de/erst-die-haende/) | KI am Arbeitsmarkt, 60% der Jobs exponiert | KI/Arbeit |
-| 8 | [Schneller als du denkst.](https://opendataminded.de/schneller-als-du-denkst/) | Deep Blue zu GPT-4 — Beschleunigung der KI | KI |
-| 7 | [Du dumme Gans.](https://opendataminded.de/du-dumme-gans/) | Tier-Schimpfwörter, Neuronen, Jagderfolg, Sprachgeschichte | Sprache/Biologie |
-| 6 | [1 Gramm, 23 Millionen](https://opendataminded.de/was-socke-hinterlaesst/) | Hundekot, Bakterien, Bußgelder, Hundesteuer | Umwelt |
-| 5 | [Ich hab Corona.](https://opendataminded.de/ich-hab-corona/) | COVID-Normalisierung, Medien, Ländervergleich | Gesundheit |
-| 4 | [Es ist ein Tauschgeschäft.](https://opendataminded.de/tauschgeschaeft/) | Generationenvertrag, Vermögen, Mental Health | Gesellschaft |
-| 3 | [Nicht fauler. Führungsloser.](https://opendataminded.de/nicht-fauler-fuehrungsloser/) | OECD-Produktivität, Gallup-Engagement | Arbeit |
-| 2 | [Wie man seine Stadt schön träumt](https://opendataminded.de/fuerth-wissenschaftsstadt/) | Fürth als Wissenschaftsstadt, Open Data | Stadt |
-| 1 | [Was unter der klaren Ostsee liegt](https://opendataminded.de/mikroplastik-ostsee/) | Mikroplastik, Munition, Dorsch-Kollaps | Umwelt |
+<!-- UEBERSICHT:START -->
+| # | Titel | Thema | Spur |
+|---|-------|-------|------|
+| 22 | [Dreißig von achtunddreißig.](https://opendataminded.de/dreissig-von-achtunddreissig/) | In Berlin stimmte die CDU 2023 in 30 von 38 Wahl-O-Mat-Thesen mit der AfD überein | Wie Zahlen gelesen werden |
+| 21 | [84.400 ohne Platz.](https://opendataminded.de/84400-ohne-platz/) | 2025 stieg die Nachfrage nach Ausbildungsplätzen, das Angebot fiel um 4,6 %. 84.400… | Arbeit und Qualifikation |
+| 20 | [Platz 57.](https://opendataminded.de/platz-57/) | Fürth nennt sich Wissenschaftsstadt und hat kein Open-Data-Portal. 10 km weiter… | Offene Daten und Verwaltung |
+| 19 | [Das Meer unter dem Meer.](https://opendataminded.de/das-meer-unter-dem-meer/) | 60.000 km² Todeszonen, 65.000 Tonnen Kampfstoffe, ein Wal der hier nicht hingehört —… | Umwelt |
+| 18 | [Der Kopf kennt keinen Urlaub.](https://opendataminded.de/der-kopf-kennt-keinen-urlaub/) | 31 Posts, 34.023 Wörter, 110 Commits, 17 Datenstücke — 2026 in Zahlen | — |
+| 17 | [Schwäche als Pressemitteilung](https://opendataminded.de/schwaeche-als-pressemitteilung/) | Deutschland dokumentiert seine militärischen Mängel seit 67 Jahren — öffentlich,… | Offene Daten und Verwaltung |
+| 16 | [Dieselben Zahlen. Drei Wahrheiten.](https://opendataminded.de/dieselben-zahlen/) | Wie man mit echten Daten lügt — eine interaktive Vorführung | Wie Zahlen gelesen werden |
+| 15 | [KRIEG(e).](https://opendataminded.de/kriege/) | 61 aktive Konflikte. 160.000 Tote | Medien und Aufmerksamkeit |
+| 14 | [Prost. Oder auch nicht.](https://opendataminded.de/prost-oder-auch-nicht/) | Das Kneipensterben in Daten. 70.000 Kneipen 1994, 21.000 heute | Gesellschaft |
+| 13 | [347 Ergebnisse. Null Erinnerungen.](https://opendataminded.de/347-ergebnisse/) | Was Reisende wollen — und was Hotels liefern. 72% wollen Personalisierung, 23%… | Medien und Aufmerksamkeit |
+| 12 | [Wenn Maschinen mitreden.](https://opendataminded.de/wenn-maschinen-mitreden/) | Von Orwell bis Pravda: Wer hat's kommen sehen? 182 Domains, 3,6 Mio | Künstliche Intelligenz, Medien und Aufmerksamkeit |
+| 11 | [Zwei Tode, eine Woche.](https://opendataminded.de/zwei-tode/) | Habermas und Chuck Norris sind in derselben Woche gestorben. 40 Bücher vs. 44 Filme.… | Medien und Aufmerksamkeit |
+| 10 | [Algorithmus trifft KI.](https://opendataminded.de/algorithmus-trifft-ki/) | 81% der Deutschen kennen 'Algorithmus'. Nur 10% wissen, wie einer funktioniert | Künstliche Intelligenz, Wie Zahlen gelesen werden |
+| 9 | [Erst die Hände, dann die Köpfe.](https://opendataminded.de/erst-die-haende/) | 2013 hieß es: Maschinen ersetzen Hände. 2026 sagt der IMF: 60% aller Jobs in reichen… | Künstliche Intelligenz, Arbeit und Qualifikation |
+| 8 | [Schneller als du denkst.](https://opendataminded.de/schneller-als-du-denkst/) | Die Beschleunigung der KI — in Zahlen, nicht in Schlagzeilen. 14 Jahre zwischen Deep… | Künstliche Intelligenz |
+| 7 | [Du dumme Gans.](https://opendataminded.de/du-dumme-gans/) | 370 Tier-Schimpfwörter im Deutschen — und bei fast jedem liegt die Wissenschaft falsch | Gesellschaft |
+| 6 | [1 Gramm, 23 Millionen](https://opendataminded.de/was-socke-hinterlaesst/) | Was Socke hinterlässt — die Zahlen hinter dem Hundekot. 346.000 Tonnen, 23 Millionen… | Umwelt |
+| 5 | [Ich hab Corona.](https://opendataminded.de/ich-hab-corona/) | Vier Worte, die 2026 noch immer anders klingen als 'Ich hab Grippe.' Die Daten… | Gesellschaft |
+| 4 | [Es ist ein Tauschgeschäft](https://opendataminded.de/tauschgeschaeft/) | Was jede Generation gibt — und was sie dafür bekommt | Gesellschaft |
+| 3 | [Nicht fauler. Führungsloser.](https://opendataminded.de/nicht-fauler-fuehrungsloser/) | Deutschland hat kein Faulheits-Problem | Arbeit und Qualifikation |
+| 2 | [Wie man seine Stadt schön träumt](https://opendataminded.de/fuerth-wissenschaftsstadt/) | Fürth nennt sich Wissenschaftsstadt — hat aber null offene Datensätze | Offene Daten und Verwaltung |
+| 1 | [Was unter der klaren Ostsee liegt](https://opendataminded.de/mikroplastik-ostsee/) | Mikroplastik, Munition, Dorsch-Kollaps und Schweinswal-Sterben — die Daten hinter… | Umwelt |
+<!-- UEBERSICHT:ENDE -->
 
 ### Sidekicks & Standalones
 

@@ -95,6 +95,7 @@ def main():
         print("\nOhne Spur (bekommen keinen Block):")
         for d in ohne:
             print(f'   #{alle[d]["nr"]:<3} {d}')
+        print("   Kandidaten vorschlagen lassen:  bin/aehnlich.py --fehlend")
     if not setzen:
         print("\nProbelauf. Mit --setzen schreiben.")
         return 0
