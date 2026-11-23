@@ -15,7 +15,7 @@
       { "from": "Watson", "to": "AlphaGo", "from_year": 2011, "to_year": 2016, "years": 5 },
       { "from": "AlphaGo", "to": "GPT-3", "from_year": 2016, "to_year": 2020, "years": 4 },
       { "from": "GPT-3", "to": "ChatGPT", "from_year": 2020, "to_year": 2022, "years": 2 },
-      { "from": "ChatGPT", "to": "GPT-4", "from_year": 2022, "to_year": 2023, "years": 0.4 }
+      { "from": "ChatGPT", "to": "GPT-4", "from_year": 2022, "to_year": 2023, "years": 0.29, "days": 104, "label": "3,4 Mon.", "note": "30.11.2022 bis 14.03.2023 = 104 Tage; korrigiert am 23.11.2026, vorher 0.4 Jahre (5 Monate)" }
     ],
     "note": "Die Abstände schrumpfen: 14 → 5 → 4 → 2 → Monate"
   },
@@ -97,7 +97,7 @@
     "model_gap": {
       "2023_top1_top2_pct": 4.9,
       "2024_top1_top2_pct": 0.7,
-      "note": "Abstand zwischen #1 und #2 Modell schrumpft"
+      "note": "Elo-Abstand zwischen #1 und #2 in der Chatbot Arena schrumpft (nicht MMLU; korrigiert am 23.11.2026)"
     },
     "new_benchmarks": ["MMLU-Pro", "GPQA", "HLE", "MMMU"],
     "imagenet_solved": 2017

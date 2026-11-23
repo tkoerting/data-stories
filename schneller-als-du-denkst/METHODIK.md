@@ -38,13 +38,13 @@ Die Kosten pro Million Tokens beziehen sich auf MMLU-Performance auf GPT-3.5-Niv
 Microsoft Phi-3-mini (3,8 Mrd. Parameter) erreicht 2024 ca. 60% auf dem MMLU-Benchmark — ein Wert, den 2022 nur PaLM mit 540 Mrd. Parametern erreichte. Das ergibt einen Faktor von ~142x in der Parameterreduktion für gleiche Leistung. Achtung: Die Architektur ist nicht identisch, der Vergleich zeigt den Effizienzgewinn, nicht eine direkte 1:1-Reduktion.
 
 **Adoption (100 Millionen Nutzer):**
-Die Zeitangaben für historische Technologien sind Schätzwerte und variieren je nach Quelle und Marktdefinition. Für ChatGPT ist der Zeitraum Nov 2022 bis Jan 2023 dokumentiert (UBS-Studie). Die 700 Mio. wöchentlich aktive Nutzer sind OpenAI-Angaben (Stand Ende 2025).
+Die Zeitangaben für historische Technologien sind Schätzwerte und variieren je nach Quelle und Marktdefinition. Für ChatGPT ist der Zeitraum Nov 2022 bis Jan 2023 dokumentiert (UBS-Studie). Die über 900 Mio. wöchentlich aktiven Nutzer sind eine OpenAI-Angabe vom 27.02.2026 (korrigiert am 23.11.2026, vorher 700 Mio.).
 
 **Enterprise Adoption:**
 McKinsey State of AI Report, basierend auf globaler Befragung (N>1.000 Unternehmen). Der Sprung von ~50% auf 72% (2024) korreliert mit dem ChatGPT-Launch, ist aber auch durch erweiterte KI-Definitionen in der Umfrage beeinflusst.
 
 **Benchmark-Konvergenz:**
-Der Abstand zwischen dem besten und zweitbesten Modell auf MMLU schrumpfte von 4,9 Prozentpunkten (2023) auf 0,7 Prozentpunkte (2024). Dies zeigt Konvergenz an der Frontier, nicht Stillstand. Gleichzeitig wechseln Forscher auf härtere Benchmarks (MMLU-Pro, GPQA, HLE, MMMU).
+Der Abstand zwischen dem besten und zweitbesten Modell in der Chatbot Arena (Elo-Abstand) schrumpfte von 4,9 % (2023) auf 0,7 % (2024). Korrigiert am 23.11.2026: Vorher stand hier „auf MMLU“ und „Prozentpunkte“; der Wert im Stanford AI Index 2025 betrifft die Chatbot Arena. Dies zeigt Konvergenz an der Frontier, nicht Stillstand. Gleichzeitig wechseln Forscher auf härtere Benchmarks (MMLU-Pro, GPQA, HLE, MMMU).
 
 ### Einschränkungen
 

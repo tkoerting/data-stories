@@ -28,7 +28,7 @@ Wie hat sich die prognostizierte KI-Bedrohung am Arbeitsmarkt zwischen 2013 und 
 5. **NBER / Brynjolfsson, Li & Raymond (2023)** — "Generative AI at Work", Working Paper 31161
    - 5.179 Kundensupport-Agenten, +14% Durchschnitt, +34% bei Anfängern
 
-6. **NBER / Korinek & Suh (2024)** — "Scenarios for the Transition to AGI", Working Paper 32966
+6. **NBER / Bick, Blandin & Deming (2024)** — "The Rapid Adoption of Generative AI", Working Paper 32966, https://www.nber.org/papers/w32966 (repräsentative Befragung, Working Paper, nicht begutachtet; korrigiert am 23.11.2026, vorher Korinek & Suh)
    - 40% GenAI-Nutzung, 1,4% Zeitersparnis, keine Massenentlassungen
 
 7. **OpenAI/UPenn / Eloundou et al. (2023)** — "GPTs are GPTs"
@@ -82,7 +82,7 @@ Wie hat sich die prognostizierte KI-Bedrohung am Arbeitsmarkt zwischen 2013 und 
 - NBER +34% für Anfänger direkt aus Brynjolfsson et al. (2023)
 
 ### Realitäts-Check (Sektion 6)
-- Korinek & Suh (2024): 40% GenAI-Nutzung, 1,4% Zeitersparnis — direkte Übernahme
+- Bick, Blandin & Deming (2024): 40% GenAI-Nutzung, 1,4% Zeitersparnis — direkte Übernahme
 - Konkrete Signale (Chegg, Stack Overflow etc.) aus Nachrichtenquellen und Geschäftsberichten
 - WEF-Nettobilanz direkt aus Future of Jobs Report 2025
 

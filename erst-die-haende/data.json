@@ -121,7 +121,7 @@
   },
 
   "realitaet": {
-    "source": "Korinek & Suh (2024), NBER; US BLS; WEF Future of Jobs Report 2025",
+    "source": "Bick, Blandin & Deming (2024), NBER Working Paper 32966 (Befragung, nicht begutachtet); US BLS; WEF Future of Jobs Report 2025",
     "label": "Vorhersage vs. Realität",
     "genai_nutzung_pct": 40,
     "genai_weekly_work_pct": 23,

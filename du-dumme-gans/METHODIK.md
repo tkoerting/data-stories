@@ -47,7 +47,7 @@
 - **Primärquelle:** Pacoureau N et al. "Half a century of global decline in oceanic sharks and rays." Nature, 589, 567-571, 2021.
 - **71% Rückgang** ozeanischer Hai- und Rochen-Populationen seit 1970.
 - **Spielberg-Zitat (2022):** BBC Radio 4 "Desert Island Discs". Bestätigt durch Smithsonian, Washington Post, Hollywood Reporter.
-- **Benchley-Zitat:** Diverse Interviews 1995-2006. Bestätigt durch PopSci, National Geographic, Princeton University Press.
+- **Benchley-Zitat:** „I could never write Jaws today. I could never demonize an animal …“ (Vorwort zur Jubiläumsausgabe, ca. 2005; Primärquelle nicht selbst eingesehen). Er schrieb also, so ein Buch könne er heute nicht mehr schreiben. Dass er bereut habe, das Buch geschrieben zu haben, ist nicht belegt. Korrigiert am 23.11.2026, vorher „Diverse Interviews 1995-2006“ und in data.json `benchley_reue: true`.
 
 ### Wolf / Alpha-Mythos
 - **Mech 1970:** "The Wolf: Ecology and Behavior of an Endangered Species." University of Minnesota Press.
